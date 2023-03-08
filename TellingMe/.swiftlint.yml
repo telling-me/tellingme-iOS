@@ -1,0 +1,9 @@
+disabled_rules:
+- line_length
+
+excluded:
+- Pods
+- ./AppDelegate.swift
+- tellingMe/tellingMe/SceneDelegate.swiftlegate.swift
+included:
+
