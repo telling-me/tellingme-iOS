@@ -12,6 +12,7 @@
 		3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CF929C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf */; };
 		3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFA29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf */; };
 		3A775CFF29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */; };
+		3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0729C1DBBA00FCD3BC /* designable.swift */; };
 		3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CA29B8506F0030057E /* AppDelegate.swift */; };
 		3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CC29B8506F0030057E /* SceneDelegate.swift */; };
 		3AA289CF29B8506F0030057E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CE29B8506F0030057E /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		3A775CFA29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		3A775D0329C1C3B500FCD3BC /* tellingMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tellingMe.entitlements; sourceTree = "<group>"; };
+		3A775D0729C1DBBA00FCD3BC /* designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designable.swift; sourceTree = "<group>"; };
 		3AA289C729B8506F0030057E /* tellingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tellingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA289CA29B8506F0030057E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA289CC29B8506F0030057E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,8 +93,8 @@
 		3A2A503029B8805F002FE5E4 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3A775D0629C1DBA900FCD3BC /* designable */,
 				3A775D0429C1D96800FCD3BC /* extension */,
-				3A2A503129B8806E002FE5E4 /* UIView+.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -100,6 +102,7 @@
 		3A775D0429C1D96800FCD3BC /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				3A2A503129B8806E002FE5E4 /* UIView+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -113,6 +116,14 @@
 				3A775CFA29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf */,
 			);
 			path = font;
+			sourceTree = "<group>";
+		};
+		3A775D0629C1DBA900FCD3BC /* designable */ = {
+			isa = PBXGroup;
+			children = (
+				3A775D0729C1DBBA00FCD3BC /* designable.swift */,
+			);
+			path = designable;
 			sourceTree = "<group>";
 		};
 		3AA289BE29B8506F0030057E = {
@@ -280,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
+				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
