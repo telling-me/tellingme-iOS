@@ -180,3 +180,6 @@ Dependencies/
 
 ### tellingMe project - git ignore setting ###
 TellingMe/tellingMe/keyChain
+TellingMe/Info.plist
+Info.plist
+KeyList.plist
