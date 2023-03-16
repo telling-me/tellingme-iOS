@@ -63,12 +63,12 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign in with Apple"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="애플 계정으로 시작하기"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-0o-mVc">
                                         <rect key="frame" x="24" y="51" width="366" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="카카오 계정으로 시작하기"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
