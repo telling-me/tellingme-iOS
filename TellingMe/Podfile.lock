@@ -9,11 +9,14 @@ PODS:
   - KakaoSDKCommon/Network (2.14.0):
     - Alamofire (~> 5.1)
     - KakaoSDKCommon/Common (= 2.14.0)
+  - KakaoSDKUser (2.14.0):
+    - KakaoSDKAuth (= 2.14.0)
   - SwiftLint (0.49.1)
 
 DEPENDENCIES:
   - KakaoSDKAuth
   - KakaoSDKCommon
+  - KakaoSDKUser
   - SwiftLint
 
 SPEC REPOS:
@@ -21,14 +24,16 @@ SPEC REPOS:
     - Alamofire
     - KakaoSDKAuth
     - KakaoSDKCommon
+    - KakaoSDKUser
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   KakaoSDKAuth: 8fca87815de22062a23297983f327613b087b8bb
   KakaoSDKCommon: 0ce638f7a2e49704943c0b74a087a9f8067bba1c
+  KakaoSDKUser: 2ca18314ce72e6690f76cb1f6f9fbc771d31a803
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: b7236a60b176b648eb65d6d6a4042abc3ed7e451
+PODFILE CHECKSUM: 61b898badfb7c1a9d8b920ff2577e382f0f9c4f4
 
 COCOAPODS: 1.11.3

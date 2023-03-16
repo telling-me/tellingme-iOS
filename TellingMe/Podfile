@@ -7,6 +7,7 @@ target 'tellingMe' do
   pod 'SwiftLint'
   pod 'KakaoSDKCommon'
   pod 'KakaoSDKAuth'
+  pod 'KakaoSDKUser'
   # Pods for tellingMe
 
 end
