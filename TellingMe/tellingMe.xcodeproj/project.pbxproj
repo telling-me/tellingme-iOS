@@ -13,6 +13,8 @@
 		3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFA29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf */; };
 		3A775CFF29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */; };
 		3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0729C1DBBA00FCD3BC /* designable.swift */; };
+		3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */; };
+		3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */; };
 		3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CA29B8506F0030057E /* AppDelegate.swift */; };
 		3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CC29B8506F0030057E /* SceneDelegate.swift */; };
 		3AA289CF29B8506F0030057E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CE29B8506F0030057E /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 		3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		3A775D0329C1C3B500FCD3BC /* tellingMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tellingMe.entitlements; sourceTree = "<group>"; };
 		3A775D0729C1DBBA00FCD3BC /* designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designable.swift; sourceTree = "<group>"; };
+		3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KeyList.plist; sourceTree = "<group>"; };
+		3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		3AA289C729B8506F0030057E /* tellingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tellingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA289CA29B8506F0030057E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA289CC29B8506F0030057E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2A503129B8806E002FE5E4 /* UIView+.swift */,
+				3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -124,6 +129,15 @@
 				3A775D0729C1DBBA00FCD3BC /* designable.swift */,
 			);
 			path = designable;
+			sourceTree = "<group>";
+		};
+		3A775D0929C2E9AE00FCD3BC /* keyChain */ = {
+			isa = PBXGroup;
+			children = (
+				3AA289D829B8506F0030057E /* Info.plist */,
+				3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */,
+			);
+			path = keyChain;
 			sourceTree = "<group>";
 		};
 		3AA289BE29B8506F0030057E = {
@@ -148,15 +162,15 @@
 		3AA289C929B8506F0030057E /* tellingMe */ = {
 			isa = PBXGroup;
 			children = (
-				3A775D0529C1D97300FCD3BC /* font */,
+				3A775D0929C2E9AE00FCD3BC /* keyChain */,
 				3A775D0329C1C3B500FCD3BC /* tellingMe.entitlements */,
+				3A775D0529C1D97300FCD3BC /* font */,
 				3A2A503029B8805F002FE5E4 /* util */,
 				3A2A502F29B87C46002FE5E4 /* data */,
 				3A2A502E29B87C38002FE5E4 /* presentation */,
 				3A2A502D29B87B9D002FE5E4 /* appDelegate */,
 				3AA289D329B8506F0030057E /* Assets.xcassets */,
 				3AA289D529B8506F0030057E /* LaunchScreen.storyboard */,
-				3AA289D829B8506F0030057E /* Info.plist */,
 			);
 			path = tellingMe;
 			sourceTree = "<group>";
@@ -182,6 +196,7 @@
 				3AA289C429B8506F0030057E /* Frameworks */,
 				3AA289C529B8506F0030057E /* Resources */,
 				3AA289DE29B850D20030057E /* ShellScript */,
+				D7E6D7817C731D54BC45EE94 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +251,7 @@
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
+				3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3AA289E229B854210030057E /* Main.storyboard in Resources */,
 			);
@@ -260,6 +276,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		D7E6D7817C731D54BC45EE94 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tellingMe/Pods-tellingMe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tellingMe/Pods-tellingMe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tellingMe/Pods-tellingMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		EE4217E38A5D27450EC64CE6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -293,6 +326,7 @@
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
+				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 			);
@@ -435,9 +469,9 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tellingMe/Info.plist;
+				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -466,9 +500,9 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tellingMe/Info.plist;
+				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

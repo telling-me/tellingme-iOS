@@ -55,32 +55,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-G8-PBH">
                                 <rect key="frame" x="0.0" y="672" width="414" height="224"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-5P-roL" customClass="ASAuthorizationAppleIDButton">
-                                        <rect key="frame" x="24" y="98" width="366" height="54"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="ei8-qw-pVv"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign in with Apple"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-0o-mVc">
-                                        <rect key="frame" x="24" y="51" width="366" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ARE-t6-1tL">
+                                        <rect key="frame" x="24" y="28" width="366" height="124"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="TKb-5P-roL" secondAttribute="bottom" constant="72" id="3Yw-vX-v1a"/>
-                                    <constraint firstItem="Teq-0o-mVc" firstAttribute="height" secondItem="TKb-5P-roL" secondAttribute="height" multiplier="0.574074" id="C5X-Cc-CTb"/>
-                                    <constraint firstItem="Teq-0o-mVc" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="X8d-0v-7lj"/>
-                                    <constraint firstItem="TKb-5P-roL" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="awz-cU-Nan"/>
-                                    <constraint firstItem="TKb-5P-roL" firstAttribute="top" secondItem="Teq-0o-mVc" secondAttribute="bottom" constant="16" id="eXg-iM-9lb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Teq-0o-mVc" secondAttribute="trailing" constant="24" id="fjI-gS-8qK"/>
+                                    <constraint firstAttribute="trailing" secondItem="ARE-t6-1tL" secondAttribute="trailing" constant="24" id="YNf-y1-mzS"/>
+                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="top" secondItem="QFt-G8-PBH" secondAttribute="top" constant="28" id="b1O-Ht-joo"/>
                                     <constraint firstAttribute="height" constant="224" id="gVA-Oe-XAP"/>
-                                    <constraint firstAttribute="trailing" secondItem="TKb-5P-roL" secondAttribute="trailing" constant="24" id="v2z-gj-Vgi"/>
+                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="zZZ-ya-pe8"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,6 +87,7 @@
                         <outlet property="label1" destination="B9v-Ao-6gd" id="SmL-gg-MOs"/>
                         <outlet property="label2" destination="IN3-wA-9yU" id="pQQ-xV-Jt9"/>
                         <outlet property="label3" destination="aEE-8m-he9" id="4Ao-Wc-c7Y"/>
+                        <outlet property="loginStackView" destination="ARE-t6-1tL" id="GCM-OY-Csn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
