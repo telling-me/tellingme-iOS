@@ -8,6 +8,7 @@ target 'tellingMe' do
   pod 'KakaoSDKCommon'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
+  pod 'Moya'
   # Pods for tellingMe
 
 end

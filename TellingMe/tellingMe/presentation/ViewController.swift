@@ -10,6 +10,7 @@ import AuthenticationServices
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
+import Moya
 
 @IBDesignable
 class ViewController: UIViewController {
@@ -53,6 +54,17 @@ class ViewController: UIViewController {
       authorizationController.delegate = self
       authorizationController.presentationContextProvider = self
       authorizationController.performRequests()
+    }
+
+    @IBAction func clickAPITest(_ sender: Any) {
+        let request = TestRequest()
+        TestAPI.getTest(request: request) { response, error in
+            guard let response = response else {
+                print(error ?? #function)
+                return
+            }
+            print(response)
+        }
     }
 
     override func viewDidLoad() {

@@ -67,6 +67,18 @@
                                     <constraint firstItem="ARE-t6-1tL" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="zZZ-ya-pe8"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vi-Ao-5SZ">
+                                <rect key="frame" x="163" y="437.5" width="88" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="Mih-Yx-xS0"/>
+                                    <constraint firstAttribute="height" constant="31" id="ftK-r6-b66"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="API_TEST"/>
+                                <connections>
+                                    <action selector="clickAPITest:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="z81-eV-U0r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -75,6 +87,8 @@
                             <constraint firstItem="B9v-Ao-6gd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="BAN-e5-pkl"/>
                             <constraint firstItem="aEE-8m-he9" firstAttribute="top" secondItem="IN3-wA-9yU" secondAttribute="bottom" constant="8" id="QWS-AC-SDw"/>
                             <constraint firstItem="B9v-Ao-6gd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="104" id="Y88-PZ-Cj8"/>
+                            <constraint firstItem="4vi-Ao-5SZ" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="Ye3-M1-oU6"/>
+                            <constraint firstItem="4vi-Ao-5SZ" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="b4j-wq-vqk"/>
                             <constraint firstItem="IN3-wA-9yU" firstAttribute="leading" secondItem="B9v-Ao-6gd" secondAttribute="leading" id="f3u-Su-XuE"/>
                             <constraint firstAttribute="bottomMargin" secondItem="QFt-G8-PBH" secondAttribute="bottom" constant="-34" id="hWZ-mU-1eV"/>
                             <constraint firstItem="aEE-8m-he9" firstAttribute="leading" secondItem="B9v-Ao-6gd" secondAttribute="leading" id="tC4-7Q-WIm"/>
