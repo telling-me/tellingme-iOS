@@ -11,12 +11,17 @@ PODS:
     - KakaoSDKCommon/Common (= 2.14.0)
   - KakaoSDKUser (2.14.0):
     - KakaoSDKAuth (= 2.14.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
   - SwiftLint (0.49.1)
 
 DEPENDENCIES:
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
+  - Moya
   - SwiftLint
 
 SPEC REPOS:
@@ -25,6 +30,7 @@ SPEC REPOS:
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
+    - Moya
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -32,8 +38,9 @@ SPEC CHECKSUMS:
   KakaoSDKAuth: 8fca87815de22062a23297983f327613b087b8bb
   KakaoSDKCommon: 0ce638f7a2e49704943c0b74a087a9f8067bba1c
   KakaoSDKUser: 2ca18314ce72e6690f76cb1f6f9fbc771d31a803
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: 61b898badfb7c1a9d8b920ff2577e382f0f9c4f4
+PODFILE CHECKSUM: 07e00945fa346bbc4f2b699e9a377dfa8c262bbc
 
 COCOAPODS: 1.11.3
