@@ -19,7 +19,7 @@ class Headline2Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Bold", size: 26)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
     }
 }
 
@@ -35,7 +35,7 @@ class Headline2Regular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Regular", size: 26)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 26)
     }
 }
 
@@ -51,7 +51,7 @@ class Headline3Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Bold", size: 19)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 19)
     }
 }
 
@@ -67,7 +67,7 @@ class Headline3Regular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Regular", size: 19)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 19)
     }
 }
 
@@ -83,7 +83,7 @@ class Headline4Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Bold", size: 17)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 17)
     }
 }
 
@@ -99,6 +99,6 @@ class Headline4Regular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Regular", size: 17)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 17)
     }
 }

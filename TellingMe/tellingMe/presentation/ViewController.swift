@@ -14,10 +14,10 @@ import Moya
 
 @IBDesignable
 class ViewController: UIViewController {
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
+    @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var loginStackView: UIStackView!
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet var labels: [UILabel]!
 
     @objc
     func clickKakaoLogin() {
@@ -46,14 +46,14 @@ class ViewController: UIViewController {
 
     @objc
     func clickAppleLogin() {
-      let appleIDProvider = ASAuthorizationAppleIDProvider()
-      let request = appleIDProvider.createRequest()
-      request.requestedScopes = [.fullName, .email]
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
 
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-      authorizationController.delegate = self
-      authorizationController.presentationContextProvider = self
-      authorizationController.performRequests()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
 
     @IBAction func clickAPITest(_ sender: Any) {
@@ -69,6 +69,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setLoginButtons()
     }
 
@@ -76,13 +77,20 @@ class ViewController: UIViewController {
         labelAnimate()
     }
 
+    func setUI() {
+        gradientView.frame = CGRect(x: 0, y: 0, width: 285, height: 238)
+        gradientView.setShadow()
+        gradientView.setGradient(color1: UIColor(red: 0.992, green: 0.859, blue: 0.573, alpha: 1), color2: UIColor(red: 0.82, green: 0.992, blue: 1, alpha: 1))
+    }
+
     func setLoginButtons() {
         let kakaoButton: UIButton = {
             let button = UIButton()
-
-            button.titleLabel?.text = "카카오 계정으로 시작하기"
+            button.setTitle("카카오로 계속하기", for: .normal)
             button.addTarget(self, action: #selector(clickKakaoLogin), for: .touchDown)
-            button.backgroundColor = .black
+            button.backgroundColor = UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1)
+            button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+            button.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
@@ -90,41 +98,37 @@ class ViewController: UIViewController {
         let appleButton: ASAuthorizationAppleIDButton = {
             let button = ASAuthorizationAppleIDButton(type: .continue, style: .black)
             button.addTarget(self, action: #selector(clickAppleLogin), for: .touchDown)
-            button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
 
-        kakaoButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        appleButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
         loginStackView.addArrangedSubview(kakaoButton)
         loginStackView.addArrangedSubview(appleButton)
+
+        kakaoButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        kakaoButton.widthAnchor.constraint(equalTo: loginStackView.widthAnchor).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        appleButton.widthAnchor.constraint(equalTo: loginStackView.widthAnchor).isActive = true
+        loginStackView.layoutIfNeeded()
 
         kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
         appleButton.layer.cornerRadius = appleButton.frame.height / 2
     }
 
     func labelAnimate() {
-        let now = DispatchTime.now()
-        DispatchQueue.main.asyncAfter(deadline: now + 1) {
-            self.pushAnimate(label: self.label1)
-        }
-        DispatchQueue.main.asyncAfter(deadline: now + 2) {
-            self.pushAnimate(label: self.label2)
-        }
-        DispatchQueue.main.asyncAfter(deadline: now + 3) {
-            self.label3.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
-            self.pushAnimate(label: self.label3)
+        for (index, label) in labels.enumerated() {
+            Timer.scheduledTimer(withTimeInterval: TimeInterval(1*index), repeats: false) { _ in
+                self.pushAnimate(label: label)
+            }
         }
     }
 
     private func pushAnimate(label: UILabel) {
-        label.isHidden = false
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = .init(name: .easeInEaseOut)
-        transition.type = .push
-        transition.subtype = .fromTop
-        label.layer.add(transition, forKey: CATransitionType.push.rawValue)
+        UILabel.animate(withDuration: 0.5,
+                        animations: { label.isHidden = false
+            label.alpha = 1
+            label.frame.origin.y -= 20
+        },
+                        completion: nil)
     }
 }
 
@@ -139,6 +143,6 @@ extension ViewController: ASAuthorizationControllerDelegate, ASAuthorizationCont
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-      // Handle error.
+        // Handle error.
     }
 }
