@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class Headline2Bold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,6 +24,7 @@ class Headline2Bold: UILabel {
     }
 }
 
+@IBDesignable
 class Headline2Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +41,7 @@ class Headline2Regular: UILabel {
     }
 }
 
+@IBDesignable
 class Headline3Bold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -55,6 +58,7 @@ class Headline3Bold: UILabel {
     }
 }
 
+@IBDesignable
 class Headline3Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -71,6 +75,7 @@ class Headline3Regular: UILabel {
     }
 }
 
+@IBDesignable
 class Headline4Bold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -87,6 +92,7 @@ class Headline4Bold: UILabel {
     }
 }
 
+@IBDesignable
 class Headline4Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
