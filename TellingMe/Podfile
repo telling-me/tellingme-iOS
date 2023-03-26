@@ -9,6 +9,7 @@ target 'tellingMe' do
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
   pod 'Moya'
+  pod 'GradientProgress'
   # Pods for tellingMe
 
 end

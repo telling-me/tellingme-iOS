@@ -13,13 +13,4 @@ class GetGenderViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-    @objc
-    func tappedGender(_ sender: UITapGestureRecognizer) {
-        if sender.tag == 0 {
-            
-        } else {
-            
-        }
-    }
 }

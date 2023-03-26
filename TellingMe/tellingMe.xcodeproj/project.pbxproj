@@ -10,6 +10,7 @@
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
+		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
@@ -48,6 +49,7 @@
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3A50EEF329CCA62200A27504 /* login */,
+				3A50EEF329CCA62200A27504 /* signUp */,
 				3A157CF729CAFD6D00D61AD3 /* home */,
 				3AA289CE29B8506F0030057E /* ViewController.swift */,
 				3AA289E129B854210030057E /* Main.storyboard */,
@@ -193,13 +195,14 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		3A50EEF329CCA62200A27504 /* login */ = {
+		3A50EEF329CCA62200A27504 /* signUp */ = {
 			isa = PBXGroup;
 			children = (
 				3A50EF0229CCB2DB00A27504 /* page */,
 				3A50EEF429CCA63900A27504 /* SignUp.storyboard */,
+				3A26202529D05B770061F9D8 /* SignUpViewController.swift */,
 			);
-			path = login;
+			path = signUp;
 			sourceTree = "<group>";
 		};
 		3A50EF0229CCB2DB00A27504 /* page */ = {
@@ -464,6 +467,7 @@
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
+				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
