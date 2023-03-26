@@ -23,10 +23,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        if (AuthApi.hasToken()) {
+            UserApi.shared.accessTokenInfo { (_, error) in
+                if let error = error {
+                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
+                        //로그인 필요
+                        print("로그인 해주세용")
+                    }
+                    else {
+                        //기타 에러
+                    }
+                }
+                else {
+                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+                    print(self.window?.rootViewController)
+                    print("로그인 되어있지용")
+                    scene.windows.first?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "home")
+                    scene.windows.first?.makeKeyAndVisible()
+                    print(self.window?.rootViewController)
+                    
+//                    UserApi.shared.me() {(user, error) in
+//                        if let error = error {
+//                            print(error)
+//                        }
+//                        else {
+//                            print(user?.id)
+//                            print("사용자 정보 가져오기 성공")
+//                            _ = user
+//                        }
+//                    }
+                }
+            }
+        }
+        else {
+            //로그인 필요
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

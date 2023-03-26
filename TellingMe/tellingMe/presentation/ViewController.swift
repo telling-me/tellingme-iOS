@@ -38,7 +38,6 @@ class ViewController: UIViewController {
                 } else {
                     print("카카오 계정으로 로그인 성공")
                     _ = oauthToken
-                    // 관련 메소드 추가
                 }
             }
         }
@@ -85,29 +84,21 @@ class ViewController: UIViewController {
 
     func setLoginButtons() {
         let kakaoButton: UIButton = {
-            let button = UIButton()
-            button.setTitle("카카오로 계속하기", for: .normal)
+            let button = LoginButton()
             button.addTarget(self, action: #selector(clickKakaoLogin), for: .touchDown)
-            button.backgroundColor = UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1)
-            button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
-            button.translatesAutoresizingMaskIntoConstraints = false
+            button.initializeLabel(name: "카카오", color: UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1))
             return button
         }()
 
-        let appleButton: ASAuthorizationAppleIDButton = {
-            let button = ASAuthorizationAppleIDButton(type: .continue, style: .black)
+        let appleButton: UIButton = {
+            let button = LoginButton()
             button.addTarget(self, action: #selector(clickAppleLogin), for: .touchDown)
+            button.initializeLabel(name: "Apple", color: UIColor.black)
             return button
         }()
 
         loginStackView.addArrangedSubview(kakaoButton)
         loginStackView.addArrangedSubview(appleButton)
-
-        kakaoButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        kakaoButton.widthAnchor.constraint(equalTo: loginStackView.widthAnchor).isActive = true
-        appleButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        appleButton.widthAnchor.constraint(equalTo: loginStackView.widthAnchor).isActive = true
         loginStackView.layoutIfNeeded()
 
         kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
@@ -127,8 +118,7 @@ class ViewController: UIViewController {
                         animations: { label.isHidden = false
             label.alpha = 1
             label.frame.origin.y -= 20
-        },
-                        completion: nil)
+        }, completion: nil)
     }
 }
 

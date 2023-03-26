@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class Body1Bold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,6 +24,7 @@ class Body1Bold: UILabel {
     }
 }
 
+@IBDesignable
 class Body1Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +41,7 @@ class Body1Regular: UILabel {
     }
 }
 
+@IBDesignable
 class Body2Bold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -55,6 +58,7 @@ class Body2Bold: UILabel {
     }
 }
 
+@IBDesignable
 class Body2Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

@@ -47,27 +47,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-G8-PBH">
-                                <rect key="frame" x="0.0" y="672" width="414" height="224"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ARE-t6-1tL">
-                                        <rect key="frame" x="24" y="28" width="366" height="124"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ARE-t6-1tL" secondAttribute="bottom" constant="72" id="96T-ii-0Fk"/>
-                                    <constraint firstAttribute="trailing" secondItem="ARE-t6-1tL" secondAttribute="trailing" constant="24" id="YNf-y1-mzS"/>
-                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="top" secondItem="QFt-G8-PBH" secondAttribute="top" constant="28" id="b1O-Ht-joo"/>
-                                    <constraint firstAttribute="height" constant="224" id="gVA-Oe-XAP"/>
-                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="zZZ-ya-pe8"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0u-Ld-Z1H">
                                 <rect key="frame" x="64.5" y="334" width="285" height="238"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,6 +78,29 @@
                                     <action selector="clickAPITest:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="z81-eV-U0r"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-G8-PBH">
+                                <rect key="frame" x="0.0" y="672" width="414" height="224"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ARE-t6-1tL">
+                                        <rect key="frame" x="24" y="28" width="366" height="124"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="6rD-5p-BB8"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ARE-t6-1tL" secondAttribute="trailing" constant="24" id="YNf-y1-mzS"/>
+                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="top" secondItem="QFt-G8-PBH" secondAttribute="top" constant="28" id="b1O-Ht-joo"/>
+                                    <constraint firstAttribute="height" constant="224" id="gVA-Oe-XAP"/>
+                                    <constraint firstItem="ARE-t6-1tL" firstAttribute="leading" secondItem="QFt-G8-PBH" secondAttribute="leading" constant="24" id="zZZ-ya-pe8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -136,6 +138,12 @@
     <designables>
         <designable name="B9v-Ao-6gd">
             <size key="intrinsicContentSize" width="107.5" height="31.5"/>
+        </designable>
+        <designable name="IN3-wA-9yU">
+            <size key="intrinsicContentSize" width="163.5" height="31.5"/>
+        </designable>
+        <designable name="aEE-8m-he9">
+            <size key="intrinsicContentSize" width="169" height="31.5"/>
         </designable>
     </designables>
     <resources>
