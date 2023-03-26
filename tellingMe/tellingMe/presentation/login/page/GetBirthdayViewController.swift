@@ -8,7 +8,6 @@
 import UIKit
 
 class GetBirthdayViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

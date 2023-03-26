@@ -20,8 +20,6 @@
 		3A5076F329C8335900C7A5E9 /* TestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076F229C8335900C7A5E9 /* TestDTO.swift */; };
 		3A5076F529C8352200C7A5E9 /* TestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076F429C8352200C7A5E9 /* TestDataSource.swift */; };
 		3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A50EEF429CCA63900A27504 /* SignUp.storyboard */; };
-		3A50EEF729CCB1FE00A27504 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEF629CCB1FE00A27504 /* SignUpViewController.swift */; };
-		3A50EEF929CCB20D00A27504 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEF829CCB20D00A27504 /* SignUpPageViewController.swift */; };
 		3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */; };
 		3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */; };
 		3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */; };
@@ -60,8 +58,6 @@
 		3A5076F229C8335900C7A5E9 /* TestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDTO.swift; sourceTree = "<group>"; };
 		3A5076F429C8352200C7A5E9 /* TestDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataSource.swift; sourceTree = "<group>"; };
 		3A50EEF429CCA63900A27504 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		3A50EEF629CCB1FE00A27504 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3A50EEF829CCB20D00A27504 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNameViewController.swift; sourceTree = "<group>"; };
 		3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBirthdayViewController.swift; sourceTree = "<group>"; };
 		3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +198,6 @@
 			children = (
 				3A50EF0229CCB2DB00A27504 /* page */,
 				3A50EEF429CCA63900A27504 /* SignUp.storyboard */,
-				3A50EEF629CCB1FE00A27504 /* SignUpViewController.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -210,7 +205,6 @@
 		3A50EF0229CCB2DB00A27504 /* page */ = {
 			isa = PBXGroup;
 			children = (
-				3A50EEF829CCB20D00A27504 /* SignUpPageViewController.swift */,
 				3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */,
 				3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */,
 				3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */,
@@ -463,7 +457,6 @@
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
-				3A50EEF729CCB1FE00A27504 /* SignUpViewController.swift in Sources */,
 				3A5076E529C82D9800C7A5E9 /* ServiceError+.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* TestDataSource.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
@@ -473,7 +466,6 @@
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
-				3A50EEF929CCB20D00A27504 /* SignUpPageViewController.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
@@ -622,7 +614,7 @@
 				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -653,7 +645,7 @@
 				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

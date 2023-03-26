@@ -9,21 +9,28 @@ import UIKit
 
 class AgreementViewController: UIViewController {
 
+    @IBOutlet weak var agreementButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func toggleAgreement(_ sender: UIButton) {
+        if sender.isSelected {
+            nextButton.isEnabled = false
+            sender.isSelected = false
+        } else {
+            nextButton.isEnabled = true
+            sender.isSelected = true
+        }
     }
-    */
 
+    @IBAction func clickNextButton(_ sender: UIButton) {
+        print("눌리긴햇지")
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "getName") else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

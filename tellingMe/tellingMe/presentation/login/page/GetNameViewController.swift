@@ -8,22 +8,29 @@
 import UIKit
 
 class GetNameViewController: UIViewController {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
+    }
+
+    @IBAction func inputName(_ sender: UITextField) {
+        if textField.text!.isEmpty {
+            nextButton.isEnabled = false
+        } else {
+            nextButton.isEnabled = true
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func popButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
-    */
-
+    @IBAction func nextButton(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "getGender") else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
