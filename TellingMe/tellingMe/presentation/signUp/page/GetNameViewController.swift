@@ -9,28 +9,20 @@ import UIKit
 
 class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
     }
-
-    @IBAction func inputName(_ sender: UITextField) {
-        if textField.text!.isEmpty {
-            nextButton.isEnabled = false
-        } else {
-            nextButton.isEnabled = true
-        }
+    
+    @IBAction func nextAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.nextPageWithIndex(index: 2)
     }
     
-    
-    @IBAction func popButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    @IBAction func nextButton(_ sender: UIButton) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "getGender") else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+    @IBAction func prevAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.prevPageWithIndex(index: 0)
     }
 }

@@ -10,7 +10,15 @@ import UIKit
 class GetGenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func nextAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.nextPageWithIndex(index: 3)
+    }
+    
+    @IBAction func prevAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.prevPageWithIndex(index: 1)
     }
 }
