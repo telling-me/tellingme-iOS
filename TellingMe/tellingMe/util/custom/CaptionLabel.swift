@@ -7,7 +7,8 @@
 
 import UIKit
 
-class CaptionLabelLight: UILabel {
+@IBDesignable
+class CaptionLabelBold: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeLabel()
@@ -19,10 +20,11 @@ class CaptionLabelLight: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Light", size: 12)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 12)
     }
 }
 
+@IBDesignable
 class CpationLabelRegular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,6 +37,6 @@ class CpationLabelRegular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTF-Regular", size: 12)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 12)
     }
 }

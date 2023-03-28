@@ -8,7 +8,6 @@
 import UIKit
 
 class SignUpPageViewController: UIPageViewController {
-    var currentPage = 0
     let pages: [UIViewController] = {
         let storyBoard = UIStoryboard(name: "SignUp", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "agreement")
@@ -46,7 +45,7 @@ extension SignUpPageViewController {
         viewController?.setProgress(with: Float(index)/Float(pages.count))
     }
     func nextPageWithIndex(index: Int) {
-         setViewControllers([pages[index]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([pages[index]], direction: .forward, animated: true, completion: nil)
         let viewController = self.parent as? SignUpViewController
         viewController?.setProgress(with: Float(index)/Float(pages.count))
      }

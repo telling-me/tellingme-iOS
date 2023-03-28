@@ -3,6 +3,7 @@ disabled_rules:
 
 excluded:
 - Pods
-- tellingMe/appDelegate
+- tellingMe/AppDelegate.siwft
+- tellingMe/SceneDelegate.swift
 included:
 

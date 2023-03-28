@@ -8,13 +8,22 @@
 import UIKit
 
 class GetBirthdayViewController: UIViewController {
+    @IBOutlet weak var birthdayPicker: UIDatePicker!
+
+    let indicator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "primary400main")
+        return view
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    @IBAction func datePciekrChanged(_ sender: UIDatePicker) {
+    }
+
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        print(pageViewController)
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

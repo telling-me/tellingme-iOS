@@ -38,6 +38,7 @@ class ViewController: UIViewController {
                 } else {
                     print("카카오 계정으로 로그인 성공")
                     _ = oauthToken
+                    print(oauthToken)
                 }
             }
         }

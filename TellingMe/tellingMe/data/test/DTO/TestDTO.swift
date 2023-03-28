@@ -15,3 +15,11 @@ struct TestRequest: Codable {
 struct TestResponse: Codable {
     let message: String
 }
+
+struct OauthTestRequest: Codable {
+    let socialId: String
+}
+
+struct OauthTestResponse: Codable {
+    let message: String
+}
