@@ -10,6 +10,7 @@
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
+		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
@@ -38,6 +39,15 @@
 		3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289D529B8506F0030057E /* LaunchScreen.storyboard */; };
 		3AA289E029B851DD0030057E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289DF29B851DD0030057E /* .swiftlint.yml */; };
 		3AA289E229B854210030057E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289E129B854210030057E /* Main.storyboard */; };
+		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
+		3ACC45E929D198CA000843F5 /* GetWorryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */; };
+		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
+		3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */; };
+		3ACC45EF29D19A11000843F5 /* JobTalbeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */; };
+		3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */; };
+		3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */; };
+		3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F529D1EFA4000843F5 /* UIString+.swift */; };
+		3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F729D2090E000843F5 /* UITextField+.swift */; };
 		3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */; };
 		3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26429C99F7D00D02F3F /* BodyLabel.swift */; };
 		3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26629C99F8800D02F3F /* CaptionLabel.swift */; };
@@ -48,6 +58,7 @@
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
@@ -79,6 +90,15 @@
 		3AA289D829B8506F0030057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
+		3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorryViewController.swift; sourceTree = "<group>"; };
+		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
+		3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTalbeViewCell.xib; sourceTree = "<group>"; };
+		3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMBTIViewController.swift; sourceTree = "<group>"; };
+		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
+		3ACC45F729D2090E000843F5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineLabel.swift; sourceTree = "<group>"; };
 		3AEED26429C99F7D00D02F3F /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		3AEED26629C99F8800D02F3F /* CaptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
@@ -128,7 +148,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3A50EEF329CCA62200A27504 /* login */,
+				3A50EEF329CCA62200A27504 /* signUp */,
 				3A157CF729CAFD6D00D61AD3 /* home */,
 				3AA289CE29B8506F0030057E /* ViewController.swift */,
 				3AA289E129B854210030057E /* Main.storyboard */,
@@ -193,22 +213,28 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		3A50EEF329CCA62200A27504 /* login */ = {
+		3A50EEF329CCA62200A27504 /* signUp */ = {
 			isa = PBXGroup;
 			children = (
 				3A50EF0229CCB2DB00A27504 /* page */,
 				3A50EEF429CCA63900A27504 /* SignUp.storyboard */,
+				3A26202529D05B770061F9D8 /* SignUpViewController.swift */,
+				3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */,
 			);
-			path = login;
+			path = signUp;
 			sourceTree = "<group>";
 		};
 		3A50EF0229CCB2DB00A27504 /* page */ = {
 			isa = PBXGroup;
 			children = (
+				3ACC45F429D1C79A000843F5 /* page+ */,
 				3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */,
 				3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */,
 				3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */,
 				3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */,
+				3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */,
+				3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */,
+				3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */,
 			);
 			path = page;
 			sourceTree = "<group>";
@@ -218,6 +244,8 @@
 			children = (
 				3A2A503129B8806E002FE5E4 /* UIView+.swift */,
 				3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */,
+				3ACC45F529D1EFA4000843F5 /* UIString+.swift */,
+				3ACC45F729D2090E000843F5 /* UITextField+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -285,6 +313,15 @@
 			path = tellingMe;
 			sourceTree = "<group>";
 		};
+		3ACC45F429D1C79A000843F5 /* page+ */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */,
+				3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */,
+			);
+			path = "page+";
+			sourceTree = "<group>";
+		};
 		3AEED26129C99EDA00D02F3F /* custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +329,7 @@
 				3AEED26429C99F7D00D02F3F /* BodyLabel.swift */,
 				3AEED26629C99F8800D02F3F /* CaptionLabel.swift */,
 				3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */,
+				3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -375,6 +413,7 @@
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
 				3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */,
+				3ACC45EF29D19A11000843F5 /* JobTalbeViewCell.xib in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3AA289E229B854210030057E /* Main.storyboard in Resources */,
 			);
@@ -449,26 +488,35 @@
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
+				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* TestDTO.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
+				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
+				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3A5076E529C82D9800C7A5E9 /* ServiceError+.swift in Sources */,
+				3ACC45E929D198CA000843F5 /* GetWorryViewController.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* TestDataSource.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
+				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
+				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
+				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
+				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

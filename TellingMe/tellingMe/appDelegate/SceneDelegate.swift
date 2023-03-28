@@ -37,20 +37,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
                 else {
                     //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                    print(self.window?.rootViewController)
-                    print("로그인 되어있지용")
-                    scene.windows.first?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "home")
-                    scene.windows.first?.makeKeyAndVisible()
-                    print(self.window?.rootViewController)
-                    
+//                    print(self.window?.rootViewController)
+//                    print("로그인 되어있지용")
+//                    scene.windows.first?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "home")
+//                    scene.windows.first?.makeKeyAndVisible()
+//                    print(self.window?.rootViewController)
+//
 //                    UserApi.shared.me() {(user, error) in
 //                        if let error = error {
 //                            print(error)
 //                        }
 //                        else {
-//                            print(user?.id)
 //                            print("사용자 정보 가져오기 성공")
 //                            _ = user
+//                            let request = OauthTestRequest( socialId: String(user?.id ?? 0))
+//                            TestAPI.oauthTest(type: "kakao", request: request) { response, error in
+//                                guard let response = response else {
+//                                    print(error ?? #function)
+//                                    return
+//                                }
+//                                print(response)
+//                            }
+//
 //                        }
 //                    }
                 }

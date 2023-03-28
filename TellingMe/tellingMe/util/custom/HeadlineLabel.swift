@@ -20,7 +20,7 @@ class Headline2Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 32)
     }
 }
 
@@ -37,7 +37,7 @@ class Headline2Regular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 26)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 32)
     }
 }
 
@@ -54,7 +54,7 @@ class Headline3Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 19)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
     }
 }
 
@@ -71,7 +71,7 @@ class Headline3Regular: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 19)
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 26)
     }
 }
 
@@ -88,12 +88,80 @@ class Headline4Bold: UILabel {
     }
 
     func initializeLabel() {
-        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 17)
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 24)
     }
 }
 
 @IBDesignable
 class Headline4Regular: UILabel {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initializeLabel()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeLabel()
+    }
+
+    func initializeLabel() {
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 24)
+    }
+}
+
+@IBDesignable
+class Headline5Bold: UILabel {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initializeLabel()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeLabel()
+    }
+
+    func initializeLabel() {
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 19)
+    }
+}
+
+@IBDesignable
+class Headline5Regular: UILabel {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initializeLabel()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeLabel()
+    }
+
+    func initializeLabel() {
+        self.font = UIFont(name: "NanumSquareRoundOTFR", size: 19)
+    }
+}
+
+@IBDesignable
+class Headline6Bold: UILabel {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initializeLabel()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeLabel()
+    }
+
+    func initializeLabel() {
+        self.font = UIFont(name: "NanumSquareRoundOTFB", size: 17)
+    }
+}
+
+@IBDesignable
+class Headline6Regular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeLabel()
