@@ -21,6 +21,7 @@ class Headline2Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 32)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -38,6 +39,7 @@ class Headline2Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 32)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -55,6 +57,7 @@ class Headline3Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -72,6 +75,7 @@ class Headline3Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 26)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -89,6 +93,7 @@ class Headline4Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 24)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -106,6 +111,7 @@ class Headline4Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 24)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -123,6 +129,7 @@ class Headline5Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 19)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -140,6 +147,7 @@ class Headline5Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 19)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -157,6 +165,7 @@ class Headline6Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 17)
+        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -174,5 +183,6 @@ class Headline6Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 17)
+        self.textColor = UIColor(named: "Black")
     }
 }

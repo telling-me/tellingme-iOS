@@ -18,7 +18,6 @@ extension UITextField {
         if let language = getKeyboardLanguage() {
             print(language)
             for inputMode in UITextInputMode.activeInputModes {
-                print(inputMode.primaryLanguage)
                 if inputMode.primaryLanguage! == language {
                     return inputMode
                 }
