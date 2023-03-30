@@ -9,9 +9,8 @@ import UIKit
 
 class WorryCollectionViewCell: UICollectionViewCell {
     static let id = "worryCollectionViewCell"
+    @IBOutlet weak var cellView: TertiaryVerticalBothButton!
 
-    @IBOutlet weak var cellView: TestView!
-    
     override var isSelected: Bool {
       didSet {
         if isSelected {
@@ -20,6 +19,12 @@ class WorryCollectionViewCell: UICollectionViewCell {
             setDefault()
         }
       }
+    }
+
+    override var isHighlighted: Bool {
+        didSet {
+            isHighlighted ? setHighlighted(): setNotHighlighted()
+        }
     }
 
     override init(frame: CGRect) {
@@ -31,8 +36,9 @@ class WorryCollectionViewCell: UICollectionViewCell {
     }
 
     func setData(with data: WorryViewModel) {
-        cellView.setImageandLabel(imgName: data.imgName, text: data.title)
+        cellView.setImageandLabel(imgName: "\(data.imgName)_Gradient", text: data.title)
         cellView.backgroundColor = UIColor(named: "Side200")
+        cellView.layer.masksToBounds = true
         cellView.layer.cornerRadius = 20
     }
 
@@ -42,5 +48,13 @@ class WorryCollectionViewCell: UICollectionViewCell {
 
     func setDefault() {
         cellView.backgroundColor = UIColor(named: "Side200")
+    }
+
+    func setHighlighted() {
+        cellView.setHeighlighted()
+    }
+
+    func setNotHighlighted() {
+        cellView.setNotHighlighted()
     }
 }

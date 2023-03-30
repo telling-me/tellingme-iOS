@@ -10,6 +10,7 @@ import UIKit
 class AgreementViewController: UIViewController {
     @IBOutlet weak var agreementButton: UIButton! {
         didSet {
+            agreementButton.setImage(UIImage(systemName: ""), for: .disabled)
             agreementButton.setImage(UIImage(systemName: "checkmark"), for: .selected)
             agreementButton.setImage(UIImage(), for: .normal)
         }

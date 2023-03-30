@@ -19,12 +19,22 @@ struct WorryViewModel {
 
 class GetWorryViewController: UIViewController {
     var selected: [IndexPath] = []
-    let worryList: [WorryViewModel] = [WorryViewModel(imgName: "Heart", title: "학업/진로"), WorryViewModel(imgName: "Heart", title: "대인 관계"), WorryViewModel(imgName: "Heart", title: "성격/가치관"), WorryViewModel(imgName: "Heart", title: "행동/습관"), WorryViewModel(imgName: "Heart", title: "건강"), WorryViewModel(imgName: "Heart", title: "기타")]
+    let worryList: [WorryViewModel] = [WorryViewModel(imgName: "Pen", title: "학업/진로"), WorryViewModel(imgName: "Handshake", title: "대인 관계"), WorryViewModel(imgName: "Values", title: "성격/가치관"), WorryViewModel(imgName: "Magnet", title: "행동/습관"), WorryViewModel(imgName: "Health", title: "건강"), WorryViewModel(imgName: "Heart", title: "기타")]
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = true
+    }
+    @IBAction func nextAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.nextPageWithIndex(index: 3)
+    }
+    @IBAction func prevAction(_ sender: Any) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.prevPageWithIndex(index: 1)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -36,6 +46,7 @@ extension GetWorryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorryCollectionViewCell.id, for: indexPath) as? WorryCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(with: worryList[indexPath.row])
+        cell.layer.cornerRadius = 20
         return cell
     }
 
@@ -43,17 +54,20 @@ extension GetWorryViewController: UICollectionViewDelegate, UICollectionViewData
        return CGSize(width: 103, height: 114)
    }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selected.append(indexPath)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        selected.remove(at: selected.firstIndex(of: indexPath)!
-//        )
-//    }
-
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return collectionView.indexPathsForSelectedItems!.count
         <  2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.indexPathsForSelectedItems!.count > 0 {
+            nextButton.isEnabled = true
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView.indexPathsForSelectedItems!.count == 0 {
+            nextButton.isEnabled = false
+        }
     }
 }
