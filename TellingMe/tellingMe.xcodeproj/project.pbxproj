@@ -11,6 +11,7 @@
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
+		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
@@ -64,6 +65,7 @@
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */,
 				3ACC45F529D1EFA4000843F5 /* UIString+.swift */,
 				3ACC45F729D2090E000843F5 /* UITextField+.swift */,
+				3A2742D029D5F8B9005E4C5F /* Date+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				3AFF8B7E29D47AA5005A7A6B /* TestView.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,
+				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,

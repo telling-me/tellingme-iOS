@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TestView: UIView {
+class TertiaryVerticalBothButton: UIView {
     let imgView: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
