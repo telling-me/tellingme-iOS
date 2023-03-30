@@ -11,6 +11,7 @@
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
+		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
@@ -39,6 +40,9 @@
 		3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289D529B8506F0030057E /* LaunchScreen.storyboard */; };
 		3AA289E029B851DD0030057E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289DF29B851DD0030057E /* .swiftlint.yml */; };
 		3AA289E229B854210030057E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289E129B854210030057E /* Main.storyboard */; };
+		3AC9D53429D58269006A2566 /* MBTITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53329D58269006A2566 /* MBTITableViewController.swift */; };
+		3AC9D53629D58440006A2566 /* MBTITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53529D58440006A2566 /* MBTITableViewCell.swift */; };
+		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
 		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
 		3ACC45E929D198CA000843F5 /* GetWorryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */; };
 		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
@@ -51,6 +55,8 @@
 		3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */; };
 		3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26429C99F7D00D02F3F /* BodyLabel.swift */; };
 		3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26629C99F8800D02F3F /* CaptionLabel.swift */; };
+		3AFF8B7E29D47AA5005A7A6B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF8B7D29D47AA5005A7A6B /* TestView.swift */; };
+		3AFF8B8129D47CCE005A7A6B /* WorryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF8B7F29D47CCE005A7A6B /* WorryCollectionViewCell.swift */; };
 		878B59203EB71108991242CC /* Pods_tellingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +65,7 @@
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
@@ -90,6 +97,9 @@
 		3AA289D829B8506F0030057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3AC9D53329D58269006A2566 /* MBTITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTITableViewController.swift; sourceTree = "<group>"; };
+		3AC9D53529D58440006A2566 /* MBTITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTITableViewCell.swift; sourceTree = "<group>"; };
+		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorryViewController.swift; sourceTree = "<group>"; };
 		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +112,8 @@
 		3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineLabel.swift; sourceTree = "<group>"; };
 		3AEED26429C99F7D00D02F3F /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		3AEED26629C99F8800D02F3F /* CaptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
+		3AFF8B7D29D47AA5005A7A6B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		3AFF8B7F29D47CCE005A7A6B /* WorryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryCollectionViewCell.swift; sourceTree = "<group>"; };
 		49060B55F5B6FD79F0C1DA8B /* Pods-tellingMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tellingMe.release.xcconfig"; path = "Target Support Files/Pods-tellingMe/Pods-tellingMe.release.xcconfig"; sourceTree = "<group>"; };
 		66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tellingMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9918CA7CFF0740644B11DD38 /* Pods-tellingMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tellingMe.debug.xcconfig"; path = "Target Support Files/Pods-tellingMe/Pods-tellingMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +146,25 @@
 				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
 			);
 			path = home;
+			sourceTree = "<group>";
+		};
+		3A2742CE29D5CDDA005E4C5F /* style */ = {
+			isa = PBXGroup;
+			children = (
+				3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */,
+				3AEED26429C99F7D00D02F3F /* BodyLabel.swift */,
+				3AEED26629C99F8800D02F3F /* CaptionLabel.swift */,
+				3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */,
+			);
+			path = style;
+			sourceTree = "<group>";
+		};
+		3A2742CF29D5CDF0005E4C5F /* dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */,
+			);
+			path = dropdown;
 			sourceTree = "<group>";
 		};
 		3A2A502D29B87B9D002FE5E4 /* appDelegate */ = {
@@ -246,6 +277,7 @@
 				3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */,
 				3ACC45F529D1EFA4000843F5 /* UIString+.swift */,
 				3ACC45F729D2090E000843F5 /* UITextField+.swift */,
+				3A2742D029D5F8B9005E4C5F /* Date+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -318,6 +350,9 @@
 			children = (
 				3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */,
 				3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */,
+				3AFF8B7F29D47CCE005A7A6B /* WorryCollectionViewCell.swift */,
+				3AC9D53329D58269006A2566 /* MBTITableViewController.swift */,
+				3AC9D53529D58440006A2566 /* MBTITableViewCell.swift */,
 			);
 			path = "page+";
 			sourceTree = "<group>";
@@ -325,11 +360,10 @@
 		3AEED26129C99EDA00D02F3F /* custom */ = {
 			isa = PBXGroup;
 			children = (
-				3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */,
-				3AEED26429C99F7D00D02F3F /* BodyLabel.swift */,
-				3AEED26629C99F8800D02F3F /* CaptionLabel.swift */,
-				3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */,
+				3A2742CF29D5CDF0005E4C5F /* dropdown */,
+				3A2742CE29D5CDDA005E4C5F /* style */,
 				3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */,
+				3AFF8B7D29D47AA5005A7A6B /* TestView.swift */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -489,13 +523,17 @@
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
+				3AFF8B8129D47CCE005A7A6B /* WorryCollectionViewCell.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* TestDTO.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
+				3AC9D53429D58269006A2566 /* MBTITableViewController.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
+				3AC9D53629D58440006A2566 /* MBTITableViewCell.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
@@ -509,8 +547,10 @@
 				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
+				3AFF8B7E29D47AA5005A7A6B /* TestView.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,
+				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,

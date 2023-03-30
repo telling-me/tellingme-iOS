@@ -13,6 +13,4 @@ class GetMBTIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
 }

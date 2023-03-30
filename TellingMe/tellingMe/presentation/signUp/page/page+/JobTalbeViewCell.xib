@@ -68,6 +68,11 @@
             <point key="canvasLocation" x="279.71014492753625" y="94.419642857142847"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="HNY-st-k8L">
+            <size key="intrinsicContentSize" width="59" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="Black">
             <color red="0.20000000298023224" green="0.2199999988079071" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
