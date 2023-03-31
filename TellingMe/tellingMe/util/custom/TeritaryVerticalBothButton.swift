@@ -66,12 +66,6 @@ class TertiaryVerticalBothButton: UIView {
         shadows.isHidden = true
     }
 
-//    func setDefaultView() {
-//        self.clipsToBounds = true
-//        self.layer.backgroundColor = UIColor(named: "Side200")?.cgColor
-//        self.layer.cornerRadius = 20
-//    }
-
     func setActiveView() {
         self.layer.backgroundColor = UIColor(named: "Side300")?.cgColor
     }

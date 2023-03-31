@@ -185,6 +185,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="aQ0-tC-62I"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="LKM-FW-xVo" firstAttribute="centerX" secondItem="k4O-eH-5ok" secondAttribute="centerX" id="0rE-0v-tpS"/>
@@ -308,6 +309,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="NAn-7a-b2V"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="GXJ-Rz-Y5P" firstAttribute="top" secondItem="W1X-C0-9Jy" secondAttribute="bottom" constant="8" id="7Hd-cI-sOY"/>
@@ -354,7 +356,7 @@
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaD-iC-X5r">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaD-iC-X5r">
                                 <rect key="frame" x="333" y="802" width="56" height="56"/>
                                 <color key="backgroundColor" name="Primary25"/>
                                 <constraints>
@@ -441,6 +443,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bVn-nE-iPj"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="TDN-Ay-may" firstAttribute="top" secondItem="ges-hr-754" secondAttribute="bottom" constant="40" id="5X0-pV-K97"/>
@@ -525,22 +528,49 @@
                                     <action selector="prevAction:" destination="6hX-7t-SOG" eventType="touchUpInside" id="SWf-iU-yrJ"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="C1B-DS-Igk">
-                                <rect key="frame" x="60" y="117" width="294" height="660"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1B-DS-Igk">
+                                <rect key="frame" x="60" y="117" width="294" height="685"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="jobTableViewCell" rowHeight="55" id="cJU-cw-hLt" customClass="JobTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="294" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJU-cw-hLt" id="GwQ-0A-VnH">
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6R-i1-VtT" customClass="TeritaryBothButton" customModule="tellingMe" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="294" height="55"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="o6R-i1-VtT" secondAttribute="bottom" id="656-MM-r5a"/>
+                                                <constraint firstItem="o6R-i1-VtT" firstAttribute="leading" secondItem="GwQ-0A-VnH" secondAttribute="leading" id="AaF-y1-RkK"/>
+                                                <constraint firstAttribute="trailing" secondItem="o6R-i1-VtT" secondAttribute="trailing" id="kuX-MU-lsw"/>
+                                                <constraint firstItem="o6R-i1-VtT" firstAttribute="top" secondItem="GwQ-0A-VnH" secondAttribute="top" id="w5P-cG-iJl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellView" destination="o6R-i1-VtT" id="lm6-yE-kes"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="6hX-7t-SOG" id="Rde-DU-iGl"/>
                                     <outlet property="delegate" destination="6hX-7t-SOG" id="3Kv-IS-x2a"/>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Z5r-ad-TWD"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="A13-SJ-HTp" secondAttribute="bottom" constant="36" id="Lax-8Y-x4w"/>
+                            <constraint firstItem="A13-SJ-HTp" firstAttribute="top" secondItem="C1B-DS-Igk" secondAttribute="bottom" id="M0k-v3-CmI"/>
                             <constraint firstItem="iWC-O7-SQM" firstAttribute="top" secondItem="MTs-wH-IEF" secondAttribute="top" constant="60" id="PgA-ly-38q"/>
                             <constraint firstItem="C1B-DS-Igk" firstAttribute="leading" secondItem="MTs-wH-IEF" secondAttribute="leading" constant="60" id="Sbc-H2-eP6"/>
                             <constraint firstAttribute="trailing" secondItem="C1B-DS-Igk" secondAttribute="trailing" constant="60" id="W2t-nh-Bug"/>
-                            <constraint firstItem="Vuq-uf-NL8" firstAttribute="top" secondItem="C1B-DS-Igk" secondAttribute="bottom" constant="25" id="WyV-9g-dY8"/>
                             <constraint firstAttribute="bottom" secondItem="Vuq-uf-NL8" secondAttribute="bottom" constant="36" id="a5f-0A-U0a"/>
                             <constraint firstAttribute="trailing" secondItem="A13-SJ-HTp" secondAttribute="trailing" constant="25" id="aTZ-Ic-gXr"/>
                             <constraint firstItem="Vuq-uf-NL8" firstAttribute="leading" secondItem="MTs-wH-IEF" secondAttribute="leading" constant="25" id="efd-I7-Ua3"/>
@@ -658,6 +688,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="KDw-TT-jjD"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="JMH-Yx-yGS" firstAttribute="leading" secondItem="bYR-gJ-eF9" secondAttribute="leading" constant="25" id="05h-Zc-rkd"/>
@@ -799,7 +830,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="364" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qq-Kl-ewl" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ESTP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qq-Kl-ewl" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                                     <rect key="frame" x="50" y="17.5" width="264" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="iBk-QQ-uVs"/>
@@ -1194,6 +1225,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kgt-ei-adg"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="Imi-Vn-Bvb" firstAttribute="centerX" secondItem="IwA-Yt-L8i" secondAttribute="centerX" id="7v5-s5-UZl"/>
@@ -1317,6 +1349,7 @@
                                 </constraints>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="KvY-cw-uWt"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="6B0-6c-2Dn" firstAttribute="width" secondItem="UVv-v7-jy2" secondAttribute="width" id="99S-2i-rVE"/>
@@ -1388,6 +1421,9 @@
         </designable>
         <designable name="DUb-6W-9fA">
             <size key="intrinsicContentSize" width="42" height="20.5"/>
+        </designable>
+        <designable name="GXJ-Rz-Y5P">
+            <size key="intrinsicContentSize" width="241.5" height="20.5"/>
         </designable>
         <designable name="Imi-Vn-Bvb">
             <size key="intrinsicContentSize" width="122" height="20.5"/>

@@ -12,6 +12,7 @@
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
+		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
@@ -47,7 +48,6 @@
 		3ACC45E929D198CA000843F5 /* GetWorryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */; };
 		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
 		3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */; };
-		3ACC45EF29D19A11000843F5 /* JobTalbeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */; };
 		3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */; };
 		3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */; };
 		3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F529D1EFA4000843F5 /* UIString+.swift */; };
@@ -66,6 +66,7 @@
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		3ACC45E829D198CA000843F5 /* GetWorryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorryViewController.swift; sourceTree = "<group>"; };
 		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
 		3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
-		3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTalbeViewCell.xib; sourceTree = "<group>"; };
 		3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMBTIViewController.swift; sourceTree = "<group>"; };
 		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
@@ -155,6 +155,7 @@
 				3AEED26429C99F7D00D02F3F /* BodyLabel.swift */,
 				3AEED26629C99F8800D02F3F /* CaptionLabel.swift */,
 				3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */,
+				3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */,
 			);
 			path = style;
 			sourceTree = "<group>";
@@ -349,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */,
-				3ACC45EE29D19A11000843F5 /* JobTalbeViewCell.xib */,
 				3AFF8B7F29D47CCE005A7A6B /* WorryCollectionViewCell.swift */,
 				3AC9D53329D58269006A2566 /* MBTITableViewController.swift */,
 				3AC9D53529D58440006A2566 /* MBTITableViewCell.swift */,
@@ -447,7 +447,6 @@
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
 				3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */,
-				3ACC45EF29D19A11000843F5 /* JobTalbeViewCell.xib in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3AA289E229B854210030057E /* Main.storyboard in Resources */,
 			);
@@ -547,6 +546,7 @@
 				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
 				3AA289CF29B8506F0030057E /* ViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
+				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,

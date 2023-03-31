@@ -8,16 +8,6 @@
 import UIKit
 
 class MBTITableViewCell: UITableViewCell {
-//
-//    override var isHighlighted: Bool {
-//        didSet {
-//            if isHighlighted {
-//                self.backgroundColor = UIColor(named: "Side300")
-//            } else {
-//                self.backgroundColor = UIColor(named: "Side200")
-//            }
-//        }
-//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
