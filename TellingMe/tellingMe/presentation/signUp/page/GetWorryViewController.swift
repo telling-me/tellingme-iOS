@@ -7,22 +7,11 @@
 
 import UIKit
 
-struct WorryViewModel {
-    let title: String
-    let imgName: String
-
-    init(imgName: String, title: String) {
-        self.title = title
-        self.imgName = imgName
-    }
-}
-
 class GetWorryViewController: UIViewController {
-    var selected: [IndexPath] = []
-    let worryList: [WorryViewModel] = [WorryViewModel(imgName: "Pen", title: "학업/진로"), WorryViewModel(imgName: "Handshake", title: "대인 관계"), WorryViewModel(imgName: "Values", title: "성격/가치관"), WorryViewModel(imgName: "Magnet", title: "행동/습관"), WorryViewModel(imgName: "Health", title: "건강"), WorryViewModel(imgName: "Heart", title: "기타")]
+    let worryList: [TeritaryBothData] = [TeritaryBothData(imgName: "Pen", title: "학업/진로"), TeritaryBothData(imgName: "Handshake", title: "대인 관계"), TeritaryBothData(imgName: "Values", title: "성격/가치관"), TeritaryBothData(imgName: "Magnet", title: "행동/습관"), TeritaryBothData(imgName: "Health", title: "건강"), TeritaryBothData(imgName: "Heart", title: "기타")]
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = true
@@ -57,6 +46,10 @@ extension GetWorryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return collectionView.indexPathsForSelectedItems!.count
         <  2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

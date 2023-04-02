@@ -14,10 +14,21 @@ struct JobViewModel {
 
 class GetJobViewController: UIViewController {
     let jobs: [JobViewModel] = [JobViewModel(title: "고등학생", imgName: "HighSchool"), JobViewModel(title: "대학(원)생", imgName: "University"), JobViewModel(title: "취업준비생", imgName: ""), JobViewModel(title: "직장인", imgName: "Worker"), JobViewModel(title: "주부", imgName: ""), JobViewModel(title: "기타", imgName: "Heart")]
-
+    @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+
+    @IBAction func nextAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.nextPageWithIndex(index: 4)
+    }
+    @IBAction func prevAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.prevPageWithIndex(index: 2)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -48,6 +59,7 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
             })
             cell.setEnabledTextField()
         }
+        self.nextButton.isEnabled = true
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

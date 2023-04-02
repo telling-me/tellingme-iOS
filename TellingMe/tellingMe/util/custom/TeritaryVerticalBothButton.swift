@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TertiaryVerticalBothButton: UIView {
+class TeritaryVerticalBothButton: UIView {
     let imgView: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
@@ -48,7 +48,7 @@ class TertiaryVerticalBothButton: UIView {
         label.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 19).isActive = true
         label.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 15).isActive = true
-    
+
         shadows.frame = self.frame
         shadows.clipsToBounds = false
         self.addSubview(shadows)
@@ -62,7 +62,7 @@ class TertiaryVerticalBothButton: UIView {
         layer0.bounds = shadows.bounds
         layer0.position = shadows.center
         shadows.layer.addSublayer(layer0)
-    
+
         shadows.isHidden = true
     }
 

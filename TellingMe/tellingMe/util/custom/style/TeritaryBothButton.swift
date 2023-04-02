@@ -15,7 +15,7 @@ class TeritaryBothButton: UIView {
         imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
     }()
-    
+
     let label: Headline6Regular = {
         let label = Headline6Regular()
         label.translatesAutoresizingMaskIntoConstraints = false
