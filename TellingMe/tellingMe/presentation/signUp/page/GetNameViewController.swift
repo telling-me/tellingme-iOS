@@ -17,8 +17,10 @@ class GetNameViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let text = textField.text
-        if text == "" {
+        guard let text = textField.text else { nextButton.isEnabled = false
+            return
+        }
+        if text.count <= 1 {
             nextButton.isEnabled = false
         } else {
             nextButton.isEnabled = true
@@ -50,8 +52,11 @@ extension GetNameViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var text = textField.text
-        if text == "" {
+        guard let text = textField.text else { nextButton.isEnabled = false
+            return true
+
+        }
+        if text.count <= 1 {
             nextButton.isEnabled = false
         } else {
             nextButton.isEnabled = true

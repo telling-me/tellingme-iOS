@@ -7,9 +7,10 @@
 
 import UIKit
 
-class TertiaryVerticalBothButton: UIView {
+class TeritaryVerticalBothButton: UIView {
     let imgView: UIImageView = {
         let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
         imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
     }()
@@ -20,6 +21,9 @@ class TertiaryVerticalBothButton: UIView {
         label.textAlignment = .center
         return label
     }()
+
+    var shadows = UIView()
+    let layer0 = CALayer()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,13 +48,23 @@ class TertiaryVerticalBothButton: UIView {
         label.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 19).isActive = true
         label.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 15).isActive = true
+
+        shadows.frame = self.frame
+        shadows.clipsToBounds = false
+        self.addSubview(shadows)
+
+        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 20)
+        layer0.shadowPath = shadowPath0.cgPath
+        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 20
+        layer0.shadowOffset = CGSize(width: 0, height: 4)
+        layer0.bounds = shadows.bounds
+        layer0.position = shadows.center
+        shadows.layer.addSublayer(layer0)
+
+        shadows.isHidden = true
     }
-    
-//    func setDefaultView() {
-//        self.clipsToBounds = true
-//        self.layer.backgroundColor = UIColor(named: "Side200")?.cgColor
-//        self.layer.cornerRadius = 20
-//    }
 
     func setActiveView() {
         self.layer.backgroundColor = UIColor(named: "Side300")?.cgColor
@@ -59,5 +73,13 @@ class TertiaryVerticalBothButton: UIView {
     func setImageandLabel(imgName: String, text: String) {
         imgView.image = UIImage(named: imgName)
         label.text = text
+    }
+
+    func setHeighlighted() {
+        shadows.isHidden = false
+    }
+
+    func setNotHighlighted() {
+        shadows.isHidden = true
     }
 }

@@ -21,6 +21,7 @@ class Body1Bold: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 15)
+        self.textColor = UIColor(named: "Balck")
     }
 }
 
@@ -38,6 +39,7 @@ class Body1Regular: UILabel {
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
+        self.textColor = UIColor(named: "Balck")
     }
 }
 

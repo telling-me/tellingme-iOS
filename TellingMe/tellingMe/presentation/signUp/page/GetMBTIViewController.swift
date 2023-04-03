@@ -8,9 +8,62 @@
 import UIKit
 
 class GetMBTIViewController: UIViewController {
-
+    @IBOutlet weak var mbtiButton: DropDownButton!
+    @IBOutlet weak var mbtiTableView: UITableView!
+    @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
+    var myMbti: String?
     let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        mbtiButton.setLayout()
+        mbtiButton.setTitle(text: "mbti 선택")
+        setButton()
+    }
+
+    func setButton() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        mbtiButton.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc
+    func didTapView(_ sender: UITapGestureRecognizer) {
+        if mbtiTableView.isHidden {
+            self.mbtiTableView.isHidden = false
+            UIView.transition(with: self.mbtiTableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.mbtiHeight.constant = 208
+            })
+        } else {
+            self.mbtiHeight.constant = 0
+            self.mbtiTableView.isHidden = true
+        }
+    }
+
+    @IBAction func prevAction(_ sender: UIButton) {
+        let pageViewController = self.parent as? SignUpPageViewController
+        pageViewController?.prevPageWithIndex(index: 5)
+    }
+}
+
+extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 16
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else { return UITableViewCell() }
+        cell.setCell(text: mbtis[indexPath.row])
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 52
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
+        tableView.isHidden = true
+        mbtiButton.setTitle(text: cell.getCell())
+        myMbti = cell.getCell()
     }
 }
