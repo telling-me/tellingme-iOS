@@ -17,10 +17,8 @@ extension UITextField {
     open override var textInputMode: UITextInputMode? {
         if let language = getKeyboardLanguage() {
             print(language)
-            for inputMode in UITextInputMode.activeInputModes {
-                if inputMode.primaryLanguage! == language {
-                    return inputMode
-                }
+            for inputMode in UITextInputMode.activeInputModes where inputMode.primaryLanguage! == language {
+                return inputMode
             }
         }
         return super.textInputMode

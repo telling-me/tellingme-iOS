@@ -11,7 +11,7 @@ class IconButton: UIButton {
 
 }
 
-//class TeritaryVerticalBothButton: UIView {
+// class TeritaryVerticalBothButton: UIView {
 //    let imageView: UIImageView = {
 //        let imgView = UIImageView()
 //        return imgView
@@ -58,4 +58,4 @@ class IconButton: UIButton {
 //        label.text = text
 //        self.layer.cornerRadius = 20
 //    }
-//}
+// }

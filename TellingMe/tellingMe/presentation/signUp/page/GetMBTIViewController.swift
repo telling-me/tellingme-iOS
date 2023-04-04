@@ -25,7 +25,7 @@ class GetMBTIViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         mbtiButton.addGestureRecognizer(tapGestureRecognizer)
     }
-    
+
     @objc
     func didTapView(_ sender: UITapGestureRecognizer) {
         if mbtiTableView.isHidden {

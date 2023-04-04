@@ -169,7 +169,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeH-w0-zzh">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeH-w0-zzh">
                                 <rect key="frame" x="334" y="805" width="55" height="55"/>
                                 <color key="backgroundColor" name="Primary25"/>
                                 <constraints>
@@ -417,28 +417,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="worryCollectionViewCell" id="qlj-PI-q3l" customClass="WorryCollectionViewCell" customModule="tellingMe" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teritaryVerticalBothButtonCell" id="qlj-PI-q3l" customClass="TeritaryVerticalBothButtonCell" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="103" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xHh-aB-LTP">
                                             <rect key="frame" x="0.0" y="0.0" width="103" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uje-7H-LKU" customClass="TeritaryVerticalBothButton" customModule="tellingMe" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="103" height="114"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uje-7H-LKU" secondAttribute="bottom" id="4Qo-8q-GLV"/>
-                                                <constraint firstItem="uje-7H-LKU" firstAttribute="leading" secondItem="xHh-aB-LTP" secondAttribute="leading" id="E9V-xk-2Ir"/>
-                                                <constraint firstAttribute="trailing" secondItem="uje-7H-LKU" secondAttribute="trailing" id="WQv-TZ-RHG"/>
-                                                <constraint firstItem="uje-7H-LKU" firstAttribute="top" secondItem="xHh-aB-LTP" secondAttribute="top" id="rS1-W9-fsS"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="103" height="114"/>
-                                        <connections>
-                                            <outlet property="cellView" destination="uje-7H-LKU" id="Eox-Eh-b4c"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -661,34 +647,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genderCollectionViewCell" id="KUh-fn-EEU" customClass="GenderCollectionViewCell" customModule="tellingMe" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teritaryVerticalBothButtonCell" id="KUh-fn-EEU" customClass="TeritaryVerticalBothButtonCell" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="1" y="0.0" width="292" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jSq-qS-R7B">
                                             <rect key="frame" x="0.0" y="0.0" width="292" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCs-7P-BPw" customClass="TeritaryVerticalBothButton" customModule="tellingMe" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="292" height="128"/>
-                                                    <color key="backgroundColor" name="Side200"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="28"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MCs-7P-BPw" secondAttribute="bottom" id="QaL-ld-sc3"/>
-                                                <constraint firstItem="MCs-7P-BPw" firstAttribute="top" secondItem="jSq-qS-R7B" secondAttribute="top" id="aFZ-do-Pwq"/>
-                                                <constraint firstItem="MCs-7P-BPw" firstAttribute="leading" secondItem="jSq-qS-R7B" secondAttribute="leading" id="eeb-ba-gon"/>
-                                                <constraint firstAttribute="trailing" secondItem="MCs-7P-BPw" secondAttribute="trailing" id="nYg-5j-cdZ"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="292" height="128"/>
-                                        <connections>
-                                            <outlet property="cellView" destination="MCs-7P-BPw" id="7rj-t2-G5a"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
