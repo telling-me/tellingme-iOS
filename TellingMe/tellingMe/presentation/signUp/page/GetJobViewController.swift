@@ -7,15 +7,10 @@
 
 import UIKit
 
-struct JobViewModel {
-    let title: String
-    let imgName: String
-}
-
 class GetJobViewController: UIViewController {
     let jobs: [JobViewModel] = [JobViewModel(title: "고등학생", imgName: "HighSchool"), JobViewModel(title: "대학(원)생", imgName: "University"), JobViewModel(title: "취업준비생", imgName: ""), JobViewModel(title: "직장인", imgName: "Worker"), JobViewModel(title: "주부", imgName: ""), JobViewModel(title: "기타", imgName: "Heart")]
     @IBOutlet weak var nextButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,9 +60,7 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.row == jobs.count - 1 {
             guard let cell = tableView.cellForRow(at: indexPath) as? JobTableViewCell else { return }
-            UIView.animate(withDuration: 0.2, animations: {
-                cell.frame.size = CGSize(width: cell.frame.width, height: 67)
-            })
+            cell.frame.size = CGSize(width: cell.frame.width, height: 67)
             cell.setDisabledTextField()
         }
     }

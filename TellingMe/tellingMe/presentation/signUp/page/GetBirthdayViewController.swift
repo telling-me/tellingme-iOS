@@ -7,21 +7,15 @@
 
 import UIKit
 
-struct Birth {
-    var year: String?
-    var month: String?
-    var day: String?
-}
-
 class GetBirthdayViewController: UIViewController {
     @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var monthTableView: UITableView!
     @IBOutlet weak var dayTableView: UITableView!
-    
+
     @IBOutlet weak var yearHeight: NSLayoutConstraint!
     @IBOutlet weak var monthHeight: NSLayoutConstraint!
     @IBOutlet weak var dayHeight: NSLayoutConstraint!
-    
+
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var dayButton: DropDownButton!

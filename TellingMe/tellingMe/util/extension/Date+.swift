@@ -12,10 +12,10 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)!
-        
+
         return formatter.string(from: self)
     }
-    
+
     public func yearFormat() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"

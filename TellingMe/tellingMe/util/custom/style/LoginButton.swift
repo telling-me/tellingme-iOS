@@ -22,7 +22,7 @@ class LoginButton: UIButton {
         self.setTitleColor(UIColor.black, for: .normal)
         self.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
+
         if name == "Apple" {
             self.setTitleColor(UIColor.white, for: .normal)
             self.setImage(UIImage(named: "apple"), for: .normal)

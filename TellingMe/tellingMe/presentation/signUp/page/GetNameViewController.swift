@@ -17,6 +17,10 @@ class GetNameViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.offKeyboard()
+    }
+
+    func offKeyboard() {
         guard let text = textField.text else { nextButton.isEnabled = false
             return
         }
@@ -52,16 +56,7 @@ extension GetNameViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text else { nextButton.isEnabled = false
-            return true
-
-        }
-        if text.count <= 1 {
-            nextButton.isEnabled = false
-        } else {
-            nextButton.isEnabled = true
-        }
-        self.textField.resignFirstResponder()
+        self.offKeyboard()
         self.dismiss(animated: true, completion: nil)
         return true
     }
