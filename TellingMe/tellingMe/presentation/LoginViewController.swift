@@ -13,7 +13,7 @@ import KakaoSDKUser
 import Moya
 
 @IBDesignable
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var gradientView: UIView!
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window ?? UIWindow()
     }
