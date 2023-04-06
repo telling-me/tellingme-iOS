@@ -70,9 +70,9 @@ struct TestAPI: Networkable {
 
     static func oauthTest(type: String, request: OauthTestRequest, completion: @escaping (_ succeed: OauthTestResponse?, _ failed: Error?) -> Void) {
         makeProvider().request(.oauthTest(loginType: type, body: request)) { result in
-            switch ResponseData<OauthTestResponse>.processJSONResponse(result) {
-            case .success(let model): return completion(model, nil)
-            case .failure(let error): return completion(nil, error)
+            switch ResponseData<OauthTestResponse>.processResponse(result) {
+            case let .success(model): return completion(model, nil)
+            case let .failure(error): return completion(nil, error)
             }
         }
     }

@@ -13,7 +13,7 @@ import KakaoSDKUser
 import Moya
 
 @IBDesignable
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var gradientView: UIView!
@@ -24,21 +24,49 @@ class ViewController: UIViewController {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
-                    print(error)
+                    print("\(error) 카카오로그인 실패요~~")
                 } else {
-                    print("loginWithKakaoTalk() success.")
-                    // do something
-                    _ = oauthToken
+                    self.getUserInfo(oauthToekn: oauthToken!)
                 }
             }
         } else {
             UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                 if let error = error {
-                    print(error)
+                    print("\(error) 카카오로그인 실패요~~")
                 } else {
-                    print("카카오 계정으로 로그인 성공")
-                    _ = oauthToken
-                    print(oauthToken)
+                    self.getUserInfo(oauthToekn: oauthToken!)
+                }
+            }
+        }
+    }
+
+    func pushSignUp() {
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "signUp")as? SignUpViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+
+    func getUserInfo(oauthToekn: OAuthToken) {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print("\(error) 사용자 정보 가져오기 실패")
+            } else {
+                print("사용자 정보 가져오기 성공")
+                guard let user_data = user else { return }
+                let request = OauthTestRequest(socialId: String(user_data.id!))
+                TestAPI.oauthTest(type: "kakao", request: request) { response, error  in
+                    if let response = response {
+                        print(response)
+                    } else {
+                        let moyaError: MoyaError? = error as? MoyaError
+                        let response: Response? = moyaError?.response
+                        let statusCode: Int? = response?.statusCode
+
+                        if statusCode == 404 {
+                            self.pushSignUp()
+                        }
+                    }
                 }
             }
         }
@@ -123,7 +151,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window ?? UIWindow()
     }
