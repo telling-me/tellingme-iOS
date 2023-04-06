@@ -21,5 +21,6 @@ struct OauthTestRequest: Codable {
 }
 
 struct OauthTestResponse: Codable {
-    let message: String
+    let socialId: String
+    let socialLoginType: String
 }
