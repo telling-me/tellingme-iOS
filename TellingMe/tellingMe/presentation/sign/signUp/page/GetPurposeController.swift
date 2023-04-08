@@ -21,7 +21,7 @@ class GetPurposeViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 3)
-        SignUpRequest.shared.purpose = selectedItems.intArraytoString()
+        SignUpData.shared.purpose = selectedItems.intArraytoString()
     }
     @IBAction func prevAction(_ sender: Any) {
         let pageViewController = self.parent as? SignUpPageViewController

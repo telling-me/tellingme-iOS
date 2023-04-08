@@ -63,6 +63,7 @@ class LoginViewController: UIViewController {
                         if let error = error as? OauthErrorResponse {
                             self.pushSignUp()
                             KeychainManager.shared.save(error.socialId, key: "socialId")
+                            KeychainManager.shared.save("kakao", key: "socialLoginType")
                         }
                     }
                 }

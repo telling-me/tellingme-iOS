@@ -35,7 +35,7 @@ class GetNameViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 2)
-        SignUpRequest.shared.nickname = textField.text ?? ""
+        SignUpData.shared.nickname = textField.text ?? ""
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

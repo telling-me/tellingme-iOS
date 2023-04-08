@@ -129,7 +129,7 @@ class GetBirthdayViewController: UIViewController {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 6)
 
-        SignUpRequest.shared.makeBirthData(year: viewModel.year, month: viewModel.month, day: viewModel.day)
+        SignUpData.shared.makeBirthData(year: viewModel.year, month: viewModel.month, day: viewModel.day)
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import KeychainSwift
 
-class SignUpRequest: Codable {
-    static let shared = SignUpRequest()
+struct SignUpRequest: Codable {
     var allowNotification: Bool
     var nickname: String
     var purpose: String
@@ -16,42 +16,8 @@ class SignUpRequest: Codable {
     var gender: String?
     var birthData: String?
     var mbti: String?
-
-    private init() {
-        allowNotification = false
-        nickname = ""
-        purpose = ""
-        job = 0
-    }
-
-    func makeBirthData(year: String?, month: String?, day: String?) {
-        var resultString = ""
-        resultString += year ?? "1999"
-        resultString += "-"
-
-        if let tempMonth = month {
-            if tempMonth.count == 1 {
-                resultString += "0\(tempMonth)"
-            } else {
-                resultString += tempMonth
-            }
-        } else {
-            resultString += "01"
-        }
-        resultString += "-"
-
-        if let tempDay = day {
-            if tempDay.count == 1 {
-                resultString += "0\(tempDay)"
-            } else {
-                resultString += tempDay
-            }
-        } else {
-            resultString += "01"
-        }
-
-        birthData = resultString
-    }
+    var socialId: String
+    var socialLoginType: String
 }
 
 struct SignUpResponse: Codable {
