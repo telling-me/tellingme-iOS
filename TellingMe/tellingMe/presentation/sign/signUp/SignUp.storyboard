@@ -342,10 +342,10 @@
             </objects>
             <point key="canvasLocation" x="630.43478260869574" y="765.40178571428567"/>
         </scene>
-        <!--Get Worry View Controller-->
+        <!--Get Purpose View Controller-->
         <scene sceneID="Xtk-tY-PQo">
             <objects>
-                <viewController storyboardIdentifier="getWorry" id="Dfd-xh-RwD" customClass="GetWorryViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="getWorry" id="Dfd-xh-RwD" customClass="GetPurposeViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="3" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YeA-8t-n5D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="894"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -927,6 +927,9 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextAction:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="GSh-5y-SJ8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMH-Yx-yGS">
                                 <rect key="frame" x="25" y="802" width="56" height="56"/>

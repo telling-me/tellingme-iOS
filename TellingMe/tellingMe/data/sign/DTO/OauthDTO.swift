@@ -8,19 +8,16 @@
 import Foundation
 import Moya
 
-struct TestRequest: Codable {
-
-}
-
-struct TestResponse: Codable {
-    let message: String
-}
-
-struct OauthTestRequest: Codable {
+struct OauthRequest: Codable {
     let socialId: String
 }
 
-struct OauthTestResponse: Codable {
+struct OauthResponse: Codable {
+    let socialId: String
+    let socialLoginType: String
+}
+
+struct OauthErrorResponse: Error, Codable {
     let socialId: String
     let socialLoginType: String
 }

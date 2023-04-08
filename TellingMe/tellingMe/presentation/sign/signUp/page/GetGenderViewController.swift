@@ -9,6 +9,7 @@ import UIKit
 
 class GetGenderViewController: UIViewController {
     let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Man", title: "남성"), TeritaryBothData(imgName: "Woman", title: "여성")]
+    var selectedItem: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,9 @@ class GetGenderViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 5)
+        if selectedItem == selectedItem {
+            SignUpRequest.shared.gender = selectedItem
+        }
     }
 
     @IBAction func prevAction(_ sender: UIButton) {
@@ -40,4 +44,12 @@ extension GetGenderViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        return CGSize(width: 103, height: 114)
    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            selectedItem = "male"
+        } else {
+            selectedItem = "female"
+        }
+    }
 }

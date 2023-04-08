@@ -54,13 +54,13 @@ class LoginViewController: UIViewController {
             } else {
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
-                let request = OauthTestRequest(socialId: String(user_data.id!))
-                TestAPI.oauthTest(type: "kakao", request: request) { result in
+                let request = OauthRequest(socialId: String(user_data.id!))
+                SignAPI.postOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
                         print("success야", response)
                     case .failure(let error):
-                        if let error = error as? ErrorResponse {
+                        if let error = error as? OauthErrorResponse {
                             self.pushSignUp()
                             KeychainManager.shared.save(error.socialId, key: "socialId")
                         }
