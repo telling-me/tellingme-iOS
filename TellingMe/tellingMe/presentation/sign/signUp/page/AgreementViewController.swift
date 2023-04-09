@@ -34,5 +34,6 @@ class AgreementViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 1)
+        SignUpData.shared.allowNotification = agreementButton.isSelected
     }
 }

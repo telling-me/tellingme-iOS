@@ -9,6 +9,7 @@ import UIKit
 
 class GetJobViewController: UIViewController {
     let jobs: [JobViewModel] = [JobViewModel(title: "고등학생", imgName: "HighSchool"), JobViewModel(title: "대학(원)생", imgName: "University"), JobViewModel(title: "취업준비생", imgName: ""), JobViewModel(title: "직장인", imgName: "Worker"), JobViewModel(title: "주부", imgName: ""), JobViewModel(title: "기타", imgName: "Heart")]
+    var selecteItem: Int? = nil
     @IBOutlet weak var nextButton: UIButton!
 
     override func viewDidLoad() {
@@ -19,6 +20,9 @@ class GetJobViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 4)
+        if let selecteItem = selecteItem {
+            SignUpData.shared.job = selecteItem
+        }
     }
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
@@ -55,6 +59,7 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setEnabledTextField()
         }
         self.nextButton.isEnabled = true
+        self.selecteItem = indexPath.row
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

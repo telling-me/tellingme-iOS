@@ -39,6 +39,25 @@ class GetMBTIViewController: UIViewController {
         }
     }
 
+    func sendSignUpData() {
+        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, gender: SignUpData.shared.gender, birthData: SignUpData.shared.birthData ?? nil, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: KeychainManager.shared.load(key: "socialLoginType") ?? "")
+        SignAPI.postSignUp(request: request) { result in
+            switch result {
+            case .success(let response):
+                print("success야", response)
+            case .failure(let error):
+                print("error야", error)
+            }
+        }
+    }
+
+    @IBAction func nextAction(_ sender: UIButton) {
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+
+        SignUpData.shared.mbti = myMbti
+        sendSignUpData()
+    }
+
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPageWithIndex(index: 5)

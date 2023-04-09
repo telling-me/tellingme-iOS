@@ -7,6 +7,24 @@
 
 import UIKit
 
+class BirthdayModel {
+    var year: String? = nil
+    var month: String? = nil
+    var day: String? = nil
+
+    func updateYear(year: String) {
+        self.year = year
+    }
+
+    func updateMonth(month: String) {
+        self.month = month
+    }
+
+    func updateDay(day: String) {
+        self.day = day
+    }
+}
+
 class GetBirthdayViewController: UIViewController {
     @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var monthTableView: UITableView!
@@ -23,8 +41,7 @@ class GetBirthdayViewController: UIViewController {
     var yearArray: [Int]?
     let monthArray = Array(1...13)
     let day31_Array = Array(1...32)
-
-    var myBirth: Birth = Birth()
+    let viewModel = BirthdayModel()
     let today = Date()
 
     override func viewDidLoad() {
@@ -45,7 +62,7 @@ class GetBirthdayViewController: UIViewController {
         let tapGestureRecognizer_day = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
 
         if let todayYear = Int(today.yearFormat()) {
-            yearArray = Array(todayYear-100 ... todayYear)
+            yearArray = Array(todayYear-50 ... todayYear)
         }
 
         yearButton.addGestureRecognizer(tapGestureRecognizer_year)
@@ -54,9 +71,9 @@ class GetBirthdayViewController: UIViewController {
     }
 
     func setEnabled() {
-        if myBirth.year != nil {
+        if viewModel.year != nil {
             monthButton.isUserInteractionEnabled = true
-            if myBirth.month != nil {
+            if viewModel.month != nil {
                 dayButton.isUserInteractionEnabled = true
             } else {
                 dayButton.isUserInteractionEnabled = false
@@ -111,6 +128,8 @@ class GetBirthdayViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPageWithIndex(index: 6)
+
+        SignUpData.shared.makeBirthData(year: viewModel.year, month: viewModel.month, day: viewModel.day)
     }
 
     @IBAction func prevAction(_ sender: UIButton) {
@@ -126,9 +145,9 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
         } else if tableView == monthTableView {
             return 12
         } else {
-            if myBirth.month == "2" {
+            if viewModel.month == "2" {
                 return 28
-            } else if myBirth.month == "1" || myBirth.month == "3" || myBirth.month == "5" || myBirth.month == "7" || myBirth.month == "8" || myBirth.month == "10" || myBirth.month == "12" {
+            } else if viewModel.month == "1" || viewModel.month == "3" || viewModel.month == "5" || viewModel.month == "7" || viewModel.month == "8" || viewModel.month == "10" || viewModel.month == "12" {
                 return 31
             } else {
                 return 30
@@ -159,13 +178,13 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.isHidden = true
         if tableView == yearTableView {
             yearButton.setTitle(text: cell.getCell())
-            myBirth.year = cell.getCell()
+            viewModel.year = cell.getCell()
         } else if tableView == monthTableView {
             monthButton.setTitle(text: cell.getCell())
-            myBirth.month = cell.getCell()
+            viewModel.month = cell.getCell()
         } else {
             dayButton.setTitle(text: cell.getCell())
-            myBirth.day = cell.getCell()
+            viewModel.day = cell.getCell()
         }
         setEnabled()
     }
