@@ -1062,7 +1062,7 @@
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
-        <image name="logo" width="80" height="34"/>
+        <image name="logo" width="234" height="98"/>
         <namedColor name="Black">
             <color red="0.20000000298023224" green="0.2199999988079071" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

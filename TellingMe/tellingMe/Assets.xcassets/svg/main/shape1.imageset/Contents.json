@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "logo.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Polygon 3.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -85,18 +85,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         setLoginButtons()
     }
+    private func presentModal() {
+        let detailViewController = LoginButtonViewController()
+        let nav = UINavigationController(rootViewController: detailViewController)
+        // 1
+        nav.modalPresentationStyle = .pageSheet
+        present(nav, animated: true, completion: nil)
 
-    override func viewWillAppear(_ animated: Bool) {
-        labelAnimate()
-    }
-
-    func setUI() {
-        gradientView.frame = CGRect(x: 0, y: 0, width: 285, height: 238)
-        gradientView.setShadow()
-        gradientView.setGradient(color1: UIColor(red: 0.992, green: 0.859, blue: 0.573, alpha: 1), color2: UIColor(red: 0.82, green: 0.992, blue: 1, alpha: 1))
     }
 
     func setLoginButtons() {
@@ -114,20 +111,12 @@ class LoginViewController: UIViewController {
             return button
         }()
 
-        loginStackView.addArrangedSubview(kakaoButton)
-        loginStackView.addArrangedSubview(appleButton)
-        loginStackView.layoutIfNeeded()
+//        loginStackView.addArrangedSubview(kakaoButton)
+//        loginStackView.addArrangedSubview(appleButton)
+//        loginStackView.layoutIfNeeded()
 
         kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
         appleButton.layer.cornerRadius = appleButton.frame.height / 2
-    }
-
-    func labelAnimate() {
-        for (index, label) in labels.enumerated() {
-            Timer.scheduledTimer(withTimeInterval: TimeInterval(1*index), repeats: false) { _ in
-                self.pushAnimate(label: label)
-            }
-        }
     }
 
     private func pushAnimate(label: UILabel) {
