@@ -14,7 +14,7 @@
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
-		3A2CD2DA29E5A08F00499C86 /* LoginButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2CD2D929E5A08F00499C86 /* LoginButtonViewController.swift */; };
+		3A338B0429E67C5000786D08 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A338B0329E67C5000786D08 /* LoginAPI.swift */; };
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
 		3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3529DEF51200A05B22 /* KeyChain+.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
@@ -75,7 +75,7 @@
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		3A2CD2D929E5A08F00499C86 /* LoginButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
+		3A338B0329E67C5000786D08 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		3A409B3529DEF51200A05B22 /* KeyChain+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				3AA289CE29B8506F0030057E /* LoginViewController.swift */,
 				3AA289E129B854210030057E /* Login.storyboard */,
 				3A409B3929E046C400A05B22 /* LoginViewModel.swift */,
-				3A2CD2D929E5A08F00499C86 /* LoginButtonViewController.swift */,
+				3A338B0329E67C5000786D08 /* LoginAPI.swift */,
 			);
 			path = signIn;
 			sourceTree = "<group>";
@@ -587,6 +587,7 @@
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
+				3A338B0429E67C5000786D08 /* LoginAPI.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
@@ -595,7 +596,6 @@
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
-				3A2CD2DA29E5A08F00499C86 /* LoginButtonViewController.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3A5076E529C82D9800C7A5E9 /* ServiceError+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,

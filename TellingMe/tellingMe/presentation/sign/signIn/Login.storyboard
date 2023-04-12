@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,16 +18,15 @@
         <!--Navigation Controller-->
         <scene sceneID="TbC-wd-HjF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hxj-lM-rRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="XbQ-J5-jlW" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQD-HH-UrW">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="OfW-xr-vWl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hxj-lM-rRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-747" y="116"/>
         </scene>
@@ -41,47 +41,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bI-vc-2oc">
                                 <rect key="frame" x="44.5" y="179" width="325" height="325"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape5" translatesAutoresizingMaskIntoConstraints="NO" id="zok-Kt-b9l">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
+                                        <rect key="frame" x="8.5" y="284" width="33" height="33"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="33" id="LUo-l4-F2t"/>
+                                            <constraint firstAttribute="height" constant="33" id="we7-Pk-gJx"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
                                         <rect key="frame" x="61.5" y="92" width="202" height="157"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="157" id="dpP-9V-rxN"/>
                                             <constraint firstAttribute="width" constant="202" id="n0S-Tt-aW5"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape5" translatesAutoresizingMaskIntoConstraints="NO" id="zok-Kt-b9l">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
                                         <rect key="frame" x="310" y="109" width="15" height="15"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="tUq-LR-yp3"/>
                                             <constraint firstAttribute="width" constant="15" id="uvr-bs-UIh"/>
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
                                         <rect key="frame" x="288" y="227" width="36" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="WnY-cD-1fw"/>
                                             <constraint firstAttribute="height" constant="34" id="v9P-ca-jgU"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
                                         <rect key="frame" x="33" y="44" width="15" height="14"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="ULy-dm-j9e"/>
                                             <constraint firstAttribute="width" constant="15" id="hNu-uZ-eOc"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
-                                        <rect key="frame" x="8.5" y="284" width="33" height="33"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="33" id="LUo-l4-F2t"/>
-                                            <constraint firstAttribute="height" constant="33" id="we7-Pk-gJx"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCQ-au-CGW">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCQ-au-CGW">
                                         <rect key="frame" x="45.5" y="122" width="234" height="98"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="NQY-xe-YQr"/>
                                             <constraint firstAttribute="width" constant="234" id="iS9-QC-avP"/>
@@ -152,7 +159,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Her-N6-Num">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Her-N6-Num">
                                                 <rect key="frame" x="0.0" y="58" width="364" height="46"/>
                                                 <color key="backgroundColor" red="0.99607843137254903" green="0.89803921568627454" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -169,6 +176,9 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tc0-Qk-V16"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -204,7 +214,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <color key="backgroundColor" name="Side100"/>
                         <constraints>
                             <constraint firstItem="9bI-vc-2oc" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Xs3-3R-UaW"/>
                             <constraint firstAttribute="bottom" secondItem="EaI-MF-kgf" secondAttribute="bottom" id="j8k-db-Cam"/>
@@ -216,7 +226,14 @@
                     <navigationItem key="navigationItem" id="YQd-X7-xgk"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="backgroundView" destination="5EZ-qb-Rvc" id="uuI-zm-j2s"/>
+                        <outlet property="loginStackView" destination="LHy-Xv-xBR" id="edJ-0w-b52"/>
+                        <outlet property="loginView" destination="EaI-MF-kgf" id="TyT-6k-hzd"/>
+                        <outlet property="rotateAnimationView" destination="zok-Kt-b9l" id="JRR-vV-YPe"/>
+                        <outletCollection property="animationViews" destination="mvj-8j-k2j" collectionClass="NSMutableArray" id="t7T-d7-bsR"/>
+                        <outletCollection property="animationViews" destination="7ty-u3-d6U" collectionClass="NSMutableArray" id="VQD-hy-kbo"/>
+                        <outletCollection property="animationViews" destination="pv1-JW-5Kz" collectionClass="NSMutableArray" id="9TR-S0-OkE"/>
+                        <outletCollection property="animationViews" destination="DVA-gI-x2a" collectionClass="NSMutableArray" id="Wy6-ui-SZo"/>
+                        <outletCollection property="animationViews" destination="gev-6e-D23" collectionClass="NSMutableArray" id="Uev-S6-MbJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,6 +241,17 @@
             <point key="canvasLocation" x="60.869565217391312" y="105.80357142857143"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="TXX-yv-Rdt">
+            <size key="intrinsicContentSize" width="112" height="20.5"/>
+        </designable>
+        <designable name="tnd-sN-yrh">
+            <size key="intrinsicContentSize" width="107.5" height="20.5"/>
+        </designable>
+        <designable name="w0W-Lh-Pry">
+            <size key="intrinsicContentSize" width="72.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Apple" width="16" height="18"/>
         <image name="Kakao" width="18" height="18"/>
@@ -234,9 +262,9 @@
         <image name="shape3" width="44" height="42"/>
         <image name="shape4" width="55" height="55"/>
         <image name="shape5" width="325" height="325"/>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="Side100">
+            <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
