@@ -7,37 +7,27 @@
 
 import UIKit
 import AuthenticationServices
-import KakaoSDKCommon
-import KakaoSDKAuth
-import KakaoSDKUser
-import Moya
 
 @IBDesignable
 class LoginViewController: UIViewController {
-    @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var loginStackView: UIStackView!
-    @IBOutlet weak var gradientView: UIView!
-    @IBOutlet var labels: [UILabel]!
+    @IBOutlet var animationViews: [UIImageView]!
+    @IBOutlet weak var rotateAnimationView: UIImageView!
+    @IBOutlet weak var loginView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUI()
+        animation()
+    }
 
-    @objc
-    func clickKakaoLogin() {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print("\(error) 카카오로그인 실패요~~")
-                } else {
-                    self.getUserInfo(oauthToekn: oauthToken!)
-                }
-            }
-        } else {
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                if let error = error {
-                    print("\(error) 카카오로그인 실패요~~")
-                } else {
-                    self.getUserInfo(oauthToekn: oauthToken!)
-                }
-            }
-        }
+    func setUI() {
+        animationViews[0].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
+        animationViews[1].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
+        animationViews[2].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
+        animationViews[3].setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
+        animationViews[4].setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
+        loginView.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.08), radius: 20)
     }
 
     func pushSignUp() {
@@ -47,27 +37,27 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
 
-    func getUserInfo(oauthToekn: OAuthToken) {
-        UserApi.shared.me() {(user, error) in
-            if let error = error {
-                print("\(error) 사용자 정보 가져오기 실패")
-            } else {
-                print("사용자 정보 가져오기 성공")
-                guard let user_data = user else { return }
-                let request = OauthRequest(socialId: String(user_data.id!))
-                SignAPI.postOauth(type: "kakao", request: request) { result in
-                    switch result {
-                    case .success(let response):
-                        print("success야", response)
-                    case .failure(let error):
-                        if let error = error as? OauthErrorResponse {
-                            self.pushSignUp()
-                            KeychainManager.shared.save(error.socialId, key: "socialId")
-                            KeychainManager.shared.save("kakao", key: "socialLoginType")
-                        }
-                    }
-                }
-            }
+    func animation() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) {
+            let scale = CGAffineTransform(translationX: 0, y: 10)
+            self.animationViews[0].transform = scale
+            self.animationViews[1].transform = scale
+            self.animationViews[2].transform = scale
+            self.animationViews[3].transform = scale
+            self.animationViews[4].transform = scale
+        }
+
+        UIView.animate(withDuration: 5, delay: 0, options: [.repeat, .curveLinear]) {
+            let scale = CGAffineTransform(rotationAngle: .pi / 2)
+            self.rotateAnimationView.transform = scale
+        }
+    }
+
+    @IBAction func clickButton(_ sender: UIButton) {
+        if sender.tag == 0 {
+            
+        } else {
+            callKakaoAPI()
         }
     }
 
@@ -83,60 +73,24 @@ class LoginViewController: UIViewController {
         authorizationController.performRequests()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUI()
-        setLoginButtons()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        labelAnimate()
-    }
-
-    func setUI() {
-        gradientView.frame = CGRect(x: 0, y: 0, width: 285, height: 238)
-        gradientView.setShadow()
-        gradientView.setGradient(color1: UIColor(red: 0.992, green: 0.859, blue: 0.573, alpha: 1), color2: UIColor(red: 0.82, green: 0.992, blue: 1, alpha: 1))
-    }
-
-    func setLoginButtons() {
-        let kakaoButton: UIButton = {
-            let button = LoginButton()
-            button.addTarget(self, action: #selector(clickKakaoLogin), for: .touchDown)
-            button.initializeLabel(name: "카카오", color: UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1))
-            return button
-        }()
-
-        let appleButton: UIButton = {
-            let button = LoginButton()
-            button.addTarget(self, action: #selector(clickAppleLogin), for: .touchDown)
-            button.initializeLabel(name: "Apple", color: UIColor.black)
-            return button
-        }()
-
-        loginStackView.addArrangedSubview(kakaoButton)
-        loginStackView.addArrangedSubview(appleButton)
-        loginStackView.layoutIfNeeded()
-
-        kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
-        appleButton.layer.cornerRadius = appleButton.frame.height / 2
-    }
-
-    func labelAnimate() {
-        for (index, label) in labels.enumerated() {
-            Timer.scheduledTimer(withTimeInterval: TimeInterval(1*index), repeats: false) { _ in
-                self.pushAnimate(label: label)
-            }
-        }
-    }
-
-    private func pushAnimate(label: UILabel) {
-        UILabel.animate(withDuration: 0.5,
-                        animations: { label.isHidden = false
-            label.alpha = 1
-            label.frame.origin.y -= 20
-        }, completion: nil)
-    }
+//    func setLoginButtons() {
+//        let kakaoButton: UIButton = {
+//            let button = LoginButton()
+//            button.addTarget(self, action: #selector(clickKakaoLogin), for: .touchDown)
+//            button.initializeLabel(name: "카카오", color: UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1))
+//            return button
+//        }()
+//
+//        let appleButton: UIButton = {
+//            let button = LoginButton()
+//            button.addTarget(self, action: #selector(clickAppleLogin), for: .touchDown)
+//            button.initializeLabel(name: "Apple", color: UIColor.black)
+//            return button
+//        }()
+//
+//        kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
+//        appleButton.layer.cornerRadius = appleButton.frame.height / 2
+//    }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {

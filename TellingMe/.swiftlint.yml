@@ -6,7 +6,7 @@ disabled_rules:
 
 excluded:
 - Pods
-- tellingMe/appDelegate/AppDelegate.siwft
-- tellingMe/appDelegate/SceneDelegate.swift
+- tellingMe/app/AppDelegate.siwft
+- tellingMe/app/SceneDelegate.swift
 included:
 
