@@ -11,6 +11,7 @@ class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    let viewModel = GetNameViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,24 @@ class GetNameViewController: UIViewController {
         self.textField.resignFirstResponder()
     }
 
+    func setWarning() {
+        textField.backgroundColor = UIColor(named: "Error100")
+    }
+
     @IBAction func nextAction(_ sender: UIButton) {
-        let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPageWithIndex(index: 2)
-        SignUpData.shared.nickname = textField.text ?? ""
+        if let text = textField.text {
+            var isBadWord = false
+            for word in viewModel.badwords {
+                if text.contains(word) {
+                    setWarning()
+                    isBadWord = true
+                    break
+                }
+            }
+            if !isBadWord {
+                self.checkNickname(nickname: text)
+            }
+        }
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

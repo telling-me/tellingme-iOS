@@ -13,6 +13,7 @@ struct SignUpRequest: Codable {
     var nickname: String
     var purpose: String
     var job: Int
+    var jobInfo: String?
     var gender: String?
     var birthData: String?
     var mbti: String?

@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var animationViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
     @IBOutlet weak var loginView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -72,25 +72,6 @@ class LoginViewController: UIViewController {
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-
-//    func setLoginButtons() {
-//        let kakaoButton: UIButton = {
-//            let button = LoginButton()
-//            button.addTarget(self, action: #selector(clickKakaoLogin), for: .touchDown)
-//            button.initializeLabel(name: "카카오", color: UIColor(red: 0.996, green: 0.898, blue: 0, alpha: 1))
-//            return button
-//        }()
-//
-//        let appleButton: UIButton = {
-//            let button = LoginButton()
-//            button.addTarget(self, action: #selector(clickAppleLogin), for: .touchDown)
-//            button.initializeLabel(name: "Apple", color: UIColor.black)
-//            return button
-//        }()
-//
-//        kakaoButton.layer.cornerRadius = kakaoButton.frame.height / 2
-//        appleButton.layer.cornerRadius = appleButton.frame.height / 2
-//    }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {

@@ -54,7 +54,7 @@ class TeritaryVerticalBothButtonCell: UICollectionViewCell {
         shadows.frame = self.frame
         shadows.clipsToBounds = false
         self.addSubview(shadows)
-
+        
         let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 20)
         layer0.shadowPath = shadowPath0.cgPath
         layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
