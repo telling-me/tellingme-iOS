@@ -13,8 +13,9 @@ struct SignUpRequest: Codable {
     var nickname: String
     var purpose: String
     var job: Int
+    var jobInfo: String?
     var gender: String?
-    var birthData: String?
+    var birthDate: String?
     var mbti: String?
     var socialId: String
     var socialLoginType: String

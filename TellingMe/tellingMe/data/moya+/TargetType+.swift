@@ -13,7 +13,6 @@ extension TargetType {
         guard let apiURL = URL(string: Bundle.main.APIURL) else { fatalError("URL is invalid") }
         return apiURL
     }
-
     var sampleData: Data {
         return Data()
     }

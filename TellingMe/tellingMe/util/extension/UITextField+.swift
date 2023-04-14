@@ -9,14 +9,12 @@ import Foundation
 import UIKit
 
 extension UITextField {
-
     private func getKeyboardLanguage() -> String? {
         return "ko-KR"
     }
 
     open override var textInputMode: UITextInputMode? {
         if let language = getKeyboardLanguage() {
-            print(language)
             for inputMode in UITextInputMode.activeInputModes where inputMode.primaryLanguage! == language {
                 return inputMode
             }

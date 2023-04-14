@@ -31,7 +31,7 @@ extension LoginViewController {
             }
         }
     }
-    
+
     func getUserInfo(oauthToekn: OAuthToken) {
         UserApi.shared.me() {(user, error) in
             if let error = error {

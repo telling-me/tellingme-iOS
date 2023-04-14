@@ -20,6 +20,7 @@
             <objects>
                 <navigationController id="XbQ-J5-jlW" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQD-HH-UrW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -41,11 +42,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bI-vc-2oc">
                                 <rect key="frame" x="44.5" y="179" width="325" height="325"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape5" translatesAutoresizingMaskIntoConstraints="NO" id="zok-Kt-b9l">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape5" translatesAutoresizingMaskIntoConstraints="NO" id="zok-Kt-b9l">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
                                         <rect key="frame" x="8.5" y="284" width="33" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -53,7 +54,7 @@
                                             <constraint firstAttribute="height" constant="33" id="we7-Pk-gJx"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
                                         <rect key="frame" x="61.5" y="92" width="202" height="157"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -61,7 +62,7 @@
                                             <constraint firstAttribute="width" constant="202" id="n0S-Tt-aW5"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
                                         <rect key="frame" x="310" y="109" width="15" height="15"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -70,7 +71,7 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
                                         <rect key="frame" x="288" y="227" width="36" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -78,7 +79,7 @@
                                             <constraint firstAttribute="height" constant="34" id="v9P-ca-jgU"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
                                         <rect key="frame" x="33" y="44" width="15" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -256,12 +257,12 @@
         <image name="Apple" width="16" height="18"/>
         <image name="Kakao" width="18" height="18"/>
         <image name="Logo" width="234" height="98"/>
-        <image name="shape" width="202" height="157"/>
-        <image name="shape1" width="42" height="42"/>
-        <image name="shape2" width="24" height="23"/>
-        <image name="shape3" width="44" height="42"/>
-        <image name="shape4" width="55" height="55"/>
-        <image name="shape5" width="325" height="325"/>
+        <image name="Shape" width="202" height="157"/>
+        <image name="Shape1" width="42" height="42"/>
+        <image name="Shape2" width="24" height="23"/>
+        <image name="Shape3" width="44" height="42"/>
+        <image name="Shape4" width="55" height="55"/>
+        <image name="Shape5" width="325" height="325"/>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
