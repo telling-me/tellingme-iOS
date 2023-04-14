@@ -11,19 +11,17 @@ class GetNameViewModel {
     var badwords: [String] = []
 
     init() {
-        badwords = madeBadWordsArray()
     }
 
-    func madeBadWordsArray() -> [String] {
-        if let filepath = Bundle.main.path(forResource: "badWords", ofType: "txt") {
+    func madeBadWordsArray() {
+        if let filepath = Bundle.main.path(forResource: "badWords", ofType: "txt" ) {
             do {
                 let contents = try String(contentsOfFile: filepath)
                 let lines = contents.components(separatedBy: ",")
-                return lines
+                badwords = lines
             } catch {
                 print("Error: \(error)")
             }
         }
-        return []
     }
 }

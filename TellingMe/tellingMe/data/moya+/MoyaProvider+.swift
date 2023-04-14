@@ -11,15 +11,19 @@ import Moya
 extension MoyaProvider {
     func request<Data: Codable>(
         _ target: Target,
-        completion: @escaping (Result<Data, Error>) -> Void
+        completion: @escaping (Result<Data?, Error>) -> Void
     ) {
         self.request(target) { result in
             switch result {
             case let .success(response):
                 do {
                     _ = try response.filterSuccessfulStatusCodes()
-                    let success = try JSONDecoder().decode(Success<Data>.self, from: response.data)
-                    completion(.success(success.data))
+                    if response.data.isEmpty {
+                        completion(.success(nil))
+                    } else {
+                        let success = try JSONDecoder().decode(Success<Data>.self, from: response.data)
+                        completion(.success(success.data))
+                    }
                 } catch {
                     completion(.failure(error))
                 }

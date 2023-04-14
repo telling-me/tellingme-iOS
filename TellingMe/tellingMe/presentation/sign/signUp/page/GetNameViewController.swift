@@ -11,10 +11,13 @@ class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var textFieldView: UIView!
+    @IBOutlet weak var warningImageView: UIImageView!
     let viewModel = GetNameViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.madeBadWordsArray()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,20 +37,25 @@ class GetNameViewController: UIViewController {
     }
 
     func setWarning() {
-        textField.backgroundColor = UIColor(named: "Error100")
+        warningImageView.isHidden = false
+        textFieldView.backgroundColor = UIColor(named: "Error100")
+    }
+
+    func setOriginal() {
+        warningImageView.isHidden = true
+        textFieldView.backgroundColor = UIColor(named: "Side200")
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
         if let text = textField.text {
-            var isBadWord = false
-            for word in viewModel.badwords {
-                if text.contains(word) {
-                    setWarning()
-                    isBadWord = true
-                    break
-                }
+            var isWord = true
+            for word in viewModel.badwords where text.contains(word) {
+                showToast(message: "사용할 수 없는 닉네임입니다")
+                setWarning()
+                isWord = false
+                break
             }
-            if !isBadWord {
+            if isWord {
                 self.checkNickname(nickname: text)
             }
         }
@@ -56,11 +64,14 @@ class GetNameViewController: UIViewController {
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPageWithIndex(index: 0)
-        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension GetNameViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.setOriginal()
+    }
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let utf8Char = string.cString(using: .utf8)
         let isBackSpace = strcmp(utf8Char, "\\b")
@@ -73,7 +84,6 @@ extension GetNameViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.offKeyboard()
-//        self.dismiss(animated: true, completion: nil)
         return true
     }
 }

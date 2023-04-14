@@ -306,7 +306,7 @@
                                     <action selector="nextAction:" destination="YtD-b6-PMT" eventType="touchUpInside" id="uk5-kU-dVv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영문, 숫자, 띄어쓰기, 특수문자 불가 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXJ-Rz-Y5P" customClass="CpationLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영문, 숫자, 띄어쓰기, 특수문자 불가 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXJ-Rz-Y5P" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="35" y="262" width="354" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="Gray7"/>
@@ -336,6 +336,8 @@
                         <outlet property="nextButton" destination="f7F-B7-G3o" id="kGV-9P-sDr"/>
                         <outlet property="prevButton" destination="bOF-rO-lRY" id="cym-yw-8K2"/>
                         <outlet property="textField" destination="fIu-FR-jVc" id="rH8-Cb-7dC"/>
+                        <outlet property="textFieldView" destination="W1X-C0-9Jy" id="SCQ-sV-pew"/>
+                        <outlet property="warningImageView" destination="9Wb-EX-7c4" id="rwB-S1-UsY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlO-MV-WG9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

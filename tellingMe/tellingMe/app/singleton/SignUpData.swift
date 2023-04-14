@@ -14,7 +14,7 @@ class SignUpData {
     var purpose: String
     var job: Int
     var gender: String? = nil
-    var birthData: String? = nil
+    var birthDate: String? = nil
     var mbti: String? = nil
 
     private init() {
@@ -50,6 +50,6 @@ class SignUpData {
             resultString += "01"
         }
 
-        birthData = resultString
+        birthDate = resultString
     }
 }

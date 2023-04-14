@@ -8,6 +8,9 @@
 import Foundation
 import Moya
 
+struct EmptyResponse: Decodable {
+}
+
 struct Success<Data: Codable>: Codable {
     let data: Data
 }

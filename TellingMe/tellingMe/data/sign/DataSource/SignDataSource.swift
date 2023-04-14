@@ -63,11 +63,11 @@ struct SignAPI: Networkable {
         makeProvider().requestWithError(.oauth(loginType: type, body: request), completion: completion)
     }
 
-    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse, Error>) -> Void) {
+    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, Error>) -> Void) {
         makeProvider().request(.signUp(request), completion: completion)
     }
-    
-    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse,Error>) -> Void) {
+
+    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, Error>) -> Void) {
         makeProvider().request(.checkNickname(request), completion: completion)
     }
 }

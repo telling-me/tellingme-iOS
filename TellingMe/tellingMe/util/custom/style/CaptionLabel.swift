@@ -25,7 +25,7 @@ class CaptionLabelBold: UILabel {
 }
 
 @IBDesignable
-class CpationLabelRegular: UILabel {
+class CaptionLabelRegular: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeLabel()
