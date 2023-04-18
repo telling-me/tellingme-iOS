@@ -8,7 +8,6 @@
 import Foundation
 import Moya
 
-// back-end 팀과 정의한 에러 내용
 enum ServiceError: Error {
     case moyaError(MoyaError)
     case invalidResponse(responseCode: Int, message: String)

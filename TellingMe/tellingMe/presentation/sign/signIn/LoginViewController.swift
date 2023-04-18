@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import AuthenticationServices
+import Moya
 
 @IBDesignable
 class LoginViewController: UIViewController {
@@ -55,36 +55,9 @@ class LoginViewController: UIViewController {
 
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
-            
+            callAppleAPI()
         } else {
             callKakaoAPI()
         }
-    }
-
-    @objc
-    func clickAppleLogin() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-}
-
-extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window ?? UIWindow()
-    }
-
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        let appleIDCredential = authorization.credential
-        print("AppleID Credential Authorization: \(appleIDCredential))")
-    }
-
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
     }
 }

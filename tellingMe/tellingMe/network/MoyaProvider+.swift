@@ -25,6 +25,7 @@ extension MoyaProvider {
                         completion(.success(success.data))
                     }
                 } catch {
+                    print(error)
                     completion(.failure(error))
                 }
             case let .failure(error):

@@ -54,6 +54,8 @@
 		3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289D529B8506F0030057E /* LaunchScreen.storyboard */; };
 		3AA289E029B851DD0030057E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289DF29B851DD0030057E /* .swiftlint.yml */; };
 		3AA289E229B854210030057E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289E129B854210030057E /* Login.storyboard */; };
+		3AC0BA5F29EE6D2100888868 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0BA5E29EE6D2100888868 /* Request.swift */; };
+		3AC0BA6129EE6D5D00888868 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0BA6029EE6D5D00888868 /* NetworkProvider.swift */; };
 		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
 		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
 		3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetPurposeController.swift */; };
@@ -124,6 +126,8 @@
 		3AA289D829B8506F0030057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		3AC0BA5E29EE6D2100888868 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		3AC0BA6029EE6D5D00888868 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		3ACC45E829D198CA000843F5 /* GetPurposeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurposeController.swift; sourceTree = "<group>"; };
@@ -220,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				3A5076EC29C82FE800C7A5E9 /* sign */,
-				3A5076DF29C82D1C00C7A5E9 /* moya+ */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -265,7 +268,7 @@
 			path = singleton;
 			sourceTree = "<group>";
 		};
-		3A5076DF29C82D1C00C7A5E9 /* moya+ */ = {
+		3A5076DF29C82D1C00C7A5E9 /* network */ = {
 			isa = PBXGroup;
 			children = (
 				3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */,
@@ -275,8 +278,10 @@
 				3A5076E829C82DFE00C7A5E9 /* TargetType+.swift */,
 				3A5076EA29C82E2F00C7A5E9 /* Encodable+.swift */,
 				3A409B3729E0142500A05B22 /* MoyaProvider+.swift */,
+				3AC0BA5E29EE6D2100888868 /* Request.swift */,
+				3AC0BA6029EE6D5D00888868 /* NetworkProvider.swift */,
 			);
-			path = "moya+";
+			path = network;
 			sourceTree = "<group>";
 		};
 		3A5076EC29C82FE800C7A5E9 /* sign */ = {
@@ -415,6 +420,7 @@
 				3A775D0929C2E9AE00FCD3BC /* keyChain */,
 				3A775D0529C1D97300FCD3BC /* font */,
 				3A2A503029B8805F002FE5E4 /* util */,
+				3A5076DF29C82D1C00C7A5E9 /* network */,
 				3A2A502F29B87C46002FE5E4 /* data */,
 				3A2A502E29B87C38002FE5E4 /* presentation */,
 				3A2A502D29B87B9D002FE5E4 /* app */,
@@ -596,12 +602,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
+				3AC0BA6129EE6D5D00888868 /* NetworkProvider.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
+				3AC0BA5F29EE6D2100888868 /* Request.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
