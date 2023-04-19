@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-extension MoyaProvider {
+extension MoyaProvider{
     func request<Data: Codable>(
         _ target: Target,
         completion: @escaping (Result<Data?, Error>) -> Void
@@ -41,14 +41,19 @@ extension MoyaProvider {
             switch result {
             case let .success(response):
                 do {
-                    _  = try response.filterSuccessfulStatusCodes()
+                    if response.statusCode < 1000 {
+                         if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
+                             completion(.failure(errorResponse))
+                             return
+                         }
+                     }
                     let success = try JSONDecoder().decode(Success<Data>.self, from: response.data)
                     completion(.success(success.data))
                 } catch {
                     if let moyaError = error as? MoyaError {
                         switch moyaError {
                         case .statusCode(let response):
-                            if response.statusCode == 404 {
+                            if response.statusCode < 1000 {
                                 if let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: response.data) {
                                     completion(.failure(errorResponse))
                                     return
@@ -63,6 +68,15 @@ extension MoyaProvider {
             case let .failure(error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func request2<Data: Codable> (
+        _ target: Target,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        self.request(target) { result in
+            print(result)
         }
     }
 }
