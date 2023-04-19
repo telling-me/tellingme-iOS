@@ -12,6 +12,7 @@ import KakaoSDKUser
 import AuthenticationServices
 import Moya
 import Alamofire
+import Combine
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func callKakaoAPI() {
@@ -35,17 +36,25 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     }
 
     func getUserInfo(oauthToekn: OAuthToken) {
+        var cancellables = Set<AnyCancellable>()
         UserApi.shared.me() {(user, error) in
             if let error = error {
                 print("\(error) 사용자 정보 가져오기 실패")
             } else {
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
-                let parameter = OauthRequest(socialId: String(user_data.id!))
-                let urlComponents = URLComponents(string: Bundle.main.APIURL + "/api/oauth/kakao")!
-                let request = AF.request(urlComponents.url!, method: .post, parameters: parameter)
-                request.validate().responseDecodable(of: OauthResponse.self) { (res) in
-                    print(res)
+                let request = OauthRequest(socialId: String(user_data.id!))
+                SignAPI.postOauth(type: "kaka", request: request) { result in
+                    switch result {
+                    case .success(let response):
+                        print("success야", response)
+                    case .failure(let error):
+                        if let error = error as? OauthErrorResponse {
+                            self.pushSignUp()
+                            KeychainManager.shared.save(error.socialId, key: "socialId")
+                            KeychainManager.shared.save("kakao", key: "socialLoginType")
+                        }
+                    }
                 }
             }
         }

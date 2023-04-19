@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Alamofire
+import Moya
 
 struct OauthRequest: Codable {
     let socialId: String
