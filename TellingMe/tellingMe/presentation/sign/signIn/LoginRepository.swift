@@ -44,7 +44,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
                 let request = OauthRequest(socialId: String(user_data.id!))
-                SignAPI.postOauth(type: "kaka", request: request) { result in
+                SignAPI.postOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
                         print("success야", response)
