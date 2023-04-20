@@ -17,7 +17,7 @@ class GetGenderViewController: UIViewController {
 
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPageWithIndex(index: 5)
+        pageViewController?.nextPage()
         if selectedItem == selectedItem {
             SignUpData.shared.gender = selectedItem
         }
@@ -25,7 +25,7 @@ class GetGenderViewController: UIViewController {
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 3)
+        pageViewController?.prevPage()
     }
 }
 

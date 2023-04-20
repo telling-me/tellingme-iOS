@@ -44,7 +44,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
                 let request = OauthRequest(socialId: String(user_data.id!))
-                SignAPI.postOauth(type: "kakao", request: request) { result in
+                SignAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
                         print("success야", response)
@@ -67,7 +67,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         print(request)
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        print("request 한거맞아용?")
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
@@ -76,29 +75,29 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            
-            // Create an account in your system.
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            
-            if  let authorizationCode = appleIDCredential.authorizationCode,
-                let identityToken = appleIDCredential.identityToken,
-                let authString = String(data: authorizationCode, encoding: .utf8),
+            if let identityToken = appleIDCredential.identityToken,
                 let tokenString = String(data: identityToken, encoding: .utf8) {
-                print("authorizationCode: \(authorizationCode)")
-                print("identityToken: \(identityToken)")
-                print("authString: \(authString)")
-                print("tokenString: \(tokenString)")
+
+                SignAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
+                    switch result {
+                    case .success(let response):
+                        print("success야", response)
+                    case .failure(let error):
+                        print("error야", error)
+                        if let error = error as? OauthErrorResponse {
+                            self.pushSignUp()
+                            KeychainManager.shared.save(error.socialId, key: "socialId")
+                            KeychainManager.shared.save("apple", key: "socialLoginType")
+                        }
+                    }
+                }
             }
-        
+
         case let passwordCredential as ASPasswordCredential:
-        
-            // Sign in using an existing iCloud Keychain credential.
             let username = passwordCredential.user
             let password = passwordCredential.password
             print(passwordCredential)
-            
+
         default:
             break
         }

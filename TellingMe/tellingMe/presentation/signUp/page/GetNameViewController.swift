@@ -63,7 +63,7 @@ class GetNameViewController: UIViewController {
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 0)
+        pageViewController?.prevPage()
     }
 }
 
@@ -73,14 +73,13 @@ extension GetNameViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let utf8Char = string.cString(using: .utf8)
-//        let isBackSpace = strcmp(utf8Char, "\\b")
-//        guard let text = textField.text else { return false }
-//        if isBackSpace == -92 || (string.hasCharacters() && text.count <= 8) {
-//            return true
-//        }
-//        return false
-        return true
+        let utf8Char = string.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+        guard let text = textField.text else { return false }
+        if isBackSpace == -92 || (string.hasCharacters() && text.count <= 8) {
+            return true
+        }
+        return false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

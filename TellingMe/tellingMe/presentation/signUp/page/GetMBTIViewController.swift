@@ -60,7 +60,7 @@ class GetMBTIViewController: UIViewController {
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 5)
+        pageViewController?.prevPage()
     }
 }
 

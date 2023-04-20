@@ -9,20 +9,19 @@ import Foundation
 import Moya
 
 enum SignAPITarget {
-    case oauth(loginType: String, body: OauthRequest)
+    case kakao(loginType: String, body: OauthRequest)
+    case apple(token: String, loginType: String, body: OauthRequest)
     case signUp(SignUpRequest)
     case checkNickname(CheckNicknameRequest)
 }
 
 extension SignAPITarget: TargetType {
-    var headers: [String: String]? {
-        return nil
-    }
-
     var task: Task {
         switch self {
-        case .oauth(_, let body):
+        case .kakao(_, let body):
             return .requestJSONEncodable(body)
+        case .apple(_, _, let body):
+             return .requestJSONEncodable(body)
         case .signUp(let body):
             return .requestJSONEncodable(body)
         case .checkNickname(let body):
@@ -32,7 +31,7 @@ extension SignAPITarget: TargetType {
 
     var path: String {
         switch self {
-        case .oauth(let type, _):
+        case .kakao(let type, _), .apple(_, let type, _):
             return "api/oauth/\(type)"
         case .signUp:
             return "api/oauth/join"
@@ -54,13 +53,26 @@ extension SignAPITarget: TargetType {
             return JSONEncoding.default
         }
      }
+
+    var headers: [String: String]? {
+        switch self {
+        case .apple(let token, _, _):
+            return ["idToken": token, "Content-Type": "application/json"]
+        default:
+            return nil
+        }
+    }
 }
 
 struct SignAPI: Networkable {
     typealias Target = SignAPITarget
 
-    static func postOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse, Error>) -> Void) {
-        makeProvider().requestWithError(.oauth(loginType: type, body: request), completion: completion)
+    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+        makeProvider().request(.kakao(loginType: type, body: request), completion: completion)
+    }
+
+    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+        makeProvider().request(.apple(token: token, loginType: type, body: request), completion: completion)
     }
 
     static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, Error>) -> Void) {

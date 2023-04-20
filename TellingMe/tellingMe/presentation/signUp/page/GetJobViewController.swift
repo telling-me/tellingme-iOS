@@ -19,14 +19,14 @@ class GetJobViewController: UIViewController {
 
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPageWithIndex(index: 4)
+        pageViewController?.nextPage()
         if let selecteItem = selecteItem {
             SignUpData.shared.job = selecteItem
         }
     }
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 2)
+        pageViewController?.prevPage()
         self.dismiss(animated: true, completion: nil)
     }
 }
