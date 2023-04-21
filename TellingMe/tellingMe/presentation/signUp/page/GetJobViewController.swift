@@ -10,11 +10,14 @@ import UIKit
 class GetJobViewController: UIViewController {
     let jobs: [JobViewModel] = [JobViewModel(title: "고등학생", imgName: "HighSchool"), JobViewModel(title: "대학(원)생", imgName: "University"), JobViewModel(title: "취업준비생", imgName: ""), JobViewModel(title: "직장인", imgName: "Worker"), JobViewModel(title: "주부", imgName: ""), JobViewModel(title: "기타", imgName: "Heart")]
     var selecteItem: Int? = nil
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondayIconButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
@@ -24,6 +27,7 @@ class GetJobViewController: UIViewController {
             SignUpData.shared.job = selecteItem
         }
     }
+
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPage()

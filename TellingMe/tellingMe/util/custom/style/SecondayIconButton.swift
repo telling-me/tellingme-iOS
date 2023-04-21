@@ -8,21 +8,23 @@
 import UIKit
 
 class SecondayIconButton: UIButton {
+    var shadows = UIView()
+
     override var isSelected: Bool {
         didSet {
-            isSelected ? setSelected() :setDefault()
+            isSelected ? setSelected() : setDefault()
         }
     }
 
     override var isHighlighted: Bool {
         didSet {
-            isHighlighted ? setHighlighted(): setDefault()
+            isHighlighted ? setHighlighted(): setNotHighlighted()
         }
     }
-    
+
     override var isEnabled: Bool {
         didSet {
-            isEnabled ? setEnabled(): setDefault()
+            isEnabled ? setDefault(): setDisabled()
         }
     }
 
@@ -36,6 +38,11 @@ class SecondayIconButton: UIButton {
         setupButton()
     }
 
+    func setSelected() {
+        backgroundColor = UIColor(named: "Priamry300")
+        tintColor = UIColor(named: "Logo")
+    }
+
     func setHighlighted() {
         shadows.isHidden = false
     }
@@ -43,18 +50,50 @@ class SecondayIconButton: UIButton {
     func setNotHighlighted() {
         shadows.isHidden = true
     }
+
+    func setDisabled() {
+        backgroundColor = UIColor(named: "Gray1")
+        tintColor = UIColor(named: "Gray4")
+    }
     
     func setDefault() {
-        
+        backgroundColor = UIColor(named: "Primary25")
+        tintColor = UIColor(named: "Logo")
     }
 
     private func setupButton() {
-        backgroundColor = UIColor(named: "Primary25")
-        tintColor = UIColor(named: "Logo")
-        layer.cornerRadius = 10
-        titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
+        setTitle(nil, for: .normal)
+        layer.cornerRadius = 20
+        setDefault()
+
+        shadows.frame = self.frame
+        shadows.clipsToBounds = false
+        self.addSubview(shadows)
+
+        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 20)
+        let layer0 = CALayer()
+        layer0.shadowPath = shadowPath0.cgPath
+        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 20
+        layer0.shadowOffset = CGSize(width: 0, height: 4)
+        layer0.bounds = shadows.bounds
+        layer0.position = shadows.center
+        shadows.layer.addSublayer(layer0)
+        
+        self.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
     
+    @objc func buttonTapped(_ sender: UIButton) {
+        sender.isHighlighted = true
+        // custom highlighted state 작업
+    }
+
+    @objc func buttonReleased(_ sender: UIButton) {
+        sender.isHighlighted = false
+        // custom normal state 작업
+    }
+
     func setImage(image: String) {
         setImage(UIImage(named: image), for: .normal)
     }

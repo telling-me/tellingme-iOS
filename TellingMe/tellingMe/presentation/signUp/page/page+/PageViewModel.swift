@@ -28,6 +28,7 @@ class GetNameViewModel {
     var badwords: [String] = []
 
     init() {
+        madeBadWordsArray()
     }
 
     func madeBadWordsArray() {
@@ -40,5 +41,52 @@ class GetNameViewModel {
                 print("Error: \(error)")
             }
         }
+    }
+}
+
+class GetGenderViewModel {
+    let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Man", title: "남성"), TeritaryBothData(imgName: "Woman", title: "여성")]
+    var selectedItem: String? = nil
+
+    init() {
+
+    }
+}
+
+class GetBirthdayViewModel {
+    var year: String? = nil
+    var month: String? = nil
+    var day: String? = nil
+
+    var yearArray: [Int]?
+    let monthArray = Array(1...13)
+    let day_Array = Array(1...32)
+
+    init() {
+        let today = Date()
+        if let todayYear = Int(today.yearFormat()) {
+            yearArray = Array(todayYear-50 ... todayYear)
+        }
+    }
+
+    func updateYear(year: String) {
+        self.year = year
+    }
+
+    func updateMonth(month: String) {
+        self.month = month
+    }
+
+    func updateDay(day: String) {
+        self.day = day
+    }
+}
+
+class GetMBTIViewModel {
+    var myMbti: String? = nil
+    let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
+    
+    init() {
+        
     }
 }

@@ -8,17 +8,21 @@
 import UIKit
 
 class GetGenderViewController: UIViewController {
-    let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Man", title: "남성"), TeritaryBothData(imgName: "Woman", title: "여성")]
-    var selectedItem: String? = nil
+    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    let viewModel = GetGenderViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPage()
-        if selectedItem == selectedItem {
+        if let selectedItem = viewModel.selectedItem {
             SignUpData.shared.gender = selectedItem
         }
     }
@@ -36,7 +40,7 @@ extension GetGenderViewController: UICollectionViewDelegate, UICollectionViewDat
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TeritaryVerticalBothButtonCell.id, for: indexPath) as? TeritaryVerticalBothButtonCell else { return UICollectionViewCell() }
-        cell.setData(with: genderList[indexPath.row])
+        cell.setData(with: viewModel.genderList[indexPath.row])
         cell.layer.cornerRadius = 20
         return cell
     }
@@ -47,9 +51,10 @@ extension GetGenderViewController: UICollectionViewDelegate, UICollectionViewDat
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            selectedItem = "male"
+            viewModel.selectedItem = "male"
         } else {
-            selectedItem = "female"
+            viewModel.selectedItem = "female"
         }
+        nextButton.isEnabled = true
     }
 }

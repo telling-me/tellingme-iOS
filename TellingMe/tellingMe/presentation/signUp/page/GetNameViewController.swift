@@ -9,15 +9,17 @@ import UIKit
 
 class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var prevButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondayIconButton!
     @IBOutlet weak var textFieldView: UIView!
     @IBOutlet weak var warningImageView: UIImageView!
     let viewModel = GetNameViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.madeBadWordsArray()
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -11,11 +11,15 @@ class GetPurposeViewController: UIViewController {
     let purposeList: [TeritaryBothData] = [TeritaryBothData(imgName: "Pen_Gradient", title: "학업/진로"), TeritaryBothData(imgName: "Handshake_Gradient", title: "대인 관계"), TeritaryBothData(imgName: "Values_Gradient", title: "성격/가치관"), TeritaryBothData(imgName: "Magnet_Gradient", title: "행동/습관"), TeritaryBothData(imgName: "Health_Gradient", title: "건강"), TeritaryBothData(imgName: "Heart_Gradient", title: "기타")]
     var selectedItems: [Int] = []
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = true
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
@@ -23,7 +27,8 @@ class GetPurposeViewController: UIViewController {
         pageViewController?.nextPage()
         SignUpData.shared.purpose = selectedItems.intArraytoString()
     }
-    @IBAction func prevAction(_ sender: Any) {
+
+    @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPage()
         self.dismiss(animated: true, completion: nil)

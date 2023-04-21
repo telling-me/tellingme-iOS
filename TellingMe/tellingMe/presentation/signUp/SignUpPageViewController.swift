@@ -44,8 +44,14 @@ extension SignUpPageViewController {
     func nextPage() {
         let viewController = self.parent as? SignUpViewController
         self.viewModel.currentIndex += 1
-        if self.viewModel.currentIndex > 3{
+        if self.viewModel.currentIndex > 3 {
             viewController?.setSKipButtonUnhidden()
+            if self.viewModel.currentIndex == 7 {
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+                return
+            }
         }
         setViewControllers([viewModel.pages[viewModel.currentIndex]], direction: .forward, animated: true, completion: nil)
         viewController?.setProgress(with: Float(viewModel.currentIndex)/Float(viewModel.pagesCount))
