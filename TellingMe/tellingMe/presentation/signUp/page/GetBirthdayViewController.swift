@@ -7,24 +7,6 @@
 
 import UIKit
 
-class BirthdayModel {
-    var year: String? = nil
-    var month: String? = nil
-    var day: String? = nil
-
-    func updateYear(year: String) {
-        self.year = year
-    }
-
-    func updateMonth(month: String) {
-        self.month = month
-    }
-
-    func updateDay(day: String) {
-        self.day = day
-    }
-}
-
 class GetBirthdayViewController: UIViewController {
     @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var monthTableView: UITableView!
@@ -38,10 +20,9 @@ class GetBirthdayViewController: UIViewController {
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var dayButton: DropDownButton!
 
-    var yearArray: [Int]?
-    let monthArray = Array(1...13)
-    let day31_Array = Array(1...32)
-    let viewModel = BirthdayModel()
+    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    let viewModel = GetBirthdayViewModel()
     let today = Date()
 
     override func viewDidLoad() {
@@ -52,18 +33,16 @@ class GetBirthdayViewController: UIViewController {
         yearButton.setTitle(text: "년")
         monthButton.setTitle(text: "월")
         dayButton.setTitle(text: "일")
-
-        setDateArray()
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
+        setAction()
     }
 
-    func setDateArray() {
+    func setAction() {
         let tapGestureRecognizer_year = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         let tapGestureRecognizer_month = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         let tapGestureRecognizer_day = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-
-        if let todayYear = Int(today.yearFormat()) {
-            yearArray = Array(todayYear-50 ... todayYear)
-        }
 
         yearButton.addGestureRecognizer(tapGestureRecognizer_year)
         monthButton.addGestureRecognizer(tapGestureRecognizer_month)
@@ -127,14 +106,14 @@ class GetBirthdayViewController: UIViewController {
 
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPageWithIndex(index: 6)
+        pageViewController?.nextPage()
 
         SignUpData.shared.makeBirthData(year: viewModel.year, month: viewModel.month, day: viewModel.day)
     }
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 4)
+        pageViewController?.prevPage()
     }
 }
 
@@ -158,13 +137,13 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else { return UITableViewCell() }
         if tableView == yearTableView {
-            if let selectedYear = yearArray {
+            if let selectedYear = viewModel.yearArray {
                 cell.setCell(text: String(selectedYear[indexPath.row]))
             }
         } else if tableView == monthTableView {
-            cell.setCell(text: String(monthArray[indexPath.row]))
+            cell.setCell(text: String(viewModel.monthArray[indexPath.row]))
         } else {
-            cell.setCell(text: String(day31_Array[indexPath.row]))
+            cell.setCell(text: String(viewModel.day_Array[indexPath.row]))
         }
         return cell
     }
@@ -185,6 +164,7 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             dayButton.setTitle(text: cell.getCell())
             viewModel.day = cell.getCell()
+            nextButton.isEnabled = true
         }
         setEnabled()
     }

@@ -13,7 +13,7 @@ extension UIView {
         shapes.frame = self.frame
         shapes.clipsToBounds = true
         self.addSubview(shapes)
-
+        
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [color1.cgColor, color2.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -26,12 +26,9 @@ extension UIView {
     }
 
     func setShadow(color: UIColor, radius: CGFloat) {
-        // 이미지 뷰 레이어 설정
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = 1
-        layer.shadowRadius = radius
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = radius
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
 }

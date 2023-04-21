@@ -9,19 +9,21 @@ import UIKit
 
 class GetMBTIViewController: UIViewController {
     @IBOutlet weak var mbtiButton: DropDownButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
-    var myMbti: String?
-    let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
+    let viewModel = GetMBTIViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mbtiButton.setLayout()
         mbtiButton.setTitle(text: "mbti 선택")
-        setButton()
+        prevButton.setImage(image: "ArrowLeft")
+        setAction()
     }
 
-    func setButton() {
+    func setAction() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         mbtiButton.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -51,16 +53,18 @@ class GetMBTIViewController: UIViewController {
 //        }
     }
 
-    @IBAction func nextAction(_ sender: UIButton) {
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+    @IBAction func pushAllowNotification(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
 
-        SignUpData.shared.mbti = myMbti
-        sendSignUpData()
+        SignUpData.shared.mbti = viewModel.myMbti
+//        sendSignUpData()
     }
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 5)
+        pageViewController?.prevPage()
     }
 }
 
@@ -71,7 +75,7 @@ extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else { return UITableViewCell() }
-        cell.setCell(text: mbtis[indexPath.row])
+        cell.setCell(text: viewModel.mbtis[indexPath.row])
         return cell
     }
 
@@ -83,6 +87,7 @@ extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
         tableView.isHidden = true
         mbtiButton.setTitle(text: cell.getCell())
-        myMbti = cell.getCell()
+        viewModel.myMbti = cell.getCell()
+        completeButton.isEnabled = true
     }
 }

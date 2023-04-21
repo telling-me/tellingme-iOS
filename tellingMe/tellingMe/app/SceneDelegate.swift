@@ -13,60 +13,36 @@ import KakaoSDKUser
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if (AuthApi.isKakaoTalkLoginUrl(url)) {
-            return AuthController.handleOpenUrl(url: url)
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                _ = AuthController.handleOpenUrl(url: url)
+            }
         }
-
-        return false
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        if (AuthApi.hasToken()) {
-            UserApi.shared.accessTokenInfo { (_, error) in
-                if let error = error {
-                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
-                        //로그인 필요
-                        print("로그인 해주세용")
-                    }
-                    else {
-                        //기타 에러
-                    }
-                }
-                else {
-                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-//                    print(self.window?.rootViewController)
-//                    print("로그인 되어있지용")
-//                    scene.windows.first?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "home")
-//                    scene.windows.first?.makeKeyAndVisible()
-//                    print(self.window?.rootViewController)
-//
-//                    UserApi.shared.me() {(user, error) in
-//                        if let error = error {
-//                            print(error)
-//                        }
-//                        else {
-//                            print("사용자 정보 가져오기 성공")
-//                            _ = user
-//                            let request = OauthTestRequest( socialId: String(user?.id ?? 0))
-//                            TestAPI.oauthTest(type: "kakao", request: request) { response, error in
-//                                guard let response = response else {
-//                                    print(error ?? #function)
-//                                    return
-//                                }
-//                                print(response)
-//                            }
-//
-//                        }
+//        if (AuthApi.hasToken()) {
+//            UserApi.shared.accessTokenInfo { (_, error) in
+//                if let error = error {
+//                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
+//                        //로그인 필요
+//                        print("로그인 해주세용")
 //                    }
-                }
-            }
-        }
-        else {
-            //로그인 필요
-        }
+//                    else {
+//                        //기타 에러
+//                    }
+//                }
+//                else {
+//
+//                }
+//            }
+//        }
+//        else {
+//            //로그인 필요
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

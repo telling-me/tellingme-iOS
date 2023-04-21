@@ -46,46 +46,55 @@
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
-                                        <rect key="frame" x="8.5" y="284" width="33" height="33"/>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-8j-k2j">
+                                        <rect key="frame" x="0.0" y="280" width="55" height="55"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="33" id="LUo-l4-F2t"/>
-                                            <constraint firstAttribute="height" constant="33" id="we7-Pk-gJx"/>
+                                            <constraint firstAttribute="width" constant="55" id="LUo-l4-F2t"/>
+                                            <constraint firstAttribute="height" constant="55" id="we7-Pk-gJx"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape" translatesAutoresizingMaskIntoConstraints="NO" id="gev-6e-D23">
                                         <rect key="frame" x="61.5" y="92" width="202" height="157"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="157" id="dpP-9V-rxN"/>
                                             <constraint firstAttribute="width" constant="202" id="n0S-Tt-aW5"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
-                                        <rect key="frame" x="310" y="109" width="15" height="15"/>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape4" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-gI-x2a">
+                                        <rect key="frame" x="290" y="90" width="50" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="tUq-LR-yp3"/>
-                                            <constraint firstAttribute="width" constant="15" id="uvr-bs-UIh"/>
+                                            <constraint firstAttribute="height" constant="50" id="tUq-LR-yp3"/>
+                                            <constraint firstAttribute="width" constant="50" id="uvr-bs-UIh"/>
                                         </constraints>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
-                                        <rect key="frame" x="288" y="227" width="36" height="34"/>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape3" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-u3-d6U">
+                                        <rect key="frame" x="270" y="227" width="60" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="WnY-cD-1fw"/>
-                                            <constraint firstAttribute="height" constant="34" id="v9P-ca-jgU"/>
+                                            <constraint firstAttribute="width" constant="60" id="T4U-bU-buH"/>
+                                            <constraint firstAttribute="height" constant="60" id="pXY-lK-lDq"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
-                                        <rect key="frame" x="33" y="44" width="15" height="14"/>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-JW-5Kz">
+                                        <rect key="frame" x="8" y="35" width="50" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="ULy-dm-j9e"/>
-                                            <constraint firstAttribute="width" constant="15" id="hNu-uZ-eOc"/>
+                                            <constraint firstAttribute="height" constant="50" id="ULy-dm-j9e"/>
+                                            <constraint firstAttribute="width" constant="50" id="hNu-uZ-eOc"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCQ-au-CGW">
                                         <rect key="frame" x="45.5" y="122" width="234" height="98"/>
@@ -99,23 +108,23 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="325" id="0HR-Fb-Gub"/>
+                                    <constraint firstItem="7ty-u3-d6U" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="270" id="BC6-Yb-HmN"/>
                                     <constraint firstItem="gev-6e-D23" firstAttribute="centerX" secondItem="9bI-vc-2oc" secondAttribute="centerX" id="EI5-ry-Df6"/>
                                     <constraint firstItem="7ty-u3-d6U" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="227" id="Eh3-ND-Mur"/>
                                     <constraint firstAttribute="height" constant="325" id="HnY-SU-w8H"/>
                                     <constraint firstAttribute="bottom" secondItem="zok-Kt-b9l" secondAttribute="bottom" id="KQo-mw-2A4"/>
-                                    <constraint firstItem="DVA-gI-x2a" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="109" id="LYO-5E-pr7"/>
+                                    <constraint firstItem="DVA-gI-x2a" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="90" id="LYO-5E-pr7"/>
                                     <constraint firstItem="tCQ-au-CGW" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="122" id="Pmi-yn-zu3"/>
-                                    <constraint firstItem="mvj-8j-k2j" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="284" id="Qnm-Ki-GDT"/>
-                                    <constraint firstItem="mvj-8j-k2j" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="8.5199999999999996" id="TKT-yF-LnY"/>
+                                    <constraint firstItem="mvj-8j-k2j" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="280" id="Qnm-Ki-GDT"/>
+                                    <constraint firstItem="mvj-8j-k2j" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" id="TKT-yF-LnY"/>
                                     <constraint firstItem="tCQ-au-CGW" firstAttribute="centerX" secondItem="zok-Kt-b9l" secondAttribute="centerX" id="WCv-7U-ALP"/>
-                                    <constraint firstItem="DVA-gI-x2a" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="310" id="Wj0-uk-09Z"/>
-                                    <constraint firstItem="pv1-JW-5Kz" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="33" id="ZPC-DS-b8P"/>
+                                    <constraint firstItem="DVA-gI-x2a" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="290" id="Wj0-uk-09Z"/>
+                                    <constraint firstItem="pv1-JW-5Kz" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="8" id="ZPC-DS-b8P"/>
                                     <constraint firstItem="zok-Kt-b9l" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" id="bIA-0Z-KCF"/>
-                                    <constraint firstItem="pv1-JW-5Kz" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="44" id="dTF-8e-7DQ"/>
+                                    <constraint firstItem="pv1-JW-5Kz" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="35" id="dTF-8e-7DQ"/>
                                     <constraint firstAttribute="trailing" secondItem="zok-Kt-b9l" secondAttribute="trailing" id="g0x-hv-pKn"/>
                                     <constraint firstItem="zok-Kt-b9l" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" id="hmw-9j-2qC"/>
                                     <constraint firstItem="gev-6e-D23" firstAttribute="top" secondItem="9bI-vc-2oc" secondAttribute="top" constant="92" id="pdK-Tg-dtq"/>
-                                    <constraint firstItem="7ty-u3-d6U" firstAttribute="leading" secondItem="9bI-vc-2oc" secondAttribute="leading" constant="288" id="vRW-LF-qOW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaI-MF-kgf">
@@ -142,7 +151,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="LHy-Xv-xBR">
                                         <rect key="frame" x="25" y="190" width="364" height="104"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se5-TR-Wm2" customClass="ASAuthorizationAppleIDButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se5-TR-Wm2">
                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -230,6 +239,7 @@
                     <navigationItem key="navigationItem" id="YQd-X7-xgk"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="appleButton" destination="Se5-TR-Wm2" id="034-xW-VgH"/>
                         <outlet property="loginStackView" destination="LHy-Xv-xBR" id="edJ-0w-b52"/>
                         <outlet property="loginView" destination="EaI-MF-kgf" id="TyT-6k-hzd"/>
                         <outlet property="rotateAnimationView" destination="zok-Kt-b9l" id="JRR-vV-YPe"/>
@@ -261,9 +271,9 @@
         <image name="Kakao" width="18" height="18"/>
         <image name="Logo" width="234" height="98"/>
         <image name="Shape" width="202" height="157"/>
-        <image name="Shape1" width="42" height="42"/>
-        <image name="Shape2" width="24" height="23"/>
-        <image name="Shape3" width="44" height="42"/>
+        <image name="Shape1" width="66" height="73"/>
+        <image name="Shape2" width="63" height="62"/>
+        <image name="Shape3" width="76" height="74"/>
         <image name="Shape4" width="55" height="55"/>
         <image name="Shape5" width="325" height="325"/>
         <namedColor name="Side100">

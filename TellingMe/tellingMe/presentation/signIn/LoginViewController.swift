@@ -7,6 +7,7 @@
 
 import UIKit
 import Moya
+import AuthenticationServices
 
 @IBDesignable
 class LoginViewController: UIViewController {
@@ -14,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var animationViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
     @IBOutlet weak var loginView: UIView!
+    @IBOutlet weak var appleButton: ASAuthorizationAppleIDButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +24,9 @@ class LoginViewController: UIViewController {
     }
 
     func setUI() {
-        animationViews[0].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
-        animationViews[1].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
-        animationViews[2].setShadow(color: UIColor(red: 0.765, green: 0.967, blue: 0.866, alpha: 0.5), radius: 4)
-        animationViews[3].setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
-        animationViews[4].setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
+        for view in animationViews {
+            view.setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
+        }
         loginView.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.08), radius: 20)
     }
 

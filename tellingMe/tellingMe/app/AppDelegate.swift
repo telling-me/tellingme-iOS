@@ -7,8 +7,6 @@
 
 import UIKit
 import KakaoSDKCommon
-import KakaoSDKAuth
-import KakaoSDKUser
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

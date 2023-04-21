@@ -9,15 +9,16 @@ import UIKit
 
 class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var prevButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondayIconButton!
     @IBOutlet weak var textFieldView: UIView!
-    @IBOutlet weak var warningImageView: UIImageView!
     let viewModel = GetNameViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.madeBadWordsArray()
+        prevButton.setImage(image: "ArrowLeft")
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -36,13 +37,7 @@ class GetNameViewController: UIViewController {
         self.textField.resignFirstResponder()
     }
 
-    func setWarning() {
-        warningImageView.isHidden = false
-        textFieldView.backgroundColor = UIColor(named: "Error100")
-    }
-
     func setOriginal() {
-        warningImageView.isHidden = true
         textFieldView.backgroundColor = UIColor(named: "Side200")
     }
 
@@ -51,7 +46,6 @@ class GetNameViewController: UIViewController {
             var isWord = true
             for word in viewModel.badwords where text.contains(word) {
                 showToast(message: "사용할 수 없는 닉네임입니다")
-                setWarning()
                 isWord = false
                 break
             }
@@ -63,7 +57,7 @@ class GetNameViewController: UIViewController {
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.prevPageWithIndex(index: 0)
+        pageViewController?.prevPage()
     }
 }
 
@@ -73,14 +67,13 @@ extension GetNameViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let utf8Char = string.cString(using: .utf8)
-//        let isBackSpace = strcmp(utf8Char, "\\b")
-//        guard let text = textField.text else { return false }
-//        if isBackSpace == -92 || (string.hasCharacters() && text.count <= 8) {
-//            return true
-//        }
-//        return false
-        return true
+        let utf8Char = string.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+        guard let text = textField.text else { return false }
+        if isBackSpace == -92 || (string.hasCharacters() && text.count <= 8) {
+            return true
+        }
+        return false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
