@@ -28,7 +28,6 @@ class SignUpViewController: UIViewController {
         guard let pageViewController = children.first as? SignUpPageViewController else {
             return
         }
-        print("스킵", pageViewController.viewModel.currentIndex)
         pageViewController.nextPage()
     }
 }
@@ -41,8 +40,14 @@ extension SignUpViewController {
     public func setSkipButtonHidden() {
         skipButton.isHidden = true
     }
-    
+
     public func setSKipButtonUnhidden() {
         skipButton.isHidden = false
+    }
+    
+    public func pushtoNotification() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }

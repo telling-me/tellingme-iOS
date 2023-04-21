@@ -35,6 +35,7 @@
 		3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */; };
 		3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */; };
 		3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */; };
+		3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C229F16F4900D24116 /* SecondayIconButton.swift */; };
 		3A76549829D9613F00B1C10E /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76549729D9613F00B1C10E /* Structs.swift */; };
 		3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CF829C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf */; };
 		3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CF929C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf */; };
@@ -101,6 +102,7 @@
 		3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderViewController.swift; sourceTree = "<group>"; };
 		3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationViewController.swift; sourceTree = "<group>"; };
+		3A7570C229F16F4900D24116 /* SecondayIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondayIconButton.swift; sourceTree = "<group>"; };
 		3A76549729D9613F00B1C10E /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		3A775CF829C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
 		3A775CF929C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */,
 				3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */,
 				3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */,
+				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
 			);
 			path = style;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* SignDataSource.swift in Sources */,
+				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,

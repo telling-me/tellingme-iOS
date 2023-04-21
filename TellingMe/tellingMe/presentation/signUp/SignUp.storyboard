@@ -938,22 +938,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snc-cT-7p7">
-                                <rect key="frame" x="333" y="802" width="56" height="56"/>
+                                <rect key="frame" x="294" y="802" width="95" height="56"/>
                                 <color key="backgroundColor" name="Primary25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="Non-9v-HQR"/>
+                                    <constraint firstAttribute="width" constant="95" id="Non-9v-HQR"/>
                                     <constraint firstAttribute="height" constant="56" id="P8A-9D-1kZ"/>
                                 </constraints>
                                 <color key="tintColor" name="Logo"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <state key="normal" title="완료"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextAction:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="GSh-5y-SJ8"/>
+                                    <action selector="pushAllowNotification:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="QnU-xC-vPv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMH-Yx-yGS">
@@ -1069,7 +1069,7 @@
                                     <constraint firstAttribute="height" constant="66" id="Mwt-NK-gb6"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 기록을 잊지 않도록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uib-KB-WA3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 기록을 잊지 않도록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uib-KB-WA3" customClass="Headline5Regular" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="76.666666666666686" y="196" width="222" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="mUj-zh-TZC"/>
@@ -1105,14 +1105,28 @@
                                     <color key="titleColor" name="Gray5"/>
                                 </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DyC-1v-jkp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="DyC-1v-jkp">
                                 <rect key="frame" x="112.66666666666669" y="359" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Cez-wy-duu"/>
                                     <constraint firstAttribute="width" constant="150" id="V2v-sm-PqO"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.67843137254901964" green="0.8901960784313725" blue="0.82352941176470584" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-bN-tlf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-bN-tlf" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="76.666666666666686" y="228" width="222" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="8EU-pv-oqE"/>
@@ -1183,6 +1197,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="BellRinging" width="151" height="163"/>
         <image name="Logo" width="234" height="98"/>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
