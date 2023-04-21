@@ -34,6 +34,7 @@
 		3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */; };
 		3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */; };
 		3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */; };
+		3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */; };
 		3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */; };
 		3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C229F16F4900D24116 /* SecondayIconButton.swift */; };
 		3A76549829D9613F00B1C10E /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76549729D9613F00B1C10E /* Structs.swift */; };
@@ -47,7 +48,7 @@
 		3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */; };
 		3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */; };
 		3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1677429E8309100B93850 /* PageViewModel.swift */; };
-		3AA1677729E830BA00B93850 /* PageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1677629E830BA00B93850 /* PageAPI.swift */; };
+		3AA1677729E830BA00B93850 /* PageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1677629E830BA00B93850 /* PageRepository.swift */; };
 		3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CA29B8506F0030057E /* AppDelegate.swift */; };
 		3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CC29B8506F0030057E /* SceneDelegate.swift */; };
 		3AA289CF29B8506F0030057E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CE29B8506F0030057E /* LoginViewController.swift */; };
@@ -101,6 +102,7 @@
 		3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBirthdayViewController.swift; sourceTree = "<group>"; };
 		3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderViewController.swift; sourceTree = "<group>"; };
 		3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorToast.swift; sourceTree = "<group>"; };
 		3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationViewController.swift; sourceTree = "<group>"; };
 		3A7570C229F16F4900D24116 /* SecondayIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondayIconButton.swift; sourceTree = "<group>"; };
 		3A76549729D9613F00B1C10E /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 		3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNicknameDTO.swift; sourceTree = "<group>"; };
 		3AA1677329E82D8500B93850 /* badWords.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = badWords.txt; sourceTree = "<group>"; };
 		3AA1677429E8309100B93850 /* PageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewModel.swift; sourceTree = "<group>"; };
-		3AA1677629E830BA00B93850 /* PageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageAPI.swift; sourceTree = "<group>"; };
+		3AA1677629E830BA00B93850 /* PageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageRepository.swift; sourceTree = "<group>"; };
 		3AA289C729B8506F0030057E /* tellingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tellingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA289CA29B8506F0030057E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA289CC29B8506F0030057E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */,
 				3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */,
 				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
+				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
 			);
 			path = style;
 			sourceTree = "<group>";
@@ -433,7 +436,7 @@
 			children = (
 				3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */,
 				3AA1677429E8309100B93850 /* PageViewModel.swift */,
-				3AA1677629E830BA00B93850 /* PageAPI.swift */,
+				3AA1677629E830BA00B93850 /* PageRepository.swift */,
 			);
 			path = "page+";
 			sourceTree = "<group>";
@@ -611,12 +614,13 @@
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
+				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
-				3AA1677729E830BA00B93850 /* PageAPI.swift in Sources */,
+				3AA1677729E830BA00B93850 /* PageRepository.swift in Sources */,
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,

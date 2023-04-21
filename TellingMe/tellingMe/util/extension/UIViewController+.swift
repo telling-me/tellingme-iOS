@@ -10,19 +10,24 @@ import UIKit
 
 extension UIViewController {
     func showToast(message: String) {
-        let toastLabel = CaptionLabelRegular(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
-        toastLabel.text = message
-        toastLabel.backgroundColor = UIColor(named: "Side200")
-        toastLabel.textAlignment = .center
-        toastLabel.layer.cornerRadius = 10
-        toastLabel.alpha = 1.0
-        toastLabel.sizeToFit()
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
-             toastLabel.alpha = 0.0
+        let view = ErrorToast()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(view)
+
+        view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 25).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -107).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 44).isActive = true
+
+        view.setLayout()
+        view.setMessage(message: message)
+
+        view.alpha = 1.0
+
+        UIView.animate(withDuration: 5.0, delay: 0.1, options: .curveEaseOut, animations: {
+             view.alpha = 0.0
         }, completion: {(_) in
-            toastLabel.removeFromSuperview()
+            view.removeFromSuperview()
         })
     }
 }

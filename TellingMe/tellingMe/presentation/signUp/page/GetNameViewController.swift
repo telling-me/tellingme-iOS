@@ -12,7 +12,6 @@ class GetNameViewController: UIViewController {
     @IBOutlet weak var prevButton: SecondayIconButton!
     @IBOutlet weak var nextButton: SecondayIconButton!
     @IBOutlet weak var textFieldView: UIView!
-    @IBOutlet weak var warningImageView: UIImageView!
     let viewModel = GetNameViewModel()
 
     override func viewDidLoad() {
@@ -38,13 +37,7 @@ class GetNameViewController: UIViewController {
         self.textField.resignFirstResponder()
     }
 
-    func setWarning() {
-        warningImageView.isHidden = false
-        textFieldView.backgroundColor = UIColor(named: "Error100")
-    }
-
     func setOriginal() {
-        warningImageView.isHidden = true
         textFieldView.backgroundColor = UIColor(named: "Side200")
     }
 
@@ -53,7 +46,6 @@ class GetNameViewController: UIViewController {
             var isWord = true
             for word in viewModel.badwords where text.contains(word) {
                 showToast(message: "사용할 수 없는 닉네임입니다")
-                setWarning()
                 isWord = false
                 break
             }

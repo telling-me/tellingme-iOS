@@ -15,11 +15,10 @@ struct Success<Data: Codable>: Codable {
     let data: Data
 }
 
-
 struct ErrorData: Codable, Error {
-    let code: Int
+    let status: Int
+    let code: String
     let message: String
-    let data: Data
 }
 
 enum APIError: Error {

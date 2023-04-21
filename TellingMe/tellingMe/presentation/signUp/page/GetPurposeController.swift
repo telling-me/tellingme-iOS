@@ -31,7 +31,6 @@ class GetPurposeViewController: UIViewController {
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPage()
-        self.dismiss(animated: true, completion: nil)
     }
 }
 

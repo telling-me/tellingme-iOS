@@ -17,13 +17,11 @@ extension MoyaProvider{
             switch result {
             case let .success(response):
                 do {
-                    //                    if response.statusCode < 1000 {
-                    //                         if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
-                    //                             completion(.failure(errorResponse))
-                    //                             return
-                    //                         }
-                    //                     }
                     _ = try response.filterSuccessfulStatusCodes()
+                    if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
+                        completion(.failure(errorResponse))
+                        return
+                    }
                     if response.data.isEmpty {
                         completion(.success(nil))
                     } else {

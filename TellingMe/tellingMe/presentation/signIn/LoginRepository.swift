@@ -12,15 +12,16 @@ import KakaoSDKUser
 import AuthenticationServices
 import Moya
 import Alamofire
-import Combine
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func callKakaoAPI() {
         if UserApi.isKakaoTalkLoginAvailable() {
+            print("일단 열리잖아요")
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
                     print("\(error) 카카오로그인 실패요~~")
                 } else {
+                    print("카카오로그인 성공")
                     self.getUserInfo(oauthToekn: oauthToken!)
                 }
             }
@@ -36,7 +37,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     }
 
     func getUserInfo(oauthToekn: OAuthToken) {
-        var cancellables = Set<AnyCancellable>()
         UserApi.shared.me() {(user, error) in
             if let error = error {
                 print("\(error) 사용자 정보 가져오기 실패")

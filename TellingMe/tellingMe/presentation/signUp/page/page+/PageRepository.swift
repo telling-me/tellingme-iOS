@@ -16,7 +16,8 @@ extension GetNameViewController {
                 let pageViewController = self.parent as? SignUpPageViewController
                 pageViewController?.nextPage()
             case .failure(let error):
-                print(error)
+                guard let error = error as? ErrorData else { return }
+                self.showToast(message: error.message)
             }
         }
     }
