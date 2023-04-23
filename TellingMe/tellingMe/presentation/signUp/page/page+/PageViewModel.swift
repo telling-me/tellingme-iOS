@@ -44,6 +44,27 @@ class GetNameViewModel {
     }
 }
 
+class GetJobViewModel {
+    let jobs: [JobViewModel] = [JobViewModel(title: "고등학생", imgName: "HighSchool"), JobViewModel(title: "대학(원)생", imgName: "University"), JobViewModel(title: "취업준비생", imgName: ""), JobViewModel(title: "직장인", imgName: "Worker"), JobViewModel(title: "주부", imgName: ""), JobViewModel(title: "기타", imgName: "Heart")]
+    var selecteItem: Int? = nil
+    let jobsCount: Int?
+    let input: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        textField.textColor = UIColor(named: "Gray5")
+        textField.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
+        textField.placeholder = "직접 입력"
+        textField.textAlignment = .center
+        textField.returnKeyType = .done
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    var keyboardSize: CGSize? = nil
+
+    init() {
+        jobsCount = jobs.count
+    }
+}
+
 class GetGenderViewModel {
     let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Man", title: "남성"), TeritaryBothData(imgName: "Woman", title: "여성")]
     var selectedItem: String? = nil
@@ -87,6 +108,6 @@ class GetMBTIViewModel {
     let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
     
     init() {
-        
+
     }
 }

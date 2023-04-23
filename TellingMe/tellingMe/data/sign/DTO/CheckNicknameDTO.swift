@@ -13,9 +13,3 @@ struct CheckNicknameRequest: Codable {
 
 struct CheckNicknameResponse: Codable {
 }
-
-struct CheckNicknameErrorResponse: Error {
-    let status: Int
-    let code: String
-    let message: String
-}

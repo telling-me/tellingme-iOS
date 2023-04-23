@@ -16,6 +16,7 @@
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A338B0329E67C5000786D08 /* LoginRepository.swift */; };
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
+		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
 		3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3529DEF51200A05B22 /* KeyChain+.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
 		3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3929E046C400A05B22 /* LoginViewModel.swift */; };
@@ -84,6 +85,7 @@
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A338B0329E67C5000786D08 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
+		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
 		3A409B3529DEF51200A05B22 /* KeyChain+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
 		3A409B3929E046C400A05B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				3A5076F229C8335900C7A5E9 /* OauthDTO.swift */,
 				3A409B4129E148C700A05B22 /* SignUpDTO.swift */,
 				3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */,
+				3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
 				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
+				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
 				3AA289CF29B8506F0030057E /* LoginViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
