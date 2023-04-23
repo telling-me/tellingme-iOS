@@ -228,6 +228,7 @@
 		3A2A502F29B87C46002FE5E4 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				3AC0BA6229EF0F0000888868 /* base */,
 				3A5076EC29C82FE800C7A5E9 /* sign */,
 			);
 			path = data;
@@ -272,14 +273,6 @@
 				3A409B4429E1A5FD00A05B22 /* SignUpData.swift */,
 			);
 			path = singleton;
-			sourceTree = "<group>";
-		};
-		3A5076DF29C82D1C00C7A5E9 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				3AC0BA6229EF0F0000888868 /* moya+ */,
-			);
-			path = network;
 			sourceTree = "<group>";
 		};
 		3A5076EC29C82FE800C7A5E9 /* sign */ = {
@@ -410,7 +403,6 @@
 				3A775D0929C2E9AE00FCD3BC /* keyChain */,
 				3A775D0529C1D97300FCD3BC /* font */,
 				3A2A503029B8805F002FE5E4 /* util */,
-				3A5076DF29C82D1C00C7A5E9 /* network */,
 				3A2A502F29B87C46002FE5E4 /* data */,
 				3A2A502E29B87C38002FE5E4 /* presentation */,
 				3A2A502D29B87B9D002FE5E4 /* app */,
@@ -421,7 +413,7 @@
 			path = tellingMe;
 			sourceTree = "<group>";
 		};
-		3AC0BA6229EF0F0000888868 /* moya+ */ = {
+		3AC0BA6229EF0F0000888868 /* base */ = {
 			isa = PBXGroup;
 			children = (
 				3A5076EA29C82E2F00C7A5E9 /* Encodable+.swift */,
@@ -431,7 +423,7 @@
 				3A409B3729E0142500A05B22 /* MoyaProvider+.swift */,
 				3A5076E829C82DFE00C7A5E9 /* TargetType+.swift */,
 			);
-			path = "moya+";
+			path = base;
 			sourceTree = "<group>";
 		};
 		3ACC45F429D1C79A000843F5 /* page+ */ = {
