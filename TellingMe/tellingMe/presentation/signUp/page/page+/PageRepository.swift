@@ -22,3 +22,20 @@ extension GetNameViewController {
         }
     }
 }
+
+extension GetJobViewController {
+    func postJobInfo(job: String) {
+        let request = JobInfoRequest(job: 5, jobName: job)
+        SignAPI.postJobInfo(request: request) { result in
+            switch result {
+            case .success:
+                print("왜 두번 넘어가고 쥐룰?")
+                let pageViewController = self.parent as? SignUpPageViewController
+                pageViewController?.nextPage()
+            case .failure(let error):
+                guard let error = error as? ErrorData else { return }
+                self.showToast(message: error.message)
+            }
+        }
+    }
+}

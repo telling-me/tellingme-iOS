@@ -13,6 +13,7 @@ class SignUpData {
     var nickname: String
     var purpose: String
     var job: Int
+    var jobInfo: String? = nil
     var gender: String? = nil
     var birthDate: String? = nil
     var mbti: String? = nil
