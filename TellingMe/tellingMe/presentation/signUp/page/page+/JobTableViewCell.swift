@@ -26,7 +26,7 @@ class JobTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setData(with data: JobViewModel) {
+    func setData(with data: GetJobViewModel.Job) {
         cellView.setImageandLabel(imgName: "\(data.imgName)_Gradient", text: data.title)
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true

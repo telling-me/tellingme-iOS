@@ -36,6 +36,12 @@ class LoginViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+    
+    func pushHome() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "home") as? HomeViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     func animation() {
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) {
