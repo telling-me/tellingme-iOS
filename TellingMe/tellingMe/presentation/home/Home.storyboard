@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="66" id="ai8-Fq-LUJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-P9-e8Z">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-P9-e8Z">
                                 <rect key="frame" x="114.5" y="122" width="185" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연속" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-br-0qb" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
@@ -50,7 +50,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Side100"/>
                                 <constraints>
                                     <constraint firstItem="yEO-Xf-N27" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="1Mx-aa-vLZ"/>
                                     <constraint firstItem="TKc-vY-z9X" firstAttribute="leading" secondItem="yEO-Xf-N27" secondAttribute="trailing" id="BHX-IR-fed"/>
@@ -64,6 +64,11 @@
                                     <constraint firstAttribute="bottom" secondItem="TKc-vY-z9X" secondAttribute="bottom" constant="10" id="zY1-5o-Ahk"/>
                                     <constraint firstAttribute="trailing" secondItem="TKc-vY-z9X" secondAttribute="trailing" constant="12" id="zur-hd-vz8"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9up-7i-cxi">
                                 <rect key="frame" x="3" y="218" width="408" height="408"/>
@@ -112,7 +117,7 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-qn-KoW">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-qn-KoW">
                                         <rect key="frame" x="25" y="117" width="358" height="142"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYq-Da-bcO" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
@@ -128,7 +133,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="Side100"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="pc3-K4-8G1" secondAttribute="bottom" constant="32" id="84k-kx-wrm"/>
                                             <constraint firstItem="pc3-K4-8G1" firstAttribute="top" secondItem="QYq-Da-bcO" secondAttribute="bottom" constant="16" id="9iM-hF-cFH"/>
@@ -138,6 +143,11 @@
                                             <constraint firstItem="QYq-Da-bcO" firstAttribute="top" secondItem="UJc-qn-KoW" secondAttribute="top" constant="40" id="bB8-Vw-Ppt"/>
                                             <constraint firstAttribute="height" constant="142" id="mN1-W7-18h"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape" translatesAutoresizingMaskIntoConstraints="NO" id="9xl-5q-gzR">
                                         <rect key="frame" x="182.5" y="101" width="43" height="35"/>
@@ -149,14 +159,21 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH9-tL-FdQ" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="183" y="34" width="42" height="30"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH9-tL-FdQ" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="141.5" y="34" width="125" height="30"/>
+                                        <color key="backgroundColor" name="Side200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2Ef-2Q-aV5"/>
+                                            <constraint firstAttribute="width" constant="125" id="aQ3-ky-cyr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjX-Xc-zmo">
                                         <rect key="frame" x="176.5" y="295" width="55" height="55"/>
@@ -235,6 +252,9 @@
         <image name="Shape5" width="325" height="325"/>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Side200">
+            <color red="0.97600001096725464" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
