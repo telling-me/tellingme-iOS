@@ -36,11 +36,18 @@ class LoginViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
-    
+
     func pushHome() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "home") as? HomeViewController else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        print("push 좀 해")
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+        
+        // MainTabBar의 두 번째 탭으로 이동합니다.
+        tabBarController.selectedIndex = 1
+        
+        // MainTabBar를 present 합니다.
+        tabBarController.modalPresentationStyle = .fullScreen
+        self.present(tabBarController, animated: true, completion: nil)
     }
 
     func animation() {

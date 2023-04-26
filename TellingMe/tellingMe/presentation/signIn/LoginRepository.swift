@@ -47,12 +47,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 SignAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
-                        print("success야", response)
+                        KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                        KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                        self.pushHome()
                     case .failure(let error):
-                        if let error = error as? OauthErrorResponse {
-                            self.pushSignUp()
-                            KeychainManager.shared.save(error.socialId, key: "socialId")
+                        let error = error as? MoyaError
+                        if let data = error?.response?.data {
+                            let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                            KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
                             KeychainManager.shared.save("kakao", key: "socialLoginType")
+                            self.pushSignUp()
+                        } else {
+                            print("response data 실패")
                         }
                     }
                 }
@@ -80,7 +86,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 SignAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
-                        print("success야", response)
+                        KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                        KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                        self.pushHome()
                     case .failure(let error):
                         print("error야", error)
                         if let error = error as? OauthErrorResponse {

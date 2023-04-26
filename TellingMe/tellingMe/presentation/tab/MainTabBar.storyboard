@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="51d-2a-K2X">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -25,10 +25,11 @@
             </objects>
             <point key="canvasLocation" x="518" y="-572"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="t7f-ga-12W">
             <objects>
-                <tabBarController id="51d-2a-K2X" customClass="TabBarController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="51d-2a-K2X" customClass="MainTabBarController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="krp-w5-KU3"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyJ-ZU-qiT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

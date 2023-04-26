@@ -92,6 +92,7 @@
                             <constraint firstItem="4SJ-68-6xM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="yof-Cd-uCh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="x2l-F3-lxN"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="progressBar" destination="4SJ-68-6xM" id="phj-Dg-cQn"/>
@@ -1014,14 +1015,20 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchUpInside" id="v5d-So-IlK"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-pm-2q7">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-pm-2q7">
                                 <rect key="frame" x="160" y="680" width="55" height="29"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="괜찮아요">
                                     <color key="titleColor" name="Gray5"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchUpInside" id="jNi-rK-NqS"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="DyC-1v-jkp">
                                 <rect key="frame" x="112.66666666666669" y="359" width="150" height="150"/>

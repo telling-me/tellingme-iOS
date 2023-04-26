@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="home" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,6 +179,8 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m3W-ez-Gvw" secondAttribute="trailing" id="vTs-7n-iBf"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="F3V-Un-OUe"/>
+                    <navigationItem key="navigationItem" id="W8d-El-mKm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -186,6 +188,14 @@
             <point key="canvasLocation" x="137.68115942028987" y="52.901785714285715"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="QYq-Da-bcO">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="lH9-tL-FdQ">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Shape" width="202" height="157"/>
         <image name="Shape1" width="66" height="73"/>

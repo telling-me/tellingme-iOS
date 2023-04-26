@@ -58,8 +58,9 @@
 		3AA289E029B851DD0030057E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289DF29B851DD0030057E /* .swiftlint.yml */; };
 		3AA289E229B854210030057E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289E129B854210030057E /* Login.storyboard */; };
 		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
-		3ACACB4929F7FDBB004A6004 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACACB4829F7FDBB004A6004 /* TabBar.storyboard */; };
-		3ACACB4B29F7FDE3004A6004 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB4A29F7FDE3004A6004 /* TabBarController.swift */; };
+		3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */; };
+		3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */; };
+		3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB5229F844C6004A6004 /* SignUpRepository.swift */; };
 		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
 		3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetPurposeController.swift */; };
 		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
@@ -133,8 +134,9 @@
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
-		3ACACB4829F7FDBB004A6004 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
-		3ACACB4A29F7FDE3004A6004 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
+		3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		3ACACB5229F844C6004A6004 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		3ACC45E829D198CA000843F5 /* GetPurposeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurposeController.swift; sourceTree = "<group>"; };
 		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				3A26202529D05B770061F9D8 /* SignUpViewController.swift */,
 				3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */,
 				3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */,
+				3ACACB5229F844C6004A6004 /* SignUpRepository.swift */,
 			);
 			path = signUp;
 			sourceTree = "<group>";
@@ -434,8 +437,8 @@
 		3ACACB4729F7FDA7004A6004 /* tab */ = {
 			isa = PBXGroup;
 			children = (
-				3ACACB4829F7FDBB004A6004 /* TabBar.storyboard */,
-				3ACACB4A29F7FDE3004A6004 /* TabBarController.swift */,
+				3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */,
+				3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */,
 			);
 			path = tab;
 			sourceTree = "<group>";
@@ -537,7 +540,7 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
-				3ACACB4929F7FDBB004A6004 /* TabBar.storyboard in Resources */,
+				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
 				3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
@@ -614,7 +617,7 @@
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
-				3ACACB4B29F7FDE3004A6004 /* TabBarController.swift in Sources */,
+				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
@@ -645,6 +648,7 @@
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* SignDataSource.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
+				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
@@ -812,8 +816,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -843,8 +846,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
