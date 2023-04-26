@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,11 +35,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="Secondary800"/>
+                        <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eNV-9a-evL" kind="relationship" relationship="viewControllers" id="E1u-HS-Cxv"/>
-                        <segue destination="PWJ-zV-joo" kind="relationship" relationship="viewControllers" id="bIi-ak-E2g"/>
-                        <segue destination="l6u-kq-dNn" kind="relationship" relationship="viewControllers" id="vGB-68-YrW"/>
+                        <segue destination="eNV-9a-evL" kind="relationship" relationship="viewControllers" id="nf6-cO-xK0"/>
+                        <segue destination="l6u-kq-dNn" kind="relationship" relationship="viewControllers" id="3i9-RS-0Ek"/>
+                        <segue destination="PWJ-zV-joo" kind="relationship" relationship="viewControllers" id="wci-FH-3KM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tul-RZ-bHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -73,6 +76,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Secondary800">
+            <color red="0.28200000524520874" green="0.41600000858306885" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

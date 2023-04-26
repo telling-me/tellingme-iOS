@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,24 +18,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-ez-Gvw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-ez-Gvw" customClass="HeaderView" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="414" height="66"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="ai8-Fq-LUJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-br-0qb">
-                                <rect key="frame" x="141" y="122" width="132" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-P9-e8Z">
+                                <rect key="frame" x="114.5" y="122" width="185" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연속" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-br-0qb" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="10" width="29.5" height="14"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일째 답변 중!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKc-vY-z9X" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="85" y="10" width="88" height="14"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEO-Xf-N27" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="43.5" y="10" width="41.5" height="14"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="bjg-ZQ-NTX"/>
-                                    <constraint firstAttribute="height" constant="34" id="hMY-vL-8O0"/>
+                                    <constraint firstItem="yEO-Xf-N27" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="1Mx-aa-vLZ"/>
+                                    <constraint firstItem="TKc-vY-z9X" firstAttribute="leading" secondItem="yEO-Xf-N27" secondAttribute="trailing" id="BHX-IR-fed"/>
+                                    <constraint firstAttribute="height" constant="34" id="BfY-qd-Oi0"/>
+                                    <constraint firstAttribute="bottom" secondItem="yEO-Xf-N27" secondAttribute="bottom" constant="10" id="Rdf-P6-lTe"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZoW-br-0qb" secondAttribute="bottom" constant="10" id="bPe-4J-Wtb"/>
+                                    <constraint firstItem="yEO-Xf-N27" firstAttribute="leading" secondItem="ZoW-br-0qb" secondAttribute="trailing" constant="2" id="cSF-qQ-3CV"/>
+                                    <constraint firstItem="TKc-vY-z9X" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="x4O-9T-dfR"/>
+                                    <constraint firstItem="ZoW-br-0qb" firstAttribute="leading" secondItem="vpw-P9-e8Z" secondAttribute="leading" constant="12" id="yNV-gJ-64c"/>
+                                    <constraint firstItem="ZoW-br-0qb" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="yQf-7m-AVP"/>
+                                    <constraint firstAttribute="bottom" secondItem="TKc-vY-z9X" secondAttribute="bottom" constant="10" id="zY1-5o-Ahk"/>
+                                    <constraint firstAttribute="trailing" secondItem="TKc-vY-z9X" secondAttribute="trailing" constant="12" id="zur-hd-vz8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9up-7i-cxi">
                                 <rect key="frame" x="3" y="218" width="408" height="408"/>
                                 <subviews>
@@ -170,16 +199,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
-                            <constraint firstItem="ZoW-br-0qb" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="1wC-xs-Tt7"/>
-                            <constraint firstItem="ZoW-br-0qb" firstAttribute="top" secondItem="m3W-ez-Gvw" secondAttribute="bottom" constant="8" id="B5a-6j-fkE"/>
                             <constraint firstItem="m3W-ez-Gvw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Gdc-Rg-oDC"/>
+                            <constraint firstItem="9up-7i-cxi" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="bottom" constant="62" id="GeI-uo-In8"/>
+                            <constraint firstItem="vpw-P9-e8Z" firstAttribute="top" secondItem="m3W-ez-Gvw" secondAttribute="bottom" constant="8" id="V0K-ac-rJx"/>
+                            <constraint firstItem="vpw-P9-e8Z" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="cLt-jg-Hh7"/>
                             <constraint firstItem="m3W-ez-Gvw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="e8m-H1-sge"/>
                             <constraint firstItem="9up-7i-cxi" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="rgi-9i-acV"/>
-                            <constraint firstItem="9up-7i-cxi" firstAttribute="top" secondItem="ZoW-br-0qb" secondAttribute="bottom" constant="62" id="swl-rv-vtu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m3W-ez-Gvw" secondAttribute="trailing" id="vTs-7n-iBf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="F3V-Un-OUe"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="Home_selected" id="F3V-Un-OUe"/>
                     <navigationItem key="navigationItem" id="W8d-El-mKm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -197,6 +226,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="Home_selected" width="81" height="78"/>
         <image name="Shape" width="202" height="157"/>
         <image name="Shape1" width="66" height="73"/>
         <image name="Shape2" width="63" height="62"/>
