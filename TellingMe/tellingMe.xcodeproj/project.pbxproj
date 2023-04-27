@@ -72,6 +72,11 @@
 		3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F729D2090E000843F5 /* UITextField+.swift */; };
 		3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */; };
 		3ACCBAB529E956050082C32C /* badWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1677329E82D8500B93850 /* badWords.txt */; };
+		3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */; };
+		3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414129FACBF60042A548 /* EmotionViewController.swift */; };
+		3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */; };
+		3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */; };
+		3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414729FAE0460042A548 /* SecondayTextButton.swift */; };
 		3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */; };
 		3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26429C99F7D00D02F3F /* BodyLabel.swift */; };
 		3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26629C99F8800D02F3F /* CaptionLabel.swift */; };
@@ -148,6 +153,11 @@
 		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
 		3ACC45F729D2090E000843F5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryTextButton.swift; sourceTree = "<group>"; };
+		3AEC414129FACBF60042A548 /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
+		3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewModel.swift; sourceTree = "<group>"; };
+		3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCollectionViewCell.swift; sourceTree = "<group>"; };
+		3AEC414729FAE0460042A548 /* SecondayTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondayTextButton.swift; sourceTree = "<group>"; };
 		3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineLabel.swift; sourceTree = "<group>"; };
 		3AEED26429C99F7D00D02F3F /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		3AEED26629C99F8800D02F3F /* CaptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
@@ -182,6 +192,9 @@
 			children = (
 				3A157CF829CAFFA300D61AD3 /* Home.storyboard */,
 				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
+				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
+				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
+				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -200,6 +213,8 @@
 				3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */,
 				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
 				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
+				3AEC414729FAE0460042A548 /* SecondayTextButton.swift */,
+				3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */,
 			);
 			path = style;
 			sourceTree = "<group>";
@@ -230,6 +245,7 @@
 				3A409B3C29E050CD00A05B22 /* signIn */,
 				3A409B3B29E050B100A05B22 /* signUp */,
 				3A157CF729CAFD6D00D61AD3 /* home */,
+				3A68972929FA797700797D9A /* answer */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -326,6 +342,13 @@
 				3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */,
 			);
 			path = page;
+			sourceTree = "<group>";
+		};
+		3A68972929FA797700797D9A /* answer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = answer;
 			sourceTree = "<group>";
 		};
 		3A775D0429C1D96800FCD3BC /* extension */ = {
@@ -641,8 +664,11 @@
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
+				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
+				3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */,
+				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
@@ -652,6 +678,7 @@
 				3A5076F529C8352200C7A5E9 /* SignDataSource.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,
+				3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
@@ -673,6 +700,7 @@
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
+				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

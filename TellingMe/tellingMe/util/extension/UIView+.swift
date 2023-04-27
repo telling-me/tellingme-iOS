@@ -25,10 +25,23 @@ extension UIView {
         shapes.layer.addSublayer(gradient)
     }
 
-    func setShadow(color: UIColor, radius: CGFloat) {
-        self.layer.shadowColor = color.cgColor
+    func setShadow2() {
+        self.layer.shadowColor = UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9).cgColor
         self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = radius
+        self.layer.shadowRadius = 20
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.masksToBounds = false
+    }
+
+    func setShadow(shadowRadius: CGFloat, cornerRadius: CGFloat) {
+        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+        layer.shadowOpacity = 1
+        layer.shadowRadius = shadowRadius
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.masksToBounds = false
+    }
+    
+    func setTopCornerRadius() {
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }

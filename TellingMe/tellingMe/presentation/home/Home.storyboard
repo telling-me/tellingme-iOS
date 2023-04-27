@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -126,7 +127,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-K4-8G1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-K4-8G1" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="158" y="77" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -146,6 +147,12 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -177,12 +184,22 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjX-Xc-zmo">
                                         <rect key="frame" x="176.5" y="295" width="55" height="55"/>
+                                        <color key="backgroundColor" name="Side100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="Dvc-y7-1G4"/>
                                             <constraint firstAttribute="height" constant="55" id="iDy-O9-zyx"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="presentEmotion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bsa-Uh-PPH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -228,17 +245,170 @@
                     <tabBarItem key="tabBarItem" title="" selectedImage="Home_selected" id="F3V-Un-OUe"/>
                     <navigationItem key="navigationItem" id="W8d-El-mKm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dayLabel" destination="lH9-tL-FdQ" id="kF1-aZ-KBu"/>
+                        <outlet property="dayStackLabel" destination="yEO-Xf-N27" id="hI8-WI-1te"/>
+                        <outlet property="dayStackView" destination="vpw-P9-e8Z" id="WgN-D3-cIV"/>
+                        <outlet property="questionLabel" destination="QYq-Da-bcO" id="qeb-Oi-y03"/>
+                        <outlet property="questionView" destination="UJc-qn-KoW" id="1Yc-bM-fDQ"/>
+                        <outlet property="subQuestionLabel" destination="pc3-K4-8G1" id="Npk-0z-eKM"/>
+                        <outlet property="writeButton" destination="MjX-Xc-zmo" id="dKw-ij-gFv"/>
+                        <outletCollection property="shadowViews" destination="9xl-5q-gzR" collectionClass="NSMutableArray" id="KG7-Cd-F3P"/>
+                        <outletCollection property="shadowViews" destination="FDe-Nn-0X1" collectionClass="NSMutableArray" id="i5u-Wn-1H1"/>
+                        <outletCollection property="shadowViews" destination="NiT-Jx-HOC" collectionClass="NSMutableArray" id="5Qg-UO-AaO"/>
+                        <outletCollection property="shadowViews" destination="PpW-Eo-64V" collectionClass="NSMutableArray" id="AJz-2x-IAJ"/>
+                        <outletCollection property="shadowViews" destination="q0s-hV-lNp" collectionClass="NSMutableArray" id="ZFj-eb-qCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="52.901785714285715"/>
         </scene>
+        <!--Emotion View Controller-->
+        <scene sceneID="faT-p9-IWA">
+            <objects>
+                <viewController storyboardIdentifier="emotion" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Qj-OQ-x84" customClass="EmotionViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nao-4Y-1bT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t5-Th-VnN">
+                                <rect key="frame" x="0.0" y="368" width="414" height="528"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uPb-pf-VgC">
+                                        <rect key="frame" x="20" y="431" width="374" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYt-4g-t0j" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="179.5" height="55"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="0Qj-OQ-x84" eventType="touchUpInside" id="jJ2-QQ-YDy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ws-qn-Thr" customClass="SecondayTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="194.5" y="0.0" width="179.5" height="55"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="확인"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="0Qj-OQ-x84" eventType="touchUpInside" id="2uC-17-qci"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="knk-Pe-bTk"/>
+                                        </constraints>
+                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BHN-pr-UUO">
+                                        <rect key="frame" x="75" y="115" width="264" height="284"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="264" id="eME-2c-hBg"/>
+                                            <constraint firstAttribute="height" constant="284" id="iFh-jZ-fzz"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ibK-T2-hNh">
+                                            <size key="itemSize" width="56" height="56"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="taE-iK-tuI" customClass="EmotionCollectionViewCell" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iaR-Bh-wQh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="0Qj-OQ-x84" id="5Nx-PR-e9j"/>
+                                            <outlet property="delegate" destination="0Qj-OQ-x84" id="Uc1-5g-SIl"/>
+                                        </connections>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 감정을 떠올려 보아요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4V-Gc-AKk" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="42" width="190" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="qcW-1f-LTm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나는 어떤 마음이었을까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4t-km-i0B" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="125" y="67" width="164.5" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="fyL-gt-oUV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Gray5"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Side100"/>
+                                <constraints>
+                                    <constraint firstItem="uPb-pf-VgC" firstAttribute="top" secondItem="BHN-pr-UUO" secondAttribute="bottom" constant="32" id="0qb-fk-Rgm"/>
+                                    <constraint firstAttribute="height" constant="528" id="MYq-iO-hWr"/>
+                                    <constraint firstAttribute="bottom" secondItem="uPb-pf-VgC" secondAttribute="bottom" constant="42" id="PX5-vE-n3k"/>
+                                    <constraint firstItem="r4V-Gc-AKk" firstAttribute="top" secondItem="7t5-Th-VnN" secondAttribute="top" constant="42" id="QYK-1q-jRK"/>
+                                    <constraint firstItem="BHN-pr-UUO" firstAttribute="centerX" secondItem="7t5-Th-VnN" secondAttribute="centerX" id="Ryk-H7-DvC"/>
+                                    <constraint firstItem="r4V-Gc-AKk" firstAttribute="centerX" secondItem="7t5-Th-VnN" secondAttribute="centerX" id="a7X-lo-P0b"/>
+                                    <constraint firstItem="BHN-pr-UUO" firstAttribute="top" secondItem="E4t-km-i0B" secondAttribute="bottom" constant="32" id="g0q-EI-H60"/>
+                                    <constraint firstItem="E4t-km-i0B" firstAttribute="centerX" secondItem="7t5-Th-VnN" secondAttribute="centerX" id="gFc-2f-NKp"/>
+                                    <constraint firstAttribute="trailing" secondItem="uPb-pf-VgC" secondAttribute="trailing" constant="20" id="n7s-Lb-fz0"/>
+                                    <constraint firstItem="E4t-km-i0B" firstAttribute="top" secondItem="r4V-Gc-AKk" secondAttribute="bottom" constant="8" id="rEn-wd-ilE"/>
+                                    <constraint firstItem="uPb-pf-VgC" firstAttribute="leading" secondItem="7t5-Th-VnN" secondAttribute="leading" constant="20" id="ylS-cj-msY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BcW-HB-ecA"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="0.28000000000000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BcW-HB-ecA" firstAttribute="trailing" secondItem="7t5-Th-VnN" secondAttribute="trailing" id="Jdf-bC-J8R"/>
+                            <constraint firstAttribute="bottom" secondItem="7t5-Th-VnN" secondAttribute="bottom" id="pv4-Ck-8m2"/>
+                            <constraint firstItem="7t5-Th-VnN" firstAttribute="leading" secondItem="BcW-HB-ecA" secondAttribute="leading" id="sKi-ov-pGA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="E4t-km-i0B" id="ACk-ef-AMs"/>
+                        <outlet property="okButton" destination="9ws-qn-Thr" id="iEx-0A-9wT"/>
+                        <outlet property="popView" destination="7t5-Th-VnN" id="VTc-Kv-q6p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yh6-de-kUq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="847.82608695652175" y="52.901785714285715"/>
+        </scene>
     </scenes>
     <designables>
+        <designable name="9ws-qn-Thr">
+            <size key="intrinsicContentSize" width="53.5" height="34.5"/>
+        </designable>
+        <designable name="HYt-4g-t0j">
+            <size key="intrinsicContentSize" width="53.5" height="34.5"/>
+        </designable>
         <designable name="QYq-Da-bcO">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
         </designable>
+        <designable name="TKc-vY-z9X">
+            <size key="intrinsicContentSize" width="87.5" height="20.5"/>
+        </designable>
+        <designable name="ZoW-br-0qb">
+            <size key="intrinsicContentSize" width="29.5" height="20.5"/>
+        </designable>
         <designable name="lH9-tL-FdQ">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="pc3-K4-8G1">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="yEO-Xf-N27">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
         </designable>
     </designables>
@@ -250,6 +420,9 @@
         <image name="Shape3" width="76" height="74"/>
         <image name="Shape4" width="55" height="55"/>
         <image name="Shape5" width="325" height="325"/>
+        <namedColor name="Gray5">
+            <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

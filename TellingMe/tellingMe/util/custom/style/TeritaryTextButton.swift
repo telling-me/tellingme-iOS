@@ -1,27 +1,24 @@
 //
-//  SecondayIconButton.swift
+//  TeritaryTextButton.swift
 //  tellingMe
 //
-//  Created by 마경미 on 20.04.23.
+//  Created by 마경미 on 28.04.23.
 //
 
+import Foundation
 import UIKit
 
-class SecondayIconButton: UIButton {
-    var shadows = UIView()
-
+class TeritaryTextButton: UIButton {
     override var isSelected: Bool {
         didSet {
             isSelected ? setSelected() : setDefault()
         }
     }
-
     override var isHighlighted: Bool {
         didSet {
             isHighlighted ? setHighlighted(): setNotHighlighted()
         }
     }
-
     override var isEnabled: Bool {
         didSet {
             isEnabled ? setDefault(): setDisabled()
@@ -39,48 +36,31 @@ class SecondayIconButton: UIButton {
     }
 
     func setSelected() {
-        backgroundColor = UIColor(named: "Priamry300")
+        backgroundColor = UIColor(named: "Side300")
         tintColor = UIColor(named: "Logo")
     }
 
     func setHighlighted() {
-        shadows.isHidden = false
+        self.setShadow(shadowRadius: 20, cornerRadius: 20)
     }
 
     func setNotHighlighted() {
-        shadows.isHidden = true
+        self.layer.shadowOpacity = 0
     }
 
     func setDisabled() {
         backgroundColor = UIColor(named: "Gray1")
-        tintColor = UIColor(named: "Gray4")
+        tintColor = UIColor(named: "Secondary600")
     }
-    
+
     func setDefault() {
-        backgroundColor = UIColor(named: "Primary25")
+        backgroundColor = UIColor(named: "Side200")
         tintColor = UIColor(named: "Logo")
     }
 
     private func setupButton() {
-        setTitle(nil, for: .normal)
         layer.cornerRadius = 20
         setDefault()
-
-        shadows.frame = self.frame
-        shadows.clipsToBounds = false
-        self.addSubview(shadows)
-
-        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 20)
-        let layer0 = CALayer()
-        layer0.shadowPath = shadowPath0.cgPath
-        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
-        layer0.shadowOpacity = 1
-        layer0.shadowRadius = 20
-        layer0.shadowOffset = CGSize(width: 0, height: 4)
-        layer0.bounds = shadows.bounds
-        layer0.position = shadows.center
-        shadows.layer.addSublayer(layer0)
-
         self.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
 
@@ -92,7 +72,7 @@ class SecondayIconButton: UIButton {
         sender.isHighlighted = false
     }
 
-    func setImage(image: String) {
-        setImage(UIImage(named: image), for: .normal)
+    func setText(text: String) {
+        setTitle(text, for: .normal)
     }
 }
