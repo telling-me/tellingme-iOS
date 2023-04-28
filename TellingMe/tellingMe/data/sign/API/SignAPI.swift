@@ -71,24 +71,23 @@ extension SignAPITarget: TargetType {
 
 struct SignAPI: Networkable {
     typealias Target = SignAPITarget
-    
+
     static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
-        makeProvider().request(.kakao(loginType: type, body: request), completion: completion)
+        makeProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
-    
+
     static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
-        makeProvider().request(.apple(token: token, loginType: type, body: request), completion: completion)
+        makeProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
-    
     static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, Error>) -> Void) {
-        makeProvider().request(.signUp(request), completion: completion)
+        makeProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
     }
-    
+
     static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, Error>) -> Void) {
-        makeProvider().request(.checkNickname(request), completion: completion)
+        makeProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
-    
+
     static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, Error>) -> Void) {
-        makeProvider().request(.jobInfo(request), completion: completion)
+        makeProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
 }

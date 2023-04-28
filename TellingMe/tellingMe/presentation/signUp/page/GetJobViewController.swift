@@ -79,6 +79,9 @@ class GetJobViewController: UIViewController {
             if selecteItem == 5 {
                 self.postJobInfo(job: text)
                 SignUpData.shared.jobInfo = text
+            } else {
+                let pageViewController = self.parent as? SignUpPageViewController
+                pageViewController?.nextPage()
             }
         }
     }

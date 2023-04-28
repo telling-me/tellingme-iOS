@@ -13,8 +13,8 @@ struct OauthRequest: Codable {
 }
 
 struct OauthResponse: Codable {
-    let socialId: String
-    let socialLoginType: String
+    let accessToken: String
+    let refreshToken: String
 }
 
 struct OauthErrorResponse: Error, Codable {

@@ -13,6 +13,7 @@ extension GetNameViewController {
         SignAPI.checkNickname(request: request) { result in
             switch result {
             case .success:
+                SignUpData.shared.nickname = nickname
                 let pageViewController = self.parent as? SignUpPageViewController
                 pageViewController?.nextPage()
             case .failure(let error):

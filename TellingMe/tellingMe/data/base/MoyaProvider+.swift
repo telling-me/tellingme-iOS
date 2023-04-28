@@ -8,9 +8,10 @@
 import Foundation
 import Moya
 
-extension MoyaProvider{
+extension MoyaProvider {
     func request<Data: Codable>(
         _ target: Target,
+        dtoType: Data.Type,
         completion: @escaping (Result<Data?, Error>) -> Void
     ) {
         self.request(target) { result in
@@ -18,31 +19,18 @@ extension MoyaProvider{
             case let .success(response):
                 do {
                     _ = try response.filterSuccessfulStatusCodes()
-                    if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
-                        completion(.failure(errorResponse))
-                        return
-                    }
                     if response.data.isEmpty {
                         completion(.success(nil))
                     } else {
-                        let success = try JSONDecoder().decode(Success<Data>.self, from: response.data)
-                        completion(.success(success.data))
+                        let data = try JSONDecoder().decode(Data.self, from: response.data)
+                        completion(.success(data))
                     }
                 } catch {
-                    if let moyaError = error as? MoyaError {
-                        switch moyaError {
-                        case .statusCode(let response):
-                            if response.statusCode < 1000 {
-                                if let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: response.data) {
-                                    completion(.failure(errorResponse))
-                                    return
-                                }
-                            }
-                        default:
-                            break
-                        }
+                    if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
+                        completion(.failure(errorResponse))
+                    } else {
+                        completion(.failure(error))
                     }
-                    completion(.failure(error))
                 }
             case let .failure(error):
                 completion(.failure(error))

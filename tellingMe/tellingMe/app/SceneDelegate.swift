@@ -43,6 +43,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        else {
 //            //로그인 필요
 //        }
+        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            // window와 rootViewController 초기화
+            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window?.windowScene = windowScene
+            let homeViewController = HomeViewController() // 홈 화면
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -72,5 +82,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 }

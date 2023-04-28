@@ -16,14 +16,3 @@ struct TeritaryBothData {
         self.imgName = imgName
     }
 }
-
-struct JobViewModel {
-    let title: String
-    let imgName: String
-}
-
-struct Birth {
-    var year: String?
-    var month: String?
-    var day: String?
-}

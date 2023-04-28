@@ -41,18 +41,6 @@ class GetMBTIViewController: UIViewController {
         }
     }
 
-    func sendSignUpData() {
-        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: nil, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate ?? nil, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: KeychainManager.shared.load(key: "socialLoginType") ?? "")
-//        SignAPI.postSignUp(request: request) { result in
-//            switch result {
-//            case .success(let response):
-//                print("success야", response)
-//            case .failure(let error):
-//                print("error야", error)
-//            }
-//        }
-    }
-
     @IBAction func pushAllowNotification(_ sender: UIButton) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
         vc.modalPresentationStyle = .fullScreen

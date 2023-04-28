@@ -92,6 +92,7 @@
                             <constraint firstItem="4SJ-68-6xM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="yof-Cd-uCh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="x2l-F3-lxN"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="progressBar" destination="4SJ-68-6xM" id="phj-Dg-cQn"/>
@@ -193,10 +194,10 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CL-jw-y2C" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="804" width="56" height="56"/>
+                                <rect key="frame" x="334" y="805" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="fUV-Xe-NSp"/>
-                                    <constraint firstAttribute="width" constant="56" id="wcs-gP-qAH"/>
+                                    <constraint firstAttribute="height" constant="55" id="fUV-Xe-NSp"/>
+                                    <constraint firstAttribute="width" constant="55" id="wcs-gP-qAH"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -280,10 +281,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-cw-2Qd" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="804" width="56" height="56"/>
+                                <rect key="frame" x="334" y="805" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="Fcb-SW-GFK"/>
-                                    <constraint firstAttribute="width" constant="56" id="Hmn-rt-19N"/>
+                                    <constraint firstAttribute="height" constant="55" id="Fcb-SW-GFK"/>
+                                    <constraint firstAttribute="width" constant="55" id="Hmn-rt-19N"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -291,10 +292,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-9O-Yip" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="804" width="56" height="56"/>
+                                <rect key="frame" x="25" y="805" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="n4M-Cz-eHR"/>
-                                    <constraint firstAttribute="width" constant="56" id="wbA-3V-mCN"/>
+                                    <constraint firstAttribute="height" constant="55" id="n4M-Cz-eHR"/>
+                                    <constraint firstAttribute="width" constant="55" id="wbA-3V-mCN"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -360,7 +361,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TDN-Ay-may">
-                                <rect key="frame" x="60" y="151" width="294" height="651"/>
+                                <rect key="frame" x="60" y="151" width="294" height="652"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1rC-Je-cfi">
                                     <size key="itemSize" width="107" height="116"/>
@@ -385,10 +386,10 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEk-gP-yD5" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="313" y="802" width="56" height="56"/>
+                                <rect key="frame" x="334" y="803" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="cFl-hN-27B"/>
-                                    <constraint firstAttribute="height" constant="56" id="lyT-SW-Si8"/>
+                                    <constraint firstAttribute="width" constant="55" id="cFl-hN-27B"/>
+                                    <constraint firstAttribute="height" constant="55" id="lyT-SW-Si8"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -396,10 +397,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-iR-uar" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="802" width="56" height="56"/>
+                                <rect key="frame" x="25" y="803" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="G2O-es-B7T"/>
-                                    <constraint firstAttribute="width" constant="56" id="JT8-wA-m6M"/>
+                                    <constraint firstAttribute="height" constant="55" id="G2O-es-B7T"/>
+                                    <constraint firstAttribute="width" constant="55" id="JT8-wA-m6M"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -412,6 +413,7 @@
                         <constraints>
                             <constraint firstItem="TDN-Ay-may" firstAttribute="top" secondItem="ges-hr-754" secondAttribute="bottom" constant="40" id="5X0-pV-K97"/>
                             <constraint firstItem="nA4-aI-Lzc" firstAttribute="centerX" secondItem="YeA-8t-n5D" secondAttribute="centerX" id="6Rc-Gj-LyA"/>
+                            <constraint firstItem="U1V-kQ-7i5" firstAttribute="trailing" secondItem="uEk-gP-yD5" secondAttribute="trailing" constant="25" id="7oR-bo-6GU"/>
                             <constraint firstItem="ges-hr-754" firstAttribute="top" secondItem="nA4-aI-Lzc" secondAttribute="bottom" constant="8" id="7zW-HY-TTj"/>
                             <constraint firstItem="ges-hr-754" firstAttribute="centerX" secondItem="nA4-aI-Lzc" secondAttribute="centerX" id="Bz1-NN-VJh"/>
                             <constraint firstItem="TDN-Ay-may" firstAttribute="leading" secondItem="YeA-8t-n5D" secondAttribute="leading" constant="60" id="Hff-mM-QnI"/>
@@ -422,7 +424,6 @@
                             <constraint firstItem="ges-hr-754" firstAttribute="width" secondItem="nA4-aI-Lzc" secondAttribute="width" id="hZ4-rD-iLh"/>
                             <constraint firstItem="uEk-gP-yD5" firstAttribute="top" secondItem="TDN-Ay-may" secondAttribute="bottom" id="ljF-wf-OzH"/>
                             <constraint firstAttribute="bottomMargin" secondItem="uEk-gP-yD5" secondAttribute="bottom" constant="36" id="m46-r6-wuc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uEk-gP-yD5" secondAttribute="trailing" constant="25" id="ut8-GN-C2Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zq0-Mm-Alm"/>
@@ -446,7 +447,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTG-fm-BmH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="803"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업을 알려주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWC-O7-SQM" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="116.66666666666669" y="60" width="181" height="27"/>
@@ -459,7 +460,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1B-DS-Igk">
-                                        <rect key="frame" x="60" y="117" width="294" height="685"/>
+                                        <rect key="frame" x="60" y="117" width="294" height="686"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="jobTableViewCell" rowHeight="55" id="cJU-cw-hLt" customClass="JobTableViewCell" customModule="tellingMe" customModuleProvider="target">
@@ -504,9 +505,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-ey-1wW" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="802" width="56" height="56"/>
+                                <rect key="frame" x="25" y="803" width="56" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="8Td-3L-IFb"/>
+                                    <constraint firstAttribute="height" constant="55" id="8Td-3L-IFb"/>
                                     <constraint firstAttribute="width" constant="56" id="dZj-oK-Sam"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -515,9 +516,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ecu-SZ-6ct" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="802" width="56" height="56"/>
+                                <rect key="frame" x="333" y="803" width="56" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="ALs-ud-uFR"/>
+                                    <constraint firstAttribute="height" constant="55" id="ALs-ud-uFR"/>
                                     <constraint firstAttribute="width" constant="56" id="ITp-0G-W18"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -600,9 +601,9 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-J4-fLA" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="804" width="56" height="56"/>
+                                <rect key="frame" x="333" y="805" width="56" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="CiR-Mj-M4K"/>
+                                    <constraint firstAttribute="height" constant="55" id="CiR-Mj-M4K"/>
                                     <constraint firstAttribute="width" constant="56" id="t6G-sv-hjm"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -611,9 +612,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sU5-RR-mK6" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="804" width="56" height="56"/>
+                                <rect key="frame" x="25" y="805" width="56" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="7bD-Uk-A0a"/>
+                                    <constraint firstAttribute="height" constant="55" id="7bD-Uk-A0a"/>
                                     <constraint firstAttribute="width" constant="56" id="au2-xU-BRh"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -776,10 +777,10 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zw-B9-ZXa" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="802" width="56" height="56"/>
+                                <rect key="frame" x="334" y="803" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="SAp-SH-WxG"/>
-                                    <constraint firstAttribute="height" constant="56" id="u5W-Zp-WVh"/>
+                                    <constraint firstAttribute="width" constant="55" id="SAp-SH-WxG"/>
+                                    <constraint firstAttribute="height" constant="55" id="u5W-Zp-WVh"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -787,10 +788,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6l-Qb-o8m" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="802" width="56" height="56"/>
+                                <rect key="frame" x="25" y="803" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="mee-50-Axj"/>
-                                    <constraint firstAttribute="width" constant="56" id="tZV-yH-RDg"/>
+                                    <constraint firstAttribute="height" constant="55" id="mee-50-Axj"/>
+                                    <constraint firstAttribute="width" constant="55" id="tZV-yH-RDg"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -862,11 +863,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snc-cT-7p7">
-                                <rect key="frame" x="294" y="802" width="95" height="56"/>
+                                <rect key="frame" x="294" y="803" width="95" height="55"/>
                                 <color key="backgroundColor" name="Primary25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="95" id="Non-9v-HQR"/>
-                                    <constraint firstAttribute="height" constant="56" id="P8A-9D-1kZ"/>
+                                    <constraint firstAttribute="height" constant="55" id="P8A-9D-1kZ"/>
                                 </constraints>
                                 <color key="tintColor" name="Logo"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -919,10 +920,10 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBU-Is-fi0" customClass="SecondayIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="802" width="56" height="56"/>
+                                <rect key="frame" x="25" y="803" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="baZ-Su-lZP"/>
-                                    <constraint firstAttribute="width" constant="56" id="etW-1q-NJ4"/>
+                                    <constraint firstAttribute="height" constant="55" id="baZ-Su-lZP"/>
+                                    <constraint firstAttribute="width" constant="55" id="etW-1q-NJ4"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
@@ -1014,14 +1015,20 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchUpInside" id="v5d-So-IlK"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-pm-2q7">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-pm-2q7">
                                 <rect key="frame" x="160" y="680" width="55" height="29"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="괜찮아요">
                                     <color key="titleColor" name="Gray5"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchUpInside" id="jNi-rK-NqS"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="DyC-1v-jkp">
                                 <rect key="frame" x="112.66666666666669" y="359" width="150" height="150"/>
