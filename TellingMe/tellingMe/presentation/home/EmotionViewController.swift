@@ -28,7 +28,7 @@ class EmotionViewController: UIViewController {
         okButton.isEnabled = false
         popView.setTopCornerRadius()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         view.backgroundColor = .clear
     }
@@ -37,7 +37,7 @@ class EmotionViewController: UIViewController {
         if sender.tag == 0 {
             self.dismiss(animated: true)
         } else {
-            
+
         }
     }
 }

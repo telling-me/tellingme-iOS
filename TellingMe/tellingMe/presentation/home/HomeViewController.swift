@@ -16,11 +16,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var subQuestionLabel: Body2Regular!
     @IBOutlet weak var questionLabel: Body1Regular!
-
+    @IBOutlet var animationViews: [UIImageView]!
     @IBOutlet var shadowViews: [UIImageView]!
+    @IBOutlet weak var rotateAnimationView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        animation()
     }
 
     func setView() {
@@ -35,6 +41,21 @@ class HomeViewController: UIViewController {
 
         for view in shadowViews {
             view.setShadow2()
+        }
+    }
+
+    func animation() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) {
+            let scale = CGAffineTransform(translationX: 0, y: 10)
+            self.animationViews[0].transform = scale
+            self.animationViews[1].transform = scale
+            self.animationViews[2].transform = scale
+            self.animationViews[3].transform = scale
+        }
+
+        UIView.animate(withDuration: 5, delay: 0, options: [.repeat, .curveLinear]) {
+            let scale = CGAffineTransform(rotationAngle: .pi / 2)
+            self.rotateAnimationView.transform = scale
         }
     }
 

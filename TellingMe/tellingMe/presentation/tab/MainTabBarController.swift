@@ -10,22 +10,23 @@ import UIKit
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        self.tabBar.layer.cornerRadius = 32
-        self.tabBar.layer.masksToBounds = true
         selectedIndex = 1
-        
-        // 로그인 되어 있는 경우
-//        let homeViewController = HomeViewController()
-//        let moreViewController = UIViewController()
-//        let viewController = UIViewController()
-//
-//        let navController = UINavigationController(rootViewController: homeViewController)
-//             let controllers = [moreViewController, homeViewController, viewController]
-//
-//             self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
-//
-//             self.selectedIndex = 1 // 처음 선택된 탭 설정
+
+        tabBar.layer.cornerRadius = 32
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+        let shadowView = UIView(frame: tabBar.frame)
+        shadowView.backgroundColor = .white
+        shadowView.layer.cornerRadius = 32
+        shadowView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        shadowView.layer.shadowRadius = 20
+        shadowView.layer.masksToBounds = false
+
+        // clipsToBounds 속성을 false로 설정합니다.
+        tabBar.clipsToBounds = false
+        tabBar.superview?.insertSubview(shadowView, belowSubview: tabBar)
     }
 
     override func viewDidLayoutSubviews() {

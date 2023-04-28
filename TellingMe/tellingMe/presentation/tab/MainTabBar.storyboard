@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="gkW-cV-Cwj">
             <objects>
                 <viewController id="eNV-9a-evL" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <viewLayoutGuide key="safeArea" id="WIq-Nc-EE3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="otI-v3-rJi"/>
+                    <tabBarItem key="tabBarItem" title="" id="otI-v3-rJi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDt-Wx-pgk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,12 +31,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="mainTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="51d-2a-K2X" customClass="MainTabBarController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="krp-w5-KU3"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyJ-ZU-qiT">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyJ-ZU-qiT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="Secondary800"/>
-                        <tabBarAppearance key="scrollEdgeAppearance"/>
+                        <color key="backgroundColor" name="Side100"/>
+                        <color key="barTintColor" name="Secondary600"/>
                     </tabBar>
                     <connections>
                         <segue destination="eNV-9a-evL" kind="relationship" relationship="viewControllers" id="nf6-cO-xK0"/>
@@ -76,8 +75,11 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Secondary800">
-            <color red="0.28200000524520874" green="0.41600000858306885" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Secondary600">
+            <color red="0.5220000147819519" green="0.60000002384185791" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Side100">
+            <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
