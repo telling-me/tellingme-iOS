@@ -12,5 +12,7 @@ struct QuestionRequest: Codable {
 }
 
 struct QuestionResponse: Codable {
-    
+    let date: [Int]
+    let title: String
+    let phrase: String
 }

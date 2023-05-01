@@ -40,7 +40,7 @@ class SecondayTextButton: UIButton {
     }
 
     func setHighlighted() {
-        self.setShadow(shadowRadius: 20, cornerRadius: 20)
+        self.setShadow(shadowRadius: 20)
     }
 
     func setNotHighlighted() {

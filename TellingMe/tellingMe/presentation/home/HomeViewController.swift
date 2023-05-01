@@ -24,15 +24,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setView()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         animation()
     }
 
     func setView() {
-        questionView.setShadow(shadowRadius: 20, cornerRadius: 28)
-        dayStackView.setShadow(shadowRadius: 20, cornerRadius: 8)
-        writeButton.setShadow(shadowRadius: 16, cornerRadius: 20)
+        questionView.setShadow(shadowRadius: 20)
+        dayStackView.setShadow(shadowRadius: 20)
+        writeButton.setShadow(shadowRadius: 16)
 
         questionLabel.textColor = UIColor(named: "Logo")
         subQuestionLabel.textColor = UIColor(named: "Gray5")
@@ -42,6 +42,8 @@ class HomeViewController: UIViewController {
         for view in shadowViews {
             view.setShadow2()
         }
+
+        getQuestion()
     }
 
     func animation() {

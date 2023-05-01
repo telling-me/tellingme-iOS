@@ -23,7 +23,7 @@ extension QuestionAPITarget: TargetType {
     var path: String {
         switch self {
         case .getTodayQuestion:
-            return "api/question"
+            return "api/question/"
         }
     }
 
@@ -51,8 +51,8 @@ extension QuestionAPITarget: TargetType {
 
 struct QuestionAPI: Networkable {
     typealias Target = QuestionAPITarget
-    
-    static func getTodayQuestion(request: QuestionRequest, completion: @escaping (Result<QuestionResponse?, Error>) -> Void) {
+
+    static func getTodayQuestion(completion: @escaping(Result<QuestionResponse?, Error>) -> Void) {
         makeProvider().request(.getTodayQuestion, dtoType: QuestionResponse.self, completion: completion)
     }
 }
