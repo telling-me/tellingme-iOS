@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
 //            view.setShadow(color: UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9), radius: 20)
 //        }
 //        loginView.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.08), radius: 20)
+        loginView.setTopCornerRadius()
+        loginView.setShadow(shadowRadius: 20)
     }
 
     func pushSignUp() {
