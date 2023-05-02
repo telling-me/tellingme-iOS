@@ -9,27 +9,29 @@ import Foundation
 
 extension AllowNotificationViewController {
     func sendSignUpData() {
-        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: SignUpData.shared.jobInfo, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: KeychainManager.shared.load(key: "socialLoginType") ?? "")
-        SignAPI.postSignUp(request: request) { result in
+        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else { return }
+        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: SignUpData.shared.jobInfo, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: loginType)
+        LoginAPI.postSignUp(request: request) { result in
             switch result {
-            case .success(let response):
-                print("success야", response)
-                
+            case .success:
+                self.login(type: loginType)
             case .failure(let error):
                 print("error야", error)
             }
         }
     }
 
-    func login() {
-        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else { return }
+    func login(type: String) {
         guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
-        SignAPI.postKakaoOauth(type: loginType, request: OauthRequest(socialId: socialId)) { result in
+        let request = OauthRequest(socialId: socialId)
+        LoginAPI.postKakaoOauth(type: type, request: request) { result in
             switch result {
-            case .success:
+            case .success(let response):
                 self.pushHome()
-            case .failure:
-                print("kakao 실패욤!")
+                KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+            case .failure(let error):
+                print("회원가입 다시", error)
             }
         }
     }

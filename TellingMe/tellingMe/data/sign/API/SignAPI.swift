@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-enum SignAPITarget {
+enum LoginAPITarget {
     case kakao(loginType: String, body: OauthRequest)
     case apple(token: String, loginType: String, body: OauthRequest)
     case signUp(SignUpRequest)
@@ -16,7 +16,7 @@ enum SignAPITarget {
     case jobInfo(JobInfoRequest)
 }
 
-extension SignAPITarget: TargetType {
+extension LoginAPITarget: TargetType {
     var task: Task {
         switch self {
         case .kakao(_, let body):
@@ -69,8 +69,8 @@ extension SignAPITarget: TargetType {
     }
 }
 
-struct SignAPI: Networkable {
-    typealias Target = SignAPITarget
+struct LoginAPI: Networkable {
+    typealias Target = LoginAPITarget
 
     static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
         makeProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)

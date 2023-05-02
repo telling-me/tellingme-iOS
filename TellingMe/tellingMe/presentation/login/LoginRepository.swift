@@ -44,7 +44,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
                 let request = OauthRequest(socialId: String(user_data.id!))
-                SignAPI.postKakaoOauth(type: "kakao", request: request) { result in
+                LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
                         KeychainManager.shared.save(response!.accessToken, key: "accessToken")
@@ -83,23 +83,25 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             if let identityToken = appleIDCredential.identityToken,
                 let tokenString = String(data: identityToken, encoding: .utf8) {
 
-                SignAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
+                LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
                         KeychainManager.shared.save(response!.accessToken, key: "accessToken")
                         KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                         self.pushHome()
                     case .failure(let error):
-                        print("error야", error)
-                        if let error = error as? OauthErrorResponse {
-                            self.pushSignUp()
+                        let error = error as? MoyaError
+                        if let responseData = error?.response?.data,
+                           let error = try? JSONDecoder().decode(OauthErrorResponse.self, from: responseData) {
                             KeychainManager.shared.save(error.socialId, key: "socialId")
                             KeychainManager.shared.save("apple", key: "socialLoginType")
+                            self.pushSignUp()
                         }
                     }
                 }
             }
 
+            // 언제 쓰이는거지?
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
             let password = passwordCredential.password

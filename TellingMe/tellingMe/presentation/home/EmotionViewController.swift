@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol EmotionDelegate: AnyObject {
+    func emotionViewDidDismiss()
+}
+
 class EmotionViewController: UIViewController {
     let viewModel = EmotionViewModel()
+    weak var delegate: EmotionDelegate?
     @IBOutlet weak var popView: UIView!
     @IBOutlet weak var label: Body2Regular!
     @IBOutlet weak var okButton: TeritaryTextButton!
@@ -17,7 +22,6 @@ class EmotionViewController: UIViewController {
         popView.frame.origin.y = popView.bounds.height
 
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: {
-            print("몬데")
             self.popView.frame.origin.y -= self.popView.bounds.height
         })
     }
@@ -37,7 +41,9 @@ class EmotionViewController: UIViewController {
         if sender.tag == 0 {
             self.dismiss(animated: true)
         } else {
-
+            self.dismiss(animated: true) {
+                    self.delegate?.emotionViewDidDismiss()
+            }
         }
     }
 }
