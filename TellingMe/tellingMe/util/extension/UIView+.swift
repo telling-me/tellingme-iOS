@@ -40,7 +40,7 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.masksToBounds = false
     }
-    
+
     func setTopCornerRadius() {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }

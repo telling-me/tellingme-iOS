@@ -72,22 +72,22 @@ extension LoginAPITarget: TargetType {
 struct LoginAPI: Networkable {
     typealias Target = LoginAPITarget
 
-    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
         makeProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
 
-    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
         makeProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
-    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, Error>) -> Void) {
+    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
         makeProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
     }
 
-    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, Error>) -> Void) {
+    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, APIError>) -> Void) {
         makeProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
 
-    static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, Error>) -> Void) {
+    static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
 }

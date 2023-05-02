@@ -20,8 +20,13 @@ extension HomeViewController {
                    let day = response?.date[2] {
                     self.dayLabel.text = "\(year)년 \(month)월 \(day)일"
                 }
-            case .failure:
-                print("error얌")
+            case .failure(let error):
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case let .other(otherError):
+                    print(otherError)
+                }
             }
         }
     }

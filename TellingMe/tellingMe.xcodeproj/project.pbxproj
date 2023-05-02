@@ -32,7 +32,7 @@
 		3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E829C82DFE00C7A5E9 /* TargetType+.swift */; };
 		3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076EA29C82E2F00C7A5E9 /* Encodable+.swift */; };
 		3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076F229C8335900C7A5E9 /* OauthDTO.swift */; };
-		3A5076F529C8352200C7A5E9 /* SignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076F429C8352200C7A5E9 /* SignAPI.swift */; };
+		3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076F429C8352200C7A5E9 /* LoginAPI.swift */; };
 		3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A50EEF429CCA63900A27504 /* SignUp.storyboard */; };
 		3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */; };
 		3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */; };
@@ -128,7 +128,7 @@
 		3A5076E829C82DFE00C7A5E9 /* TargetType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+.swift"; sourceTree = "<group>"; };
 		3A5076EA29C82E2F00C7A5E9 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		3A5076F229C8335900C7A5E9 /* OauthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthDTO.swift; sourceTree = "<group>"; };
-		3A5076F429C8352200C7A5E9 /* SignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAPI.swift; sourceTree = "<group>"; };
+		3A5076F429C8352200C7A5E9 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		3A50EEF429CCA63900A27504 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNameViewController.swift; sourceTree = "<group>"; };
 		3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBirthdayViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		3A00B74F29FBF1CF00285CA8 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				3A5076F429C8352200C7A5E9 /* SignAPI.swift */,
+				3A5076F429C8352200C7A5E9 /* LoginAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -777,7 +777,7 @@
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
-				3A5076F529C8352200C7A5E9 /* SignAPI.swift in Sources */,
+				3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,
 				3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */,

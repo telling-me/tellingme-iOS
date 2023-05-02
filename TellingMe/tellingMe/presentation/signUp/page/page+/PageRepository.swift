@@ -17,8 +17,12 @@ extension GetNameViewController {
                 let pageViewController = self.parent as? SignUpPageViewController
                 pageViewController?.nextPage()
             case .failure(let error):
-                guard let error = error as? ErrorData else { return }
-                self.showToast(message: error.message)
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case let .other(otherError):
+                    print(otherError)
+                }
             }
         }
     }
@@ -30,12 +34,15 @@ extension GetJobViewController {
         LoginAPI.postJobInfo(request: request) { result in
             switch result {
             case .success:
-                print("왜 두번 넘어가고 쥐룰?")
                 let pageViewController = self.parent as? SignUpPageViewController
                 pageViewController?.nextPage()
             case .failure(let error):
-                guard let error = error as? ErrorData else { return }
-                self.showToast(message: error.message)
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case let .other(otherError):
+                    print(otherError)
+                }
             }
         }
     }

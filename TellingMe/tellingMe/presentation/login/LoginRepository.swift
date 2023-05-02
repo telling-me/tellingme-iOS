@@ -51,14 +51,20 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                         self.pushHome()
                     case .failure(let error):
-                        let error = error as? MoyaError
-                        if let data = error?.response?.data {
-                            let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
-                            KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
-                            KeychainManager.shared.save("kakao", key: "socialLoginType")
-                            self.pushSignUp()
-                        } else {
-                            print("response data 실패")
+                        switch error {
+                        case let .errorData(errorData):
+                            print(errorData)
+                            // handle error data
+                        case let .other(otherError):
+                            let error = otherError as? MoyaError
+                            if let data = error?.response?.data {
+                                let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                                KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
+                                KeychainManager.shared.save("kakao", key: "socialLoginType")
+                                self.pushSignUp()
+                            } else {
+                                print("response data 실패")
+                            }
                         }
                     }
                 }
@@ -81,8 +87,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if let identityToken = appleIDCredential.identityToken,
-                let tokenString = String(data: identityToken, encoding: .utf8) {
-
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                KeychainManager.shared.save(tokenString, key: "appleAccessToken")
                 LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
@@ -90,12 +96,17 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                         self.pushHome()
                     case .failure(let error):
-                        let error = error as? MoyaError
-                        if let responseData = error?.response?.data,
-                           let error = try? JSONDecoder().decode(OauthErrorResponse.self, from: responseData) {
-                            KeychainManager.shared.save(error.socialId, key: "socialId")
-                            KeychainManager.shared.save("apple", key: "socialLoginType")
-                            self.pushSignUp()
+                        switch error {
+                        case let .errorData(errorData):
+                            self.showToast(message: errorData.message)
+                        case let .other(otherError):
+                            let error = otherError as? MoyaError
+                            if let responseData = error?.response?.data,
+                               let error = try? JSONDecoder().decode(OauthErrorResponse.self, from: responseData) {
+                                KeychainManager.shared.save(error.socialId, key: "socialId")
+                                KeychainManager.shared.save("apple", key: "socialLoginType")
+                                self.pushSignUp()
+                            }
                         }
                     }
                 }

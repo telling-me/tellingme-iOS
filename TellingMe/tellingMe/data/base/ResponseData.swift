@@ -8,6 +8,11 @@
 import Foundation
 import Moya
 
+enum APIError: Error {
+    case errorData(ErrorData)
+    case other(Error)
+}
+
 struct EmptyResponse: Decodable {
 }
 
@@ -15,13 +20,13 @@ struct Success<Data: Codable>: Codable {
     let data: Data
 }
 
-struct ErrorData: Codable, Error {
+struct ErrorData: Codable {
     let status: Int
     let code: String
     let message: String
 }
 
-enum APIError: Error {
-    case http(ErrorData)
-    case unknown(Error)
-}
+//enum APIError: Error {
+//    case http(ErrorData)
+//    case unknown(Error)
+//}
