@@ -13,7 +13,7 @@ extension UIView {
         shapes.frame = self.frame
         shapes.clipsToBounds = true
         self.addSubview(shapes)
-        
+
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [color1.cgColor, color2.cgColor]
         gradient.locations = [0.0, 1.0]

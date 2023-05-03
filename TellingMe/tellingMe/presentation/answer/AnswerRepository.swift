@@ -14,7 +14,6 @@ extension AnswerViewController {
             case .success(let response):
                 self.questionLabel.text = response?.title
                 self.subQuestionLabel.text = response?.phrase
-
                 if let year = response?.date[0],
                    let month = response?.date[1],
                    let day = response?.date[2] {

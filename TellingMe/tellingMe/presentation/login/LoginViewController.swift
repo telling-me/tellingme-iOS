@@ -26,6 +26,9 @@ class LoginViewController: UIViewController {
     func setUI() {
         loginView.setTopCornerRadius()
         loginView.setShadow(shadowRadius: 20)
+        for view in animationViews {
+            view.setShadow2()
+        }
     }
 
     func pushSignUp() {

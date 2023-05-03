@@ -494,7 +494,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iWC-O7-SQM" firstAttribute="centerX" secondItem="XTG-fm-BmH" secondAttribute="centerX" id="IHT-H4-VsT"/>
                                     <constraint firstItem="C1B-DS-Igk" firstAttribute="top" secondItem="iWC-O7-SQM" secondAttribute="bottom" constant="30" id="QMR-OI-8Sy"/>

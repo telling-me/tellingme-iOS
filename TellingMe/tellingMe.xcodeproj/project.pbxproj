@@ -261,9 +261,6 @@
 			children = (
 				3A157CF829CAFFA300D61AD3 /* Home.storyboard */,
 				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
-				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
-				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
-				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
 				3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */,
 			);
 			path = home;
@@ -413,6 +410,9 @@
 				3A9B415829FFDAE600D61D42 /* Answer.storyboard */,
 				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
 				3A82989B2A00F883001938B9 /* AnswerRepository.swift */,
+				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
+				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
+				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
 			);
 			path = answer;
 			sourceTree = "<group>";

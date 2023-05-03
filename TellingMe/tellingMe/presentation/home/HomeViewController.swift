@@ -81,15 +81,13 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
-        vc.delegate = self
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
+        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
             tabBarController.removeShadowView()
         }
-        self.present(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
