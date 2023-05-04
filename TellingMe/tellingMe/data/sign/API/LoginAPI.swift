@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-enum SignAPITarget {
+enum LoginAPITarget {
     case kakao(loginType: String, body: OauthRequest)
     case apple(token: String, loginType: String, body: OauthRequest)
     case signUp(SignUpRequest)
@@ -16,7 +16,7 @@ enum SignAPITarget {
     case jobInfo(JobInfoRequest)
 }
 
-extension SignAPITarget: TargetType {
+extension LoginAPITarget: TargetType {
     var task: Task {
         switch self {
         case .kakao(_, let body):
@@ -69,25 +69,25 @@ extension SignAPITarget: TargetType {
     }
 }
 
-struct SignAPI: Networkable {
-    typealias Target = SignAPITarget
+struct LoginAPI: Networkable {
+    typealias Target = LoginAPITarget
 
-    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
         makeProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
 
-    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, Error>) -> Void) {
+    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
         makeProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
     }
-    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, Error>) -> Void) {
+    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
         makeProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
     }
 
-    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, Error>) -> Void) {
+    static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, APIError>) -> Void) {
         makeProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
 
-    static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, Error>) -> Void) {
+    static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
 }

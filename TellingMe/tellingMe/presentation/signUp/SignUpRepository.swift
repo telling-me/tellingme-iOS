@@ -9,27 +9,60 @@ import Foundation
 
 extension AllowNotificationViewController {
     func sendSignUpData() {
-        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: SignUpData.shared.jobInfo, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: KeychainManager.shared.load(key: "socialLoginType") ?? "")
-        SignAPI.postSignUp(request: request) { result in
+        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else { return }
+        let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: SignUpData.shared.jobInfo, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate, mbti: SignUpData.shared.mbti, socialId: KeychainManager.shared.load(key: "socialId") ?? "", socialLoginType: loginType)
+        LoginAPI.postSignUp(request: request) { result in
             switch result {
-            case .success(let response):
-                print("success야", response)
-                
+            case .success:
+                self.login(type: loginType)
             case .failure(let error):
-                print("error야", error)
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case let .other(otherError):
+                    print(otherError)
+                }
             }
         }
     }
 
-    func login() {
-        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else { return }
-        guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
-        SignAPI.postKakaoOauth(type: loginType, request: OauthRequest(socialId: socialId)) { result in
-            switch result {
-            case .success:
-                self.pushHome()
-            case .failure:
-                print("kakao 실패욤!")
+    func login(type: String) {
+        print("type\(type)")
+        if type == "kakao" {
+            guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
+            let request = OauthRequest(socialId: socialId)
+            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
+                switch result {
+                case .success(let response):
+                    self.pushHome()
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                case .failure(let error):
+                    switch error {
+                    case let .errorData(errorData):
+                        self.showToast(message: errorData.message)
+                    case let .other(otherError):
+                        print(otherError)
+                    }
+                }
+            }
+        } else if type == "apple" {
+            guard let token = KeychainManager.shared.load(key: "appleAccessToken") else { return }
+            let request = OauthRequest(socialId: "")
+            LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
+                switch result {
+                case .success(let response):
+                    self.pushHome()
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                case .failure(let error):
+                    switch error {
+                    case let .errorData(errorData):
+                        self.showToast(message: errorData.message)
+                    case let .other(otherError):
+                        print(otherError)
+                    }
+                }
             }
         }
     }

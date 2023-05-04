@@ -52,7 +52,7 @@ extension QuestionAPITarget: TargetType {
 struct QuestionAPI: Networkable {
     typealias Target = QuestionAPITarget
 
-    static func getTodayQuestion(completion: @escaping(Result<QuestionResponse?, Error>) -> Void) {
+    static func getTodayQuestion(completion: @escaping(Result<QuestionResponse?, APIError>) -> Void) {
         makeProvider().request(.getTodayQuestion, dtoType: QuestionResponse.self, completion: completion)
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
     @IBOutlet weak var dayStackView: UIView!
     @IBOutlet weak var dayStackLabel: CaptionLabelBold!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!
@@ -25,8 +24,28 @@ class HomeViewController: UIViewController {
         setView()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        if let tabBarController = self.tabBarController as? MainTabBarController {
+            tabBarController.tabBar.isHidden = false
+            tabBarController.addShadowView()
+        }
         animation()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        animationViews.forEach { $0.transform = .identity }
+        rotateAnimationView.transform = .identity
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.animationViews[0].stopAnimating()
+        self.animationViews[1].stopAnimating()
+        self.animationViews[2].stopAnimating()
+        self.animationViews[3].stopAnimating()
+        for animationView in animationViews {
+            animationView.layer.removeAllAnimations()
+        }
     }
 
     func setView() {
@@ -62,11 +81,20 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
+        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
+        if let tabBarController = self.tabBarController as? MainTabBarController {
+            tabBarController.tabBar.isHidden = true
+            tabBarController.removeShadowView()
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
-
-        self.present(vc, animated: false)
+extension HomeViewController: EmotionDelegate {
+    func emotionViewDidDismiss() {
+        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "answer") as? AnswerViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

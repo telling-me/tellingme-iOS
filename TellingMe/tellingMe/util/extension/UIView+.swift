@@ -13,7 +13,7 @@ extension UIView {
         shapes.frame = self.frame
         shapes.clipsToBounds = true
         self.addSubview(shapes)
-        
+
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [color1.cgColor, color2.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -40,7 +40,7 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.masksToBounds = false
     }
-    
+
     func setTopCornerRadius() {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }

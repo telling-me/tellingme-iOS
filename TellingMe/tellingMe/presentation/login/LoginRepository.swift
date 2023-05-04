@@ -44,21 +44,27 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
                 let request = OauthRequest(socialId: String(user_data.id!))
-                SignAPI.postKakaoOauth(type: "kakao", request: request) { result in
+                LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
                         KeychainManager.shared.save(response!.accessToken, key: "accessToken")
                         KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                         self.pushHome()
                     case .failure(let error):
-                        let error = error as? MoyaError
-                        if let data = error?.response?.data {
-                            let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
-                            KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
-                            KeychainManager.shared.save("kakao", key: "socialLoginType")
-                            self.pushSignUp()
-                        } else {
-                            print("response data 실패")
+                        switch error {
+                        case let .errorData(errorData):
+                            print(errorData)
+                            // handle error data
+                        case let .other(otherError):
+                            let error = otherError as? MoyaError
+                            if let data = error?.response?.data {
+                                let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                                KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
+                                KeychainManager.shared.save("kakao", key: "socialLoginType")
+                                self.pushSignUp()
+                            } else {
+                                print("response data 실패")
+                            }
                         }
                     }
                 }
@@ -81,25 +87,32 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if let identityToken = appleIDCredential.identityToken,
-                let tokenString = String(data: identityToken, encoding: .utf8) {
-
-                SignAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                KeychainManager.shared.save(tokenString, key: "appleAccessToken")
+                LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
                         KeychainManager.shared.save(response!.accessToken, key: "accessToken")
                         KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                         self.pushHome()
                     case .failure(let error):
-                        print("error야", error)
-                        if let error = error as? OauthErrorResponse {
-                            self.pushSignUp()
-                            KeychainManager.shared.save(error.socialId, key: "socialId")
-                            KeychainManager.shared.save("apple", key: "socialLoginType")
+                        switch error {
+                        case let .errorData(errorData):
+                            self.showToast(message: errorData.message)
+                        case let .other(otherError):
+                            let error = otherError as? MoyaError
+                            if let responseData = error?.response?.data,
+                               let error = try? JSONDecoder().decode(OauthErrorResponse.self, from: responseData) {
+                                KeychainManager.shared.save(error.socialId, key: "socialId")
+                                KeychainManager.shared.save("apple", key: "socialLoginType")
+                                self.pushSignUp()
+                            }
                         }
                     }
                 }
             }
 
+            // 언제 쓰이는거지?
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
             let password = passwordCredential.password

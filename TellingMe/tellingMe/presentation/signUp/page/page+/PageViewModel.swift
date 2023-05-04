@@ -50,7 +50,7 @@ class GetJobViewModel {
         let imgName: String
     }
 
-    let jobs: [Job] = [Job(title: "고등학생", imgName: "HighSchool"), Job(title: "대학(원)생", imgName: "University"), Job(title: "취업준비생", imgName: ""), Job(title: "직장인", imgName: "Worker"), Job(title: "주부", imgName: ""), Job(title: "기타", imgName: "Heart")]
+    let jobs: [Job] = [Job(title: "고등학생", imgName: "HighSchool"), Job(title: "대학(원)생", imgName: "University"), Job(title: "취업준비생", imgName: "Jobseeker"), Job(title: "직장인", imgName: "Worker"), Job(title: "주부", imgName: "Housewife"), Job(title: "기타", imgName: "Heart")]
     var selecteItem: Int? = nil
     let jobsCount: Int?
     let input: UITextField = {

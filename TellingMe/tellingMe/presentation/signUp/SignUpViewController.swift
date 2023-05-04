@@ -44,7 +44,7 @@ extension SignUpViewController {
     public func setSKipButtonUnhidden() {
         skipButton.isHidden = false
     }
-    
+
     public func pushtoNotification() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
         vc.modalPresentationStyle = .fullScreen
