@@ -960,7 +960,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDF-hV-NkF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2461" y="1513"/>
+            <point key="canvasLocation" x="2460.8000000000002" y="1512.5615763546798"/>
         </scene>
         <!--Allow Notification View Controller-->
         <scene sceneID="X5V-FM-Wej">
@@ -1152,6 +1152,9 @@
         </designable>
         <designable name="sU5-RR-mK6">
             <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="u9m-6p-mtu">
+            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
         </designable>
         <designable name="uEk-gP-yD5">
             <size key="intrinsicContentSize" width="30" height="30"/>

@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    let viewModel = HomeViewModel()
+
     @IBOutlet weak var dayStackView: UIView!
     @IBOutlet weak var dayStackLabel: CaptionLabelBold!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!
@@ -27,7 +29,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = false
-            tabBarController.addShadowView()
+//            tabBarController.addShadowView()
         }
         animation()
     }
@@ -58,6 +60,7 @@ class HomeViewController: UIViewController {
         dayLabel.textColor = UIColor(named: "Side500")
         dayStackLabel.textColor = UIColor(named: "Logo")
 
+        dayLabel.text = viewModel.today
         for view in shadowViews {
             view.setShadow2()
         }
@@ -85,16 +88,8 @@ class HomeViewController: UIViewController {
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
-            tabBarController.removeShadowView()
+//            tabBarController.removeShadowView()
         }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension HomeViewController: EmotionDelegate {
-    func emotionViewDidDismiss() {
-        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "answer") as? AnswerViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

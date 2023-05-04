@@ -23,16 +23,17 @@ class GetJobViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.offKeyboard()
     }
 
     func offKeyboard() {
-        guard let text = viewModel.input.text else { nextButton.isEnabled = false
+        guard let text = viewModel.input.text else {
+            nextButton.isEnabled = false
             return
         }
-        if text.count <= 1 {
+        if text.count < 1 {
             nextButton.isEnabled = false
         } else {
             nextButton.isEnabled = true
@@ -41,6 +42,7 @@ class GetJobViewController: UIViewController {
     }
 
     func setDisabledTextField() {
+        viewModel.input.text = nil
         viewModel.input.removeFromSuperview()
     }
 
@@ -113,6 +115,7 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == (viewModel.jobsCount ?? 0) - 1 {
+            self.nextButton.isEnabled = false
             guard let cell = tableView.cellForRow(at: indexPath) as? JobTableViewCell else { return }
             UIView.animate(withDuration: 0.2, animations: {
                 cell.frame.size = CGSize(width: cell.frame.width, height: 114)
@@ -138,6 +141,8 @@ extension GetJobViewController: UITextFieldDelegate {
         guard let text = textField.text else { return false }
         if text.count > 0 {
             self.nextButton.isEnabled = true
+        } else {
+            self.nextButton.isEnabled = false
         }
         return true
     }
@@ -146,7 +151,7 @@ extension GetJobViewController: UITextFieldDelegate {
         self.offKeyboard()
         return true
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
          let indexPath = IndexPath(row: 0, section: 0)
          tableView.scrollToRow(at: indexPath, at: .top, animated: true)

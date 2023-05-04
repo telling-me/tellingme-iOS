@@ -12,14 +12,8 @@ extension HomeViewController {
         QuestionAPI.getTodayQuestion { result in
             switch result {
             case .success(let response):
-                self.questionLabel.text = response?.title
-                self.subQuestionLabel.text = response?.phrase
-                print("response.title", response?.title)
-                if let year = response?.date[0],
-                   let month = response?.date[1],
-                   let day = response?.date[2] {
-                    self.dayLabel.text = "\(year)년 \(month)월 \(day)일"
-                }
+                self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
+                self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
             case .failure(let error):
                 switch error {
                 case let .errorData(errorData):
@@ -29,5 +23,9 @@ extension HomeViewController {
                 }
             }
         }
+    }
+    
+    func getStack() {
+        
     }
 }

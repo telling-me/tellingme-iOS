@@ -17,9 +17,10 @@ class AnswerViewController: UIViewController {
         guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
+        vc.delegate = self
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
-            tabBarController.removeShadowView()
+//            tabBarController.removeShadowView()
         }
         self.present(vc, animated: false)
     }
@@ -39,8 +40,14 @@ class AnswerViewController: UIViewController {
         vc.modalTransitionStyle = .coverVertical
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
-            tabBarController.removeShadowView()
+//            tabBarController.removeShadowView()
         }
         self.present(vc, animated: false)
+    }
+}
+
+extension AnswerViewController: EmotionDelegate {
+    func emotionViewCancel() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
