@@ -39,6 +39,14 @@
 		3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */; };
 		3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */; };
 		3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51FC2329F990A70090BD1B /* HeaderView.swift */; };
+		3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7121342A02C45500A02054 /* AnswerList.storyboard */; };
+		3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */; };
+		3A7121392A03902800A02054 /* AnswerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121382A03902800A02054 /* AnswerListViewModel.swift */; };
+		3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71213A2A039A0200A02054 /* AnswerListViewController.swift */; };
+		3A71213D2A039FD400A02054 /* AnswerListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71213C2A039FD400A02054 /* AnswerListRepository.swift */; };
+		3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121412A03A86B00A02054 /* AnswerListDTO.swift */; };
+		3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121432A03A9D300A02054 /* AnswerAPI.swift */; };
+		3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121462A03E2C400A02054 /* HomeViewModel.swift */; };
 		3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */; };
 		3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */; };
 		3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7570C229F16F4900D24116 /* SecondayIconButton.swift */; };
@@ -135,6 +143,14 @@
 		3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderViewController.swift; sourceTree = "<group>"; };
 		3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		3A51FC2329F990A70090BD1B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3A7121342A02C45500A02054 /* AnswerList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerList.storyboard; sourceTree = "<group>"; };
+		3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListTableViewCell.swift; sourceTree = "<group>"; };
+		3A7121382A03902800A02054 /* AnswerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListViewModel.swift; sourceTree = "<group>"; };
+		3A71213A2A039A0200A02054 /* AnswerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListViewController.swift; sourceTree = "<group>"; };
+		3A71213C2A039FD400A02054 /* AnswerListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListRepository.swift; sourceTree = "<group>"; };
+		3A7121412A03A86B00A02054 /* AnswerListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListDTO.swift; sourceTree = "<group>"; };
+		3A7121432A03A9D300A02054 /* AnswerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerAPI.swift; sourceTree = "<group>"; };
+		3A7121462A03E2C400A02054 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorToast.swift; sourceTree = "<group>"; };
 		3A7570C029F1589E00D24116 /* AllowNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationViewController.swift; sourceTree = "<group>"; };
 		3A7570C229F16F4900D24116 /* SecondayIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondayIconButton.swift; sourceTree = "<group>"; };
@@ -262,6 +278,7 @@
 				3A157CF829CAFFA300D61AD3 /* Home.storyboard */,
 				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
 				3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */,
+				3A7121462A03E2C400A02054 /* HomeViewModel.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -308,6 +325,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3A7121332A02C43700A02054 /* answerList */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3A409B3C29E050CD00A05B22 /* login */,
 				3A409B3B29E050B100A05B22 /* signUp */,
@@ -320,6 +338,7 @@
 		3A2A502F29B87C46002FE5E4 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				3A71213E2A03A84F00A02054 /* answer */,
 				3A00B74D29FBF1A400285CA8 /* question */,
 				3AC0BA6229EF0F0000888868 /* base */,
 				3A5076EC29C82FE800C7A5E9 /* sign */,
@@ -415,6 +434,43 @@
 				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
 			);
 			path = answer;
+			sourceTree = "<group>";
+		};
+		3A7121332A02C43700A02054 /* answerList */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121342A02C45500A02054 /* AnswerList.storyboard */,
+				3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */,
+				3A7121382A03902800A02054 /* AnswerListViewModel.swift */,
+				3A71213A2A039A0200A02054 /* AnswerListViewController.swift */,
+				3A71213C2A039FD400A02054 /* AnswerListRepository.swift */,
+			);
+			path = answerList;
+			sourceTree = "<group>";
+		};
+		3A71213E2A03A84F00A02054 /* answer */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121402A03A86200A02054 /* API */,
+				3A71213F2A03A85C00A02054 /* DTO */,
+			);
+			path = answer;
+			sourceTree = "<group>";
+		};
+		3A71213F2A03A85C00A02054 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121412A03A86B00A02054 /* AnswerListDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		3A7121402A03A86200A02054 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121432A03A9D300A02054 /* AnswerAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		3A775D0429C1D96800FCD3BC /* extension */ = {
@@ -658,6 +714,7 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A8298932A00F1B5001938B9 /* 114.png in Resources */,
+				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3A8298992A00F1B5001938B9 /* 40.png in Resources */,
@@ -744,14 +801,17 @@
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
+				3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
+				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
+				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
@@ -767,12 +827,14 @@
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
 				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
+				3A7121392A03902800A02054 /* AnswerListViewModel.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
 				3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */,
 				3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */,
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
+				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
@@ -783,6 +845,7 @@
 				3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
+				3A71213D2A039FD400A02054 /* AnswerListRepository.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
 				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
 				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
@@ -802,6 +865,7 @@
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
+				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
 				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
@@ -957,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -987,7 +1051,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

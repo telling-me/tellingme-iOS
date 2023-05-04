@@ -66,4 +66,33 @@ extension MoyaProvider {
             }
         }
     }
+    
+    func listRequest<T: Codable>(
+        _ target: Target,
+        dtoType: T.Type,
+        completion: @escaping (Result<[T]?, APIError>) -> Void
+    ) {
+        self.request(target) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    _ = try response.filterSuccessfulStatusCodes()
+                    if response.data.isEmpty {
+                        completion(.success(nil))
+                    } else {
+                        if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
+                            completion(.failure(APIError.errorData(errorResponse)))
+                        } else {
+                            let data = try JSONDecoder().decode([T].self, from: response.data)
+                            completion(.success(data))
+                        }
+                    }
+                } catch{
+                    completion(.failure(APIError.other(error)))
+                }
+            case let .failure(error):
+                completion(.failure(APIError.other(error)))
+            }
+        }
+    }
 }

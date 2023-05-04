@@ -27,12 +27,12 @@ class GetBirthdayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        yearButton.setSmallLayout()
-        monthButton.setSmallLayout()
-        dayButton.setSmallLayout()
-        yearButton.setTitle(text: "년")
-        monthButton.setTitle(text: "월")
-        dayButton.setTitle(text: "일")
+        yearButton.setMediumLayout()
+        monthButton.setMediumLayout()
+        dayButton.setMediumLayout()
+        yearButton.setTitle(text: "년", isSmall: false)
+        monthButton.setTitle(text: "월", isSmall: false)
+        dayButton.setTitle(text: "일", isSmall: false)
         prevButton.setImage(image: "ArrowLeft")
         nextButton.isEnabled = false
         nextButton.setImage(image: "ArrowRight")
@@ -156,13 +156,13 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
         tableView.isHidden = true
         if tableView == yearTableView {
-            yearButton.setTitle(text: cell.getCell())
+            yearButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.year = cell.getCell()
         } else if tableView == monthTableView {
-            monthButton.setTitle(text: cell.getCell())
+            monthButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.month = cell.getCell()
         } else {
-            dayButton.setTitle(text: cell.getCell())
+            dayButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.day = cell.getCell()
             nextButton.isEnabled = true
         }

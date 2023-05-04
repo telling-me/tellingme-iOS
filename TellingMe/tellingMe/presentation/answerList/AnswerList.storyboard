@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZY8-ne-Udg">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hL0-UD-OO1">
+            <objects>
+                <navigationController storyboardIdentifier="answerListNavigation" navigationBarHidden="YES" id="ZY8-ne-Udg" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XQN-sD-MjS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="giM-6O-aF4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NzI-1M-OOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662" y="-18"/>
+        </scene>
+        <!--Answer List View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AnswerListViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-TU-euW" customClass="HeaderView" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="66"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="SpU-B6-ctK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-uk-1b3">
+                                <rect key="frame" x="0.0" y="125" width="393" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIp-Sm-TfA" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="25" y="8" width="111" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="111" id="8Zx-FJ-gM7"/>
+                                            <constraint firstAttribute="height" constant="40" id="NLy-la-28b"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsN-J4-TIF" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="144" y="8" width="94" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="94" id="DDI-Dq-Qvz"/>
+                                            <constraint firstAttribute="height" constant="40" id="TsO-R2-4vP"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="Side100"/>
+                                <constraints>
+                                    <constraint firstItem="DIp-Sm-TfA" firstAttribute="top" secondItem="sOo-uk-1b3" secondAttribute="top" constant="8" id="AbH-hx-bBv"/>
+                                    <constraint firstItem="DIp-Sm-TfA" firstAttribute="leading" secondItem="sOo-uk-1b3" secondAttribute="leading" constant="25" id="Cic-Rc-wfU"/>
+                                    <constraint firstItem="EsN-J4-TIF" firstAttribute="top" secondItem="DIp-Sm-TfA" secondAttribute="top" id="cFy-oX-pS2"/>
+                                    <constraint firstItem="EsN-J4-TIF" firstAttribute="leading" secondItem="DIp-Sm-TfA" secondAttribute="trailing" constant="8" id="iHz-6d-zZQ"/>
+                                    <constraint firstAttribute="height" constant="60" id="trR-WK-Jtu"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-oj-Gh8">
+                                <rect key="frame" x="0.0" y="185" width="393" height="584"/>
+                                <color key="backgroundColor" name="Side100"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="answerListTableViewCell" id="8Ne-0e-qCn" customClass="AnswerListTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Ne-0e-qCn" id="Vzz-ye-AIl">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="Qq4-TF-6ym"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="y1Q-Un-ZaK"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="Side100"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sOo-uk-1b3" secondAttribute="trailing" id="4zn-3l-Q6r"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oxa-oj-Gh8" secondAttribute="bottom" id="6Of-W0-Hjd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4yc-TU-euW" secondAttribute="trailing" id="9d7-ju-WuW"/>
+                            <constraint firstItem="sOo-uk-1b3" firstAttribute="top" secondItem="4yc-TU-euW" secondAttribute="bottom" id="Dqa-0Z-fKZ"/>
+                            <constraint firstItem="4yc-TU-euW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GhQ-NU-QK0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oxa-oj-Gh8" secondAttribute="trailing" id="VEJ-OY-oCL"/>
+                            <constraint firstItem="sOo-uk-1b3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WKd-3m-RZx"/>
+                            <constraint firstItem="Oxa-oj-Gh8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gK8-c5-1z1"/>
+                            <constraint firstItem="4yc-TU-euW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hlS-gy-nxo"/>
+                            <constraint firstItem="Oxa-oj-Gh8" firstAttribute="top" secondItem="sOo-uk-1b3" secondAttribute="bottom" id="qE8-xa-x4E"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="MyAnswers" selectedImage="MyAnswers_selected" id="AgI-it-Pgx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="ONg-Xo-6Q0"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="monthButton" destination="EsN-J4-TIF" id="kVg-j4-snf"/>
+                        <outlet property="tableView" destination="Oxa-oj-Gh8" id="AfI-ND-WM0"/>
+                        <outlet property="yearButton" destination="DIp-Sm-TfA" id="VDJ-wH-YTI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="-28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MyAnswers" width="25" height="25"/>
+        <image name="MyAnswers_selected" width="81" height="78"/>
+        <namedColor name="Side100">
+            <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -14,8 +14,9 @@
         <!--Navigation Controller-->
         <scene sceneID="cjr-r8-cbg">
             <objects>
-                <navigationController storyboardIdentifier="homeNavigation" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="MhK-C2-ZIR" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="homeNavigation" navigationBarHidden="YES" id="MhK-C2-ZIR" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xbV-Qe-PV6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

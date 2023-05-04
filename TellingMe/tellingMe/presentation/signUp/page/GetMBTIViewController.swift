@@ -18,7 +18,7 @@ class GetMBTIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mbtiButton.setLayout()
-        mbtiButton.setTitle(text: "mbti 선택")
+        mbtiButton.setTitle(text: "mbti 선택", isSmall: false)
         prevButton.setImage(image: "ArrowLeft")
         setAction()
     }
@@ -74,7 +74,7 @@ extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
         tableView.isHidden = true
-        mbtiButton.setTitle(text: cell.getCell())
+        mbtiButton.setTitle(text: cell.getCell(), isSmall: false)
         viewModel.myMbti = cell.getCell()
         completeButton.isEnabled = true
     }

@@ -22,6 +22,12 @@ class DropDownButton: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    let smallLabel: Body2Regular = {
+        let label = Body2Regular()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,11 +41,11 @@ class DropDownButton: UIView {
 
     func initializeView() {
         self.layer.backgroundColor = UIColor(named: "Side200")?.cgColor
-        addSubview(label)
         addSubview(imageView)
     }
 
     func setLayout() {
+        addSubview(label)
         label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
         label.heightAnchor.constraint(equalToConstant: 24).isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -52,7 +58,8 @@ class DropDownButton: UIView {
         self.layer.cornerRadius = 18
     }
 
-    func setSmallLayout() {
+    func setMediumLayout() {
+        addSubview(label)
         label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         label.heightAnchor.constraint(equalToConstant: 24).isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -66,8 +73,27 @@ class DropDownButton: UIView {
         self.layer.cornerRadius = 18
     }
 
-    func setTitle(text: String) {
-        label.text = text
+    func setSmallLayout() {
+        addSubview(smallLabel)
+        smallLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        smallLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        smallLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        smallLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -8).isActive = true
+
+        imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+
+        self.layer.cornerRadius = 16
+    }
+
+    func setTitle(text: String, isSmall: Bool) {
+        if isSmall {
+            smallLabel.text = text
+        } else {
+            label.text = text
+        }
     }
 
     func setOpen() {

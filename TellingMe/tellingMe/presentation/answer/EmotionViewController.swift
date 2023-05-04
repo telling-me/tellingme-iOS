@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EmotionDelegate: AnyObject {
-    func emotionViewDidDismiss()
+    func emotionViewCancel()
 }
 
 class EmotionViewController: UIViewController {
@@ -40,9 +40,10 @@ class EmotionViewController: UIViewController {
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
             self.dismiss(animated: true)
+            self.delegate?.emotionViewCancel()
         } else {
             self.dismiss(animated: true) {
-                    self.delegate?.emotionViewDidDismiss()
+
             }
         }
     }

@@ -10,42 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="gkW-cV-Cwj">
+        <!--answerListNavigation-->
+        <scene sceneID="Ye2-Hj-bWj">
             <objects>
-                <viewController id="eNV-9a-evL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DZr-WU-JdZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="WIq-Nc-EE3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" id="otI-v3-rJi"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qDt-Wx-pgk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="AnswerList" referencedIdentifier="answerListNavigation" id="XEG-ec-aeh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3CK-iZ-FLa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKA-L6-zU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="-572"/>
+            <point key="canvasLocation" x="434" y="-316"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="t7f-ga-12W">
             <objects>
                 <tabBarController storyboardIdentifier="mainTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="51d-2a-K2X" customClass="MainTabBarController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="krp-w5-KU3"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyJ-ZU-qiT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="Side100"/>
-                        <color key="barTintColor" name="Secondary600"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eNV-9a-evL" kind="relationship" relationship="viewControllers" id="nf6-cO-xK0"/>
-                        <segue destination="l6u-kq-dNn" kind="relationship" relationship="viewControllers" id="3i9-RS-0Ek"/>
-                        <segue destination="PWJ-zV-joo" kind="relationship" relationship="viewControllers" id="wci-FH-3KM"/>
+                        <segue destination="XEG-ec-aeh" kind="relationship" relationship="viewControllers" id="GRO-A0-sB8"/>
+                        <segue destination="l6u-kq-dNn" kind="relationship" relationship="viewControllers" id="YMg-yL-e6K"/>
+                        <segue destination="PWJ-zV-joo" kind="relationship" relationship="viewControllers" id="bN0-5P-chb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tul-RZ-bHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-389" y="-269"/>
+            <point key="canvasLocation" x="-401" y="-109"/>
         </scene>
         <!--homeNavigation-->
         <scene sceneID="g2N-1M-7GV">
@@ -75,9 +69,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Secondary600">
-            <color red="0.5220000147819519" green="0.60000002384185791" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
