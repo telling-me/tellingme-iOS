@@ -10,6 +10,7 @@ import Moya
 
 enum QuestionAPITarget {
     case getTodayQuestion
+    case getStack
 }
 
 extension QuestionAPITarget: TargetType {
@@ -17,12 +18,16 @@ extension QuestionAPITarget: TargetType {
         switch self {
         case .getTodayQuestion:
             return .requestPlain
+        case .getStack:
+            return .requestPlain
         }
     }
 
     var path: String {
         switch self {
         case .getTodayQuestion:
+            return "api/question/"
+        case .getStack:
             return "api/question/"
         }
     }

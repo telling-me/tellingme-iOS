@@ -14,6 +14,7 @@
         <scene sceneID="hL0-UD-OO1">
             <objects>
                 <navigationController storyboardIdentifier="answerListNavigation" navigationBarHidden="YES" id="ZY8-ne-Udg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="MyAnswers" selectedImage="MyAnswers_selected" id="T3Q-Yc-UoU"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XQN-sD-MjS">
@@ -30,7 +31,7 @@
         <!--Answer List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AnswerListViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="AnswerListViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,6 +100,58 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="y1Q-Un-ZaK"/>
                                 </connections>
                             </tableView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-h4-miY">
+                                <rect key="frame" x="144" y="181" width="94" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="cD0-X5-8aT"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dropDownTableViewCell" id="Kfs-4l-Y2Q" customClass="DropDownTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="94" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kfs-4l-Y2Q" id="DxS-1w-kma">
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="4ee-QX-AFm"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="5vG-gy-k5S"/>
+                                </connections>
+                            </tableView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GgT-P6-PVh">
+                                <rect key="frame" x="25" y="181" width="111" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="xSO-1Z-8a6"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dropDownTableViewCell" id="DYL-Am-u6l" customClass="DropDownTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="111" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DYL-Am-u6l" id="aJA-Iw-Vqz">
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="Any-Ti-DeN"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="sre-Oz-cSs"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Side100"/>
@@ -108,28 +161,35 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4yc-TU-euW" secondAttribute="trailing" id="9d7-ju-WuW"/>
                             <constraint firstItem="sOo-uk-1b3" firstAttribute="top" secondItem="4yc-TU-euW" secondAttribute="bottom" id="Dqa-0Z-fKZ"/>
                             <constraint firstItem="4yc-TU-euW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GhQ-NU-QK0"/>
+                            <constraint firstItem="GgT-P6-PVh" firstAttribute="leading" secondItem="DIp-Sm-TfA" secondAttribute="leading" id="Hrs-jR-6Jg"/>
+                            <constraint firstItem="5ap-h4-miY" firstAttribute="top" secondItem="EsN-J4-TIF" secondAttribute="bottom" constant="8" id="SuP-jj-Eph"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oxa-oj-Gh8" secondAttribute="trailing" id="VEJ-OY-oCL"/>
                             <constraint firstItem="sOo-uk-1b3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WKd-3m-RZx"/>
+                            <constraint firstItem="5ap-h4-miY" firstAttribute="leading" secondItem="EsN-J4-TIF" secondAttribute="leading" id="Ws1-6r-90a"/>
+                            <constraint firstItem="5ap-h4-miY" firstAttribute="trailing" secondItem="EsN-J4-TIF" secondAttribute="trailing" id="bJX-tD-poc"/>
                             <constraint firstItem="Oxa-oj-Gh8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gK8-c5-1z1"/>
                             <constraint firstItem="4yc-TU-euW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hlS-gy-nxo"/>
+                            <constraint firstItem="GgT-P6-PVh" firstAttribute="trailing" secondItem="DIp-Sm-TfA" secondAttribute="trailing" id="mO4-KZ-2ac"/>
+                            <constraint firstItem="GgT-P6-PVh" firstAttribute="top" secondItem="DIp-Sm-TfA" secondAttribute="bottom" constant="8" id="mOM-sA-HLg"/>
                             <constraint firstItem="Oxa-oj-Gh8" firstAttribute="top" secondItem="sOo-uk-1b3" secondAttribute="bottom" id="qE8-xa-x4E"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="MyAnswers" selectedImage="MyAnswers_selected" id="AgI-it-Pgx">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="ONg-Xo-6Q0"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="monthButton" destination="EsN-J4-TIF" id="kVg-j4-snf"/>
+                        <outlet property="monthHeight" destination="cD0-X5-8aT" id="kJP-fJ-9jR"/>
+                        <outlet property="monthTableView" destination="5ap-h4-miY" id="ezM-uR-0ml"/>
                         <outlet property="tableView" destination="Oxa-oj-Gh8" id="AfI-ND-WM0"/>
                         <outlet property="yearButton" destination="DIp-Sm-TfA" id="VDJ-wH-YTI"/>
+                        <outlet property="yearHeight" destination="xSO-1Z-8a6" id="g4a-tv-1Wb"/>
+                        <outlet property="yearTableView" destination="GgT-P6-PVh" id="2Ek-AN-WYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-28"/>
+            <point key="canvasLocation" x="75.572519083969468" y="-28.169014084507044"/>
         </scene>
     </scenes>
     <resources>

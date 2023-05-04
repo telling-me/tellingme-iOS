@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = false
-            tabBarController.addShadowView()
+//            tabBarController.addShadowView()
         }
         animation()
     }
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
-            tabBarController.removeShadowView()
+//            tabBarController.removeShadowView()
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

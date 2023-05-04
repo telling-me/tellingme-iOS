@@ -9,7 +9,8 @@ import Foundation
 
 extension AnswerListViewController {
     func getAnswerList() {
-        AnswerAPI.getAnswerList(query: "2023/04/01") { result in
+        let query = viewModel.getQueryDate()
+        AnswerAPI.getAnswerList(query: query) { result in
             switch result {
             case .success(let response):
                 self.viewModel.answerList = response

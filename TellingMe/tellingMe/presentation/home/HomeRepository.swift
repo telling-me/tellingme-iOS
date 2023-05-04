@@ -24,4 +24,8 @@ extension HomeViewController {
             }
         }
     }
+    
+    func getStack() {
+        
+    }
 }
