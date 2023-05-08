@@ -52,19 +52,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         self.pushHome()
                     case .failure(let error):
                         switch error {
-                        case let .errorData(errorData):
-                            print(errorData)
-                            // handle error data
-                        case let .other(otherError):
-                            let error = otherError as? MoyaError
-                            if let data = error?.response?.data {
-                                let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
-                                KeychainManager.shared.save(errorResponse!.socialId, key: "socialId")
-                                KeychainManager.shared.save("kakao", key: "socialLoginType")
-                                self.pushSignUp()
-                            } else {
-                                print("response data 실패")
-                            }
+                        case .errorData(let errorData):
+                            self.showToast(message: errorData.message)
+                        case .notJoin(let errorResponse):
+                            KeychainManager.shared.save(errorResponse.socialId, key: "socialId")
+                            KeychainManager.shared.save("kakao", key: "socialLoginType")
+                            self.pushSignUp()
+                        default:
+                            print(error)
                         }
                     }
                 }
@@ -97,16 +92,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         self.pushHome()
                     case .failure(let error):
                         switch error {
-                        case let .errorData(errorData):
+                        case .errorData(let errorData):
                             self.showToast(message: errorData.message)
-                        case let .other(otherError):
-                            let error = otherError as? MoyaError
-                            if let responseData = error?.response?.data,
-                               let error = try? JSONDecoder().decode(OauthErrorResponse.self, from: responseData) {
-                                KeychainManager.shared.save(error.socialId, key: "socialId")
-                                KeychainManager.shared.save("apple", key: "socialLoginType")
-                                self.pushSignUp()
-                            }
+                        case .notJoin(let errorResponse):
+                            KeychainManager.shared.save(errorResponse.socialId, key: "socialId")
+                            KeychainManager.shared.save("kakao", key: "socialLoginType")
+                            self.pushSignUp()
+                        default:
+                            print(error)
                         }
                     }
                 }

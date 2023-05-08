@@ -51,12 +51,15 @@ extension AnswerAPITarget: TargetType {
 
 struct AnswerAPI: Networkable {
     typealias Target = AnswerAPITarget
-
-//    static func getTodayQuestion(completion: @escaping(Result<QuestionResponse?, APIError>) -> Void) {
-//        makeProvider().request(.getTodayQuestion, dtoType: QuestionResponse.self, completion: completion)
-//    }
     
     static func getAnswerList(query: String, completion: @escaping(Result<[AnswerListResponse]?, APIError>) -> Void) {
-        makeProvider().listRequest(.getAnswerList(query: query), dtoType: AnswerListResponse.self, completion: completion)
-    }
+        do {
+            try makeAuthorizedProvider().listRequest(.getAnswerList(query: query), dtoType: AnswerListResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }}
 }

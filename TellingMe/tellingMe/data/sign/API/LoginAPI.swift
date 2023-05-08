@@ -73,21 +73,61 @@ struct LoginAPI: Networkable {
     typealias Target = LoginAPITarget
 
     static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
-        makeProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
+        makeUnauthorizedProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                switch error {
+                case let .other(otherError):
+                    let error = otherError as? MoyaError
+                    if let data = error?.response?.data {
+                        let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                        completion(.failure(APIError.notJoin(errorResponse!)))
+                    } else {
+                        completion(.failure(APIError.other(otherError)))
+                    }
+                case .errorData(let errorData):
+                    completion(.failure(APIError.errorData(errorData)))
+                default:
+                    completion(.failure(APIError.other(error)))
+                }
+            }
+        }
     }
 
     static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
-        makeProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self, completion: completion)
+        makeUnauthorizedProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                switch error {
+                case let .other(otherError):
+                    let error = otherError as? MoyaError
+                    if let data = error?.response?.data {
+                        let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                        completion(.failure(APIError.notJoin(errorResponse!)))
+                    } else {
+                        completion(.failure(APIError.other(otherError)))
+                    }
+                case .errorData(let errorData):
+                    completion(.failure(APIError.errorData(errorData)))
+                default:
+                    completion(.failure(APIError.other(error)))
+                }
+            }
+        }
     }
     static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
-        makeProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
+        makeUnauthorizedProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
     }
 
     static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, APIError>) -> Void) {
-        makeProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
+        makeUnauthorizedProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
 
     static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
-        makeProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
+        makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
 }

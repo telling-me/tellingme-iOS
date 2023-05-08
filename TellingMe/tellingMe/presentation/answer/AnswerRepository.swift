@@ -23,8 +23,10 @@ extension AnswerViewController {
                 switch error {
                 case let .errorData(errorData):
                     self.showToast(message: errorData.message)
-                case let .other(otherError):
-                    print(otherError)
+                case .tokenNotFound:
+                    print("login으로 push할게요")
+                default:
+                    print(error)
                 }
             }
         }

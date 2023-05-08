@@ -10,6 +10,8 @@ import Moya
 
 enum APIError: Error {
     case errorData(ErrorData)
+    case tokenNotFound
+    case notJoin(OauthErrorResponse)
     case other(Error)
 }
 
