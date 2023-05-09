@@ -19,8 +19,8 @@ extension AllowNotificationViewController {
                 switch error {
                 case let .errorData(errorData):
                     self.showToast(message: errorData.message)
-                case let .other(otherError):
-                    print(otherError)
+                default:
+                    print(error)
                 }
             }
         }
@@ -41,8 +41,8 @@ extension AllowNotificationViewController {
                     switch error {
                     case let .errorData(errorData):
                         self.showToast(message: errorData.message)
-                    case let .other(otherError):
-                        print(otherError)
+                    default:
+                        print(error)
                     }
                 }
             }
@@ -59,8 +59,8 @@ extension AllowNotificationViewController {
                     switch error {
                     case let .errorData(errorData):
                         self.showToast(message: errorData.message)
-                    case let .other(otherError):
-                        print(otherError)
+                    default:
+                        print(error)
                     }
                 }
             }
