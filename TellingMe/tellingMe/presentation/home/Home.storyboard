@@ -50,14 +50,14 @@
                                         <rect key="frame" x="12" y="10" width="29.5" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일째 답변 중!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKc-vY-z9X" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="85" y="10" width="88" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEO-Xf-N27" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
@@ -318,6 +318,9 @@
         <image name="Shape3" width="76" height="74"/>
         <image name="Shape4" width="55" height="55"/>
         <image name="Shape5" width="325" height="325"/>
+        <namedColor name="Gray5">
+            <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

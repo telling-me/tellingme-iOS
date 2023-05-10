@@ -35,7 +35,7 @@ extension AllowNotificationViewController {
                 switch result {
                 case .success(let response):
                     self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyYTM0ZGQ2YS1hOTEyLTRmNmMtYmY2NC0xNTU2Y2NhMWI0NTIiLCJpYXQiOjE2ODM3MjE0MTMsImV4cCI6MzQ4MzcyMTM2MH0.-NEQZJVUYNw-NDsUTZD2mtgHrsFkALXvSe8uKDXpqyk", key: "accessToken")
                     KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
                 case .failure(let error):
                     switch error {

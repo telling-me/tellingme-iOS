@@ -13,6 +13,10 @@
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
+		3A1C06842A0BA2D700534BAE /* CheckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A1C06832A0BA2D700534BAE /* CheckView.xib */; };
+		3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */; };
+		3A1DB7722A0AC00300C5F68B /* NameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DB7712A0AC00300C5F68B /* NameView.xib */; };
+		3A1DB7742A0AC2BB00C5F68B /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DB7732A0AC2BB00C5F68B /* NameView.swift */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
@@ -117,6 +121,10 @@
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A1C06832A0BA2D700534BAE /* CheckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckView.xib; sourceTree = "<group>"; };
+		3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		3A1DB7712A0AC00300C5F68B /* NameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameView.xib; sourceTree = "<group>"; };
+		3A1DB7732A0AC2BB00C5F68B /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
@@ -283,6 +291,14 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		3A1DB76E2A0A470F00C5F68B /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
 		3A2742CE29D5CDDA005E4C5F /* style */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +341,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3A1DB76E2A0A470F00C5F68B /* setting */,
 				3A7121332A02C43700A02054 /* answerList */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3A409B3C29E050CD00A05B22 /* login */,
@@ -352,6 +369,9 @@
 				3AEED26129C99EDA00D02F3F /* custom */,
 				3A775D0629C1DBA900FCD3BC /* designable */,
 				3A775D0429C1D96800FCD3BC /* extension */,
+				3A1DB7712A0AC00300C5F68B /* NameView.xib */,
+				3A1DB7732A0AC2BB00C5F68B /* NameView.swift */,
+				3A1C06832A0BA2D700534BAE /* CheckView.xib */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -703,6 +723,7 @@
 				3A82989A2A00F1B5001938B9 /* 87.png in Resources */,
 				3A8298922A00F1B5001938B9 /* 29.png in Resources */,
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
+				3A1C06842A0BA2D700534BAE /* CheckView.xib in Resources */,
 				3A8298912A00F1B5001938B9 /* 58.png in Resources */,
 				3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */,
 				3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */,
@@ -723,8 +744,10 @@
 				3A82988F2A00F1B5001938B9 /* 1024.png in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A8298942A00F1B5001938B9 /* 120.png in Resources */,
+				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
 				3AA289E229B854210030057E /* Login.storyboard in Resources */,
 				3A8298972A00F1B5001938B9 /* 57.png in Resources */,
+				3A1DB7722A0AC00300C5F68B /* NameView.xib in Resources */,
 				3A8298902A00F1B5001938B9 /* 60.png in Resources */,
 				3A8298952A00F1B5001938B9 /* Contents.json in Resources */,
 			);
@@ -839,6 +862,7 @@
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
+				3A1DB7742A0AC2BB00C5F68B /* NameView.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,

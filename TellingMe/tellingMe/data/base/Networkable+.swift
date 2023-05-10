@@ -60,7 +60,7 @@ final class AuthPlugin: PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var request = request
         if let token = token {
-            request.addValue(token, forHTTPHeaderField: "Authorization")
+            request.addValue(token, forHTTPHeaderField: "accessToken")
         }
         return request
     }
