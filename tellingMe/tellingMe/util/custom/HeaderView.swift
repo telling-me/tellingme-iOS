@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: AnyObject {
+    func pushSetting(_ headerView: HeaderView)
+}
+
 class HeaderView: UIView {
+    weak var delegate: HeaderViewDelegate?
+
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Logo")
@@ -46,5 +52,11 @@ class HeaderView: UIView {
         button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
         button.widthAnchor.constraint(equalToConstant: 24).isActive = true
         button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+
+        button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+    }
+
+    @objc func didTapButton(_ sender: UIButton) {
+        delegate?.pushSetting(self)
     }
 }

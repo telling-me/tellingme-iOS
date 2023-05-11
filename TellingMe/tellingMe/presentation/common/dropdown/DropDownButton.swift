@@ -34,7 +34,7 @@ class DropDownButton: UIView {
         initializeView()
     }
 
-    init(frame: CGRect, isSmall: Bool) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         initializeView()
     }

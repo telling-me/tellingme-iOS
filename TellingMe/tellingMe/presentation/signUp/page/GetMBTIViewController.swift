@@ -13,7 +13,7 @@ class GetMBTIViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
-    let viewModel = GetMBTIViewModel()
+    let viewModel = MBTIViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,6 @@ class GetMBTIViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
 
         SignUpData.shared.mbti = viewModel.myMbti
-//        sendSignUpData()
     }
 
     @IBAction func prevAction(_ sender: UIButton) {
