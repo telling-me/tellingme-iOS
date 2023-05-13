@@ -15,6 +15,8 @@ class BirthdayViewModel {
     var yearArray: [Int]?
     let monthArray = Array(1...13)
     let day_Array = Array(1...32)
+    
+    let textArrays = ["년","월","일"]
 
     init() {
         let today = Date()

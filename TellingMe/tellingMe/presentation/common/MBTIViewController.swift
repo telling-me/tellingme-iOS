@@ -8,7 +8,6 @@
 import UIKit
 
 class MBTIViewController: DropDownViewController {
-    @IBOutlet var mbtiTableView: UITableView!
     let viewModel = MBTIViewModel()
 
     let mbtiButton: DropDownButton = {
