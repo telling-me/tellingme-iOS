@@ -33,11 +33,30 @@ class DropDownViewController: UIViewController {
         tableView.dataSource = self
 
         view.addSubview(tableView)
-        
-        updateTableViewLayout(leading: 0, trailing: 0, top: 0, height: 0)
+
+//        updateTableViewLayout(leading: 0, trailing: 0, top: 0, height: 0)
     }
     
-    func updateTableViewLayout(leading: CGFloat, trailing: CGFloat, top: CGFloat, height: CGFloat) {
+//    func updateTableViewLayout(leading: CGFloat, trailing: CGFloat, top: CGFloat, height: CGFloat) {
+//        tableViewTopConstraint.isActive = false
+//        tableViewLeadingConstraint.isActive = false
+//        tableViewTrailingConstraint.isActive = false
+//        talbeViewBttomConstraint.isActive = false
+//        tableViewWidthConstraint.isActive = false
+//        tableViewHeightConstraint.isActive = false
+//
+//        tableViewLeadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
+//        tableViewTrailingConstraint = tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
+//        tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+//        tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: height)
+//
+//        tableViewLeadingConstraint.isActive = true
+//        tableViewTrailingConstraint.isActive = true
+//        tableViewTopConstraint.isActive = true
+//        tableViewHeightConstraint.isActive = true
+//    }
+    
+    func updateTableViewLayout(leading: NSLayoutXAxisAnchor, trailing: NSLayoutXAxisAnchor, top: NSLayoutYAxisAnchor, height: CGFloat) {
         tableViewTopConstraint.isActive = false
         tableViewLeadingConstraint.isActive = false
         tableViewTrailingConstraint.isActive = false
@@ -45,9 +64,9 @@ class DropDownViewController: UIViewController {
         tableViewWidthConstraint.isActive = false
         tableViewHeightConstraint.isActive = false
         
-        tableViewLeadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
-        tableViewTrailingConstraint = tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
-        tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+        tableViewLeadingConstraint = tableView.leadingAnchor.constraint(equalTo: leading)
+        tableViewTrailingConstraint = tableView.trailingAnchor.constraint(equalTo: trailing)
+        tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: top)
         tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: height)
         
         tableViewLeadingConstraint.isActive = true

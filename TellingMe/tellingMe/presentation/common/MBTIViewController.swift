@@ -40,13 +40,13 @@ class MBTIViewController: DropDownViewController {
         super.viewDidLoad()
         items = viewModel.mbtis
         height = 52
-        
+
         view.addSubview(mbtiButton)
         mbtiButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mbtiButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mbtiButton.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mbtiButton.heightAnchor.constraint(equalToConstant: 57).isActive = true
-        
+
         setAction()
     }
 }

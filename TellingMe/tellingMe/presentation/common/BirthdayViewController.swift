@@ -9,8 +9,8 @@ import UIKit
 
 class BirthdayViewController: DropDownViewController {
     let viewModel = BirthdayViewModel()
-    
-    let stackview: UIStackView = {
+
+    let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,14 +26,12 @@ class BirthdayViewController: DropDownViewController {
         } else {
             fatalError("year 정보를 불러오지 못 했습니다.")
         }
-        
-        view.addSubview(stackview)
-        stackview.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackview.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stackview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        
+
+        view.addSubview(stackView)
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     func addButtons() {
@@ -48,7 +46,7 @@ class BirthdayViewController: DropDownViewController {
             }()
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
             button.addGestureRecognizer(tapGestureRecognizer)
-            self.stackview.addArrangedSubview(button)
+            self.stackView.addArrangedSubview(button)
         }
     }
 
@@ -57,13 +55,13 @@ class BirthdayViewController: DropDownViewController {
         switch sender.view!.tag {
         case 0:
             tableView.isHidden = false
-            updateTableViewLayout(leading:  trailing: sender.view!.trailingAnchor, top: sender.view!.topAnchor, height: 208)
+            updateTableViewLayout(leading: self.stackView.arrangedSubviews[0].leadingAnchor, trailing: sender.view!.trailingAnchor, top: sender.view!.topAnchor, height: 208)
         case 1:
             tableView.isHidden = false
-            updateTableViewLayout(leading: <#T##CGFloat#>, trailing: <#T##CGFloat#>, top: <#T##CGFloat#>, height: <#T##CGFloat#>)
+            updateTableViewLayout(leading: self.stackView.arrangedSubviews[1].leadingAnchor, trailing: self.stackView.arrangedSubviews[1].trailingAnchor, top: sender.view!.topAnchor, height: 208)
         case 2:
             tableView.isHidden = false
-            updateTableViewLayout(leading: <#T##CGFloat#>, trailing: <#T##CGFloat#>, top: <#T##CGFloat#>, height: <#T##CGFloat#>)
+            updateTableViewLayout(leading: self.stackView.arrangedSubviews[2].leadingAnchor, trailing: self.stackView.arrangedSubviews[2].trailingAnchor, top: sender.view!.topAnchor, height: 208)
         default:
             break
         }
