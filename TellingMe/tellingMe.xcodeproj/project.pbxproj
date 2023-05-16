@@ -28,8 +28,14 @@
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
 		3A3739B72A1243B700739543 /* CapsuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739B62A1243B700739543 /* CapsuleCollectionViewCell.swift */; };
 		3A3739B92A1243E300739543 /* CapsuleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739B82A1243E300739543 /* CapsuleCollectionViewController.swift */; };
-		3A3739BB2A125F3B00739543 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BA2A125F3B00739543 /* JobViewController.swift */; };
-		3A3739BD2A125F4D00739543 /* PurposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BC2A125F4D00739543 /* PurposeViewController.swift */; };
+		3A3739BB2A125F3B00739543 /* CapsuleJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BA2A125F3B00739543 /* CapsuleJobViewController.swift */; };
+		3A3739BD2A125F4D00739543 /* CapsulePurposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BC2A125F4D00739543 /* CapsulePurposeViewController.swift */; };
+		3A3739BF2A13D42400739543 /* CapsuleJobViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BE2A13D42400739543 /* CapsuleJobViewModel.swift */; };
+		3A3739C12A13DF5900739543 /* CapsulePurposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C02A13DF5900739543 /* CapsulePurposeViewModel.swift */; };
+		3A3739C52A13E37500739543 /* CapsuleGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C42A13E37500739543 /* CapsuleGenderViewController.swift */; };
+		3A3739C72A13E3B400739543 /* CapsuleGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C62A13E3B400739543 /* CapsuleGenderViewModel.swift */; };
+		3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C82A13E4F900739543 /* SettingViewModel.swift */; };
+		3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */; };
 		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
 		3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3529DEF51200A05B22 /* KeyChain+.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
@@ -149,8 +155,14 @@
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		3A3739B62A1243B700739543 /* CapsuleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A3739B82A1243E300739543 /* CapsuleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleCollectionViewController.swift; sourceTree = "<group>"; };
-		3A3739BA2A125F3B00739543 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
-		3A3739BC2A125F4D00739543 /* PurposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeViewController.swift; sourceTree = "<group>"; };
+		3A3739BA2A125F3B00739543 /* CapsuleJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleJobViewController.swift; sourceTree = "<group>"; };
+		3A3739BC2A125F4D00739543 /* CapsulePurposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePurposeViewController.swift; sourceTree = "<group>"; };
+		3A3739BE2A13D42400739543 /* CapsuleJobViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleJobViewModel.swift; sourceTree = "<group>"; };
+		3A3739C02A13DF5900739543 /* CapsulePurposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePurposeViewModel.swift; sourceTree = "<group>"; };
+		3A3739C42A13E37500739543 /* CapsuleGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleGenderViewController.swift; sourceTree = "<group>"; };
+		3A3739C62A13E3B400739543 /* CapsuleGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleGenderViewModel.swift; sourceTree = "<group>"; };
+		3A3739C82A13E4F900739543 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
 		3A409B3529DEF51200A05B22 /* KeyChain+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
@@ -322,6 +334,7 @@
 			children = (
 				3A4C384B2A0CC86600FEFAAE /* myInfo */,
 				3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */,
+				3A3739C82A13E4F900739543 /* SettingViewModel.swift */,
 				3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */,
 				3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */,
 				3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */,
@@ -407,6 +420,15 @@
 			path = capsule;
 			sourceTree = "<group>";
 		};
+		3A3739CA2A13F0E600739543 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				3A51FC2329F990A70090BD1B /* HeaderView.swift */,
+				3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
 		3A409B3B29E050B100A05B22 /* signUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,9 +464,14 @@
 		3A4C384B2A0CC86600FEFAAE /* myInfo */ = {
 			isa = PBXGroup;
 			children = (
+				3A3739B32A12434200739543 /* capsule */,
+				3A3739BE2A13D42400739543 /* CapsuleJobViewModel.swift */,
+				3A3739C02A13DF5900739543 /* CapsulePurposeViewModel.swift */,
+				3A3739C62A13E3B400739543 /* CapsuleGenderViewModel.swift */,
+				3A3739BA2A125F3B00739543 /* CapsuleJobViewController.swift */,
+				3A3739BC2A125F4D00739543 /* CapsulePurposeViewController.swift */,
+				3A3739C42A13E37500739543 /* CapsuleGenderViewController.swift */,
 				3A4C384C2A0CC88900FEFAAE /* MyInfoViewController.swift */,
-				3A3739BA2A125F3B00739543 /* JobViewController.swift */,
-				3A3739BC2A125F4D00739543 /* PurposeViewController.swift */,
 			);
 			path = myInfo;
 			sourceTree = "<group>";
@@ -453,10 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				3A4C38542A0CCCF300FEFAAE /* viewModel */,
-				3A3739B32A12434200739543 /* capsule */,
 				3A4C38532A0CCCA800FEFAAE /* dropdown */,
 				3A4C384E2A0CC89A00FEFAAE /* MBTIViewController.swift */,
 				3A4C38572A0CDCC200FEFAAE /* BirthdayViewController.swift */,
+				3A3739CA2A13F0E600739543 /* header */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -716,7 +743,6 @@
 			isa = PBXGroup;
 			children = (
 				3A2742CE29D5CDDA005E4C5F /* style */,
-				3A51FC2329F990A70090BD1B /* HeaderView.swift */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -895,21 +921,25 @@
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
+				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
 				3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
+				3A3739C12A13DF5900739543 /* CapsulePurposeViewModel.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
 				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
-				3A3739BD2A125F4D00739543 /* PurposeViewController.swift in Sources */,
+				3A3739BD2A125F4D00739543 /* CapsulePurposeViewController.swift in Sources */,
+				3A3739BF2A13D42400739543 /* CapsuleJobViewModel.swift in Sources */,
 				3A4C38512A0CC95900FEFAAE /* DropDownViewController.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
@@ -919,7 +949,7 @@
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
 				3A3739B72A1243B700739543 /* CapsuleCollectionViewCell.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
-				3A3739BB2A125F3B00739543 /* JobViewController.swift in Sources */,
+				3A3739BB2A125F3B00739543 /* CapsuleJobViewController.swift in Sources */,
 				3A00B74C29FBF18C00285CA8 /* HomeRepository.swift in Sources */,
 				3AA1677729E830BA00B93850 /* PageRepository.swift in Sources */,
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
@@ -960,6 +990,7 @@
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
+				3A3739C72A13E3B400739543 /* CapsuleGenderViewModel.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,
 				3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */,
@@ -971,6 +1002,7 @@
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3A4C38562A0CCD0100FEFAAE /* MBTIViewModel.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
+				3A3739C52A13E37500739543 /* CapsuleGenderViewController.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,

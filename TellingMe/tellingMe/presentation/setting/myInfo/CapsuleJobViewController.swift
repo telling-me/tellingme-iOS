@@ -7,12 +7,11 @@
 
 import UIKit
 
-class JobViewController: UIViewController {
+class CapsuleJobViewController: CapsuleCollectionViewController {
+    let viewModel = CapsuleJobViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setItems(items: viewModel.jobs)
     }
-
 }

@@ -13,6 +13,7 @@ class BirthdayViewController: DropDownViewController {
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
+        stackView.spacing = 18
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         return stackView
@@ -32,6 +33,8 @@ class BirthdayViewController: DropDownViewController {
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        addButtons()
     }
 
     func addButtons() {

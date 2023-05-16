@@ -29,7 +29,7 @@ class CapsuleCollectionViewCell: UICollectionViewCell {
     
     func setView() {
         self.backgroundColor = UIColor(named: "Side200")
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 16
         
         addSubview(label)
     }

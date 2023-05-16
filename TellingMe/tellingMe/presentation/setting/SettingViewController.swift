@@ -9,10 +9,17 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    @IBOutlet weak var headerView: SettingHeaderView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        headerView.setTitle(title: "설정")
+        headerView.delegate = self
     }
 
+}
+
+extension SettingViewController: SettingHeaderViewDelegate {
+    func popViewController(_ headerView: SettingHeaderView) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
