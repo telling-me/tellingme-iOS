@@ -7,12 +7,16 @@
 
 import UIKit
 
-class CapsuleCollectionViewController: UIViewController {
+class ChipCollectionViewController: UIViewController {
     var items: [String] = []
 
     let collectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 16
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -29,7 +33,7 @@ class CapsuleCollectionViewController: UIViewController {
         collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 
-        collectionView.register(CapsuleCollectionViewCell.self, forCellWithReuseIdentifier: CapsuleCollectionViewCell.id)
+        collectionView.register(ChipCollectionViewCell.self, forCellWithReuseIdentifier: ChipCollectionViewCell.id)
 
         collectionView.isScrollEnabled = false
     }
@@ -39,7 +43,7 @@ class CapsuleCollectionViewController: UIViewController {
     }
 }
 
-extension CapsuleCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChipCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -51,7 +55,7 @@ extension CapsuleCollectionViewController: UICollectionViewDelegate, UICollectio
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CapsuleCollectionViewCell.id, for: indexPath) as? CapsuleCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: indexPath) as? ChipCollectionViewCell else {
             return UICollectionViewCell()
         }
 
@@ -73,10 +77,14 @@ extension CapsuleCollectionViewController: UICollectionViewDelegate, UICollectio
 
         return CGSize(width: cellWidth, height: 32)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let inset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 16) // 셀 상하좌우 간격
+        let inset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0) // 셀 상하좌우 간격
 
         return inset
+    }
+    //
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 }

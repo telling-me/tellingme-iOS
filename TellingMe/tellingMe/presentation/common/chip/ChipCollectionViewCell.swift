@@ -1,5 +1,5 @@
 //
-//  CapsuleCollectionViewCell.swift
+//  ChipCollectionViewCell.swift
 //  tellingMe
 //
 //  Created by 마경미 on 15.05.23.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-class CapsuleCollectionViewCell: UICollectionViewCell {
-    static let id = "capsuleCollectionViewCell"
-    
+class ChipCollectionViewCell: UICollectionViewCell {
+    static let id = "ChipCollectionViewCell"
+
     let label: Body2Regular = {
         let label = Body2Regular()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "Gray7")
         return label
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -26,14 +26,14 @@ class CapsuleCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         setView()
     }
-    
+
     func setView() {
         self.backgroundColor = UIColor(named: "Side200")
         self.layer.cornerRadius = 16
-        
+
         addSubview(label)
     }
-    
+
     func setData(with data: String) {
         self.label.text = data
         label.sizeToFit()

@@ -13,7 +13,7 @@ class GetMBTIViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
-    let viewModel = MBTIViewModel()
+    let viewModel = GetMBTIViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

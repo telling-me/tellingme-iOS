@@ -22,7 +22,7 @@ class GetBirthdayViewController: UIViewController {
 
     @IBOutlet weak var nextButton: SecondayIconButton!
     @IBOutlet weak var prevButton: SecondayIconButton!
-    let viewModel = BirthdayViewModel()
+    let viewModel = GetBirthdayViewModel()
     let today = Date()
 
     override func viewDidLoad() {

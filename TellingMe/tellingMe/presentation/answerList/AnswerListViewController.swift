@@ -23,7 +23,6 @@ class AnswerListViewController: UIViewController {
         getAnswerList()
         yearButton.setSmallLayout()
         monthButton.setSmallLayout()
-        print(viewModel.month)
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
         setAction()
