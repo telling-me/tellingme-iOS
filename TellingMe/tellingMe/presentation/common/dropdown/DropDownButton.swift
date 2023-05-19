@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol DropDownButtonDelegate: AnyObject {
+    func showDropDown(_ button: DropDownButton)
+}
+
 class DropDownButton: UIView {
+    weak var delegate: DropDownButtonDelegate?
+
     let label: Body1Regular = {
         let label = Body1Regular()
         label.textColor = UIColor(named: "Gray4")
@@ -34,13 +40,15 @@ class DropDownButton: UIView {
         initializeView()
     }
 
-    init(frame: CGRect, isSmall: Bool) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         initializeView()
     }
 
     func initializeView() {
         self.layer.backgroundColor = UIColor(named: "Side200")?.cgColor
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapButton))
+        self.addGestureRecognizer(tapGestureRecognizer)
         addSubview(imageView)
     }
 
@@ -102,5 +110,9 @@ class DropDownButton: UIView {
 
     func setClose() {
         imageView.image = UIImage(systemName: "chevron.down")
+    }
+
+    @objc func didTapButton(_ sender: UIButton) {
+        delegate?.showDropDown(self)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
 
+    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var dayStackView: UIView!
     @IBOutlet weak var dayStackLabel: CaptionLabelBold!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!
@@ -66,6 +67,7 @@ class HomeViewController: UIViewController {
         }
 
         getQuestion()
+        headerView.delegate = self
     }
 
     func animation() {
@@ -91,5 +93,16 @@ class HomeViewController: UIViewController {
 //            tabBarController.removeShadowView()
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension HomeViewController: HeaderViewDelegate {
+    func pushSetting(_ headerView: HeaderView) {
+        // push를 수행하는 코드
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

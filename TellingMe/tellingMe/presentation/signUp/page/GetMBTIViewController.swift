@@ -47,7 +47,6 @@ class GetMBTIViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
 
         SignUpData.shared.mbti = viewModel.myMbti
-//        sendSignUpData()
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

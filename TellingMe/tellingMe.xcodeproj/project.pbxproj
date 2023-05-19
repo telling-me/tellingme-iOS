@@ -13,12 +13,25 @@
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
+		3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */; };
+		3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */; };
+		3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */; };
+		3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
+		3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A338B0329E67C5000786D08 /* LoginRepository.swift */; };
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
+		3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739B62A1243B700739543 /* ChipCollectionViewCell.swift */; };
+		3A3739B92A1243E300739543 /* ChipCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739B82A1243E300739543 /* ChipCollectionViewController.swift */; };
+		3A3739BB2A125F3B00739543 /* ChipJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BA2A125F3B00739543 /* ChipJobViewController.swift */; };
+		3A3739BD2A125F4D00739543 /* ChipPurposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739BC2A125F4D00739543 /* ChipPurposeViewController.swift */; };
+		3A3739C52A13E37500739543 /* ChipGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C42A13E37500739543 /* ChipGenderViewController.swift */; };
+		3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C82A13E4F900739543 /* SettingViewModel.swift */; };
+		3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */; };
 		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
 		3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3529DEF51200A05B22 /* KeyChain+.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
@@ -26,6 +39,8 @@
 		3A409B4029E05F4700A05B22 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3F29E05F4700A05B22 /* Array+.swift */; };
 		3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B4129E148C700A05B22 /* SignUpDTO.swift */; };
 		3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B4429E1A5FD00A05B22 /* SignUpData.swift */; };
+		3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C384C2A0CC88900FEFAAE /* MyInfoViewController.swift */; };
+		3A4C38512A0CC95900FEFAAE /* DropDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C38502A0CC95900FEFAAE /* DropDownViewController.swift */; };
 		3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */; };
 		3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */; };
 		3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5076E629C82DB400C7A5E9 /* ResponseData.swift */; };
@@ -92,12 +107,13 @@
 		3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetPurposeController.swift */; };
 		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
 		3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */; };
-		3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */; };
 		3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */; };
 		3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F529D1EFA4000843F5 /* UIString+.swift */; };
 		3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F729D2090E000843F5 /* UITextField+.swift */; };
 		3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */; };
 		3ACCBAB529E956050082C32C /* badWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1677329E82D8500B93850 /* badWords.txt */; };
+		3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */; };
+		3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2C02A14B4EB006880E0 /* Input.swift */; };
 		3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */; };
 		3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414129FACBF60042A548 /* EmotionViewController.swift */; };
 		3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */; };
@@ -117,12 +133,25 @@
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
+		3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameInputViewController.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A338B0329E67C5000786D08 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
+		3A3739B62A1243B700739543 /* ChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A3739B82A1243E300739543 /* ChipCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCollectionViewController.swift; sourceTree = "<group>"; };
+		3A3739BA2A125F3B00739543 /* ChipJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipJobViewController.swift; sourceTree = "<group>"; };
+		3A3739BC2A125F4D00739543 /* ChipPurposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipPurposeViewController.swift; sourceTree = "<group>"; };
+		3A3739C42A13E37500739543 /* ChipGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipGenderViewController.swift; sourceTree = "<group>"; };
+		3A3739C82A13E4F900739543 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
 		3A409B3529DEF51200A05B22 /* KeyChain+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
@@ -130,6 +159,8 @@
 		3A409B3F29E05F4700A05B22 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		3A409B4129E148C700A05B22 /* SignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDTO.swift; sourceTree = "<group>"; };
 		3A409B4429E1A5FD00A05B22 /* SignUpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpData.swift; sourceTree = "<group>"; };
+		3A4C384C2A0CC88900FEFAAE /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		3A4C38502A0CC95900FEFAAE /* DropDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownViewController.swift; sourceTree = "<group>"; };
 		3A5076E029C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3A5076E229C82D7B00C7A5E9 /* Networkable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networkable+.swift"; sourceTree = "<group>"; };
 		3A5076E629C82DB400C7A5E9 /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
@@ -200,11 +231,12 @@
 		3ACC45E829D198CA000843F5 /* GetPurposeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurposeController.swift; sourceTree = "<group>"; };
 		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
 		3ACC45EC29D19A07000843F5 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
-		3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMBTIViewController.swift; sourceTree = "<group>"; };
 		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
 		3ACC45F729D2090E000843F5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		3AEBB2C02A14B4EB006880E0 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryTextButton.swift; sourceTree = "<group>"; };
 		3AEC414129FACBF60042A548 /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
 		3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewModel.swift; sourceTree = "<group>"; };
@@ -283,11 +315,20 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		3A1DB76E2A0A470F00C5F68B /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				3AEBB2B42A14A86E006880E0 /* setting */,
+				3A4C384B2A0CC86600FEFAAE /* myInfo */,
+				3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
 		3A2742CE29D5CDDA005E4C5F /* style */ = {
 			isa = PBXGroup;
 			children = (
 				3ACACB4629F7FD7B004A6004 /* structs */,
-				3ACC45F029D1C5AF000843F5 /* PrimaryButton.swift */,
 				3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */,
 				3AEED26429C99F7D00D02F3F /* BodyLabel.swift */,
 				3AEED26629C99F8800D02F3F /* CaptionLabel.swift */,
@@ -299,17 +340,25 @@
 				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
 				3AEC414729FAE0460042A548 /* SecondayTextButton.swift */,
 				3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */,
+				3AEBB2C02A14B4EB006880E0 /* Input.swift */,
 			);
 			path = style;
 			sourceTree = "<group>";
 		};
-		3A2742CF29D5CDF0005E4C5F /* dropdown */ = {
+		3A29B5722A169738006F1E8D /* leftAlignedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */,
-				3A33C45629D96CA1002BBA85 /* DropDownButton.swift */,
+				3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
-			path = dropdown;
+			path = leftAlignedCollectionView;
+			sourceTree = "<group>";
+		};
+		3A29B5752A169B30006F1E8D /* nicknameInput */ = {
+			isa = PBXGroup;
+			children = (
+				3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */,
+			);
+			path = nicknameInput;
 			sourceTree = "<group>";
 		};
 		3A2A502D29B87B9D002FE5E4 /* app */ = {
@@ -325,12 +374,14 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3A7121332A02C43700A02054 /* answerList */,
+				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
+				3A1DB76E2A0A470F00C5F68B /* setting */,
+				3A7121332A02C43700A02054 /* answerList */,
 				3A409B3C29E050CD00A05B22 /* login */,
 				3A409B3B29E050B100A05B22 /* signUp */,
-				3A157CF729CAFD6D00D61AD3 /* home */,
 				3A68972929FA797700797D9A /* answer */,
+				3A157CF729CAFD6D00D61AD3 /* home */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -349,11 +400,30 @@
 		3A2A503029B8805F002FE5E4 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3A29B5722A169738006F1E8D /* leftAlignedCollectionView */,
 				3AEED26129C99EDA00D02F3F /* custom */,
 				3A775D0629C1DBA900FCD3BC /* designable */,
 				3A775D0429C1D96800FCD3BC /* extension */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		3A3739B32A12434200739543 /* chip */ = {
+			isa = PBXGroup;
+			children = (
+				3A3739B62A1243B700739543 /* ChipCollectionViewCell.swift */,
+				3A3739B82A1243E300739543 /* ChipCollectionViewController.swift */,
+			);
+			path = chip;
+			sourceTree = "<group>";
+		};
+		3A3739CA2A13F0E600739543 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				3A51FC2329F990A70090BD1B /* HeaderView.swift */,
+				3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */,
+			);
+			path = header;
 			sourceTree = "<group>";
 		};
 		3A409B3B29E050B100A05B22 /* signUp */ = {
@@ -386,6 +456,37 @@
 				3A409B4429E1A5FD00A05B22 /* SignUpData.swift */,
 			);
 			path = singleton;
+			sourceTree = "<group>";
+		};
+		3A4C384B2A0CC86600FEFAAE /* myInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3AEBB2BA2A14A8DC006880E0 /* view */,
+				3AEBB2B92A14A8A9006880E0 /* viewController */,
+				3AEBB2B82A14A8A1006880E0 /* viewModel */,
+			);
+			path = myInfo;
+			sourceTree = "<group>";
+		};
+		3A4C38522A0CCC9300FEFAAE /* common */ = {
+			isa = PBXGroup;
+			children = (
+				3A29B5752A169B30006F1E8D /* nicknameInput */,
+				3A3739B32A12434200739543 /* chip */,
+				3A4C38532A0CCCA800FEFAAE /* dropdown */,
+				3A3739CA2A13F0E600739543 /* header */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		3A4C38532A0CCCA800FEFAAE /* dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				3A4C38502A0CC95900FEFAAE /* DropDownViewController.swift */,
+				3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */,
+				3A33C45629D96CA1002BBA85 /* DropDownButton.swift */,
+			);
+			path = dropdown;
 			sourceTree = "<group>";
 		};
 		3A5076EC29C82FE800C7A5E9 /* sign */ = {
@@ -620,12 +721,71 @@
 			path = "page+";
 			sourceTree = "<group>";
 		};
+		3AEBB2B42A14A86E006880E0 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				3AEBB2B72A14A897006880E0 /* view */,
+				3AEBB2B62A14A888006880E0 /* viewController */,
+				3AEBB2B52A14A87C006880E0 /* viewModel */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		3AEBB2B52A14A87C006880E0 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A3739C82A13E4F900739543 /* SettingViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		3AEBB2B62A14A888006880E0 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */,
+				3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		3AEBB2B72A14A897006880E0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		3AEBB2B82A14A8A1006880E0 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		3AEBB2B92A14A8A9006880E0 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A3739C42A13E37500739543 /* ChipGenderViewController.swift */,
+				3A3739BC2A125F4D00739543 /* ChipPurposeViewController.swift */,
+				3A3739BA2A125F3B00739543 /* ChipJobViewController.swift */,
+				3A4C384C2A0CC88900FEFAAE /* MyInfoViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		3AEBB2BA2A14A8DC006880E0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		3AEED26129C99EDA00D02F3F /* custom */ = {
 			isa = PBXGroup;
 			children = (
-				3A2742CF29D5CDF0005E4C5F /* dropdown */,
 				3A2742CE29D5CDDA005E4C5F /* style */,
-				3A51FC2329F990A70090BD1B /* HeaderView.swift */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -723,6 +883,7 @@
 				3A82988F2A00F1B5001938B9 /* 1024.png in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A8298942A00F1B5001938B9 /* 120.png in Resources */,
+				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
 				3AA289E229B854210030057E /* Login.storyboard in Resources */,
 				3A8298972A00F1B5001938B9 /* 57.png in Resources */,
 				3A8298902A00F1B5001938B9 /* 60.png in Resources */,
@@ -801,8 +962,10 @@
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
+				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
 				3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
+				3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
@@ -810,16 +973,22 @@
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
+				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
+				3A3739BD2A125F4D00739543 /* ChipPurposeViewController.swift in Sources */,
+				3A4C38512A0CC95900FEFAAE /* DropDownViewController.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
+				3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */,
+				3A3739BB2A125F3B00739543 /* ChipJobViewController.swift in Sources */,
 				3A00B74C29FBF18C00285CA8 /* HomeRepository.swift in Sources */,
 				3AA1677729E830BA00B93850 /* PageRepository.swift in Sources */,
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
@@ -831,17 +1000,21 @@
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
 				3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */,
 				3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */,
+				3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */,
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
+				3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
+				3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,
+				3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */,
 				3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
@@ -851,11 +1024,11 @@
 				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
 				3A82989C2A00F883001938B9 /* AnswerRepository.swift in Sources */,
 				3AA289CF29B8506F0030057E /* LoginViewController.swift in Sources */,
+				3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
-				3ACC45F129D1C5AF000843F5 /* PrimaryButton.swift in Sources */,
 				3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */,
 				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
@@ -863,12 +1036,15 @@
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
+				3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
+				3A3739C52A13E37500739543 /* ChipGenderViewController.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
 				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
+				3A3739B92A1243E300739543 /* ChipCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

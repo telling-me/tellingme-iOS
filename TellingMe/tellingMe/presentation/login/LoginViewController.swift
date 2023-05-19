@@ -9,7 +9,6 @@ import UIKit
 import Moya
 import AuthenticationServices
 
-@IBDesignable
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet var animationViews: [UIImageView]!
