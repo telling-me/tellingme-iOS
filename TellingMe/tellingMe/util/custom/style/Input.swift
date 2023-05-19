@@ -16,6 +16,7 @@ class Input: UIView {
         input.textColor = UIColor(named: "Black")
         input.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
         input.backgroundColor = .clear
+        input.clearButtonMode = .whileEditing
         return input
     }()
 
@@ -30,6 +31,7 @@ class Input: UIView {
     }
 
     func setView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "Side200")
         self.cornerRadius = 18
         addSubview(inputBox)
@@ -50,5 +52,9 @@ class Input: UIView {
         self.backgroundColor = UIColor(named: "Side200")
         self.inputBox.placeholder = "직접 입력"
         inputBox.isUserInteractionEnabled = true
+    }
+    
+    func hiddenKeyboard() {
+        self.inputBox.resignFirstResponder()
     }
 }

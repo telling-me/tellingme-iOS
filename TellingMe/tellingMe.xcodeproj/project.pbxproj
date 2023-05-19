@@ -400,6 +400,7 @@
 		3A2A503029B8805F002FE5E4 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3A29B5722A169738006F1E8D /* leftAlignedCollectionView */,
 				3AEED26129C99EDA00D02F3F /* custom */,
 				3A775D0629C1DBA900FCD3BC /* designable */,
 				3A775D0429C1D96800FCD3BC /* extension */,
@@ -471,7 +472,6 @@
 			isa = PBXGroup;
 			children = (
 				3A29B5752A169B30006F1E8D /* nicknameInput */,
-				3A29B5722A169738006F1E8D /* leftAlignedCollectionView */,
 				3A3739B32A12434200739543 /* chip */,
 				3A4C38532A0CCCA800FEFAAE /* dropdown */,
 				3A3739CA2A13F0E600739543 /* header */,

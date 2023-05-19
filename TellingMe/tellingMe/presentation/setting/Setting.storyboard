@@ -138,10 +138,10 @@
                                 <rect key="frame" x="0.0" y="123" width="393" height="1143"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0P-RW-YFT">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1039"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1017"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bX2-bO-nVg">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMx-sE-eT7" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="20" width="44.333333333333343" height="19"/>
@@ -152,36 +152,40 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2M-OO-FeJ">
-                                                        <rect key="frame" x="25" y="53" width="343" height="73"/>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2M-OO-FeJ">
+                                                        <rect key="frame" x="25" y="47" width="343" height="57"/>
+                                                        <connections>
+                                                            <segue destination="VoY-fS-WF5" kind="embed" id="gOf-kp-cVb"/>
+                                                        </connections>
                                                     </containerView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="I2M-OO-FeJ" firstAttribute="leading" secondItem="bX2-bO-nVg" secondAttribute="leading" constant="25" id="2iT-tW-bTj"/>
                                                     <constraint firstItem="gMx-sE-eT7" firstAttribute="top" secondItem="bX2-bO-nVg" secondAttribute="top" constant="20" id="9WA-le-zDj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="I2M-OO-FeJ" secondAttribute="bottom" constant="24" id="9f4-3G-0ax"/>
                                                     <constraint firstAttribute="trailing" secondItem="I2M-OO-FeJ" secondAttribute="trailing" constant="25" id="O3V-so-hqK"/>
                                                     <constraint firstItem="I2M-OO-FeJ" firstAttribute="top" secondItem="gMx-sE-eT7" secondAttribute="bottom" constant="8" id="ege-1x-T25"/>
                                                     <constraint firstItem="gMx-sE-eT7" firstAttribute="leading" secondItem="bX2-bO-nVg" secondAttribute="leading" constant="35" id="ht6-Mu-BG1"/>
-                                                    <constraint firstAttribute="height" constant="150" id="qL6-Ad-OHr"/>
+                                                    <constraint firstAttribute="height" constant="128" id="qL6-Ad-OHr"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGY-iF-1Ew">
-                                                <rect key="frame" x="25" y="150" width="343" height="1"/>
+                                                <rect key="frame" x="25" y="128" width="343" height="1"/>
                                                 <color key="backgroundColor" name="Side300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="IeP-IH-o5b"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-lB-NI9">
-                                                <rect key="frame" x="25" y="326" width="343" height="1"/>
+                                                <rect key="frame" x="25" y="304" width="343" height="1"/>
                                                 <color key="backgroundColor" name="Side300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="2CR-TR-AJP"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L97-yk-gvB">
-                                                <rect key="frame" x="0.0" y="151" width="393" height="175"/>
+                                                <rect key="frame" x="0.0" y="129" width="393" height="175"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고민" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRg-3T-bfQ" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="24" width="29.666666666666671" height="19"/>
@@ -222,7 +226,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaH-SI-WSg">
-                                                <rect key="frame" x="0.0" y="327" width="393" height="218"/>
+                                                <rect key="frame" x="0.0" y="305" width="393" height="218"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUO-kf-e6m">
                                                         <rect key="frame" x="25" y="60.333333333333314" width="343" height="133.66666666666666"/>
@@ -249,14 +253,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btW-lR-3UG">
-                                                <rect key="frame" x="25" y="545" width="343" height="1"/>
+                                                <rect key="frame" x="25" y="523" width="343" height="1"/>
                                                 <color key="backgroundColor" name="Side300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Z3a-kE-Z3H"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KF-9D-hrJ">
-                                                <rect key="frame" x="0.0" y="546" width="393" height="133"/>
+                                                <rect key="frame" x="0.0" y="524" width="393" height="133"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정 후 변경 불가능" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykh-CI-E4i" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="47" width="131" height="14"/>
@@ -297,14 +301,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Le-Sy-EaF">
-                                                <rect key="frame" x="25" y="679" width="343" height="1"/>
+                                                <rect key="frame" x="25" y="657" width="343" height="1"/>
                                                 <color key="backgroundColor" name="Side300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="RIC-Yq-vd7"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlh-RW-TIl">
-                                                <rect key="frame" x="0.0" y="680" width="393" height="150"/>
+                                                <rect key="frame" x="0.0" y="658" width="393" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정 후 변경 불가능" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57m-OZ-yL2" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="47" width="131" height="14"/>
@@ -367,7 +371,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfE-jd-K13">
-                                                <rect key="frame" x="25" y="830" width="343" height="1"/>
+                                                <rect key="frame" x="25" y="808" width="343" height="1"/>
                                                 <color key="backgroundColor" name="Side300"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -375,7 +379,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dft-Kx-bnb">
-                                                <rect key="frame" x="0.0" y="831" width="393" height="108"/>
+                                                <rect key="frame" x="0.0" y="809" width="393" height="108"/>
                                                 <subviews>
                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjj-gj-nng" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="52.333333333333371" width="343" height="57"/>
@@ -717,6 +721,21 @@
             </objects>
             <point key="canvasLocation" x="-1505" y="45"/>
         </scene>
+        <!--Nick Name Input View Controller-->
+        <scene sceneID="Su0-UN-4Gu">
+            <objects>
+                <viewController id="VoY-fS-WF5" customClass="NickNameInputViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N9l-42-fxd">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="f0d-ae-K00"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6AQ-PD-paL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610" y="-279"/>
+        </scene>
         <!--Chip Purpose View Controller-->
         <scene sceneID="y7I-UO-xeP">
             <objects>
@@ -737,7 +756,7 @@
             <objects>
                 <viewController id="8j2-Fp-977" customClass="ChipJobViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weR-gH-35M">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="133.66666666666666"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9hD-vE-aWd"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
