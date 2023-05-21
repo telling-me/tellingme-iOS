@@ -41,7 +41,7 @@ extension MoyaProvider {
     func request(
         _ target: Target,
         dtoType: Data.Type,
-        completion: @escaping (Result<Data?, Error>) -> Void
+        completion: @escaping (Result<Data?, APIError>) -> Void
     ) {
         self.request(target) { result in
             switch result {
@@ -58,11 +58,11 @@ extension MoyaProvider {
                     if let errorResponse = try? JSONDecoder().decode(ErrorData.self, from: response.data) {
                         completion(.failure(APIError.errorData(errorResponse)))
                     } else {
-                        completion(.failure(error))
+                        completion(.failure(APIError.other(error)))
                     }
                 }
             case let .failure(error):
-                completion(.failure(error))
+                completion(.failure(APIError.other(error)))
             }
         }
     }

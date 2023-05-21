@@ -26,8 +26,26 @@ extension HomeViewController {
             }
         }
     }
-    
-    func getStack() {
-        
+
+    func getTodayAnswer() {
+        AnswerAPI.getTodayAnswer { result in
+            switch result {
+            case .success(let response):
+                self.writeButton.isEnabled = false
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    if errorData.status == 4002 {
+                        self.pushEmotion()
+                    } else {
+                        self.showToast(message: errorData.message)
+                    }
+                case .tokenNotFound:
+                    print("login으로 push할게욤")
+                default:
+                    print(error)
+                }
+            }
+        }
     }
 }

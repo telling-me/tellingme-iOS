@@ -31,4 +31,23 @@ extension AnswerViewController {
             }
         }
     }
+    
+    func postAnswer() {
+        let request = RegisterAnswerRequest(content: self.answerTextView.text, emotion: 1)
+        AnswerAPI.registerAnswer(request: request) { result in
+            switch result {
+            case .success:
+                self.showToast(message: "성공!")
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("login으로 push할게요")
+                default:
+                    print(error)
+                }
+            }
+        }
+    }
 }

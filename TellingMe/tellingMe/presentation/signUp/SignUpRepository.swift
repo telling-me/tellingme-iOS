@@ -30,7 +30,7 @@ extension AllowNotificationViewController {
         print("type\(type)")
         if type == "kakao" {
             guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
-            let request = OauthRequest(socialId: "1234")
+            let request = OauthRequest(socialId: socialId)
             LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                 switch result {
                 case .success(let response):
