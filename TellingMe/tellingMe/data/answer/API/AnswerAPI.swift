@@ -13,14 +13,20 @@ enum AnswerAPITarget {
     case getTodayAnswer
     case getAnswerRecord
     case registerAnswer(request: RegisterAnswerRequest)
+    case deleteAnswer(request: DeleteAnswerRequest)
+    case updateAnswer(request: UpdateAnswerRequest)
 }
 
 extension AnswerAPITarget: TargetType {
     var task: Task {
         switch self {
         case .getAnswerList(let query):
-            return .requestParameters(parameters: ["date":query], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
         case .registerAnswer(let request):
+            return .requestJSONEncodable(request)
+        case .deleteAnswer(let request):
+            return .requestJSONEncodable(request)
+        case .updateAnswer(let request):
             return .requestJSONEncodable(request)
         default:
             return .requestPlain
@@ -37,12 +43,20 @@ extension AnswerAPITarget: TargetType {
             return "api/answer/record"
         case .registerAnswer:
             return "api/answer"
+        case .deleteAnswer:
+            return "api/answer/delete"
+        case .updateAnswer:
+            return "api/answer/update"
         }
     }
 
     var method: Moya.Method {
         switch self {
         case .registerAnswer:
+            return .post
+        case .deleteAnswer:
+            return .delete
+        case .updateAnswer:
             return .post
         default:
             return .get
@@ -114,4 +128,28 @@ struct AnswerAPI: Networkable {
 //            completion(.failure(APIError.other(error)))
 //        }
 //    }
+    
+    static func deleteAnswer(request: DeleteAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.deleteAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func updateAnswer(request: UpdateAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.updateAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
 }
