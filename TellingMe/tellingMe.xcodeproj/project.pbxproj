@@ -122,6 +122,12 @@
 		3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */; };
 		3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26429C99F7D00D02F3F /* BodyLabel.swift */; };
 		3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26629C99F8800D02F3F /* CaptionLabel.swift */; };
+		3AF97FBA2A191436008FB590 /* TodayAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FB92A191436008FB590 /* TodayAnswerDTO.swift */; };
+		3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBB2A191646008FB590 /* RegisterAnswerDTO.swift */; };
+		3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBD2A19167F008FB590 /* DeleteAnswerDTO.swift */; };
+		3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBF2A1916B4008FB590 /* AnswerRecordDTO.swift */; };
+		3AF97FC22A1916DE008FB590 /* UpdateAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FC12A1916DE008FB590 /* UpdateAnswerDTO.swift */; };
+		3AFA371D2A1A1A3D008A5657 /* AnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */; };
 		3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */; };
 		878B59203EB71108991242CC /* Pods_tellingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */; };
 /* End PBXBuildFile section */
@@ -245,6 +251,12 @@
 		3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineLabel.swift; sourceTree = "<group>"; };
 		3AEED26429C99F7D00D02F3F /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		3AEED26629C99F8800D02F3F /* CaptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
+		3AF97FB92A191436008FB590 /* TodayAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAnswerDTO.swift; sourceTree = "<group>"; };
+		3AF97FBB2A191646008FB590 /* RegisterAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAnswerDTO.swift; sourceTree = "<group>"; };
+		3AF97FBD2A19167F008FB590 /* DeleteAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAnswerDTO.swift; sourceTree = "<group>"; };
+		3AF97FBF2A1916B4008FB590 /* AnswerRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRecordDTO.swift; sourceTree = "<group>"; };
+		3AF97FC12A1916DE008FB590 /* UpdateAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAnswerDTO.swift; sourceTree = "<group>"; };
+		3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewModel.swift; sourceTree = "<group>"; };
 		3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButton.swift; sourceTree = "<group>"; };
 		49060B55F5B6FD79F0C1DA8B /* Pods-tellingMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tellingMe.release.xcconfig"; path = "Target Support Files/Pods-tellingMe/Pods-tellingMe.release.xcconfig"; sourceTree = "<group>"; };
 		66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tellingMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,6 +386,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA371E2A1A1C9A008A5657 /* New Group */,
 				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3A1DB76E2A0A470F00C5F68B /* setting */,
@@ -527,11 +540,10 @@
 		3A68972929FA797700797D9A /* answer */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA371B2A1A1A2D008A5657 /* viewModel */,
+				3AFA371A2A1A1A07008A5657 /* repository */,
+				3AFA37192A1A19FD008A5657 /* viewController */,
 				3A9B415829FFDAE600D61D42 /* Answer.storyboard */,
-				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
-				3A82989B2A00F883001938B9 /* AnswerRepository.swift */,
-				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
-				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
 				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
 			);
 			path = answer;
@@ -562,6 +574,11 @@
 			isa = PBXGroup;
 			children = (
 				3A7121412A03A86B00A02054 /* AnswerListDTO.swift */,
+				3AF97FB92A191436008FB590 /* TodayAnswerDTO.swift */,
+				3AF97FBB2A191646008FB590 /* RegisterAnswerDTO.swift */,
+				3AF97FBD2A19167F008FB590 /* DeleteAnswerDTO.swift */,
+				3AF97FBF2A1916B4008FB590 /* AnswerRecordDTO.swift */,
+				3AF97FC12A1916DE008FB590 /* UpdateAnswerDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -790,6 +807,39 @@
 			path = custom;
 			sourceTree = "<group>";
 		};
+		3AFA37192A1A19FD008A5657 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
+				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		3AFA371A2A1A1A07008A5657 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3A82989B2A00F883001938B9 /* AnswerRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		3AFA371B2A1A1A2D008A5657 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
+				3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		3AFA371E2A1A1C9A008A5657 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		55FD0C4BC557B979A1A841D8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,6 +1034,7 @@
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
+				3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */,
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
 				3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */,
@@ -1006,7 +1057,9 @@
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
 				3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */,
+				3AF97FC22A1916DE008FB590 /* UpdateAnswerDTO.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
+				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
@@ -1015,6 +1068,7 @@
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */,
 				3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */,
+				3AF97FBA2A191436008FB590 /* TodayAnswerDTO.swift in Sources */,
 				3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */,
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
@@ -1025,9 +1079,11 @@
 				3A82989C2A00F883001938B9 /* AnswerRepository.swift in Sources */,
 				3AA289CF29B8506F0030057E /* LoginViewController.swift in Sources */,
 				3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */,
+				3AFA371D2A1A1A3D008A5657 /* AnswerViewModel.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
+				3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */,
 				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,

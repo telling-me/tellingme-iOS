@@ -84,8 +84,8 @@ class HomeViewController: UIViewController {
             self.rotateAnimationView.transform = scale
         }
     }
-
-    @IBAction func presentEmotion(_ sender: UIButton) {
+    
+    func pushEmotion() {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         if let tabBarController = self.tabBarController as? MainTabBarController {
@@ -93,6 +93,10 @@ class HomeViewController: UIViewController {
 //            tabBarController.removeShadowView()
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @IBAction func presentEmotion(_ sender: UIButton) {
+        getTodayAnswer()
     }
 }
 

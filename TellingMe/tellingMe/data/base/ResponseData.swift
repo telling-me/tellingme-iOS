@@ -15,7 +15,11 @@ enum APIError: Error {
     case other(Error)
 }
 
-struct EmptyResponse: Decodable {
+struct EmptyResponse: Codable {
+}
+
+struct IntData: Decodable {
+    let value: Int
 }
 
 struct Success<Data: Codable>: Codable {
