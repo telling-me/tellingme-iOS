@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Modal View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="modalRegisterAnswer" id="Y6W-OH-hqX" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWk-Nh-nI6">
+                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변을 등록할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aec-g7-nlc" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="gq9-bk-kE8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gtv-ra-cFu">
+                                        <rect key="frame" x="20" y="99" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-bu-UPo" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="k0w-gK-D2D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yko-QA-DSc" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="저장하기"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4Gk-Se-pGa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="6Us-Gb-qPO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 등록한 후에는 감정을 바꿀 수 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-Q4-vGm" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="55" width="303" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="zDQ-aB-HZg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Gray7"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Gtv-ra-cFu" secondAttribute="bottom" constant="20" id="JFT-1Z-e9K"/>
+                                    <constraint firstItem="aec-g7-nlc" firstAttribute="leading" secondItem="ZWk-Nh-nI6" secondAttribute="leading" constant="20" id="KoE-8B-8fm"/>
+                                    <constraint firstItem="Gtv-ra-cFu" firstAttribute="top" secondItem="YHJ-Q4-vGm" secondAttribute="bottom" constant="28" id="LlQ-1E-Ds7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gtv-ra-cFu" secondAttribute="trailing" constant="20" id="MrX-3J-8a5"/>
+                                    <constraint firstItem="YHJ-Q4-vGm" firstAttribute="top" secondItem="aec-g7-nlc" secondAttribute="bottom" constant="8" id="OhZ-HU-ghg"/>
+                                    <constraint firstItem="YHJ-Q4-vGm" firstAttribute="leading" secondItem="ZWk-Nh-nI6" secondAttribute="leading" constant="20" id="QM7-7n-Dw7"/>
+                                    <constraint firstAttribute="trailing" secondItem="aec-g7-nlc" secondAttribute="trailing" constant="20" id="ZOH-SX-Ekd"/>
+                                    <constraint firstAttribute="trailing" secondItem="YHJ-Q4-vGm" secondAttribute="trailing" constant="20" id="c75-1A-Iao"/>
+                                    <constraint firstItem="Gtv-ra-cFu" firstAttribute="leading" secondItem="ZWk-Nh-nI6" secondAttribute="leading" constant="20" id="iLz-oS-bQN"/>
+                                    <constraint firstItem="aec-g7-nlc" firstAttribute="top" secondItem="ZWk-Nh-nI6" secondAttribute="top" constant="30" id="uGG-mw-cb4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZWk-Nh-nI6" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="219-GR-jrl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZWk-Nh-nI6" secondAttribute="trailing" constant="25" id="TQa-RZ-jA6"/>
+                            <constraint firstItem="ZWk-Nh-nI6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="fen-B0-pbd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="rSZ-bu-UPo" id="8gk-Kd-Pz9"/>
+                        <outlet property="okButton" destination="yko-QA-DSc" id="Kju-Kv-T40"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="-42"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="SGE-wG-4Bd">
+            <objects>
+                <viewController storyboardIdentifier="modalDeleteAnswer" id="K5S-aj-Czn" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mfE-wp-t5w">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnU-uP-U77">
+                                <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변을 삭제할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-br-R31" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="5HD-CX-rgU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GWm-NC-CSB">
+                                        <rect key="frame" x="20" y="75" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHJ-cB-cEh" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="K5S-aj-Czn" eventType="touchUpInside" id="PZ4-V0-I1J"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNo-HL-u2v" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="삭제하기"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="K5S-aj-Czn" eventType="touchUpInside" id="aMH-Sd-EAG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="QiC-82-IOk"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="GWm-NC-CSB" secondAttribute="bottom" constant="20" id="1Q4-Df-spL"/>
+                                    <constraint firstItem="8u1-br-R31" firstAttribute="top" secondItem="FnU-uP-U77" secondAttribute="top" constant="30" id="PZY-br-Pdi"/>
+                                    <constraint firstItem="GWm-NC-CSB" firstAttribute="top" secondItem="8u1-br-R31" secondAttribute="bottom" constant="28" id="acd-LK-5Ww"/>
+                                    <constraint firstItem="GWm-NC-CSB" firstAttribute="leading" secondItem="FnU-uP-U77" secondAttribute="leading" constant="20" id="mNc-1o-w3M"/>
+                                    <constraint firstItem="8u1-br-R31" firstAttribute="leading" secondItem="FnU-uP-U77" secondAttribute="leading" constant="20" id="osS-jy-e6k"/>
+                                    <constraint firstAttribute="trailing" secondItem="8u1-br-R31" secondAttribute="trailing" constant="20" id="svu-q8-cVK"/>
+                                    <constraint firstAttribute="trailing" secondItem="GWm-NC-CSB" secondAttribute="trailing" constant="20" id="xMT-bP-AgO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yj0-8U-tFK"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FnU-uP-U77" firstAttribute="leading" secondItem="yj0-8U-tFK" secondAttribute="leading" constant="25" id="cEO-i3-4lj"/>
+                            <constraint firstItem="yj0-8U-tFK" firstAttribute="trailing" secondItem="FnU-uP-U77" secondAttribute="trailing" constant="25" id="qwc-h7-x8G"/>
+                            <constraint firstItem="FnU-uP-U77" firstAttribute="centerY" secondItem="yj0-8U-tFK" secondAttribute="centerY" id="zyj-cl-77H"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="dHJ-cB-cEh" id="Ne8-0j-THJ"/>
+                        <outlet property="okButton" destination="VNo-HL-u2v" id="mhg-fF-FPb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pU-DW-LWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-440" y="-42"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="8u1-br-R31">
+            <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="VNo-HL-u2v">
+            <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
+        <designable name="YHJ-Q4-vGm">
+            <size key="intrinsicContentSize" width="276.33333333333331" height="20.333333333333332"/>
+        </designable>
+        <designable name="aec-g7-nlc">
+            <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="dHJ-cB-cEh">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="rSZ-bu-UPo">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="yko-QA-DSc">
+            <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="Gray7">
+            <color red="0.30199998617172241" green="0.32499998807907104" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
