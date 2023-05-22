@@ -17,6 +17,8 @@
 		3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */; };
 		3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */; };
 		3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */; };
+		3A1E403B2A1A611800F1F109 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E403A2A1A611800F1F109 /* ModalViewController.swift */; };
+		3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
@@ -99,6 +101,14 @@
 		3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289D529B8506F0030057E /* LaunchScreen.storyboard */; };
 		3AA289E029B851DD0030057E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289DF29B851DD0030057E /* .swiftlint.yml */; };
 		3AA289E229B854210030057E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA289E129B854210030057E /* Login.storyboard */; };
+		3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */; };
+		3AB0E3C72A1B394D00B13755 /* ModifyAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0E3C62A1B394D00B13755 /* ModifyAnswerViewController.swift */; };
+		3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0E3C82A1B39A700B13755 /* ModifyAnswerViewModel.swift */; };
+		3AB0E3CB2A1B3A0700B13755 /* ModifyAnswerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0E3CA2A1B3A0700B13755 /* ModifyAnswerRepository.swift */; };
+		3ABB09EB2A1A731000C6596B /* PullDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09EA2A1A731000C6596B /* PullDownTableViewCell.swift */; };
+		3ABB09EE2A1A73F600C6596B /* PullDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */; };
+		3ABB09F02A1A755100C6596B /* AnswerCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */; };
+		3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */; };
 		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
 		3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */; };
 		3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */; };
@@ -128,6 +138,7 @@
 		3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBF2A1916B4008FB590 /* AnswerRecordDTO.swift */; };
 		3AF97FC22A1916DE008FB590 /* UpdateAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FC12A1916DE008FB590 /* UpdateAnswerDTO.swift */; };
 		3AFA371D2A1A1A3D008A5657 /* AnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */; };
+		3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */; };
 		3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */; };
 		878B59203EB71108991242CC /* Pods_tellingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */; };
 /* End PBXBuildFile section */
@@ -143,6 +154,8 @@
 		3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		3A1E403A2A1A611800F1F109 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnswerViewController+.swift"; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
@@ -229,6 +242,14 @@
 		3AA289D829B8506F0030057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedRepository.swift; sourceTree = "<group>"; };
+		3AB0E3C62A1B394D00B13755 /* ModifyAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAnswerViewController.swift; sourceTree = "<group>"; };
+		3AB0E3C82A1B39A700B13755 /* ModifyAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAnswerViewModel.swift; sourceTree = "<group>"; };
+		3AB0E3CA2A1B3A0700B13755 /* ModifyAnswerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAnswerRepository.swift; sourceTree = "<group>"; };
+		3ABB09EA2A1A731000C6596B /* PullDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDownTableViewCell.swift; sourceTree = "<group>"; };
+		3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDownViewController.swift; sourceTree = "<group>"; };
+		3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedViewController.swift; sourceTree = "<group>"; };
+		3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedViewModel.swift; sourceTree = "<group>"; };
 		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -257,6 +278,7 @@
 		3AF97FBF2A1916B4008FB590 /* AnswerRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRecordDTO.swift; sourceTree = "<group>"; };
 		3AF97FC12A1916DE008FB590 /* UpdateAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAnswerDTO.swift; sourceTree = "<group>"; };
 		3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewModel.swift; sourceTree = "<group>"; };
+		3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
 		3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButton.swift; sourceTree = "<group>"; };
 		49060B55F5B6FD79F0C1DA8B /* Pods-tellingMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tellingMe.release.xcconfig"; path = "Target Support Files/Pods-tellingMe/Pods-tellingMe.release.xcconfig"; sourceTree = "<group>"; };
 		66ED16CF904CB2601BAF24C5 /* Pods_tellingMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tellingMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,9 +341,9 @@
 		3A157CF729CAFD6D00D61AD3 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				3AB0E3C32A1B2F4A00B13755 /* repository */,
+				3AB0E3C22A1B2F4100B13755 /* viewController */,
 				3A157CF829CAFFA300D61AD3 /* Home.storyboard */,
-				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
-				3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */,
 				3A7121462A03E2C400A02054 /* HomeViewModel.swift */,
 			);
 			path = home;
@@ -348,10 +370,10 @@
 				3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */,
 				3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */,
 				3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */,
-				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
-				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
-				3AEC414729FAE0460042A548 /* SecondayTextButton.swift */,
 				3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */,
+				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
+				3AEC414729FAE0460042A548 /* SecondayTextButton.swift */,
+				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
 				3AEBB2C02A14B4EB006880E0 /* Input.swift */,
 			);
 			path = style;
@@ -386,7 +408,6 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3AFA371E2A1A1C9A008A5657 /* New Group */,
 				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3A1DB76E2A0A470F00C5F68B /* setting */,
@@ -484,6 +505,8 @@
 		3A4C38522A0CCC9300FEFAAE /* common */ = {
 			isa = PBXGroup;
 			children = (
+				3ABB09E92A1A72EA00C6596B /* pulldown */,
+				3AFA371E2A1A1C9A008A5657 /* modal */,
 				3A29B5752A169B30006F1E8D /* nicknameInput */,
 				3A3739B32A12434200739543 /* chip */,
 				3A4C38532A0CCCA800FEFAAE /* dropdown */,
@@ -698,6 +721,31 @@
 			path = tellingMe;
 			sourceTree = "<group>";
 		};
+		3AB0E3C22A1B2F4100B13755 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		3AB0E3C32A1B2F4A00B13755 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		3ABB09E92A1A72EA00C6596B /* pulldown */ = {
+			isa = PBXGroup;
+			children = (
+				3ABB09EA2A1A731000C6596B /* PullDownTableViewCell.swift */,
+				3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */,
+			);
+			path = pulldown;
+			sourceTree = "<group>";
+		};
 		3AC0BA6229EF0F0000888868 /* base */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +860,9 @@
 			children = (
 				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
 				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
+				3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */,
+				3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */,
+				3AB0E3C62A1B394D00B13755 /* ModifyAnswerViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -820,6 +871,8 @@
 			isa = PBXGroup;
 			children = (
 				3A82989B2A00F883001938B9 /* AnswerRepository.swift */,
+				3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */,
+				3AB0E3CA2A1B3A0700B13755 /* ModifyAnswerRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -829,15 +882,19 @@
 			children = (
 				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
 				3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */,
+				3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */,
+				3AB0E3C82A1B39A700B13755 /* ModifyAnswerViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
 		};
-		3AFA371E2A1A1C9A008A5657 /* New Group */ = {
+		3AFA371E2A1A1C9A008A5657 /* modal */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */,
+				3A1E403A2A1A611800F1F109 /* ModalViewController.swift */,
 			);
-			path = "New Group";
+			path = modal;
 			sourceTree = "<group>";
 		};
 		55FD0C4BC557B979A1A841D8 /* Pods */ = {
@@ -913,6 +970,7 @@
 				3A82989A2A00F1B5001938B9 /* 87.png in Resources */,
 				3A8298922A00F1B5001938B9 /* 29.png in Resources */,
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
+				3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */,
 				3A8298912A00F1B5001938B9 /* 58.png in Resources */,
 				3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */,
 				3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */,
@@ -1010,22 +1068,27 @@
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
+				3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
 				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
 				3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */,
+				3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
+				3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
+				3AB0E3CB2A1B3A0700B13755 /* ModifyAnswerRepository.swift in Sources */,
 				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
@@ -1033,7 +1096,9 @@
 				3A4C38512A0CC95900FEFAAE /* DropDownViewController.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
+				3A1E403B2A1A611800F1F109 /* ModalViewController.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
+				3ABB09EE2A1A73F600C6596B /* PullDownViewController.swift in Sources */,
 				3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */,
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
@@ -1047,6 +1112,7 @@
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
 				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
+				3ABB09F02A1A755100C6596B /* AnswerCompletedViewController.swift in Sources */,
 				3A7121392A03902800A02054 /* AnswerListViewModel.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,
 				3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */,
@@ -1081,6 +1147,7 @@
 				3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */,
 				3AFA371D2A1A1A3D008A5657 /* AnswerViewModel.swift in Sources */,
 				3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */,
+				3ABB09EB2A1A731000C6596B /* PullDownTableViewCell.swift in Sources */,
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
 				3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */,
@@ -1098,6 +1165,7 @@
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
+				3AB0E3C72A1B394D00B13755 /* ModifyAnswerViewController.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
 				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
 				3A3739B92A1243E300739543 /* ChipCollectionViewController.swift in Sources */,

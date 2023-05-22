@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondayTextButton: UIButton {
+class SecondaryTextButton: UIButton {
     override var isSelected: Bool {
         didSet {
             isSelected ? setSelected() : setDefault()

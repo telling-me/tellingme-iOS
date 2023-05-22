@@ -9,8 +9,8 @@ import UIKit
 
 class GetNameViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var prevButton: SecondayIconButton!
-    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondaryIconButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var textFieldView: UIView!
     let viewModel = GetNameViewModel()
 

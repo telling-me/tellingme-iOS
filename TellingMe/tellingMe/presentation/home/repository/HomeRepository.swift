@@ -30,8 +30,8 @@ extension HomeViewController {
     func getTodayAnswer() {
         AnswerAPI.getTodayAnswer { result in
             switch result {
-            case .success(let response):
-                self.writeButton.isEnabled = false
+            case .success:
+                self.pushAnswerCompleted()
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):

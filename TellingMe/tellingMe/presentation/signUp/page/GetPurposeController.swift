@@ -11,8 +11,8 @@ class GetPurposeViewController: UIViewController {
     let purposeList: [TeritaryBothData] = [TeritaryBothData(imgName: "Pen_Gradient", title: "학업/진로"), TeritaryBothData(imgName: "Handshake_Gradient", title: "대인 관계"), TeritaryBothData(imgName: "Values_Gradient", title: "성격/가치관"), TeritaryBothData(imgName: "Magnet_Gradient", title: "행동/습관"), TeritaryBothData(imgName: "Health_Gradient", title: "건강"), TeritaryBothData(imgName: "Heart_Gradient", title: "기타")]
     var selectedItems: [Int] = []
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var nextButton: SecondayIconButton!
-    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
+    @IBOutlet weak var prevButton: SecondaryIconButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

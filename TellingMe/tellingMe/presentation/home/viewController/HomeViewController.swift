@@ -94,6 +94,12 @@ class HomeViewController: UIViewController {
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func pushAnswerCompleted() {
+        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "answerCompleted") as? AnswerCompletedViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
         getTodayAnswer()

@@ -9,7 +9,7 @@ import UIKit
 
 class AgreementViewController: UIViewController {
     @IBOutlet weak var agreementButton: UIButton!
-    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

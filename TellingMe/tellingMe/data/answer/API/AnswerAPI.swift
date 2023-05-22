@@ -104,7 +104,7 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func registerAnswer(request: RegisterAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.registerAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)
