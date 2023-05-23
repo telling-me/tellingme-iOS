@@ -17,11 +17,11 @@ class Body1Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Balck")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 15)
-        self.textColor = UIColor(named: "Balck")
     }
 }
 
@@ -35,11 +35,11 @@ class Body1Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
-        self.textColor = UIColor(named: "Balck")
     }
 }
 
@@ -53,11 +53,11 @@ class Body2Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 14)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -71,10 +71,10 @@ class Body2Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 14)
-        self.textColor = UIColor(named: "Black")
     }
 }

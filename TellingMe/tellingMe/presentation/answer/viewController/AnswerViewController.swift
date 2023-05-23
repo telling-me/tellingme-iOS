@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnswerViewController: UIViewController {
+class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -17,6 +17,7 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var emotionButton: UIButton!
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
 
+    @IBOutlet weak var countTextLabel: UILabel!
     @IBOutlet weak var foldView: UIView!
     @IBOutlet weak var foldViewHeight: NSLayoutConstraint!
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +38,17 @@ class AnswerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         // 터치가 발생했을 때 실행되는 코드를 여기에 작성합니다.
+         // 키보드를 닫을 수 있는 메서드를 호출합니다.
+        if answerTextView.text.count > 500 {
+        //글자수 제한에 걸리면 마지막 글자를 삭제함.
+            answerTextView.text.removeLast()
+            countTextLabel.text = "\(500)"
+        }
+         answerTextView.resignFirstResponder()
+     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
@@ -63,6 +75,12 @@ class AnswerViewController: UIViewController {
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {
+        if answerTextView.text.count > 500 {
+        //글자수 제한에 걸리면 마지막 글자를 삭제함.
+            answerTextView.text.removeLast()
+            countTextLabel.text = "\(500)"
+        }
+
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {
             return
@@ -86,23 +104,28 @@ class AnswerViewController: UIViewController {
 
     @IBAction func foldView(_ sender: UIButton) {
         if foldViewHeight.constant == 0 {
+            self.foldView.isHidden = false
             self.foldViewHeight.constant = 120
-            self.dayLabel.isHidden = false
-            self.subQuestionLabel.isHidden = false
-            self.questionLabel.isHidden = false
-            UIView.animate(withDuration: 0.3) {
-                self.foldView.layoutIfNeeded()
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
             }
             sender.setImage(UIImage(systemName: "chevron.up"), for: .normal)
         } else {
+            self.foldView.isHidden = true
             self.foldViewHeight.constant = 0
-            self.questionLabel.isHidden = true
-            self.subQuestionLabel.isHidden = true
-            self.dayLabel.isHidden = true
-            UIView.animate(withDuration: 0.3) {
-                self.foldView.layoutIfNeeded()
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
             }
             sender.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         }
+    }
+
+    func clickCancel() {
+    }
+
+    // 답변 등록하기 버튼
+    func clickOk() {
+        self.postAnswer()
+        self.navigationController?.popViewController(animated: true)
     }
 }

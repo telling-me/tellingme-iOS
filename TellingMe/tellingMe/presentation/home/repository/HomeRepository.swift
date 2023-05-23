@@ -48,4 +48,28 @@ extension HomeViewController {
             }
         }
     }
+    
+    func getAnswerRecord() {
+        AnswerAPI.getAnswerRecord { result in
+            switch result {
+            case .success(let response):
+                if response!.count == 0 {
+                    self.dayStackLabel.text = "오늘도 하루를 돌아봐요!"
+                    self.dayStackLabel.setColorPart(text: "하루")
+                } else {
+                    self.dayStackLabel.text = "연속 \(response!.count)일째 답변 중!"
+                    self.dayStackLabel.setColorPart(text: String(response!.count))
+                }
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("login으로 push할게욤")
+                default:
+                    print(error)
+                }
+            }
+        }
+    }
 }

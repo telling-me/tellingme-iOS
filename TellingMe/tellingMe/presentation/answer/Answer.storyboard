@@ -51,6 +51,7 @@
                                             <constraint firstAttribute="height" constant="32" id="kSH-o2-kG4"/>
                                             <constraint firstAttribute="width" constant="32" id="vrn-iH-pNY"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
@@ -63,8 +64,9 @@
                                             <constraint firstAttribute="width" constant="32" id="AIL-7F-IAz"/>
                                             <constraint firstAttribute="height" constant="32" id="kHi-Z7-dZB"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <state key="normal" image="arrow.backward" catalog="system"/>
                                         <connections>
                                             <action selector="clickBack:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jiy-cN-02V"/>
                                         </connections>
@@ -84,19 +86,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32g-AO-6Xs">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSv-NP-tba" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSv-NP-tba" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="0.0" width="283" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30.333333333333343" width="283" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfO-mn-pOD" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfO-mn-pOD" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="150.66666666666666" y="75" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
@@ -105,6 +107,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rfO-mn-pOD" firstAttribute="top" secondItem="Ua7-KG-a1f" secondAttribute="bottom" constant="18" id="4df-se-iV7"/>
                                     <constraint firstAttribute="trailing" secondItem="GSv-NP-tba" secondAttribute="trailing" constant="30" id="4gL-nC-IWU"/>
                                     <constraint firstItem="rfO-mn-pOD" firstAttribute="centerX" secondItem="32g-AO-6Xs" secondAttribute="centerX" id="NZX-4v-fn5"/>
                                     <constraint firstAttribute="height" constant="120" id="XMZ-dE-KiR"/>
@@ -139,16 +142,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7T-o1-yTF">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="28"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-0t-zqo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-0t-zqo" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="328" y="3.6666666666666288" width="40" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMo-tO-t9O">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMo-tO-t9O" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="313" y="3.6666666666666288" width="11" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -164,12 +167,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6k4-hS-r6P">
                                         <rect key="frame" x="0.0" y="28" width="393" height="44"/>
                                         <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나혼자 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3U-Yb-3ez">
-                                                <rect key="frame" x="25" y="11.666666666666629" width="78" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gd-bX-c50">
                                                 <rect key="frame" x="338" y="10" width="30" height="24"/>
                                                 <constraints>
@@ -184,27 +181,16 @@
                                                     <action selector="clickComplete:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pbe-7W-A1x"/>
                                                 </connections>
                                             </button>
-                                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNd-Et-4S5">
-                                                <rect key="frame" x="113" y="10" width="42" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="m17-PV-sgm"/>
-                                                    <constraint firstAttribute="width" constant="40" id="mAP-lA-zLg"/>
-                                                </constraints>
-                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="0fx-BY-Ber"/>
-                                            <constraint firstItem="DNd-Et-4S5" firstAttribute="centerY" secondItem="6k4-hS-r6P" secondAttribute="centerY" id="I0O-zJ-d7N"/>
-                                            <constraint firstItem="B3U-Yb-3ez" firstAttribute="leading" secondItem="6k4-hS-r6P" secondAttribute="leading" constant="25" id="K1f-22-64B"/>
-                                            <constraint firstItem="B3U-Yb-3ez" firstAttribute="centerY" secondItem="6k4-hS-r6P" secondAttribute="centerY" id="VsE-Jt-zwO"/>
-                                            <constraint firstItem="DNd-Et-4S5" firstAttribute="leading" secondItem="B3U-Yb-3ez" secondAttribute="trailing" constant="10" id="aWu-Vu-cVK"/>
                                             <constraint firstAttribute="trailing" secondItem="1gd-bX-c50" secondAttribute="trailing" constant="25" id="ebn-Ho-9An"/>
                                             <constraint firstItem="1gd-bX-c50" firstAttribute="centerY" secondItem="6k4-hS-r6P" secondAttribute="centerY" id="zvR-1V-JI4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Side100"/>
                                 <constraints>
                                     <constraint firstItem="6k4-hS-r6P" firstAttribute="leading" secondItem="ry3-ds-E14" secondAttribute="leading" id="3wW-73-Ym1"/>
                                     <constraint firstAttribute="trailing" secondItem="J7T-o1-yTF" secondAttribute="trailing" id="CoL-3b-n69"/>
@@ -243,6 +229,7 @@
                         <outlet property="answerTextView" destination="vHB-ww-Xkt" id="S0U-Yz-qKF"/>
                         <outlet property="backButton" destination="d9f-Fl-Wik" id="xwG-1c-q5S"/>
                         <outlet property="bottomLayout" destination="6qs-CU-2Z3" id="UVn-nL-Wjc"/>
+                        <outlet property="countTextLabel" destination="xMo-tO-t9O" id="za6-EI-tCk"/>
                         <outlet property="dayLabel" destination="rfO-mn-pOD" id="vdO-GU-5dF"/>
                         <outlet property="emotionButton" destination="phq-Xk-piA" id="1rh-fV-YV8"/>
                         <outlet property="foldView" destination="32g-AO-6Xs" id="9u9-Yp-NXx"/>
@@ -390,7 +377,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4n8-t3-2qb">
                                 <rect key="frame" x="0.0" y="59" width="393" height="77"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4du-Gr-Cc9">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4du-Gr-Cc9">
                                         <rect key="frame" x="174.66666666666666" y="21" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="ifZ-0I-mm9"/>
@@ -407,20 +394,21 @@
                                             <constraint firstAttribute="height" constant="32" id="ZCP-mB-hfC"/>
                                             <constraint firstAttribute="width" constant="32" id="mFw-wn-aQl"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title=""/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title=""/>
                                         <connections>
                                             <action selector="backButton:" destination="g0b-cW-Eb4" eventType="touchUpInside" id="vM6-pW-SDY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zi-G1-PPg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zi-G1-PPg">
                                         <rect key="frame" x="340" y="21" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="C53-fu-513"/>
                                             <constraint firstAttribute="width" constant="32" id="suU-ZN-etB"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="DotsThreeVertical"/>
                                         <connections>
                                             <action selector="clickMenu:" destination="g0b-cW-Eb4" eventType="touchUpInside" id="bXt-UJ-kLY"/>
                                         </connections>
@@ -492,16 +480,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heA-Mo-lgW">
                                 <rect key="frame" x="0.0" y="790" width="393" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-Tp-dKX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-Tp-dKX" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="328" y="3.6666666666666288" width="40" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Gray6"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2s-vn-gls">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2s-vn-gls" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="313" y="3.6666666666666288" width="11" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Gray6"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -567,8 +555,9 @@
                                             <constraint firstAttribute="width" constant="32" id="C6h-zn-Svy"/>
                                             <constraint firstAttribute="height" constant="32" id="ELU-Nl-A7s"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
                                             <action selector="clickBack:" destination="hNg-kt-flE" eventType="touchUpInside" id="eq5-xw-jva"/>
                                         </connections>
@@ -590,8 +579,9 @@
                                             <constraint firstAttribute="height" constant="32" id="cAP-WV-NMS"/>
                                             <constraint firstAttribute="width" constant="32" id="qaF-SQ-Bte"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title=""/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title=""/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -663,16 +653,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5d-s8-jrB">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="28"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27F-tQ-Z7H">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27F-tQ-Z7H" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="328" y="3.6666666666666288" width="40" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hih-gf-fUU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hih-gf-fUU" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="313" y="3.6666666666666288" width="11" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -688,12 +678,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Poa-Gh-Lvd">
                                         <rect key="frame" x="0.0" y="28" width="393" height="44"/>
                                         <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나혼자 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APF-Ik-yUt">
-                                                <rect key="frame" x="25" y="11.666666666666629" width="78" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlr-ZQ-sAr">
                                                 <rect key="frame" x="338" y="10" width="30" height="24"/>
                                                 <constraints>
@@ -708,27 +692,16 @@
                                                     <action selector="clickComplete:" destination="hNg-kt-flE" eventType="touchUpInside" id="NbI-HB-0cR"/>
                                                 </connections>
                                             </button>
-                                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQ8-ML-ZCP">
-                                                <rect key="frame" x="113" y="10" width="42" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="5KB-5o-vN1"/>
-                                                    <constraint firstAttribute="height" constant="24" id="H9y-Uo-x1F"/>
-                                                </constraints>
-                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Wlr-ZQ-sAr" secondAttribute="trailing" constant="25" id="1w6-Vb-tQR"/>
-                                            <constraint firstItem="EQ8-ML-ZCP" firstAttribute="centerY" secondItem="Poa-Gh-Lvd" secondAttribute="centerY" id="AVU-6N-hXH"/>
                                             <constraint firstItem="Wlr-ZQ-sAr" firstAttribute="centerY" secondItem="Poa-Gh-Lvd" secondAttribute="centerY" id="D6Q-gF-91G"/>
                                             <constraint firstAttribute="height" constant="44" id="XCz-Hs-Iqb"/>
-                                            <constraint firstItem="EQ8-ML-ZCP" firstAttribute="leading" secondItem="APF-Ik-yUt" secondAttribute="trailing" constant="10" id="ejo-fq-fRD"/>
-                                            <constraint firstItem="APF-Ik-yUt" firstAttribute="centerY" secondItem="Poa-Gh-Lvd" secondAttribute="centerY" id="uOA-nu-P63"/>
-                                            <constraint firstItem="APF-Ik-yUt" firstAttribute="leading" secondItem="Poa-Gh-Lvd" secondAttribute="leading" constant="25" id="yl3-l9-eA1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Side100"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="u5d-s8-jrB" secondAttribute="trailing" id="D0I-fN-lbB"/>
                                     <constraint firstItem="Poa-Gh-Lvd" firstAttribute="top" secondItem="u5d-s8-jrB" secondAttribute="bottom" id="Lrj-nf-3QJ"/>
@@ -817,12 +790,15 @@
         </designable>
     </designables>
     <resources>
-        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="DotsThreeVertical" width="24" height="24"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray6">
+            <color red="0.40000000596046448" green="0.43500000238418579" blue="0.41600000858306885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Logo">
             <color red="0.027000000700354576" green="0.74500000476837158" blue="0.72200000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

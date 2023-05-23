@@ -56,6 +56,7 @@
 		3A50EEFF29CCB2C400A27504 /* GetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */; };
 		3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */; };
 		3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51FC2329F990A70090BD1B /* HeaderView.swift */; };
+		3A559DEE2A1CE18000A49722 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559DED2A1CE18000A49722 /* UILabel+.swift */; };
 		3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7121342A02C45500A02054 /* AnswerList.storyboard */; };
 		3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */; };
 		3A7121392A03902800A02054 /* AnswerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7121382A03902800A02054 /* AnswerListViewModel.swift */; };
@@ -193,6 +194,7 @@
 		3A50EEFE29CCB2C400A27504 /* GetGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderViewController.swift; sourceTree = "<group>"; };
 		3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		3A51FC2329F990A70090BD1B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3A559DED2A1CE18000A49722 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		3A7121342A02C45500A02054 /* AnswerList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerList.storyboard; sourceTree = "<group>"; };
 		3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListTableViewCell.swift; sourceTree = "<group>"; };
 		3A7121382A03902800A02054 /* AnswerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListViewModel.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				3A2742D029D5F8B9005E4C5F /* Date+.swift */,
 				3A409B3F29E05F4700A05B22 /* Array+.swift */,
 				3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */,
+				3A559DED2A1CE18000A49722 /* UILabel+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1167,6 +1170,7 @@
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
 				3AB0E3C72A1B394D00B13755 /* ModifyAnswerViewController.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
+				3A559DEE2A1CE18000A49722 /* UILabel+.swift in Sources */,
 				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
 				3A3739B92A1243E300739543 /* ChipCollectionViewController.swift in Sources */,
 			);

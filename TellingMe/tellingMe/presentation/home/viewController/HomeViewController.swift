@@ -25,6 +25,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        getQuestion()
+        getAnswerRecord()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,14 +61,12 @@ class HomeViewController: UIViewController {
         questionLabel.textColor = UIColor(named: "Logo")
         subQuestionLabel.textColor = UIColor(named: "Gray5")
         dayLabel.textColor = UIColor(named: "Side500")
-        dayStackLabel.textColor = UIColor(named: "Logo")
 
         dayLabel.text = viewModel.today
         for view in shadowViews {
             view.setShadow2()
         }
 
-        getQuestion()
         headerView.delegate = self
     }
 
@@ -84,7 +84,7 @@ class HomeViewController: UIViewController {
             self.rotateAnimationView.transform = scale
         }
     }
-    
+
     func pushEmotion() {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     func pushAnswerCompleted() {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "answerCompleted") as? AnswerCompletedViewController else { return }

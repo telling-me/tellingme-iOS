@@ -12,8 +12,8 @@ extension AnswerCompletedViewController {
         QuestionAPI.getTodayQuestion { result in
             switch result {
             case .success(let response):
-                self.mainQuestionLabel.text = response?.title
-                self.subQuestionLabel.text = response?.phrase
+                self.mainQuestionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
+                self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
                 if let year = response?.date[0],
                    let month = response?.date[1],
                    let day = response?.date[2] {
@@ -31,7 +31,7 @@ extension AnswerCompletedViewController {
             }
         }
     }
-    
+
     func getAnswer() {
         AnswerAPI.getTodayAnswer { result in
             switch result {

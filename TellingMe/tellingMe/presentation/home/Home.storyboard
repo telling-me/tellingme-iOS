@@ -44,43 +44,23 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-P9-e8Z">
-                                <rect key="frame" x="114.5" y="122" width="185" height="34"/>
+                                <rect key="frame" x="174.5" y="122" width="65.5" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연속" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-br-0qb" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="10" width="29.5" height="14"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="Gray5"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일째 답변 중!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKc-vY-z9X" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="85" y="10" width="88" height="14"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="Gray5"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEO-Xf-N27" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="43.5" y="10" width="41.5" height="14"/>
+                                        <rect key="frame" x="12" y="10" width="41.5" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" name="Side100"/>
                                 <constraints>
                                     <constraint firstItem="yEO-Xf-N27" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="1Mx-aa-vLZ"/>
-                                    <constraint firstItem="TKc-vY-z9X" firstAttribute="leading" secondItem="yEO-Xf-N27" secondAttribute="trailing" id="BHX-IR-fed"/>
+                                    <constraint firstItem="yEO-Xf-N27" firstAttribute="leading" secondItem="vpw-P9-e8Z" secondAttribute="leading" constant="12" id="2kI-fj-zSM"/>
                                     <constraint firstAttribute="height" constant="34" id="BfY-qd-Oi0"/>
                                     <constraint firstAttribute="bottom" secondItem="yEO-Xf-N27" secondAttribute="bottom" constant="10" id="Rdf-P6-lTe"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZoW-br-0qb" secondAttribute="bottom" constant="10" id="bPe-4J-Wtb"/>
-                                    <constraint firstItem="yEO-Xf-N27" firstAttribute="leading" secondItem="ZoW-br-0qb" secondAttribute="trailing" constant="2" id="cSF-qQ-3CV"/>
-                                    <constraint firstItem="TKc-vY-z9X" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="x4O-9T-dfR"/>
-                                    <constraint firstItem="ZoW-br-0qb" firstAttribute="leading" secondItem="vpw-P9-e8Z" secondAttribute="leading" constant="12" id="yNV-gJ-64c"/>
-                                    <constraint firstItem="ZoW-br-0qb" firstAttribute="top" secondItem="vpw-P9-e8Z" secondAttribute="top" constant="10" id="yQf-7m-AVP"/>
-                                    <constraint firstAttribute="bottom" secondItem="TKc-vY-z9X" secondAttribute="bottom" constant="10" id="zY1-5o-Ahk"/>
-                                    <constraint firstAttribute="trailing" secondItem="TKc-vY-z9X" secondAttribute="trailing" constant="12" id="zur-hd-vz8"/>
+                                    <constraint firstAttribute="trailing" secondItem="yEO-Xf-N27" secondAttribute="trailing" constant="12" id="sPy-PP-FXM"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -293,12 +273,6 @@
     <designables>
         <designable name="QYq-Da-bcO">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
-        </designable>
-        <designable name="TKc-vY-z9X">
-            <size key="intrinsicContentSize" width="87.5" height="20.5"/>
-        </designable>
-        <designable name="ZoW-br-0qb">
-            <size key="intrinsicContentSize" width="29.5" height="20.5"/>
         </designable>
         <designable name="lH9-tL-FdQ">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
