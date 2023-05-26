@@ -8,9 +8,6 @@
 import Foundation
 import Moya
 
-struct QuestionRequest: Codable {
-}
-
 struct QuestionResponse: Codable {
     let date: [Int]
     let title: String

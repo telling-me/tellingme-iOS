@@ -13,7 +13,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         tabBar.frame = CGRect(x: 0, y: view.frame.height - 88, width: view.frame.width, height: 88)
         super.viewDidLoad()
-    
+
         selectedIndex = 1
 
         tabBar.layer.cornerRadius = 32

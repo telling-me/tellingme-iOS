@@ -9,9 +9,9 @@ import Foundation
 import Moya
 
 enum AnswerAPITarget {
-    case getAnswerList(query: String)
-    case getTodayAnswer
-    case getAnswerRecord
+    case getAnswerList(month: String, year: String)
+    case getAnswer(query: String)
+    case getAnswerRecord(query: String)
     case registerAnswer(request: RegisterAnswerRequest)
     case deleteAnswer(request: DeleteAnswerRequest)
     case updateAnswer(request: UpdateAnswerRequest)
@@ -20,7 +20,11 @@ enum AnswerAPITarget {
 extension AnswerAPITarget: TargetType {
     var task: Task {
         switch self {
-        case .getAnswerList(let query):
+        case .getAnswerList(let month, let year):
+            return .requestParameters(parameters: ["month": month, "year": year], encoding: URLEncoding.queryString)
+        case .getAnswer(let query):
+            return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
+        case .getAnswerRecord(let query):
             return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
         case .registerAnswer(let request):
             return .requestJSONEncodable(request)
@@ -28,8 +32,6 @@ extension AnswerAPITarget: TargetType {
             return .requestJSONEncodable(request)
         case .updateAnswer(let request):
             return .requestJSONEncodable(request)
-        default:
-            return .requestPlain
         }
     }
 
@@ -37,7 +39,7 @@ extension AnswerAPITarget: TargetType {
         switch self {
         case .getAnswerList:
             return "api/answer/list"
-        case .getTodayAnswer:
+        case .getAnswer:
             return "api/answer"
         case .getAnswerRecord:
             return "api/answer/record"
@@ -81,9 +83,9 @@ extension AnswerAPITarget: TargetType {
 struct AnswerAPI: Networkable {
     typealias Target = AnswerAPITarget
 
-    static func getAnswerList(query: String, completion: @escaping(Result<[AnswerListResponse]?, APIError>) -> Void) {
+    static func getAnswerList(month: String, year: String, completion: @escaping(Result<[AnswerListResponse]?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().listRequest(.getAnswerList(query: query), dtoType: AnswerListResponse.self, completion: completion)
+            try makeAuthorizedProvider().listRequest(.getAnswerList(month: month, year: year), dtoType: AnswerListResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {
@@ -93,9 +95,9 @@ struct AnswerAPI: Networkable {
         }
     }
 
-    static func getTodayAnswer(completion: @escaping(Result<TodayAnswerRespose?, APIError>) -> Void) {
+    static func getAnswer(query: String, completion: @escaping(Result<TodayAnswerRespose?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.getTodayAnswer, dtoType: TodayAnswerRespose.self, completion: completion)
+            try makeAuthorizedProvider().request(.getAnswer(query: query), dtoType: TodayAnswerRespose.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {
@@ -117,9 +119,9 @@ struct AnswerAPI: Networkable {
         }
     }
 
-    static func getAnswerRecord(completion: @escaping(Result<AnswerRecordResponse?, APIError>) -> Void) {
+    static func getAnswerRecord(query: String, completion: @escaping(Result<AnswerRecordResponse?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.getAnswerRecord, dtoType: AnswerRecordResponse.self, completion: completion)
+            try makeAuthorizedProvider().request(.getAnswerRecord(query: query), dtoType: AnswerRecordResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {
@@ -140,7 +142,7 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func updateAnswer(request: UpdateAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.updateAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)

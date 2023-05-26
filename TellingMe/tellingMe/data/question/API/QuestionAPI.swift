@@ -9,14 +9,14 @@ import Foundation
 import Moya
 
 enum QuestionAPITarget {
-    case getTodayQuestion
+    case getTodayQuestion(query: String)
 }
 
 extension QuestionAPITarget: TargetType {
     var task: Task {
         switch self {
-        case .getTodayQuestion:
-            return .requestPlain
+        case .getTodayQuestion(let query):
+            return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
         }
     }
 
@@ -52,9 +52,9 @@ extension QuestionAPITarget: TargetType {
 struct QuestionAPI: Networkable {
     typealias Target = QuestionAPITarget
 
-    static func getTodayQuestion(completion: @escaping(Result<QuestionResponse?, APIError>) -> Void) {
+    static func getTodayQuestion(query: String, completion: @escaping(Result<QuestionResponse?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.getTodayQuestion, dtoType: QuestionResponse.self, completion: completion)
+            try makeAuthorizedProvider().request(.getTodayQuestion(query: query), dtoType: QuestionResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

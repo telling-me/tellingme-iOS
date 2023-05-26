@@ -8,6 +8,6 @@
 import Foundation
 
 struct UpdateAnswerRequest: Codable {
-    let answerId: Int
+    let date: String
     let content: String
 }

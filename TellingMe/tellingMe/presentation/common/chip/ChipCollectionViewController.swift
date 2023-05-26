@@ -77,7 +77,7 @@ extension ChipCollectionViewController: UICollectionViewDelegate, UICollectionVi
 
         return CGSize(width: cellWidth, height: 32)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0) // 셀 상하좌우 간격
 

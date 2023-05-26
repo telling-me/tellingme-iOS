@@ -55,7 +55,7 @@ class SettingHeaderView: UIView {
 
         backButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
     }
-    
+
     func setTitle(title: String) {
         self.label.text = title
         label.sizeToFit()

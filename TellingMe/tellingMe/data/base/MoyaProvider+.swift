@@ -66,7 +66,7 @@ extension MoyaProvider {
             }
         }
     }
-    
+
     func listRequest<T: Codable>(
         _ target: Target,
         dtoType: T.Type,
@@ -87,7 +87,7 @@ extension MoyaProvider {
                             completion(.success(data))
                         }
                     }
-                } catch{
+                } catch {
                     completion(.failure(APIError.other(error)))
                 }
             case let .failure(error):

@@ -16,7 +16,7 @@ class SettingViewModel {
 
     let items = [SettingView(id: "myInfo", view: MyInfoViewController()), SettingView(id: "", view: UIViewController()), SettingView(id: "", view: UIViewController()), SettingView(id: "", view: UIViewController())]
     var itemsCount: Int?
-                                                                                    
+
     init() {
         itemsCount = items.count
     }

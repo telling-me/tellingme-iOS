@@ -27,14 +27,14 @@ extension AnswerViewController: UITextViewDelegate {
 
         answerTextView.attributedText = attributedText
     }
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        //이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
+        // 이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
         let newLength = textView.text.count - range.length + text.count
         let koreanMaxCount = 500 + 1
-        //글자수가 초과 된 경우 or 초과되지 않은 경우
-        if newLength > koreanMaxCount { //11글자
-            let overflow = newLength - koreanMaxCount //초과된 글자수
+        // 글자수가 초과 된 경우 or 초과되지 않은 경우
+        if newLength > koreanMaxCount {
+            let overflow = newLength - koreanMaxCount // 초과된 글자수
             if text.count < overflow {
                 self.countTextLabel.text = String(newLength)
                 return true
@@ -46,7 +46,6 @@ extension AnswerViewController: UITextViewDelegate {
             guard let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
 
             textView.replace(textRange, withText: String(newText))
-            
             return false
         }
         self.countTextLabel.text = String(newLength)
@@ -55,20 +54,9 @@ extension AnswerViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count > 500 {
-        //글자수 제한에 걸리면 마지막 글자를 삭제함.
+        // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             textView.text.removeLast()
             countTextLabel.text = "\(500)"
         }
     }
 }
-
-//extension AnswerViewController: ModalActionDelegate {
-//    func clickCancel() {
-//    }
-//
-//    // 답변 등록하기 버튼
-//    func clickOk() {
-//        self.postAnswer()
-//        self.navigationController?.popViewController(animated: true)
-//    }
-//}

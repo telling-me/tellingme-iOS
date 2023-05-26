@@ -27,7 +27,6 @@ extension AllowNotificationViewController {
     }
 
     func login(type: String) {
-        print("type\(type)")
         if type == "kakao" {
             guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
             let request = OauthRequest(socialId: socialId)

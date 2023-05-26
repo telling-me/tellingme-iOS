@@ -28,7 +28,7 @@ class DropDownButton: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     let smallLabel: Body2Regular = {
         let label = Body2Regular()
         label.translatesAutoresizingMaskIntoConstraints = false

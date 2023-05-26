@@ -26,11 +26,11 @@ class AnswerListViewModel {
 
     func getQueryDate() -> String {
         var str = "\(year)/"
-        guard let month = Int(month) else { return ""}
-        if month < 10 {
-            str += "0"+self.month + "/01"
+        guard let temp = Int(month) else { return ""}
+        if temp < 10 {
+            str += "0"+self.month
         } else {
-            str += self.month + "/01"
+            str += self.month
         }
         return str
     }

@@ -8,8 +8,6 @@
 import UIKit
 
 class ModifyAnswerViewController: AnswerViewController {
-    let viewModel = ModifyAnswerViewModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         getAnswer()

@@ -40,7 +40,6 @@ class ChipCollectionViewCell: UICollectionViewCell {
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
-    
 
     override var isSelected: Bool {
         didSet {

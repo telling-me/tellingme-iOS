@@ -9,7 +9,8 @@ import Foundation
 
 extension AnswerViewController {
     func getQuestion() {
-        QuestionAPI.getTodayQuestion { result in
+        let query = Date().getQuestionDate()
+        QuestionAPI.getTodayQuestion(query: query) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -17,6 +18,7 @@ extension AnswerViewController {
                 if let year = response?.date[0],
                    let month = response?.date[1],
                    let day = response?.date[2] {
+                    self.viewModel.date = "\(year)-\(month)-\(day)"
                     self.dayLabel.text = "\(year)년 \(month)월 \(day)일"
                 }
             case .failure(let error):
@@ -33,7 +35,7 @@ extension AnswerViewController {
     }
 
     func postAnswer() {
-        let request = RegisterAnswerRequest(content: self.answerTextView.text, emotion: 1)
+        let request = RegisterAnswerRequest(content: self.answerTextView.text, date: viewModel.date!, emotion: 1)
         AnswerAPI.registerAnswer(request: request) { result in
             switch result {
             case .success:

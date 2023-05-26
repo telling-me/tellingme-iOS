@@ -31,8 +31,3 @@ struct ErrorData: Codable {
     let code: String
     let message: String
 }
-
-//enum APIError: Error {
-//    case http(ErrorData)
-//    case unknown(Error)
-//}
