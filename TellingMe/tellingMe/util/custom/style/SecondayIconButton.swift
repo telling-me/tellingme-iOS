@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondayIconButton: UIButton {
+class SecondaryIconButton: UIButton {
     var shadows = UIView()
 
     override var isSelected: Bool {

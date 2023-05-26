@@ -17,11 +17,11 @@ class Headline2Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 32)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -35,11 +35,11 @@ class Headline2Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 32)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -53,11 +53,11 @@ class Headline3Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 26)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -71,11 +71,11 @@ class Headline3Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 26)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -89,11 +89,11 @@ class Headline4Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 24)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -107,11 +107,11 @@ class Headline4Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 24)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -125,11 +125,11 @@ class Headline5Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFB", size: 19)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -143,11 +143,11 @@ class Headline5Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 19)
-        self.textColor = UIColor(named: "Black")
     }
 }
 
@@ -161,6 +161,7 @@ class Headline6Bold: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
@@ -179,10 +180,10 @@ class Headline6Regular: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLabel()
+        self.textColor = UIColor(named: "Black")
     }
 
     func initializeLabel() {
         self.font = UIFont(name: "NanumSquareRoundOTFR", size: 17)
-        self.textColor = UIColor(named: "Black")
     }
 }

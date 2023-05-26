@@ -8,5 +8,5 @@
 import Foundation
 
 struct AnswerRecordResponse: Codable {
-    let stack: Int
+    let count: Int
 }

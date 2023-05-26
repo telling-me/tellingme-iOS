@@ -104,7 +104,7 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func registerAnswer(request: RegisterAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.registerAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)
@@ -117,18 +117,18 @@ struct AnswerAPI: Networkable {
         }
     }
 
-//    static func getAnswerRecord(completion: @escaping(Result<Int?, APIError>) -> Void) {
-//        do {
-//            try makeAuthorizedProvider().request(.getAnswerRecord, completion: completion)
-//        } catch APIError.tokenNotFound {
-//            completion(.failure(APIError.tokenNotFound))
-//        } catch APIError.errorData(let error) {
-//            completion(.failure(APIError.errorData(error)))
-//        } catch {
-//            completion(.failure(APIError.other(error)))
-//        }
-//    }
-    
+    static func getAnswerRecord(completion: @escaping(Result<AnswerRecordResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.getAnswerRecord, dtoType: AnswerRecordResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+
     static func deleteAnswer(request: DeleteAnswerRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.deleteAnswer(request: request), dtoType: EmptyResponse.self, completion: completion)

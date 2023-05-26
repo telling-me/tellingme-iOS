@@ -8,8 +8,8 @@
 import UIKit
 
 class GetJobViewController: UIViewController {
-    @IBOutlet weak var prevButton: SecondayIconButton!
-    @IBOutlet weak var nextButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondaryIconButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!

@@ -20,8 +20,8 @@ class GetBirthdayViewController: UIViewController {
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var dayButton: DropDownButton!
 
-    @IBOutlet weak var nextButton: SecondayIconButton!
-    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
+    @IBOutlet weak var prevButton: SecondaryIconButton!
     let viewModel = GetBirthdayViewModel()
     let today = Date()
 

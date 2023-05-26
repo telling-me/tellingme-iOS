@@ -9,7 +9,7 @@ import UIKit
 
 class GetMBTIViewController: UIViewController {
     @IBOutlet weak var mbtiButton: DropDownButton!
-    @IBOutlet weak var prevButton: SecondayIconButton!
+    @IBOutlet weak var prevButton: SecondaryIconButton!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
