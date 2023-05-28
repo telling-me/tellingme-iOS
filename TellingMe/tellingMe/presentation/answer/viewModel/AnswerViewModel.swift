@@ -9,9 +9,10 @@ import Foundation
 
 class AnswerViewModel {
     let content: String = ""
-    let emotion: Int = 0
+    var date: String? = nil
+    let emotion: Int? = nil
 
     init() {
-        
+
     }
 }

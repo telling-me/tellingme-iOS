@@ -33,11 +33,11 @@ extension ModifyAnswerViewController {
 //    }
 //
     func getAnswer() {
-        AnswerAPI.getTodayAnswer { result in
+        let query = Date().getQuestionDate()
+        AnswerAPI.getAnswer(query: query) { result in
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content
-                self.viewModel.answerId = response?.answerId
                 self.emotionButton.isEnabled = false
             case .failure(let error):
                 switch error {
@@ -53,8 +53,8 @@ extension ModifyAnswerViewController {
     }
 
     func modifyAnswer() {
-        guard let answerId = viewModel.answerId else { return }
-        let request = UpdateAnswerRequest(answerId: answerId, content: self.answerTextView.text)
+        guard let date = viewModel.date else { return }
+        let request = UpdateAnswerRequest(date: date, content: self.answerTextView.text)
         AnswerAPI.updateAnswer(request: request) { result in
             switch result {
             case .success:

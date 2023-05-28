@@ -9,5 +9,6 @@ import Foundation
 
 struct RegisterAnswerRequest: Codable {
     let content: String
+    let date: String
     let emotion: Int
 }

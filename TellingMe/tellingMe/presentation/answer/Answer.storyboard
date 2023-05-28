@@ -559,7 +559,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
-                                            <action selector="clickBack:" destination="hNg-kt-flE" eventType="touchUpInside" id="eq5-xw-jva"/>
+                                            <action selector="foldView:" destination="hNg-kt-flE" eventType="touchUpInside" id="qBI-xv-Kor"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNa-Qh-MIT">
@@ -582,6 +582,9 @@
                                         <color key="tintColor" name="Gray6"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title=""/>
+                                        <connections>
+                                            <action selector="clickBack:" destination="hNg-kt-flE" eventType="touchUpInside" id="KhU-vr-rfG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -738,10 +741,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="answerTextView" destination="TYc-2t-PhL" id="6lF-YI-BkD"/>
-                        <outlet property="backButton" destination="CT4-LO-3uW" id="WXB-uB-WwF"/>
+                        <outlet property="backButton" destination="tOh-sO-FHo" id="Xzy-sT-yVh"/>
                         <outlet property="bottomLayout" destination="DQv-AW-hPV" id="tcf-BQ-UQH"/>
                         <outlet property="dayLabel" destination="ewL-Nc-7nL" id="8Ck-0T-t0z"/>
-                        <outlet property="emotionButton" destination="yNa-Qh-MIT" id="fNh-Bx-PUu"/>
+                        <outlet property="emotionButton" destination="yNa-Qh-MIT" id="4Jh-f7-2vi"/>
+                        <outlet property="foldView" destination="VcX-wQ-Ghf" id="bDK-YO-2FV"/>
+                        <outlet property="foldViewHeight" destination="eXb-xV-zSk" id="PIb-D9-fJR"/>
                         <outlet property="questionLabel" destination="ado-N1-YtK" id="sHp-ts-Azz"/>
                         <outlet property="subQuestionLabel" destination="fda-mo-Yu9" id="VLJ-F7-8P8"/>
                     </connections>
@@ -752,6 +757,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="27F-tQ-Z7H">
+            <size key="intrinsicContentSize" width="40" height="20.333333333333332"/>
+        </designable>
         <designable name="8B0-B8-0Qu">
             <size key="intrinsicContentSize" width="189.66666666666666" height="20.333333333333332"/>
         </designable>
@@ -761,8 +769,17 @@
         <designable name="GSv-NP-tba">
             <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
         </designable>
+        <designable name="Hih-gf-fUU">
+            <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
+        </designable>
         <designable name="Hkf-9l-fmJ">
             <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
+        </designable>
+        <designable name="P2s-vn-gls">
+            <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="QVa-0t-zqo">
+            <size key="intrinsicContentSize" width="40" height="20.333333333333332"/>
         </designable>
         <designable name="Ua7-KG-a1f">
             <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
@@ -784,6 +801,12 @@
         </designable>
         <designable name="rfO-mn-pOD">
             <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
+        </designable>
+        <designable name="xMo-tO-t9O">
+            <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="yVA-Tp-dKX">
+            <size key="intrinsicContentSize" width="40" height="20.333333333333332"/>
         </designable>
         <designable name="ye3-WQ-aF3">
             <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>

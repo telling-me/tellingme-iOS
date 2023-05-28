@@ -8,12 +8,14 @@
 import UIKit
 
 class ModifyAnswerViewController: AnswerViewController {
-    let viewModel = ModifyAnswerViewModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         getAnswer()
         self.emotionButton.isEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
     }
 
     override func clickCancel() {

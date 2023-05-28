@@ -55,7 +55,7 @@ class SecondaryIconButton: UIButton {
         backgroundColor = UIColor(named: "Gray1")
         tintColor = UIColor(named: "Gray4")
     }
-    
+
     func setDefault() {
         backgroundColor = UIColor(named: "Primary25")
         tintColor = UIColor(named: "Logo")

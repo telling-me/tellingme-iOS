@@ -18,6 +18,12 @@ class AnswerListViewController: UIViewController {
     @IBOutlet weak var monthTableView: UITableView!
     @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getAnswerList()
@@ -26,6 +32,15 @@ class AnswerListViewController: UIViewController {
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
         setAction()
+    }
+    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let selectedViewController = self.tabBarController?.selectedViewController,
+           selectedViewController != self.navigationController {
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
 
     func setAction() {

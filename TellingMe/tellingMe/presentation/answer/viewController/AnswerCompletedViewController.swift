@@ -16,12 +16,14 @@ class AnswerCompletedViewController: PullDownViewController {
     @IBOutlet weak var subQuestionLabel: Body2Regular!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!
     @IBOutlet weak var answerTextView: UITextView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        items = viewModel.menus
+    
+    override func viewWillAppear(_ animated: Bool) {
         getQuestion()
         getAnswer()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        items = viewModel.menus
         tableView.reloadData()
     }
 

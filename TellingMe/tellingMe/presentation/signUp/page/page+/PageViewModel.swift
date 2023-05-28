@@ -111,7 +111,7 @@ class GetBirthdayViewModel {
 class GetMBTIViewModel {
     var myMbti: String? = nil
     let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
-    
+
     init() {
 
     }

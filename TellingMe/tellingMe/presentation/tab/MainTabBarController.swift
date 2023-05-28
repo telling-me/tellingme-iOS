@@ -10,10 +10,15 @@ import UIKit
 class MainTabBarController: UITabBarController {
     let shadowView = UIView()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBar.isHidden = false
+    }
+
     override func viewDidLoad() {
         tabBar.frame = CGRect(x: 0, y: view.frame.height - 88, width: view.frame.width, height: 88)
         super.viewDidLoad()
-    
+
         selectedIndex = 1
 
         tabBar.layer.cornerRadius = 32
@@ -31,16 +36,19 @@ class MainTabBarController: UITabBarController {
 //        addShadowView()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        var tabBarFrame = tabBar.frame
-        tabBarFrame.size.height = 88
-        tabBarFrame.origin.y = view.frame.size.height - 88
-        tabBar.frame = tabBarFrame
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        var tabBarFrame = tabBar.frame
+//        tabBarFrame.size.height = 88
+//        tabBarFrame.origin.y = view.frame.size.height - 88
+//        tabBar.frame = tabBarFrame
+//    }
 }
 
-extension MainTabBarController {
+extension MainTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        self.tabBar.isHidden = false
+    }
 //    func removeShadowView() {
 //        shadowView.removeFromSuperview()
 //    }

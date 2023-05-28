@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct AnswerRecordRequest: Codable {
+    let date: String
+}
+
 struct AnswerRecordResponse: Codable {
     let count: Int
 }

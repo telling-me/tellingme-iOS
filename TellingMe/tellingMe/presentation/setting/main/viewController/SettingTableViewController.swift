@@ -25,7 +25,7 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let count = viewModel.itemsCount else { return }
         if indexPath.row == 0 {
-            
+
         } else if indexPath.row == count - 1 {
 
         } else {

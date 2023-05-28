@@ -30,10 +30,8 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if let tabBarController = self.tabBarController as? MainTabBarController {
-            tabBarController.tabBar.isHidden = false
-//            tabBarController.addShadowView()
-        }
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         animation()
     }
 
@@ -44,12 +42,18 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.animationViews[0].stopAnimating()
         self.animationViews[1].stopAnimating()
         self.animationViews[2].stopAnimating()
         self.animationViews[3].stopAnimating()
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
+        }
+
+        if let selectedViewController = self.tabBarController?.selectedViewController,
+           selectedViewController != self.navigationController {
+            self.tabBarController?.tabBar.isHidden = true
         }
     }
 
@@ -113,6 +117,6 @@ extension HomeViewController: HeaderViewDelegate {
         guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
             return
         }
-        navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

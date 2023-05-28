@@ -9,7 +9,8 @@ import Foundation
 
 extension HomeViewController {
     func getQuestion() {
-        QuestionAPI.getTodayQuestion { result in
+        let query = Date().getQuestionDate()
+        QuestionAPI.getTodayQuestion(query: query) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -28,14 +29,15 @@ extension HomeViewController {
     }
 
     func getTodayAnswer() {
-        AnswerAPI.getTodayAnswer { result in
+        let query = Date().getQuestionDate()
+        AnswerAPI.getAnswer(query: query) { result in
             switch result {
             case .success:
                 self.pushAnswerCompleted()
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
-                    if errorData.status == 4002 {
+                    if errorData.status == 4003 {
                         self.pushEmotion()
                     } else {
                         self.showToast(message: errorData.message)
@@ -48,9 +50,10 @@ extension HomeViewController {
             }
         }
     }
-    
+
     func getAnswerRecord() {
-        AnswerAPI.getAnswerRecord { result in
+        let query = Date().getQuestionDate()
+        AnswerAPI.getAnswerRecord(query: query) { result in
             switch result {
             case .success(let response):
                 if response!.count == 0 {

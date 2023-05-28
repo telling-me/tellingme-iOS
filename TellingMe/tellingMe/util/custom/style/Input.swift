@@ -47,13 +47,13 @@ class Input: UIView {
         inputBox.isUserInteractionEnabled = false
         inputBox.placeholder = "기타 선택 후 입력"
     }
-    
+
     func setAble() {
         self.backgroundColor = UIColor(named: "Side200")
         self.inputBox.placeholder = "직접 입력"
         inputBox.isUserInteractionEnabled = true
     }
-    
+
     func hiddenKeyboard() {
         self.inputBox.resignFirstResponder()
     }

@@ -11,6 +11,6 @@ class ModifyAnswerViewModel {
     var answerId: Int?
 
     init() {
-        
+
     }
 }
