@@ -54,8 +54,8 @@ extension AnswerCompletedViewController {
     }
 
     func deleteAnswer() {
-        guard let answerId = viewModel.answerId else { return }
-        let request = DeleteAnswerRequest(answerId: answerId)
+        let date = Date().getQuestionDate()
+        let request = DeleteAnswerRequest(date: date)
         AnswerAPI.deleteAnswer(request: request) { result in
             switch result {
             case .success:

@@ -8,5 +8,5 @@
 import Foundation
 
 struct DeleteAnswerRequest: Codable {
-    let answerId: Int
+    let date: String
 }

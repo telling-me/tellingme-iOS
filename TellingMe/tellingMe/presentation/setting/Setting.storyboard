@@ -13,7 +13,7 @@
         <!--Setting View Controller-->
         <scene sceneID="mlQ-e8-c7g">
             <objects>
-                <viewController storyboardIdentifier="setting" id="fns-pD-RJY" customClass="SettingViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" hidesBottomBarWhenPushed="YES" id="fns-pD-RJY" customClass="SettingViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbI-4U-1gK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -726,7 +726,7 @@
             <objects>
                 <viewController id="VoY-fS-WF5" customClass="NickNameInputViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N9l-42-fxd">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="57"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="f0d-ae-K00"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -756,7 +756,7 @@
             <objects>
                 <viewController id="8j2-Fp-977" customClass="ChipJobViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weR-gH-35M">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="134"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="133.66666666666666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9hD-vE-aWd"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -13,6 +13,10 @@ class ModifyAnswerViewController: AnswerViewController {
         getAnswer()
         self.emotionButton.isEnabled = false
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
 
     override func clickCancel() {
     }
