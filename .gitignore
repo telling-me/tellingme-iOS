@@ -179,11 +179,9 @@ Dependencies/
 
 
 ### tellingMe project - git ignore setting ###
-TellingMe/tellingMe/keyChain
+TellingMe/tellingMe/keyChain/
+TellingMe/keyChain/
+keyChain/
 TellingMe/Info.plist
 Info.plist
 KeyList.plist
-TellingMe/tellingMe/keyChain/
-TellingMe/GoogleService-Info.plist
-TellingMe/tellingMe/GoogleService-Info.plist
-GoogleService-Info.plist
