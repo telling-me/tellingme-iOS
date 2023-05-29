@@ -183,6 +183,7 @@ TellingMe/tellingMe/keyChain
 TellingMe/Info.plist
 Info.plist
 KeyList.plist
+TellingMe/tellingMe/Keychain/
 TellingMe/GoogleService-Info.plist
 TellingMe/tellingMe/GoogleService-Info.plist
 GoogleService-Info.plist
