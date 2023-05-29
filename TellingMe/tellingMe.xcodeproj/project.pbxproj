@@ -19,7 +19,6 @@
 		3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */; };
 		3A1E403B2A1A611800F1F109 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E403A2A1A611800F1F109 /* ModalViewController.swift */; };
 		3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */; };
-		3A2371EA2A24E98200C94C9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A2371E92A24E98200C94C9B /* GoogleService-Info.plist */; };
 		3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26202529D05B770061F9D8 /* SignUpViewController.swift */; };
 		3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D029D5F8B9005E4C5F /* Date+.swift */; };
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
@@ -36,7 +35,6 @@
 		3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C82A13E4F900739543 /* SettingViewModel.swift */; };
 		3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */; };
 		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
-		3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3529DEF51200A05B22 /* KeyChain+.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
 		3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3929E046C400A05B22 /* LoginViewModel.swift */; };
 		3A409B4029E05F4700A05B22 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3F29E05F4700A05B22 /* Array+.swift */; };
@@ -76,7 +74,6 @@
 		3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFA29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf */; };
 		3A775CFF29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */; };
 		3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0729C1DBBA00FCD3BC /* designable.swift */; };
-		3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */; };
 		3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */; };
 		3A82989C2A00F883001938B9 /* AnswerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82989B2A00F883001938B9 /* AnswerRepository.swift */; };
 		3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */; };
@@ -104,6 +101,9 @@
 		3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */; };
 		3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */; };
 		3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB5229F844C6004A6004 /* SignUpRepository.swift */; };
+		3ACBA4602A2508B800FCE72B /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */; };
+		3ACBA4612A2508B800FCE72B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */; };
+		3ACBA4622A2508B800FCE72B /* KeyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3ACBA45E2A2508B800FCE72B /* KeyList.plist */; };
 		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
 		3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetPurposeController.swift */; };
 		3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */; };
@@ -147,7 +147,6 @@
 		3A1DB76F2A0A472B00C5F68B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		3A1E403A2A1A611800F1F109 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnswerViewController+.swift"; sourceTree = "<group>"; };
-		3A2371E92A24E98200C94C9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A26202529D05B770061F9D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A2742D029D5F8B9005E4C5F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		3A3739C82A13E4F900739543 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
-		3A409B3529DEF51200A05B22 /* KeyChain+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
 		3A409B3929E046C400A05B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3A409B3F29E05F4700A05B22 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 		3A775CFB29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		3A775D0329C1C3B500FCD3BC /* tellingMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tellingMe.entitlements; sourceTree = "<group>"; };
 		3A775D0729C1DBBA00FCD3BC /* designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designable.swift; sourceTree = "<group>"; };
-		3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KeyList.plist; sourceTree = "<group>"; };
 		3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		3A82989B2A00F883001938B9 /* AnswerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRepository.swift; sourceTree = "<group>"; };
 		3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButtonCell.swift; sourceTree = "<group>"; };
@@ -221,7 +218,6 @@
 		3AA289CE29B8506F0030057E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3AA289D329B8506F0030057E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AA289D629B8506F0030057E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3AA289D829B8506F0030057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA289DF29B851DD0030057E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA289E129B854210030057E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedRepository.swift; sourceTree = "<group>"; };
@@ -236,6 +232,10 @@
 		3ACACB4829F7FDBB004A6004 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3ACACB5229F844C6004A6004 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
+		3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
+		3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3ACBA45E2A2508B800FCE72B /* KeyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyList.plist; sourceTree = "<group>"; };
+		3ACBA4642A250AEF00FCE72B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../../.Trash/tellingMe 01.10.26/tellingMe/keyChain/Info.plist"; sourceTree = "<group>"; };
 		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		3ACC45E829D198CA000843F5 /* GetPurposeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPurposeController.swift; sourceTree = "<group>"; };
 		3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJobViewController.swift; sourceTree = "<group>"; };
@@ -634,10 +634,10 @@
 		3A775D0929C2E9AE00FCD3BC /* keyChain */ = {
 			isa = PBXGroup;
 			children = (
-				3A2371E92A24E98200C94C9B /* GoogleService-Info.plist */,
-				3AA289D829B8506F0030057E /* Info.plist */,
-				3A775D0A29C2E9BC00FCD3BC /* KeyList.plist */,
-				3A409B3529DEF51200A05B22 /* KeyChain+.swift */,
+				3ACBA4642A250AEF00FCE72B /* Info.plist */,
+				3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */,
+				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
+				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 			);
 			path = keyChain;
 			sourceTree = "<group>";
@@ -994,7 +994,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
-				3A2371EA2A24E98200C94C9B /* GoogleService-Info.plist in Resources */,
 				3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */,
 				3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */,
 				3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */,
@@ -1004,12 +1003,13 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
+				3ACBA4612A2508B800FCE72B /* GoogleService-Info.plist in Resources */,
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
-				3A775D0B29C2E9BC00FCD3BC /* KeyList.plist in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
+				3ACBA4622A2508B800FCE72B /* KeyList.plist in Resources */,
 				3AA289E229B854210030057E /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1082,7 +1082,6 @@
 			files = (
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
-				3A409B3629DEF51200A05B22 /* KeyChain+.swift in Sources */,
 				3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
@@ -1182,6 +1181,7 @@
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
 				3AB0E3C72A1B394D00B13755 /* ModifyAnswerViewController.swift in Sources */,
+				3ACBA4602A2508B800FCE72B /* KeyChain+.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* HeaderView.swift in Sources */,
 				3A559DEE2A1CE18000A49722 /* UILabel+.swift in Sources */,
 				3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */,
@@ -1328,10 +1328,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
+				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1358,10 +1358,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tellingMe/KeyChain/Info.plist;
+				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = SignUp;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
