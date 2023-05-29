@@ -33,7 +33,6 @@ class AnswerListViewController: UIViewController {
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
         setAction()
     }
-    
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

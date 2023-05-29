@@ -11,12 +11,12 @@ class AnswerCompletedViewController: PullDownViewController {
 
     let viewModel = AnswerCompletedViewModel()
     @IBOutlet weak var menuButton: UIButton!
-
     @IBOutlet weak var mainQuestionLabel: Body1Bold!
     @IBOutlet weak var subQuestionLabel: Body2Regular!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!
+    @IBOutlet weak var countTextLabel: CaptionLabelBold!
     @IBOutlet weak var answerTextView: UITextView!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         getQuestion()
         getAnswer()

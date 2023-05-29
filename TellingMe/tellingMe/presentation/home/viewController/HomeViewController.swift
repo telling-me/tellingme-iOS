@@ -92,10 +92,6 @@ class HomeViewController: UIViewController {
     func pushEmotion() {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
-        if let tabBarController = self.tabBarController as? MainTabBarController {
-            tabBarController.tabBar.isHidden = true
-//            tabBarController.removeShadowView()
-        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

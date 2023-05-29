@@ -39,6 +39,7 @@ extension AnswerCompletedViewController {
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content
+                self.countTextLabel.text = "\(response!.content.count)"
                 self.viewModel.answerId = response?.answerId
             case .failure(let error):
                 switch error {

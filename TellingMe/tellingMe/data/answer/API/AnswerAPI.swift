@@ -59,7 +59,7 @@ extension AnswerAPITarget: TargetType {
         case .deleteAnswer:
             return .delete
         case .updateAnswer:
-            return .post
+            return .patch
         default:
             return .get
         }

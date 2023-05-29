@@ -20,6 +20,9 @@ target 'tellingMe' do
   pod 'Moya'
   pod 'GradientProgress'
   pod 'KeychainSwift'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Messaging'
   # Pods for tellingMe
 
 end
