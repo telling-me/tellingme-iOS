@@ -15,11 +15,8 @@ extension AnswerViewController {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
                 self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
-                if let year = response?.date[0],
-                   let month = response?.date[1],
-                   let day = response?.date[2] {
-                    self.viewModel.date = "\(year)-\(month)-\(day)"
-                    self.dayLabel.text = "\(year)년 \(month)월 \(day)일"
+                if let date = response?.date {
+                    self.viewModel.setDate(date: date)
                 }
             case .failure(let error):
                 switch error {
@@ -35,7 +32,8 @@ extension AnswerViewController {
     }
 
     func postAnswer() {
-        let request = RegisterAnswerRequest(content: self.answerTextView.text, date: viewModel.date!, emotion: 1)
+        guard let date = viewModel.questionDate else { return }
+        let request = RegisterAnswerRequest(content: self.answerTextView.text, date: date, emotion: 1)
         AnswerAPI.registerAnswer(request: request) { result in
             switch result {
             case .success:

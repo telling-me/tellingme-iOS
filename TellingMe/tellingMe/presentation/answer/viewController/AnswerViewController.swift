@@ -22,6 +22,10 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var foldViewHeight: NSLayoutConstraint!
 
     let viewModel = AnswerViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getQuestion()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
@@ -37,7 +41,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getQuestion()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }

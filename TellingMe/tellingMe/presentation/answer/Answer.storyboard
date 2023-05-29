@@ -23,7 +23,7 @@
         <!--Answer View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="answer" id="Y6W-OH-hqX" customClass="AnswerViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="answer" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AnswerViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,7 +369,7 @@
         <!--Answer Completed View Controller-->
         <scene sceneID="82c-fr-U6H">
             <objects>
-                <viewController storyboardIdentifier="answerCompleted" id="g0b-cW-Eb4" customClass="AnswerCompletedViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="answerCompleted" hidesBottomBarWhenPushed="YES" id="g0b-cW-Eb4" customClass="AnswerCompletedViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhG-vx-k61">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,6 +528,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="answerTextView" destination="ovD-wj-ex0" id="w6F-lq-isx"/>
+                        <outlet property="countTextLabel" destination="P2s-vn-gls" id="YRE-pd-qzW"/>
                         <outlet property="dayLabel" destination="Hkf-9l-fmJ" id="vo4-Vp-wMr"/>
                         <outlet property="mainQuestionLabel" destination="ye3-WQ-aF3" id="rrQ-JA-lEU"/>
                         <outlet property="menuButton" destination="6Zi-G1-PPg" id="M6y-Lm-jh2"/>
@@ -743,6 +744,7 @@
                         <outlet property="answerTextView" destination="TYc-2t-PhL" id="6lF-YI-BkD"/>
                         <outlet property="backButton" destination="tOh-sO-FHo" id="Xzy-sT-yVh"/>
                         <outlet property="bottomLayout" destination="DQv-AW-hPV" id="tcf-BQ-UQH"/>
+                        <outlet property="countTextLabel" destination="Hih-gf-fUU" id="KYI-UH-9vR"/>
                         <outlet property="dayLabel" destination="ewL-Nc-7nL" id="8Ck-0T-t0z"/>
                         <outlet property="emotionButton" destination="yNa-Qh-MIT" id="4Jh-f7-2vi"/>
                         <outlet property="foldView" destination="VcX-wQ-Ghf" id="bDK-YO-2FV"/>

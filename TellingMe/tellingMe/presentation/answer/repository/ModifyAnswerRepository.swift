@@ -53,7 +53,7 @@ extension ModifyAnswerViewController {
     }
 
     func modifyAnswer() {
-        guard let date = viewModel.date else { return }
+        guard let date = viewModel.questionDate else { return }
         let request = UpdateAnswerRequest(date: date, content: self.answerTextView.text)
         AnswerAPI.updateAnswer(request: request) { result in
             switch result {
