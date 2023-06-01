@@ -10,7 +10,7 @@ import UIKit
 class ChipJobViewController: ChipCollectionViewController {
     let jobs: [String] = ["고등학생", "대학(원)생", "취업준비생", "직장인", "주부", "기타"]
     var jobInfo: String? = nil
-    var selectedItem: Int? = nil
+    var selectedItem: Int = 0
     var keyboardSize: CGSize? = nil
 
     let input = Input()

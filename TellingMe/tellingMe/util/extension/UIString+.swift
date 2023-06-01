@@ -20,4 +20,10 @@ extension String {
         }
         return false
     }
+    
+    func stringToInt() -> [Int] {
+        let digits = self.components(separatedBy: CharacterSet.decimalDigits.inverted)
+        let numbers = digits.compactMap { Int($0) }
+        return numbers
+    }
 }

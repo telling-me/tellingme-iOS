@@ -9,21 +9,21 @@ import Foundation
 
 class MyInfoViewModel {
     var currentTag: Int? = nil
-    var nickname: String? = nil
-    var purpose: [Int]? = nil
-    var job: Int? = nil
+    var nickname: String = ""
+    var purpose: [Int] = []
+    var job: Int = 0
     var jobInfo: String? = nil
     var gender: String? = nil
     var year: String? = nil
-    var month: String? = nil
-    var day: String? = nil
+    var month: String = ""
+    var day: String = ""
     var mbti: String? = nil
 
     let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
     var yearArray: [String]?
     let monthArray = Array(1...12).map { String($0) }
     let dayArray = Array(1...31).map { String($0) }
-
+    
     init() {
         let today = Date()
         if let todayYear = Int(today.yearFormat()) {
@@ -31,32 +31,37 @@ class MyInfoViewModel {
         }
     }
 
-    func makeBirthData(year: String?, month: String?, day: String?) -> String {
+    func setProperties(data: UserInfoResponse) {
+        nickname = data.nickname
+        purpose = data.purpose.stringToInt()
+        job = data.job
+        jobInfo = data.jobInfo
+        gender = data.gender
+        if let date = data.birthDate {
+            self.year = "\(date[0])"
+            self.month = "\(date[1])"
+            self.day = "\(date[2])"
+        }
+        mbti = data.mbti
+    }
+
+    func makeBirthData() -> String {
         var resultString = ""
-        resultString += year ?? "1999"
+        resultString += self.year ?? "1999"
         resultString += "-"
 
-        if let tempMonth = month {
-            if tempMonth.count == 1 {
-                resultString += "0\(tempMonth)"
-            } else {
-                resultString += tempMonth
-            }
+        if self.month.count == 1 {
+            resultString += "0\(self.month)"
         } else {
-            resultString += "01"
+            resultString += self.month
         }
         resultString += "-"
 
-        if let tempDay = day {
-            if tempDay.count == 1 {
-                resultString += "0\(tempDay)"
-            } else {
-                resultString += tempDay
-            }
+        if self.day.count == 1 {
+            resultString += "0\(self.day)"
         } else {
-            resultString += "01"
+            resultString += self.day
         }
-
         return resultString
     }
 }
