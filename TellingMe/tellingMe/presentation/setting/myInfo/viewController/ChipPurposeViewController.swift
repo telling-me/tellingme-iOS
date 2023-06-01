@@ -9,7 +9,7 @@ import UIKit
 
 class ChipPurposeViewController: ChipCollectionViewController {
     let purposeList = ["학업/진로", "대인 관계", "성격/가치관", "행동/습관", "건강", "기타"]
-    var selectedItems: [Int]? = nil
+    var selectedItems: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ChipPurposeViewController: ChipCollectionViewController {
 
 extension ChipPurposeViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItems?.append(indexPath.row)
+        selectedItems.append(indexPath.row)
         if let parentViewController = self.parent as? MyInfoViewController {
             parentViewController.viewModel.purpose = self.selectedItems
         }
@@ -31,8 +31,8 @@ extension ChipPurposeViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let index = selectedItems?.firstIndex(of: indexPath.row) {
-            selectedItems?.remove(at: index)
+        if let index = selectedItems.firstIndex(of: indexPath.row) {
+            selectedItems.remove(at: index)
             if let parentViewController = self.parent as? MyInfoViewController {
                 parentViewController.viewModel.purpose = self.selectedItems
             }

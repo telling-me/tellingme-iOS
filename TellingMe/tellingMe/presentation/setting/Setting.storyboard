@@ -154,9 +154,6 @@
                                                     </label>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2M-OO-FeJ">
                                                         <rect key="frame" x="25" y="47" width="343" height="57"/>
-                                                        <connections>
-                                                            <segue destination="VoY-fS-WF5" kind="embed" id="gOf-kp-cVb"/>
-                                                        </connections>
                                                     </containerView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -205,11 +202,8 @@
                                                         <color key="textColor" name="Gray7"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-kz-IV8">
+                                                    <containerView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-kz-IV8">
                                                         <rect key="frame" x="25" y="77" width="343" height="74"/>
-                                                        <connections>
-                                                            <segue destination="u0b-hb-se5" kind="embed" id="6Oc-Ng-PER"/>
-                                                        </connections>
                                                     </containerView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -228,11 +222,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaH-SI-WSg">
                                                 <rect key="frame" x="0.0" y="305" width="393" height="218"/>
                                                 <subviews>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUO-kf-e6m">
+                                                    <containerView opaque="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUO-kf-e6m">
                                                         <rect key="frame" x="25" y="60.333333333333314" width="343" height="133.66666666666666"/>
-                                                        <connections>
-                                                            <segue destination="8j2-Fp-977" kind="embed" id="As3-Gh-jka"/>
-                                                        </connections>
                                                     </containerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1u-Jc-qrv" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="24" width="29.666666666666671" height="20.333333333333329"/>
@@ -271,11 +262,8 @@
                                                         <color key="textColor" name="Gray7"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Cx-nsl">
+                                                    <containerView opaque="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Cx-nsl">
                                                         <rect key="frame" x="25" y="77" width="343" height="32"/>
-                                                        <connections>
-                                                            <segue destination="ZlH-17-aMv" kind="embed" id="Iip-ba-3Z4"/>
-                                                        </connections>
                                                     </containerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kul-uT-4w6" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="24" width="29.666666666666671" height="19"/>
@@ -476,6 +464,10 @@
                         <outlet property="mbtiButton" destination="qjj-gj-nng" id="UeU-4Z-NbT"/>
                         <outlet property="monthButton" destination="HiW-3V-32W" id="EzU-f2-gDS"/>
                         <outlet property="yearButton" destination="7Yd-go-vbt" id="P3m-P5-4MU"/>
+                        <outletCollection property="containerViews" destination="I2M-OO-FeJ" collectionClass="NSMutableArray" id="KZP-Q4-NUD"/>
+                        <outletCollection property="containerViews" destination="BX0-kz-IV8" collectionClass="NSMutableArray" id="yxC-MX-KDa"/>
+                        <outletCollection property="containerViews" destination="sUO-kf-e6m" collectionClass="NSMutableArray" id="hOd-yP-XH5"/>
+                        <outletCollection property="containerViews" destination="XhM-Cx-nsl" collectionClass="NSMutableArray" id="Qz4-vd-Jbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Y9-HU-t3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -721,66 +713,6 @@
             </objects>
             <point key="canvasLocation" x="-1505" y="45"/>
         </scene>
-        <!--Nick Name Input View Controller-->
-        <scene sceneID="Su0-UN-4Gu">
-            <objects>
-                <viewController id="VoY-fS-WF5" customClass="NickNameInputViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N9l-42-fxd">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="57"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="f0d-ae-K00"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6AQ-PD-paL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1610" y="-279"/>
-        </scene>
-        <!--Chip Purpose View Controller-->
-        <scene sceneID="y7I-UO-xeP">
-            <objects>
-                <viewController id="u0b-hb-se5" customClass="ChipPurposeViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mx2-rS-vPC">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="74"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vrl-aS-X2C"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rOX-A3-xoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1610" y="-173"/>
-        </scene>
-        <!--Chip Job View Controller-->
-        <scene sceneID="8rn-uP-NTF">
-            <objects>
-                <viewController id="8j2-Fp-977" customClass="ChipJobViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="weR-gH-35M">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="133.66666666666666"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="9hD-vE-aWd"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c8u-1Z-6y9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1610" y="-44"/>
-        </scene>
-        <!--Chip Gender View Controller-->
-        <scene sceneID="xSe-2f-i9A">
-            <objects>
-                <viewController id="ZlH-17-aMv" customClass="ChipGenderViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="w3H-OG-ekW">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="AS2-b8-rMG"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LDJ-gK-F1S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1610" y="87"/>
-        </scene>
     </scenes>
     <designables>
         <designable name="57m-OZ-yL2">
@@ -839,7 +771,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="chevron.right" catalog="system" width="32" height="32"/>
         <namedColor name="Gray7">
             <color red="0.30199998617172241" green="0.32499998807907104" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -8,7 +8,6 @@
 import UIKit
 
 class NickNameInputViewController: UIViewController {
-
     let input = Input()
 
     override func viewDidLoad() {
@@ -25,7 +24,14 @@ class NickNameInputViewController: UIViewController {
     func offKeyboard() {
         input.hiddenKeyboard()
     }
+    
+    func setText(text: String?) {
+        input.inputBox.text = text
+    }
 //
+    func getText() -> String? {
+        return input.inputBox.text
+    }
 //    func setOriginal() {
 //        textFieldView.backgroundColor = UIColor(named: "Side200")
 //    }
