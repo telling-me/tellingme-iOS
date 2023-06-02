@@ -117,6 +117,8 @@
 		3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F729D2090E000843F5 /* UITextField+.swift */; };
 		3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */; };
 		3ACCBAB529E956050082C32C /* badWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1677329E82D8500B93850 /* badWords.txt */; };
+		3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */; };
+		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
 		3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */; };
 		3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2C02A14B4EB006880E0 /* Input.swift */; };
 		3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */; };
@@ -253,6 +255,8 @@
 		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
 		3ACC45F729D2090E000843F5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
 		3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		3AEBB2C02A14B4EB006880E0 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryTextButton.swift; sourceTree = "<group>"; };
@@ -404,10 +408,10 @@
 		3A2A502F29B87C46002FE5E4 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				3AC0BA6229EF0F0000888868 /* base */,
 				3A70A6422A272B15009D8D76 /* user */,
 				3A71213E2A03A84F00A02054 /* answer */,
 				3A00B74D29FBF1A400285CA8 /* question */,
-				3AC0BA6229EF0F0000888868 /* base */,
 				3A5076EC29C82FE800C7A5E9 /* sign */,
 			);
 			path = data;
@@ -857,6 +861,8 @@
 			children = (
 				3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */,
 				3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */,
+				3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */,
+				3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1115,6 +1121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */,
@@ -1162,6 +1169,7 @@
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* UIString+.swift in Sources */,
+				3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */,
 				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
 				3ABB09F02A1A755100C6596B /* AnswerCompletedViewController.swift in Sources */,
@@ -1377,7 +1385,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1407,7 +1415,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

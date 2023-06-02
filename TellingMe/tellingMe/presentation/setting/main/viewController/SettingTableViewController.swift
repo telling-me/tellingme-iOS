@@ -24,16 +24,19 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let count = viewModel.itemsCount else { return }
+        print(indexPath.row)
         if indexPath.row == 0 {
-
-        } else if indexPath.row == count - 1 {
-
+            print("여기?")
+        } else if indexPath.row == 5 {
+            print("여기라고?")
         } else {
+            print("모지?")
             let id = viewModel.items[indexPath.row-1].id
             let viewController = viewModel.items[indexPath.row-1].view
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
                 return
             }
+            print("거지같다")
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
