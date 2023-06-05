@@ -11,6 +11,7 @@ class AnswerCompletedViewModel {
     var answerId: Int?
     let menus = ["수정", "삭제"]
     let today = Date().todayFormat()
+    var questionDate: String? = nil
 
     init () {
 

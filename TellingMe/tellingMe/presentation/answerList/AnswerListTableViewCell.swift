@@ -9,6 +9,10 @@ import UIKit
 
 class AnswerListTableViewCell: UITableViewCell {
     static let id = "answerListTableViewCell"
+    var emotion: Int? = nil
+    var title: String? = nil
+    var date: [Int]? = nil
+
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,14 +64,13 @@ class AnswerListTableViewCell: UITableViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: 20).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
-        imgView.image = UIImage(named: "emotion\(data.emotion)")
-        questionLabel.text = data.title
-        dateLabel.text = "\(data.date[0])년 \(data.date[1])월 \(data.date[2])일"
+        self.emotion = data.emotion
+        self.title = data.title
+        self.date = data.date
+        imgView.image = UIImage(named: "emotion\(self.emotion)")
+        questionLabel.text = self.title!.replacingOccurrences(of: "\\n", with: "")
+        dateLabel.text = "\(self.date![0])년 \(self.date![1])월 \(self.date![2])일"
     }
-//
-//    func getCell() -> String {
-//        return label.text ?? ""
-//    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

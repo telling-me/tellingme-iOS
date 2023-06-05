@@ -148,7 +148,13 @@ extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.tableView {
-
+            guard let selectedCell = tableView.cellForRow(at: indexPath) as? AnswerListTableViewCell else { return }
+            let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(identifier: "answerCompleted") as? AnswerCompletedViewController else {
+                return
+            }
+            vc.setQuestionDate(date: (selectedCell.date?.intArraytoDate())!)
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
             tableView.isHidden = true

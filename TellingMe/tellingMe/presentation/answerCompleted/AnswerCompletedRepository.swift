@@ -9,8 +9,8 @@ import Foundation
 
 extension AnswerCompletedViewController {
     func getQuestion() {
-        let query = Date().getQuestionDate()
-        QuestionAPI.getTodayQuestion(query: query) { result in
+        guard let date = viewModel.questionDate else { return }
+        QuestionAPI.getTodayQuestion(query: date) { result in
             switch result {
             case .success(let response):
                 self.mainQuestionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -34,8 +34,8 @@ extension AnswerCompletedViewController {
     }
 
     func getAnswer() {
-        let query = Date().getQuestionDate()
-        AnswerAPI.getAnswer(query: query) { result in
+        guard let date = viewModel.questionDate else { return }
+        AnswerAPI.getAnswer(query: date) { result in
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content
@@ -55,7 +55,7 @@ extension AnswerCompletedViewController {
     }
 
     func deleteAnswer() {
-        let date = Date().getQuestionDate()
+        guard let date = viewModel.questionDate else { return }
         let request = DeleteAnswerRequest(date: date)
         AnswerAPI.deleteAnswer(request: request) { result in
             switch result {

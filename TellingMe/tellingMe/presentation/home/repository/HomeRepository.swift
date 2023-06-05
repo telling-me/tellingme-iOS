@@ -9,8 +9,7 @@ import Foundation
 
 extension HomeViewController {
     func getQuestion() {
-        let query = Date().getQuestionDate()
-        QuestionAPI.getTodayQuestion(query: query) { result in
+        QuestionAPI.getTodayQuestion(query: viewModel.questionDate) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -29,8 +28,7 @@ extension HomeViewController {
     }
 
     func getTodayAnswer() {
-        let query = Date().getQuestionDate()
-        AnswerAPI.getAnswer(query: query) { result in
+        AnswerAPI.getAnswer(query: viewModel.questionDate) { result in
             switch result {
             case .success:
                 self.pushAnswerCompleted()

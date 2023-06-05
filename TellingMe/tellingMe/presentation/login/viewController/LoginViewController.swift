@@ -38,7 +38,6 @@ class LoginViewController: UIViewController {
     }
 
     func pushHome() {
-        print("push 좀 해")
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
 

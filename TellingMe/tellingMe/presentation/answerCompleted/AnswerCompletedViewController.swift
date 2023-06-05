@@ -8,8 +8,8 @@
 import UIKit
 
 class AnswerCompletedViewController: PullDownViewController {
-
     let viewModel = AnswerCompletedViewModel()
+
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainQuestionLabel: Body1Bold!
     @IBOutlet weak var subQuestionLabel: Body2Regular!
@@ -45,16 +45,22 @@ class AnswerCompletedViewController: PullDownViewController {
             tableView.isHidden = true
         }
     }
+
+    func setQuestionDate(date: String) {
+        self.viewModel.questionDate = date
+    }
 }
 
 extension AnswerCompletedViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             // 수정 viewcontroller push
-            guard let viewController = self.storyboard?.instantiateViewController(identifier: "modifyAnswer") as? ModifyAnswerViewController else {
+            let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(identifier: "modifyAnswer") as? ModifyAnswerViewController else {
                 return
             }
-            self.navigationController?.pushViewController(viewController, animated: true)
+            vc.setQuestionDate(date: self.viewModel.questionDate!)
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             // 삭제 modal viewcontroller present
             let storyboard = UIStoryboard(name: "Modal", bundle: nil)

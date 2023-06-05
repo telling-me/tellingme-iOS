@@ -11,15 +11,17 @@ import Moya
 enum UserAPITarget {
     case getUserInfo
     case updateUserInfo(UpdateUserInfoRequest)
+    case withdrawalUser
+    case logout
 }
 
 extension UserAPITarget: TargetType {
     var task: Task {
         switch self {
-        case .getUserInfo:
-            return .requestPlain
         case .updateUserInfo(let body):
             return .requestJSONEncodable(body)
+        default:
+            return .requestPlain
         }
     }
 
@@ -29,6 +31,10 @@ extension UserAPITarget: TargetType {
             return "api/user"
         case .updateUserInfo:
             return "api/user/update"
+        case .withdrawalUser:
+            return "api/user/withdraw"
+        case .logout:
+            return "api/user/logout"
         }
     }
 
@@ -36,6 +42,8 @@ extension UserAPITarget: TargetType {
         switch self {
         case .updateUserInfo:
             return .patch
+        case .withdrawalUser, .logout:
+            return .post
         default:
             return .get
         }
@@ -70,10 +78,34 @@ struct UserAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func updateUserInfo(request: UpdateUserInfoRequest, completion: @escaping(Result<UserInfoResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.updateUserInfo(request), dtoType: UserInfoResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+
+    static func withdrawalUser(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.withdrawalUser, dtoType: EmptyResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func logout(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.logout, dtoType: EmptyResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

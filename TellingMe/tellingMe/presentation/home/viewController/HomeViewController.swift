@@ -25,14 +25,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        getQuestion()
-        getAnswerRecord()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         animation()
+        getQuestion()
+        getAnswerRecord()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -96,8 +96,9 @@ class HomeViewController: UIViewController {
     }
 
     func pushAnswerCompleted() {
-        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "answerCompleted") as? AnswerCompletedViewController else { return }
+        vc.setQuestionDate(date: viewModel.questionDate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
