@@ -43,14 +43,14 @@ class MyInfoViewController: DropDownViewController {
             addChild(viewController)
             viewController.didMove(toParent: self)
         }
-        
+
         nickNameVC.setText(text: viewModel.nickname)
         purposeVC.setSelectedItems(items: viewModel.purpose)
         jobVC.setSelectedItems(items: [viewModel.job])
         if viewModel.job == 5 {
             jobVC.input.setAble(text: viewModel.jobInfo!)
         }
-        
+
         if let gender = viewModel.gender {
             genderVC.collectionView.isUserInteractionEnabled = false
             if gender == "남성" {
@@ -98,12 +98,12 @@ class MyInfoViewController: DropDownViewController {
         yearButton.setMediumLayout()
         monthButton.setMediumLayout()
         dayButton.setMediumLayout()
-        
+
         headerView.addSubview(completedButton)
         completedButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -25).isActive = true
         completedButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20).isActive = true
         completedButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        
+
         completedButton.addTarget(self, action: #selector(clickCompleted(_ :)), for: .touchDown)
     }
 

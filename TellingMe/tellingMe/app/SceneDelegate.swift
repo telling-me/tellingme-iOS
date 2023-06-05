@@ -57,13 +57,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
 func performAutoLogin() {
-    guard let accessToken = KeychainManager.shared.load(key: "accessToken") else {
+    guard KeychainManager.shared.load(key: "accessToken") != nil else {
         return
     }
-    guard let refreshToken = KeychainManager.shared.load(key: "refreshToken") else {
+    guard KeychainManager.shared.load(key: "refreshToken") != nil else {
         return
     }
-    
     showHome()
 }
     
