@@ -28,7 +28,7 @@ class SettingTableViewController: UITableViewController {
         if indexPath.row == 0 {
             print("여기?")
         } else if indexPath.row == 5 {
-            print("여기라고?")
+            self.signout()
         } else {
             print("모지?")
             let id = viewModel.items[indexPath.row-1].id

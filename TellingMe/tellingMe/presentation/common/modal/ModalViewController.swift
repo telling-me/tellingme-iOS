@@ -13,7 +13,7 @@ protocol ModalActionDelegate: AnyObject {
 }
 
 class ModalViewController: UIViewController {
-    weak var delegeate: ModalActionDelegate?
+    weak var delegate: ModalActionDelegate?
     @IBOutlet weak var cancelButton: TeritaryTextButton!
     @IBOutlet weak var okButton: SecondaryTextButton!
 
@@ -26,10 +26,10 @@ class ModalViewController: UIViewController {
         // 취소 버튼 tag = 0, else = 1
         if sender.tag == 0 {
             self.dismiss(animated: true)
-            self.delegeate?.clickCancel()
+            self.delegate?.clickCancel()
         } else {
             self.dismiss(animated: true)
-            self.delegeate?.clickOk()
+            self.delegate?.clickOk()
         }
     }
 }

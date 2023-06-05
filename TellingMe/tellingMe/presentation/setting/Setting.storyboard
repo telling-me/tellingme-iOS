@@ -497,7 +497,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-Cr-lbG">
                                 <rect key="frame" x="25" y="123" width="343" height="695"/>
                                 <color key="backgroundColor" name="Side100"/>
-                                <mutableString key="text">&lt; 텔링어스 &gt;는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+                                <string key="text">&lt; 텔링어스 &gt;는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
 ○ 이 개인정보처리방침은 2023년 1월 1부터 적용됩니다.
 
@@ -600,7 +600,7 @@
 개인정보침해신고센터: 국번 없이 118 (https://privacy.kisa.or.kr)
 개인정보 분쟁조정위원회: 02-2100-2499 (http://kopico.go.kr)
 대검찰청 사이버수사과: 국번 없이 1301 (http://www.spo.go.kr)
-경찰청 사이버안전국: 국번 없이 182 (http://cyberbureau.police.go.kr)</mutableString>
+경찰청 사이버안전국: 국번 없이 182 (http://cyberbureau.police.go.kr)</string>
                                 <color key="textColor" name="black"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -653,7 +653,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-G2-Dgj">
                                         <rect key="frame" x="16" y="16" width="311" height="304"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text">텔링미(telling me)에서는 뉴스레터 발송과 관련하여 ｢개인정보보호법」 제15조 제1항 제1호, 제17조 제1항 제1호, 제23조 제1호, 제24조 제1항 제1호에 따라 아래와 같이 개인정보의 수집 ·이용 및 제3자 제공에 관하여 귀하의 동의를 얻고자 합니다.
+                                        <string key="text">텔링미(telling me)에서는 뉴스레터 발송과 관련하여 ｢개인정보보호법」 제15조 제1항 제1호, 제17조 제1항 제1호, 제23조 제1호, 제24조 제1항 제1호에 따라 아래와 같이 개인정보의 수집 ·이용 및 제3자 제공에 관하여 귀하의 동의를 얻고자 합니다.
 
 ■ 수집·이용 목적
 ◦ 뉴스레터 발송을 위한 최소한의 개인정보를 수집하고 있습니다. 수집된 정보는 ｢텔링미(telling me) 뉴스레터｣ 발송 외 다른 목적으로 사용되지 않습니다. 
@@ -662,7 +662,7 @@
 ■ 보유·이용기간
 ◦ 위 개인정보는 정보 주체가 뉴스레터 구독 해지 시 즉시 파기합니다.
 ■ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익
-◦ 위 개인정보 중 필수항목의 수집․이용에 관해 거부할 수 있습니다. 단, 동의하지 않는 경우 본 뉴스레터 수신이 불가합니다.</mutableString>
+◦ 위 개인정보 중 필수항목의 수집․이용에 관해 거부할 수 있습니다. 단, 동의하지 않는 경우 본 뉴스레터 수신이 불가합니다.</string>
                                         <color key="textColor" name="black"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -717,6 +717,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="탈퇴하기"/>
+                                <connections>
+                                    <action selector="clickWithdrawal:" destination="Z2X-or-Oak" eventType="touchUpInside" id="0ap-s4-zF1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dHu-wL-xk6"/>
@@ -741,6 +744,7 @@
                     </view>
                     <connections>
                         <outlet property="headerView" destination="xmD-ef-y1m" id="Mbp-3g-0H5"/>
+                        <outlet property="withdrawalButton" destination="MxA-UC-m94" id="YTV-jy-lSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in7-8j-oqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -997,6 +1001,9 @@
         <designable name="IbR-Wm-4Ac">
             <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
         </designable>
+        <designable name="MxA-UC-m94">
+            <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
         <designable name="Ph0-MW-26E">
             <size key="intrinsicContentSize" width="174.33333333333334" height="20.333333333333332"/>
         </designable>
@@ -1038,6 +1045,9 @@
         </designable>
         <designable name="mQi-88-ozM">
             <size key="intrinsicContentSize" width="34" height="20.333333333333332"/>
+        </designable>
+        <designable name="qHg-ib-G2A">
+            <size key="intrinsicContentSize" width="228.33333333333334" height="20.333333333333332"/>
         </designable>
         <designable name="sIo-Gj-73X">
             <size key="intrinsicContentSize" width="97" height="20.333333333333332"/>
