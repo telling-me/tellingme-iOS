@@ -22,11 +22,11 @@ class AnswerListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        getAnswerList()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAnswerList()
         yearButton.setSmallLayout()
         monthButton.setSmallLayout()
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)

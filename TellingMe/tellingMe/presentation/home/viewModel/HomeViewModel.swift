@@ -10,4 +10,5 @@ import Foundation
 class HomeViewModel {
     let today = Date().todayFormat()
     let questionDate = Date().getQuestionDate()
+    var isAnswerCompleted = false
 }

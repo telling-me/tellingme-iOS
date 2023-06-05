@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var animationViews: [UIImageView]!
     @IBOutlet var shadowViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
+    @IBOutlet weak var answerCompletedLabel: CaptionLabelRegular!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController {
         animation()
         getQuestion()
         getAnswerRecord()
+        getTodayAnswer()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -103,7 +105,11 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
-        getTodayAnswer()
+        if !viewModel.isAnswerCompleted {
+            pushEmotion()
+        } else {
+            pushAnswerCompleted()
+        }
     }
 }
 
