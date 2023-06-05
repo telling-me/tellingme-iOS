@@ -59,7 +59,7 @@ extension AnswerCompletedViewController {
             // 삭제 modal viewcontroller present
             let storyboard = UIStoryboard(name: "Modal", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "modalDeleteAnswer") as? ModalViewController else { return }
-            vc.delegeate = self
+            vc.delegate = self
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .coverVertical
             self.present(vc, animated: true)
