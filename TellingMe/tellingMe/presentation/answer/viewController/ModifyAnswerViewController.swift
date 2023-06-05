@@ -17,6 +17,10 @@ class ModifyAnswerViewController: AnswerViewController {
     override func viewDidAppear(_ animated: Bool) {
 
     }
+    
+    func setQuestionDate(date: String) {
+        self.viewModel.questionDate = date
+    }
 
     override func clickCancel() {
     }

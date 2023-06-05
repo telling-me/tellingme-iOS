@@ -11,18 +11,26 @@ class AnswerViewModel {
     let content: String = ""
     var date: String = Date().todayFormat()
     let emotion: Int? = nil
-    var questionDate: String? = nil
+    var questionDate: String = Date().getQuestionDate()
 
     init() {
 
     }
-    
-    func setDate(date : [Int]) {
+
+    func setDate(date: [Int]) {
         // 월 계산
         if date[1] < 10 {
-            self.questionDate = "\(date[0])-0\(date[1])-\(date[2])"
+            if date[2] < 10 {
+                self.questionDate = "\(date[0])-0\(date[1])-0\(date[2])"
+            } else {
+                self.questionDate = "\(date[0])-0\(date[1])-\(date[2])"
+            }
         } else {
-            self.questionDate = "\(date[0])-\(date[1])-\(date[2])"
+            if date[2] < 10 {
+                self.questionDate = "\(date[0])-\(date[1])-0\(date[2])"
+            } else {
+                self.questionDate = "\(date[0])-\(date[1])-\(date[2])"
+            }
         }
     }
 }

@@ -9,8 +9,7 @@ import Foundation
 
 extension HomeViewController {
     func getQuestion() {
-        let query = Date().getQuestionDate()
-        QuestionAPI.getTodayQuestion(query: query) { result in
+        QuestionAPI.getTodayQuestion(query: viewModel.questionDate) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -29,23 +28,18 @@ extension HomeViewController {
     }
 
     func getTodayAnswer() {
-        let query = Date().getQuestionDate()
-        AnswerAPI.getAnswer(query: query) { result in
+        AnswerAPI.getAnswer(query: viewModel.questionDate) { result in
             switch result {
             case .success:
-                self.pushAnswerCompleted()
+                self.viewModel.isAnswerCompleted = true
+                self.answerCompletedLabel.isHidden = false
             case .failure(let error):
                 switch error {
-                case .errorData(let errorData):
-                    if errorData.status == 4003 {
-                        self.pushEmotion()
-                    } else {
-                        self.showToast(message: errorData.message)
-                    }
                 case .tokenNotFound:
                     print("login으로 push할게욤")
                 default:
-                    print(error)
+                    self.viewModel.isAnswerCompleted = false
+                    self.answerCompletedLabel.isHidden = true
                 }
             }
         }

@@ -10,6 +10,7 @@
 		3A00B74C29FBF18C00285CA8 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */; };
 		3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */; };
 		3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75329FBF34200285CA8 /* QuestionAPI.swift */; };
+		3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D512A29E1980075E6C4 /* SettingRepository.swift */; };
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
@@ -117,6 +118,7 @@
 		3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45F729D2090E000843F5 /* UITextField+.swift */; };
 		3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */; };
 		3ACCBAB529E956050082C32C /* badWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1677329E82D8500B93850 /* badWords.txt */; };
+		3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */; };
 		3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */; };
 		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
 		3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */; };
@@ -145,6 +147,7 @@
 		3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDTO.swift; sourceTree = "<group>"; };
 		3A00B75329FBF34200285CA8 /* QuestionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAPI.swift; sourceTree = "<group>"; };
+		3A026D512A29E1980075E6C4 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 		3ACC45F529D1EFA4000843F5 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
 		3ACC45F729D2090E000843F5 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerCompleted.storyboard; sourceTree = "<group>"; };
 		3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
 		3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
@@ -322,6 +326,14 @@
 				3A00B75329FBF34200285CA8 /* QuestionAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		3A026D502A29E1870075E6C4 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3A026D512A29E1980075E6C4 /* SettingRepository.swift */,
+			);
+			path = repository;
 			sourceTree = "<group>";
 		};
 		3A157CF729CAFD6D00D61AD3 /* home */ = {
@@ -396,6 +408,7 @@
 				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3A1DB76E2A0A470F00C5F68B /* setting */,
+				3AD53A592A2DC72900AFE17D /* answerCompleted */,
 				3A7121332A02C43700A02054 /* answerList */,
 				3A409B3C29E050CD00A05B22 /* login */,
 				3A409B3B29E050B100A05B22 /* signUp */,
@@ -838,9 +851,21 @@
 			path = "page+";
 			sourceTree = "<group>";
 		};
+		3AD53A592A2DC72900AFE17D /* answerCompleted */ = {
+			isa = PBXGroup;
+			children = (
+				3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */,
+				3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */,
+				3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */,
+				3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */,
+			);
+			path = answerCompleted;
+			sourceTree = "<group>";
+		};
 		3AEBB2B42A14A86E006880E0 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				3A026D502A29E1870075E6C4 /* repository */,
 				3AEBB2B72A14A897006880E0 /* view */,
 				3AEBB2B62A14A888006880E0 /* viewController */,
 				3AEBB2B52A14A87C006880E0 /* viewModel */,
@@ -916,7 +941,6 @@
 				3AEC414129FACBF60042A548 /* EmotionViewController.swift */,
 				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
 				3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */,
-				3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */,
 				3AB0E3C62A1B394D00B13755 /* ModifyAnswerViewController.swift */,
 			);
 			path = viewController;
@@ -926,7 +950,6 @@
 			isa = PBXGroup;
 			children = (
 				3A82989B2A00F883001938B9 /* AnswerRepository.swift */,
-				3AB0E3C42A1B338B00B13755 /* AnswerCompletedRepository.swift */,
 				3AB0E3CA2A1B3A0700B13755 /* ModifyAnswerRepository.swift */,
 			);
 			path = repository;
@@ -937,7 +960,6 @@
 			children = (
 				3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */,
 				3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */,
-				3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */,
 				3AB0E3C82A1B39A700B13755 /* ModifyAnswerViewModel.swift */,
 			);
 			path = viewModel;
@@ -1046,6 +1068,7 @@
 				3ACBA4612A2508B800FCE72B /* GoogleService-Info.plist in Resources */,
 				3AA289D729B8506F0030057E /* LaunchScreen.storyboard in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
+				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
@@ -1141,6 +1164,7 @@
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
+				3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */,
 				3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */,
 				3A70A64A2A272CD2009D8D76 /* NotificationDTO.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
@@ -1385,7 +1409,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1415,7 +1439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

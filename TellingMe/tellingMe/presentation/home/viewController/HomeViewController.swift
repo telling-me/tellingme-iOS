@@ -21,18 +21,20 @@ class HomeViewController: UIViewController {
     @IBOutlet var animationViews: [UIImageView]!
     @IBOutlet var shadowViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
+    @IBOutlet weak var answerCompletedLabel: CaptionLabelRegular!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        getQuestion()
-        getAnswerRecord()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         animation()
+        getQuestion()
+        getAnswerRecord()
+        getTodayAnswer()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -96,13 +98,18 @@ class HomeViewController: UIViewController {
     }
 
     func pushAnswerCompleted() {
-        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "answerCompleted") as? AnswerCompletedViewController else { return }
+        vc.setQuestionDate(date: viewModel.questionDate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
-        getTodayAnswer()
+        if !viewModel.isAnswerCompleted {
+            pushEmotion()
+        } else {
+            pushAnswerCompleted()
+        }
     }
 }
 

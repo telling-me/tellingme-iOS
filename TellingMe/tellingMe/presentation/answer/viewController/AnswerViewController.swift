@@ -22,7 +22,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var foldViewHeight: NSLayoutConstraint!
 
     let viewModel = AnswerViewModel()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         getQuestion()
     }
@@ -89,7 +89,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {
             return
         }
-        vc.delegeate = self
+        vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated: true)

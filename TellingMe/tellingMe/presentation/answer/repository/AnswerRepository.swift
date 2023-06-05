@@ -9,8 +9,7 @@ import Foundation
 
 extension AnswerViewController {
     func getQuestion() {
-        let query = Date().getQuestionDate()
-        QuestionAPI.getTodayQuestion(query: query) { result in
+        QuestionAPI.getTodayQuestion(query: viewModel.questionDate) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -32,7 +31,7 @@ extension AnswerViewController {
     }
 
     func postAnswer() {
-        guard let date = viewModel.questionDate else { return }
+        let date = viewModel.questionDate
         let request = RegisterAnswerRequest(content: self.answerTextView.text, date: date, emotion: 1)
         AnswerAPI.registerAnswer(request: request) { result in
             switch result {
@@ -45,7 +44,7 @@ extension AnswerViewController {
                 case .tokenNotFound:
                     print("login으로 push할게요")
                 default:
-                    print(error)
+                    self.showToast(message: error.localizedDescription)
                 }
             }
         }
