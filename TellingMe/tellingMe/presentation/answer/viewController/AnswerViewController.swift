@@ -46,10 +46,10 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if answerTextView.text.count > 500 {
+        if answerTextView.text.count > 300 {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             answerTextView.text.removeLast()
-            countTextLabel.text = "\(500)"
+            countTextLabel.text = "\(300)"
         }
          answerTextView.resignFirstResponder()
      }
@@ -79,20 +79,22 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {
-        if answerTextView.text.count > 500 {
+        if answerTextView.text.count > 300 {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             answerTextView.text.removeLast()
-            countTextLabel.text = "\(500)"
+            countTextLabel.text = "\(300)"
+        } else if answerTextView.text.count <= 4 {
+            self.showToast(message: "4글자 이상 작성해주세요")
+        } else {
+            let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {
+                return
+            }
+            vc.delegate = self
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .coverVertical
+            self.present(vc, animated: true)
         }
-
-        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {
-            return
-        }
-        vc.delegate = self
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
-        self.present(vc, animated: true)
     }
 
     @IBAction func presentEotionView(_ sender: UIButton) {

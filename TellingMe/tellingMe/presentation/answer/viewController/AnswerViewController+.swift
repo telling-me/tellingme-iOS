@@ -53,10 +53,10 @@ extension AnswerViewController: UITextViewDelegate {
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.count > 500 {
+        if textView.text.count > 300 {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             textView.text.removeLast()
-            countTextLabel.text = "\(500)"
+            countTextLabel.text = "\(300)"
         }
     }
 }

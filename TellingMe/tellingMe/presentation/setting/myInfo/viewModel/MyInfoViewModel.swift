@@ -23,7 +23,7 @@ class MyInfoViewModel {
     var yearArray: [String]?
     let monthArray = Array(1...12).map { String($0) }
     let dayArray = Array(1...31).map { String($0) }
-    
+
     init() {
         let today = Date()
         if let todayYear = Int(today.yearFormat()) {
@@ -45,9 +45,10 @@ class MyInfoViewModel {
         mbti = data.mbti
     }
 
-    func makeBirthData() -> String {
+    func makeBirthData() -> String? {
+        guard let year = self.year else { return nil}
         var resultString = ""
-        resultString += self.year ?? "1999"
+        resultString += year
         resultString += "-"
 
         if self.month.count == 1 {

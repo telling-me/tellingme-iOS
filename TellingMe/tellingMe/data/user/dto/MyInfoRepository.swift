@@ -24,7 +24,7 @@ extension MyInfoViewController {
             }
         }
     }
-    
+
     func updateUserInfo() {
         let request = UpdateUserInfoRequest(birthDate: viewModel.makeBirthData(), gender: viewModel.gender, job: viewModel.job, jobInfo: viewModel.jobInfo, mbti: viewModel.mbti, nickname: viewModel.nickname, purpose: viewModel.purpose.intArraytoString())
         UserAPI.updateUserInfo(request: request) { result in

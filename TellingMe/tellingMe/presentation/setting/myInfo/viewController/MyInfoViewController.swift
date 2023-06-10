@@ -20,7 +20,7 @@ class MyInfoViewController: DropDownViewController {
     let purposeVC = ChipPurposeViewController()
     let jobVC = ChipJobViewController()
     let genderVC = ChipGenderViewController()
-    
+
     let completedButton: UIButton = {
        let button = UIButton()
         button.setTitle("완료", for: .normal)
@@ -53,9 +53,9 @@ class MyInfoViewController: DropDownViewController {
 
         if let gender = viewModel.gender {
             genderVC.collectionView.isUserInteractionEnabled = false
-            if gender == "남성" {
+            if gender == "male" {
                 genderVC.setSelectedItems(items: [0])
-            } else if gender == "여성" {
+            } else if gender == "female" {
                 genderVC.setSelectedItems(items: [1])
             }
         }
@@ -108,6 +108,19 @@ class MyInfoViewController: DropDownViewController {
     }
 
     @objc func clickCompleted(_ sender: UIButton) {
+        guard let nickname = nickNameVC.getText() else {
+            self.showToast(message: "닉네임을 입력하여주세요.")
+            return
+        }
+        if viewModel.job == 5 && viewModel.jobInfo == nil {
+            self.showToast(message: "기타 사항을 입력하여 주세요.")
+            return
+        }
+        if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
+            self.showToast(message: "생일을 전체 선택하여 주세요.")
+            return
+        }
+        viewModel.nickname = nickname
         updateUserInfo()
     }
 }

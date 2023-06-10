@@ -14,7 +14,7 @@ class AnswerListViewModel {
     var month = Date().monthFormat()
 
     var yearArray = [2023]
-    var monthArray = Array(1...13)
+    var monthArray = Array(1...12)
     let standardYear = 2023
 
     init() {
