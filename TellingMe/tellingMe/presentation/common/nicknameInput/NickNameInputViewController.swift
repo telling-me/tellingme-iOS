@@ -24,7 +24,7 @@ class NickNameInputViewController: UIViewController {
     func offKeyboard() {
         input.hiddenKeyboard()
     }
-    
+
     func setText(text: String?) {
         input.inputBox.text = text
     }

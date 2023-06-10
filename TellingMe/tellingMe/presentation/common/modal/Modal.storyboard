@@ -214,7 +214,7 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-Cm-jxg" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="159" y="0.0" width="144" height="55"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="저장하기"/>
+                                                <state key="normal" title="탈퇴하기"/>
                                                 <connections>
                                                     <action selector="clickButton:" destination="Ma7-pE-xzB" eventType="touchUpInside" id="cfx-nm-85B"/>
                                                 </connections>
