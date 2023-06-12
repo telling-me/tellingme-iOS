@@ -10,7 +10,7 @@ import UIKit
 
 extension WithdrawalViewController {
     func withDrawalUser() {
-        UserAPI.withdrawalUser { result in
+        LoginAPI.withdrawalUser { result in
             switch result {
             case .success:
                 KeychainManager.shared.delete(key: "accessToken")
@@ -33,7 +33,7 @@ extension WithdrawalViewController {
 
 extension SettingTableViewController {
     func signout() {
-        UserAPI.logout { result in
+        LoginAPI.logout { result in
             switch result {
             case .success:
                 KeychainManager.shared.delete(key: "accessToken")
