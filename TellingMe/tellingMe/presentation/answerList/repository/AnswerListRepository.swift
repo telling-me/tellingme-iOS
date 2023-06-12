@@ -14,9 +14,14 @@ extension AnswerListViewController {
         AnswerAPI.getAnswerList(month: month, year: year) { result in
             switch result {
             case .success(let response):
-                self.viewModel.answerList = response
-                self.viewModel.answerCount = response?.count ?? 0
-                self.tableView.reloadData()
+                if response?.count == 0 {
+                    self.setNotfoundAnswerList()
+                } else {
+                    self.noneView.removeFromSuperview()
+                    self.viewModel.answerList = response
+                    self.viewModel.answerCount = response!.count
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }

@@ -36,7 +36,6 @@ class SecondaryTextButton: UIButton {
 
     func setSelected() {
         backgroundColor = UIColor(named: "Primary300")
-        tintColor = UIColor(named: "Logo")
     }
 
     func setHighlighted() {
@@ -49,12 +48,13 @@ class SecondaryTextButton: UIButton {
 
     func setDisabled() {
         backgroundColor = UIColor(named: "Gray1")
-        tintColor = UIColor(named: "Gray4")
     }
 
     func setDefault() {
         backgroundColor = UIColor(named: "Primary25")
-        tintColor = UIColor(named: "Logo")
+        setTitleColor(UIColor(named: "Gray4"), for: .disabled)
+        setTitleColor(UIColor(named: "Logo"), for: .normal)
+        titleLabel?.font = UIFont(name: "NanumSquareRoundOTFR", size: 17)
     }
 
     private func setupButton() {

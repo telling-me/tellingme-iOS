@@ -25,8 +25,9 @@ class MyInfoViewController: DropDownViewController {
        let button = UIButton()
         button.setTitle("완료", for: .normal)
         button.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFB", size: 15)
-        button.setTitleColor(UIColor(named: "Gray2"), for: .normal)
+        button.setTitleColor(UIColor(named: "Gray2"), for: .disabled)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor(named: "Logo"), for: .normal)
         return button
     }()
 
@@ -50,6 +51,8 @@ class MyInfoViewController: DropDownViewController {
         if viewModel.job == 5 {
             jobVC.input.setAble(text: viewModel.jobInfo!)
         }
+        
+
 
         if let gender = viewModel.gender {
             genderVC.collectionView.isUserInteractionEnabled = false
@@ -94,6 +97,8 @@ class MyInfoViewController: DropDownViewController {
         monthButton.delegate = self
         dayButton.delegate = self
 
+        nickNameVC.delegate = self
+
         mbtiButton.setLayout()
         yearButton.setMediumLayout()
         monthButton.setMediumLayout()
@@ -105,6 +110,16 @@ class MyInfoViewController: DropDownViewController {
         completedButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
 
         completedButton.addTarget(self, action: #selector(clickCompleted(_ :)), for: .touchDown)
+    }
+
+    func isAllSelected() {
+        if viewModel.nickname == "" || viewModel.purpose == [] {
+            completedButton.isEnabled = false
+        } else if viewModel.job == 5 && viewModel.jobInfo == "" {
+            completedButton.isEnabled = false
+        } else {
+            completedButton.isEnabled = true
+        }
     }
 
     @objc func clickCompleted(_ sender: UIButton) {
@@ -120,71 +135,6 @@ class MyInfoViewController: DropDownViewController {
             self.showToast(message: "생일을 전체 선택하여 주세요.")
             return
         }
-        viewModel.nickname = nickname
         updateUserInfo()
-    }
-}
-
-extension MyInfoViewController: SettingHeaderViewDelegate {
-    func popViewController(_ headerView: SettingHeaderView) {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension MyInfoViewController: DropDownButtonDelegate {
-    func showDropDown(_ button: DropDownButton) {
-        viewModel.currentTag = button.tag
-        switch button.tag {
-        case 0:
-            guard let array = viewModel.yearArray else { return }
-            items = array.map { String($0) }
-        case 1:
-            items = viewModel.monthArray.map { String($0) }
-        case 2:
-            items = viewModel.dayArray.map { String($0) }
-        case 3:
-            items = viewModel.mbtis
-        default:
-            break
-        }
-
-        if tableView.isHidden {
-            view.addSubview(tableView)
-            tableView.isHidden.toggle()
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
-                tableView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -8),
-                tableView.heightAnchor.constraint(equalToConstant: 208)
-            ])
-        } else {
-            tableView.isHidden.toggle()
-            tableView.removeFromSuperview()
-        }
-        tableView.reloadData()
-    }
-}
-
-extension MyInfoViewController {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let yearArray = viewModel.yearArray else { return }
-        switch viewModel.currentTag {
-        case 0:
-            viewModel.year = yearArray[indexPath.row]
-            yearButton.setTitle(text: viewModel.year!, isSmall: false)
-        case 1:
-            viewModel.month = viewModel.monthArray[indexPath.row]
-            monthButton.setTitle(text: viewModel.month, isSmall: false)
-        case 2:
-            viewModel.day = viewModel.dayArray[indexPath.row]
-            dayButton.setTitle(text: viewModel.day, isSmall: false)
-        case 3:
-            viewModel.mbti = viewModel.mbtis[indexPath.row]
-            mbtiButton.setTitle(text: viewModel.mbti!, isSmall: false)
-        default:
-            fatalError("currentTag 설정 해주세요")
-        }
-        tableView.isHidden = true
-        tableView.removeFromSuperview()
     }
 }

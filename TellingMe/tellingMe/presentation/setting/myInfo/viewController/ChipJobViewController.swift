@@ -57,6 +57,7 @@ extension ChipJobViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         if let parentViewController = self.parent as? MyInfoViewController {
             parentViewController.viewModel.jobInfo = text
+            parentViewController.isAllSelected()
         }
     }
 }

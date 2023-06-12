@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol SendNicknameDelegate: AnyObject {
+    func nicknameisEmpty()
+    func nicknameisNotEmpty()
+}
+
 class NickNameInputViewController: UIViewController {
     let input = Input()
+    weak var delegate: SendNicknameDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +38,6 @@ class NickNameInputViewController: UIViewController {
     func getText() -> String? {
         return input.inputBox.text
     }
-//    func setOriginal() {
-//        textFieldView.backgroundColor = UIColor(named: "Side200")
-//    }
 }
 
 extension NickNameInputViewController: UITextFieldDelegate {
@@ -49,5 +52,13 @@ extension NickNameInputViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.offKeyboard()
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text?.isEmpty == true {
+            self.delegate?.nicknameisEmpty()
+        } else {
+            self.delegate?.nicknameisNotEmpty()
+        }
     }
 }
