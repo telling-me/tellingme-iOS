@@ -24,8 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        
-        performAutoLogin()
+//
+//        window = UIWindow(windowScene: scene)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            self.performAutoLogin()
+//        }
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -54,69 +58,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-    }
-    
-func performAutoLogin() {
-        guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
-            return
-        }
-        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
-            return
-        }
-        if type == "kakao" {
-            let request = OauthRequest(socialId: socialId)
-            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
-                switch result {
-                case .success(let response):
-                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
-                    showHome()
-                case .failure(let error):
-                    switch error {
-                    case let .errorData(errorData):
-                    default:
-                        print(error)
-                    }
-                }
-            }
-        } else if type == "apple" {
-            guard let token = KeychainManager.shared.load(key: "appleAccessToken") else { return }
-            let request = OauthRequest(socialId: "")
-            LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
-                switch result {
-                case .success(let response):
-                    self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
-                case .failure(let error):
-                    switch error {
-                    case let .errorData(errorData):
-                        self.showToast(message: errorData.message)
-                    default:
-                        print(error)
-                    }
-                }
-            }
-        }
-}
-    
-    func showHome() {
-        // 로그인 화면의 뷰 컨트롤러를 생성합니다.
-        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
-
-        // MainTabBar의 두 번째 탭으로 이동합니다.
-        tabBarController.selectedIndex = 1
-
-        // 로그인 화면을 표시할 윈도우를 가져옵니다.
-        guard let window = UIApplication.shared.windows.first else {
-            return
-        }
-
-        // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
-        window.rootViewController = tabBarController
-
-        // 윈도우를 활성화하여 로그인 화면을 표시합니다.
-        window.makeKeyAndVisible()
     }
 }

@@ -13,6 +13,7 @@ import FirebaseMessaging
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KakaoSDK.initSDK(appKey: Bundle.main.kakaoNativeAppKey)
@@ -35,7 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        )
 //
 //        application.registerForRemoteNotifications()
-        removeKeychainAtFirstLaunch()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.performAutoLogin()
+        }
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -57,10 +62,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     private func removeKeychainAtFirstLaunch() {
-        guard UserDefaults.isFirstLaunch() else {
+        if UserDefaults.isFirstLaunch() {
+            KeychainManager.shared.deleteAll()
+        } else {
+            self.performAutoLogin()
+        }
+    }
+
+    func performAutoLogin() {
+        guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
             return
         }
-        KeychainManager.shared.deleteAll()
+        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+            return
+        }
+        if type == "kakao" {
+            let request = OauthRequest(socialId: socialId)
+            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
+                switch result {
+                case .success(let response):
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                    self.showHome()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else if type == "apple" {
+            LoginAPI.postAppleOauth(type: "apple", token: socialId, request: OauthRequest(socialId: "")) { result in
+                switch result {
+                case .success(let response):
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                    self.showHome()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+
+    func showHome() {
+        // 로그인 화면의 뷰 컨트롤러를 생성합니다.
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+
+        // MainTabBar의 두 번째 탭으로 이동합니다.
+        tabBarController.selectedIndex = 1
+
+        // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
     }
 }
 
