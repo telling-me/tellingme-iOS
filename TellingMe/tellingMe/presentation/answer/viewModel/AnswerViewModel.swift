@@ -8,6 +8,7 @@
 import Foundation
 
 class AnswerViewModel {
+    var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()
     let emotion: Int? = nil

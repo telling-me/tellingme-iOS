@@ -271,13 +271,113 @@
             </objects>
             <point key="canvasLocation" x="833" y="-42"/>
         </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="Lr3-53-GAJ">
+            <objects>
+                <viewController storyboardIdentifier="cancelAnswerModal" id="gK2-qW-wra" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qUb-ZU-mgO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zQ-tp-MMg">
+                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성을 취소하고 나가시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDn-7S-PvN" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="T6g-Yo-6LA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-Ax-uSK">
+                                        <rect key="frame" x="20" y="99" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqc-sL-ShQ" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="아니오"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="gK2-qW-wra" eventType="touchUpInside" id="DqE-v8-PCB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-o6-1Gt" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="나갈래요"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="gK2-qW-wra" eventType="touchUpInside" id="NoP-IL-FgW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="aB8-Zq-Nj2"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성한 답변은 초기화돼요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hg-ip-Hgf" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="55" width="303" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="oGu-G8-n8W"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Gray7"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZDn-7S-PvN" secondAttribute="trailing" constant="20" id="1Hp-W1-b0M"/>
+                                    <constraint firstItem="8hg-ip-Hgf" firstAttribute="top" secondItem="ZDn-7S-PvN" secondAttribute="bottom" constant="8" id="5Df-Ve-GY7"/>
+                                    <constraint firstAttribute="trailing" secondItem="y5c-Ax-uSK" secondAttribute="trailing" constant="20" id="Gqy-Vz-3Po"/>
+                                    <constraint firstItem="ZDn-7S-PvN" firstAttribute="leading" secondItem="9zQ-tp-MMg" secondAttribute="leading" constant="20" id="LES-PE-R3B"/>
+                                    <constraint firstAttribute="bottom" secondItem="y5c-Ax-uSK" secondAttribute="bottom" constant="20" id="Lf7-rk-raP"/>
+                                    <constraint firstItem="y5c-Ax-uSK" firstAttribute="top" secondItem="8hg-ip-Hgf" secondAttribute="bottom" constant="28" id="MW2-rJ-SgW"/>
+                                    <constraint firstItem="ZDn-7S-PvN" firstAttribute="top" secondItem="9zQ-tp-MMg" secondAttribute="top" constant="30" id="QXY-4p-EWo"/>
+                                    <constraint firstItem="8hg-ip-Hgf" firstAttribute="leading" secondItem="9zQ-tp-MMg" secondAttribute="leading" constant="20" id="T1h-4a-22e"/>
+                                    <constraint firstAttribute="trailing" secondItem="8hg-ip-Hgf" secondAttribute="trailing" constant="20" id="VUW-EH-20B"/>
+                                    <constraint firstItem="y5c-Ax-uSK" firstAttribute="leading" secondItem="9zQ-tp-MMg" secondAttribute="leading" constant="20" id="rV6-JG-mkr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ABk-xR-PN1"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ABk-xR-PN1" firstAttribute="trailing" secondItem="9zQ-tp-MMg" secondAttribute="trailing" constant="25" id="Cg0-aU-Hsb"/>
+                            <constraint firstItem="9zQ-tp-MMg" firstAttribute="leading" secondItem="ABk-xR-PN1" secondAttribute="leading" constant="25" id="dHd-Gp-07d"/>
+                            <constraint firstItem="9zQ-tp-MMg" firstAttribute="centerY" secondItem="ABk-xR-PN1" secondAttribute="centerY" id="eRg-oc-zwt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Dqc-sL-ShQ" id="Xn2-6E-X8m"/>
+                        <outlet property="okButton" destination="Klt-o6-1Gt" id="HxC-LZ-ISU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxd-Tu-aaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495" y="-42"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="4ho-Pv-bTu">
             <size key="intrinsicContentSize" width="276.66666666666669" height="20.333333333333332"/>
         </designable>
+        <designable name="8hg-ip-Hgf">
+            <size key="intrinsicContentSize" width="170.66666666666666" height="20.333333333333332"/>
+        </designable>
         <designable name="8u1-br-R31">
             <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="Dqc-sL-ShQ">
+            <size key="intrinsicContentSize" width="39" height="30"/>
+        </designable>
+        <designable name="Klt-o6-1Gt">
+            <size key="intrinsicContentSize" width="52" height="30"/>
         </designable>
         <designable name="Ogn-Cm-jxg">
             <size key="intrinsicContentSize" width="52" height="30"/>
@@ -287,6 +387,9 @@
         </designable>
         <designable name="YHJ-Q4-vGm">
             <size key="intrinsicContentSize" width="276.33333333333331" height="20.333333333333332"/>
+        </designable>
+        <designable name="ZDn-7S-PvN">
+            <size key="intrinsicContentSize" width="208.33333333333334" height="20.333333333333332"/>
         </designable>
         <designable name="aec-g7-nlc">
             <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>

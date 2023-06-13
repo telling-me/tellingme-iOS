@@ -57,13 +57,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
 func performAutoLogin() {
-    guard KeychainManager.shared.load(key: "accessToken") != nil else {
-        return
-    }
-    guard KeychainManager.shared.load(key: "refreshToken") != nil else {
-        return
-    }
-    showHome()
+        guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
+            return
+        }
+        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+            return
+        }
+        if type == "kakao" {
+            let request = OauthRequest(socialId: socialId)
+            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
+                switch result {
+                case .success(let response):
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                    showHome()
+                case .failure(let error):
+                    switch error {
+                    case let .errorData(errorData):
+                    default:
+                        print(error)
+                    }
+                }
+            }
+        } else if type == "apple" {
+            guard let token = KeychainManager.shared.load(key: "appleAccessToken") else { return }
+            let request = OauthRequest(socialId: "")
+            LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
+                switch result {
+                case .success(let response):
+                    self.pushHome()
+                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
+                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                case .failure(let error):
+                    switch error {
+                    case let .errorData(errorData):
+                        self.showToast(message: errorData.message)
+                    default:
+                        print(error)
+                    }
+                }
+            }
+        }
 }
     
     func showHome() {
