@@ -51,25 +51,25 @@ class MyInfoViewController: DropDownViewController {
         if viewModel.job == 5 {
             jobVC.input.setAble(text: viewModel.jobInfo!)
         }
-        
-
 
         if let gender = viewModel.gender {
             genderVC.collectionView.isUserInteractionEnabled = false
             if gender == "male" {
                 genderVC.setSelectedItems(items: [0])
+                genderVC.setDisabledItems(items: [1])
             } else if gender == "female" {
                 genderVC.setSelectedItems(items: [1])
+                genderVC.setDisabledItems(items: [0])
             }
         }
 
         if let year = viewModel.year {
             yearButton.setTitle(text: year, isSmall: false)
-            yearButton.isUserInteractionEnabled = false
             monthButton.setTitle(text: viewModel.month, isSmall: false)
-            monthButton.isUserInteractionEnabled = false
             dayButton.setTitle(text: viewModel.day, isSmall: false)
-            dayButton.isUserInteractionEnabled = false
+            yearButton.setDisabled()
+            monthButton.setDisabled()
+            dayButton.setDisabled()
         } else {
             yearButton.setTitle(text: "년", isSmall: false)
             monthButton.setTitle(text: "월", isSmall: false)

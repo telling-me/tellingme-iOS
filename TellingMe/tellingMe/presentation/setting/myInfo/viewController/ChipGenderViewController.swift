@@ -9,6 +9,7 @@ import UIKit
 
 class ChipGenderViewController: ChipCollectionViewController {
     let genders = ["남성", "여성"]
+    let genders_e = ["male", "female"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class ChipGenderViewController: ChipCollectionViewController {
 extension ChipGenderViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let parentViewController = self.parent as? MyInfoViewController {
-            parentViewController.viewModel.gender = genders[indexPath.row]
+            parentViewController.viewModel.gender = genders_e[indexPath.row]
         }
     }
 }
