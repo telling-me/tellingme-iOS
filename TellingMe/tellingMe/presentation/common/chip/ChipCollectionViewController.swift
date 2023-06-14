@@ -47,6 +47,15 @@ class ChipCollectionViewController: UIViewController {
             collectionView.selectItem(at: IndexPath(item: i, section: 0), animated: false, scrollPosition: .centeredVertically)
         }
     }
+
+    func setDisabledItems(items: [Int]) {
+        for i in items {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: IndexPath(index: i)) as? ChipCollectionViewCell else {
+                return
+            }
+            cell.setDisabled()
+        }
+    }
 }
 
 extension ChipCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

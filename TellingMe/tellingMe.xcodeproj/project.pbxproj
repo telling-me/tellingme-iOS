@@ -121,6 +121,7 @@
 		3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */; };
 		3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */; };
 		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
+		3AE006192A360FAC0016CACE /* NoneAnswerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */; };
 		3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */; };
 		3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2C02A14B4EB006880E0 /* Input.swift */; };
 		3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */; };
@@ -131,6 +132,8 @@
 		3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */; };
 		3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26429C99F7D00D02F3F /* BodyLabel.swift */; };
 		3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED26629C99F8800D02F3F /* CaptionLabel.swift */; };
+		3AF338242A38B24E00F9733B /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF338232A38B24E00F9733B /* UserDefaults+.swift */; };
+		3AF817B82A3748C300D788EC /* MyInfoViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF817B72A3748C300D788EC /* MyInfoViewController+.swift */; };
 		3AF97FBA2A191436008FB590 /* TodayAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FB92A191436008FB590 /* TodayAnswerDTO.swift */; };
 		3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBB2A191646008FB590 /* RegisterAnswerDTO.swift */; };
 		3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF97FBD2A19167F008FB590 /* DeleteAnswerDTO.swift */; };
@@ -261,6 +264,7 @@
 		3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerCompleted.storyboard; sourceTree = "<group>"; };
 		3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
+		3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoneAnswerListView.swift; sourceTree = "<group>"; };
 		3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		3AEBB2C02A14B4EB006880E0 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryTextButton.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 		3AEED26229C99F1500D02F3F /* HeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineLabel.swift; sourceTree = "<group>"; };
 		3AEED26429C99F7D00D02F3F /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		3AEED26629C99F8800D02F3F /* CaptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
+		3AF338232A38B24E00F9733B /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		3AF817B72A3748C300D788EC /* MyInfoViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoViewController+.swift"; sourceTree = "<group>"; };
 		3AF97FB92A191436008FB590 /* TodayAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAnswerDTO.swift; sourceTree = "<group>"; };
 		3AF97FBB2A191646008FB590 /* RegisterAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAnswerDTO.swift; sourceTree = "<group>"; };
 		3AF97FBD2A19167F008FB590 /* DeleteAnswerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAnswerDTO.swift; sourceTree = "<group>"; };
@@ -603,11 +609,11 @@
 		3A7121332A02C43700A02054 /* answerList */ = {
 			isa = PBXGroup;
 			children = (
+				3AE006152A360C7C0016CACE /* repository */,
+				3AE006142A360C730016CACE /* view */,
+				3AE006132A360C640016CACE /* viewModel */,
+				3AE006122A360C5B0016CACE /* viewController */,
 				3A7121342A02C45500A02054 /* AnswerList.storyboard */,
-				3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */,
-				3A7121382A03902800A02054 /* AnswerListViewModel.swift */,
-				3A71213A2A039A0200A02054 /* AnswerListViewController.swift */,
-				3A71213C2A039FD400A02054 /* AnswerListRepository.swift */,
 			);
 			path = answerList;
 			sourceTree = "<group>";
@@ -681,8 +687,9 @@
 			children = (
 				3ACBA4642A250AEF00FCE72B /* Info.plist */,
 				3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */,
-				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
+				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
+				3AF338232A38B24E00F9733B /* UserDefaults+.swift */,
 			);
 			path = keyChain;
 			sourceTree = "<group>";
@@ -862,6 +869,39 @@
 			path = answerCompleted;
 			sourceTree = "<group>";
 		};
+		3AE006122A360C5B0016CACE /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A71213A2A039A0200A02054 /* AnswerListViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		3AE006132A360C640016CACE /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121382A03902800A02054 /* AnswerListViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		3AE006142A360C730016CACE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */,
+				3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		3AE006152A360C7C0016CACE /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3A71213C2A039FD400A02054 /* AnswerListRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
 		3AEBB2B42A14A86E006880E0 /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +955,7 @@
 				3A3739BC2A125F4D00739543 /* ChipPurposeViewController.swift */,
 				3A3739BA2A125F3B00739543 /* ChipJobViewController.swift */,
 				3A4C384C2A0CC88900FEFAAE /* MyInfoViewController.swift */,
+				3AF817B72A3748C300D788EC /* MyInfoViewController+.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1148,6 +1189,7 @@
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */,
+				3AE006192A360FAC0016CACE /* NoneAnswerListView.swift in Sources */,
 				3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
 				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
@@ -1163,6 +1205,7 @@
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
+				3AF338242A38B24E00F9733B /* UserDefaults+.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
 				3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */,
 				3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */,
@@ -1179,6 +1222,7 @@
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A1E403B2A1A611800F1F109 /* ModalViewController.swift in Sources */,
+				3AF817B82A3748C300D788EC /* MyInfoViewController+.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
 				3ABB09EE2A1A73F600C6596B /* PullDownViewController.swift in Sources */,
 				3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */,
@@ -1401,7 +1445,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -1431,7 +1475,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;

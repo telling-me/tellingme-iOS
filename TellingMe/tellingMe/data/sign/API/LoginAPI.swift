@@ -14,6 +14,9 @@ enum LoginAPITarget {
     case signUp(SignUpRequest)
     case checkNickname(CheckNicknameRequest)
     case jobInfo(JobInfoRequest)
+    case withdrawalUser
+    case logout
+
 }
 
 extension LoginAPITarget: TargetType {
@@ -29,6 +32,8 @@ extension LoginAPITarget: TargetType {
             return .requestJSONEncodable(body)
         case .jobInfo(let body):
             return .requestJSONEncodable(body)
+        default:
+            return .requestPlain
         }
     }
 
@@ -42,6 +47,10 @@ extension LoginAPITarget: TargetType {
             return "api/oauth/nickname"
         case .jobInfo:
             return "api/oauth/jobName"
+        case .withdrawalUser:
+            return "api/oauth/withdraw"
+        case .logout:
+            return "api/oauth/logout"
         }
     }
 
@@ -129,5 +138,29 @@ struct LoginAPI: Networkable {
 
     static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
+    }
+    
+    static func withdrawalUser(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.withdrawalUser, dtoType: EmptyResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func logout(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.logout, dtoType: EmptyResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
     }
 }

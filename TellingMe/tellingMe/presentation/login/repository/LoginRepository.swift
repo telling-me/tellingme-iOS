@@ -16,12 +16,10 @@ import Alamofire
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func callKakaoAPI() {
         if UserApi.isKakaoTalkLoginAvailable() {
-            print("일단 열리잖아요")
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
                     print("\(error) 카카오로그인 실패요~~")
                 } else {
-                    print("카카오로그인 성공")
                     self.getUserInfo(oauthToekn: oauthToken!)
                 }
             }
@@ -41,8 +39,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             if let error = error {
                 print("\(error) 사용자 정보 가져오기 실패")
             } else {
-                print("사용자 정보 가져오기 성공")
                 guard let user_data = user else { return }
+                KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
+                KeychainManager.shared.save(String(describing: user_data.id), key: Keys.socialId.rawValue)
                 let request = OauthRequest(socialId: String(user_data.id!))
                 LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
@@ -54,9 +53,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         switch error {
                         case .errorData(let errorData):
                             self.showToast(message: errorData.message)
-                        case .notJoin(let errorResponse):
-                            KeychainManager.shared.save(errorResponse.socialId, key: "socialId")
-                            KeychainManager.shared.save("kakao", key: "socialLoginType")
+                        case .notJoin:
                             self.pushSignUp()
                         default:
                             print(error)
@@ -83,7 +80,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if let identityToken = appleIDCredential.identityToken,
                let tokenString = String(data: identityToken, encoding: .utf8) {
-                KeychainManager.shared.save(tokenString, key: "appleAccessToken")
+                KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
+                KeychainManager.shared.save(tokenString, key: Keys.socialId.rawValue)
                 LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
@@ -94,9 +92,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                         switch error {
                         case .errorData(let errorData):
                             self.showToast(message: errorData.message)
-                        case .notJoin(let errorResponse):
-                            KeychainManager.shared.save(errorResponse.socialId, key: "socialId")
-                            KeychainManager.shared.save("kakao", key: "socialLoginType")
+                        case .notJoin:
                             self.pushSignUp()
                         default:
                             print(error)

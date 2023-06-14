@@ -995,7 +995,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-dP-ZnF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-dP-ZnF" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="118" y="599" width="139" height="55"/>
                                 <color key="backgroundColor" name="Primary25"/>
                                 <constraints>

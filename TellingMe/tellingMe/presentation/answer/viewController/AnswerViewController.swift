@@ -75,7 +75,13 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func clickBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "cancelAnswerModal") as? ModalViewController else {
+            return
+        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {

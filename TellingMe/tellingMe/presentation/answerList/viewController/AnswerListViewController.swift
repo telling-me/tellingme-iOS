@@ -19,6 +19,7 @@ class AnswerListViewController: UIViewController {
     @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
 
+    let noneView = NoneAnswerListView()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
@@ -40,6 +41,23 @@ class AnswerListViewController: UIViewController {
            selectedViewController != self.navigationController {
             self.tabBarController?.tabBar.isHidden = true
         }
+    }
+
+    func setNotfoundAnswerList() {
+        noneView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(noneView)
+
+        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 99).isActive = true
+        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -99).isActive = true
+        noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
+        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
+    }
+
+    @objc func pushAnswer() {
+        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "answer") as? AnswerViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     func setAction() {

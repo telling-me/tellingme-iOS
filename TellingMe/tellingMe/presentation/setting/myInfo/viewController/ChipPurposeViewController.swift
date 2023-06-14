@@ -16,6 +16,11 @@ class ChipPurposeViewController: ChipCollectionViewController {
         collectionView.allowsMultipleSelection = true
         setItems(items: purposeList)
     }
+    
+    override func setSelectedItems(items: [Int]) {
+        selectedItems = items
+        super.setSelectedItems(items: items)
+    }
 }
 
 extension ChipPurposeViewController {
@@ -23,6 +28,7 @@ extension ChipPurposeViewController {
         selectedItems.append(indexPath.row)
         if let parentViewController = self.parent as? MyInfoViewController {
             parentViewController.viewModel.purpose = self.selectedItems
+            parentViewController.isAllSelected()
         }
     }
 
@@ -35,6 +41,7 @@ extension ChipPurposeViewController {
             selectedItems.remove(at: index)
             if let parentViewController = self.parent as? MyInfoViewController {
                 parentViewController.viewModel.purpose = self.selectedItems
+                parentViewController.isAllSelected()
             }
         }
     }
