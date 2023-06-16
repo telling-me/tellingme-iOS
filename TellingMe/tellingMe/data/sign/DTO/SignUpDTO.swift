@@ -10,6 +10,7 @@ import KeychainSwift
 
 struct SignUpRequest: Codable {
     var allowNotification: Bool
+    var pushToken: String?
     var nickname: String
     var purpose: String
     var job: Int

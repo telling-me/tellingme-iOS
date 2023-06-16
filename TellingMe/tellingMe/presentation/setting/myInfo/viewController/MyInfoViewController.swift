@@ -53,13 +53,10 @@ class MyInfoViewController: DropDownViewController {
         }
 
         if let gender = viewModel.gender {
-            genderVC.collectionView.isUserInteractionEnabled = false
             if gender == "male" {
-                genderVC.setSelectedItems(items: [0])
-                genderVC.setDisabledItems(items: [1])
+                genderVC.alreadySelected = 0
             } else if gender == "female" {
-                genderVC.setSelectedItems(items: [1])
-                genderVC.setDisabledItems(items: [0])
+                genderVC.alreadySelected = 1
             }
         }
 
@@ -96,7 +93,6 @@ class MyInfoViewController: DropDownViewController {
         yearButton.delegate = self
         monthButton.delegate = self
         dayButton.delegate = self
-
         nickNameVC.delegate = self
 
         mbtiButton.setLayout()

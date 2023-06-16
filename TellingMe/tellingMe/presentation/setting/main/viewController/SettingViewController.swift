@@ -15,7 +15,6 @@ class SettingViewController: UIViewController {
         headerView.setTitle(title: "설정")
         headerView.delegate = self
     }
-
 }
 
 extension SettingViewController: SettingHeaderViewDelegate {

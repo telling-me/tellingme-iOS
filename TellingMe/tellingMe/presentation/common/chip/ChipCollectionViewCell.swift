@@ -56,9 +56,8 @@ class ChipCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor(named: "Side200")
         self.label.textColor = UIColor(named: "Gray7")
     }
-    
+
     func setDisabled() {
-        self.isUserInteractionEnabled = false
         self.backgroundColor = UIColor(named: "Gray1")
         self.label.textColor = UIColor(named: "Gray4")
     }

@@ -783,6 +783,9 @@
                                                     <rect key="frame" x="319" y="14.666666666666664" width="51" height="31"/>
                                                     <rect key="contentStretch" x="0.0" y="0.0" width="0.80000000000000004" height="0.75"/>
                                                     <color key="onTintColor" name="Logo"/>
+                                                    <connections>
+                                                        <action selector="toggleSwitch:" destination="a4K-4x-2PU" eventType="primaryActionTriggered" id="Aby-wu-yWe"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -978,6 +981,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="pushSwitch" destination="D2Q-SN-ZdJ" id="I4s-am-Gru"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZR-UI-jZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1001,7 +1007,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-SB-rfj">
                                 <rect key="frame" x="25" y="143" width="343" height="675"/>
                                 <color key="backgroundColor" name="Side100"/>
-                                <mutableString key="text">■ 제1장 총칙  &lt;제1조(목적)&gt;  이 약관은 TellingUS (이하 “회사”)가 운영하는 
+                                <string key="text">■ 제1장 총칙  &lt;제1조(목적)&gt;  이 약관은 TellingUS (이하 “회사”)가 운영하는 
 tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.  &lt;제2조(정의)&gt;  이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
 
 ① “이용자”란 회사와 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는 모든 사용자를 의미합니다.
@@ -1038,7 +1044,7 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
 
 ③ 회사는 이용자가 제 11조 1항을 반복적으로 위배할 경우 적절한 조치를 통해 자격을 임시 정지하거나 상실시킬 수 있습니다.  &lt;제7조(회원에 대한 통지)&gt;  ① 회사가 이용자에게 통지를 하는 경우 개별 알림 기능으로 할 수 있습니다.
 
-② 회사는 이용자 전체에게 통지를 하는 경우 7일 이상 알림 페이지 또는 팝업화면 등을 제시함으로써 제1항의 통지에 갈음할 수 있습니다.</mutableString>
+② 회사는 이용자 전체에게 통지를 하는 경우 7일 이상 알림 페이지 또는 팝업화면 등을 제시함으로써 제1항의 통지에 갈음할 수 있습니다.</string>
                                 <color key="textColor" name="black"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

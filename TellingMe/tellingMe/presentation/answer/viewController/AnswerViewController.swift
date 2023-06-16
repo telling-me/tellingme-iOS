@@ -34,13 +34,13 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         vc.delegate = self
         if let tabBarController = self.tabBarController as? MainTabBarController {
             tabBarController.tabBar.isHidden = true
-//            tabBarController.removeShadowView()
         }
         self.present(vc, animated: false)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dayLabel.text = viewModel.date
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -75,6 +75,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func clickBack(_ sender: UIButton) {
+        viewModel.modalChanged = 0
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "cancelAnswerModal") as? ModalViewController else {
             return
@@ -85,11 +86,12 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {
+        viewModel.modalChanged = 1
         if answerTextView.text.count > 300 {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             answerTextView.text.removeLast()
             countTextLabel.text = "\(300)"
-        } else if answerTextView.text.count <= 4 {
+        } else if answerTextView.text.count <= 3 {
             self.showToast(message: "4글자 이상 작성해주세요")
         } else {
             let storyboard = UIStoryboard(name: "Modal", bundle: nil)
@@ -133,11 +135,16 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     func clickCancel() {
+ 
     }
 
     // 답변 등록하기 버튼
     func clickOk() {
-        self.postAnswer()
-        self.navigationController?.popViewController(animated: true)
+        if viewModel.modalChanged == 0 {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.postAnswer()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

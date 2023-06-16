@@ -16,7 +16,7 @@ class ChipPurposeViewController: ChipCollectionViewController {
         collectionView.allowsMultipleSelection = true
         setItems(items: purposeList)
     }
-    
+
     override func setSelectedItems(items: [Int]) {
         selectedItems = items
         super.setSelectedItems(items: items)
