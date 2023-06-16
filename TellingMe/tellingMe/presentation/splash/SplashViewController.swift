@@ -6,24 +6,35 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SplashViewController: UIViewController {
-
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        playVideo()
+//        performAutoLogin()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    private func playVideo() {
+        guard let path = Bundle.main.path(forResource: "Splash", ofType: "mp4") else {
+            return
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = imageView.bounds
+        imageView.layer.addSublayer(playerLayer)
+        playerLayer.videoGravity = .resizeAspectFill
+
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { _ in
+            player.pause()
+            playerLayer.removeFromSuperlayer()
+            self.performAutoLogin()
+        }
+
+        player.play()
     }
-    */
 
 }
