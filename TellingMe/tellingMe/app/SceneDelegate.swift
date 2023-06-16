@@ -24,12 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-//
-//        window = UIWindow(windowScene: scene)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            self.performAutoLogin()
+//        
+//        let storyboard = UIStoryboard(name: "Splash", bundle: nil) // 변경된 부분: "Main" 스토리보드로 설정
+//        if let initialViewController = storyboard.instantiateInitialViewController() {
+//            let window = UIWindow(windowScene: scene)
+//            window.rootViewController = initialViewController
+//            self.window = window
+//            window.makeKeyAndVisible()
 //        }
-//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
