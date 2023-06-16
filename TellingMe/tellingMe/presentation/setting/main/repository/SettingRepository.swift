@@ -32,6 +32,42 @@ extension WithdrawalViewController {
 }
 
 extension SettingTableViewController {
+    func getisAllowedNotification() {
+        UserAPI.getisAllowedNotification { result in
+            switch result {
+            case .success(let response):
+                self.pushSwitch.isOn = response!.allowNotification
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    fatalError("토큰이 없습니다")
+                default:
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+
+    func postisAllowedNotification() {
+        UserAPI.postisAllowedNotification { result in
+            switch result {
+            case .success(let response):
+                self.pushSwitch.isOn = response!.allowNotification
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    fatalError("토큰이 없습니다")
+                default:
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+
     func signout() {
         LoginAPI.logout { result in
             switch result {

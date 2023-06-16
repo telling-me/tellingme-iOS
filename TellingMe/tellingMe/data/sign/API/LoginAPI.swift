@@ -139,7 +139,7 @@ struct LoginAPI: Networkable {
     static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
-    
+
     static func withdrawalUser(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.withdrawalUser, dtoType: EmptyResponse.self, completion: completion)
@@ -151,7 +151,7 @@ struct LoginAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func logout(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.logout, dtoType: EmptyResponse.self, completion: completion)

@@ -10,14 +10,14 @@ import UIKit
 class ModifyAnswerViewController: AnswerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAnswer()
         self.emotionButton.isEnabled = false
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getAnswer()
     }
-    
+
     func setQuestionDate(date: String) {
         self.viewModel.questionDate = date
     }

@@ -14,6 +14,7 @@ class SettingViewModel {
         let view: UIViewController
     }
 
+    var isPushAllowed: Bool?
     let items = [SettingView(id: "myInfo", view: MyInfoViewController()), SettingView(id: "termOfUse", view: TermOfUseViewController()), SettingView(id: "privacyPolicy", view: PrivacyPolicyViewController()), SettingView(id: "withdrawal", view: WithdrawalViewController())]
     var itemsCount: Int?
 

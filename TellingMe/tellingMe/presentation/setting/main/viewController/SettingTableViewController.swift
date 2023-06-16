@@ -9,9 +9,18 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     let viewModel = SettingViewModel()
+    @IBOutlet weak var pushSwitch: UISwitch!
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.getisAllowedNotification()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.id)
+    }
+
+    @IBAction func toggleSwitch(_ sender: UISwitch) {
+        self.postisAllowedNotification()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -41,7 +41,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             } else {
                 guard let user_data = user else { return }
                 KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
-                KeychainManager.shared.save(String(describing: user_data.id), key: Keys.socialId.rawValue)
+                KeychainManager.shared.save(String(user_data.id!), key: Keys.socialId.rawValue)
                 let request = OauthRequest(socialId: String(user_data.id!))
                 LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {

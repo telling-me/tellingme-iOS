@@ -36,7 +36,9 @@ class MyInfoViewModel {
         purpose = data.purpose.stringToInt()
         job = data.job
         jobInfo = data.jobInfo
-        gender = data.gender
+        if let gender = data.gender {
+            self.gender = gender
+        }
         if let date = data.birthDate {
             self.year = "\(date[0])"
             self.month = "\(date[1])"

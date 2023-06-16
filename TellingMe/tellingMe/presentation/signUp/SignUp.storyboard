@@ -862,25 +862,6 @@
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snc-cT-7p7">
-                                <rect key="frame" x="294" y="803" width="95" height="55"/>
-                                <color key="backgroundColor" name="Primary25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="Non-9v-HQR"/>
-                                    <constraint firstAttribute="height" constant="55" id="P8A-9D-1kZ"/>
-                                </constraints>
-                                <color key="tintColor" name="Logo"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="완료"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pushAllowNotification:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="QnU-xC-vPv"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbt-N9-ahO" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="25" y="197" width="364" height="57"/>
                                 <color key="backgroundColor" name="Side200"/>
@@ -927,17 +908,28 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGp-0x-h4x" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="334" y="803" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="mG2-2d-WTO"/>
+                                    <constraint firstAttribute="height" constant="55" id="tIg-03-IZr"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="pushAllowNotification:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="qL5-LQ-Qze"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iiV-rJ-JJK"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="snc-cT-7p7" secondAttribute="bottom" constant="36" id="7Nr-qt-ybl"/>
+                            <constraint firstItem="iiV-rJ-JJK" firstAttribute="trailing" secondItem="FGp-0x-h4x" secondAttribute="trailing" constant="25" id="622-jb-6pV"/>
                             <constraint firstItem="SBU-Is-fi0" firstAttribute="leading" secondItem="bYR-gJ-eF9" secondAttribute="leading" constant="25" id="B5w-I8-Hyd"/>
                             <constraint firstItem="n66-5l-xha" firstAttribute="leading" secondItem="dbt-N9-ahO" secondAttribute="leading" id="Eyt-5U-0zq"/>
                             <constraint firstItem="lGB-on-c06" firstAttribute="centerX" secondItem="bYR-gJ-eF9" secondAttribute="centerX" id="G3z-LT-P3G"/>
-                            <constraint firstAttribute="trailing" secondItem="snc-cT-7p7" secondAttribute="trailing" constant="25" id="If3-3d-0Iu"/>
                             <constraint firstItem="dbt-N9-ahO" firstAttribute="top" secondItem="lGB-on-c06" secondAttribute="bottom" constant="110" id="QyQ-AF-g0P"/>
                             <constraint firstAttribute="trailing" secondItem="dbt-N9-ahO" secondAttribute="trailing" constant="25" id="bD8-Yu-HZ5"/>
+                            <constraint firstAttribute="bottom" secondItem="FGp-0x-h4x" secondAttribute="bottom" constant="36" id="hI5-BX-dE0"/>
                             <constraint firstItem="lGB-on-c06" firstAttribute="top" secondItem="bYR-gJ-eF9" secondAttribute="top" constant="60" id="kuw-u3-Pqq"/>
                             <constraint firstItem="dbt-N9-ahO" firstAttribute="leading" secondItem="bYR-gJ-eF9" secondAttribute="leading" constant="25" id="mlF-V6-5dh"/>
                             <constraint firstItem="n66-5l-xha" firstAttribute="top" secondItem="dbt-N9-ahO" secondAttribute="bottom" constant="8" id="n8I-Se-a2s"/>
@@ -948,10 +940,10 @@
                     <navigationItem key="navigationItem" id="eAZ-Qc-wz5"/>
                     <size key="freeformSize" width="414" height="894"/>
                     <connections>
-                        <outlet property="completeButton" destination="snc-cT-7p7" id="3Xc-uN-uwJ"/>
                         <outlet property="mbtiButton" destination="dbt-N9-ahO" id="rHf-q4-wZL"/>
                         <outlet property="mbtiHeight" destination="kQm-5l-t45" id="eFf-wE-Rs5"/>
                         <outlet property="mbtiTableView" destination="n66-5l-xha" id="Xez-W6-AJD"/>
+                        <outlet property="nextButton" destination="FGp-0x-h4x" id="TNo-rw-Pdv"/>
                         <outlet property="prevButton" destination="SBU-Is-fi0" id="iRe-RN-owd"/>
                     </connections>
                 </viewController>
@@ -1111,6 +1103,9 @@
         <designable name="Ecu-SZ-6ct">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
+        <designable name="FGp-0x-h4x">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
         <designable name="Fdj-bN-tlf">
             <size key="intrinsicContentSize" width="149.33333333333334" height="20.333333333333332"/>
         </designable>
@@ -1128,6 +1123,9 @@
         </designable>
         <designable name="Qqc-iR-uar">
             <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="RoC-dP-ZnF">
+            <size key="intrinsicContentSize" width="75" height="31"/>
         </designable>
         <designable name="SBU-Is-fi0">
             <size key="intrinsicContentSize" width="30" height="30"/>

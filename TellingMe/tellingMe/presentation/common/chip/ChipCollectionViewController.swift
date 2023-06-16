@@ -41,19 +41,10 @@ class ChipCollectionViewController: UIViewController {
     func setItems(items: [String]) {
         self.items = items
     }
-    
+
     func setSelectedItems(items: [Int]) {
         for i in items {
             collectionView.selectItem(at: IndexPath(item: i, section: 0), animated: false, scrollPosition: .centeredVertically)
-        }
-    }
-
-    func setDisabledItems(items: [Int]) {
-        for i in items {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: IndexPath(index: i)) as? ChipCollectionViewCell else {
-                return
-            }
-            cell.setDisabled()
         }
     }
 }
@@ -73,7 +64,6 @@ extension ChipCollectionViewController: UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: indexPath) as? ChipCollectionViewCell else {
             return UICollectionViewCell()
         }
-
         cell.setData(with: items[indexPath.row])
         return cell
     }

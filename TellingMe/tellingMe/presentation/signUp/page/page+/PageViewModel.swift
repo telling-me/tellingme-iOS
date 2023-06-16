@@ -71,7 +71,7 @@ class GetJobViewModel {
 }
 
 class GetGenderViewModel {
-    let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Man", title: "남성"), TeritaryBothData(imgName: "Woman", title: "여성")]
+    let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Male", title: "남성"), TeritaryBothData(imgName: "Female", title: "여성")]
     var selectedItem: String? = nil
 
     init() {

@@ -10,7 +10,7 @@ import UIKit
 class GetMBTIViewController: UIViewController {
     @IBOutlet weak var mbtiButton: DropDownButton!
     @IBOutlet weak var prevButton: SecondaryIconButton!
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
     let viewModel = GetMBTIViewModel()
@@ -75,6 +75,6 @@ extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.isHidden = true
         mbtiButton.setTitle(text: cell.getCell(), isSmall: false)
         viewModel.myMbti = cell.getCell()
-        completeButton.isEnabled = true
+        nextButton.isEnabled = true
     }
 }

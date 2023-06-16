@@ -118,7 +118,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-qn-KoW">
                                         <rect key="frame" x="41.5" y="117" width="325" height="142"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYq-Da-bcO" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYq-Da-bcO" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="40" width="265" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -182,7 +182,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjX-Xc-zmo">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjX-Xc-zmo">
                                         <rect key="frame" x="176.5" y="295" width="55" height="55"/>
                                         <color key="backgroundColor" name="Side100"/>
                                         <constraints>
@@ -190,8 +190,7 @@
                                             <constraint firstAttribute="height" constant="55" id="iDy-O9-zyx"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <state key="normal" image="WingPen"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
@@ -201,8 +200,8 @@
                                             <action selector="presentEmotion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bsa-Uh-PPH"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-oD-GK7" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="169.5" y="362" width="69" height="21"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-oD-GK7" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="169.5" y="368" width="69" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
@@ -219,7 +218,7 @@
                                     <constraint firstItem="LKD-O2-ULs" firstAttribute="top" secondItem="9up-7i-cxi" secondAttribute="top" id="DDx-xg-A5B"/>
                                     <constraint firstItem="lH9-tL-FdQ" firstAttribute="centerX" secondItem="LKD-O2-ULs" secondAttribute="centerX" id="Jec-zC-0x3"/>
                                     <constraint firstItem="lH9-tL-FdQ" firstAttribute="top" secondItem="9up-7i-cxi" secondAttribute="top" constant="34" id="Jmt-Qa-9N5"/>
-                                    <constraint firstItem="Tpz-oD-GK7" firstAttribute="top" secondItem="MjX-Xc-zmo" secondAttribute="bottom" constant="12" id="NMT-SE-Gp8"/>
+                                    <constraint firstItem="Tpz-oD-GK7" firstAttribute="top" secondItem="MjX-Xc-zmo" secondAttribute="bottom" constant="18" id="NMT-SE-Gp8"/>
                                     <constraint firstAttribute="trailing" secondItem="LKD-O2-ULs" secondAttribute="trailing" id="U3t-aQ-czT"/>
                                     <constraint firstItem="PpW-Eo-64V" firstAttribute="top" secondItem="9up-7i-cxi" secondAttribute="top" constant="323" id="UU9-xK-akV"/>
                                     <constraint firstItem="q0s-hV-lNp" firstAttribute="leading" secondItem="9up-7i-cxi" secondAttribute="leading" constant="24" id="Xvo-6V-oko"/>
@@ -305,6 +304,7 @@
         <image name="Shape3" width="76" height="74"/>
         <image name="Shape4" width="55" height="55"/>
         <image name="Shape5" width="325" height="325"/>
+        <image name="WingPen" width="37" height="37"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
