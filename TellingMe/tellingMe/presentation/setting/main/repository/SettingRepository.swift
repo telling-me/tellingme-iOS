@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 extension WithdrawalViewController {
     func withDrawalUser() {
@@ -54,6 +55,10 @@ extension SettingTableViewController {
         UserAPI.postisAllowedNotification { result in
             switch result {
             case .success(let response):
+                if response!.allowNotification {
+                    self.checkNotification()
+                    self.postPushToken()
+                }
                 self.pushSwitch.isOn = response!.allowNotification
             case .failure(let error):
                 switch error {
@@ -64,6 +69,18 @@ extension SettingTableViewController {
                 default:
                     print(error.localizedDescription)
                 }
+            }
+        }
+    }
+
+    func postPushToken() {
+        let request = FirebaseTokenRequest(pushToken: self.getFirebaseToken())
+        UserAPI.postFirebaseToken(request: request) { result in
+            switch result {
+            case .success:
+                break
+            case .failure(let error):
+                self.showToast(message: "푸시 알림 설정에 실패하였습니다.")
             }
         }
     }

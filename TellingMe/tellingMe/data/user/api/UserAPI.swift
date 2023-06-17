@@ -11,12 +11,17 @@ import Moya
 enum UserAPITarget {
     case getUserInfo
     case updateUserInfo(UpdateUserInfoRequest)
+    case getisAllowedNotification
+    case postisAllowedNotification
+    case postFirebaseToken(FirebaseTokenRequest)
 }
 
 extension UserAPITarget: TargetType {
     var task: Task {
         switch self {
         case .updateUserInfo(let body):
+            return .requestJSONEncodable(body)
+        case .postFirebaseToken(let body):
             return .requestJSONEncodable(body)
         default:
             return .requestPlain
@@ -29,6 +34,12 @@ extension UserAPITarget: TargetType {
             return "api/user"
         case .updateUserInfo:
             return "api/user/update"
+        case .getisAllowedNotification:
+            return "api/user/notification"
+        case .postisAllowedNotification:
+            return "api/user/update/notification"
+        case .postFirebaseToken:
+            return "api/user/update/pushToken"
         }
     }
 
@@ -36,6 +47,8 @@ extension UserAPITarget: TargetType {
         switch self {
         case .updateUserInfo:
             return .patch
+        case .postisAllowedNotification, .postFirebaseToken:
+            return .post
         default:
             return .get
         }
@@ -74,6 +87,42 @@ struct UserAPI: Networkable {
     static func updateUserInfo(request: UpdateUserInfoRequest, completion: @escaping(Result<UserInfoResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.updateUserInfo(request), dtoType: UserInfoResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+
+    static func getisAllowedNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.getisAllowedNotification, dtoType: AllowedNotificationResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+
+    static func postisAllowedNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.postisAllowedNotification, dtoType: AllowedNotificationResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func postFirebaseToken(request: FirebaseTokenRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.postFirebaseToken(request), dtoType: EmptyResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

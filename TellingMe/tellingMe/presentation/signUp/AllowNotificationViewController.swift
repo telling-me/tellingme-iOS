@@ -8,10 +8,11 @@
 import UIKit
 import Firebase
 
-class AllowNotificationViewController: UIViewController {
+class AllowNotificationViewController: UIViewController, MessagingDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        Messaging.messaging().delegate = self
     }
 
     func pushHome() {
@@ -38,7 +39,6 @@ class AllowNotificationViewController: UIViewController {
         }
     }
 
-    // 토큰 등록 함수
     func registerForPushNotifications(completion: @escaping () -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             guard granted else { return }
@@ -52,11 +52,5 @@ class AllowNotificationViewController: UIViewController {
                 }
             }
         }
-    }
-
-    // 토큰 수신 함수
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print("Device Token: \(token)")
     }
 }
