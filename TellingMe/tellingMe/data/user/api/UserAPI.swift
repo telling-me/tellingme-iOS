@@ -13,12 +13,15 @@ enum UserAPITarget {
     case updateUserInfo(UpdateUserInfoRequest)
     case getisAllowedNotification
     case postisAllowedNotification
+    case postFirebaseToken(FirebaseTokenRequest)
 }
 
 extension UserAPITarget: TargetType {
     var task: Task {
         switch self {
         case .updateUserInfo(let body):
+            return .requestJSONEncodable(body)
+        case .postFirebaseToken(let body):
             return .requestJSONEncodable(body)
         default:
             return .requestPlain
@@ -35,6 +38,8 @@ extension UserAPITarget: TargetType {
             return "api/user/notification"
         case .postisAllowedNotification:
             return "api/user/update/notification"
+        case .postFirebaseToken:
+            return "api/user/update/pushToken"
         }
     }
 
@@ -42,7 +47,7 @@ extension UserAPITarget: TargetType {
         switch self {
         case .updateUserInfo:
             return .patch
-        case .postisAllowedNotification:
+        case .postisAllowedNotification, .postFirebaseToken:
             return .post
         default:
             return .get
@@ -106,6 +111,18 @@ struct UserAPI: Networkable {
     static func postisAllowedNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.postisAllowedNotification, dtoType: AllowedNotificationResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func postFirebaseToken(request: FirebaseTokenRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.postFirebaseToken(request), dtoType: EmptyResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

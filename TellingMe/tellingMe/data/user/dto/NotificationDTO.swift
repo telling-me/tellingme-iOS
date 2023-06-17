@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct AllowedNotificationResponse : Codable {
+struct AllowedNotificationResponse: Codable {
     let allowNotification: Bool
 }

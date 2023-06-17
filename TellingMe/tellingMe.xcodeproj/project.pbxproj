@@ -36,6 +36,8 @@
 		3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C82A13E4F900739543 /* SettingViewModel.swift */; };
 		3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */; };
 		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
+		3A3914902A3D93E7005A5417 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */; };
+		3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */; };
 		3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3729E0142500A05B22 /* MoyaProvider+.swift */; };
 		3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3929E046C400A05B22 /* LoginViewModel.swift */; };
 		3A409B4029E05F4700A05B22 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A409B3F29E05F4700A05B22 /* Array+.swift */; };
@@ -106,7 +108,6 @@
 		3ACACB4B29F7FDE3004A6004 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */; };
 		3ACACB5329F844C6004A6004 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACACB5229F844C6004A6004 /* SignUpRepository.swift */; };
 		3ACBA4602A2508B800FCE72B /* KeyChain+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */; };
-		3ACBA4612A2508B800FCE72B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */; };
 		3ACBA4622A2508B800FCE72B /* KeyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3ACBA45E2A2508B800FCE72B /* KeyList.plist */; };
 		3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */; };
 		3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC45E829D198CA000843F5 /* GetPurposeController.swift */; };
@@ -180,6 +181,8 @@
 		3A3739C82A13E4F900739543 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
+		3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTokenDTO.swift; sourceTree = "<group>"; };
 		3A409B3729E0142500A05B22 /* MoyaProvider+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+.swift"; sourceTree = "<group>"; };
 		3A409B3929E046C400A05B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3A409B3F29E05F4700A05B22 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
@@ -253,7 +256,6 @@
 		3ACACB4A29F7FDE3004A6004 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3ACACB5229F844C6004A6004 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyChain+.swift"; sourceTree = "<group>"; };
-		3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3ACBA45E2A2508B800FCE72B /* KeyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyList.plist; sourceTree = "<group>"; };
 		3ACBA4642A250AEF00FCE72B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../../.Trash/tellingMe 01.10.26/tellingMe/keyChain/Info.plist"; sourceTree = "<group>"; };
 		3ACC45E629D17009000843F5 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				3A70A6452A272B54009D8D76 /* UserInfoDTO.swift */,
 				3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */,
 				3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */,
+				3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -695,7 +698,7 @@
 			isa = PBXGroup;
 			children = (
 				3ACBA4642A250AEF00FCE72B /* Info.plist */,
-				3ACBA45D2A2508B800FCE72B /* GoogleService-Info.plist */,
+				3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
 				3AF338232A38B24E00F9733B /* UserDefaults+.swift */,
@@ -1136,12 +1139,12 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
-				3ACBA4612A2508B800FCE72B /* GoogleService-Info.plist in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
+				3A3914902A3D93E7005A5417 /* GoogleService-Info.plist in Resources */,
 				3ACBA4622A2508B800FCE72B /* KeyList.plist in Resources */,
 				3AA289E229B854210030057E /* Login.storyboard in Resources */,
 			);
@@ -1233,6 +1236,7 @@
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
+				3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3AF338242A38B24E00F9733B /* UserDefaults+.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,

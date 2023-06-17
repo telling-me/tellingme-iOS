@@ -19,17 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         KakaoSDK.initSDK(appKey: Bundle.main.kakaoNativeAppKey)
         removeKeychainAtFirstLaunch()
         FirebaseApp.configure()
-//        Messaging.messaging().delegate = self
-//        KeychainManager.shared.deleteAll()
-//        UNUserNotificationCenter.current().delegate = self
 
-//           let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//           UNUserNotificationCenter.current().requestAuthorization(
-//             options: authOptions,
-//             completionHandler: { _, _ in }
-//           )
-//
-//           application.registerForRemoteNotifications()
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        // [END set_messaging_delegate]
+
+        // Register for remote notifications. This shows a permission dialog on first run, to
+        // show the dialog at a more appropriate time move this registration accordingly.
+        // [START register_for_notifications]
+
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+
+        application.registerForRemoteNotifications()
         return true
     }
 
@@ -58,15 +65,25 @@ extension AppDelegate {
 }
 
 extension AppDelegate: MessagingDelegate {
-  // [START refresh_token]
-  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-    print("Firebase registration token: \(String(describing: fcmToken))")
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      print("APNs token retrieved: \(deviceToken)")
 
-    let dataDict: [String: String] = ["token": fcmToken ?? ""]
-    NotificationCenter.default.post(
-      name: Notification.Name("FCMToken"),
-      object: nil,
-      userInfo: dataDict
-    )
-  }
+      // With swizzling disabled you must set the APNs token here.
+      // Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+      print("Firebase registration token: \(String(describing: fcmToken))")
+
+      let dataDict: [String: String] = ["token": fcmToken ?? ""]
+      NotificationCenter.default.post(
+        name: Notification.Name("FCMToken"),
+        object: nil,
+        userInfo: dataDict
+      )
+      // TODO: If necessary send token to application server.
+      // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
 }
