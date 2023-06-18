@@ -907,6 +907,9 @@
                                     <constraint firstAttribute="width" constant="55" id="etW-1q-NJ4"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="prevAction:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="4Pv-yx-vP6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGp-0x-h4x" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="334" y="803" width="55" height="55"/>
@@ -943,7 +946,7 @@
                         <outlet property="mbtiButton" destination="dbt-N9-ahO" id="rHf-q4-wZL"/>
                         <outlet property="mbtiHeight" destination="kQm-5l-t45" id="eFf-wE-Rs5"/>
                         <outlet property="mbtiTableView" destination="n66-5l-xha" id="Xez-W6-AJD"/>
-                        <outlet property="nextButton" destination="FGp-0x-h4x" id="TNo-rw-Pdv"/>
+                        <outlet property="nextButton" destination="FGp-0x-h4x" id="OxY-ZG-xND"/>
                         <outlet property="prevButton" destination="SBU-Is-fi0" id="iRe-RN-owd"/>
                     </connections>
                 </viewController>

@@ -178,6 +178,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="headerView" destination="4yc-TU-euW" id="lGW-Of-vog"/>
                         <outlet property="monthButton" destination="EsN-J4-TIF" id="kVg-j4-snf"/>
                         <outlet property="monthHeight" destination="cD0-X5-8aT" id="kJP-fJ-9jR"/>
                         <outlet property="monthTableView" destination="5ap-h4-miY" id="ezM-uR-0ml"/>

@@ -49,7 +49,8 @@ class MyInfoViewController: DropDownViewController {
         purposeVC.setSelectedItems(items: viewModel.purpose)
         jobVC.setSelectedItems(items: [viewModel.job])
         if viewModel.job == 5 {
-            jobVC.input.setAble(text: viewModel.jobInfo!)
+            jobVC.input.setAble()
+            jobVC.input.setText(text: viewModel.jobInfo!)
         }
 
         if let gender = viewModel.gender {

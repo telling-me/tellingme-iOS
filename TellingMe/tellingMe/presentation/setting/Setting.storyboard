@@ -642,43 +642,45 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원 탈퇴 전 반드시 확인해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHg-ib-G2A" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="82" y="145" width="229" height="20.333333333333343"/>
+                                <rect key="frame" x="82" y="145" width="229" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="7jN-fW-AKk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMn-24-pHW">
-                                <rect key="frame" x="25" y="185.33333333333337" width="343" height="336"/>
+                                <rect key="frame" x="25" y="182" width="343" height="116"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-G2-Dgj">
-                                        <rect key="frame" x="16" y="16" width="311" height="304"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="753" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-G2-Dgj">
+                                        <rect key="frame" x="16" y="16" width="311" height="84"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">텔링미(telling me)에서는 뉴스레터 발송과 관련하여 ｢개인정보보호법」 제15조 제1항 제1호, 제17조 제1항 제1호, 제23조 제1호, 제24조 제1항 제1호에 따라 아래와 같이 개인정보의 수집 ·이용 및 제3자 제공에 관하여 귀하의 동의를 얻고자 합니다.
+                                        <string key="text">💡 알고 계셨나요?
+     내가 쓴 답변은 탈퇴하지 않아도 수정 및 삭제가 가능해요.
 
-■ 수집·이용 목적
-◦ 뉴스레터 발송을 위한 최소한의 개인정보를 수집하고 있습니다. 수집된 정보는 ｢텔링미(telling me) 뉴스레터｣ 발송 외 다른 목적으로 사용되지 않습니다. 
-■ 수집·이용할 항목
-◦ (필수항목) 성명, 연락처(E-Mail)
-■ 보유·이용기간
-◦ 위 개인정보는 정보 주체가 뉴스레터 구독 해지 시 즉시 파기합니다.
-■ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익
-◦ 위 개인정보 중 필수항목의 수집․이용에 관해 거부할 수 있습니다. 단, 동의하지 않는 경우 본 뉴스레터 수신이 불가합니다.</string>
+⛔ 계정을 삭제하면 
+     내가 쓴 소중한 모든 답변 기록들이 영구적으로 사라져요.</string>
                                         <color key="textColor" name="black"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" name="Side200"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="WaY-G2-Dgj" secondAttribute="trailing" constant="16" id="8cY-7Z-pRa"/>
                                     <constraint firstAttribute="bottom" secondItem="WaY-G2-Dgj" secondAttribute="bottom" constant="16" id="MKR-jO-Vpp"/>
-                                    <constraint firstAttribute="height" constant="336" id="Upo-A2-Egn"/>
                                     <constraint firstItem="WaY-G2-Dgj" firstAttribute="top" secondItem="NMn-24-pHW" secondAttribute="top" constant="16" id="duF-B2-DUc"/>
                                     <constraint firstItem="WaY-G2-Dgj" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="16" id="jI2-eO-Jl3"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수) 위 내용을 모두 확인하였습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gas-rG-Cz0" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="59" y="533.33333333333337" width="255" height="24"/>
+                                <rect key="frame" x="59" y="310" width="255" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q6k-OG-OxU"/>
                                 </constraints>
@@ -687,7 +689,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD0-E0-vDe">
-                                <rect key="frame" x="25" y="533.33333333333337" width="24" height="24"/>
+                                <rect key="frame" x="25" y="310" width="24" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="dCx-fd-Qoy"/>
@@ -714,7 +716,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxA-UC-m94" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="593.33333333333337" width="343" height="55"/>
+                                <rect key="frame" x="25" y="370" width="343" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="SUh-ae-JYv"/>
                                 </constraints>
