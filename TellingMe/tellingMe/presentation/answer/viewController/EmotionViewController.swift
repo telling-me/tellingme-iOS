@@ -16,7 +16,8 @@ class EmotionViewController: UIViewController {
     weak var delegate: EmotionDelegate?
     @IBOutlet weak var popView: UIView!
     @IBOutlet weak var label: Body2Regular!
-    @IBOutlet weak var okButton: TeritaryTextButton!
+    @IBOutlet weak var okButton: SecondaryTextButton!
+    
 
     override func viewWillAppear(_ animated: Bool) {
         popView.frame.origin.y = popView.bounds.height

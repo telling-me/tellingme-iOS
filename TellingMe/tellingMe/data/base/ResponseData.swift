@@ -31,3 +31,10 @@ struct ErrorData: Codable {
     let code: String
     let message: String
 }
+
+struct ServerError: Codable {
+    let timeStamp: Int
+    let status: Int
+    let error: String
+    let path: String
+}

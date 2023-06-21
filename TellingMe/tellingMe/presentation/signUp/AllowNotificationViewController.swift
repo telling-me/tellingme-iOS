@@ -47,11 +47,11 @@ class AllowNotificationViewController: UIViewController, MessagingDelegate {
                     if let token = Messaging.messaging().fcmToken {
                         SignUpData.shared.allowNotification = true
                         SignUpData.shared.firebaseToken = token
-                        completion()
                     } else {
-                        self.showToast(message: "푸시 알림을 등록할 수 없습니다.")
+                        DispatchQueue.main.async {
+                            self.showToast(message: "푸시 알림을 등록할 수 없습니다.")
+                        }
                         SignUpData.shared.allowNotification = false
-                        completion()
                     }
                 } else {
                     print("푸시 알림 거절하였습니다.")

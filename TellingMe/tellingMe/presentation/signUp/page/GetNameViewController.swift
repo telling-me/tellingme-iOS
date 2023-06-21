@@ -67,7 +67,13 @@ extension GetNameViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
+        let utf8Char = string.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+        guard let text = textField.text else { return false }
+        if isBackSpace == -92 || (string.hasCharacters()) {
+            return true
+        }
+        return false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

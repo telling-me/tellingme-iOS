@@ -362,6 +362,97 @@
             </objects>
             <point key="canvasLocation" x="1495" y="-42"/>
         </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="E10-wx-7ed">
+            <objects>
+                <viewController storyboardIdentifier="myInfoModal" id="qnI-TQ-6Qf" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q4s-7Y-ae7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4I-XD-eWo">
+                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원 정보를 수정하시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USX-Ax-bVs" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="4Tx-uA-t0y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-8K-NDr">
+                                        <rect key="frame" x="20" y="99" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEW-Iq-qYr" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="qnI-TQ-6Qf" eventType="touchUpInside" id="FcF-7V-aF6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bX-Xl-ln7" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="수정하기"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="qnI-TQ-6Qf" eventType="touchUpInside" id="rFW-cJ-0iu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="Vj5-o1-fhe"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별과 생년월일은 한번 설정 후 변경할 수 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-oe-qZ2" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="55" width="303" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="ZiC-Yc-104"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Gray7"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="nbc-oe-qZ2" firstAttribute="top" secondItem="USX-Ax-bVs" secondAttribute="bottom" constant="8" id="1NM-sr-pcG"/>
+                                    <constraint firstItem="Uda-8K-NDr" firstAttribute="top" secondItem="nbc-oe-qZ2" secondAttribute="bottom" constant="28" id="1PY-FO-9Yg"/>
+                                    <constraint firstAttribute="trailing" secondItem="nbc-oe-qZ2" secondAttribute="trailing" constant="20" id="1vH-NI-pJV"/>
+                                    <constraint firstItem="nbc-oe-qZ2" firstAttribute="leading" secondItem="V4I-XD-eWo" secondAttribute="leading" constant="20" id="JTw-cm-6vc"/>
+                                    <constraint firstItem="Uda-8K-NDr" firstAttribute="leading" secondItem="V4I-XD-eWo" secondAttribute="leading" constant="20" id="bIi-Oc-dDG"/>
+                                    <constraint firstItem="USX-Ax-bVs" firstAttribute="top" secondItem="V4I-XD-eWo" secondAttribute="top" constant="30" id="cxt-z9-zVM"/>
+                                    <constraint firstAttribute="trailing" secondItem="USX-Ax-bVs" secondAttribute="trailing" constant="20" id="nZK-er-P2V"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uda-8K-NDr" secondAttribute="trailing" constant="20" id="sdC-oQ-PTq"/>
+                                    <constraint firstItem="USX-Ax-bVs" firstAttribute="leading" secondItem="V4I-XD-eWo" secondAttribute="leading" constant="20" id="skf-c3-LjB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uda-8K-NDr" secondAttribute="bottom" constant="20" id="vCg-EK-nkk"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AAz-sL-ObU"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="AAz-sL-ObU" firstAttribute="trailing" secondItem="V4I-XD-eWo" secondAttribute="trailing" constant="25" id="9He-Y0-nPu"/>
+                            <constraint firstItem="V4I-XD-eWo" firstAttribute="leading" secondItem="AAz-sL-ObU" secondAttribute="leading" constant="25" id="MnO-mi-c7Y"/>
+                            <constraint firstItem="V4I-XD-eWo" firstAttribute="centerY" secondItem="AAz-sL-ObU" secondAttribute="centerY" id="T2s-Y8-wRl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="iEW-Iq-qYr" id="Qxc-YJ-4gc"/>
+                        <outlet property="okButton" destination="9bX-Xl-ln7" id="rVy-6f-t1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6DN-vJ-jDQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2199" y="-42"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="4ho-Pv-bTu">
@@ -373,6 +464,9 @@
         <designable name="8u1-br-R31">
             <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
         </designable>
+        <designable name="9bX-Xl-ln7">
+            <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
         <designable name="Dqc-sL-ShQ">
             <size key="intrinsicContentSize" width="39" height="30"/>
         </designable>
@@ -381,6 +475,9 @@
         </designable>
         <designable name="Ogn-Cm-jxg">
             <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
+        <designable name="USX-Ax-bVs">
+            <size key="intrinsicContentSize" width="193.66666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="VNo-HL-u2v">
             <size key="intrinsicContentSize" width="52" height="30"/>
@@ -399,6 +496,12 @@
         </designable>
         <designable name="gbL-NG-MDB">
             <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="iEW-Iq-qYr">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="nbc-oe-qZ2">
+            <size key="intrinsicContentSize" width="324.66666666666669" height="20.333333333333332"/>
         </designable>
         <designable name="rSZ-bu-UPo">
             <size key="intrinsicContentSize" width="30" height="30"/>

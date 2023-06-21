@@ -74,7 +74,12 @@ extension SettingTableViewController {
     }
 
     func postPushToken() {
-        let request = FirebaseTokenRequest(pushToken: self.getFirebaseToken())
+        guard let token = self.getFirebaseToken() else {
+            self.showToast(message: "푸쉬 알림 설정에 실패하였습니다.")
+            self.pushSwitch.isOn = false
+            return
+        }
+        let request = FirebaseTokenRequest(pushToken: token)
         UserAPI.postFirebaseToken(request: request) { result in
             switch result {
             case .success:

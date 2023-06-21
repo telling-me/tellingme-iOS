@@ -54,7 +54,7 @@ class AnswerListViewController: UIViewController {
         noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -99).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 
-        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
+//        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
     }
 
     @objc func pushAnswer() {

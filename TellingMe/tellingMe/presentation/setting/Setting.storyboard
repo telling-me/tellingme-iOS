@@ -495,7 +495,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-Cr-lbG">
-                                <rect key="frame" x="25" y="143" width="343" height="675"/>
+                                <rect key="frame" x="25" y="143" width="343" height="633"/>
                                 <color key="backgroundColor" name="Side100"/>
                                 <string key="text">&lt; 텔링어스 &gt;는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
@@ -613,7 +613,7 @@
                             <constraint firstItem="D6c-v7-U3m" firstAttribute="trailing" secondItem="xfB-Ir-KFB" secondAttribute="trailing" id="CN3-RS-vZJ"/>
                             <constraint firstItem="BhG-Cr-lbG" firstAttribute="leading" secondItem="D6c-v7-U3m" secondAttribute="leading" constant="25" id="D2u-tb-3jz"/>
                             <constraint firstItem="D6c-v7-U3m" firstAttribute="trailing" secondItem="BhG-Cr-lbG" secondAttribute="trailing" constant="25" id="KVE-L6-maR"/>
-                            <constraint firstItem="D6c-v7-U3m" firstAttribute="bottom" secondItem="BhG-Cr-lbG" secondAttribute="bottom" id="UCb-07-9g9"/>
+                            <constraint firstItem="D6c-v7-U3m" firstAttribute="bottom" secondItem="BhG-Cr-lbG" secondAttribute="bottom" constant="42" id="UCb-07-9g9"/>
                             <constraint firstItem="BhG-Cr-lbG" firstAttribute="top" secondItem="xfB-Ir-KFB" secondAttribute="bottom" constant="20" id="fhh-sh-6Vs"/>
                             <constraint firstItem="xfB-Ir-KFB" firstAttribute="top" secondItem="D6c-v7-U3m" secondAttribute="top" id="q0k-CU-gzD"/>
                         </constraints>
@@ -651,10 +651,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMn-24-pHW">
-                                <rect key="frame" x="25" y="182" width="343" height="116"/>
+                                <rect key="frame" x="25" y="182" width="343" height="116.33333333333331"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="753" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-G2-Dgj">
-                                        <rect key="frame" x="16" y="16" width="311" height="84"/>
+                                        <rect key="frame" x="16" y="16" width="311" height="84.333333333333329"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">💡 알고 계셨나요?
      내가 쓴 답변은 탈퇴하지 않아도 수정 및 삭제가 가능해요.
@@ -680,7 +680,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수) 위 내용을 모두 확인하였습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gas-rG-Cz0" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="59" y="310" width="255" height="24"/>
+                                <rect key="frame" x="59" y="310.33333333333331" width="255" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q6k-OG-OxU"/>
                                 </constraints>
@@ -689,7 +689,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD0-E0-vDe">
-                                <rect key="frame" x="25" y="310" width="24" height="24"/>
+                                <rect key="frame" x="25" y="310.33333333333331" width="24" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="dCx-fd-Qoy"/>
@@ -716,7 +716,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxA-UC-m94" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="370" width="343" height="55"/>
+                                <rect key="frame" x="25" y="370.33333333333331" width="343" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="SUh-ae-JYv"/>
                                 </constraints>
@@ -917,8 +917,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원 탈퇴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-Wm-4Ac" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
-                                                    <rect key="frame" x="25.000000000000004" y="21" width="63.333333333333343" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-Wm-4Ac" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                                    <rect key="frame" x="25" y="21" width="32" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Djn-PY-mFE"/>
                                                     </constraints>
@@ -947,8 +947,45 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingTableViewCell" id="o7W-dT-2lM" customClass="SettingTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingTableViewCell" id="sC5-G3-CED" customClass="SettingTableViewCell" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="350" width="393" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sC5-G3-CED" id="CdS-YY-K7u">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원 탈퇴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXK-jE-lTK" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                                    <rect key="frame" x="25.000000000000004" y="21" width="63.333333333333343" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="4c8-hL-W95"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLO-Tc-TO0">
+                                                    <rect key="frame" x="336" y="14" width="32" height="32"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="hkh-uN-hbd"/>
+                                                        <constraint firstAttribute="height" constant="32" id="isc-eM-FNA"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="Gray7"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="chevron.right" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aLO-Tc-TO0" secondAttribute="trailing" constant="25" id="30m-od-eVy"/>
+                                                <constraint firstItem="BXK-jE-lTK" firstAttribute="top" secondItem="CdS-YY-K7u" secondAttribute="top" constant="21" id="BdM-Au-9xS"/>
+                                                <constraint firstItem="aLO-Tc-TO0" firstAttribute="centerY" secondItem="CdS-YY-K7u" secondAttribute="centerY" id="McB-Ns-21X"/>
+                                                <constraint firstItem="BXK-jE-lTK" firstAttribute="leading" secondItem="CdS-YY-K7u" secondAttribute="leading" constant="25" id="gaI-0o-Sru"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingTableViewCell" id="o7W-dT-2lM" customClass="SettingTableViewCell" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="410" width="393" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o7W-dT-2lM" id="5if-kq-t1u">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -1007,7 +1044,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-SB-rfj">
-                                <rect key="frame" x="25" y="143" width="343" height="675"/>
+                                <rect key="frame" x="25" y="143" width="343" height="633"/>
                                 <color key="backgroundColor" name="Side100"/>
                                 <string key="text">■ 제1장 총칙  &lt;제1조(목적)&gt;  이 약관은 TellingUS (이하 “회사”)가 운영하는 
 tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.  &lt;제2조(정의)&gt;  이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
@@ -1058,7 +1095,7 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
                             <constraint firstItem="r7b-SB-rfj" firstAttribute="leading" secondItem="waf-YL-uNi" secondAttribute="leading" constant="25" id="Bdy-d7-hnO"/>
                             <constraint firstItem="T4U-zu-yMK" firstAttribute="top" secondItem="waf-YL-uNi" secondAttribute="top" id="HCY-bn-qmM"/>
                             <constraint firstItem="T4U-zu-yMK" firstAttribute="leading" secondItem="waf-YL-uNi" secondAttribute="leading" id="Vh7-wN-z1W"/>
-                            <constraint firstItem="waf-YL-uNi" firstAttribute="bottom" secondItem="r7b-SB-rfj" secondAttribute="bottom" id="WvJ-J2-PHE"/>
+                            <constraint firstItem="waf-YL-uNi" firstAttribute="bottom" secondItem="r7b-SB-rfj" secondAttribute="bottom" constant="42" id="WvJ-J2-PHE"/>
                             <constraint firstItem="r7b-SB-rfj" firstAttribute="top" secondItem="T4U-zu-yMK" secondAttribute="bottom" constant="20" id="WyM-pX-iGg"/>
                             <constraint firstItem="waf-YL-uNi" firstAttribute="trailing" secondItem="T4U-zu-yMK" secondAttribute="trailing" id="dF7-ir-u0O"/>
                             <constraint firstItem="waf-YL-uNi" firstAttribute="trailing" secondItem="r7b-SB-rfj" secondAttribute="trailing" constant="25" id="uYb-Uy-XXf"/>
@@ -1077,11 +1114,14 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         <designable name="57m-OZ-yL2">
             <size key="intrinsicContentSize" width="131" height="20.333333333333332"/>
         </designable>
+        <designable name="BXK-jE-lTK">
+            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
+        </designable>
         <designable name="FRg-3T-bfQ">
             <size key="intrinsicContentSize" width="29.666666666666668" height="20.333333333333332"/>
         </designable>
         <designable name="IbR-Wm-4Ac">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="20.333333333333332"/>
         </designable>
         <designable name="MxA-UC-m94">
             <size key="intrinsicContentSize" width="52" height="30"/>

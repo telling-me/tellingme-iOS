@@ -82,3 +82,12 @@ extension MyInfoViewController: SendNicknameDelegate {
         self.viewModel.nickname = nickNameVC.getText()!
     }
 }
+
+extension MyInfoViewController: ModalActionDelegate {
+    func clickCancel() {
+    }
+    
+    func clickOk() {
+        updateUserInfo()
+    }
+}
