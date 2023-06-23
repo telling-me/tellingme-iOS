@@ -11,6 +11,6 @@ class TermOfUseViewController: SettingViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        headerView.setTitle(title: "이용 약관")
     }
 }

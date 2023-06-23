@@ -18,6 +18,8 @@ class SignUpData {
     var gender: String? = nil
     var birthDate: String? = nil
     var mbti: String? = nil
+    
+    var agreements:[Bool] = [false, false]
 
     private init() {
         allowNotification = false

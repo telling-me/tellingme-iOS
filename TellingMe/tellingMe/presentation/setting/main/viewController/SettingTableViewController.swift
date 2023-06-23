@@ -56,9 +56,11 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    func getFirebaseToken() -> String {
+    func getFirebaseToken() -> String? {
         guard let token = Messaging.messaging().fcmToken else {
-            fatalError("푸쉬 알림을 등록할 수 없습니다.")
+            self.showToast(message: "푸쉬 알림을 등록할 수 없습니다.")
+            self.pushSwitch.isOn = false
+            return nil
         }
 
         return token
@@ -77,13 +79,24 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-        } else if indexPath.row == 5 {
+        } else if indexPath.row == 6 {
             self.signout()
+        } else if indexPath.row == 4 {
+            if let url = URL(string: "https://www.example.com") {
+                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+             }
+        } else if indexPath.row == 5 {
+            let id = viewModel.items[3].id
+            let viewController = viewModel.items[3].view
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
+                return
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let id = viewModel.items[indexPath.row-1].id
             let viewController = viewModel.items[indexPath.row-1].view

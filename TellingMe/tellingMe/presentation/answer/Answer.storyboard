@@ -53,7 +53,7 @@
                                         </constraints>
                                         <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="chevron.down" catalog="system"/>
+                                        <state key="normal" image="chevron.up" catalog="system"/>
                                         <connections>
                                             <action selector="foldView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZoC-iX-AYP"/>
                                         </connections>
@@ -92,7 +92,7 @@
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30.333333333333343" width="283" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
@@ -264,12 +264,13 @@
                                                     <action selector="clickButton:" destination="Bzd-v3-WRm" eventType="touchUpInside" id="j0d-Rz-ebH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVw-Jc-ghz" customClass="SecondayTextButton" customModule="tellingMe" customModuleProvider="target">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVw-Jc-ghz" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="184" y="0.0" width="169" height="55"/>
-                                                <state key="normal" title="Button"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="확인"/>
                                                 <connections>
-                                                    <action selector="clickButton:" destination="Bzd-v3-WRm" eventType="touchUpInside" id="NA2-ss-hrI"/>
+                                                    <action selector="clickButton:" destination="Bzd-v3-WRm" eventType="touchUpInside" id="wN0-rI-8po"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -358,7 +359,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="label" destination="awb-4t-LcR" id="gsA-Gm-QcJ"/>
-                        <outlet property="okButton" destination="dVw-Jc-ghz" id="nfQ-KU-N8m"/>
+                        <outlet property="okButton" destination="dVw-Jc-ghz" id="qzX-kk-qcl"/>
                         <outlet property="popView" destination="Zey-Do-R4N" id="5DH-tI-NiZ"/>
                     </connections>
                 </viewController>
@@ -629,6 +630,7 @@
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
+        <image name="chevron.up" catalog="system" width="128" height="70"/>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

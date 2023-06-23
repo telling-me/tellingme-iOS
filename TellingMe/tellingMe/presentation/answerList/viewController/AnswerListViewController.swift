@@ -9,6 +9,8 @@ import UIKit
 
 class AnswerListViewController: UIViewController {
     let viewModel = AnswerListViewModel()
+    @IBOutlet weak var headerView: HeaderView!
+
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
 
@@ -28,6 +30,7 @@ class AnswerListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerView.delegate = self
         yearButton.setSmallLayout()
         monthButton.setSmallLayout()
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
@@ -51,7 +54,7 @@ class AnswerListViewController: UIViewController {
         noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -99).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 
-        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
+//        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
     }
 
     @objc func pushAnswer() {
@@ -185,5 +188,16 @@ extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
             }
             getAnswerList()
         }
+    }
+}
+
+extension AnswerListViewController: HeaderViewDelegate {
+    func pushSetting(_ headerView: HeaderView) {
+        // push를 수행하는 코드
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

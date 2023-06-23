@@ -9,8 +9,12 @@ import Foundation
 
 extension AllowNotificationViewController {
     func sendSignUpData() {
-        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else { return }
-        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else { return }
+        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else {
+            self.showToast(message: "소셜 로그인을 확인할 수 없습니다.")
+            return }
+        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+            self.showToast(message: "소셜 로그인을 확인할 수 없습니다.")
+            return }
         let request = SignUpRequest(allowNotification: SignUpData.shared.allowNotification, pushToken: SignUpData.shared.firebaseToken, nickname: SignUpData.shared.nickname, purpose: SignUpData.shared.purpose, job: SignUpData.shared.job, jobInfo: SignUpData.shared.jobInfo, gender: SignUpData.shared.gender, birthDate: SignUpData.shared.birthDate, mbti: SignUpData.shared.mbti, socialId: socialId, socialLoginType: loginType)
 
         LoginAPI.postSignUp(request: request) { result in

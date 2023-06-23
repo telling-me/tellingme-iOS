@@ -29,28 +29,39 @@ class AllowNotificationViewController: UIViewController, MessagingDelegate {
 
     @IBAction func clickAllow(_ sender: UIButton) {
         if sender.tag == 0 {
-            SignUpData.shared.allowNotification = true
-            registerForPushNotifications { [weak self] in
-                self?.sendSignUpData()
+            registerForNotification() {
+                print("끝이야?")
+                self.sendSignUpData()
             }
         } else {
             SignUpData.shared.allowNotification = false
-            sendSignUpData()
+            self.sendSignUpData()
         }
     }
 
-    func registerForPushNotifications(completion: @escaping () -> Void) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            guard granted else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-                if let token = Messaging.messaging().fcmToken {
-                    SignUpData.shared.firebaseToken = token
-                    completion() // 토큰 처리 후 completion 호출
+    func registerForNotification(completion: @escaping () -> Void) {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions) { (granted, error) in
+                if granted {
+                    if let token = Messaging.messaging().fcmToken {
+                        SignUpData.shared.allowNotification = true
+                        SignUpData.shared.firebaseToken = token
+                    } else {
+                        DispatchQueue.main.async {
+                            self.showToast(message: "푸시 알림을 등록할 수 없습니다.")
+                        }
+                        SignUpData.shared.allowNotification = false
+                    }
                 } else {
-                    fatalError("푸쉬 알림을 등록할 수 없습니다.")
+                    print("푸시 알림 거절하였습니다.")
+                    SignUpData.shared.allowNotification = false
                 }
+                if let error = error {
+                    self.showToast(message: "동의 시에 문제가 생겼습니다.")
+                    SignUpData.shared.allowNotification = false
+                }
+                completion()
             }
-        }
     }
 }

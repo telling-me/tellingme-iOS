@@ -10,13 +10,15 @@ import UIKit
 class GetMBTIViewController: UIViewController {
     @IBOutlet weak var mbtiButton: DropDownButton!
     @IBOutlet weak var prevButton: SecondaryIconButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var mbtiTableView: UITableView!
     @IBOutlet weak var mbtiHeight: NSLayoutConstraint!
     let viewModel = GetMBTIViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextButton.isEnabled = false
+        nextButton.setImage(image: "ArrowRight")
         mbtiButton.setLayout()
         mbtiButton.setTitle(text: "mbti 선택", isSmall: false)
         prevButton.setImage(image: "ArrowLeft")
