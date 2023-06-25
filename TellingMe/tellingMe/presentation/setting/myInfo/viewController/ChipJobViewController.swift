@@ -25,6 +25,7 @@ class ChipJobViewController: ChipCollectionViewController {
         input.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         input.heightAnchor.constraint(equalToConstant: 57).isActive = true
         input.setDisalbe()
+        input.inputBox.delegate = self
     }
 }
 
@@ -34,6 +35,7 @@ extension ChipJobViewController {
         input.setDisalbe()
         if let parentViewController = self.parent as? MyInfoViewController {
             parentViewController.viewModel.job = self.selectedItem
+            parentViewController.viewModel.jobInfo = nil
         }
 
         if indexPath.row == jobs.count - 1 {
@@ -42,10 +44,12 @@ extension ChipJobViewController {
     }
 }
 
-extension ChipJobViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        return true
+extension ChipJobViewController: UITextFieldDelegate {    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if let parentViewController = self.parent as? MyInfoViewController {
+            parentViewController.viewModel.jobInfo = text
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

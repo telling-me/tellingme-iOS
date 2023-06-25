@@ -40,9 +40,9 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dayLabel.text = viewModel.date
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.dayLabel.text = viewModel.date
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,12 +55,14 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
      }
 
     @objc func keyboardWillShow(_ notification: Notification) {
+        print("what?")
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return
         }
 
         // 키보드 높이 계산
         let keyboardHeight = keyboardFrame.size.height
+        print("keyobardheight", keyboardHeight)
         bottomLayout.constant = keyboardHeight - view.safeAreaInsets.bottom
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -68,6 +70,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
+        print("keyboard")
         bottomLayout.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -109,10 +112,8 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
-        if let tabBarController = self.tabBarController as? MainTabBarController {
-            tabBarController.tabBar.isHidden = true
-//            tabBarController.removeShadowView()
-        }
+        vc.delegate = self
+        vc.viewModel.selectedEmotion = self.viewModel.emotion
         self.present(vc, animated: false)
     }
 

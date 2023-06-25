@@ -9,7 +9,11 @@ import Foundation
 
 extension HomeViewController {
     func getQuestion() {
-        QuestionAPI.getTodayQuestion(query: viewModel.questionDate) { result in
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
+        QuestionAPI.getTodayQuestion(query: date) { result in
             switch result {
             case .success(let response):
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
@@ -28,7 +32,11 @@ extension HomeViewController {
     }
 
     func getTodayAnswer() {
-        AnswerAPI.getAnswer(query: viewModel.questionDate) { result in
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
+        AnswerAPI.getAnswer(query: date) { result in
             switch result {
             case .success:
                 self.viewModel.isAnswerCompleted = true
@@ -46,8 +54,11 @@ extension HomeViewController {
     }
 
     func getAnswerRecord() {
-        let query = Date().getQuestionDate()
-        AnswerAPI.getAnswerRecord(query: query) { result in
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
+        AnswerAPI.getAnswerRecord(query: date) { result in
             switch result {
             case .success(let response):
                 if response!.count == 0 {

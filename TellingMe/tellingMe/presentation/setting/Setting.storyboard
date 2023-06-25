@@ -651,36 +651,60 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMn-24-pHW">
-                                <rect key="frame" x="25" y="182" width="343" height="116.33333333333331"/>
+                                <rect key="frame" x="25" y="182" width="343" height="160"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="753" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-G2-Dgj">
-                                        <rect key="frame" x="16" y="16" width="311" height="84.333333333333329"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">💡 알고 계셨나요?
-     내가 쓴 답변은 탈퇴하지 않아도 수정 및 삭제가 가능해요.
-
-⛔ 계정을 삭제하면 
-     내가 쓴 소중한 모든 답변 기록들이 영구적으로 사라져요.</string>
-                                        <color key="textColor" name="black"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💡 알고 계셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsH-ke-TbU" customClass="Body2Bold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="129" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="98F-3o-2AM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 쓴 답변은 탈퇴하지 않아도 수정 및 삭제가 가능해요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udf-lC-13B" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="40" width="293" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="FUu-h4-JtC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 쓴 소중한 모든 답변 기록들이 영구적으로 사라져요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-X5-QxV" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="117" width="293" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="pMU-sg-cpD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⛔ 계정을 삭제하면:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buN-Ff-kxh" customClass="Body2Bold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="88" width="311" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="Side200"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="WaY-G2-Dgj" secondAttribute="trailing" constant="16" id="8cY-7Z-pRa"/>
-                                    <constraint firstAttribute="bottom" secondItem="WaY-G2-Dgj" secondAttribute="bottom" constant="16" id="MKR-jO-Vpp"/>
-                                    <constraint firstItem="WaY-G2-Dgj" firstAttribute="top" secondItem="NMn-24-pHW" secondAttribute="top" constant="16" id="duF-B2-DUc"/>
-                                    <constraint firstItem="WaY-G2-Dgj" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="16" id="jI2-eO-Jl3"/>
+                                    <constraint firstItem="Udf-lC-13B" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="34" id="3gF-3n-Lfs"/>
+                                    <constraint firstAttribute="trailing" secondItem="8H8-X5-QxV" secondAttribute="trailing" constant="16" id="BMl-Wj-Kmi"/>
+                                    <constraint firstItem="buN-Ff-kxh" firstAttribute="top" secondItem="Udf-lC-13B" secondAttribute="bottom" constant="12" id="G9A-5h-XLs"/>
+                                    <constraint firstItem="buN-Ff-kxh" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="16" id="NBU-gF-nvh"/>
+                                    <constraint firstAttribute="trailing" secondItem="buN-Ff-kxh" secondAttribute="trailing" constant="16" id="Ph9-db-T5s"/>
+                                    <constraint firstItem="Udf-lC-13B" firstAttribute="top" secondItem="IsH-ke-TbU" secondAttribute="bottom" constant="8" id="VR7-7U-hps"/>
+                                    <constraint firstItem="8H8-X5-QxV" firstAttribute="top" secondItem="buN-Ff-kxh" secondAttribute="bottom" constant="8" id="VhR-c3-dtL"/>
+                                    <constraint firstItem="IsH-ke-TbU" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="16" id="Zhu-o1-7Sd"/>
+                                    <constraint firstItem="IsH-ke-TbU" firstAttribute="top" secondItem="NMn-24-pHW" secondAttribute="top" constant="16" id="cvv-t6-crS"/>
+                                    <constraint firstAttribute="height" constant="160" id="fuV-rJ-Nnn"/>
+                                    <constraint firstItem="8H8-X5-QxV" firstAttribute="leading" secondItem="NMn-24-pHW" secondAttribute="leading" constant="34" id="otN-CL-0Kx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Udf-lC-13B" secondAttribute="trailing" constant="16" id="sTL-ZD-q3X"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수) 위 내용을 모두 확인하였습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gas-rG-Cz0" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="59" y="310.33333333333331" width="255" height="24"/>
+                                <rect key="frame" x="59" y="354" width="255" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q6k-OG-OxU"/>
                                 </constraints>
@@ -689,7 +713,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD0-E0-vDe">
-                                <rect key="frame" x="25" y="310.33333333333331" width="24" height="24"/>
+                                <rect key="frame" x="25" y="354" width="24" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="dCx-fd-Qoy"/>
@@ -716,7 +740,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxA-UC-m94" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="370.33333333333331" width="343" height="55"/>
+                                <rect key="frame" x="25" y="414" width="343" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="SUh-ae-JYv"/>
                                 </constraints>

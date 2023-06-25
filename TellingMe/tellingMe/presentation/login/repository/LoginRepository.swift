@@ -46,14 +46,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                     switch result {
                     case .success(let response):
-                        KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                        KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                        KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                        KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
                         self.pushHome()
                     case .failure(let error):
                         switch error {
                         case .errorData(let errorData):
                             self.showToast(message: errorData.message)
-                        case .notJoin:
+                        case .notJoin(let response):
+                            KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
+                            KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
                             self.pushSignUp()
                         default:
                             print(error)
@@ -81,18 +83,20 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             if let identityToken = appleIDCredential.identityToken,
                let tokenString = String(data: identityToken, encoding: .utf8) {
                 KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
-                KeychainManager.shared.save(tokenString, key: Keys.socialId.rawValue)
+                KeychainManager.shared.save(tokenString, key: Keys.appleToken.rawValue)
                 LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: "")) { result in
                     switch result {
                     case .success(let response):
-                        KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                        KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                        KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                        KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
                         self.pushHome()
                     case .failure(let error):
                         switch error {
                         case .errorData(let errorData):
                             self.showToast(message: errorData.message)
-                        case .notJoin:
+                        case .notJoin(let response):
+                            KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
+                            KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
                             self.pushSignUp()
                         default:
                             print(error)

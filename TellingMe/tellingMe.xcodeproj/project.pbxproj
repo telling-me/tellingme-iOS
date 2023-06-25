@@ -11,6 +11,8 @@
 		3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */; };
 		3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75329FBF34200285CA8 /* QuestionAPI.swift */; };
 		3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D512A29E1980075E6C4 /* SettingRepository.swift */; };
+		3A0D99CA2A46F04200E4F0E6 /* Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D99C92A46F04200E4F0E6 /* Splash.gif */; };
+		3A0D99CE2A482D9800E4F0E6 /* Splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */; };
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
@@ -123,7 +125,6 @@
 		3ACE338E2A39A285008FCC03 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE338D2A39A285008FCC03 /* Splash.storyboard */; };
 		3ACE33932A39A30E008FCC03 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE33922A39A30E008FCC03 /* SplashViewController.swift */; };
 		3ACE33962A39A32D008FCC03 /* SplashRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE33952A39A32D008FCC03 /* SplashRepository.swift */; };
-		3ACE33982A39AB3F008FCC03 /* Splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE33972A39A9A7008FCC03 /* Splash.mp4 */; };
 		3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */; };
 		3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */; };
 		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
@@ -157,6 +158,8 @@
 		3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDTO.swift; sourceTree = "<group>"; };
 		3A00B75329FBF34200285CA8 /* QuestionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAPI.swift; sourceTree = "<group>"; };
 		3A026D512A29E1980075E6C4 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		3A0D99C92A46F04200E4F0E6 /* Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Splash.gif; sourceTree = "<group>"; };
+		3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splash.mp4; sourceTree = "<group>"; };
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -272,7 +275,6 @@
 		3ACE338D2A39A285008FCC03 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		3ACE33922A39A30E008FCC03 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3ACE33952A39A32D008FCC03 /* SplashRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRepository.swift; sourceTree = "<group>"; };
-		3ACE33972A39A9A7008FCC03 /* Splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splash.mp4; sourceTree = "<group>"; };
 		3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerCompleted.storyboard; sourceTree = "<group>"; };
 		3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
@@ -877,7 +879,8 @@
 			children = (
 				3ACE33942A39A31D008FCC03 /* repository */,
 				3ACE33922A39A30E008FCC03 /* SplashViewController.swift */,
-				3ACE33972A39A9A7008FCC03 /* Splash.mp4 */,
+				3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */,
+				3A0D99C92A46F04200E4F0E6 /* Splash.gif */,
 				3ACE338D2A39A285008FCC03 /* Splash.storyboard */,
 			);
 			path = splash;
@@ -1130,7 +1133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACE33982A39AB3F008FCC03 /* Splash.mp4 in Resources */,
+				3A0D99CE2A482D9800E4F0E6 /* Splash.mp4 in Resources */,
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
 				3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */,
 				3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */,
@@ -1142,6 +1145,7 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
+				3A0D99CA2A46F04200E4F0E6 /* Splash.gif in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
@@ -1482,7 +1486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.6;
+				MARKETING_VERSION = 1.3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1512,7 +1516,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.6;
+				MARKETING_VERSION = 1.3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

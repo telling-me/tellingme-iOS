@@ -1596,8 +1596,14 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         <designable name="Imi-Vn-Bvb">
             <size key="intrinsicContentSize" width="122" height="20.333333333333332"/>
         </designable>
+        <designable name="L1W-89-DlR">
+            <size key="intrinsicContentSize" width="201.66666666666666" height="20.333333333333332"/>
+        </designable>
         <designable name="LKM-FW-xVo">
             <size key="intrinsicContentSize" width="111.66666666666667" height="20.333333333333332"/>
+        </designable>
+        <designable name="Ngv-KK-xJZ">
+            <size key="intrinsicContentSize" width="187" height="20.333333333333332"/>
         </designable>
         <designable name="Qqc-iR-uar">
             <size key="intrinsicContentSize" width="30" height="30"/>

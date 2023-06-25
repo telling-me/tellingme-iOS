@@ -11,6 +11,7 @@ import UIKit
 class NoneAnswerListView: UIView {
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "Sad")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

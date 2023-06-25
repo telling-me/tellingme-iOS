@@ -37,7 +37,7 @@ class TeritaryTextButton: UIButton {
 
     func setSelected() {
         backgroundColor = UIColor(named: "Side300")
-        tintColor = UIColor(named: "Logo")
+//        tintColor = UIColor(named: "Logo")
     }
 
     func setHighlighted() {
@@ -50,12 +50,14 @@ class TeritaryTextButton: UIButton {
 
     func setDisabled() {
         backgroundColor = UIColor(named: "Gray1")
-        tintColor = UIColor(named: "Secondary600")
+//        tintColor = UIColor(named: "Secondary600")
     }
 
     func setDefault() {
         backgroundColor = UIColor(named: "Side200")
-        tintColor = UIColor(named: "Logo")
+        setTitleColor(UIColor(named: "Secondary600"), for: .disabled)
+        setTitleColor(UIColor(named: "Logo"), for: .normal)
+        titleLabel?.font = UIFont(name: "NanumSquareRoundOTFR", size: 17)
     }
 
     private func setupButton() {

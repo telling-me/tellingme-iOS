@@ -50,8 +50,9 @@ class AnswerListViewController: UIViewController {
         noneView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(noneView)
 
-        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 99).isActive = true
-        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -99).isActive = true
+        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 95).isActive = true
+        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -95).isActive = true
+        noneView.heightAnchor.constraint(equalToConstant: 125).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 
 //        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)

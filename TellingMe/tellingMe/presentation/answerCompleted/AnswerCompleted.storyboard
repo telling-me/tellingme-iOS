@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,9 +32,6 @@
                                             <constraint firstAttribute="height" constant="44" id="ojS-dh-ZrC"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="face.smiling" catalog="system" symbolScale="large"/>
-                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDC-sB-6Cp">
                                         <rect key="frame" x="21" y="21" width="32" height="32"/>
@@ -77,20 +73,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pat-fe-BmZ">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-nJ-sLH" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="283" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-nJ-sLH" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="0.0" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-oo-Ftl" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="30.333333333333343" width="283" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-oo-Ftl" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="10" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnY-cR-XO8" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="150.66666666666666" y="75" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnY-cR-XO8" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="171.66666666666666" y="96" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
                                         <nil key="highlightedColor"/>
@@ -129,7 +125,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfJ-QV-kmp">
                                 <rect key="frame" x="0.0" y="790" width="393" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-fq-7np" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-fq-7np" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="328" y="3.6666666666666288" width="40" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray6"/>
@@ -179,6 +175,7 @@
                         <outlet property="answerTextView" destination="J19-L6-1Ya" id="CUS-Nu-stG"/>
                         <outlet property="countTextLabel" destination="HO0-ax-lXW" id="fB3-f9-elD"/>
                         <outlet property="dayLabel" destination="KnY-cR-XO8" id="Jr0-LF-VY1"/>
+                        <outlet property="emotionButton" destination="mn0-jy-yOO" id="GHU-g3-fEM"/>
                         <outlet property="mainQuestionLabel" destination="eg8-nJ-sLH" id="mzL-uA-mSd"/>
                         <outlet property="menuButton" destination="jW9-cE-gfj" id="EHs-WF-e4Q"/>
                         <outlet property="subQuestionLabel" destination="F2c-oo-Ftl" id="Wi7-wh-0LH"/>
@@ -190,18 +187,12 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="F2c-oo-Ftl">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
+        <designable name="F2c-oo-Ftl"/>
         <designable name="HO0-ax-lXW">
             <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
         </designable>
-        <designable name="KnY-cR-XO8">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
-        <designable name="eg8-nJ-sLH">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
+        <designable name="KnY-cR-XO8"/>
+        <designable name="eg8-nJ-sLH"/>
         <designable name="nA2-fq-7np">
             <size key="intrinsicContentSize" width="40" height="20.333333333333332"/>
         </designable>
@@ -209,7 +200,6 @@
     <resources>
         <image name="DotsThreeVertical" width="24" height="24"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="face.smiling" catalog="system" width="128" height="123"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

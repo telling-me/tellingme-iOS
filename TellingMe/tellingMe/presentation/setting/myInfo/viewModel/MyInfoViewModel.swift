@@ -9,6 +9,7 @@ import Foundation
 
 class MyInfoViewModel {
     var currentTag: Int? = nil
+    var originalNickname: String = ""
     var nickname: String = ""
     var purpose: [Int] = []
     var job: Int = 0
@@ -32,6 +33,7 @@ class MyInfoViewModel {
     }
 
     func setProperties(data: UserInfoResponse) {
+        originalNickname = data.nickname
         nickname = data.nickname
         purpose = data.purpose.stringToInt()
         job = data.job

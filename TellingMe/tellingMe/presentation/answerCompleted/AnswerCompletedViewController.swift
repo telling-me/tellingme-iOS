@@ -10,6 +10,7 @@ import UIKit
 class AnswerCompletedViewController: PullDownViewController {
     let viewModel = AnswerCompletedViewModel()
 
+    @IBOutlet weak var emotionButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainQuestionLabel: Body1Bold!
     @IBOutlet weak var subQuestionLabel: Body2Regular!
@@ -24,6 +25,7 @@ class AnswerCompletedViewController: PullDownViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         items = viewModel.menus
+//        self.dayLabel.text = viewModel.questionDate
         tableView.reloadData()
     }
 
@@ -32,7 +34,6 @@ class AnswerCompletedViewController: PullDownViewController {
     }
 
     @IBAction func clickMenu(_ sender: UIButton) {
-        print(tableView)
         if tableView.isHidden {
             view.addSubview(tableView)
             tableView.isHidden = false

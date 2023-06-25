@@ -41,6 +41,7 @@ extension MyInfoViewController: DropDownButtonDelegate {
                 tableView.heightAnchor.constraint(equalToConstant: 208)
             ])
         } else {
+            button.setClose()
             tableView.isHidden.toggle()
             tableView.removeFromSuperview()
         }

@@ -87,7 +87,7 @@ class SettingTableViewController: UITableViewController {
         } else if indexPath.row == 6 {
             self.signout()
         } else if indexPath.row == 4 {
-            if let url = URL(string: "https://www.example.com") {
+            if let url = URL(string: "https://doana.notion.site/f7a045872c3b4b02bce5e9f6d6cfc2d8?pvs=4") {
                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
              }
         } else if indexPath.row == 5 {

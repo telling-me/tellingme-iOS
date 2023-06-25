@@ -120,19 +120,37 @@ class MyInfoViewController: DropDownViewController {
     }
 
     @objc func clickCompleted(_ sender: UIButton) {
-        guard let nickname = nickNameVC.getText() else {
+        if let nickname = nickNameVC.getText() {
+            if viewModel.nickname != viewModel.originalNickname {
+                self.checkNickname(nickname: nickname) { isChecked in
+                    if !isChecked {
+                        return
+                    }
+                }
+            }
+        } else {
             self.showToast(message: "닉네임을 입력하여주세요.")
             return
         }
-        if viewModel.job == 5 && viewModel.jobInfo == nil {
-            self.showToast(message: "기타 사항을 입력하여 주세요.")
-            return
+        
+        if viewModel.job == 5 {
+            if let jobInfo = viewModel.jobInfo {
+                self.checkJobInfo(job: jobInfo) { isChecked in
+                    if !isChecked {
+                        return
+                    }
+                }
+            } else {
+                self.showToast(message: "기타 사항을 입력하여주세요.")
+                return
+            }
         }
+        print("ㅁㅎ자?")
         if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
             self.showToast(message: "생일을 전체 선택하여 주세요.")
             return
         }
-        
+
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "myInfoModal") as? ModalViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
