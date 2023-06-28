@@ -62,11 +62,58 @@ class GetBirthdayViewController: UIViewController {
             dayButton.isUserInteractionEnabled = false
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: view)
+
+        // 현재 터치가 테이블 뷰 내부에 있는지 확인합니다.
+        if yearTableView.frame.contains(touchLocation) {
+            monthButton.setClose()
+            monthTableView.isHidden = true
+            monthHeight.constant = 0
+            dayButton.setClose()
+            dayTableView.isHidden = true
+            dayHeight.constant = 0
+        } else if monthTableView.frame.contains(touchLocation) {
+            yearButton.setClose()
+            yearTableView.isHidden = true
+            yearHeight.constant = 0
+            
+            dayButton.setClose()
+            dayTableView.isHidden = true
+            dayHeight.constant = 0
+        } else if dayTableView.frame.contains(touchLocation) {
+            yearButton.setClose()
+            yearTableView.isHidden = true
+            yearHeight.constant = 0
+            
+            monthButton.setClose()
+            monthTableView.isHidden = true
+            monthHeight.constant = 0
+        } else {
+            monthTableView.isHidden = true
+            monthHeight.constant = 0
+
+            yearTableView.isHidden = true
+            yearHeight.constant = 0
+            
+            dayTableView.isHidden = true
+            dayHeight.constant = 0
+            
+            monthButton.setClose()
+            yearButton.setClose()
+            dayButton.setClose()
+        }
+    }
 
     @objc
     func didTapView(_ sender: UITapGestureRecognizer) {
         if sender.view == yearButton {
             if yearTableView.isHidden {
+                yearButton.setOpen()
                 self.yearTableView.isHidden = false
                 UIView.transition(with: self.yearTableView,
                                   duration: 0.5,
@@ -74,11 +121,13 @@ class GetBirthdayViewController: UIViewController {
                                   animations: { self.yearHeight.constant = 208
                 })
             } else {
+                yearButton.setClose()
                 self.yearHeight.constant = 0
                 self.yearTableView.isHidden = true
             }
         } else if sender.view == monthButton {
             if monthTableView.isHidden {
+                monthButton.setOpen()
                 self.monthTableView.isHidden = false
                 UIView.transition(with: self.monthTableView,
                                   duration: 0.5,
@@ -86,11 +135,13 @@ class GetBirthdayViewController: UIViewController {
                                   animations: { self.monthHeight.constant = 208
                 })
             } else {
+                monthButton.setClose()
                 self.yearHeight.constant = 0
                 self.yearTableView.isHidden = true
             }
         } else {
             if dayTableView.isHidden {
+                dayButton.setOpen()
                 self.dayTableView.isHidden = false
                 UIView.transition(with: self.dayTableView,
                                   duration: 0.5,
@@ -98,6 +149,7 @@ class GetBirthdayViewController: UIViewController {
                                   animations: { self.dayHeight.constant = 208
                 })
             } else {
+                dayButton.setClose()
                 self.yearHeight.constant = 0
                 self.dayTableView.isHidden = true
             }
@@ -156,12 +208,15 @@ extension GetBirthdayViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
         tableView.isHidden = true
         if tableView == yearTableView {
+            yearButton.setClose()
             yearButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.year = cell.getCell()
         } else if tableView == monthTableView {
+            monthButton.setClose()
             monthButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.month = cell.getCell()
         } else {
+            dayButton.setClose()
             dayButton.setTitle(text: cell.getCell(), isSmall: false)
             viewModel.day = cell.getCell()
             nextButton.isEnabled = true

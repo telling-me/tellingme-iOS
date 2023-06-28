@@ -10,7 +10,6 @@ import UIKit
 
 extension SplashViewController {
     func performAutoLogin() {
-        print("hello")
         guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
             showLogin()
             return
@@ -36,7 +35,11 @@ extension SplashViewController {
                 showLogin()
                 return
             }
-            LoginAPI.postAppleOauth(type: "apple", token: token, request: OauthRequest(socialId: "")) { result in
+            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+                showLogin()
+                return
+            }
+            LoginAPI.postAppleOauth(type: "apple", token: token, request: OauthRequest(socialId: socialId)) { result in
                 switch result {
                 case .success(let response):
                     KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)

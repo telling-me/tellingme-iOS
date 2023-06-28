@@ -42,8 +42,8 @@ extension AnswerCompletedViewController {
                 self.answerTextView.text = response?.content
                 self.countTextLabel.text = "\(response!.content.count)"
                 self.viewModel.answerId = response?.answerId
-                self.viewModel.emotion = response?.emotion
-                self.emotionButton.setImage(UIImage(named:self.viewModel.emotions[response!.emotion]), for: .normal)
+                self.viewModel.emotion = response!.emotion - 1
+                self.emotionButton.setImage(UIImage(named:self.viewModel.emotions[response!.emotion-1]), for: .normal)
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):

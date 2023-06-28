@@ -69,7 +69,7 @@ extension EmotionViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? EmotionCollectionViewCell else { return UICollectionViewCell()}
         cell.setData(with: viewModel.emotions[indexPath.row].image)
-        
+
         if let selectedIndexPath = viewModel.selectedEmotion {
             if selectedIndexPath == indexPath.row {
                 // 선택된 셀이면 표시합니다

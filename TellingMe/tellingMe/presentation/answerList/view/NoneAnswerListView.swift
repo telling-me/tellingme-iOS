@@ -11,7 +11,7 @@ import UIKit
 class NoneAnswerListView: UIView {
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Sad")
+        imageView.image = UIImage(named: "Empty")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -24,13 +24,6 @@ class NoneAnswerListView: UIView {
         label.textAlignment = .center
         return label
     }()
-
-//    let button: SecondaryTextButton = {
-//        let button = SecondaryTextButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setText(text: "답변하러 갈래요")
-//        return button
-//    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +38,6 @@ class NoneAnswerListView: UIView {
     func setupView() {
         addSubview(imageView)
         addSubview(label)
-//        addSubview(button)
 
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -56,11 +48,5 @@ class NoneAnswerListView: UIView {
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 17).isActive = true
-//
-//        button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 24).isActive = true
-//        button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-//        button.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        button.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//        button.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }

@@ -24,6 +24,20 @@ class GetMBTIViewController: UIViewController {
         prevButton.setImage(image: "ArrowLeft")
         setAction()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: view)
+
+        // 현재 터치가 테이블 뷰 내부에 있는지 확인합니다.
+        if !mbtiTableView.frame.contains(touchLocation) {
+            mbtiButton.setClose()
+            mbtiTableView.isHidden = true
+            mbtiHeight.constant = 0
+        }
+    }
 
     func setAction() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
@@ -33,11 +47,13 @@ class GetMBTIViewController: UIViewController {
     @objc
     func didTapView(_ sender: UITapGestureRecognizer) {
         if mbtiTableView.isHidden {
+            mbtiButton.setOpen()
             self.mbtiTableView.isHidden = false
             UIView.transition(with: self.mbtiTableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 self.mbtiHeight.constant = 208
             })
         } else {
+            mbtiButton.setClose()
             self.mbtiHeight.constant = 0
             self.mbtiTableView.isHidden = true
         }
@@ -74,6 +90,7 @@ extension GetMBTIViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
+        mbtiButton.setClose()
         tableView.isHidden = true
         mbtiButton.setTitle(text: cell.getCell(), isSmall: false)
         viewModel.myMbti = cell.getCell()

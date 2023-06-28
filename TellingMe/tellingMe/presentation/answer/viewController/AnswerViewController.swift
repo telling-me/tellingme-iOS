@@ -55,7 +55,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
      }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        print("what?")
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return
         }
@@ -70,7 +69,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        print("keyboard")
         bottomLayout.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -96,6 +94,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
             countTextLabel.text = "\(300)"
         } else if answerTextView.text.count <= 3 {
             self.showToast(message: "4글자 이상 작성해주세요")
+            answerTextView.resignFirstResponder()
         } else {
             let storyboard = UIStoryboard(name: "Modal", bundle: nil)
             guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {

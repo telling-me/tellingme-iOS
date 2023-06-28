@@ -14,6 +14,7 @@ class MyInfoViewController: DropDownViewController {
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var dayButton: DropDownButton!
 
+    @IBOutlet weak var myview: UIView!
     @IBOutlet var containerViews: [UIView]!
     let viewModel = MyInfoViewModel()
     let nickNameVC = NickNameInputViewController()
@@ -132,7 +133,7 @@ class MyInfoViewController: DropDownViewController {
             self.showToast(message: "닉네임을 입력하여주세요.")
             return
         }
-        
+
         if viewModel.job == 5 {
             if let jobInfo = viewModel.jobInfo {
                 self.checkJobInfo(job: jobInfo) { isChecked in
@@ -145,7 +146,6 @@ class MyInfoViewController: DropDownViewController {
                 return
             }
         }
-        print("ㅁㅎ자?")
         if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
             self.showToast(message: "생일을 전체 선택하여 주세요.")
             return
@@ -157,5 +157,14 @@ class MyInfoViewController: DropDownViewController {
         vc.delegate = self
         self.present(vc, animated: true)
         updateUserInfo()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        yearButton.setClose()
+        monthButton.setClose()
+        dayButton.setClose()
+        mbtiButton.setClose()
+        tableView.isHidden = true
+        tableView.removeFromSuperview()
     }
 }

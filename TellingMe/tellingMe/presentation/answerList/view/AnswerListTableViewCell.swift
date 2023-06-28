@@ -65,10 +65,10 @@ class AnswerListTableViewCell: UITableViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: 20).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
-        self.emotion = data.emotion
+        self.emotion = data.emotion - 1
         self.title = data.title
         self.date = data.date
-        imgView.image = UIImage(named: self.emotions[data.emotion])
+        imgView.image = UIImage(named: self.emotions[data.emotion - 1])
         questionLabel.text = self.title!.replacingOccurrences(of: "\n", with: " ")
         dateLabel.text = "\(self.date![0])년 \(self.date![1])월 \(self.date![2])일"
     }

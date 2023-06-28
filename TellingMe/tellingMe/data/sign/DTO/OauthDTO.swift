@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct OauthRequest: Codable {
-    let socialId: String
+    let socialId: String?
 }
 
 struct OauthResponse: Codable {

@@ -53,7 +53,10 @@ extension AllowNotificationViewController {
             }
         } else if type == "apple" {
             guard let token = KeychainManager.shared.load(key: Keys.appleToken.rawValue) else { return }
-            let request = OauthRequest(socialId: "")
+            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+                return
+            }
+            let request = OauthRequest(socialId: socialId)
             LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
                 switch result {
                 case .success(let response):
