@@ -41,4 +41,44 @@ extension MyInfoViewController {
             }
         }
     }
+    
+    func checkJobInfo(job: String, completion: @escaping (Bool) -> Void) {
+        let request = JobInfoRequest(job: 5, jobName: job)
+        LoginAPI.postJobInfo(request: request) { result in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure(let error):
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("login으로 push할게요")
+                default:
+                    break
+                }
+                completion(false)
+            }
+        }
+    }
+    
+    func checkNickname(nickname: String, completion: @escaping (Bool) -> Void) {
+        let request = CheckNicknameRequest(nickname: nickname)
+        LoginAPI.checkNickname(request: request) { result in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure(let error):
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("login으로 push할게요")
+                default:
+                    break
+                }
+                completion(false)
+            }
+        }
+    }
 }

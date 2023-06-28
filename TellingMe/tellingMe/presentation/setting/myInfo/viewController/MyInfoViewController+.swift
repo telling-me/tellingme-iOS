@@ -32,6 +32,7 @@ extension MyInfoViewController: DropDownButtonDelegate {
         }
 
         if tableView.isHidden {
+            button.setOpen()
             view.addSubview(tableView)
             tableView.isHidden.toggle()
             NSLayoutConstraint.activate([
@@ -41,6 +42,7 @@ extension MyInfoViewController: DropDownButtonDelegate {
                 tableView.heightAnchor.constraint(equalToConstant: 208)
             ])
         } else {
+            button.setClose()
             tableView.isHidden.toggle()
             tableView.removeFromSuperview()
         }
@@ -54,15 +56,19 @@ extension MyInfoViewController {
         switch viewModel.currentTag {
         case 0:
             viewModel.year = yearArray[indexPath.row]
+            yearButton.setClose()
             yearButton.setTitle(text: viewModel.year!, isSmall: false)
         case 1:
             viewModel.month = viewModel.monthArray[indexPath.row]
+            monthButton.setClose()
             monthButton.setTitle(text: viewModel.month, isSmall: false)
         case 2:
             viewModel.day = viewModel.dayArray[indexPath.row]
+            dayButton.setClose()
             dayButton.setTitle(text: viewModel.day, isSmall: false)
         case 3:
             viewModel.mbti = viewModel.mbtis[indexPath.row]
+            mbtiButton.setClose()
             mbtiButton.setTitle(text: viewModel.mbti!, isSmall: false)
         default:
             fatalError("currentTag 설정 해주세요")
@@ -86,7 +92,7 @@ extension MyInfoViewController: SendNicknameDelegate {
 extension MyInfoViewController: ModalActionDelegate {
     func clickCancel() {
     }
-    
+
     func clickOk() {
         updateUserInfo()
     }

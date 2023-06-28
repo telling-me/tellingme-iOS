@@ -11,8 +11,10 @@ class AnswerViewModel {
     var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()
-    let emotion: Int? = nil
-    var questionDate: String = Date().getQuestionDate()
+    var emotion: Int? = nil
+    let emotions = ["Happy", "Proud","Meh", "Tired", "Sad", "Angry"]
+    var questionDate: String? = Date().getQuestionDate()
+    var isFull: Bool = false
 
     init() {
 

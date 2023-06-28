@@ -4,10 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,9 +36,6 @@
                                             <constraint firstAttribute="width" constant="44" id="uED-CM-4DV"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="face.smiling" catalog="system" symbolScale="large"/>
-                                        </state>
                                         <connections>
                                             <action selector="presentEotionView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rj7-3g-Z9Z"/>
                                         </connections>
@@ -86,20 +81,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32g-AO-6Xs">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSv-NP-tba" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSv-NP-tba" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="0.0" width="283" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-KG-a1f" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30.333333333333343" width="283" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfO-mn-pOD" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="150.66666666666666" y="75" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfO-mn-pOD" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="171.66666666666666" y="75" width="0.0" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
                                         <nil key="highlightedColor"/>
@@ -131,9 +126,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="black"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="TG6-wJ-Uku"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="lQM-fY-SbC"/>
                                 </connections>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ry3-ds-E14">
@@ -251,15 +246,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zey-Do-R4N">
-                                <rect key="frame" x="0.0" y="324" width="393" height="528"/>
+                                <rect key="frame" x="0.0" y="476" width="393" height="376"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AB3-4z-WYD">
-                                        <rect key="frame" x="20" y="431" width="353" height="55"/>
+                                        <rect key="frame" x="20" y="279" width="353" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-sA-cV5" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="169" height="55"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
                                                 <connections>
                                                     <action selector="clickButton:" destination="Bzd-v3-WRm" eventType="touchUpInside" id="j0d-Rz-ebH"/>
                                                 </connections>
@@ -268,7 +263,6 @@
                                                 <rect key="frame" x="184" y="0.0" width="169" height="55"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="확인"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="확인"/>
                                                 <connections>
                                                     <action selector="clickButton:" destination="Bzd-v3-WRm" eventType="touchUpInside" id="wN0-rI-8po"/>
                                                 </connections>
@@ -279,11 +273,11 @@
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VZR-nr-c7O">
-                                        <rect key="frame" x="64.666666666666686" y="115" width="264" height="284"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="64.666666666666686" y="115" width="264" height="132"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="264" id="PtL-JF-rR8"/>
-                                            <constraint firstAttribute="height" constant="284" id="q8z-Fl-3u8"/>
+                                            <constraint firstAttribute="height" constant="132" id="q8z-Fl-3u8"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p6G-6b-p0q">
                                             <size key="itemSize" width="56" height="56"/>
@@ -327,8 +321,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="Side100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="528" id="3w6-7c-3JW"/>
-                                    <constraint firstAttribute="bottom" secondItem="AB3-4z-WYD" secondAttribute="bottom" constant="42" id="CeZ-nm-oeD"/>
+                                    <constraint firstAttribute="height" constant="376" id="3w6-7c-3JW"/>
                                     <constraint firstItem="awb-4t-LcR" firstAttribute="top" secondItem="8B0-B8-0Qu" secondAttribute="bottom" constant="8" id="F8q-jK-YFN"/>
                                     <constraint firstItem="VZR-nr-c7O" firstAttribute="top" secondItem="awb-4t-LcR" secondAttribute="bottom" constant="32" id="O5w-Oa-2RK"/>
                                     <constraint firstItem="8B0-B8-0Qu" firstAttribute="centerX" secondItem="Zey-Do-R4N" secondAttribute="centerX" id="cbc-1J-QlZ"/>
@@ -365,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHk-TN-fUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2621" y="-25"/>
+            <point key="canvasLocation" x="-2622.1374045801526" y="-25.35211267605634"/>
         </scene>
         <!--Modify Answer View Controller-->
         <scene sceneID="N1e-32-Ck4">
@@ -386,7 +379,7 @@
                                         </constraints>
                                         <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="chevron.down" catalog="system"/>
+                                        <state key="normal" image="chevron.up" catalog="system"/>
                                         <connections>
                                             <action selector="foldView:" destination="hNg-kt-flE" eventType="touchUpInside" id="qBI-xv-Kor"/>
                                         </connections>
@@ -398,9 +391,6 @@
                                             <constraint firstAttribute="height" constant="44" id="M4O-td-9fF"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="face.smiling" catalog="system" symbolScale="large"/>
-                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOh-sO-FHo">
                                         <rect key="frame" x="21" y="21" width="32" height="32"/>
@@ -430,20 +420,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcX-wQ-Ghf">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-N1-YtK" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="283" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-N1-YtK" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="0.0" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fda-mo-Yu9" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="30.333333333333343" width="283" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fda-mo-Yu9" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="10" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-Nc-7nL" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="150.66666666666666" y="75" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-Nc-7nL" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="171.66666666666666" y="96" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
                                         <nil key="highlightedColor"/>
@@ -474,9 +464,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="black"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
-                                    <outlet property="delegate" destination="hNg-kt-flE" id="txF-xa-TUF"/>
+                                    <outlet property="delegate" destination="hNg-kt-flE" id="DMe-zo-PyO"/>
                                 </connections>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPT-cU-A7b">
@@ -594,44 +584,33 @@
             <size key="intrinsicContentSize" width="189.66666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="Evb-sA-cV5">
-            <size key="intrinsicContentSize" width="53.666666666666664" height="34.333333333333336"/>
+            <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
-        <designable name="GSv-NP-tba">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
+        <designable name="GSv-NP-tba"/>
         <designable name="Hih-gf-fUU">
             <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
         </designable>
         <designable name="QVa-0t-zqo">
             <size key="intrinsicContentSize" width="40" height="20.333333333333332"/>
         </designable>
-        <designable name="Ua7-KG-a1f">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
-        <designable name="ado-N1-YtK">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
+        <designable name="Ua7-KG-a1f"/>
+        <designable name="ado-N1-YtK"/>
         <designable name="awb-4t-LcR">
             <size key="intrinsicContentSize" width="164.33333333333334" height="20.333333333333332"/>
         </designable>
-        <designable name="ewL-Nc-7nL">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
+        <designable name="dVw-Jc-ghz">
+            <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
-        <designable name="fda-mo-Yu9">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
-        <designable name="rfO-mn-pOD">
-            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
-        </designable>
+        <designable name="ewL-Nc-7nL"/>
+        <designable name="fda-mo-Yu9"/>
+        <designable name="rfO-mn-pOD"/>
         <designable name="xMo-tO-t9O">
             <size key="intrinsicContentSize" width="10.333333333333334" height="20.333333333333332"/>
         </designable>
     </designables>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.up" catalog="system" width="128" height="70"/>
-        <image name="face.smiling" catalog="system" width="128" height="123"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -653,8 +632,5 @@
         <namedColor name="black">
             <color red="0.20000000298023224" green="0.2199999988079071" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

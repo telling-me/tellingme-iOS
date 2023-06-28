@@ -16,7 +16,7 @@ class WithdrawalViewController: SettingViewController {
         withdrawalButton.isEnabled = false
         headerView.setTitle(title: "회원 탈퇴")
     }
-    
+
     @IBAction func clickAgree(_ sender: UIButton) {
         sender.isSelected.toggle()
         if sender.isSelected {

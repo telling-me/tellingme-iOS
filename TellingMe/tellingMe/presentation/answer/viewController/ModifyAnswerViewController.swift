@@ -9,14 +9,18 @@ import UIKit
 
 class ModifyAnswerViewController: AnswerViewController {
     override func viewDidLoad() {
-        self.emotionButton.isEnabled = false
+        self.emotionButton.isUserInteractionEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getAnswer()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
+
     }
 
     func setQuestionDate(date: String) {

@@ -12,6 +12,11 @@ extension AnswerViewController: EmotionDelegate {
     func emotionViewCancel() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func emotionSelected(index: Int) {
+        self.viewModel.emotion = index
+        self.emotionButton.setImage(UIImage(named: self.viewModel.emotions[index]), for: .normal)
+    }
 }
 
 extension AnswerViewController: UITextViewDelegate {
@@ -26,29 +31,43 @@ extension AnswerViewController: UITextViewDelegate {
         attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, attributedText.length))
 
         answerTextView.attributedText = attributedText
+        if answerTextView.text.count > 300 {
+            self.viewModel.isFull = true
+        } else {
+            self.viewModel.isFull = false
+        }
+        countTextLabel.text = String(answerTextView.text.count)
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let utf8Char = text.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+        if isBackSpace == -92 {
+            return true
+        }
         // 이전 글자 - 선택된 글자 + 새로운 글자(대체될 글자)
-        let newLength = textView.text.count - range.length + text.count
-        let koreanMaxCount = 500 + 1
-        // 글자수가 초과 된 경우 or 초과되지 않은 경우
-        if newLength > koreanMaxCount {
-            let overflow = newLength - koreanMaxCount // 초과된 글자수
-            if text.count < overflow {
-                self.countTextLabel.text = String(newLength)
-                return true
-            }
-            let index = text.index(text.endIndex, offsetBy: -overflow)
-            let newText = text[..<index]
-            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location) else { return false }
-            guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)) else { return false }
-            guard let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
-
-            textView.replace(textRange, withText: String(newText))
+//        let newLength = textView.text.count - range.length + text.count
+//        let koreanMaxCount = 500 + 1
+//        // 글자수가 초과 된 경우 or 초과되지 않은 경우
+//        if newLength > koreanMaxCount {
+//            let overflow = newLength - koreanMaxCount // 초과된 글자수
+//            if text.count < overflow {
+//                self.countTextLabel.text = String(newLength)
+//                return true
+//            }
+//            let index = text.index(text.endIndex, offsetBy: -overflow)
+//            let newText = text[..<index]
+//            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location) else { return false }
+//            guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: NSMaxRange(range)) else { return false }
+//            guard let textRange = textView.textRange(from: startPosition, to: endPosition) else { return false }
+//
+//            textView.replace(textRange, withText: String(newText))
+//            return false
+//        }
+//        self.countTextLabel.text = String(newLength)
+        if self.viewModel.isFull {
             return false
         }
-        self.countTextLabel.text = String(newLength)
         return true
     }
 

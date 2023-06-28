@@ -13,7 +13,7 @@ class EmotionViewModel {
         let text: String
     }
 
-    let emotions = [Emotion(image: "Heart", text: "행복해요"), Emotion(image: "Heart", text: "뿌듯해요"), Emotion(image: "Heart", text: "그저 그래요"), Emotion(image: "Heart", text: "피곤해요"), Emotion(image: "Heart", text: "슬퍼요"), Emotion(image: "Heart", text: "화나요"), Emotion(image: "Heart", text: "설레요"), Emotion(image: "Heart", text: "신나요"), Emotion(image: "Heart", text: "편안해요"), Emotion(image: "Heart", text: "무기력해요"), Emotion(image: "Heart", text: "외로워요"), Emotion(image: "Heart", text: "복잡해요")]
+    let emotions = [Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요")]
     var selectedEmotion: Int? = nil
     let emotionCount: Int
 

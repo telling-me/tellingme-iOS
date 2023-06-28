@@ -50,11 +50,10 @@ class AnswerListViewController: UIViewController {
         noneView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(noneView)
 
-        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 99).isActive = true
-        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -99).isActive = true
+        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 95).isActive = true
+        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -95).isActive = true
+        noneView.heightAnchor.constraint(equalToConstant: 125).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-
-//        noneView.button.addTarget(self, action: #selector(pushAnswer), for: .touchDown)
     }
 
     @objc func pushAnswer() {
@@ -75,6 +74,7 @@ class AnswerListViewController: UIViewController {
     func didTapView(_ sender: UITapGestureRecognizer) {
         if sender.view == yearButton {
             if yearTableView.isHidden {
+                yearButton.setOpen()
                 self.yearTableView.isHidden = false
                 UIView.transition(with: self.yearTableView,
                                   duration: 0.5,
@@ -87,11 +87,13 @@ class AnswerListViewController: UIViewController {
                     }
                 })
             } else {
+                yearButton.setClose()
                 self.yearHeight.constant = 0
                 self.yearTableView.isHidden = true
             }
         } else if sender.view == monthButton {
             if monthTableView.isHidden {
+                monthButton.setOpen()
                 self.monthTableView.isHidden = false
                 UIView.transition(with: self.monthTableView,
                                   duration: 0.5,
@@ -100,6 +102,7 @@ class AnswerListViewController: UIViewController {
                         self.monthHeight.constant = 160
                 })
             } else {
+                monthButton.setClose()
                 self.yearHeight.constant = 0
                 self.yearTableView.isHidden = true
             }
@@ -114,10 +117,12 @@ class AnswerListViewController: UIViewController {
 
         // 현재 터치가 테이블 뷰 내부에 있는지 확인합니다.
         if yearTableView.frame.contains(touchLocation) {
+            monthButton.setClose()
             monthTableView.isHidden = true
             monthHeight.constant = 0
             return
         } else if monthTableView.frame.contains(touchLocation) {
+            yearButton.setClose()
             yearTableView.isHidden = true
             yearHeight.constant = 0
         } else {
@@ -126,6 +131,9 @@ class AnswerListViewController: UIViewController {
 
             yearTableView.isHidden = true
             yearHeight.constant = 0
+            
+            monthButton.setClose()
+            yearButton.setClose()
         }
     }
 
@@ -182,9 +190,11 @@ extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
             if tableView == yearTableView {
                 viewModel.year = cell.getCell()
                 yearButton.setTitle(text: "\(cell.getCell())년", isSmall: true)
+                yearButton.setClose()
             } else {
                 viewModel.month = cell.getCell()
                 monthButton.setTitle(text: "\(cell.getCell())월", isSmall: true)
+                monthButton.setClose()
             }
             getAnswerList()
         }

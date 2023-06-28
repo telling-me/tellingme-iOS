@@ -8,5 +8,5 @@
 import Foundation
 
 struct FirebaseTokenRequest: Codable {
-    let pushToken: String
+    let pushToken: String?
 }

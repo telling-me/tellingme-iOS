@@ -9,7 +9,7 @@ import Foundation
 
 extension AllowNotificationViewController {
     func sendSignUpData() {
-        guard let loginType = KeychainManager.shared.load(key: "socialLoginType") else {
+        guard let loginType = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
             self.showToast(message: "소셜 로그인을 확인할 수 없습니다.")
             return }
         guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
@@ -34,14 +34,14 @@ extension AllowNotificationViewController {
 
     func login(type: String) {
         if type == "kakao" {
-            guard let socialId = KeychainManager.shared.load(key: "socialId") else { return }
+            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else { return }
             let request = OauthRequest(socialId: socialId)
             LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
                 switch result {
                 case .success(let response):
                     self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
                 case .failure(let error):
                     switch error {
                     case let .errorData(errorData):
@@ -52,14 +52,17 @@ extension AllowNotificationViewController {
                 }
             }
         } else if type == "apple" {
-            guard let token = KeychainManager.shared.load(key: "appleAccessToken") else { return }
-            let request = OauthRequest(socialId: "")
+            guard let token = KeychainManager.shared.load(key: Keys.appleToken.rawValue) else { return }
+            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+                return
+            }
+            let request = OauthRequest(socialId: socialId)
             LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
                 switch result {
                 case .success(let response):
                     self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: "accessToken")
-                    KeychainManager.shared.save(response!.refreshToken, key: "refreshToken")
+                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
                 case .failure(let error):
                     switch error {
                     case let .errorData(errorData):

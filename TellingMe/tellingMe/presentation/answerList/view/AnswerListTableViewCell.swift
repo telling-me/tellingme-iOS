@@ -8,6 +8,7 @@
 import UIKit
 
 class AnswerListTableViewCell: UITableViewCell {
+    let emotions = ["Happy", "Proud","Meh", "Tired", "Sad", "Angry"]
     static let id = "answerListTableViewCell"
     var emotion: Int? = nil
     var title: String? = nil
@@ -42,8 +43,8 @@ class AnswerListTableViewCell: UITableViewCell {
 
         containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25).isActive = true
-        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 19).isActive = true
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 18).isActive = true
 
         containerView.addSubview(imgView)
         containerView.addSubview(questionLabel)
@@ -64,11 +65,11 @@ class AnswerListTableViewCell: UITableViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: 20).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
-        self.emotion = data.emotion
+        self.emotion = data.emotion - 1
         self.title = data.title
         self.date = data.date
-        imgView.image = UIImage(named: "emotion\(self.emotion)")
-        questionLabel.text = self.title!.replacingOccurrences(of: "\\n", with: "")
+        imgView.image = UIImage(named: self.emotions[data.emotion - 1])
+        questionLabel.text = self.title!.replacingOccurrences(of: "\n", with: " ")
         dateLabel.text = "\(self.date![0])년 \(self.date![1])월 \(self.date![2])일"
     }
 

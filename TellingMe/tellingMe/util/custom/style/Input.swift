@@ -53,7 +53,7 @@ class Input: UIView {
         self.inputBox.placeholder = "직접 입력"
         inputBox.isUserInteractionEnabled = true
     }
-    
+
     func setText(text: String) {
         self.inputBox.text = text
     }

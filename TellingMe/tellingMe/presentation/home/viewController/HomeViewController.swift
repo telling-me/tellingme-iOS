@@ -100,7 +100,11 @@ class HomeViewController: UIViewController {
     func pushAnswerCompleted() {
         let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "answerCompleted") as? AnswerCompletedViewController else { return }
-        vc.setQuestionDate(date: viewModel.questionDate)
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
+        vc.setQuestionDate(date: date)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

@@ -18,7 +18,7 @@ extension Networkable {
         let loggerPlugin = NetworkLoggerPlugin()
         var plugins: [PluginType] = [loggerPlugin]
 
-        guard let accessToken = KeychainManager.shared.load(key: "accessToken") else {
+        guard let accessToken = KeychainManager.shared.load(key: Keys.accessToken.rawValue) else {
             throw APIError.tokenNotFound
         }
 

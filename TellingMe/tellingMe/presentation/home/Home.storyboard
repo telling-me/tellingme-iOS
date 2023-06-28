@@ -14,7 +14,9 @@
         <scene sceneID="cjr-r8-cbg">
             <objects>
                 <navigationController storyboardIdentifier="homeNavigation" navigationBarHidden="YES" id="MhK-C2-ZIR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Home" selectedImage="Home_selected" id="pry-AR-OWp"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home" selectedImage="Home_selected" id="pry-AR-OWp">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xbV-Qe-PV6">
@@ -297,12 +299,12 @@
     </designables>
     <resources>
         <image name="Home" width="25" height="25"/>
-        <image name="Home_selected" width="81" height="78"/>
+        <image name="Home_selected" width="40.5" height="39"/>
         <image name="Shape" width="202" height="157"/>
         <image name="Shape1" width="66" height="73"/>
         <image name="Shape2" width="63" height="62"/>
         <image name="Shape3" width="76" height="74"/>
-        <image name="Shape4" width="55" height="55"/>
+        <image name="Shape4" width="27.5" height="27.5"/>
         <image name="Shape5" width="325" height="325"/>
         <image name="WingPen" width="37" height="37"/>
         <namedColor name="Gray5">

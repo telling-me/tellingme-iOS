@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension ModifyAnswerViewController {
 //    func getQuestion() {
@@ -33,12 +34,16 @@ extension ModifyAnswerViewController {
 //    }
 //
     func getAnswer() {
-        let query = Date().getQuestionDate()
-        AnswerAPI.getAnswer(query: query) { result in
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
+        AnswerAPI.getAnswer(query: date) { result in
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content
-                self.emotionButton.isEnabled = false
+                self.countTextLabel.text = "\(String(describing: response!.content.count))"
+                self.emotionButton.setImage(UIImage(named: self.viewModel.emotions[response!.emotion - 1]), for: .normal)
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
@@ -53,7 +58,10 @@ extension ModifyAnswerViewController {
     }
 
     func modifyAnswer() {
-        let date = viewModel.questionDate
+        guard let date = viewModel.questionDate else {
+            self.showToast(message: "날짜를 불러올 수 없습니다.")
+            return
+        }
         let request = UpdateAnswerRequest(date: date, content: self.answerTextView.text)
         AnswerAPI.updateAnswer(request: request) { result in
             switch result {
