@@ -86,6 +86,10 @@
 		3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0729C1DBBA00FCD3BC /* designable.swift */; };
 		3A775D0D29C2EA5400FCD3BC /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */; };
 		3A82989C2A00F883001938B9 /* AnswerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A82989B2A00F883001938B9 /* AnswerRepository.swift */; };
+		3A8667CD2A5319C900C6BE96 /* CardListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8667CC2A5319C900C6BE96 /* CardListCollectionViewController.swift */; };
+		3A8667D12A531A8500C6BE96 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8667D02A531A8500C6BE96 /* ListTableViewController.swift */; };
+		3A8667D32A531B9800C6BE96 /* CardListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8667D22A531B9800C6BE96 /* CardListCollectionViewCell.swift */; };
+		3A8667D52A531C6300C6BE96 /* AnswerListStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8667D42A531C6300C6BE96 /* AnswerListStruct.swift */; };
 		3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */; };
 		3A9B415929FFDAE600D61D42 /* Answer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9B415829FFDAE600D61D42 /* Answer.storyboard */; };
 		3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */; };
@@ -234,6 +238,10 @@
 		3A775D0729C1DBBA00FCD3BC /* designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designable.swift; sourceTree = "<group>"; };
 		3A775D0C29C2EA5400FCD3BC /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		3A82989B2A00F883001938B9 /* AnswerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRepository.swift; sourceTree = "<group>"; };
+		3A8667CC2A5319C900C6BE96 /* CardListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewController.swift; sourceTree = "<group>"; };
+		3A8667D02A531A8500C6BE96 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		3A8667D22A531B9800C6BE96 /* CardListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A8667D42A531C6300C6BE96 /* AnswerListStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerListStruct.swift; sourceTree = "<group>"; };
 		3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButtonCell.swift; sourceTree = "<group>"; };
 		3A9B415829FFDAE600D61D42 /* Answer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Answer.storyboard; sourceTree = "<group>"; };
 		3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -909,6 +917,8 @@
 			isa = PBXGroup;
 			children = (
 				3A71213A2A039A0200A02054 /* AnswerListViewController.swift */,
+				3A8667CC2A5319C900C6BE96 /* CardListCollectionViewController.swift */,
+				3A8667D02A531A8500C6BE96 /* ListTableViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -917,6 +927,7 @@
 			isa = PBXGroup;
 			children = (
 				3A7121382A03902800A02054 /* AnswerListViewModel.swift */,
+				3A8667D42A531C6300C6BE96 /* AnswerListStruct.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -926,6 +937,7 @@
 			children = (
 				3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */,
 				3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */,
+				3A8667D22A531B9800C6BE96 /* CardListCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1117,7 +1129,6 @@
 			);
 			mainGroup = 3AA289BE29B8506F0030057E;
 			packageReferences = (
-				3AD3D59A2A232F4D00584503 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3AA289C829B8506F0030057E /* Products */;
 			projectDirPath = "";
@@ -1287,8 +1298,10 @@
 				3AEC414829FAE0460042A548 /* SecondayTextButton.swift in Sources */,
 				3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */,
 				3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */,
+				3A8667D12A531A8500C6BE96 /* ListTableViewController.swift in Sources */,
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
+				3A8667D32A531B9800C6BE96 /* CardListCollectionViewCell.swift in Sources */,
 				3ACC45E729D17009000843F5 /* SignUpPageViewController.swift in Sources */,
 				3ACE33932A39A30E008FCC03 /* SplashViewController.swift in Sources */,
 				3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */,
@@ -1325,6 +1338,7 @@
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
 				3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
+				3A8667CD2A5319C900C6BE96 /* CardListCollectionViewController.swift in Sources */,
 				3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */,
 				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
@@ -1334,6 +1348,7 @@
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
+				3A8667D52A531C6300C6BE96 /* AnswerListStruct.swift in Sources */,
 				3A3739C52A13E37500739543 /* ChipGenderViewController.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
@@ -1486,7 +1501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.9;
+				MARKETING_VERSION = 1.3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1516,7 +1531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.9;
+				MARKETING_VERSION = 1.3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1547,17 +1562,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3AD3D59A2A232F4D00584503 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 3AA289BF29B8506F0030057E /* Project object */;
 }

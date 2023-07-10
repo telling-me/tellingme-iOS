@@ -121,7 +121,13 @@ class MyInfoViewController: DropDownViewController {
     }
 
     @objc func clickCompleted(_ sender: UIButton) {
+        nickNameVC.offKeyboard()
         if let nickname = nickNameVC.getText() {
+            if !nickNameVC.checkBadWords() {
+                // 욕 O
+                self.showToast(message: "사용할 수 없는 닉네임입니다")
+                return
+            }
             if viewModel.nickname != viewModel.originalNickname {
                 self.checkNickname(nickname: nickname) { isChecked in
                     if !isChecked {

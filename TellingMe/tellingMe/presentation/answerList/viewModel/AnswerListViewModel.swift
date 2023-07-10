@@ -8,7 +8,7 @@
 import Foundation
 
 class AnswerListViewModel {
-    var answerList: [AnswerListResponse]? = nil
+    var answerList: [AnswerListResponse] = []
     var answerCount = 0
     var year = Date().yearFormat()
     var month = Date().monthFormat()

@@ -9,21 +9,17 @@ import UIKit
 
 class AnswerListViewController: UIViewController {
     let viewModel = AnswerListViewModel()
+    let noneView = NoneAnswerListView()
     @IBOutlet weak var headerView: HeaderView!
-
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
-
     @IBOutlet weak var yearHeight: NSLayoutConstraint!
     @IBOutlet weak var monthHeight: NSLayoutConstraint!
-
     @IBOutlet weak var monthTableView: UITableView!
     @IBOutlet weak var yearTableView: UITableView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
 
-    let noneView = NoneAnswerListView()
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         getAnswerList()
     }
@@ -46,14 +42,51 @@ class AnswerListViewController: UIViewController {
         }
     }
 
+    func setContainerView(tag: Int) {
+        removeContainerView()
+        if tag == 0 {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "cardListCollectionViewController") as? CardListCollectionViewController else {
+                return
+            }
+            vc.answerList = self.viewModel.answerList
+            addChildAndAddSubview(vc)
+        } else {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "listTableViewController") as? ListTableViewController else {
+                return
+            }
+            vc.answerList = self.viewModel.answerList
+            addChildAndAddSubview(vc)
+        }
+    }
+
+    func addChildAndAddSubview(_ childViewController: UIViewController) {
+        addChild(childViewController)
+        containerView.addSubview(childViewController.view)
+        childViewController.didMove(toParent: self)
+    }
+
+    func removeContainerView() {
+        containerView.subviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
+        children.forEach { childViewController in
+            childViewController.willMove(toParent: nil)
+            childViewController.removeFromParent()
+        }
+    }
+
     func setNotfoundAnswerList() {
         noneView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(noneView)
 
-        noneView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 95).isActive = true
-        noneView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -95).isActive = true
+        noneView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 95).isActive = true
+        noneView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -95).isActive = true
         noneView.heightAnchor.constraint(equalToConstant: 125).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    }
+
+    @IBAction func changeView(_ sender: UIButton) {
+        setContainerView(tag: sender.tag)
     }
 
     @objc func pushAnswer() {
@@ -131,26 +164,20 @@ class AnswerListViewController: UIViewController {
 
             yearTableView.isHidden = true
             yearHeight.constant = 0
-            
+
             monthButton.setClose()
             yearButton.setClose()
         }
     }
-
 }
 
 extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.tableView {
-            return 74
-        } else {
-            return 40
-        }
+        return 40
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.tableView {
-            return viewModel.answerCount
-        } else if tableView == yearTableView {
+        if tableView == yearTableView {
             return viewModel.yearArray.count
         } else {
             return viewModel.monthArray.count
@@ -158,46 +185,30 @@ extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.tableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AnswerListTableViewCell.id) as? AnswerListTableViewCell else { return UITableViewCell() }
-            cell.setCell(data: viewModel.answerList![indexPath.row])
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else {
-                return UITableViewCell()
-            }
-            if tableView == yearTableView {
-                cell.setCell(text: String(viewModel.yearArray[indexPath.row]))
-            } else {
-                cell.setCell(text: String(viewModel.monthArray[indexPath.row]))
-            }
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else {
+            return UITableViewCell()
         }
+        if tableView == yearTableView {
+            cell.setCell(text: String(viewModel.yearArray[indexPath.row]))
+        } else {
+            cell.setCell(text: String(viewModel.monthArray[indexPath.row]))
+        }
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.tableView {
-            guard let selectedCell = tableView.cellForRow(at: indexPath) as? AnswerListTableViewCell else { return }
-            let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(identifier: "answerCompleted") as? AnswerCompletedViewController else {
-                return
-            }
-            vc.setQuestionDate(date: (selectedCell.date?.intArraytoDate())!)
-            self.navigationController?.pushViewController(vc, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
+        tableView.isHidden = true
+        if tableView == yearTableView {
+            viewModel.year = cell.getCell()
+            yearButton.setTitle(text: "\(cell.getCell())년", isSmall: true)
+            yearButton.setClose()
         } else {
-            guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
-            tableView.isHidden = true
-            if tableView == yearTableView {
-                viewModel.year = cell.getCell()
-                yearButton.setTitle(text: "\(cell.getCell())년", isSmall: true)
-                yearButton.setClose()
-            } else {
-                viewModel.month = cell.getCell()
-                monthButton.setTitle(text: "\(cell.getCell())월", isSmall: true)
-                monthButton.setClose()
-            }
-            getAnswerList()
+            viewModel.month = cell.getCell()
+            monthButton.setTitle(text: "\(cell.getCell())월", isSmall: true)
+            monthButton.setClose()
         }
+        getAnswerList()
     }
 }
 
