@@ -936,239 +936,6 @@
             </objects>
             <point key="canvasLocation" x="1628.8" y="1514.0394088669952"/>
         </scene>
-        <!--GetMBTI View Controller-->
-        <scene sceneID="H0k-1X-qXC">
-            <objects>
-                <viewController storyboardIdentifier="getMBTI" id="EWk-Ie-7J6" customClass="GetMBTIViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" tag="3" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bYR-gJ-eF9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="894"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mbti는 무엇인가요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGB-on-c06" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="112.66666666666669" y="60" width="189" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="1ng-dL-vaf"/>
-                                    <constraint firstAttribute="height" constant="27" id="anO-XE-UeJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="Black"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbt-N9-ahO" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="197" width="364" height="57"/>
-                                <color key="backgroundColor" name="Side200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="bgr-Ly-9SE"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="18"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n66-5l-xha">
-                                <rect key="frame" x="25" y="262" width="364" height="0.0"/>
-                                <color key="backgroundColor" name="Side200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="kQm-5l-t45"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dropDownTableViewCell" id="tGv-eD-f9A" customClass="DropDownTableViewCell" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="364" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tGv-eD-f9A" id="PCP-hj-Gt6">
-                                            <rect key="frame" x="0.0" y="0.0" width="364" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="18"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="EWk-Ie-7J6" id="mHq-Bu-2A6"/>
-                                    <outlet property="delegate" destination="EWk-Ie-7J6" id="r1K-sb-z4X"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBU-Is-fi0" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="803" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="baZ-Su-lZP"/>
-                                    <constraint firstAttribute="width" constant="55" id="etW-1q-NJ4"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="prevAction:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="4Pv-yx-vP6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGp-0x-h4x" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="334" y="803" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="mG2-2d-WTO"/>
-                                    <constraint firstAttribute="height" constant="55" id="tIg-03-IZr"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="pushAllowNotification:" destination="EWk-Ie-7J6" eventType="touchUpInside" id="qL5-LQ-Qze"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="iiV-rJ-JJK"/>
-                        <color key="backgroundColor" name="Side100"/>
-                        <constraints>
-                            <constraint firstItem="iiV-rJ-JJK" firstAttribute="trailing" secondItem="FGp-0x-h4x" secondAttribute="trailing" constant="25" id="622-jb-6pV"/>
-                            <constraint firstItem="SBU-Is-fi0" firstAttribute="leading" secondItem="bYR-gJ-eF9" secondAttribute="leading" constant="25" id="B5w-I8-Hyd"/>
-                            <constraint firstItem="n66-5l-xha" firstAttribute="leading" secondItem="dbt-N9-ahO" secondAttribute="leading" id="Eyt-5U-0zq"/>
-                            <constraint firstItem="lGB-on-c06" firstAttribute="centerX" secondItem="bYR-gJ-eF9" secondAttribute="centerX" id="G3z-LT-P3G"/>
-                            <constraint firstItem="dbt-N9-ahO" firstAttribute="top" secondItem="lGB-on-c06" secondAttribute="bottom" constant="110" id="QyQ-AF-g0P"/>
-                            <constraint firstAttribute="trailing" secondItem="dbt-N9-ahO" secondAttribute="trailing" constant="25" id="bD8-Yu-HZ5"/>
-                            <constraint firstAttribute="bottom" secondItem="FGp-0x-h4x" secondAttribute="bottom" constant="36" id="hI5-BX-dE0"/>
-                            <constraint firstItem="lGB-on-c06" firstAttribute="top" secondItem="bYR-gJ-eF9" secondAttribute="top" constant="60" id="kuw-u3-Pqq"/>
-                            <constraint firstItem="dbt-N9-ahO" firstAttribute="leading" secondItem="bYR-gJ-eF9" secondAttribute="leading" constant="25" id="mlF-V6-5dh"/>
-                            <constraint firstItem="n66-5l-xha" firstAttribute="top" secondItem="dbt-N9-ahO" secondAttribute="bottom" constant="8" id="n8I-Se-a2s"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="SBU-Is-fi0" secondAttribute="bottom" constant="36" id="qJj-Eh-F0W"/>
-                            <constraint firstItem="n66-5l-xha" firstAttribute="trailing" secondItem="dbt-N9-ahO" secondAttribute="trailing" id="xEm-0S-Aod"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="eAZ-Qc-wz5"/>
-                    <size key="freeformSize" width="414" height="894"/>
-                    <connections>
-                        <outlet property="mbtiButton" destination="dbt-N9-ahO" id="rHf-q4-wZL"/>
-                        <outlet property="mbtiHeight" destination="kQm-5l-t45" id="eFf-wE-Rs5"/>
-                        <outlet property="mbtiTableView" destination="n66-5l-xha" id="Xez-W6-AJD"/>
-                        <outlet property="nextButton" destination="FGp-0x-h4x" id="OxY-ZG-xND"/>
-                        <outlet property="prevButton" destination="SBU-Is-fi0" id="iRe-RN-owd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDF-hV-NkF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2460.8000000000002" y="1512.5615763546798"/>
-        </scene>
-        <!--Allow Notification View Controller-->
-        <scene sceneID="X5V-FM-Wej">
-            <objects>
-                <viewController storyboardIdentifier="allowNotification" id="gOT-JX-h7v" customClass="AllowNotificationViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SX1-MK-zEA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajF-rL-WDG">
-                                <rect key="frame" x="0.0" y="50" width="375" height="66"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="01o-ze-2I7">
-                                        <rect key="frame" x="25" y="16" width="80" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="2UU-5D-69Q"/>
-                                            <constraint firstAttribute="width" constant="80" id="Ikw-lL-au2"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" name="Side100"/>
-                                <constraints>
-                                    <constraint firstItem="01o-ze-2I7" firstAttribute="centerY" secondItem="ajF-rL-WDG" secondAttribute="centerY" id="0UZ-SS-idX"/>
-                                    <constraint firstItem="01o-ze-2I7" firstAttribute="leading" secondItem="ajF-rL-WDG" secondAttribute="leading" constant="25" id="KbB-SA-K8A"/>
-                                    <constraint firstAttribute="height" constant="66" id="Mwt-NK-gb6"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 기록을 잊지 않도록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uib-KB-WA3" customClass="Headline5Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="76.666666666666686" y="196" width="222" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="222" id="mUj-zh-TZC"/>
-                                    <constraint firstAttribute="height" constant="22" id="yXe-8Q-frX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-dP-ZnF" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="118" y="599" width="139" height="55"/>
-                                <color key="backgroundColor" name="Primary25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="Bw6-kM-KOa"/>
-                                    <constraint firstAttribute="height" constant="55" id="hhN-BZ-j0w"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="17"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="네, 좋아요!">
-                                    <color key="titleColor" name="Logo"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchDown" id="XgZ-Mb-lfH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-pm-2q7">
-                                <rect key="frame" x="160" y="680" width="55" height="29"/>
-                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="괜찮아요">
-                                    <color key="titleColor" name="Gray5"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickAllow:" destination="gOT-JX-h7v" eventType="touchDown" id="8Hw-cf-u4Z"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="DyC-1v-jkp">
-                                <rect key="frame" x="112.66666666666669" y="359" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Cez-wy-duu"/>
-                                    <constraint firstAttribute="width" constant="150" id="V2v-sm-PqO"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" red="0.67843137254901964" green="0.8901960784313725" blue="0.82352941176470584" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-bN-tlf" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="76.666666666666686" y="228" width="222" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="222" id="8EU-pv-oqE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cog-kW-KcK"/>
-                        <color key="backgroundColor" name="Side100"/>
-                        <constraints>
-                            <constraint firstItem="DyC-1v-jkp" firstAttribute="centerX" secondItem="cog-kW-KcK" secondAttribute="centerX" id="1rL-El-4bo"/>
-                            <constraint firstItem="uib-KB-WA3" firstAttribute="centerX" secondItem="cog-kW-KcK" secondAttribute="centerX" id="3Jq-ZZ-fu6"/>
-                            <constraint firstItem="ajF-rL-WDG" firstAttribute="leading" secondItem="cog-kW-KcK" secondAttribute="leading" id="BeT-AB-PCg"/>
-                            <constraint firstItem="Fdj-bN-tlf" firstAttribute="centerX" secondItem="cog-kW-KcK" secondAttribute="centerX" id="Bgh-Wr-q0g"/>
-                            <constraint firstItem="DyC-1v-jkp" firstAttribute="top" secondItem="Fdj-bN-tlf" secondAttribute="bottom" constant="110" id="DnP-P5-Vvw"/>
-                            <constraint firstItem="RoC-dP-ZnF" firstAttribute="centerX" secondItem="cog-kW-KcK" secondAttribute="centerX" id="KeB-Xh-Jej"/>
-                            <constraint firstItem="6Hw-pm-2q7" firstAttribute="centerX" secondItem="cog-kW-KcK" secondAttribute="centerX" id="NxH-gz-dop"/>
-                            <constraint firstItem="ajF-rL-WDG" firstAttribute="trailing" secondItem="cog-kW-KcK" secondAttribute="trailing" id="Qe7-4D-j9p"/>
-                            <constraint firstItem="RoC-dP-ZnF" firstAttribute="top" secondItem="DyC-1v-jkp" secondAttribute="bottom" constant="90" id="SYw-4N-6XH"/>
-                            <constraint firstItem="ajF-rL-WDG" firstAttribute="top" secondItem="cog-kW-KcK" secondAttribute="top" id="T1b-nB-bHR"/>
-                            <constraint firstItem="uib-KB-WA3" firstAttribute="top" secondItem="ajF-rL-WDG" secondAttribute="bottom" constant="80" id="brI-AN-bYh"/>
-                            <constraint firstItem="Fdj-bN-tlf" firstAttribute="top" secondItem="uib-KB-WA3" secondAttribute="bottom" constant="10" id="s7a-em-O55"/>
-                            <constraint firstItem="6Hw-pm-2q7" firstAttribute="top" secondItem="RoC-dP-ZnF" secondAttribute="bottom" constant="26" id="wL9-HG-Rkt"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EZo-qk-8fO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3247" y="1484"/>
-        </scene>
         <!--Agreement Detail View Controller1-->
         <scene sceneID="Psw-K8-Ek5">
             <objects>
@@ -1326,7 +1093,7 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-aO-OZY">
                                                 <rect key="frame" x="10" y="20" width="315" height="274"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <mutableString key="text">TellingUS (이하 “회사”)는 「개인정보 보호법」 제30조에 따라 tellingme 서비스(이하 “텔링미”)를 이용하는 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+                                                <string key="text">TellingUS (이하 “회사”)는 「개인정보 보호법」 제30조에 따라 tellingme 서비스(이하 “텔링미”)를 이용하는 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
 ○ 이 개인정보처리방침은 2023년 6월 22일부터 적용됩니다.
 
@@ -1467,7 +1234,7 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
 
 &lt;제13조(개인정보 처리방침의 개정 및 공지)&gt;
 
-회사는 필요한 경우 관계 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 약관 변경 시에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 최소 7일 전부터 알림 기능으로 공지합니다.</mutableString>
+회사는 필요한 경우 관계 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 약관 변경 시에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 최소 7일 전부터 알림 기능으로 공지합니다.</string>
                                                 <color key="textColor" name="black"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1564,12 +1331,6 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         <designable name="Ecu-SZ-6ct">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
-        <designable name="FGp-0x-h4x">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="Fdj-bN-tlf">
-            <size key="intrinsicContentSize" width="149.33333333333334" height="20.333333333333332"/>
-        </designable>
         <designable name="FzI-9O-Yip">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
@@ -1591,12 +1352,6 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         <designable name="Qqc-iR-uar">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
-        <designable name="RoC-dP-ZnF">
-            <size key="intrinsicContentSize" width="75" height="31"/>
-        </designable>
-        <designable name="SBU-Is-fi0">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
         <designable name="a7w-3P-Dt9">
             <size key="intrinsicContentSize" width="137" height="20.333333333333332"/>
         </designable>
@@ -1605,9 +1360,6 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         </designable>
         <designable name="iWC-O7-SQM">
             <size key="intrinsicContentSize" width="122" height="20.333333333333332"/>
-        </designable>
-        <designable name="lGB-on-c06">
-            <size key="intrinsicContentSize" width="126.66666666666667" height="20.333333333333332"/>
         </designable>
         <designable name="nA4-aI-Lzc">
             <size key="intrinsicContentSize" width="122" height="20.333333333333332"/>
@@ -1624,23 +1376,16 @@ tellingme 서비스(이하 “텔링미”)를 이용함에 있어 회사와 이
         <designable name="uEk-gP-yD5">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
-        <designable name="uib-KB-WA3">
-            <size key="intrinsicContentSize" width="160.33333333333334" height="20.333333333333332"/>
-        </designable>
         <designable name="v1E-J4-fLA">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
     </designables>
     <resources>
-        <image name="BellRinging" width="151" height="163"/>
         <image name="Logo" width="234" height="98"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Black">
             <color red="0.20000000298023224" green="0.2199999988079071" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Gray5">
-            <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray6">
             <color red="0.40000000596046448" green="0.43500000238418579" blue="0.41600000858306885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

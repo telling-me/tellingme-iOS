@@ -14,7 +14,9 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var subQuestionLabel: UILabel!
     @IBOutlet weak var answerTextView: UITextView!
 
-    @IBOutlet weak var emotionButton: UIButton!
+    @IBOutlet weak var emotionView: UIView!
+    @IBOutlet weak var emotionImageView: UIImageView!
+    @IBOutlet weak var emotionLabel: Body2Bold!
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
 
     @IBOutlet weak var countTextLabel: UILabel!
@@ -25,17 +27,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         getQuestion()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
-        vc.delegate = self
-        if let tabBarController = self.tabBarController as? MainTabBarController {
-            tabBarController.tabBar.isHidden = true
-        }
-        self.present(vc, animated: false)
     }
 
     override func viewDidLoad() {
@@ -54,6 +45,29 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
          answerTextView.resignFirstResponder()
      }
 
+    func showEmotion() {
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .coverVertical
+        vc.delegate = self
+        vc.viewModel.selectedEmotion = self.viewModel.emotion
+//        if let tabBarController = self.tabBarController as? MainTabBarController {
+//            tabBarController.tabBar.isHidden = true
+//        }
+        self.present(vc, animated: false)
+    }
+
+    func showModal(id: String) {
+        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: id) as? ModalViewController else {
+            return
+        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: true)
+    }
+
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return
@@ -61,7 +75,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
         // 키보드 높이 계산
         let keyboardHeight = keyboardFrame.size.height
-        print("keyobardheight", keyboardHeight)
         bottomLayout.constant = keyboardHeight - view.safeAreaInsets.bottom
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -77,13 +90,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     @IBAction func clickBack(_ sender: UIButton) {
         viewModel.modalChanged = 0
-        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "cancelAnswerModal") as? ModalViewController else {
-            return
-        }
-        vc.delegate = self
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true)
+        showModal(id: "cancelAnswerModal")
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {
@@ -96,14 +103,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
             self.showToast(message: "4글자 이상 작성해주세요")
             answerTextView.resignFirstResponder()
         } else {
-            let storyboard = UIStoryboard(name: "Modal", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(identifier: "modalRegisterAnswer") as? ModalViewController else {
-                return
-            }
-            vc.delegate = self
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.modalTransitionStyle = .coverVertical
-            self.present(vc, animated: true)
+            showEmotion()
         }
     }
 
@@ -135,7 +135,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     func clickCancel() {
- 
+
     }
 
     // 답변 등록하기 버튼

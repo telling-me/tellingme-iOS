@@ -59,13 +59,13 @@ class GetMBTIViewController: UIViewController {
         }
     }
 
-    @IBAction func pushAllowNotification(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-
-        SignUpData.shared.mbti = viewModel.myMbti
-    }
+//    @IBAction func pushAllowNotification(_ sender: UIButton) {
+//        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
+//
+//        SignUpData.shared.mbti = viewModel.myMbti
+//    }
 
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController

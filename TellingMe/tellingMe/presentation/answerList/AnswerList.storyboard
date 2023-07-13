@@ -14,7 +14,7 @@
         <!--Navigation Controller-->
         <scene sceneID="hL0-UD-OO1">
             <objects>
-                <navigationController storyboardIdentifier="answerListNavigation" navigationBarHidden="YES" id="ZY8-ne-Udg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="answerListNavigation" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="ZY8-ne-Udg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="MyAnswers" selectedImage="MyAnswers_selected" id="T3Q-Yc-UoU"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-662" y="-18"/>
         </scene>
-        <!--Item-->
+        <!--Answer List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AnswerListViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -191,7 +191,6 @@
                             <constraint firstItem="pcV-Kw-VE1" firstAttribute="top" secondItem="sOo-uk-1b3" secondAttribute="bottom" id="v7b-b7-NCm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="oIP-t6-NVG"/>
                     <navigationItem key="navigationItem" id="ONg-Xo-6Q0"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

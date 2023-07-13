@@ -13,8 +13,9 @@ class AgreementViewController: UIViewController {
     @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var agreement1: UIButton!
 
-    var isAgreement1 = SignUpData.shared.agreements[0]
-    var isAgreement2 = SignUpData.shared.agreements[1]
+    var isAgreement1 = false
+    var isAgreement2 = false
+
     override func viewWillAppear(_ animated: Bool) {
         if isAgreement1 {
             agreement1.isSelected = true

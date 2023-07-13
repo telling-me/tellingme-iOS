@@ -43,7 +43,8 @@ extension ModifyAnswerViewController {
             case .success(let response):
                 self.answerTextView.text = response?.content
                 self.countTextLabel.text = "\(String(describing: response!.content.count))"
-                self.emotionButton.setImage(UIImage(named: self.viewModel.emotions[response!.emotion - 1]), for: .normal)
+                self.emotionImageView.image = UIImage(named: self.viewModel.emotions[response!.emotion - 1].image)
+                self.emotionLabel.text = self.viewModel.emotions[response!.emotion - 1].text
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):

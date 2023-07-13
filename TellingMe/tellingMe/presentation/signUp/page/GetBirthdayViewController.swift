@@ -63,6 +63,19 @@ class GetBirthdayViewController: UIViewController {
         }
     }
     
+    func pushHome() {
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+
+        tabBarController.selectedIndex = 1
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
@@ -157,10 +170,9 @@ class GetBirthdayViewController: UIViewController {
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
-        let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPage()
-
         SignUpData.shared.makeBirthData(year: viewModel.year, month: viewModel.month, day: viewModel.day)
+
+        pushHome()
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

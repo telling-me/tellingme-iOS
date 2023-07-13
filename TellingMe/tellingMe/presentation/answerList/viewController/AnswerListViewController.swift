@@ -31,11 +31,11 @@ class AnswerListViewController: UIViewController {
         monthButton.setSmallLayout()
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
+        setContainerView(tag: 0)
         setAction()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         if let selectedViewController = self.tabBarController?.selectedViewController,
            selectedViewController != self.navigationController {
             self.tabBarController?.tabBar.isHidden = true

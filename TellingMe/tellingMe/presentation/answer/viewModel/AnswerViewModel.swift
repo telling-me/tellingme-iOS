@@ -8,11 +8,16 @@
 import Foundation
 
 class AnswerViewModel {
+    struct Emotion {
+        let image: String
+        let text: String
+    }
+
     var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()
     var emotion: Int? = nil
-    let emotions = ["Happy", "Proud","Meh", "Tired", "Sad", "Angry"]
+    let emotions = [Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요")]
     var questionDate: String? = Date().getQuestionDate()
     var isFull: Bool = false
 

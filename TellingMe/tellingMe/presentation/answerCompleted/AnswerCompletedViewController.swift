@@ -9,8 +9,8 @@ import UIKit
 
 class AnswerCompletedViewController: PullDownViewController {
     let viewModel = AnswerCompletedViewModel()
-
-    @IBOutlet weak var emotionButton: UIButton!
+    @IBOutlet weak var emotionImageView: UIImageView!
+    @IBOutlet weak var emotionLabel: Body2Bold!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainQuestionLabel: Body1Bold!
     @IBOutlet weak var subQuestionLabel: Body2Regular!
@@ -22,6 +22,7 @@ class AnswerCompletedViewController: PullDownViewController {
         getQuestion()
         getAnswer()
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         items = viewModel.menus
