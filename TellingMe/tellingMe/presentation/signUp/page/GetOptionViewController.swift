@@ -7,16 +7,37 @@
 
 import UIKit
 
-class GetGenderViewController: UIViewController {
+class GetOptionViewController: UIViewController {
     @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var prevButton: SecondaryIconButton!
-    let viewModel = GetGenderViewModel()
+    @IBOutlet weak var input: Input!
+    let viewModel = GetOptionViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prevButton.setImage(image: "ArrowLeft")
         nextButton.isEnabled = false
         nextButton.setImage(image: "ArrowRight")
+        input.setInputKeyobardStyle()
+        input.inputBox.delegate = self
+    }
+
+    func checkYear() {
+        guard let year = input.getText() else {
+            self.showToast(message: "다시 시도해주세요.")
+            return
+        }
+
+        if let text = input.getText(),
+           let year = Int(text) {
+            if year >= viewModel.todayYear - 100  {
+                if year > viewModel.todayYear || year < 999 {
+                    self.showToast(message: "형식에 맞지 않습니다.")
+                }
+            } else {
+                self.showToast(message: "1923년 이상부터 입력이 가능합니다.")
+            }
+        }
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
@@ -33,7 +54,7 @@ class GetGenderViewController: UIViewController {
     }
 }
 
-extension GetGenderViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GetOptionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -56,5 +77,21 @@ extension GetGenderViewController: UICollectionViewDelegate, UICollectionViewDat
             viewModel.selectedItem = "female"
         }
         nextButton.isEnabled = true
+    }
+}
+
+extension GetOptionViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let utf8Char = string.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+        guard let text = textField.text else { return false }
+        print(string)
+        print(text)
+        if isBackSpace == -92 || text.count <= 3 {
+            return true
+        } else {
+            input.hiddenKeyboard()
+            return false
+        }
     }
 }

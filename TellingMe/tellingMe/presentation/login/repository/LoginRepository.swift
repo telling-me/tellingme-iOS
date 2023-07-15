@@ -81,10 +81,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if let identityToken = appleIDCredential.identityToken,
-               let tokenString = String(data: identityToken, encoding: .utf8) {
+               let authCode = appleIDCredential.authorizationCode,
+               let tokenString = String(data: identityToken, encoding: .utf8),
+               let authCodeString = String(data: authCode, encoding: .utf8) {
                 KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
                 KeychainManager.shared.save(tokenString, key: Keys.appleToken.rawValue)
-                print(tokenString)
                 LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: nil)) { result in
                     switch result {
                     case .success(let response):

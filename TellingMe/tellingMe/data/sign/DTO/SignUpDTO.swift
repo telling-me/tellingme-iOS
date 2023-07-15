@@ -15,7 +15,6 @@ struct SignUpRequest: Codable {
     var jobInfo: String?
     var gender: String?
     var birthDate: String?
-    var mbti: String?
     var socialId: String
     var socialLoginType: String
 }
