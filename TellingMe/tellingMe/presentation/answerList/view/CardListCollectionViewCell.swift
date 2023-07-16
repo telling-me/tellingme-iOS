@@ -52,12 +52,13 @@ class CardListCollectionViewCell: UICollectionViewCell {
     }()
 
     func setCell(data: AnswerListResponse) {
+        contentView.backgroundColor = UIColor(named: "Side100")
         contentView.addSubview(containerView)
 
-        containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 28).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -28).isActive = true
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 34).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 34).isActive = true
 
         containerView.addSubview(imgView)
         containerView.addSubview(questionLabel)
@@ -71,8 +72,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         imgView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
 
         questionLabel.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 20).isActive = true
-        questionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        questionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        questionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
         subQuestionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 12).isActive = true
         subQuestionLabel.leadingAnchor.constraint(equalTo: questionLabel.leadingAnchor).isActive = true

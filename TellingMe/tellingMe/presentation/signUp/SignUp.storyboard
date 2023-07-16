@@ -528,7 +528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRj-kZ-Z93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="766"/>
+            <point key="canvasLocation" x="947" y="1515"/>
         </scene>
         <!--Get Job View Controller-->
         <scene sceneID="MUr-rv-5Kp">
@@ -761,7 +761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWo-K7-Nkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889.85507246376824" y="1514.7321428571429"/>
+            <point key="canvasLocation" x="-610" y="1514"/>
         </scene>
         <!--Agreement Detail View Controller1-->
         <scene sceneID="Psw-K8-Ek5">

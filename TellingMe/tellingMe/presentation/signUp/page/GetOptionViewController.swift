@@ -30,9 +30,12 @@ class GetOptionViewController: UIViewController {
 
         if let text = input.getText(),
            let year = Int(text) {
-            if year >= viewModel.todayYear - 100  {
+            if year >= viewModel.todayYear - 100 {
                 if year > viewModel.todayYear || year < 999 {
                     self.showToast(message: "형식에 맞지 않습니다.")
+                } else {
+                    viewModel.year = text
+                    self.isAllChecked()
                 }
             } else {
                 self.showToast(message: "1923년 이상부터 입력이 가능합니다.")
@@ -40,11 +43,21 @@ class GetOptionViewController: UIViewController {
         }
     }
 
+    func isAllChecked() {
+        if viewModel.year != nil && viewModel.gender != nil {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
+
     @IBAction func nextAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.nextPage()
-        if let selectedItem = viewModel.selectedItem {
-            SignUpData.shared.gender = selectedItem
+        if let gender = viewModel.gender,
+           let year = viewModel.year {
+            SignUpData.shared.gender = gender
+            SignUpData.shared.birthDate = year
         }
     }
 
@@ -72,11 +85,11 @@ extension GetOptionViewController: UICollectionViewDelegate, UICollectionViewDat
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            viewModel.selectedItem = "male"
+            viewModel.gender = "male"
         } else {
-            viewModel.selectedItem = "female"
+            viewModel.gender = "female"
         }
-        nextButton.isEnabled = true
+        isAllChecked()
     }
 }
 
@@ -85,13 +98,15 @@ extension GetOptionViewController: UITextFieldDelegate {
         let utf8Char = string.cString(using: .utf8)
         let isBackSpace = strcmp(utf8Char, "\\b")
         guard let text = textField.text else { return false }
-        print(string)
-        print(text)
         if isBackSpace == -92 || text.count <= 3 {
             return true
         } else {
             input.hiddenKeyboard()
             return false
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        checkYear()
     }
 }

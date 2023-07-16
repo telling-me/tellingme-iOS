@@ -41,7 +41,7 @@ extension SignUpViewController {
         skipButton.isHidden = true
     }
 
-    public func setSKipButtonUnhidden() {
+    public func setSkipButtonUnhidden() {
         skipButton.isHidden = false
     }
 

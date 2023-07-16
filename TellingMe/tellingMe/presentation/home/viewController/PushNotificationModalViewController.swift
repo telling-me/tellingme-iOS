@@ -16,6 +16,10 @@ class PushNotificationModalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.backgroundColor = .clear
+    }
+
     func registerForNotification(completion: @escaping () -> Void) {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(

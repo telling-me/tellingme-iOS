@@ -313,7 +313,7 @@
                                         <color key="textColor" name="Gray7"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZJx-Hy-hQc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="ZJx-Hy-hQc">
                                         <rect key="frame" x="122" y="99" width="120" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="JrC-2t-Mus"/>
@@ -417,6 +417,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="BellRinging" width="151" height="163"/>
         <image name="Home" width="64" height="64"/>
         <image name="Home_selected" width="81" height="81"/>
         <image name="Shape" width="202" height="157"/>

@@ -13,9 +13,9 @@ class SignUpPaveViewModel {
         let storyBoard = UIStoryboard(name: "SignUp", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "agreement")
         let vc2 = storyBoard.instantiateViewController(withIdentifier: "getName")
-        let vc3 = storyBoard.instantiateViewController(withIdentifier: "getWorry")
+        let vc3 = storyBoard.instantiateViewController(withIdentifier: "getOption")
         let vc4 = storyBoard.instantiateViewController(withIdentifier: "getJob")
-        let vc5 = storyBoard.instantiateViewController(withIdentifier: "getOption")
+        let vc5 = storyBoard.instantiateViewController(withIdentifier: "getWorry")
         return [vc1, vc2, vc3, vc4, vc5]
     }()
     let pagesCount = 7
@@ -70,7 +70,7 @@ class GetJobViewModel {
 
 class GetOptionViewModel {
     let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Male", title: "남성"), TeritaryBothData(imgName: "Female", title: "여성")]
-    var selectedItem: String? = nil
+    var gender: String? = nil
     
     var year: String? = nil
     let todayYear = Int(Date().yearFormat())!

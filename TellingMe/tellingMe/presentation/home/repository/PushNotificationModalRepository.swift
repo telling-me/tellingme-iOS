@@ -27,5 +27,7 @@ extension PushNotificationModalViewController {
                 }
             }
         }
+        
+        self.dismiss(animated: true)
     }
 }

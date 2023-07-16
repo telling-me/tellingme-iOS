@@ -62,6 +62,11 @@ class AnswerListViewController: UIViewController {
     func addChildAndAddSubview(_ childViewController: UIViewController) {
         addChild(childViewController)
         containerView.addSubview(childViewController.view)
+        childViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        childViewController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        childViewController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        childViewController.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        childViewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         childViewController.didMove(toParent: self)
     }
 
@@ -139,6 +144,7 @@ class AnswerListViewController: UIViewController {
                 self.yearHeight.constant = 0
                 self.yearTableView.isHidden = true
             }
+            self.view.bringSubviewToFront(monthTableView)
         }
     }
 
