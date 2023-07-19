@@ -95,9 +95,9 @@ struct AnswerAPI: Networkable {
         }
     }
 
-    static func getAnswer(query: String, completion: @escaping(Result<TodayAnswerRespose?, APIError>) -> Void) {
+    static func getAnswer(query: String, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.getAnswer(query: query), dtoType: TodayAnswerRespose.self, completion: completion)
+            try makeAuthorizedProvider().request(.getAnswer(query: query), dtoType: GetAnswerRespose.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         animation()
         getQuestion()
         getAnswerRecord()
-        getTodayAnswer()
+        getAnswer()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

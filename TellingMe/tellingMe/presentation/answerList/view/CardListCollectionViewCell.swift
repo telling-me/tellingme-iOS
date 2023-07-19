@@ -10,10 +10,10 @@ import UIKit
 class CardListCollectionViewCell: UICollectionViewCell {
     static let id = "cardListCollectionViewCell"
     let emotions = ["Happy", "Proud", "Meh", "Tired", "Sad", "Angry"]
-    var emotion: Int? = nil
-    var title: String? = nil
-    var date: [Int]? = nil
-
+//    var emotion: Int? = nil
+//    var title: String? = nil
+//    var date: [Int]? = nil
+    var paragraphStyle = NSMutableParagraphStyle()
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,18 +29,25 @@ class CardListCollectionViewCell: UICollectionViewCell {
 
     let questionLabel: UILabel = {
         let label = Body2Regular()
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let subQuestionLabel: UILabel = {
         let label = CaptionLabelRegular()
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let answerTextView: UITextView = {
         let textView = UITextView()
+        textView.backgroundColor = .clear
+        textView.font = UIFont(name: "NanumSquareRoundOTFR", size: 12)
+        textView.textContainer.lineBreakMode = .byWordWrapping
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -52,6 +59,13 @@ class CardListCollectionViewCell: UICollectionViewCell {
     }()
 
     func setCell(data: AnswerListResponse) {
+        imgView.image = UIImage(named: self.emotions[data.emotion - 1])
+        questionLabel.text = data.title.replacingOccurrences(of: "\n", with: " ")
+        subQuestionLabel.text = data.phrase
+        paragraphStyle.lineHeightMultiple = 1.62
+        answerTextView.attributedText = NSMutableAttributedString(string: data.content, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        dateLabel.text = "\(data.date[0])년 \(data.date[1])월 \(data.date[2])일"
+
         contentView.backgroundColor = UIColor(named: "Side100")
         contentView.addSubview(containerView)
 
@@ -75,8 +89,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         questionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
         subQuestionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 12).isActive = true
-        subQuestionLabel.leadingAnchor.constraint(equalTo: questionLabel.leadingAnchor).isActive = true
-        subQuestionLabel.trailingAnchor.constraint(equalTo: questionLabel.trailingAnchor).isActive = true
+        subQuestionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
         answerTextView.topAnchor.constraint(equalTo: subQuestionLabel.bottomAnchor, constant: 38).isActive = true
         answerTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -86,12 +99,5 @@ class CardListCollectionViewCell: UICollectionViewCell {
         dateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 72).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-
-        self.emotion = data.emotion - 1
-        self.title = data.title
-        self.date = data.date
-        imgView.image = UIImage(named: self.emotions[data.emotion - 1])
-        questionLabel.text = self.title!.replacingOccurrences(of: "\n", with: " ")
-        dateLabel.text = "\(self.date![0])년 \(self.date![1])월 \(self.date![2])일"
     }
 }

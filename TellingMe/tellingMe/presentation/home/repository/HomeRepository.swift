@@ -31,7 +31,7 @@ extension HomeViewController {
         }
     }
 
-    func getTodayAnswer() {
+    func getAnswer() {
         guard let date = viewModel.questionDate else {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return

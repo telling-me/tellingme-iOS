@@ -23,6 +23,8 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var foldView: UIView!
     @IBOutlet weak var foldViewHeight: NSLayoutConstraint!
 
+    @IBOutlet weak var publicSwitch: UISwitch!
+
     let viewModel = AnswerViewModel()
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +53,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         vc.modalTransitionStyle = .coverVertical
         vc.delegate = self
         vc.viewModel.selectedEmotion = self.viewModel.emotion
-//        if let tabBarController = self.tabBarController as? MainTabBarController {
-//            tabBarController.tabBar.isHidden = true
-//        }
         self.present(vc, animated: false)
     }
 
@@ -105,15 +104,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         } else {
             showEmotion()
         }
-    }
-
-    @IBAction func presentEotionView(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "emotion") as? EmotionViewController else { return }
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .coverVertical
-        vc.delegate = self
-        vc.viewModel.selectedEmotion = self.viewModel.emotion
-        self.present(vc, animated: false)
     }
 
     @IBAction func foldView(_ sender: UIButton) {

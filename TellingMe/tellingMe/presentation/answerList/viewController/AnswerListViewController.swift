@@ -7,16 +7,12 @@
 
 import UIKit
 
-class AnswerListViewController: UIViewController {
+class AnswerListViewController: DropDownViewController {
     let viewModel = AnswerListViewModel()
     let noneView = NoneAnswerListView()
     @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
-    @IBOutlet weak var yearHeight: NSLayoutConstraint!
-    @IBOutlet weak var monthHeight: NSLayoutConstraint!
-    @IBOutlet weak var monthTableView: UITableView!
-    @IBOutlet weak var yearTableView: UITableView!
     @IBOutlet weak var containerView: UIView!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -27,12 +23,15 @@ class AnswerListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.delegate = self
+        yearButton.delegate = self
+        monthButton.delegate = self
+
+        setSmallDropDownLayout()
         yearButton.setSmallLayout()
         monthButton.setSmallLayout()
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
-        setContainerView(tag: 0)
-        setAction()
+        self.view.bringSubviewToFront(tableView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +49,7 @@ class AnswerListViewController: UIViewController {
             }
             vc.answerList = self.viewModel.answerList
             addChildAndAddSubview(vc)
+            vc.collectionView.reloadData()
         } else {
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "listTableViewController") as? ListTableViewController else {
                 return
@@ -88,6 +88,7 @@ class AnswerListViewController: UIViewController {
         noneView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -95).isActive = true
         noneView.heightAnchor.constraint(equalToConstant: 125).isActive = true
         noneView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
     }
 
     @IBAction func changeView(_ sender: UIButton) {
@@ -100,54 +101,6 @@ class AnswerListViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
-    func setAction() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-
-        yearButton.addGestureRecognizer(tapGestureRecognizer)
-        monthButton.addGestureRecognizer(tapGestureRecognizer2)
-    }
-
-    @objc
-    func didTapView(_ sender: UITapGestureRecognizer) {
-        if sender.view == yearButton {
-            if yearTableView.isHidden {
-                yearButton.setOpen()
-                self.yearTableView.isHidden = false
-                UIView.transition(with: self.yearTableView,
-                                  duration: 0.5,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                    if self.viewModel.yearArray.count <= 3 {
-                        self.yearHeight.constant = CGFloat(self.viewModel.yearArray.count * 40)
-                    } else {
-                        self.yearHeight.constant = 160
-                    }
-                })
-            } else {
-                yearButton.setClose()
-                self.yearHeight.constant = 0
-                self.yearTableView.isHidden = true
-            }
-        } else if sender.view == monthButton {
-            if monthTableView.isHidden {
-                monthButton.setOpen()
-                self.monthTableView.isHidden = false
-                UIView.transition(with: self.monthTableView,
-                                  duration: 0.5,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                        self.monthHeight.constant = 160
-                })
-            } else {
-                monthButton.setClose()
-                self.yearHeight.constant = 0
-                self.yearTableView.isHidden = true
-            }
-            self.view.bringSubviewToFront(monthTableView)
-        }
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
@@ -155,66 +108,62 @@ class AnswerListViewController: UIViewController {
         let touchLocation = touch.location(in: view)
 
         // 현재 터치가 테이블 뷰 내부에 있는지 확인합니다.
-        if yearTableView.frame.contains(touchLocation) {
-            monthButton.setClose()
-            monthTableView.isHidden = true
-            monthHeight.constant = 0
-            return
-        } else if monthTableView.frame.contains(touchLocation) {
-            yearButton.setClose()
-            yearTableView.isHidden = true
-            yearHeight.constant = 0
-        } else {
-            monthTableView.isHidden = true
-            monthHeight.constant = 0
-
-            yearTableView.isHidden = true
-            yearHeight.constant = 0
-
+        if !tableView.frame.contains(touchLocation) && !tableView.isHidden {
             monthButton.setClose()
             yearButton.setClose()
+            tableView.isHidden.toggle()
+            tableView.removeFromSuperview()
         }
     }
 }
 
-extension AnswerListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == yearTableView {
-            return viewModel.yearArray.count
-        } else {
-            return viewModel.monthArray.count
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.id) as? DropDownTableViewCell else {
-            return UITableViewCell()
-        }
-        if tableView == yearTableView {
-            cell.setCell(text: String(viewModel.yearArray[indexPath.row]))
-        } else {
-            cell.setCell(text: String(viewModel.monthArray[indexPath.row]))
-        }
-        return cell
-    }
-
+extension AnswerListViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? DropDownTableViewCell else { return }
-        tableView.isHidden = true
-        if tableView == yearTableView {
-            viewModel.year = cell.getCell()
-            yearButton.setTitle(text: "\(cell.getCell())년", isSmall: true)
+        switch viewModel.currentTag {
+        case 0:
+            viewModel.year = viewModel.yearArray[indexPath.row]
             yearButton.setClose()
-        } else {
-            viewModel.month = cell.getCell()
-            monthButton.setTitle(text: "\(cell.getCell())월", isSmall: true)
+            yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
+        case 1:
+            viewModel.month = viewModel.monthArray[indexPath.row]
             monthButton.setClose()
+            monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
+        default:
+            fatalError("currentTag 설정 해주세요")
         }
-        getAnswerList()
+        tableView.isHidden = true
+        tableView.removeFromSuperview()
+    }
+}
+
+extension AnswerListViewController: DropDownButtonDelegate {
+    func showDropDown(_ button: DropDownButton) {
+        viewModel.currentTag = button.tag
+        switch button.tag {
+        case 0:
+            items = viewModel.yearArray
+        case 1:
+            items = viewModel.monthArray
+        default:
+            break
+        }
+
+        if tableView.isHidden {
+            button.setOpen()
+            view.addSubview(tableView)
+            tableView.isHidden.toggle()
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+                tableView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
+                tableView.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 8),
+                tableView.heightAnchor.constraint(equalToConstant: 208)
+            ])
+        } else {
+            button.setClose()
+            tableView.isHidden.toggle()
+            tableView.removeFromSuperview()
+        }
+        tableView.reloadData()
     }
 }
 

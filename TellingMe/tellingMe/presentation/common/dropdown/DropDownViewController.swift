@@ -30,6 +30,11 @@ class DropDownViewController: UIViewController {
 
         tableView.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.id)
     }
+
+    func setSmallDropDownLayout() {
+        tableView.cornerRadius = 16
+        rowHeight = 40
+    }
 }
 
 extension DropDownViewController: UITableViewDelegate, UITableViewDataSource {

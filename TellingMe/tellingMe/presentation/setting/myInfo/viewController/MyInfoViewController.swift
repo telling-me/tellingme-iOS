@@ -164,7 +164,7 @@ class MyInfoViewController: DropDownViewController {
         self.present(vc, animated: true)
         updateUserInfo()
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         yearButton.setClose()
         monthButton.setClose()

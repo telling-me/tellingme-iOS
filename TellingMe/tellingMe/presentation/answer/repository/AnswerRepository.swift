@@ -45,7 +45,7 @@ extension AnswerViewController {
             self.showToast(message: "감정을 다시 선택해주세요.")
             return
         }
-        let request = RegisterAnswerRequest(content: self.answerTextView.text, date: date, emotion: emotion+1)
+        let request = RegisterAnswerRequest(content: self.answerTextView.text, date: date, emotion: emotion+1, isPublic: publicSwitch.isOn)
         AnswerAPI.registerAnswer(request: request) { result in
             switch result {
             case .success:

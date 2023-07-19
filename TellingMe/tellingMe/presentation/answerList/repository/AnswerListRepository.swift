@@ -22,6 +22,7 @@ extension AnswerListViewController {
                     self.containerView.isHidden = false
                     self.viewModel.answerList = response!
                     self.viewModel.answerCount = response!.count
+                    self.setContainerView(tag: 0)
                 }
             case .failure(let error):
                 print(error)

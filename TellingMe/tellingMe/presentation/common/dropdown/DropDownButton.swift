@@ -111,7 +111,7 @@ class DropDownButton: UIView {
     func setClose() {
         imageView.image = UIImage(systemName: "chevron.down")
     }
-    
+
     func setDisabled() {
         self.isUserInteractionEnabled = false
         self.backgroundColor = UIColor(named: "Gray1")
