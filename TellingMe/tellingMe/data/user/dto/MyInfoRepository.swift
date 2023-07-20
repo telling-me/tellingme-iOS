@@ -19,7 +19,7 @@ extension MyInfoViewController {
                 case .errorData(let errorData):
                     self.showToast(message: errorData.message)
                 default:
-                    print("error")
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -36,12 +36,12 @@ extension MyInfoViewController {
                 case .errorData(let errorData):
                     self.showToast(message: errorData.message)
                 default:
-                    print("error")
+                    print(error.localizedDescription)
                 }
             }
         }
     }
-    
+
     func checkJobInfo(job: String, completion: @escaping (Bool) -> Void) {
         let request = JobInfoRequest(job: 5, jobName: job)
         LoginAPI.postJobInfo(request: request) { result in
@@ -61,7 +61,7 @@ extension MyInfoViewController {
             }
         }
     }
-    
+
     func checkNickname(nickname: String, completion: @escaping (Bool) -> Void) {
         let request = CheckNicknameRequest(nickname: nickname)
         LoginAPI.checkNickname(request: request) { result in

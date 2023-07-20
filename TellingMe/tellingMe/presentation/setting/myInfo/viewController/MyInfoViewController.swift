@@ -11,8 +11,6 @@ class MyInfoViewController: DropDownViewController {
     @IBOutlet weak var headerView: SettingHeaderView!
     @IBOutlet weak var mbtiButton: DropDownButton!
     @IBOutlet weak var yearButton: DropDownButton!
-    @IBOutlet weak var monthButton: DropDownButton!
-    @IBOutlet weak var dayButton: DropDownButton!
 
     @IBOutlet weak var myview: UIView!
     @IBOutlet var containerViews: [UIView]!
@@ -64,15 +62,9 @@ class MyInfoViewController: DropDownViewController {
 
         if let year = viewModel.year {
             yearButton.setTitle(text: year, isSmall: false)
-            monthButton.setTitle(text: viewModel.month, isSmall: false)
-            dayButton.setTitle(text: viewModel.day, isSmall: false)
             yearButton.setDisabled()
-            monthButton.setDisabled()
-            dayButton.setDisabled()
         } else {
             yearButton.setTitle(text: "년", isSmall: false)
-            monthButton.setTitle(text: "월", isSmall: false)
-            dayButton.setTitle(text: "일", isSmall: false)
         }
 
         if let mbti = viewModel.mbti {
@@ -93,14 +85,10 @@ class MyInfoViewController: DropDownViewController {
         headerView.delegate = self
         mbtiButton.delegate = self
         yearButton.delegate = self
-        monthButton.delegate = self
-        dayButton.delegate = self
         nickNameVC.delegate = self
 
         mbtiButton.setLayout()
         yearButton.setMediumLayout()
-        monthButton.setMediumLayout()
-        dayButton.setMediumLayout()
 
         headerView.addSubview(completedButton)
         completedButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -25).isActive = true
@@ -167,8 +155,6 @@ class MyInfoViewController: DropDownViewController {
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         yearButton.setClose()
-        monthButton.setClose()
-        dayButton.setClose()
         mbtiButton.setClose()
         tableView.isHidden = true
         tableView.removeFromSuperview()

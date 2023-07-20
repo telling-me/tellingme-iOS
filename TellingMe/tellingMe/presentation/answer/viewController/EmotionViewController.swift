@@ -45,17 +45,10 @@ class EmotionViewController: UIViewController {
 
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
-            if let index = self.viewModel.selectedEmotion {
-                self.dismiss(animated: true)
-            } else {
-                self.dismiss(animated: true)
-                self.delegate?.emotionViewCancel()
-            }
+            self.dismiss(animated: true)
+            self.delegate?.emotionViewCancel()
         } else {
-            guard let index = self.viewModel.selectedEmotion else {
-                self.showToast(message: "감정을 선택해주세요")
-                return
-            }
+            self.showToast(message: "감정을 선택해주세요")
             self.dismiss(animated: true)
             self.delegate?.showCompletedModal()
         }
@@ -86,8 +79,8 @@ extension EmotionViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       return CGSize(width: 56, height: 56)
-   }
+        return CGSize(width: 56, height: 56)
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20

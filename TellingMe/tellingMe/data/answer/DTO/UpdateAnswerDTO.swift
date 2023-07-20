@@ -10,4 +10,5 @@ import Foundation
 struct UpdateAnswerRequest: Codable {
     let date: String
     let content: String
+    let isPublic: Bool
 }

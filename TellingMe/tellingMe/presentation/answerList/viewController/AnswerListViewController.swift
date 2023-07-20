@@ -34,13 +34,6 @@ class AnswerListViewController: DropDownViewController {
         self.view.bringSubviewToFront(tableView)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        if let selectedViewController = self.tabBarController?.selectedViewController,
-           selectedViewController != self.navigationController {
-            self.tabBarController?.tabBar.isHidden = true
-        }
-    }
-
     func setContainerView(tag: Int) {
         removeContainerView()
         if tag == 0 {
@@ -74,10 +67,10 @@ class AnswerListViewController: DropDownViewController {
         containerView.subviews.forEach { subview in
             subview.removeFromSuperview()
         }
-        children.forEach { childViewController in
-            childViewController.willMove(toParent: nil)
-            childViewController.removeFromParent()
-        }
+//        children.forEach { childViewController in
+//            childViewController.willMove(toParent: nil)
+//            childViewController.removeFromParent()
+//        }
     }
 
     func setNotfoundAnswerList() {

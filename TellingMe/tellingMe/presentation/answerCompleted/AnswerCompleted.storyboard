@@ -117,19 +117,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pat-fe-BmZ">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-nJ-sLH" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-nJ-sLH" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="0.0" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-oo-Ftl" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-oo-Ftl" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="10" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnY-cR-XO8" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnY-cR-XO8" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="171.66666666666666" y="96" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
@@ -143,6 +143,7 @@
                                     <constraint firstAttribute="bottom" secondItem="KnY-cR-XO8" secondAttribute="bottom" constant="24" id="8HT-tJ-wG2"/>
                                     <constraint firstItem="F2c-oo-Ftl" firstAttribute="leading" secondItem="pat-fe-BmZ" secondAttribute="leading" constant="30" id="8hA-H7-4Dq"/>
                                     <constraint firstAttribute="trailing" secondItem="eg8-nJ-sLH" secondAttribute="trailing" constant="30" id="9Ut-Pq-v6G"/>
+                                    <constraint firstItem="KnY-cR-XO8" firstAttribute="top" secondItem="F2c-oo-Ftl" secondAttribute="bottom" constant="18" id="CKs-Ax-jkr"/>
                                     <constraint firstItem="eg8-nJ-sLH" firstAttribute="top" secondItem="pat-fe-BmZ" secondAttribute="top" id="Igu-1W-OuE"/>
                                     <constraint firstAttribute="height" constant="120" id="Vmj-jW-TQn"/>
                                     <constraint firstAttribute="trailing" secondItem="F2c-oo-Ftl" secondAttribute="trailing" constant="30" id="Vyo-2d-96e"/>

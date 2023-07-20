@@ -10,7 +10,6 @@ import Foundation
 
 extension AnswerViewController: EmotionDelegate {
     func emotionViewCancel() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     func showCompletedModal() {

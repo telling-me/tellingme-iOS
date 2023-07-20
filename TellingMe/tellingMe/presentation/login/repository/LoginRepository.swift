@@ -84,6 +84,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                let authCode = appleIDCredential.authorizationCode,
                let tokenString = String(data: identityToken, encoding: .utf8),
                let authCodeString = String(data: authCode, encoding: .utf8) {
+                print(authCodeString, "authauth")
                 KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
                 KeychainManager.shared.save(tokenString, key: Keys.appleToken.rawValue)
                 LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: nil)) { result in

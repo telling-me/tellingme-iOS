@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
         animation()
         getQuestion()
         getAnswerRecord()
@@ -52,11 +51,11 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
-
-        if let selectedViewController = self.tabBarController?.selectedViewController,
-           selectedViewController != self.navigationController {
-            self.tabBarController?.tabBar.isHidden = true
-        }
+//
+//        if let selectedViewController = self.tabBarController?.selectedViewController,
+//           selectedViewController != self.navigationController {
+//            self.tabBarController?.tabBar.isHidden = true
+//        }
     }
 
     func setView() {

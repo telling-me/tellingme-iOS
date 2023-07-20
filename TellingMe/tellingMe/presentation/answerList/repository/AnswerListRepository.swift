@@ -19,7 +19,7 @@ extension AnswerListViewController {
                     self.setNotfoundAnswerList()
                 } else {
                     self.noneView.removeFromSuperview()
-                    self.containerView.isHidden = false
+//                    self.containerView.isHidden = false
                     self.viewModel.answerList = response!
                     self.viewModel.answerCount = response!.count
                     self.setContainerView(tag: 0)

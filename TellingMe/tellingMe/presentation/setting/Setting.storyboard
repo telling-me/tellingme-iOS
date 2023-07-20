@@ -312,35 +312,6 @@
                                                         <color key="textColor" name="Gray7"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="LuL-NM-rb2">
-                                                        <rect key="frame" x="25" y="69" width="343" height="57"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-go-vbt" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="57"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="109" id="KJQ-wp-zTf"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HiW-3V-32W" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
-                                                                <rect key="frame" x="136" y="0.0" width="90" height="57"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="x3l-zK-TUg"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIF-S9-eRM" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
-                                                                <rect key="frame" x="253" y="0.0" width="90" height="57"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="XJ0-Lb-ILD"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="57" id="LFn-aH-cEZ"/>
-                                                        </constraints>
-                                                    </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생년월일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgq-Lb-F3w" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="24" width="59" height="19"/>
                                                         <constraints>
@@ -350,16 +321,21 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-go-vbt" customClass="DropDownButton" customModule="tellingMe" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="69" width="343" height="57"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Side100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="LuL-NM-rb2" secondAttribute="trailing" constant="25" id="5DM-26-TCi"/>
-                                                    <constraint firstItem="LuL-NM-rb2" firstAttribute="top" secondItem="57m-OZ-yL2" secondAttribute="bottom" constant="8" id="Ab5-V9-MWW"/>
+                                                    <constraint firstItem="7Yd-go-vbt" firstAttribute="top" secondItem="57m-OZ-yL2" secondAttribute="bottom" constant="8" id="6WL-KK-nZ2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7Yd-go-vbt" secondAttribute="trailing" constant="25" id="HVl-zU-oR3"/>
                                                     <constraint firstAttribute="height" constant="150" id="KIS-u0-3aU"/>
                                                     <constraint firstItem="57m-OZ-yL2" firstAttribute="top" secondItem="Vgq-Lb-F3w" secondAttribute="bottom" constant="4" id="Mlg-fV-pfA"/>
                                                     <constraint firstItem="57m-OZ-yL2" firstAttribute="leading" secondItem="Vgq-Lb-F3w" secondAttribute="leading" id="Sb5-0X-p0V"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7Yd-go-vbt" secondAttribute="bottom" constant="24" id="a2z-uv-4Bs"/>
+                                                    <constraint firstItem="7Yd-go-vbt" firstAttribute="leading" secondItem="qlh-RW-TIl" secondAttribute="leading" constant="25" id="aMp-CU-udA"/>
                                                     <constraint firstItem="Vgq-Lb-F3w" firstAttribute="leading" secondItem="qlh-RW-TIl" secondAttribute="leading" constant="35" id="grk-w2-aE0"/>
-                                                    <constraint firstItem="LuL-NM-rb2" firstAttribute="leading" secondItem="qlh-RW-TIl" secondAttribute="leading" constant="25" id="sPv-Ma-ifi"/>
                                                     <constraint firstItem="Vgq-Lb-F3w" firstAttribute="top" secondItem="qlh-RW-TIl" secondAttribute="top" constant="24" id="zjH-Wh-G27"/>
                                                 </constraints>
                                             </view>
@@ -467,10 +443,8 @@
                     </view>
                     <size key="freeformSize" width="393" height="1300"/>
                     <connections>
-                        <outlet property="dayButton" destination="lIF-S9-eRM" id="yci-8D-reI"/>
                         <outlet property="headerView" destination="zas-sl-bqJ" id="3lI-QQ-xJ5"/>
                         <outlet property="mbtiButton" destination="qjj-gj-nng" id="UeU-4Z-NbT"/>
-                        <outlet property="monthButton" destination="HiW-3V-32W" id="EzU-f2-gDS"/>
                         <outlet property="myview" destination="q0P-RW-YFT" id="K19-dg-oxb"/>
                         <outlet property="yearButton" destination="7Yd-go-vbt" id="P3m-P5-4MU"/>
                         <outletCollection property="containerViews" destination="I2M-OO-FeJ" collectionClass="NSMutableArray" id="KZP-Q4-NUD"/>
@@ -501,7 +475,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-Cr-lbG">
                                 <rect key="frame" x="25" y="143" width="343" height="633"/>
                                 <color key="backgroundColor" name="Side100"/>
-                                <mutableString key="text">TellingUS (이하 “회사”)는 「개인정보 보호법」 제30조에 따라 tellingme 서비스(이하 “텔링미”)를 이용하는 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+                                <string key="text">TellingUS (이하 “회사”)는 「개인정보 보호법」 제30조에 따라 tellingme 서비스(이하 “텔링미”)를 이용하는 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
 ○ 이 개인정보처리방침은 2023년 6월 22일부터 적용됩니다.
 
@@ -642,7 +616,7 @@
 
 &lt;제13조(개인정보 처리방침의 개정 및 공지)&gt;
 
-회사는 필요한 경우 관계 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 약관 변경 시에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 최소 7일 전부터 알림 기능으로 공지합니다.</mutableString>
+회사는 필요한 경우 관계 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 약관 변경 시에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 최소 7일 전부터 알림 기능으로 공지합니다.</string>
                                 <color key="textColor" name="black"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

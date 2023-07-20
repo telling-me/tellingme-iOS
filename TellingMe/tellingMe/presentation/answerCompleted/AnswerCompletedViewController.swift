@@ -26,7 +26,6 @@ class AnswerCompletedViewController: PullDownViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         items = viewModel.menus
-//        self.dayLabel.text = viewModel.questionDate
         tableView.reloadData()
     }
 

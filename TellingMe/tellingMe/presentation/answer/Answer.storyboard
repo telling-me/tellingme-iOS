@@ -272,13 +272,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="answerTextView" destination="vHB-ww-Xkt" id="S0U-Yz-qKF"/>
-                        <outlet property="backButton" destination="d9f-Fl-Wik" id="xwG-1c-q5S"/>
                         <outlet property="bottomLayout" destination="6qs-CU-2Z3" id="UVn-nL-Wjc"/>
                         <outlet property="countTextLabel" destination="xMo-tO-t9O" id="za6-EI-tCk"/>
                         <outlet property="dayLabel" destination="rfO-mn-pOD" id="vdO-GU-5dF"/>
                         <outlet property="emotionImageView" destination="kj3-8I-5bY" id="tae-jk-Lrp"/>
                         <outlet property="emotionLabel" destination="KT6-av-dlB" id="oGk-59-Xf7"/>
-                        <outlet property="emotionView" destination="Qhj-U0-bW3" id="yfg-TK-vzW"/>
+                        <outlet property="emotionView" destination="Qhj-U0-bW3" id="4id-e3-F6X"/>
                         <outlet property="foldView" destination="32g-AO-6Xs" id="9u9-Yp-NXx"/>
                         <outlet property="foldViewHeight" destination="XMZ-dE-KiR" id="cVg-1P-1eV"/>
                         <outlet property="publicSwitch" destination="xSP-ur-XVY" id="4Pq-gY-z7v"/>
@@ -447,10 +446,10 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title=""/>
                                         <connections>
-                                            <action selector="clickBack:" destination="hNg-kt-flE" eventType="touchUpInside" id="KhU-vr-rfG"/>
+                                            <action selector="clickBack:" destination="hNg-kt-flE" eventType="touchUpInside" id="Ie6-iI-mKb"/>
                                         </connections>
                                     </button>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTG-VX-Fn6">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTG-VX-Fn6">
                                         <rect key="frame" x="145.66666666666666" y="21" width="102" height="44"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNV-PN-nHd">
@@ -512,19 +511,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcX-wQ-Ghf">
                                 <rect key="frame" x="25" y="136" width="343" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-N1-YtK" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-N1-YtK" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="0.0" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fda-mo-Yu9" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fda-mo-Yu9" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="30" y="10" width="283" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-Nc-7nL" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-Nc-7nL" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="171.66666666666666" y="96" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Side500"/>
@@ -535,6 +534,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ewL-Nc-7nL" secondAttribute="bottom" constant="24" id="2aK-AD-sfJ"/>
                                     <constraint firstItem="fda-mo-Yu9" firstAttribute="leading" secondItem="VcX-wQ-Ghf" secondAttribute="leading" constant="30" id="93o-cc-rdQ"/>
+                                    <constraint firstItem="ewL-Nc-7nL" firstAttribute="top" secondItem="fda-mo-Yu9" secondAttribute="bottom" constant="18" id="Bru-2d-Jd8"/>
                                     <constraint firstAttribute="trailing" secondItem="fda-mo-Yu9" secondAttribute="trailing" constant="30" id="FNc-H5-8ir"/>
                                     <constraint firstAttribute="trailing" secondItem="ado-N1-YtK" secondAttribute="trailing" constant="30" id="FNy-zh-rdz"/>
                                     <constraint firstItem="fda-mo-Yu9" firstAttribute="top" secondItem="ado-N1-YtK" secondAttribute="bottom" constant="10" id="OeD-PV-ee7"/>
@@ -603,7 +603,7 @@
                                                     <color key="titleColor" name="Logo"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="clickComplete:" destination="hNg-kt-flE" eventType="touchUpInside" id="NbI-HB-0cR"/>
+                                                    <action selector="clickComplete:" destination="hNg-kt-flE" eventType="touchUpInside" id="2KC-t6-5nq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -666,14 +666,15 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="answerTextView" destination="TYc-2t-PhL" id="6lF-YI-BkD"/>
-                        <outlet property="backButton" destination="tOh-sO-FHo" id="Xzy-sT-yVh"/>
                         <outlet property="bottomLayout" destination="DQv-AW-hPV" id="tcf-BQ-UQH"/>
                         <outlet property="countTextLabel" destination="Hih-gf-fUU" id="KYI-UH-9vR"/>
                         <outlet property="dayLabel" destination="ewL-Nc-7nL" id="8Ck-0T-t0z"/>
+                        <outlet property="emotionImageView" destination="TYS-7g-5PR" id="Upf-TC-62B"/>
+                        <outlet property="emotionLabel" destination="am7-V8-e97" id="UOV-yS-krT"/>
                         <outlet property="foldView" destination="VcX-wQ-Ghf" id="bDK-YO-2FV"/>
                         <outlet property="foldViewHeight" destination="eXb-xV-zSk" id="PIb-D9-fJR"/>
                         <outlet property="publicSwitch" destination="MQ3-8A-l5C" id="iyg-Gw-QCV"/>
-                        <outlet property="questionLabel" destination="ado-N1-YtK" id="sHp-ts-Azz"/>
+                        <outlet property="questionLabel" destination="ado-N1-YtK" id="CxR-ea-3Nz"/>
                         <outlet property="subQuestionLabel" destination="fda-mo-Yu9" id="VLJ-F7-8P8"/>
                     </connections>
                 </viewController>

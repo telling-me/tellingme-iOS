@@ -29,6 +29,19 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
         cell.setShadow(shadowRadius: 20)
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = answerList[indexPath.row].date.intArraytoDate() else {
+            return
+        }
+        let storyboard = UIStoryboard(name: "AnswerCompleted", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "answerCompleted") as? AnswerCompletedViewController else {
+            return
+        }
+        vc.setQuestionDate(date: data)
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           let availableWidth = collectionView.bounds.width - leadingPadding * 2

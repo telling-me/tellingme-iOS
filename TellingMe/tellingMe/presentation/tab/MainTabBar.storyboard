@@ -24,7 +24,7 @@
         <scene sceneID="t7f-ga-12W">
             <objects>
                 <tabBarController storyboardIdentifier="mainTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="51d-2a-K2X" customClass="MainTabBarController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="krp-w5-KU3"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyJ-ZU-qiT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>

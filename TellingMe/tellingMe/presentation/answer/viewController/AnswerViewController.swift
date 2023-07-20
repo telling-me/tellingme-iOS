@@ -10,7 +10,6 @@ import UIKit
 class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var subQuestionLabel: UILabel!
     @IBOutlet weak var answerTextView: UITextView!
 
@@ -125,7 +124,6 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     func clickCancel() {
-
     }
 
     // 답변 등록하기 버튼
