@@ -15,14 +15,14 @@ extension AnswerListViewController {
             switch result {
             case .success(let response):
                 if response?.count == 0 {
-                    self.tableView.isHidden = true
+                    self.containerView.isHidden = true
                     self.setNotfoundAnswerList()
                 } else {
                     self.noneView.removeFromSuperview()
-                    self.tableView.isHidden = false
-                    self.viewModel.answerList = response
+//                    self.containerView.isHidden = false
+                    self.viewModel.answerList = response!
                     self.viewModel.answerCount = response!.count
-                    self.tableView.reloadData()
+                    self.setContainerView(tag: 0)
                 }
             case .failure(let error):
                 print(error)

@@ -26,7 +26,7 @@ class SettingTableViewController: UITableViewController {
             case .notDetermined:
                 // 푸시 알림 설정이 아직 결정되지 않은 상태이므로 동의를 허용
                 self.enablePushNotification()
-            @unknown default:
+            default:
                 // 알 수 없는 상태
                 break
             }
@@ -55,7 +55,7 @@ class SettingTableViewController: UITableViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     func getFirebaseToken() -> String? {
         guard let token = Messaging.messaging().fcmToken else {
             self.showToast(message: "푸쉬 알림을 등록할 수 없습니다.")

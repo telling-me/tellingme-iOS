@@ -21,6 +21,10 @@ class ModalViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        view.backgroundColor = .clear
+    }
 
     @IBAction func clickButton(_ sender: UIButton) {
         // 취소 버튼 tag = 0, else = 1

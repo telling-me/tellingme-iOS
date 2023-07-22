@@ -58,7 +58,15 @@ class Input: UIView {
         self.inputBox.text = text
     }
 
+    func getText() -> String? {
+        return self.inputBox.text
+    }
+
     func hiddenKeyboard() {
         self.inputBox.resignFirstResponder()
+    }
+
+    func setInputKeyobardStyle() {
+        inputBox.keyboardType = .numberPad
     }
 }

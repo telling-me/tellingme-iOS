@@ -13,12 +13,10 @@ class SignUpPaveViewModel {
         let storyBoard = UIStoryboard(name: "SignUp", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "agreement")
         let vc2 = storyBoard.instantiateViewController(withIdentifier: "getName")
-        let vc3 = storyBoard.instantiateViewController(withIdentifier: "getWorry")
+        let vc3 = storyBoard.instantiateViewController(withIdentifier: "getOption")
         let vc4 = storyBoard.instantiateViewController(withIdentifier: "getJob")
-        let vc5 = storyBoard.instantiateViewController(withIdentifier: "getGender")
-        let vc6 = storyBoard.instantiateViewController(withIdentifier: "getBirthday")
-        let vc7 = storyBoard.instantiateViewController(withIdentifier: "getMBTI")
-        return [vc1, vc2, vc3, vc4, vc5, vc6, vc7]
+        let vc5 = storyBoard.instantiateViewController(withIdentifier: "getWorry")
+        return [vc1, vc2, vc3, vc4, vc5]
     }()
     let pagesCount = 7
     var currentIndex = 0
@@ -70,50 +68,10 @@ class GetJobViewModel {
     }
 }
 
-class GetGenderViewModel {
+class GetOptionViewModel {
     let genderList: [TeritaryBothData] = [TeritaryBothData(imgName: "Male", title: "남성"), TeritaryBothData(imgName: "Female", title: "여성")]
-    var selectedItem: String? = nil
-
-    init() {
-
-    }
-}
-
-class GetBirthdayViewModel {
+    var gender: String? = nil
+    
     var year: String? = nil
-    var month: String? = nil
-    var day: String? = nil
-
-    var yearArray: [Int]?
-    let monthArray = Array(1...13)
-    let day_Array = Array(1...32)
-
-    init() {
-        let today = Date()
-        if let todayYear = Int(today.yearFormat()) {
-            yearArray = Array(todayYear-50 ... todayYear)
-        }
-    }
-
-    func updateYear(year: String) {
-        self.year = year
-    }
-
-    func updateMonth(month: String) {
-        self.month = month
-    }
-
-    func updateDay(day: String) {
-        self.day = day
-    }
-}
-
-class GetMBTIViewModel {
-    var myMbti: String? = nil
-    let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESTP", "ESFP", "ESTJ", "ESFJ",
-                           "INFJ", "INFP", "INTJ", "INTP", "ISTP", "ISFP", "ISFJ", "ISTJ"]
-
-    init() {
-
-    }
+    let todayYear = Int(Date().yearFormat())!
 }

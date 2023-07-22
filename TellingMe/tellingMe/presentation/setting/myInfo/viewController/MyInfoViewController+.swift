@@ -58,14 +58,6 @@ extension MyInfoViewController {
             viewModel.year = yearArray[indexPath.row]
             yearButton.setClose()
             yearButton.setTitle(text: viewModel.year!, isSmall: false)
-        case 1:
-            viewModel.month = viewModel.monthArray[indexPath.row]
-            monthButton.setClose()
-            monthButton.setTitle(text: viewModel.month, isSmall: false)
-        case 2:
-            viewModel.day = viewModel.dayArray[indexPath.row]
-            dayButton.setClose()
-            dayButton.setTitle(text: viewModel.day, isSmall: false)
         case 3:
             viewModel.mbti = viewModel.mbtis[indexPath.row]
             mbtiButton.setClose()

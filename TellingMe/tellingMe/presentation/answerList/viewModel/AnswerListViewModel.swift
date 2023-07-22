@@ -8,19 +8,20 @@
 import Foundation
 
 class AnswerListViewModel {
-    var answerList: [AnswerListResponse]? = nil
+    var answerList: [AnswerListResponse] = []
     var answerCount = 0
     var year = Date().yearFormat()
     var month = Date().monthFormat()
 
-    var yearArray = [2023]
-    var monthArray = Array(1...12)
+    var currentTag = 0
+    var yearArray: [String] = []
+    var monthArray = Array(1...12).map { String($0) }
     let standardYear = 2023
 
     init() {
         let today = Date()
         if let todayYear = Int(today.yearFormat()) {
-            yearArray = Array(standardYear...todayYear)
+            yearArray = Array(standardYear...standardYear+50).map { String($0) }
         }
     }
 

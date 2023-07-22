@@ -9,6 +9,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareRoundOTFR.otf">
+            <string>NanumSquareRoundOTFR</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="cjr-r8-cbg">
@@ -279,13 +284,127 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="52.901785714285715"/>
         </scene>
+        <!--Push Notification Modal View Controller-->
+        <scene sceneID="zSi-xS-VE8">
+            <objects>
+                <viewController storyboardIdentifier="pushNotificationModal" id="FRC-dq-hHT" customClass="PushNotificationModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P6u-ee-l6E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vtw-US-F4c">
+                                <rect key="frame" x="25" y="277.5" width="364" height="355"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한번 정오에 알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-zb-uES" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="324" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="lw0-h2-qRM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 기록을 잊지 않게 해드릴게요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL1-uj-9yg" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="55" width="324" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="VIL-57-PTu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Gray7"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BellRinging" translatesAutoresizingMaskIntoConstraints="NO" id="ZJx-Hy-hQc">
+                                        <rect key="frame" x="122" y="99" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="JrC-2t-Mus"/>
+                                            <constraint firstAttribute="width" constant="120" id="g8g-3f-mUQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-eY-pot" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="243" width="324" height="55"/>
+                                        <color key="backgroundColor" name="Primary25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="UMn-mI-s8E"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="네, 좋아요!">
+                                            <color key="titleColor" name="Logo"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="clickButton:" destination="FRC-dq-hHT" eventType="touchUpInside" id="JHm-KX-DYq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0y-Zo-dTv">
+                                        <rect key="frame" x="154.5" y="318" width="55" height="29"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="괜찮아요">
+                                            <color key="titleColor" name="Gray5"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickButton:" destination="FRC-dq-hHT" eventType="touchUpInside" id="gOn-MI-Cmb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="VL1-uj-9yg" firstAttribute="top" secondItem="Q80-zb-uES" secondAttribute="bottom" constant="8" id="07r-iv-7DQ"/>
+                                    <constraint firstItem="ZJx-Hy-hQc" firstAttribute="centerX" secondItem="Vtw-US-F4c" secondAttribute="centerX" id="3KB-DN-tNY"/>
+                                    <constraint firstAttribute="height" constant="355" id="66w-3q-86n"/>
+                                    <constraint firstItem="lC6-eY-pot" firstAttribute="top" secondItem="ZJx-Hy-hQc" secondAttribute="bottom" constant="24" id="MoG-FX-xIY"/>
+                                    <constraint firstItem="VL1-uj-9yg" firstAttribute="leading" secondItem="Vtw-US-F4c" secondAttribute="leading" constant="20" id="NAd-8B-kCI"/>
+                                    <constraint firstItem="Q0y-Zo-dTv" firstAttribute="top" secondItem="lC6-eY-pot" secondAttribute="bottom" constant="20" id="U1d-T1-p7H"/>
+                                    <constraint firstAttribute="trailing" secondItem="lC6-eY-pot" secondAttribute="trailing" constant="20" id="YlX-zQ-LZX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q80-zb-uES" secondAttribute="trailing" constant="20" id="Z9D-GS-NWY"/>
+                                    <constraint firstItem="ZJx-Hy-hQc" firstAttribute="top" secondItem="VL1-uj-9yg" secondAttribute="bottom" constant="28" id="aFS-gi-pBR"/>
+                                    <constraint firstItem="Q0y-Zo-dTv" firstAttribute="centerX" secondItem="Vtw-US-F4c" secondAttribute="centerX" id="doe-Gq-Dz0"/>
+                                    <constraint firstItem="Q80-zb-uES" firstAttribute="leading" secondItem="Vtw-US-F4c" secondAttribute="leading" constant="20" id="m7Q-5q-1Ad"/>
+                                    <constraint firstItem="Q80-zb-uES" firstAttribute="top" secondItem="Vtw-US-F4c" secondAttribute="top" constant="30" id="mV3-eS-4He"/>
+                                    <constraint firstItem="lC6-eY-pot" firstAttribute="leading" secondItem="Vtw-US-F4c" secondAttribute="leading" constant="20" id="ouz-x0-Iqw"/>
+                                    <constraint firstAttribute="trailing" secondItem="VL1-uj-9yg" secondAttribute="trailing" constant="20" id="zVz-7I-KxY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4XS-Kc-aWV"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vtw-US-F4c" firstAttribute="leading" secondItem="4XS-Kc-aWV" secondAttribute="leading" constant="25" id="6fe-HA-ZRx"/>
+                            <constraint firstItem="4XS-Kc-aWV" firstAttribute="trailing" secondItem="Vtw-US-F4c" secondAttribute="trailing" constant="25" id="GR1-Fz-8HW"/>
+                            <constraint firstItem="Vtw-US-F4c" firstAttribute="centerY" secondItem="4XS-Kc-aWV" secondAttribute="centerY" id="vuS-mL-waz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rc6-xa-a7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="53"/>
+        </scene>
     </scenes>
     <designables>
+        <designable name="Q80-zb-uES">
+            <size key="intrinsicContentSize" width="265.5" height="20.5"/>
+        </designable>
         <designable name="QYq-Da-bcO">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
         </designable>
         <designable name="Tpz-oD-GK7">
             <size key="intrinsicContentSize" width="68.5" height="20.5"/>
+        </designable>
+        <designable name="VL1-uj-9yg">
+            <size key="intrinsicContentSize" width="228.5" height="20.5"/>
+        </designable>
+        <designable name="lC6-eY-pot">
+            <size key="intrinsicContentSize" width="75" height="31"/>
         </designable>
         <designable name="lH9-tL-FdQ">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
@@ -298,8 +417,9 @@
         </designable>
     </designables>
     <resources>
-        <image name="Home" width="25" height="25"/>
-        <image name="Home_selected" width="40.5" height="39"/>
+        <image name="BellRinging" width="151" height="163"/>
+        <image name="Home" width="64" height="64"/>
+        <image name="Home_selected" width="81" height="81"/>
         <image name="Shape" width="202" height="157"/>
         <image name="Shape1" width="66" height="73"/>
         <image name="Shape2" width="63" height="62"/>
@@ -310,8 +430,14 @@
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Gray7">
+            <color red="0.30199998617172241" green="0.32499998807907104" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Logo">
             <color red="0.027000000700354576" green="0.74500000476837158" blue="0.72200000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Primary25">
+            <color red="0.94900000095367432" green="0.99199998378753662" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

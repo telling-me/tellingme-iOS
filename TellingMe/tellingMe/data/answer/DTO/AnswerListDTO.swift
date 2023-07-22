@@ -10,5 +10,7 @@ import Foundation
 struct AnswerListResponse: Codable {
     let emotion: Int
     let title: String
+    let phrase: String
     let date: [Int]
+    let content: String
 }

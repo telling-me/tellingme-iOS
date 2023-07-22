@@ -9,7 +9,7 @@ import Foundation
 
 struct UserInfoResponse: Codable {
     let nickname: String
-    let birthDate: [Int]?
+    let birthDate: String?
     let purpose: String
     let job: Int
     let gender: String?

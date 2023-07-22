@@ -30,11 +30,10 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
         animation()
         getQuestion()
         getAnswerRecord()
-        getTodayAnswer()
+        getAnswer()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,11 +51,11 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
-
-        if let selectedViewController = self.tabBarController?.selectedViewController,
-           selectedViewController != self.navigationController {
-            self.tabBarController?.tabBar.isHidden = true
-        }
+//
+//        if let selectedViewController = self.tabBarController?.selectedViewController,
+//           selectedViewController != self.navigationController {
+//            self.tabBarController?.tabBar.isHidden = true
+//        }
     }
 
     func setView() {
@@ -91,7 +90,13 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func pushEmotion() {
+    func showPushNotification() {
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "pushNotificationModal") as? PushNotificationModalViewController else { return }
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
+
+    func pushAnswer() {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
@@ -110,7 +115,7 @@ class HomeViewController: UIViewController {
 
     @IBAction func presentEmotion(_ sender: UIButton) {
         if !viewModel.isAnswerCompleted {
-            pushEmotion()
+            pushAnswer()
         } else {
             pushAnswerCompleted()
         }

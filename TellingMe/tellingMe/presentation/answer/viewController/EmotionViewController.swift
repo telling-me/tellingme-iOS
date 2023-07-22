@@ -9,6 +9,7 @@ import UIKit
 
 protocol EmotionDelegate: AnyObject {
     func emotionViewCancel()
+    func showCompletedModal()
     func emotionSelected(index: Int)
 }
 
@@ -21,11 +22,6 @@ class EmotionViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         popView.frame.origin.y = popView.bounds.height
-
-        guard let index = self.viewModel.selectedEmotion else {
-            return
-        }
-        label.text = self.viewModel.emotions[index].text
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: {
             self.popView.frame.origin.y -= self.popView.bounds.height
         })
@@ -33,8 +29,13 @@ class EmotionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let index = self.viewModel.selectedEmotion else {
+            okButton.isEnabled = false
+            return
+        }
+        label.text = self.viewModel.emotions[index].text
         label.textColor = UIColor(named: "Gray5")
-        okButton.isEnabled = false
+        okButton.isEnabled = true
         popView.setTopCornerRadius()
     }
 
@@ -44,19 +45,12 @@ class EmotionViewController: UIViewController {
 
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
-            if let index = self.viewModel.selectedEmotion {
-                self.dismiss(animated: true)
-            } else {
-                self.dismiss(animated: true)
-                self.delegate?.emotionViewCancel()
-            }
-        } else {
-            guard let index = self.viewModel.selectedEmotion else {
-                self.showToast(message: "감정을 선택해주세요")
-                return
-            }
-            self.delegate?.emotionSelected(index: index)
             self.dismiss(animated: true)
+            self.delegate?.emotionViewCancel()
+        } else {
+            self.showToast(message: "감정을 선택해주세요")
+            self.dismiss(animated: true)
+            self.delegate?.showCompletedModal()
         }
     }
 }
@@ -85,8 +79,8 @@ extension EmotionViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       return CGSize(width: 56, height: 56)
-   }
+        return CGSize(width: 56, height: 56)
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
@@ -101,6 +95,9 @@ extension EmotionViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.label.text = self.viewModel.emotions[indexPath.row].text
         okButton.isEnabled = true
 
+        if let index = self.viewModel.selectedEmotion {
+            self.delegate?.emotionSelected(index: index)
+        }
         collectionView.reloadData()
     }
 }

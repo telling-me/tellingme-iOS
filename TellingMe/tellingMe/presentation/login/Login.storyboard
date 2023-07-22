@@ -143,7 +143,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                                <inset key="titleEdgeInsets" minX="69" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Apple로 계속하기" image="Apple">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -164,7 +164,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                                <inset key="titleEdgeInsets" minX="69" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="카카오로 계속하기" image="Kakao">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -258,7 +258,7 @@
         <image name="Shape1" width="66" height="73"/>
         <image name="Shape2" width="63" height="62"/>
         <image name="Shape3" width="76" height="74"/>
-        <image name="Shape4" width="55" height="55"/>
+        <image name="Shape4" width="27.5" height="27.5"/>
         <image name="Shape5" width="325" height="325"/>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

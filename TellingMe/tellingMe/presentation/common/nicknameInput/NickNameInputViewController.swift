@@ -15,6 +15,19 @@ protocol SendNicknameDelegate: AnyObject {
 class NickNameInputViewController: UIViewController {
     let input = Input()
     weak var delegate: SendNicknameDelegate?
+    var badwords: [String] = []
+
+    func madeBadWordsArray() {
+        if let filepath = Bundle.main.path(forResource: "badWords", ofType: "txt" ) {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                let lines = contents.components(separatedBy: ",")
+                badwords = lines
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +38,18 @@ class NickNameInputViewController: UIViewController {
         input.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         input.inputBox.delegate = self
         // Do any additional setup after loading the view.
+        madeBadWordsArray()
+    }
+
+    func checkBadWords() -> Bool {
+        var isWord = true
+        if let text = input.inputBox.text {
+            for word in badwords where text.contains(word) {
+                isWord = false
+                break
+            }
+        }
+        return isWord
     }
 
     func offKeyboard() {

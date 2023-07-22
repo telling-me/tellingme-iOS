@@ -40,13 +40,14 @@ class LoginViewController: UIViewController {
     func pushHome() {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
-
-        // MainTabBar의 두 번째 탭으로 이동합니다.
+        
         tabBarController.selectedIndex = 1
-
-        // MainTabBar를 present 합니다.
-        tabBarController.modalPresentationStyle = .fullScreen
-        self.present(tabBarController, animated: true, completion: nil)
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+        
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
     }
 
     func animation() {

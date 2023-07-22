@@ -21,11 +21,27 @@ class GetPurposeViewController: UIViewController {
         nextButton.isEnabled = false
         nextButton.setImage(image: "ArrowRight")
     }
+    
+        func pushHome() {
+            // 로그인 화면의 뷰 컨트롤러를 생성합니다.
+            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+            guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+            // MainTabBar의 두 번째 탭으로 이동합니다.
+            tabBarController.selectedIndex = 1
+
+            // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
+            guard let window = UIApplication.shared.windows.first else {
+                return
+            }
+            window.rootViewController = tabBarController
+            window.makeKeyAndVisible()
+
+            tabBarController.showPushNotification()
+        }
 
     @IBAction func nextAction(_ sender: UIButton) {
-        let pageViewController = self.parent as? SignUpPageViewController
-        pageViewController?.nextPage()
         SignUpData.shared.purpose = selectedItems.intArraytoString()
+        sendSignUpData()
     }
 
     @IBAction func prevAction(_ sender: UIButton) {

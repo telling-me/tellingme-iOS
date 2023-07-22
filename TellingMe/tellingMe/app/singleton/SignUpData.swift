@@ -9,20 +9,14 @@ import Foundation
 
 class SignUpData {
     static let shared = SignUpData()
-    var allowNotification: Bool
-    var firebaseToken: String? = nil
     var nickname: String
     var purpose: String
     var job: Int
     var jobInfo: String? = nil
     var gender: String? = nil
     var birthDate: String? = nil
-    var mbti: String? = nil
-    
-    var agreements:[Bool] = [false, false]
 
     private init() {
-        allowNotification = false
         nickname = ""
         purpose = ""
         job = 0

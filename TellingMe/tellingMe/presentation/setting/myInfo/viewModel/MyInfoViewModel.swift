@@ -42,9 +42,7 @@ class MyInfoViewModel {
             self.gender = gender
         }
         if let date = data.birthDate {
-            self.year = "\(date[0])"
-            self.month = "\(date[1])"
-            self.day = "\(date[2])"
+            self.year = date
         }
         mbti = data.mbti
     }
