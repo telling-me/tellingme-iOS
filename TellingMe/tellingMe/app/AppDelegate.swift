@@ -51,14 +51,6 @@ extension AppDelegate {
 }
 
 extension AppDelegate: MessagingDelegate {
-    func application(_ application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      print("APNs token retrieved: \(deviceToken)")
-
-      // With swizzling disabled you must set the APNs token here.
-      // Messaging.messaging().apnsToken = deviceToken
-    }
-    
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
       print("Firebase registration token: \(String(describing: fcmToken))")
@@ -69,7 +61,5 @@ extension AppDelegate: MessagingDelegate {
         object: nil,
         userInfo: dataDict
       )
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }
