@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5MY-eP-Do3">
+            <objects>
+                <navigationController storyboardIdentifier="communityNavigation" navigationBarHidden="YES" id="g0y-q9-p1i" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="communication" selectedImage="communication_selected" id="vXC-5b-rCQ">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5c6-1F-uEQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Ssu-Ou-e4U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfV-yO-1zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-618" y="-27"/>
+        </scene>
+        <!--Community View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="CommunityViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모두의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-3P-eCQ" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="25.000000000000004" y="123" width="44.333333333333343" height="28"/>
+                                <color key="backgroundColor" name="Side100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="kNv-M5-ZST"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Gray7"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-o6-T25" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="25" y="159" width="29.666666666666671" height="28"/>
+                                <color key="backgroundColor" name="Side100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="aaV-RL-eg0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Gray7"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkC-Dt-89i">
+                                <rect key="frame" x="25" y="199" width="299.66666666666669" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모두의 공간은 한 질문 당 3일동안 열려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad6-EZ-MRo" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="14" y="8" width="271.66666666666669" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="Logo"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Primary25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QCA-mc-NEy"/>
+                                    <constraint firstItem="ad6-EZ-MRo" firstAttribute="top" secondItem="SkC-Dt-89i" secondAttribute="top" constant="8" id="SRa-jJ-xtF"/>
+                                    <constraint firstAttribute="trailing" secondItem="ad6-EZ-MRo" secondAttribute="trailing" constant="14" id="a80-Kf-bQf"/>
+                                    <constraint firstItem="ad6-EZ-MRo" firstAttribute="leading" secondItem="SkC-Dt-89i" secondAttribute="leading" constant="14" id="hg6-OP-L3q"/>
+                                    <constraint firstAttribute="bottom" secondItem="ad6-EZ-MRo" secondAttribute="bottom" constant="8" id="wuq-S7-MbI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-bC-eeg">
+                                <rect key="frame" x="25" y="257" width="343" height="486"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1k-ub-sGz" customClass="CommunityCardView" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="151.33333333333334"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wl-ct-OBl" customClass="CommunityCardView" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167.33333333333331" width="343" height="151.33333333333331"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzH-T1-6NK" customClass="CommunityCardView" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="334.66666666666663" width="343" height="151.33333333333337"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="Side100"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="Side100"/>
+                        <constraints>
+                            <constraint firstItem="SkC-Dt-89i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="3xi-Gs-lU0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HkG-bC-eeg" secondAttribute="trailing" constant="25" id="F3J-1v-bCQ"/>
+                            <constraint firstItem="V2l-3P-eCQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="64" id="FZM-nx-Km2"/>
+                            <constraint firstItem="HkG-bC-eeg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="Ncb-BW-112"/>
+                            <constraint firstItem="BR5-o6-T25" firstAttribute="top" secondItem="V2l-3P-eCQ" secondAttribute="bottom" constant="8" id="OXS-c8-a5h"/>
+                            <constraint firstItem="V2l-3P-eCQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="Ov3-6i-DEU"/>
+                            <constraint firstItem="HkG-bC-eeg" firstAttribute="top" secondItem="SkC-Dt-89i" secondAttribute="bottom" constant="28" id="aTL-dQ-VCO"/>
+                            <constraint firstItem="BR5-o6-T25" firstAttribute="leading" secondItem="V2l-3P-eCQ" secondAttribute="leading" id="f5E-M3-C7g"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="HkG-bC-eeg" secondAttribute="bottom" constant="26" id="ww9-Em-MfS"/>
+                            <constraint firstItem="SkC-Dt-89i" firstAttribute="top" secondItem="BR5-o6-T25" secondAttribute="bottom" constant="12" id="yAC-JY-f57"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aej-Fn-srt"/>
+                    <connections>
+                        <outlet property="cardStackView" destination="HkG-bC-eeg" id="IMM-4z-xBm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="-27"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="BR5-o6-T25">
+            <size key="intrinsicContentSize" width="29.666666666666668" height="20.333333333333332"/>
+        </designable>
+        <designable name="V2l-3P-eCQ">
+            <size key="intrinsicContentSize" width="44.333333333333336" height="20.333333333333332"/>
+        </designable>
+        <designable name="ad6-EZ-MRo">
+            <size key="intrinsicContentSize" width="271.66666666666669" height="20.333333333333332"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="communication" width="41" height="41"/>
+        <image name="communication_selected" width="81" height="81"/>
+        <namedColor name="Gray7">
+            <color red="0.30199998617172241" green="0.32499998807907104" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Logo">
+            <color red="0.027000000700354576" green="0.74500000476837158" blue="0.72200000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Primary25">
+            <color red="0.94900000095367432" green="0.99199998378753662" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Side100">
+            <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

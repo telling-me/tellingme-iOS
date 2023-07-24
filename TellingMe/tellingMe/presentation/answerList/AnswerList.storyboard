@@ -73,26 +73,42 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZQ-sX-iNd">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZQ-sX-iNd">
                                         <rect key="frame" x="292" y="12" width="32" height="32"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="Side100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="6f1-cG-PFZ"/>
                                             <constraint firstAttribute="height" constant="32" id="J9X-Nl-6pW"/>
                                         </constraints>
+                                        <color key="tintColor" name="Side200"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="cardlist"/>
+                                        <state key="selected" image="cardlist_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qkn-PW-WVu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-Nm-7fY">
+                                    <button opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-Nm-7fY">
                                         <rect key="frame" x="336" y="12" width="32" height="32"/>
-                                        <color key="backgroundColor" red="0.92549019610000005" green="0.83529411760000005" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="Side100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="dO3-Q4-E4R"/>
                                             <constraint firstAttribute="width" constant="32" id="ldq-VU-p8k"/>
                                         </constraints>
+                                        <color key="tintColor" name="Side200"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="tablelist"/>
+                                        <state key="selected" image="tablelist_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oaf-g3-3eZ"/>
                                         </connections>
@@ -218,8 +234,15 @@
     <resources>
         <image name="MyAnswers" width="25" height="25"/>
         <image name="MyAnswers_selected" width="81" height="78"/>
+        <image name="cardlist" width="20" height="20"/>
+        <image name="cardlist_selected" width="20" height="21"/>
+        <image name="tablelist" width="20" height="21"/>
+        <image name="tablelist_selected" width="20" height="20"/>
         <namedColor name="Side100">
             <color red="1" green="0.99199998378753662" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Side200">
+            <color red="0.97600001096725464" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -15,7 +15,7 @@ class PushNotificationModalViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.view.backgroundColor = .clear
     }
@@ -42,7 +42,7 @@ class PushNotificationModalViewController: UIViewController {
                 completion()
             }
     }
-    
+
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
             registerForNotification {
