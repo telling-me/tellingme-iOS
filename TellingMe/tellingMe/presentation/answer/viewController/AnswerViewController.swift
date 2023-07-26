@@ -26,12 +26,9 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     let viewModel = AnswerViewModel()
 
-    override func viewWillAppear(_ animated: Bool) {
-        getQuestion()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        getQuestion()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.dayLabel.text = viewModel.date

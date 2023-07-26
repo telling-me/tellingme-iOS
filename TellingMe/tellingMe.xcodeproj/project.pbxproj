@@ -31,6 +31,7 @@
 		3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
+		3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F252A6F6EE90098E8C9 /* QuestionView.swift */; };
 		3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A338B0329E67C5000786D08 /* LoginRepository.swift */; };
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
 		3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739B62A1243B700739543 /* ChipCollectionViewCell.swift */; };
@@ -192,6 +193,7 @@
 		3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameInputViewController.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		3A320F252A6F6EE90098E8C9 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		3A338B0329E67C5000786D08 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		3A3739B62A1243B700739543 /* ChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -503,6 +505,14 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		3A320F242A6F6ED10098E8C9 /* question */ = {
+			isa = PBXGroup;
+			children = (
+				3A320F252A6F6EE90098E8C9 /* QuestionView.swift */,
+			);
+			path = question;
+			sourceTree = "<group>";
+		};
 		3A3739B32A12434200739543 /* chip */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +577,7 @@
 		3A4C38522A0CCC9300FEFAAE /* common */ = {
 			isa = PBXGroup;
 			children = (
+				3A320F242A6F6ED10098E8C9 /* question */,
 				3ABB09E92A1A72EA00C6596B /* pulldown */,
 				3AFA371E2A1A1C9A008A5657 /* modal */,
 				3A29B5752A169B30006F1E8D /* nicknameInput */,
@@ -1453,6 +1464,7 @@
 				3A2742D129D5F8B9005E4C5F /* Date+.swift in Sources */,
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AB7957D2A6E98AD009961CF /* CommunicationAPI.swift in Sources */,
+				3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,
@@ -1613,7 +1625,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.11;
+				MARKETING_VERSION = 1.3.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1643,7 +1655,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.11;
+				MARKETING_VERSION = 1.3.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

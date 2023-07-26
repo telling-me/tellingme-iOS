@@ -12,11 +12,11 @@ import AVFoundation
 class SplashViewController: UIViewController {
     @IBOutlet weak var imageView: GIFImageView!
     private var timer: Timer?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         playVideo()
-        //        performAutoLogin()
+        performAutoLogin()
 //        let duration: TimeInterval = 3.0 // 3초
 //        imageView.animate(withGIFNamed: "Splash", duration: duration, loopCount: 0) { [weak self] in
 //            self?.performAutoLogin()
@@ -24,12 +24,12 @@ class SplashViewController: UIViewController {
 //        }
 //        playAnimation()
     }
-    
+
 //    private func playAnimation() {
 //        imageView.startAnimatingGIF()
 //        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(stopAnimation), userInfo: nil, repeats: false)
 //    }
-    
+
 //    @objc private func stopAnimation() {
 //        timer?.invalidate()
 //        timer = nil

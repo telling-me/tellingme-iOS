@@ -8,5 +8,5 @@
 import Foundation
 
 struct AllowedNotificationResponse: Codable {
-    let allowNotification: Bool?
+    let allowNotification: Bool
 }

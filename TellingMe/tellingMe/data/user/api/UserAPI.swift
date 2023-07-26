@@ -108,7 +108,7 @@ struct UserAPI: Networkable {
         }
     }
 
-    static func postisAllowedNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
+    static func postNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.postisAllowedNotification, dtoType: AllowedNotificationResponse.self, completion: completion)
         } catch APIError.tokenNotFound {

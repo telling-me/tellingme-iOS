@@ -10,17 +10,9 @@ import UIKit
 
 extension SplashViewController {
     func performAutoLogin() {
-        guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
-            showLogin()
-            return
-        }
-        if type == "kakao" {
-            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
-                showLogin()
-                return
-            }
-            let request = OauthRequest(socialId: socialId)
-            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
+        if let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue),
+           let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) {
+            LoginAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in
                 switch result {
                 case .success(let response):
                     KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
@@ -30,25 +22,8 @@ extension SplashViewController {
                     self.showLogin()
                 }
             }
-        } else if type == "apple" {
-            guard let token = KeychainManager.shared.load(key: Keys.appleToken.rawValue) else {
-                showLogin()
-                return
-            }
-            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
-                showLogin()
-                return
-            }
-            LoginAPI.postAppleOauth(type: "apple", token: token, request: OauthRequest(socialId: socialId)) { result in
-                switch result {
-                case .success(let response):
-                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                    self.showHome()
-                case .failure(let error):
-                    self.showLogin()
-                }
-            }
+        } else {
+            self.showLogin()
         }
     }
 

@@ -18,49 +18,39 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
-                    print("\(error) 카카오로그인 실패요~~")
+                    print("\(error)")
                 } else {
-                    self.getUserInfo(oauthToekn: oauthToken!)
+                    self.login(type: "kakao", oauthToken: oauthToken?.accessToken ?? "")
                 }
             }
         } else {
             UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                 if let error = error {
-                    print("\(error) 카카오로그인 실패요~~")
+                    print("\(error)")
                 } else {
-                    self.getUserInfo(oauthToekn: oauthToken!)
+                    self.login(type: "kakao", oauthToken: oauthToken?.accessToken ?? "")
                 }
             }
         }
     }
-
-    func getUserInfo(oauthToekn: OAuthToken) {
-        UserApi.shared.me() {(user, error) in
-            if let error = error {
-                print("\(error) 사용자 정보 가져오기 실패")
-            } else {
-                guard let user_data = user else { return }
-                KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
-                KeychainManager.shared.save(String(user_data.id!), key: Keys.socialId.rawValue)
-                let request = OauthRequest(socialId: String(user_data.id!))
-                LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
-                    switch result {
-                    case .success(let response):
-                        KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                        KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                        self.pushHome()
-                    case .failure(let error):
-                        switch error {
-                        case .errorData(let errorData):
-                            self.showToast(message: errorData.message)
-                        case .notJoin(let response):
-                            KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
-                            KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
-                            self.pushSignUp()
-                        default:
-                            print(error)
-                        }
-                    }
+    
+    func login(type: String, oauthToken: String) {
+        LoginAPI.signIn(type: type, token: oauthToken) { result in
+            switch result {
+            case .success(let response):
+                KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
+                self.pushHome()
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .notJoin(let response):
+                    KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
+                    KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
+                    self.pushSignUp()
+                default:
+                    print(error)
                 }
             }
         }
@@ -84,28 +74,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                let authCode = appleIDCredential.authorizationCode,
                let tokenString = String(data: identityToken, encoding: .utf8),
                let authCodeString = String(data: authCode, encoding: .utf8) {
-                print(authCodeString, "authauth")
                 KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
-                KeychainManager.shared.save(tokenString, key: Keys.appleToken.rawValue)
-                LoginAPI.postAppleOauth(type: "apple", token: tokenString, request: OauthRequest(socialId: nil)) { result in
-                    switch result {
-                    case .success(let response):
-                        KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                        KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                        self.pushHome()
-                    case .failure(let error):
-                        switch error {
-                        case .errorData(let errorData):
-                            self.showToast(message: errorData.message)
-                        case .notJoin(let response):
-                            KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
-                            KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
-                            self.pushSignUp()
-                        default:
-                            print(error)
-                        }
-                    }
-                }
+                KeychainManager.shared.save(tokenString, key: Keys.idToken.rawValue)
+                
+                self.login(type: "apple", oauthToken: tokenString)
             }
 
             // 언제 쓰이는거지?

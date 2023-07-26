@@ -51,13 +51,12 @@ extension SettingTableViewController {
         }
     }
 
-    func postisAllowedNotification() {
-        UserAPI.postisAllowedNotification { result in
+    func postNotification() {
+        UserAPI.postNotification { result in
             switch result {
             case .success(let response):
-                if response!.allowNotification ?? false {
+                if response!.allowNotification {
                     self.checkNotification()
-                    self.postPushToken()
                 }
                 self.pushSwitch.isOn = response!.allowNotification ?? false
             case .failure(let error):
