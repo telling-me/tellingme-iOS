@@ -13,10 +13,12 @@ class SettingTableViewController: UITableViewController {
     let viewModel = SettingViewModel()
     @IBOutlet weak var pushSwitch: UISwitch!
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.getisAllowedNotification()
     }
-
+    
     func checkNotification () {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {
@@ -55,7 +57,7 @@ class SettingTableViewController: UITableViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-
+    
     func getFirebaseToken() -> String? {
         guard let token = Messaging.messaging().fcmToken else {
             self.showToast(message: "푸쉬 알림을 등록할 수 없습니다.")
@@ -66,12 +68,8 @@ class SettingTableViewController: UITableViewController {
         return token
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction func toggleSwitch(_ sender: UISwitch) {
-        self.postisAllowedNotification()
+        self.postNotification()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

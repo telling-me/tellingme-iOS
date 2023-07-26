@@ -33,43 +33,22 @@ extension GetPurposeViewController {
     }
 
     func login(type: String) {
-        if type == "kakao" {
-            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else { return }
-            let request = OauthRequest(socialId: socialId)
-            LoginAPI.postKakaoOauth(type: "kakao", request: request) { result in
-                switch result {
-                case .success(let response):
-                    self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                case .failure(let error):
-                    switch error {
-                    case let .errorData(errorData):
-                        self.showToast(message: errorData.message)
-                    default:
-                        print(error)
-                    }
-                }
-            }
-        } else if type == "apple" {
-            guard let token = KeychainManager.shared.load(key: Keys.appleToken.rawValue) else { return }
-            guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
-                return
-            }
-            let request = OauthRequest(socialId: socialId)
-            LoginAPI.postAppleOauth(type: "apple", token: token, request: request) { result in
-                switch result {
-                case .success(let response):
-                    self.pushHome()
-                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                case .failure(let error):
-                    switch error {
-                    case let .errorData(errorData):
-                        self.showToast(message: errorData.message)
-                    default:
-                        print(error)
-                    }
+        guard let idToken = KeychainManager.shared.load(key: Keys.idToken.rawValue) else {
+            return
+        }
+
+        LoginAPI.signIn(type: type, token: idToken) { result in
+            switch result {
+            case .success(let response):
+                self.pushHome()
+                KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
+            case .failure(let error):
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                default:
+                    print(error)
                 }
             }
         }

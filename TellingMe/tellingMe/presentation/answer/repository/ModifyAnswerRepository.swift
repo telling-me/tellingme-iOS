@@ -21,7 +21,7 @@ extension ModifyAnswerViewController {
                 self.countTextLabel.text = "\(String(describing: response!.content.count))"
                 self.emotionImageView.image = UIImage(named: self.viewModel.emotions[response!.emotion - 1].image)
                 self.emotionLabel.text = self.viewModel.emotions[response!.emotion - 1].text
-//                self.publicSwitch.isOn = response.
+                self.publicSwitch.isOn = response!.isPublic
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):

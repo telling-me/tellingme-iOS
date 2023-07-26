@@ -8,16 +8,16 @@
 import Foundation
 import Moya
 
-struct OauthRequest: Codable {
+struct AutologinRequest: Codable {
     let socialId: String?
 }
 
-struct OauthResponse: Codable {
+struct SignInResponse: Codable {
     let accessToken: String
     let refreshToken: String
 }
 
-struct OauthErrorResponse: Error, Codable {
+struct SignInErrorResponse: Error, Codable {
     let socialId: String
     let socialLoginType: String
 }

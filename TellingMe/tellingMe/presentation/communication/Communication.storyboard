@@ -124,6 +124,63 @@
             </objects>
             <point key="canvasLocation" x="131" y="-27"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="l4E-M0-dP2">
+            <objects>
+                <viewController id="kXV-OW-Bgh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3E9-yv-31q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-08-Xlm">
+                                <rect key="frame" x="0.0" y="59" width="393" height="64"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="gpg-fV-mFu"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cd-jq-SHr">
+                                <rect key="frame" x="0.0" y="123" width="393" height="655"/>
+                                <connections>
+                                    <segue destination="fiZ-yC-kK2" kind="embed" id="a4f-DI-Ov5"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JE-ec-f64">
+                                <rect key="frame" x="0.0" y="778" width="393" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9VD-jq-nYo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XFR-0w-FaK"/>
+                        <color key="backgroundColor" name="Side100"/>
+                        <constraints>
+                            <constraint firstItem="XFR-0w-FaK" firstAttribute="trailing" secondItem="0Cd-jq-SHr" secondAttribute="trailing" id="5pv-1d-fiT"/>
+                            <constraint firstItem="0Cd-jq-SHr" firstAttribute="leading" secondItem="XFR-0w-FaK" secondAttribute="leading" id="QsB-jQ-A0J"/>
+                            <constraint firstItem="fsL-08-Xlm" firstAttribute="top" secondItem="XFR-0w-FaK" secondAttribute="top" id="T2n-4z-Mei"/>
+                            <constraint firstItem="XFR-0w-FaK" firstAttribute="trailing" secondItem="5JE-ec-f64" secondAttribute="trailing" id="UFS-xI-GjG"/>
+                            <constraint firstItem="XFR-0w-FaK" firstAttribute="trailing" secondItem="fsL-08-Xlm" secondAttribute="trailing" id="bo9-t0-7At"/>
+                            <constraint firstItem="XFR-0w-FaK" firstAttribute="bottom" secondItem="5JE-ec-f64" secondAttribute="bottom" id="je8-vZ-dl6"/>
+                            <constraint firstItem="5JE-ec-f64" firstAttribute="top" secondItem="0Cd-jq-SHr" secondAttribute="bottom" id="m9g-IU-2qZ"/>
+                            <constraint firstItem="5JE-ec-f64" firstAttribute="leading" secondItem="XFR-0w-FaK" secondAttribute="leading" id="pmT-Fb-6Xk"/>
+                            <constraint firstItem="fsL-08-Xlm" firstAttribute="leading" secondItem="XFR-0w-FaK" secondAttribute="leading" id="t30-Yp-KGt"/>
+                            <constraint firstItem="0Cd-jq-SHr" firstAttribute="top" secondItem="fsL-08-Xlm" secondAttribute="bottom" id="viS-IH-2qC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDW-aA-Ijb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820.61068702290072" y="-20.422535211267608"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="wGP-Lq-qgk">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fiZ-yC-kK2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiX-w1-6cA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1514" y="-20"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="BR5-o6-T25">

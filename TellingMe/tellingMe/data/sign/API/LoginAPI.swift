@@ -9,8 +9,8 @@ import Foundation
 import Moya
 
 enum LoginAPITarget {
-    case kakao(loginType: String, body: OauthRequest)
-    case apple(token: String, loginType: String, body: OauthRequest)
+    case signIn(type:String, token: String)
+    case autologin(type: String, body: AutologinRequest)
     case signUp(SignUpRequest)
     case checkNickname(CheckNicknameRequest)
     case jobInfo(JobInfoRequest)
@@ -22,10 +22,8 @@ enum LoginAPITarget {
 extension LoginAPITarget: TargetType {
     var task: Task {
         switch self {
-        case .kakao(_, let body):
+        case .autologin(_, let body):
             return .requestJSONEncodable(body)
-        case .apple(_, _, let body):
-             return .requestJSONEncodable(body)
         case .signUp(let body):
             return .requestJSONEncodable(body)
         case .checkNickname(let body):
@@ -39,8 +37,10 @@ extension LoginAPITarget: TargetType {
 
     var path: String {
         switch self {
-        case .kakao(let type, _), .apple(_, let type, _):
-            return "api/oauth/\(type)"
+        case .signIn(let type, _):
+            return "api/oauth/\(type)/manual"
+        case .autologin(let type):
+            return "api/oauth/\(type)/auto"
         case .signUp:
             return "api/oauth/join"
         case .checkNickname:
@@ -70,8 +70,8 @@ extension LoginAPITarget: TargetType {
 
     var headers: [String: String]? {
         switch self {
-        case .apple(let token, _, _):
-            return ["idToken": token, "Content-Type": "application/json"]
+        case .signIn(_, let token):
+            return ["oauthToken": token, "Content-Type": "application/json"]
         default:
             return nil
         }
@@ -81,8 +81,8 @@ extension LoginAPITarget: TargetType {
 struct LoginAPI: Networkable {
     typealias Target = LoginAPITarget
 
-    static func postKakaoOauth(type: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
-        makeUnauthorizedProvider().request(.kakao(loginType: type, body: request), dtoType: OauthResponse.self) { result in
+    static func signIn(type: String, token: String, completion: @escaping (Result<SignInResponse?, APIError>) -> Void) {
+        makeUnauthorizedProvider().request(.signIn(type: type, token: token), dtoType: SignInResponse.self) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))
@@ -91,7 +91,8 @@ struct LoginAPI: Networkable {
                 case let .other(otherError):
                     let error = otherError as? MoyaError
                     if let data = error?.response?.data {
-                        let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
+                        let errorResponse = try? JSONDecoder().decode(SignInErrorResponse.self, from: data)
+                        print(errorResponse)
                         completion(.failure(APIError.notJoin(errorResponse!)))
                     } else {
                         completion(.failure(APIError.other(otherError)))
@@ -103,31 +104,12 @@ struct LoginAPI: Networkable {
                 }
             }
         }
+    }
+    
+    static func autologin(type: String, request: AutologinRequest, completion: @escaping (Result<SignInResponse?, APIError>) -> Void) {
+        
     }
 
-    static func postAppleOauth(type: String, token: String, request: OauthRequest, completion: @escaping (Result<OauthResponse?, APIError>) -> Void) {
-        makeUnauthorizedProvider().request(.apple(token: token, loginType: type, body: request), dtoType: OauthResponse.self) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-            case .failure(let error):
-                switch error {
-                case let .other(otherError):
-                    let error = otherError as? MoyaError
-                    if let data = error?.response?.data {
-                        let errorResponse = try? JSONDecoder().decode(OauthErrorResponse.self, from: data)
-                        completion(.failure(APIError.notJoin(errorResponse!)))
-                    } else {
-                        completion(.failure(APIError.other(otherError)))
-                    }
-                case .errorData(let errorData):
-                    completion(.failure(APIError.errorData(errorData)))
-                default:
-                    completion(.failure(APIError.other(error)))
-                }
-            }
-        }
-    }
     static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
     }

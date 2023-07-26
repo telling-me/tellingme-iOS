@@ -11,7 +11,7 @@ import Moya
 enum APIError: Error {
     case errorData(ErrorData)
     case tokenNotFound
-    case notJoin(OauthErrorResponse)
+    case notJoin(SignInErrorResponse)
     case other(Error)
 }
 
