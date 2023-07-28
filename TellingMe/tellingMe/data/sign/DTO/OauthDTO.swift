@@ -15,6 +15,7 @@ struct AutologinRequest: Codable {
 struct SignInResponse: Codable {
     let accessToken: String
     let refreshToken: String
+    let socialId: String
 }
 
 struct SignInErrorResponse: Error, Codable {

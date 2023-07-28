@@ -68,8 +68,10 @@ class LoginViewController: UIViewController {
 
     @IBAction func clickButton(_ sender: UIButton) {
         if sender.tag == 0 {
+            KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
             callAppleAPI()
         } else {
+            KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
             callKakaoAPI()
         }
     }

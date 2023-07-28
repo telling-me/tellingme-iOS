@@ -10,6 +10,8 @@ import UIKit
 
 extension SplashViewController {
     func performAutoLogin() {
+        print(KeychainManager.shared.load(key: Keys.socialLoginType.rawValue))
+        print(KeychainManager.shared.load(key: Keys.socialId.rawValue))
         if let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue),
            let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) {
             LoginAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in

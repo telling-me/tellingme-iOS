@@ -39,7 +39,7 @@ extension LoginAPITarget: TargetType {
         switch self {
         case .signIn(let type, _):
             return "api/oauth/\(type)/manual"
-        case .autologin(let type):
+        case .autologin(let type, _):
             return "api/oauth/\(type)/auto"
         case .signUp:
             return "api/oauth/join"
@@ -92,7 +92,6 @@ struct LoginAPI: Networkable {
                     let error = otherError as? MoyaError
                     if let data = error?.response?.data {
                         let errorResponse = try? JSONDecoder().decode(SignInErrorResponse.self, from: data)
-                        print(errorResponse)
                         completion(.failure(APIError.notJoin(errorResponse!)))
                     } else {
                         completion(.failure(APIError.other(otherError)))
@@ -107,7 +106,27 @@ struct LoginAPI: Networkable {
     }
     
     static func autologin(type: String, request: AutologinRequest, completion: @escaping (Result<SignInResponse?, APIError>) -> Void) {
-        
+        makeUnauthorizedProvider().request(.autologin(type: type, body: request), dtoType: SignInResponse.self) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                switch error {
+                case let .other(otherError):
+                    let error = otherError as? MoyaError
+                    if let data = error?.response?.data {
+                        let errorResponse = try? JSONDecoder().decode(SignInErrorResponse.self, from: data)
+                        completion(.failure(APIError.notJoin(errorResponse!)))
+                    } else {
+                        completion(.failure(APIError.other(otherError)))
+                    }
+                case .errorData(let errorData):
+                    completion(.failure(APIError.errorData(errorData)))
+                default:
+                    completion(.failure(APIError.other(error)))
+                }
+            }
+        }
     }
 
     static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {

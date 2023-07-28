@@ -15,10 +15,13 @@ class SettingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.getisAllowedNotification()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.pushSwitch.isOn = viewModel.isPushAllowed ?? false
+    }
+
     func checkNotification () {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {

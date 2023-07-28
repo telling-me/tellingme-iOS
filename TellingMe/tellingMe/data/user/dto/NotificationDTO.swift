@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct AllowedNotificationRequest: Codable {
+    let notificationStatus: Bool
+}
+
 struct AllowedNotificationResponse: Codable {
     let allowNotification: Bool
 }
