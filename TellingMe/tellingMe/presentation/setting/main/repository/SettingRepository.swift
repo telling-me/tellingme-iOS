@@ -37,7 +37,7 @@ extension SettingTableViewController {
         UserAPI.getisAllowedNotification { result in
             switch result {
             case .success(let response):
-                self.pushSwitch.isOn = response!.allowNotification ?? false
+                self.viewModel.isPushAllowed = response!.allowNotification
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
@@ -52,7 +52,8 @@ extension SettingTableViewController {
     }
 
     func postNotification() {
-        UserAPI.postNotification { result in
+        let request = AllowedNotificationRequest(notificationStatus: self.pushSwitch.isOn)
+        UserAPI.postNotification(request: request) { result in
             switch result {
             case .success(let response):
                 if response!.allowNotification {

@@ -40,6 +40,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             case .success(let response):
                 KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
                 KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
+                KeychainManager.shared.save(response!.socialId, key: Keys.socialId.rawValue)
                 self.pushHome()
             case .failure(let error):
                 switch error {
@@ -74,9 +75,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                let authCode = appleIDCredential.authorizationCode,
                let tokenString = String(data: identityToken, encoding: .utf8),
                let authCodeString = String(data: authCode, encoding: .utf8) {
-                KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
                 KeychainManager.shared.save(tokenString, key: Keys.idToken.rawValue)
-                
                 self.login(type: "apple", oauthToken: tokenString)
             }
 

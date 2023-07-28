@@ -12,7 +12,7 @@ enum UserAPITarget {
     case getUserInfo
     case updateUserInfo(UpdateUserInfoRequest)
     case getisAllowedNotification
-    case postisAllowedNotification
+    case postisAllowedNotification(AllowedNotificationRequest)
     case postFirebaseToken(FirebaseTokenRequest)
 }
 
@@ -22,6 +22,8 @@ extension UserAPITarget: TargetType {
         case .updateUserInfo(let body):
             return .requestJSONEncodable(body)
         case .postFirebaseToken(let body):
+            return .requestJSONEncodable(body)
+        case .postisAllowedNotification(let body):
             return .requestJSONEncodable(body)
         default:
             return .requestPlain
@@ -108,9 +110,9 @@ struct UserAPI: Networkable {
         }
     }
 
-    static func postNotification(completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
+    static func postNotification(request: AllowedNotificationRequest, completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.postisAllowedNotification, dtoType: AllowedNotificationResponse.self, completion: completion)
+            try makeAuthorizedProvider().request(.postisAllowedNotification(request), dtoType: AllowedNotificationResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

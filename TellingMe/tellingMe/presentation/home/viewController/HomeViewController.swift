@@ -25,15 +25,16 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getQuestion()
+        getAnswerRecord()
+        getAnswer()
         setView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animation()
-        getQuestion()
-        getAnswerRecord()
-        getAnswer()
+        checkNofitication()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -51,11 +52,6 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
-//
-//        if let selectedViewController = self.tabBarController?.selectedViewController,
-//           selectedViewController != self.navigationController {
-//            self.tabBarController?.tabBar.isHidden = true
-//        }
     }
 
     func setView() {
@@ -111,6 +107,15 @@ class HomeViewController: UIViewController {
         }
         vc.setQuestionDate(date: date)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // firebase token 값이 keychain에 저장되어 있지 않으면 push 동의 모달창 띄우기
+    func checkNofitication() {
+        print(KeychainManager.shared.load(key: Keys.firebaseToken.rawValue))
+        if let token = KeychainManager.shared.load(key: Keys.firebaseToken.rawValue) {
+        } else {
+            self.showPushNotification()
+        }
     }
 
     @IBAction func presentEmotion(_ sender: UIButton) {
