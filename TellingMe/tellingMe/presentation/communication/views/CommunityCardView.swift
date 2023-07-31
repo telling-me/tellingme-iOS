@@ -7,13 +7,13 @@
 
 import UIKit
 
-struct CardData {
-    let question: String
-    let date: String
-    let count: Int
+protocol CommunityDelegate: AnyObject {
+    func communicationButtonClicked(_ self: CommunityCardView)
 }
 
 class CommunityCardView: UIView {
+    var delegate: CommunityDelegate?
+    
     let questionLabel: Body2Regular = {
         let label = Body2Regular()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +88,12 @@ class CommunityCardView: UIView {
         button.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -16).isActive = true
         button.widthAnchor.constraint(equalToConstant: 36).isActive = true
         button.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        
+        button.addTarget(self, action: #selector(clickedButton), for: .touchUpInside)
+    }
+    
+    @objc func clickedButton(sender: UIButton) {
+        delegate?.communicationButtonClicked(self)
     }
 
     func setData(data: QuestionListResponse) {

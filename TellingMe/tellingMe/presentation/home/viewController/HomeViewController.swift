@@ -25,16 +25,20 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getQuestion()
-        getAnswerRecord()
-        getAnswer()
         setView()
+        checkNofitication()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getQuestion()
+        getAnswerRecord()
+        getAnswer()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         animation()
-        checkNofitication()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+extension UIViewController: DismissButtonDelegate {
+    func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
 extension UIViewController {
     func showToast(message: String) {
         let view = ErrorToast()
