@@ -25,8 +25,16 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     let emotionLabel: Body2Bold = {
         let label = Body2Bold()
         label.textColor = UIColor(named: "Gray7")
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let emotionBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "Side100")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     let answerLabel: Body2Regular = {
@@ -70,11 +78,18 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         emotionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         emotionView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
 
-        containerView.addSubview(emotionLabel)
-        emotionLabel.leadingAnchor.constraint(equalTo: emotionView.trailingAnchor, constant: 8).isActive = true
-        emotionLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        emotionLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        containerView.addSubview(emotionBackgroundView)
+        emotionBackgroundView.leadingAnchor.constraint(equalTo: emotionView.trailingAnchor, constant: 8).isActive = true
+        emotionBackgroundView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        emotionBackgroundView.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
+        emotionBackgroundView.addSubview(emotionLabel)
+        emotionLabel.leadingAnchor.constraint(equalTo: emotionBackgroundView.leadingAnchor, constant: 4).isActive = true
+        emotionLabel.trailingAnchor.constraint(equalTo: emotionBackgroundView.trailingAnchor, constant: -4).isActive = true
+        emotionLabel.centerYAnchor.constraint(equalTo: emotionBackgroundView.centerYAnchor).isActive = true
+
+        emotionBackgroundView.layer.cornerRadius = 4
+    
         containerView.addSubview(answerLabel)
         answerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         answerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
@@ -82,13 +97,18 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
 
         containerView.addSubview(likeButton)
         likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        likeButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        likeButton.topAnchor.constraint(equalTo: answerLabel.bottomAnchor, constant: 4).isActive = true
-        likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        likeButton.topAnchor.constraint(equalTo: answerLabel.bottomAnchor).isActive = true
+        likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
 
     func setData(data: Content) {
         answerLabel.text = data.content
+        emotionView.image = UIImage(named: emotions[data.emotion-1].image)
+        emotionLabel.text = emotions[data.emotion-1].text
+        
+        emotionLabel.sizeToFit()
+//        emotionLabel.widthAnchor.constraint(equalToConstant: emotionLabel.frame.width + 8).isActive = true
     }
 }

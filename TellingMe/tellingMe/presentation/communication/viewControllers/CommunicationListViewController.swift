@@ -9,6 +9,9 @@ import UIKit
 
 class CommunicationListViewController: UIViewController {
     let viewModel = CommunicationListViewModel()
+
+    var question: QuestionListResponse = QuestionListResponse(title: "텔링미를 사용하실 때 드는 기분은?", date: [2023, 3, 1], answerCount: 0, phrase: "")
+    var index = 0
     
     private lazy var collectionView: UICollectionView = {
       let view = UICollectionView(frame: .zero, collectionViewLayout: self.getLayout())
@@ -26,29 +29,21 @@ class CommunicationListViewController: UIViewController {
             switch section {
             case 0:
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-//                item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
-                
-//                section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), elementKind: "", alignment: .topLeading)]
                 section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
                 return section
             case 1:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(63), heightDimension: .fractionalHeight(1)))
-//                item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(32)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-//                section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), elementKind: "", alignment: .topLeading)]
-                section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-                return section
-            case 2:
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(148)))
                 item.contentInsets = .init(top: 0, leading: 0, bottom: 12, trailing: 0)
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
-                group.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(CGFloat(self.viewModel.communicationList.count * 160))), subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
-//                section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), elementKind: "", alignment: .topLeading)]
-                section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+                section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
+
+                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
+                let boundarySupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                boundarySupplementaryItem.pinToVisibleBounds = true
+                section.boundarySupplementaryItems = [boundarySupplementaryItem]
                 return section
             default:
                 return NSCollectionLayoutSection(group: NSCollectionLayoutGroup(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))))
@@ -61,23 +56,22 @@ class CommunicationListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         setView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        reloadCollectionView()
+        self.getCommunicationList(date: question.date) {
+            self.reloadCollectionView()
+        }
     }
 
     func setView() {
         view.backgroundColor = UIColor(named: "Side100")
         view.addSubview(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         collectionView.register(QuestionCollectionViewCell.self, forCellWithReuseIdentifier: QuestionCollectionViewCell.id)
-        collectionView.register(ChipCollectionViewCell.self, forCellWithReuseIdentifier: ChipCollectionViewCell.id)
         collectionView.register(CommunicationDetailCollectionViewCell.self, forCellWithReuseIdentifier: CommunicationDetailCollectionViewCell.id)
+        collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
     }
 
     // 맨 마지막 근처인지 확인하는 함수
@@ -99,16 +93,14 @@ class CommunicationListViewController: UIViewController {
 
 extension CommunicationListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-          return 3
-      }
-
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
         case 1:
-            return viewModel.sortList.count
-        case 2:
             return viewModel.communicationList.count
         default:
             return 0
@@ -121,15 +113,10 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuestionCollectionViewCell.id, for: indexPath) as? QuestionCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.setData(data: QuestionResponse(date: [2023, 3, 1], title: "텔링미를 사용하실 때 드는 기분은?", phrase: "하루 한번, 질문에 답변하며 나를 깨닫는 시간"))
+            cell.setData(data: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase))
+            
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: indexPath) as? ChipCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            cell.setData(with: viewModel.sortList[indexPath.row])
-            return cell
-        case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {
                 return UICollectionViewCell()
             }
@@ -140,52 +127,30 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if isNearBottomEdge(scrollView: scrollView) {
-            // 더 많은 소통 리스트 불러오기
-//            loadMoreDataFromAPI()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        default:
+            print("Wrong with section")
         }
     }
-}
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+         if kind == UICollectionView.elementKindSectionHeader {
+             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SortHeaderView.id, for: indexPath) as? SortHeaderView else {
+                 return UICollectionReusableView()
+             }
 
-class CommunicationList1ViewController: CommunicationListViewController {
-    let date = CommunicationData.shared!.threeDays[0]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getCommunicationList(date: date)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        reloadCollectionView()
-    }
-}
+             return headerView
+         }
 
-class CommunicationList2ViewController: CommunicationListViewController {
-    let date = CommunicationData.shared!.threeDays[1]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getCommunicationList(date: date)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        reloadCollectionView()
-    }
-}
+         // Return a default view or nil for other kinds if needed
+         return UICollectionReusableView()
+     }
 
-class CommunicationList3ViewController: CommunicationListViewController {
-    let date = CommunicationData.shared!.threeDays[2]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getCommunicationList(date: date)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        reloadCollectionView()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if isNearBottomEdge(scrollView: scrollView) {
+                // 더 많은 소통 리스트 불러오기
+                //            loadMoreDataFromAPI()
+        }
     }
 }

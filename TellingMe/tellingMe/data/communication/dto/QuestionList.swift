@@ -16,4 +16,5 @@ struct QuestionListResponse: Codable {
     let title: String
     let date: [Int]
     let answerCount: Int
+    let phrase: String
 }

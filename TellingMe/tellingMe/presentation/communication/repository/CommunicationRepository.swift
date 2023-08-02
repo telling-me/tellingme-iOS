@@ -8,7 +8,7 @@
 import Foundation
 
 extension CommunityViewController {
-    func getQuestionList() {
+    func getQuestionList(completion: @escaping () -> Void) {
         guard let date = Date().getQuestionDate() else {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
@@ -17,7 +17,6 @@ extension CommunityViewController {
             switch result {
             case .success(let response):
                 self.viewModel.data = response!
-                self.setCardView()
             case .failure(let error):
                 switch error {
                 case let .errorData(errorData):
@@ -28,6 +27,7 @@ extension CommunityViewController {
                     print(error)
                 }
             }
+            completion()
         }
     }
 }

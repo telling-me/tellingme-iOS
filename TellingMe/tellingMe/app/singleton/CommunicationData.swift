@@ -9,8 +9,9 @@ import Foundation
 
 class CommunicationData {
     static var shared: CommunicationData? = CommunicationData()
-    var threeDays: [String]
+    var threeDays: [QuestionListResponse]
     var currentIndex: Int
+    var currentSort: String = "인기순"
 
     private init() {
         threeDays = []

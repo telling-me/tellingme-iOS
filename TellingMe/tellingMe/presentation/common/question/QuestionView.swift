@@ -70,7 +70,7 @@ class QuestionView: UIView {
     func setQuestion(data: QuestionResponse) {
         questionLabel.text = data.title
         subQuestionLabel.text = data.phrase
-        dateLabel.text = data.date.intArraytoDate()
+        dateLabel.text = data.date.intArraytoDate3()
     }
 }
 

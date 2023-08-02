@@ -18,6 +18,7 @@ struct Content: Codable {
     let job: Int
     let purpose: String
     let weight: Int
+    let emotion: Int
 }
 
 struct Sort: Codable {

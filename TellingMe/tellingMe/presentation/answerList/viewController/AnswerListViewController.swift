@@ -67,10 +67,6 @@ class AnswerListViewController: DropDownViewController {
         containerView.subviews.forEach { subview in
             subview.removeFromSuperview()
         }
-//        children.forEach { childViewController in
-//            childViewController.willMove(toParent: nil)
-//            childViewController.removeFromParent()
-//        }
     }
 
     func setNotfoundAnswerList() {
@@ -126,6 +122,7 @@ extension AnswerListViewController {
         }
         tableView.isHidden = true
         tableView.removeFromSuperview()
+        getAnswerList()
     }
 }
 

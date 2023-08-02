@@ -53,4 +53,21 @@ extension Array {
 
         return "1999.09.01"
     }
+    
+    func intArraytoDate3() -> String {
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = self[0] as? Int
+        dateComponents.month = self[1] as? Int
+        dateComponents.day = self[2] as? Int
+
+        if let date = calendar.date(from: dateComponents) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+            let formattedString = dateFormatter.string(from: date)
+            return formattedString
+        }
+
+        return "1999년 09월 01일"
+    }
 }

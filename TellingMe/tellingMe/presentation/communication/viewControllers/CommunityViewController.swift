@@ -13,7 +13,14 @@ class CommunityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getQuestionList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getQuestionList() {
+            self.setCardView()
+            CommunicationData.shared?.threeDays = self.viewModel.data
+        }
     }
 
     func setCardView() {

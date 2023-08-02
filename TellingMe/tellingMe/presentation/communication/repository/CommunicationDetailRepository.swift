@@ -8,12 +8,15 @@
 import Foundation
 
 extension CommunicationListViewController {
-    func getCommunicationList(date: String) {
+    func getCommunicationList(date: [Int], completion: @escaping () -> Void) {
+        guard let date = date.intArraytoDate() else {
+            self.showToast(message: "날짜를 불러오지 못 했습니다.")
+            return
+        }
         CommunicationAPI.getCommunicationList(date: date, page: 0, size: 10, sort: "최신순") { result in
             switch result {
             case .success(let response):
                 self.viewModel.communicationList = response!.content
-                self.reloadCollectionView()
             case .failure(let error):
                 switch error {
                 case let .errorData(errorData):
@@ -24,6 +27,7 @@ extension CommunicationListViewController {
                     print(error)
                 }
             }
+            completion()
         }
     }
 }
