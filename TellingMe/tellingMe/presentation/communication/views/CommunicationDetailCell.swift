@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SendLikeSignal: AnyObject {
+    func sendLike(_ self: CommunicationDetailCollectionViewCell)
+}
+
 class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     static let id = "communicationDetailCollectionViewCell"
 
+    var answerId: Int = 0
+    var delegate: SendLikeSignal?
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +70,7 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
 
     func setView() {
         self.layer.cornerRadius = 12
+        likeButton.addTarget(self, action: #selector(clickLike), for: .touchUpInside)
 
         contentView.backgroundColor = UIColor(named: "Side200")
         contentView.addSubview(containerView)
@@ -103,7 +110,12 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
 
+    @objc func clickLike() {
+        delegate?.sendLike(self)
+    }
+
     func setData(data: Content) {
+        self.answerId = data.answerId
         answerLabel.text = data.content
         emotionView.image = UIImage(named: emotions[data.emotion-1].image)
         emotionLabel.text = emotions[data.emotion-1].text

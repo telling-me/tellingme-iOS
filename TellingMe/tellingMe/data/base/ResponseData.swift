@@ -12,6 +12,7 @@ enum APIError: Error {
     case errorData(ErrorData)
     case tokenNotFound
     case notJoin(SignInErrorResponse)
+    case answerNotFound
     case other(Error)
 }
 

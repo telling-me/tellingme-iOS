@@ -30,4 +30,24 @@ extension CommunicationListViewController {
             completion()
         }
     }
+    
+    func postLike(answerId: Int, completion: @escaping (Bool) -> Void) {
+        let request = LikeRequest(answerId: answerId)
+        LikeAPI.postLike(request: request) { result in
+            switch result {
+            case .success:
+               completion(true)
+            case .failure(let error):
+                switch error {
+                case let .errorData(errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("login으로 push할게요")
+                default:
+                    print(error)
+                }
+                completion(false)
+            }
+        }
+    }
 }

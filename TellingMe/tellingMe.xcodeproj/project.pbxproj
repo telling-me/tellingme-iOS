@@ -37,7 +37,7 @@
 		3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F572A73E57E0098E8C9 /* CommunicationList.swift */; };
 		3A320F5A2A73E6240098E8C9 /* CommunicationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F592A73E6240098E8C9 /* CommunicationDetailCell.swift */; };
 		3A320F5C2A754CB60098E8C9 /* CommunicationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F5B2A754CB60098E8C9 /* CommunicationPageViewController.swift */; };
-		3A320F5E2A7583E40098E8C9 /* CommunicationDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F5D2A7583E40098E8C9 /* CommunicationDetailRepository.swift */; };
+		3A320F5E2A7583E40098E8C9 /* CommunicationListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F5D2A7583E40098E8C9 /* CommunicationListRepository.swift */; };
 		3A320F602A7621110098E8C9 /* QuestionCollctionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F5F2A7621110098E8C9 /* QuestionCollctionViewCell.swift */; };
 		3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A338B0329E67C5000786D08 /* LoginRepository.swift */; };
 		3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33C45629D96CA1002BBA85 /* DropDownButton.swift */; };
@@ -131,6 +131,8 @@
 		3ABB09EE2A1A73F600C6596B /* PullDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */; };
 		3ABB09F02A1A755100C6596B /* AnswerCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */; };
 		3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */; };
+		3ABB84552A7ACD6F00540269 /* LikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB84542A7ACD6F00540269 /* LikeAPI.swift */; };
+		3ABB84572A7ACD8100540269 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB84562A7ACD8100540269 /* Like.swift */; };
 		3AC204782A6BC1EB0005709A /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC204772A6BC1EB0005709A /* Communication.storyboard */; };
 		3AC2047B2A6BC5990005709A /* CommunityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2047A2A6BC5990005709A /* CommunityCardView.swift */; };
 		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
@@ -211,7 +213,7 @@
 		3A320F572A73E57E0098E8C9 /* CommunicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationList.swift; sourceTree = "<group>"; };
 		3A320F592A73E6240098E8C9 /* CommunicationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailCell.swift; sourceTree = "<group>"; };
 		3A320F5B2A754CB60098E8C9 /* CommunicationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageViewController.swift; sourceTree = "<group>"; };
-		3A320F5D2A7583E40098E8C9 /* CommunicationDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailRepository.swift; sourceTree = "<group>"; };
+		3A320F5D2A7583E40098E8C9 /* CommunicationListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationListRepository.swift; sourceTree = "<group>"; };
 		3A320F5F2A7621110098E8C9 /* QuestionCollctionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollctionViewCell.swift; sourceTree = "<group>"; };
 		3A338B0329E67C5000786D08 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		3A33C45629D96CA1002BBA85 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
@@ -308,6 +310,8 @@
 		3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDownViewController.swift; sourceTree = "<group>"; };
 		3ABB09EF2A1A755100C6596B /* AnswerCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedViewController.swift; sourceTree = "<group>"; };
 		3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedViewModel.swift; sourceTree = "<group>"; };
+		3ABB84542A7ACD6F00540269 /* LikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAPI.swift; sourceTree = "<group>"; };
+		3ABB84562A7ACD8100540269 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		3AC204772A6BC1EB0005709A /* Communication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Communication.storyboard; sourceTree = "<group>"; };
 		3AC2047A2A6BC5990005709A /* CommunityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCardView.swift; sourceTree = "<group>"; };
 		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
@@ -510,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				3AC0BA6229EF0F0000888868 /* base */,
+				3ABB84512A7ACD3100540269 /* like */,
 				3AB795792A6E9825009961CF /* communication */,
 				3A70A6422A272B15009D8D76 /* user */,
 				3A71213E2A03A84F00A02054 /* answer */,
@@ -898,7 +903,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB795822A6EA1D9009961CF /* CommunicationRepository.swift */,
-				3A320F5D2A7583E40098E8C9 /* CommunicationDetailRepository.swift */,
+				3A320F5D2A7583E40098E8C9 /* CommunicationListRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -919,6 +924,31 @@
 				3ABB09ED2A1A73F600C6596B /* PullDownViewController.swift */,
 			);
 			path = pulldown;
+			sourceTree = "<group>";
+		};
+		3ABB84512A7ACD3100540269 /* like */ = {
+			isa = PBXGroup;
+			children = (
+				3ABB84522A7ACD4800540269 /* api */,
+				3ABB84532A7ACD5900540269 /* dto */,
+			);
+			path = like;
+			sourceTree = "<group>";
+		};
+		3ABB84522A7ACD4800540269 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				3ABB84542A7ACD6F00540269 /* LikeAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		3ABB84532A7ACD5900540269 /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				3ABB84562A7ACD8100540269 /* Like.swift */,
+			);
+			path = dto;
 			sourceTree = "<group>";
 		};
 		3ABC33552A1F84A80076206C /* viewModel */ = {
@@ -1428,6 +1458,7 @@
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
 				3AB0E3CB2A1B3A0700B13755 /* ModifyAnswerRepository.swift in Sources */,
 				3ACE334F2A397A40008FCC03 /* TermOfUseViewController.swift in Sources */,
+				3ABB84572A7ACD8100540269 /* Like.swift in Sources */,
 				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
@@ -1474,7 +1505,7 @@
 				3A1F6B062A5DAD8F00E7B107 /* PushNotificationModalViewController.swift in Sources */,
 				3ACE33932A39A30E008FCC03 /* SplashViewController.swift in Sources */,
 				3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */,
-				3A320F5E2A7583E40098E8C9 /* CommunicationDetailRepository.swift in Sources */,
+				3A320F5E2A7583E40098E8C9 /* CommunicationListRepository.swift in Sources */,
 				3A59B8F42A41F5040091322E /* AgreementDetailViewController.swift in Sources */,
 				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
 				3AB795862A6EA6A9009961CF /* CommunicationViewModel.swift in Sources */,
@@ -1528,6 +1559,7 @@
 				3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
 				3A8667D52A531C6300C6BE96 /* AnswerListStruct.swift in Sources */,
+				3ABB84552A7ACD6F00540269 /* LikeAPI.swift in Sources */,
 				3A3739C52A13E37500739543 /* ChipGenderViewController.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,

@@ -232,6 +232,7 @@
                     </view>
                     <connections>
                         <outlet property="backHeaderview" destination="fsL-08-Xlm" id="mhJ-sb-tD6"/>
+                        <outlet property="containerView" destination="0Cd-jq-SHr" id="zLR-sd-p0f"/>
                         <outlet property="nextButton" destination="8GM-PW-4gC" id="ZsR-Ob-BmN"/>
                         <outlet property="prevButton" destination="PVw-SY-FSp" id="l0U-Rd-Uzf"/>
                     </connections>
@@ -253,11 +254,17 @@
         <designable name="BR5-o6-T25">
             <size key="intrinsicContentSize" width="29.666666666666668" height="20.333333333333332"/>
         </designable>
+        <designable name="GbA-rv-ehm">
+            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
+        </designable>
         <designable name="V2l-3P-eCQ">
             <size key="intrinsicContentSize" width="44.333333333333336" height="20.333333333333332"/>
         </designable>
         <designable name="ad6-EZ-MRo">
             <size key="intrinsicContentSize" width="271.66666666666669" height="20.333333333333332"/>
+        </designable>
+        <designable name="o8A-Z2-ykn">
+            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
         </designable>
     </designables>
     <resources>

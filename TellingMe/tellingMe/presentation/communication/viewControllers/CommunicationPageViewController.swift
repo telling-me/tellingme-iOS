@@ -70,9 +70,11 @@ extension CommunicationPageViewController: UIPageViewControllerDelegate, UIPageV
 
 extension CommunicationPageViewController {
     func prevPage() {
-        setViewControllers([self.viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .forward, animated: true, completion: nil)
+        CommunicationData.shared!.currentIndex = (CommunicationData.shared!.currentIndex - 1 + viewControllersArray.count) % viewControllersArray.count
+        setViewControllers([self.viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .reverse, animated: true, completion: nil)
     }
     func nextPage() {
+        CommunicationData.shared!.currentIndex = (CommunicationData.shared!.currentIndex + 1) % viewControllersArray.count
         setViewControllers([self.viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .forward, animated: true, completion: nil)
      }
 }

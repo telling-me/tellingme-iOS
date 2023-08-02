@@ -12,7 +12,7 @@ class CommunicationListViewController: UIViewController {
 
     var question: QuestionListResponse = QuestionListResponse(title: "텔링미를 사용하실 때 드는 기분은?", date: [2023, 3, 1], answerCount: 0, phrase: "")
     var index = 0
-    
+
     private lazy var collectionView: UICollectionView = {
       let view = UICollectionView(frame: .zero, collectionViewLayout: self.getLayout())
       view.showsVerticalScrollIndicator = true
@@ -121,6 +121,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
                 return UICollectionViewCell()
             }
             cell.setData(data: viewModel.communicationList[indexPath.row])
+            cell.delegate = self
             return cell
         default:
             return UICollectionViewCell()
@@ -151,6 +152,19 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
         if isNearBottomEdge(scrollView: scrollView) {
                 // 더 많은 소통 리스트 불러오기
                 //            loadMoreDataFromAPI()
+        }
+    }
+}
+
+extension CommunicationListViewController: SendLikeSignal {
+    func sendLike(_ self: CommunicationDetailCollectionViewCell) {
+        postLike(answerId: self.answerId) { isSuccess in
+            if isSuccess {
+                // 좋아요 성공
+                self.likeButton.tintColor = .red
+            } else {
+                // 좋아요 실패
+            }
         }
     }
 }
