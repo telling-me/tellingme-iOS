@@ -82,10 +82,10 @@ class CommunicationListViewController: UIViewController {
 
         // 맨 아래가 아니라 그 근처로 가면 불러오기 위한 변수 값
         let threshold: CGFloat = 10
-        
+
         return yOffset + visibleHeight + threshold >= contentHeight
     }
-    
+
     func reloadCollectionView() {
         collectionView.reloadData()
     }
@@ -95,7 +95,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -106,7 +106,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
             return 0
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -114,7 +114,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
                 return UICollectionViewCell()
             }
             cell.setData(data: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase))
-            
+
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {

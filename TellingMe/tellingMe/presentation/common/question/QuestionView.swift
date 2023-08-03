@@ -18,6 +18,7 @@ class QuestionView: UIView {
        let label = Body1Bold()
         label.textColor = UIColor(named: "Gray7")
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,6 +27,7 @@ class QuestionView: UIView {
         let label = Body2Regular()
         label.textColor = UIColor(named: "Gray7")
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
