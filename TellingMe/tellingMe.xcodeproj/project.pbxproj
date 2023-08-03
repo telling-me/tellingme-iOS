@@ -133,6 +133,7 @@
 		3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */; };
 		3ABB84552A7ACD6F00540269 /* LikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB84542A7ACD6F00540269 /* LikeAPI.swift */; };
 		3ABB84572A7ACD8100540269 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB84562A7ACD8100540269 /* Like.swift */; };
+		3ABB84592A7BD37300540269 /* WithdrawlDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB84582A7BD37300540269 /* WithdrawlDTO.swift */; };
 		3AC204782A6BC1EB0005709A /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC204772A6BC1EB0005709A /* Communication.storyboard */; };
 		3AC2047B2A6BC5990005709A /* CommunityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2047A2A6BC5990005709A /* CommunityCardView.swift */; };
 		3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */; };
@@ -312,6 +313,7 @@
 		3ABB09F12A1A756600C6596B /* AnswerCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletedViewModel.swift; sourceTree = "<group>"; };
 		3ABB84542A7ACD6F00540269 /* LikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAPI.swift; sourceTree = "<group>"; };
 		3ABB84562A7ACD8100540269 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		3ABB84582A7BD37300540269 /* WithdrawlDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawlDTO.swift; sourceTree = "<group>"; };
 		3AC204772A6BC1EB0005709A /* Communication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Communication.storyboard; sourceTree = "<group>"; };
 		3AC2047A2A6BC5990005709A /* CommunityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCardView.swift; sourceTree = "<group>"; };
 		3AC9D53729D58D8E006A2566 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
@@ -519,7 +521,7 @@
 				3A70A6422A272B15009D8D76 /* user */,
 				3A71213E2A03A84F00A02054 /* answer */,
 				3A00B74D29FBF1A400285CA8 /* question */,
-				3A5076EC29C82FE800C7A5E9 /* sign */,
+				3A5076EC29C82FE800C7A5E9 /* auth */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -630,13 +632,13 @@
 			path = dropdown;
 			sourceTree = "<group>";
 		};
-		3A5076EC29C82FE800C7A5E9 /* sign */ = {
+		3A5076EC29C82FE800C7A5E9 /* auth */ = {
 			isa = PBXGroup;
 			children = (
 				3A00B74F29FBF1CF00285CA8 /* API */,
 				3A5076EF29C8333700C7A5E9 /* DTO */,
 			);
-			path = sign;
+			path = auth;
 			sourceTree = "<group>";
 		};
 		3A5076EF29C8333700C7A5E9 /* DTO */ = {
@@ -646,6 +648,7 @@
 				3A409B4129E148C700A05B22 /* SignUpDTO.swift */,
 				3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */,
 				3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */,
+				3ABB84582A7BD37300540269 /* WithdrawlDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1475,6 +1478,7 @@
 				3A89B3C42A77ABA0002DFBCD /* CommunicationData.swift in Sources */,
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
+				3ABB84592A7BD37300540269 /* WithdrawlDTO.swift in Sources */,
 				3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetOptionViewController.swift in Sources */,
 				3A3739BB2A125F3B00739543 /* ChipJobViewController.swift in Sources */,
@@ -1713,7 +1717,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.13;
+				MARKETING_VERSION = 1.3.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1743,7 +1747,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.13;
+				MARKETING_VERSION = 1.3.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

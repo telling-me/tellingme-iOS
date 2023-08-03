@@ -11,7 +11,6 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import AuthenticationServices
 import Moya
-import Alamofire
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func callKakaoAPI() {
@@ -20,7 +19,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 if let error = error {
                     print("\(error)")
                 } else {
-                    self.login(type: "kakao", oauthToken: oauthToken?.accessToken ?? "")
+                    guard let oauthToken = oauthToken else {
+                        return
+                    }
+                    KeychainManager.shared.save(oauthToken.accessToken, key: Keys.idToken.rawValue)
+                    self.login(type: "kakao", oauthToken: oauthToken.accessToken)
                 }
             }
         } else {
@@ -28,12 +31,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 if let error = error {
                     print("\(error)")
                 } else {
-                    self.login(type: "kakao", oauthToken: oauthToken?.accessToken ?? "")
+                    guard let oauthToken = oauthToken else {
+                        return
+                    }
+                    KeychainManager.shared.save(oauthToken.accessToken, key: Keys.idToken.rawValue)
+                    self.login(type: "kakao", oauthToken: oauthToken.accessToken)
                 }
             }
         }
     }
-    
+
     func login(type: String, oauthToken: String) {
         LoginAPI.signIn(type: type, token: oauthToken) { result in
             switch result {

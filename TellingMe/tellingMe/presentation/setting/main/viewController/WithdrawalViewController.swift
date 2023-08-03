@@ -6,15 +6,28 @@
 //
 
 import UIKit
+import AuthenticationServices
 
-class WithdrawalViewController: SettingViewController {
+class WithdrawalViewController: SettingViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var withdrawalButton: SecondaryTextButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkButton.setImage(UIImage(systemName: "checkmark"), for: .selected)
         withdrawalButton.isEnabled = false
         headerView.setTitle(title: "회원 탈퇴")
+    }
+    
+    func callAppleAPI() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
 
     @IBAction func clickAgree(_ sender: UIButton) {
@@ -43,6 +56,11 @@ extension WithdrawalViewController: ModalActionDelegate {
     }
 
     func clickOk() {
-        withDrawalUser()
+        // 애플 로그인일 경우에는 authCode 받아서 진행
+        if KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) == "apple" {
+            callAppleAPI()
+        } else {
+            withDrawalUser()
+        }
     }
 }
