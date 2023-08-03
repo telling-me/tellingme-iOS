@@ -7,11 +7,12 @@
 
 import Foundation
 import UIKit
-import SwiftUI
+import AuthenticationServices
 
 extension WithdrawalViewController {
-    func withDrawalUser() {
-        LoginAPI.withdrawalUser { result in
+    func withDrawalUser(authCode: String = "") {
+        let request = WithdrawalRequest(authorizationCode: authCode)
+        LoginAPI.withdrawalUser(request: request) { result in
             switch result {
             case .success:
                 KeychainManager.shared.deleteAll()
@@ -29,6 +30,33 @@ extension WithdrawalViewController {
                 }
             }
         }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            if  let authCode = appleIDCredential.authorizationCode,
+               let authCodeString = String(data: authCode, encoding: .utf8) {
+                withDrawalUser(authCode: authCodeString)
+            }
+
+            // 언제 쓰이는거지?
+        case let passwordCredential as ASPasswordCredential:
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            print(passwordCredential)
+
+        default:
+            break
+        }
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window ?? UIWindow()
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        self.showToast(message: "애플 로그인에 실패하였습니다.")
     }
 }
 

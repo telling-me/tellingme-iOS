@@ -18,7 +18,7 @@ struct SignInResponse: Codable {
     let socialId: String
 }
 
-struct SignInErrorResponse: Error, Codable {
+struct SignInErrorResponse: Codable {
     let socialId: String
     let socialLoginType: String
 }

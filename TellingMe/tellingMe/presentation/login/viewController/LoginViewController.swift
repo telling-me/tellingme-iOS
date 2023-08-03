@@ -40,12 +40,12 @@ class LoginViewController: UIViewController {
     func pushHome() {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
-        
+
         tabBarController.selectedIndex = 1
         guard let window = UIApplication.shared.windows.first else {
             return
         }
-        
+
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
     }

@@ -14,7 +14,7 @@ enum LoginAPITarget {
     case signUp(SignUpRequest)
     case checkNickname(CheckNicknameRequest)
     case jobInfo(JobInfoRequest)
-    case withdrawalUser
+    case withdrawalUser(WithdrawalRequest)
     case logout
 
 }
@@ -29,6 +29,8 @@ extension LoginAPITarget: TargetType {
         case .checkNickname(let body):
             return .requestJSONEncodable(body)
         case .jobInfo(let body):
+            return .requestJSONEncodable(body)
+        case .withdrawalUser(let body):
             return .requestJSONEncodable(body)
         default:
             return .requestPlain
@@ -91,8 +93,11 @@ struct LoginAPI: Networkable {
                 case let .other(otherError):
                     let error = otherError as? MoyaError
                     if let data = error?.response?.data {
-                        let errorResponse = try? JSONDecoder().decode(SignInErrorResponse.self, from: data)
-                        completion(.failure(APIError.notJoin(errorResponse!)))
+                        if let errorResponse = try? JSONDecoder().decode(SignInErrorResponse.self, from: data) {
+                            completion(.failure(APIError.notJoin(errorResponse)))
+                        } else {
+                            completion(.failure(APIError.other(otherError)))
+                        }
                     } else {
                         completion(.failure(APIError.other(otherError)))
                     }
@@ -141,9 +146,9 @@ struct LoginAPI: Networkable {
         makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
 
-    static func withdrawalUser(completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+    static func withdrawalUser(request: WithdrawalRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.withdrawalUser, dtoType: EmptyResponse.self, completion: completion)
+            try makeAuthorizedProvider().request(.withdrawalUser(request), dtoType: EmptyResponse.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

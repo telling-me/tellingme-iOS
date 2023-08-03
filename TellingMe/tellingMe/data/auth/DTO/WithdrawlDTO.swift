@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct WithdrawalRequest: Codable {
+    var authorizationCode: String
+}
