@@ -19,7 +19,6 @@ class AnswerCompletedViewController: PullDownViewController {
     @IBOutlet weak var answerTextView: UITextView!
 
     override func viewWillAppear(_ animated: Bool) {
-        getQuestion()
         getAnswer()
     }
 
@@ -27,6 +26,8 @@ class AnswerCompletedViewController: PullDownViewController {
         super.viewDidLoad()
         items = viewModel.menus
         tableView.reloadData()
+
+        getQuestion()
     }
 
     @IBAction func backButton(_ sender: UIButton) {
