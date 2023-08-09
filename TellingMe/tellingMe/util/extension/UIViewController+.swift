@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController: DismissButtonDelegate {
+extension UIViewController: BackHeaderViewDelegate {
     func popViewController() {
         self.navigationController?.popViewController(animated: true)
     }

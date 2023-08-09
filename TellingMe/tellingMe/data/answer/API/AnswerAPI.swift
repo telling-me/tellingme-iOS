@@ -10,7 +10,8 @@ import Moya
 
 enum AnswerAPITarget {
     case getAnswerList(month: String, year: String)
-    case getAnswer(query: String)
+    case getAnswerWithDate(query: String)
+    case getAnswerWithId(query: Int)
     case getAnswerRecord(query: String)
     case registerAnswer(request: RegisterAnswerRequest)
     case deleteAnswer(request: DeleteAnswerRequest)
@@ -22,8 +23,10 @@ extension AnswerAPITarget: TargetType {
         switch self {
         case .getAnswerList(let month, let year):
             return .requestParameters(parameters: ["month": month, "year": year], encoding: URLEncoding.queryString)
-        case .getAnswer(let query):
+        case .getAnswerWithDate(let query):
             return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
+        case .getAnswerWithId(let query):
+            return .requestParameters(parameters: ["answerId": query], encoding: URLEncoding.queryString)
         case .getAnswerRecord(let query):
             return .requestParameters(parameters: ["date": query], encoding: URLEncoding.queryString)
         case .registerAnswer(let request):
@@ -39,8 +42,10 @@ extension AnswerAPITarget: TargetType {
         switch self {
         case .getAnswerList:
             return "api/answer/list"
-        case .getAnswer:
+        case .getAnswerWithDate:
             return "api/answer"
+        case .getAnswerWithId:
+            return "api/answer/completed"
         case .getAnswerRecord:
             return "api/answer/record"
         case .registerAnswer:
@@ -95,9 +100,21 @@ struct AnswerAPI: Networkable {
         }
     }
 
-    static func getAnswer(query: String, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
+    static func getAnswerWithDate(query: String, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
         do {
-            try makeAuthorizedProvider().request(.getAnswer(query: query), dtoType: GetAnswerRespose.self, completion: completion)
+            try makeAuthorizedProvider().request(.getAnswerWithDate(query: query), dtoType: GetAnswerRespose.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func getAnswerWithId(query: Int, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.getAnswerWithId(query: query), dtoType: GetAnswerRespose.self, completion: completion)
         } catch APIError.tokenNotFound {
             completion(.failure(APIError.tokenNotFound))
         } catch APIError.errorData(let error) {

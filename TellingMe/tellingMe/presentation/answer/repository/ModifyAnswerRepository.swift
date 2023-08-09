@@ -14,7 +14,7 @@ extension ModifyAnswerViewController {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
         }
-        AnswerAPI.getAnswer(query: date) { result in
+        AnswerAPI.getAnswerWithDate(query: date) { result in
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content

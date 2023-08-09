@@ -24,6 +24,8 @@ target 'tellingMe' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Messaging'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   # Pods for tellingMe
 
 end

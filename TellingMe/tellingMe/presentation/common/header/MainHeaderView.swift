@@ -8,10 +8,10 @@
 import UIKit
 
 protocol HeaderViewDelegate: AnyObject {
-    func pushSetting(_ headerView: HeaderView)
+    func pushSetting(_ headerView: MainHeaderView)
 }
 
-class HeaderView: UIView {
+class MainHeaderView: UIView {
     weak var delegate: HeaderViewDelegate?
 
     let imageView: UIImageView = {

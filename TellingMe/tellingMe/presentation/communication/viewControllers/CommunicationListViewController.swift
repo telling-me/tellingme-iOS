@@ -73,6 +73,14 @@ class CommunicationListViewController: UIViewController {
         collectionView.register(CommunicationDetailCollectionViewCell.self, forCellWithReuseIdentifier: CommunicationDetailCollectionViewCell.id)
         collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
     }
+    
+    func pushCommunicationAnswer() {
+        let storyboard = UIStoryboard(name: "Communication", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 
     // 맨 마지막 근처인지 확인하는 함수
     func isNearBottomEdge(scrollView: UIScrollView) -> Bool {
@@ -130,6 +138,8 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
+        case 1:
+           pushCommunicationAnswer()
         default:
             print("Wrong with section")
         }
