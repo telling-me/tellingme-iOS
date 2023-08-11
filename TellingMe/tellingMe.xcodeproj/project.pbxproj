@@ -33,7 +33,7 @@
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F252A6F6EE90098E8C9 /* QuestionView.swift */; };
 		3A320F542A73E3470098E8C9 /* CommunicationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F532A73E3470098E8C9 /* CommunicationDetailViewController.swift */; };
-		3A320F562A73E4CA0098E8C9 /* CommunicationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F552A73E4CA0098E8C9 /* CommunicationDetailViewModel.swift */; };
+		3A320F562A73E4CA0098E8C9 /* CommunicationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F552A73E4CA0098E8C9 /* CommunicationListViewModel.swift */; };
 		3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F572A73E57E0098E8C9 /* CommunicationList.swift */; };
 		3A320F5A2A73E6240098E8C9 /* CommunicationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F592A73E6240098E8C9 /* CommunicationDetailCell.swift */; };
 		3A320F5C2A754CB60098E8C9 /* CommunicationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F5B2A754CB60098E8C9 /* CommunicationPageViewController.swift */; };
@@ -220,7 +220,7 @@
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A320F252A6F6EE90098E8C9 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		3A320F532A73E3470098E8C9 /* CommunicationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailViewController.swift; sourceTree = "<group>"; };
-		3A320F552A73E4CA0098E8C9 /* CommunicationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailViewModel.swift; sourceTree = "<group>"; };
+		3A320F552A73E4CA0098E8C9 /* CommunicationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationListViewModel.swift; sourceTree = "<group>"; };
 		3A320F572A73E57E0098E8C9 /* CommunicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationList.swift; sourceTree = "<group>"; };
 		3A320F592A73E6240098E8C9 /* CommunicationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailCell.swift; sourceTree = "<group>"; };
 		3A320F5B2A754CB60098E8C9 /* CommunicationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageViewController.swift; sourceTree = "<group>"; };
@@ -941,7 +941,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB795852A6EA6A9009961CF /* CommunicationViewModel.swift */,
-				3A320F552A73E4CA0098E8C9 /* CommunicationDetailViewModel.swift */,
+				3A320F552A73E4CA0098E8C9 /* CommunicationListViewModel.swift */,
 				3ABB84842A80C7D300540269 /* CommunicationAnswerViewModel.swift */,
 				3ABB84C02A8382EA00540269 /* ReportViewModel.swift */,
 			);
@@ -1586,7 +1586,7 @@
 				3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */,
 				3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */,
 				3A8667D12A531A8500C6BE96 /* ListTableViewController.swift in Sources */,
-				3A320F562A73E4CA0098E8C9 /* CommunicationDetailViewModel.swift in Sources */,
+				3A320F562A73E4CA0098E8C9 /* CommunicationListViewModel.swift in Sources */,
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3A8667D32A531B9800C6BE96 /* CardListCollectionViewCell.swift in Sources */,

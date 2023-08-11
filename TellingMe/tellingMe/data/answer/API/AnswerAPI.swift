@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 enum AnswerAPITarget {
     case getAnswerList(month: String, year: String)
@@ -109,6 +110,31 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+//    static func getAnswerWithId(query: Int) -> Observable<GetAnswerRespose> {
+//         return Observable.create { observer in
+//             try makeAuthorizedProvider().requestO(.getAnswerWithId(query: query), dtoType: GetAnswerRespose.self) { result in
+//                 switch result {
+//                 case .success(let response):
+//                    observer.onNext(response)
+//                    observer.onCompleted()
+//                 case .failure(let error):
+//                     observer.onError(APIError.other(error))
+//                 }
+//             }
+//
+//             return Disposables.create()
+//         }
+//     }
+    
+    static func getAnswerWithId(query: Int) -> Observable<GetAnswerRespose> {
+        do {
+            let provider =  try makeAuthorizedProvider()
+            return provider.request(target: .getAnswerWithId(query: query))
+        } catch {
+            return Observable.error(error)
         }
     }
     

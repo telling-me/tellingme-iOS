@@ -61,7 +61,7 @@ class CommunityCardView: UIView {
     func setView() {
         self.backgroundColor = UIColor(named: "Side200")
         self.layer.cornerRadius = 20
-        
+
         self.addSubview(questionLabel)
         questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         questionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
@@ -84,14 +84,14 @@ class CommunityCardView: UIView {
         commentCountLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
 
         self.addSubview(button)
-        button.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -16).isActive = true
+        button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
         button.widthAnchor.constraint(equalToConstant: 36).isActive = true
         button.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        
+
         button.addTarget(self, action: #selector(clickedButton), for: .touchUpInside)
     }
-    
+
     @objc func clickedButton(sender: UIButton) {
         delegate?.communicationButtonClicked(self)
     }

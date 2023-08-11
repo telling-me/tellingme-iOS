@@ -10,11 +10,19 @@ import RxSwift
 import RxCocoa
 
 class CommunicationAnswerViewModel {
-    let answerId: Int = 0
+    struct ReceiveData {
+        let answerId: Int
+        let question: QuestionResponse
+    }
+    var answerId: Int = 0
+    let answerIdSubject = BehaviorSubject<ReceiveData>(value: ReceiveData(answerId: 0, question: QuestionResponse.standardQuestion))
     let questionData: String = ""
     let contentData: String = ""
     let isLike = BehaviorRelay<Bool>(value: false)
-    var answerData: GetAnswerRespose? = nil
+    var responseSubject = PublishSubject<GetAnswerRespose>()
+    
+    let showToastSubject = PublishSubject<String>()
+    let disposeBag = DisposeBag()
 
     func toggleisLike() {
         let request = LikeRequest(answerId: answerId)
@@ -27,24 +35,20 @@ class CommunicationAnswerViewModel {
             }
         }
     }
-    
-    func fetchAnswerData(id: Int) -> GetAnswerRespose? {
-        var data: GetAnswerRespose? = nil
-        AnswerAPI.getAnswerWithId(query: id) { result in
-            switch result {
-            case .success(let response):
-                self.answerData = response
-            case .failure(let error):
-                switch error {
-                case .errorData(let errorData): break
-//                    self.showToast(message: errorData.message)
-                case .tokenNotFound:
-                    print("login으로 push할게요")
-                default:
-                    print(error)
+
+    func fetchAnswerData() {
+        AnswerAPI.getAnswerWithId(query: answerId)
+            .subscribe(onNext: { [weak self] response in
+                self?.responseSubject.onNext(response)
+            }, onError: { [weak self] error in
+                if case APIError.errorData(let errorData) = error {
+                    self?.showToastSubject.onNext(errorData.message)
+                } else if case APIError.tokenNotFound = error {
+                    self?.showToastSubject.onNext("login으로 push할게요")
+                } else {
+                    self?.showToastSubject.onNext("An error occurred")
                 }
-            }
-        }
-        return data
+            })
+            .disposed(by: disposeBag)
     }
 }

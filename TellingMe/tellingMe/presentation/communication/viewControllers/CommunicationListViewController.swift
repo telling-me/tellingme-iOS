@@ -73,12 +73,14 @@ class CommunicationListViewController: UIViewController {
         collectionView.register(CommunicationDetailCollectionViewCell.self, forCellWithReuseIdentifier: CommunicationDetailCollectionViewCell.id)
         collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
     }
-    
-    func pushCommunicationAnswer() {
+
+    func pushCommunicationAnswer(_ indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Communication", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
             return
         }
+        let data = viewModel.communicationList[indexPath.row]
+        viewController.viewModel.answerIdSubject.onNext(CommunicationAnswerViewModel.ReceiveData(answerId: data.answerId, question: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase)))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -139,7 +141,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-           pushCommunicationAnswer()
+            pushCommunicationAnswer(indexPath)
         default:
             print("Wrong with section")
         }

@@ -21,12 +21,21 @@ class CommunicationAnswerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.setDataWithReport(index: 1)
-        questionView.setQuestion(data: QuestionResponse(date: [2023,03,01], title: "텔링미를 사용하실 때 드는 기분은?", phrase: "하루 한번, 질문에 답변하며 나를 깨닫는 시간"))
-        answerView.setTextWithNoChange(text: "hello")
         bindViewModel()
     }
 
     func bindViewModel() {
+        viewModel.responseSubject
+            .subscribe(onNext: { [weak self] response in
+                self?.answerView.setTextWithNoChange(text: response.content)
+                self?.likeButton.isSelected = response.isLiked
+            }).disposed(by: disposeBag)
+        viewModel.answerIdSubject
+            .subscribe(onNext: { [weak self] data in
+                self?.viewModel.answerId = data.answerId
+                self?.questionView.setQuestion(data: data.question)
+                self?.viewModel.fetchAnswerData()
+            }).disposed(by: disposeBag)
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.toggleisLike()
@@ -37,23 +46,23 @@ class CommunicationAnswerViewController: UIViewController {
                 self?.updateLikeButton(isLiked: isLiked)
             })
             .disposed(by: disposeBag)
-        
+
         headerView.backButtonTapObservable
-             .subscribe(onNext: { [weak self] in
-                 self?.navigationController?.popViewController(animated: true)
-             })
-             .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
         headerView.reportButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.showReportView()
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
-    
+
     func showReportView() {
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "reportViewController") as? ReportViewController else {
             return
         }
+        viewController.viewModel.answerId = viewModel.answerId
         viewController.modalPresentationStyle = .overFullScreen
         self.present(viewController, animated: true, completion: nil)
     }
@@ -67,7 +76,7 @@ class CommunicationAnswerViewController: UIViewController {
         if isLiked {
             
         } else {
-
+            
         }
     }
 }

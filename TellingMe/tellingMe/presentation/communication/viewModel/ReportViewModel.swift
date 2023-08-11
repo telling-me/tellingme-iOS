@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class ReportViewModel {
-    let answerId: Int = 0
+    var answerId: Int = 0
     let reports = ["욕설", "음란물", "광고", "개인정보 침해", "낚시성 콘텐츠", "기타"]
     let selectedReport = BehaviorRelay<Int?>(value: nil)
 
