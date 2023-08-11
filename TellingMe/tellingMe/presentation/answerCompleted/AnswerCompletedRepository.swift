@@ -36,7 +36,7 @@ extension AnswerCompletedViewController {
 
     func getAnswer() {
         guard let date = viewModel.questionDate else { return }
-        AnswerAPI.getAnswer(query: date) { result in
+        AnswerAPI.getAnswerWithDate(query: date) { result in
             switch result {
             case .success(let response):
                 self.answerTextView.text = response?.content

@@ -39,6 +39,13 @@ class QuestionView: UIView {
         return label
     }()
 
+    let borderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "Side300")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -50,6 +57,7 @@ class QuestionView: UIView {
     }
 
     func setView() {
+        self.backgroundColor = UIColor(named: "Side100")
         self.addSubview(questionContentView)
         questionContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 55).isActive = true
         questionContentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -55).isActive = true
@@ -67,6 +75,12 @@ class QuestionView: UIView {
         questionContentView.addSubview(dateLabel)
         dateLabel.centerXAnchor.constraint(equalTo: questionContentView.centerXAnchor).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: questionContentView.bottomAnchor).isActive = true
+        
+        addSubview(borderView)
+        borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
+        borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
+        borderView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     func setQuestion(data: QuestionResponse) {

@@ -10,7 +10,7 @@ import UIKit
 class AnswerListViewController: DropDownViewController {
     let viewModel = AnswerListViewModel()
     let noneView = NoneAnswerListView()
-    @IBOutlet weak var headerView: HeaderView!
+    @IBOutlet weak var headerView: MainHeaderView!
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var containerView: UIView!
@@ -158,7 +158,7 @@ extension AnswerListViewController: DropDownButtonDelegate {
 }
 
 extension AnswerListViewController: HeaderViewDelegate {
-    func pushSetting(_ headerView: HeaderView) {
+    func pushSetting(_ headerView: MainHeaderView) {
         // push를 수행하는 코드
         let storyboard = UIStoryboard(name: "Setting", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
