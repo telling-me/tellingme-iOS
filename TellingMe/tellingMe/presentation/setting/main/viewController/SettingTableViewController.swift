@@ -8,19 +8,23 @@
 import UIKit
 import Firebase
 import UserNotifications
+import RxSwift
 
 class SettingTableViewController: UITableViewController {
     let viewModel = SettingViewModel()
+    let disposeBag = DisposeBag()
     @IBOutlet weak var pushSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getisAllowedNotification()
+
+        bindViewModel()
+        self.viewModel.fetchNotificationData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        self.pushSwitch.isOn = viewModel.isPushAllowed ?? false
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.pushSwitch.isOn = viewModel.isPushAllowed ?? false
+//    }
 
     func checkNotification () {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
@@ -60,19 +64,19 @@ class SettingTableViewController: UITableViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    func getFirebaseToken() -> String? {
-        guard let token = Messaging.messaging().fcmToken else {
-            self.showToast(message: "푸쉬 알림을 등록할 수 없습니다.")
-            self.pushSwitch.isOn = false
-            return nil
-        }
 
-        return token
-    }
-
-    @IBAction func toggleSwitch(_ sender: UISwitch) {
-        self.postNotification()
+    func bindViewModel() {
+        pushSwitch.rx.isOn
+            .bind(to: viewModel.pushToggleValue)
+            .disposed(by: disposeBag)
+        viewModel.pushToggleValue
+              .bind(to: pushSwitch.rx.isOn)
+              .disposed(by: disposeBag)
+        viewModel.pushToggleValue
+            .distinctUntilChanged() // 이전 값과 다를 때만 전송
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.postNotification(value)
+            }).disposed(by: disposeBag)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

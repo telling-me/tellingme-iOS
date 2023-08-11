@@ -17,21 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ks1-Sb-FXL" customClass="GIFImageView" customModule="Gifu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzv-yw-Jj9">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                            </imageView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ks1-Sb-FXL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DvD-De-4C9"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ks1-Sb-FXL" secondAttribute="trailing" id="PbS-iH-b6E"/>
-                            <constraint firstItem="ks1-Sb-FXL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="kIG-PD-X18"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ks1-Sb-FXL" secondAttribute="bottom" id="tQD-fg-PXa"/>
+                            <constraint firstItem="Mzv-yw-Jj9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7sd-nW-fZr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Mzv-yw-Jj9" secondAttribute="trailing" id="HjO-yw-ZJ5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Mzv-yw-Jj9" secondAttribute="bottom" id="OIE-cU-PRQ"/>
+                            <constraint firstItem="Mzv-yw-Jj9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fxL-0z-zhl"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="ks1-Sb-FXL" id="9CQ-sN-Muu"/>
+                        <outlet property="splashView" destination="Mzv-yw-Jj9" id="h7a-fC-F0E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

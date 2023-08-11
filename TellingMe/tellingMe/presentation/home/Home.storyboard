@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MhK-C2-ZIR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,7 +25,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xbV-Qe-PV6">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -336,9 +336,6 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="clickButton:" destination="FRC-dq-hHT" eventType="touchUpInside" id="JHm-KX-DYq"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0y-Zo-dTv">
                                         <rect key="frame" x="156" y="318" width="52" height="30"/>
@@ -384,12 +381,42 @@
                             <constraint firstItem="Vtw-US-F4c" firstAttribute="centerY" secondItem="4XS-Kc-aWV" secondAttribute="centerY" id="vuS-mL-waz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Q0y-Zo-dTv" id="UTJ-OM-a0A"/>
+                        <outlet property="okButton" destination="lC6-eY-pot" id="bjq-pR-weO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rc6-xa-a7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="801" y="53"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Q80-zb-uES">
+            <size key="intrinsicContentSize" width="265.5" height="20.5"/>
+        </designable>
+        <designable name="QYq-Da-bcO">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="Tpz-oD-GK7">
+            <size key="intrinsicContentSize" width="68.5" height="20.5"/>
+        </designable>
+        <designable name="VL1-uj-9yg">
+            <size key="intrinsicContentSize" width="228.5" height="20.5"/>
+        </designable>
+        <designable name="lC6-eY-pot">
+            <size key="intrinsicContentSize" width="73" height="32"/>
+        </designable>
+        <designable name="lH9-tL-FdQ">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="pc3-K4-8G1">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="yEO-Xf-N27">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="BellRinging" width="151" height="163"/>
         <image name="Home" width="64" height="64"/>

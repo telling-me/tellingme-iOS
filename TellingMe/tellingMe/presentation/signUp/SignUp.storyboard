@@ -654,18 +654,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별을 알려주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Vn-Bvb" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="116.66666666666669" y="60" width="181" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출생 연도를 알려주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Vn-Bvb" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="129" y="60" width="156" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="QWB-wP-b3y"/>
                                     <constraint firstAttribute="height" constant="27" id="wTh-8t-O2g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-J4-fLA" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="333" y="805" width="56" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="CiR-Mj-M4K"/>
+                                    <constraint firstAttribute="width" constant="56" id="t6G-sv-hjm"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="nextAction:" destination="rpQ-DZ-U0L" eventType="touchUpInside" id="Yju-Yn-zs8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sU5-RR-mK6" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="25" y="805" width="56" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="7bD-Uk-A0a"/>
+                                    <constraint firstAttribute="width" constant="56" id="au2-xU-BRh"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="prevAction:" destination="rpQ-DZ-U0L" eventType="touchUpInside" id="lVS-aa-W4J"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별을 알려주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUc-lS-XDw" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="146" y="268" width="122" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="SvA-ii-62o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-IP-lzL" customClass="Input" customModule="tellingMe" customModuleProvider="target">
+                                <rect key="frame" x="25" y="139" width="364" height="57"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="18D-vE-UYQ"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4JM-oy-5Ma">
-                                <rect key="frame" x="60" y="139" width="294" height="114"/>
+                                <rect key="frame" x="60" y="347" width="294" height="114"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="O2F-gh-wOc"/>
@@ -692,63 +729,24 @@
                                     <outlet property="delegate" destination="rpQ-DZ-U0L" id="vxp-tb-CEg"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-J4-fLA" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="333" y="805" width="56" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="CiR-Mj-M4K"/>
-                                    <constraint firstAttribute="width" constant="56" id="t6G-sv-hjm"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="nextAction:" destination="rpQ-DZ-U0L" eventType="touchUpInside" id="Yju-Yn-zs8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sU5-RR-mK6" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="805" width="56" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="7bD-Uk-A0a"/>
-                                    <constraint firstAttribute="width" constant="56" id="au2-xU-BRh"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="prevAction:" destination="rpQ-DZ-U0L" eventType="touchUpInside" id="lVS-aa-W4J"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출생 연도를 알려주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUc-lS-XDw" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="91.666666666666686" y="325" width="231" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="231" id="7iy-TE-pFS"/>
-                                    <constraint firstAttribute="height" constant="27" id="SvA-ii-62o"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="Black"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-IP-lzL" customClass="Input" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="25" y="404" width="364" height="57"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="18D-vE-UYQ"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NdN-ES-zH7"/>
                         <color key="backgroundColor" name="Side100"/>
                         <constraints>
+                            <constraint firstItem="YIu-IP-lzL" firstAttribute="top" secondItem="Imi-Vn-Bvb" secondAttribute="bottom" constant="52" id="7C6-Qn-zTJ"/>
                             <constraint firstItem="Imi-Vn-Bvb" firstAttribute="centerX" secondItem="IwA-Yt-L8i" secondAttribute="centerX" id="7v5-s5-UZl"/>
                             <constraint firstItem="Imi-Vn-Bvb" firstAttribute="top" secondItem="IwA-Yt-L8i" secondAttribute="top" constant="60" id="8Kg-re-ncf"/>
-                            <constraint firstItem="vUc-lS-XDw" firstAttribute="top" secondItem="4JM-oy-5Ma" secondAttribute="bottom" constant="72" id="8QH-o6-Or3"/>
-                            <constraint firstItem="YIu-IP-lzL" firstAttribute="top" secondItem="vUc-lS-XDw" secondAttribute="bottom" constant="52" id="9lW-Sg-OGx"/>
                             <constraint firstItem="YIu-IP-lzL" firstAttribute="leading" secondItem="NdN-ES-zH7" secondAttribute="leading" constant="25" id="AlK-4l-1jp"/>
                             <constraint firstAttribute="bottomMargin" secondItem="sU5-RR-mK6" secondAttribute="bottom" constant="36" id="Lj5-ta-5sK"/>
                             <constraint firstItem="sU5-RR-mK6" firstAttribute="leading" secondItem="IwA-Yt-L8i" secondAttribute="leading" constant="25" id="QBu-r8-eBV"/>
                             <constraint firstAttribute="trailing" secondItem="v1E-J4-fLA" secondAttribute="trailing" constant="25" id="RcD-n9-KiJ"/>
                             <constraint firstAttribute="bottom" secondItem="v1E-J4-fLA" secondAttribute="bottom" constant="36" id="XbS-4O-mg0"/>
                             <constraint firstAttribute="trailing" secondItem="4JM-oy-5Ma" secondAttribute="trailing" constant="60" id="bc1-xY-K80"/>
+                            <constraint firstItem="4JM-oy-5Ma" firstAttribute="top" secondItem="vUc-lS-XDw" secondAttribute="bottom" constant="52" id="ciW-Fc-reM"/>
+                            <constraint firstItem="vUc-lS-XDw" firstAttribute="top" secondItem="YIu-IP-lzL" secondAttribute="bottom" constant="72" id="g8K-Ll-tk9"/>
                             <constraint firstItem="4JM-oy-5Ma" firstAttribute="leading" secondItem="IwA-Yt-L8i" secondAttribute="leading" constant="60" id="gkn-kA-Yax"/>
                             <constraint firstItem="vUc-lS-XDw" firstAttribute="centerX" secondItem="NdN-ES-zH7" secondAttribute="centerX" id="hCE-xw-HVK"/>
                             <constraint firstItem="NdN-ES-zH7" firstAttribute="trailing" secondItem="YIu-IP-lzL" secondAttribute="trailing" constant="25" id="iaE-cr-QFR"/>
-                            <constraint firstItem="4JM-oy-5Ma" firstAttribute="top" secondItem="Imi-Vn-Bvb" secondAttribute="bottom" constant="52" id="xfQ-KG-aBZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9pf-cb-Nc8"/>
@@ -887,7 +885,7 @@
             <size key="intrinsicContentSize" width="241.66666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="Imi-Vn-Bvb">
-            <size key="intrinsicContentSize" width="122" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="156" height="20.333333333333332"/>
         </designable>
         <designable name="L1W-89-DlR">
             <size key="intrinsicContentSize" width="225.33333333333334" height="20.333333333333332"/>
@@ -924,7 +922,7 @@
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="vUc-lS-XDw">
-            <size key="intrinsicContentSize" width="156" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="122" height="20.333333333333332"/>
         </designable>
     </designables>
     <resources>

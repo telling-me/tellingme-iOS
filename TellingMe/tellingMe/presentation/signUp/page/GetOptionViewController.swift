@@ -23,7 +23,7 @@ class GetOptionViewController: UIViewController {
     }
 
     func checkYear() {
-        guard let year = input.getText() else {
+        guard input.getText() != nil else {
             self.showToast(message: "다시 시도해주세요.")
             return
         }
@@ -38,7 +38,7 @@ class GetOptionViewController: UIViewController {
                     self.isAllChecked()
                 }
             } else {
-                self.showToast(message: "1923년 이상부터 입력이 가능합니다.")
+                self.showToast(message: "\(viewModel.todayYear - 100)년 이상부터 입력이 가능합니다.")
             }
         }
     }
@@ -49,6 +49,10 @@ class GetOptionViewController: UIViewController {
         } else {
             nextButton.isEnabled = false
         }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.input.hiddenKeyboard()
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
@@ -105,7 +109,7 @@ extension GetOptionViewController: UITextFieldDelegate {
             return false
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         checkYear()
     }

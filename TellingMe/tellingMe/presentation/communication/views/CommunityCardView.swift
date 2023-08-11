@@ -97,7 +97,7 @@ class CommunityCardView: UIView {
     }
 
     func setData(data: QuestionListResponse) {
-        questionLabel.text = data.title
+        questionLabel.text = data.title.replacingOccurrences(of: "\n", with: "")
         dateLabel.text = "\(data.date.intArraytoDate2())"
         commentCountLabel.text = "\(data.answerCount)"
     }

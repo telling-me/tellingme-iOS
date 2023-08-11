@@ -8,11 +8,6 @@
 import Foundation
 
 class AnswerViewModel {
-    struct Emotion {
-        let image: String
-        let text: String
-    }
-
     var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()

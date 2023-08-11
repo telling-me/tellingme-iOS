@@ -137,7 +137,7 @@ struct AnswerAPI: Networkable {
             return Observable.error(error)
         }
     }
-    
+
     static func getAnswerWithId(query: Int, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.getAnswerWithId(query: query), dtoType: GetAnswerRespose.self, completion: completion)

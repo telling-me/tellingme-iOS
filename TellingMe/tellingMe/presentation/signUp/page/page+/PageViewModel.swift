@@ -18,8 +18,8 @@ class SignUpPaveViewModel {
         let vc5 = storyBoard.instantiateViewController(withIdentifier: "getWorry")
         return [vc1, vc2, vc3, vc4, vc5]
     }()
-    let pagesCount = 7
-    var currentIndex = 0
+    let pagesCount = 5
+    var currentIndex = 1
 }
 
 class GetNameViewModel {

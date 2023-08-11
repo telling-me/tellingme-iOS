@@ -14,7 +14,8 @@ class AnswerListViewController: DropDownViewController {
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var containerView: UIView!
-
+    @IBOutlet var listButton: [UIButton]!
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         getAnswerList()
@@ -26,6 +27,7 @@ class AnswerListViewController: DropDownViewController {
         yearButton.delegate = self
         monthButton.delegate = self
 
+//        listButton[0].backgroundColor = UIColor(named: "Side200")
         setSmallDropDownLayout()
         yearButton.setSmallLayout()
         monthButton.setSmallLayout()
@@ -37,6 +39,7 @@ class AnswerListViewController: DropDownViewController {
     func setContainerView(tag: Int) {
         removeContainerView()
         if tag == 0 {
+            makeSelectedCardButton(selectedIndex: 0, unSelectedIndex: 1)
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "cardListCollectionViewController") as? CardListCollectionViewController else {
                 return
             }
@@ -44,12 +47,19 @@ class AnswerListViewController: DropDownViewController {
             addChildAndAddSubview(vc)
             vc.collectionView.reloadData()
         } else {
+            makeSelectedCardButton(selectedIndex: 1, unSelectedIndex: 0)
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "listTableViewController") as? ListTableViewController else {
                 return
             }
             vc.answerList = self.viewModel.answerList
             addChildAndAddSubview(vc)
         }
+    }
+    
+    func makeSelectedCardButton(selectedIndex: Int, unSelectedIndex: Int) {
+        print(selectedIndex)
+        listButton[selectedIndex].backgroundColor = UIColor(named: "Side300")
+        listButton[unSelectedIndex].backgroundColor = UIColor(named: "Side100")
     }
 
     func addChildAndAddSubview(_ childViewController: UIViewController) {

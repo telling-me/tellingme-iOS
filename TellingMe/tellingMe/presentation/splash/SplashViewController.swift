@@ -6,35 +6,33 @@
 //
 
 import UIKit
-import Gifu
-import AVFoundation
+import Lottie
+import RxSwift
 
 class SplashViewController: UIViewController {
-    @IBOutlet weak var imageView: GIFImageView!
-    private var timer: Timer?
+    @IBOutlet weak var splashView: UIView!
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        playVideo()
-    }
+        let animationView: LottieAnimationView = .init(name: "Splash")
+        splashView.addSubview(animationView)
 
-        private func playVideo() {
-            guard let path = Bundle.main.path(forResource: "Splash", ofType: "mp4") else {
-                return
-            }
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.leadingAnchor.constraint(equalTo: splashView.leadingAnchor).isActive = true
+        animationView.trailingAnchor.constraint(equalTo: splashView.trailingAnchor).isActive = true
+        animationView.topAnchor.constraint(equalTo: splashView.topAnchor).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: splashView.bottomAnchor).isActive = true
 
-            let player = AVPlayer(url: URL(fileURLWithPath: path))
-            let playerLayer = AVPlayerLayer(player: player)
-            playerLayer.frame = imageView.bounds
-            imageView.layer.addSublayer(playerLayer)
-            playerLayer.videoGravity = .resizeAspectFill
-
-            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { _ in
-                player.pause()
-                playerLayer.removeFromSuperlayer()
-                self.performAutoLogin()
-            }
-
-            player.play()
+        let loginObservable = Observable.create { observer in
+            let isLogined = self.performAutoLogin()
+            observer.onNext(isLogined)
+            observer.onCompleted()
+            return Disposables.create()
         }
+
+        animationView.play { _ in
+             self.performAutoLoginAndNavigate()
+         }
+    }
 }

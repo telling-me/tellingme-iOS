@@ -71,7 +71,7 @@ struct CommunicationAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func getCommunicationList(date: String, page: Int, size: Int, sort: String, completion: @escaping(Result<CommunicationListResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.getCommunicationList(date: date, page: page, size: size, sort: sort), dtoType: CommunicationListResponse.self, completion: completion)

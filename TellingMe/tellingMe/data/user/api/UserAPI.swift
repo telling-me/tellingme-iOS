@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 enum UserAPITarget {
     case getUserInfo
@@ -109,28 +110,31 @@ struct UserAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-
-    static func postNotification(request: AllowedNotificationRequest, completion: @escaping(Result<AllowedNotificationResponse?, APIError>) -> Void) {
+    
+    static func getisAllowedNotification() -> Observable<AllowedNotificationResponse> {
         do {
-            try makeAuthorizedProvider().request(.postisAllowedNotification(request), dtoType: AllowedNotificationResponse.self, completion: completion)
-        } catch APIError.tokenNotFound {
-            completion(.failure(APIError.tokenNotFound))
-        } catch APIError.errorData(let error) {
-            completion(.failure(APIError.errorData(error)))
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .getisAllowedNotification)
         } catch {
-            completion(.failure(APIError.other(error)))
+            return Observable.error(APIError.tokenNotFound)
         }
     }
     
-    static func postFirebaseToken(request: FirebaseTokenRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
+    static func postNotification(request: AllowedNotificationRequest) -> Observable<AllowedNotificationResponse> {
         do {
-            try makeAuthorizedProvider().request(.postFirebaseToken(request), dtoType: EmptyResponse.self, completion: completion)
-        } catch APIError.tokenNotFound {
-            completion(.failure(APIError.tokenNotFound))
-        } catch APIError.errorData(let error) {
-            completion(.failure(APIError.errorData(error)))
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .postisAllowedNotification(request))
         } catch {
-            completion(.failure(APIError.other(error)))
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func postFirebaseToken(request: FirebaseTokenRequest) -> Observable<EmptyResponse> {
+        do {
+            let provider =  try makeAuthorizedProvider()
+            return provider.request(target: .postFirebaseToken(request))
+        } catch {
+            return Observable.error(APIError.tokenNotFound)
         }
     }
 }

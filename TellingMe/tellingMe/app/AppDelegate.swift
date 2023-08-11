@@ -10,6 +10,7 @@ import KakaoSDKCommon
 import FirebaseCore
 import UserNotifications
 import FirebaseMessaging
+import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -61,5 +62,28 @@ extension AppDelegate: MessagingDelegate {
         object: nil,
         userInfo: dataDict
       )
+        
+        // 키체인에 저장되어있는데, 이 값이 fcmToken하고 다르면 token값 변경으로 서버에 전송
+        if let token = KeychainManager.shared.load(key: Keys.firebaseToken.rawValue) {
+            if token != fcmToken {
+                sendFirebaseToken(token)
+            }
+        } else {
+            
+        }
     }
+    
+    
+    func sendFirebaseToken(_ token: String) {
+        let request = FirebaseTokenRequest(pushToken: token)
+        UserAPI.postFirebaseToken(request: request)
+            .subscribe(onNext: { _ in
+            }, onError: { [weak self] error in
+                if case APIError.tokenNotFound = error {
+                    print("should move to login")
+                } else {
+                    print(error)
+                }
+            }).disposed(by: DisposeBag())
+       }
 }

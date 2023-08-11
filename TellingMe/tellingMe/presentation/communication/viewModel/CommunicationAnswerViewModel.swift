@@ -16,8 +16,6 @@ class CommunicationAnswerViewModel {
     }
     var answerId: Int = 0
     let answerIdSubject = BehaviorSubject<ReceiveData>(value: ReceiveData(answerId: 0, question: QuestionResponse.standardQuestion))
-    let questionData: String = ""
-    let contentData: String = ""
     let isLike = BehaviorRelay<Bool>(value: false)
     var responseSubject = PublishSubject<GetAnswerRespose>()
     

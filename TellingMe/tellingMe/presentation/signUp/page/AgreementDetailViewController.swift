@@ -12,7 +12,7 @@ class AgreementDetailViewController: UIViewController {
     var tag = 0
     @IBOutlet weak var titleLabel: Body1Bold!
     @IBOutlet weak var textView: UITextView!
-    
+
     override func viewDidLoad() {
         if tag == 0 {
             titleLabel.text = "서비스 이용약관 동의"
@@ -22,7 +22,7 @@ class AgreementDetailViewController: UIViewController {
             readText(fileName: "PrivacyPolicy")
         }
     }
-    
+
     func readText(fileName: String) {
         if let filePath = Bundle.main.path(forResource: fileName, ofType: "txt") {
             do {
@@ -37,11 +37,10 @@ class AgreementDetailViewController: UIViewController {
             self.showToast(message: "파일을 찾을 수 없습니다.")
         }
     }
-    
+
     func setTag(tag: Int) {
         self.tag = tag
     }
-    
 
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true)
