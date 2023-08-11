@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SettingViewModel {
     struct SettingView {
@@ -14,11 +16,65 @@ class SettingViewModel {
         let view: UIViewController
     }
 
-    var isPushAllowed: Bool?
+    var pushToggleValue: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     let items = [SettingView(id: "myInfo", view: MyInfoViewController()), SettingView(id: "termOfUse", view: TermOfUseViewController()), SettingView(id: "privacyPolicy", view: PrivacyPolicyViewController()), SettingView(id: "withdrawal", view: WithdrawalViewController())]
     var itemsCount: Int?
 
+    let showToastSubject = PublishSubject<String>()
+    let disposeBag = DisposeBag()
+
     init() {
         itemsCount = items.count
+    }
+
+    func fetchNotificationData() {
+        UserAPI.getisAllowedNotification()
+            .subscribe(onNext: { [weak self] response in
+                self?.pushToggleValue.accept(response.allowNotification)
+            }, onError: { [weak self] error in
+                if case APIError.errorData(let errorData) = error {
+                    self?.showToastSubject.onNext(errorData.message)
+                } else if case APIError.tokenNotFound = error {
+                    self?.showToastSubject.onNext("login으로 push할게요")
+                } else {
+                    self?.showToastSubject.onNext("An error occurred")
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+//    func getisAllowedNotification() {
+//        UserAPI.getisAllowedNotification { result in
+//            switch result {
+//            case .success(let response):
+//                self.viewModel.isPushAllowed = response!.allowNotification
+//            case .failure(let error):
+//                switch error {
+//                case .errorData(let errorData):
+//                    self.showToast(message: errorData.message)
+//                case .tokenNotFound:
+//                    fatalError("토큰이 없습니다")
+//                default:
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+//    }
+
+    func postNotification(_ value: Bool) {
+        let request = AllowedNotificationRequest(notificationStatus: value)
+        UserAPI.postNotification(request: request)
+            .subscribe(onNext: { [weak self] _ in
+            }, onError: { [weak self] error in
+                if case APIError.errorData(let errorData) = error {
+                    self?.showToastSubject.onNext(errorData.message)
+                } else if case APIError.tokenNotFound = error {
+                    self?.showToastSubject.onNext("login으로 push할게요")
+                } else {
+                    self?.showToastSubject.onNext("An error occurred")
+                }
+                self?.pushToggleValue.accept(!value)
+            })
+            .disposed(by: disposeBag)
     }
 }

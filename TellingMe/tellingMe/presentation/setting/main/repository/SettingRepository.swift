@@ -61,63 +61,6 @@ extension WithdrawalViewController {
 }
 
 extension SettingTableViewController {
-    func getisAllowedNotification() {
-        UserAPI.getisAllowedNotification { result in
-            switch result {
-            case .success(let response):
-                self.viewModel.isPushAllowed = response!.allowNotification
-            case .failure(let error):
-                switch error {
-                case .errorData(let errorData):
-                    self.showToast(message: errorData.message)
-                case .tokenNotFound:
-                    fatalError("토큰이 없습니다")
-                default:
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-
-    func postNotification() {
-        let request = AllowedNotificationRequest(notificationStatus: self.pushSwitch.isOn)
-        UserAPI.postNotification(request: request) { result in
-            switch result {
-            case .success(let response):
-                if response!.allowNotification {
-                    self.checkNotification()
-                }
-                self.pushSwitch.isOn = response!.allowNotification ?? false
-            case .failure(let error):
-                switch error {
-                case .errorData(let errorData):
-                    self.showToast(message: errorData.message)
-                case .tokenNotFound:
-                    fatalError("토큰이 없습니다")
-                default:
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-
-    func postPushToken() {
-        guard let token = self.getFirebaseToken() else {
-            self.showToast(message: "푸쉬 알림 설정에 실패하였습니다.")
-            self.pushSwitch.isOn = false
-            return
-        }
-        let request = FirebaseTokenRequest(pushToken: token)
-        UserAPI.postFirebaseToken(request: request) { result in
-            switch result {
-            case .success:
-                break
-            case .failure(let error):
-                self.showToast(message: "푸시 알림 설정에 실패하였습니다.")
-            }
-        }
-    }
-
     func signout() {
         LoginAPI.logout { result in
             switch result {

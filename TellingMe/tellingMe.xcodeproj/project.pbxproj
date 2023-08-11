@@ -11,11 +11,13 @@
 		3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */; };
 		3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75329FBF34200285CA8 /* QuestionAPI.swift */; };
 		3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D512A29E1980075E6C4 /* SettingRepository.swift */; };
-		3A0D99CA2A46F04200E4F0E6 /* Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D99C92A46F04200E4F0E6 /* Splash.gif */; };
-		3A0D99CE2A482D9800E4F0E6 /* Splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */; };
 		3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */; };
+		3A1A35A52A866AC900F9FA92 /* TermofUse.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A35A32A8668B900F9FA92 /* TermofUse.txt */; };
+		3A1A35A62A866AC900F9FA92 /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A35A42A866A3700F9FA92 /* PrivacyPolicy.txt */; };
+		3A1A35A82A8679B300F9FA92 /* PushNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1A35A72A8679B300F9FA92 /* PushNotificationViewModel.swift */; };
+		3A1A35AA2A868C1300F9FA92 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A35A92A868C1300F9FA92 /* Splash.json */; };
 		3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */; };
 		3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */; };
 		3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */; };
@@ -198,11 +200,13 @@
 		3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDTO.swift; sourceTree = "<group>"; };
 		3A00B75329FBF34200285CA8 /* QuestionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAPI.swift; sourceTree = "<group>"; };
 		3A026D512A29E1980075E6C4 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
-		3A0D99C92A46F04200E4F0E6 /* Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Splash.gif; sourceTree = "<group>"; };
-		3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splash.mp4; sourceTree = "<group>"; };
 		3A157CF529CAEE2C00D61AD3 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A157CFC29CAFFD500D61AD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A1A35A32A8668B900F9FA92 /* TermofUse.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TermofUse.txt; sourceTree = "<group>"; };
+		3A1A35A42A866A3700F9FA92 /* PrivacyPolicy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PrivacyPolicy.txt; sourceTree = "<group>"; };
+		3A1A35A72A8679B300F9FA92 /* PushNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewModel.swift; sourceTree = "<group>"; };
+		3A1A35A92A868C1300F9FA92 /* Splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		3A1C06852A0C0C0A00534BAE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3A1C06872A0C0C5D00534BAE /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3A1C06892A0C10BA00534BAE /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 		3A1F6B022A5DA59900E7B107 /* trash */ = {
 			isa = PBXGroup;
 			children = (
+				3A1F6B072A5DAF0F00E7B107 /* PushNotificationModalRepository.swift */,
 				3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */,
 				3ACC45F229D1C785000843F5 /* GetMBTIViewController.swift */,
 				3A1F6B032A5DA5D000E7B107 /* GetMBTIViewModel.swift */,
@@ -831,6 +836,8 @@
 			isa = PBXGroup;
 			children = (
 				3AA1677329E82D8500B93850 /* badWords.txt */,
+				3A1A35A32A8668B900F9FA92 /* TermofUse.txt */,
+				3A1A35A42A866A3700F9FA92 /* PrivacyPolicy.txt */,
 			);
 			path = document;
 			sourceTree = "<group>";
@@ -884,7 +891,6 @@
 			isa = PBXGroup;
 			children = (
 				3A00B74B29FBF18C00285CA8 /* HomeRepository.swift */,
-				3A1F6B072A5DAF0F00E7B107 /* PushNotificationModalRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -1035,6 +1041,7 @@
 			isa = PBXGroup;
 			children = (
 				3A7121462A03E2C400A02054 /* HomeViewModel.swift */,
+				3A1A35A72A8679B300F9FA92 /* PushNotificationViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -1155,9 +1162,8 @@
 			children = (
 				3ACE33942A39A31D008FCC03 /* repository */,
 				3ACE33922A39A30E008FCC03 /* SplashViewController.swift */,
-				3A0D99CD2A482D5600E4F0E6 /* Splash.mp4 */,
-				3A0D99C92A46F04200E4F0E6 /* Splash.gif */,
 				3ACE338D2A39A285008FCC03 /* Splash.storyboard */,
+				3A1A35A92A868C1300F9FA92 /* Splash.json */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -1412,8 +1418,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A0D99CE2A482D9800E4F0E6 /* Splash.mp4 in Resources */,
+				3A1A35A52A866AC900F9FA92 /* TermofUse.txt in Resources */,
+				3A1A35A62A866AC900F9FA92 /* PrivacyPolicy.txt in Resources */,
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
+				3A1A35AA2A868C1300F9FA92 /* Splash.json in Resources */,
 				3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */,
 				3A775CFD29C1AE8100FCD3BC /* NanumSquareRoundOTFEB.otf in Resources */,
 				3ACE338E2A39A285008FCC03 /* Splash.storyboard in Resources */,
@@ -1424,7 +1432,6 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
-				3A0D99CA2A46F04200E4F0E6 /* Splash.gif in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,
 				3A775CFE29C1AE8100FCD3BC /* NanumSquareRoundOTFL.otf in Resources */,
@@ -1601,6 +1608,7 @@
 				3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */,
 				3AF97FC22A1916DE008FB590 /* UpdateAnswerDTO.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
+				3A1A35A82A8679B300F9FA92 /* PushNotificationViewModel.swift in Sources */,
 				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3ABB848C2A833F3500540269 /* ReportCollectionViewCell.swift in Sources */,
@@ -1720,6 +1728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1774,6 +1783,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

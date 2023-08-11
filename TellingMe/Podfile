@@ -26,6 +26,7 @@ target 'tellingMe' do
   pod 'Firebase/Messaging'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'lottie-ios'
   # Pods for tellingMe
 
 end

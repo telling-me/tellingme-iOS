@@ -7,10 +7,19 @@
 
 import UIKit
 import Firebase
+import RxSwift
+import RxCocoa
 
 class PushNotificationModalViewController: UIViewController {
+    let viewModel = PushNotifiactionViewModel()
+    let disposeBag = DisposeBag()
+
+    @IBOutlet weak var okButton: SecondaryTextButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,14 +42,26 @@ class PushNotificationModalViewController: UIViewController {
             }
     }
     
-    @IBAction func clickButton(_ sender: UIButton) {
+    func bindViewModel() {
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+            self?.clickButton()
+            }).disposed(by: disposeBag)
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.postNotifiactionStatus(false)
+                self?.dismiss(animated: true)
+            }).disposed(by: disposeBag)
+    }
+
+    func clickButton() {
         registerForNotification {
             if let token = Messaging.messaging().fcmToken {
                 KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
             }
-            self.sendFirebaseToken()
+            self.viewModel.postFirebaseToken()
         }
-        self.sendNotification(tag: sender.tag)
+        self.viewModel.postNotifiactionStatus(true)
         self.dismiss(animated: true)
     }
 }

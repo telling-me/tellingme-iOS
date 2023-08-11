@@ -834,9 +834,6 @@
                                                     <rect key="frame" x="319" y="14.666666666666664" width="51" height="31"/>
                                                     <rect key="contentStretch" x="0.0" y="0.0" width="0.80000000000000004" height="0.75"/>
                                                     <color key="onTintColor" name="Logo"/>
-                                                    <connections>
-                                                        <action selector="toggleSwitch:" destination="a4K-4x-2PU" eventType="primaryActionTriggered" id="Aby-wu-yWe"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1070,7 +1067,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="pushSwitch" destination="D2Q-SN-ZdJ" id="I4s-am-Gru"/>
+                        <outlet property="pushSwitch" destination="D2Q-SN-ZdJ" id="Ahp-fT-XA7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZR-UI-jZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

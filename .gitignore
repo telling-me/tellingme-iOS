@@ -185,3 +185,16 @@ keyChain/
 TellingMe/Info.plist
 Info.plist
 KeyList.plist
+
+TellingMe/tellingMe/document/
+TellingMe/document/
+badWords.txt
+TermofUse.txt
+PrivacyPolicy.txt
+
+TellingMe/tellingMe/font/
+TellingMe/font/
+NanumSquareRoundOTFR.otf
+NanumSquareRoundOTFB.otf
+NanumSquareRoundOTFEB.otf
+NanumSquareRoundOTFL.otf

@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController {
     }
 
     func setInitUI() {
-        progressBar.setProgress(Float(1)/Float(7), animated: true)
+        progressBar.setProgress(Float(1)/Float(5), animated: true)
         progressBar.gradientColors = [  UIColor(red: 0.486, green: 0.937, blue: 0.655, alpha: 1).cgColor,
                                         UIColor(red: 0.561, green: 0.827, blue: 0.957, alpha: 1).cgColor]
     }
@@ -44,10 +44,4 @@ extension SignUpViewController {
     public func setSkipButtonUnhidden() {
         skipButton.isHidden = false
     }
-
-//    public func pushtoNotification() {
-//        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "allowNotification")as? AllowNotificationViewController else { return }
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion: nil)
-//    }
 }

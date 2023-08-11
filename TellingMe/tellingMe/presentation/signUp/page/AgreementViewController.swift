@@ -73,19 +73,12 @@ class AgreementViewController: UIViewController {
     }
 
     @IBAction func popUp(_ sender: UIButton) {
-        if sender.tag == 0 {
-            guard let vc = self.storyboard?.instantiateViewController(identifier: "agreement1") as? AgreementDetailViewController1 else {
-                return
-            }
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true)
-        } else {
-            guard let vc = self.storyboard?.instantiateViewController(identifier: "agreement2") as? AgreementDetailViewController2 else {
-                return
-            }
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true)
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "agreement1") as? AgreementDetailViewController else {
+            return
         }
+        vc.setTag(tag: sender.tag)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
 
     @IBAction func nextAction(_ sender: UIButton) {
