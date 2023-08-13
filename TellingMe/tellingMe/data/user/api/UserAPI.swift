@@ -119,7 +119,7 @@ struct UserAPI: Networkable {
             return Observable.error(APIError.tokenNotFound)
         }
     }
-    
+
     static func postNotification(request: AllowedNotificationRequest) -> Observable<AllowedNotificationResponse> {
         do {
             let provider = try makeAuthorizedProvider()
@@ -128,7 +128,7 @@ struct UserAPI: Networkable {
             return Observable.error(APIError.tokenNotFound)
         }
     }
-    
+
     static func postFirebaseToken(request: FirebaseTokenRequest) -> Observable<EmptyResponse> {
         do {
             let provider =  try makeAuthorizedProvider()

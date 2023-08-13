@@ -19,7 +19,7 @@ class SignUpPaveViewModel {
         return [vc1, vc2, vc3, vc4, vc5]
     }()
     let pagesCount = 5
-    var currentIndex = 1
+    var currentIndex = 0
 }
 
 class GetNameViewModel {

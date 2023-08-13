@@ -9,11 +9,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//protocol SendLikeDelegate: AnyObject {
+//    func sendLikeButtonTouched()
+//    func sendisLiked(indexPath: IndexPath, isLike: LikeResponse)
+//}
+
 class CommunicationAnswerViewController: UIViewController {
     let viewModel = CommunicationAnswerViewModel()
     let disposeBag = DisposeBag()
+//    weak var delegate: SendLikeDelegate?
 
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: LikeButton!
     @IBOutlet weak var questionView: QuestionView!
     @IBOutlet weak var headerView: BackEmotionHeaderView!
     @IBOutlet weak var answerView: AnswerTextView!
@@ -23,39 +29,31 @@ class CommunicationAnswerViewController: UIViewController {
         headerView.setDataWithReport(index: 1)
         bindViewModel()
     }
-
     func bindViewModel() {
-        viewModel.responseSubject
-            .subscribe(onNext: { [weak self] response in
-                self?.answerView.setTextWithNoChange(text: response.content)
-                self?.likeButton.isSelected = response.isLiked
-            }).disposed(by: disposeBag)
-        viewModel.answerIdSubject
+        viewModel.dataSubject
             .subscribe(onNext: { [weak self] data in
-                self?.viewModel.answerId = data.answerId
+                self?.viewModel.answerId = data.answer.answerId
+                self?.viewModel.indexPath = data.indexPath
                 self?.questionView.setQuestion(data: data.question)
-                self?.viewModel.fetchAnswerData()
+                self?.answerView.setTextWithNoChange(text: data.answer.content)
+                self?.likeButton.isSelected = data.answer.isLiked
             }).disposed(by: disposeBag)
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.toggleisLike()
-            })
-            .disposed(by: disposeBag)
-        viewModel.isLike
-            .subscribe(onNext: { [weak self] isLiked in
-                self?.updateLikeButton(isLiked: isLiked)
-            })
-            .disposed(by: disposeBag)
-
+                CommunicationData.shared.toggleLike(self?.viewModel.indexPath.row ?? 0)
+                self?.likeButton.isSelected = CommunicationData.shared.communicationList[self?.viewModel.indexPath.row ?? 0].isLiked
+                self?.likeButton.setTitle("\(CommunicationData.shared.communicationList[self?.viewModel.indexPath.row ?? 0].likeCount)", for: .normal)
+                self?.viewModel.postLike()
+            }).disposed(by: disposeBag)
         headerView.backButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         headerView.reportButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.showReportView()
             }).disposed(by: disposeBag)
+
     }
 
     func showReportView() {
@@ -67,16 +65,11 @@ class CommunicationAnswerViewController: UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
 
-    func updateUI() {
-        questionView.setQuestion(data: QuestionResponse(date: [22], title: "", phrase: ""))
-        answerView.setTextWithNoChange(text: "")
-    }
-
     func updateLikeButton(isLiked: Bool) {
         if isLiked {
-            
+
         } else {
-            
+
         }
     }
 }

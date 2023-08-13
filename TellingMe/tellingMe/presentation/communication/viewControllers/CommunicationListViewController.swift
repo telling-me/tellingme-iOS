@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CommunicationListViewController: UIViewController {
     let viewModel = CommunicationListViewModel()
+    let disposeBag = DisposeBag()
 
     var question: QuestionListResponse = QuestionListResponse(title: "텔링미를 사용하실 때 드는 기분은?", date: [2023, 3, 1], answerCount: 0, phrase: "")
     var index = 0
@@ -23,42 +26,16 @@ class CommunicationListViewController: UIViewController {
       return view
     }()
 
-    // case 0 : questionView, case 1 : 정렬 뷰, case 2: 리스트 뷰
-    func getLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
-            switch section {
-            case 0:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-                return section
-            case 1:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(148)))
-                item.contentInsets = .init(top: 0, leading: 0, bottom: 12, trailing: 0)
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(CGFloat(self.viewModel.communicationList.count * 160))), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
-
-                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
-                let boundarySupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-                boundarySupplementaryItem.pinToVisibleBounds = true
-                section.boundarySupplementaryItems = [boundarySupplementaryItem]
-                return section
-            default:
-                return NSCollectionLayoutSection(group: NSCollectionLayoutGroup(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))))
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         setView()
-        self.getCommunicationList(date: question.date) {
-            self.reloadCollectionView()
-        }
+        bindViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getCommunicationList(date: question.date)
     }
 
     func setView() {
@@ -74,13 +51,48 @@ class CommunicationListViewController: UIViewController {
         collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
     }
 
+    func bindViewModel() {
+        viewModel.communciationListSubject
+            .subscribe(onNext: { [weak self] _ in
+                self?.collectionView.reloadData()
+            }).disposed(by: disposeBag)
+    }
+
+    // case 0 : questionView, case 1 : 정렬 뷰, case 2: 리스트 뷰
+    func getLayout() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
+            switch section {
+            case 0:
+                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+                return section
+            case 1:
+                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(148)))
+                item.contentInsets = .init(top: 0, leading: 0, bottom: 12, trailing: 0)
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(CGFloat((CommunicationData.shared.communicationList.count) * 160))), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
+
+                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
+                let boundarySupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                boundarySupplementaryItem.pinToVisibleBounds = true
+                section.boundarySupplementaryItems = [boundarySupplementaryItem]
+                return section
+            default:
+                return NSCollectionLayoutSection(group: NSCollectionLayoutGroup(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))))
+            }
+        }
+    }
+
     func pushCommunicationAnswer(_ indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Communication", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
             return
         }
-        let data = viewModel.communicationList[indexPath.row]
-        viewController.viewModel.answerIdSubject.onNext(CommunicationAnswerViewModel.ReceiveData(answerId: data.answerId, question: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase)))
+        let data = CommunicationData.shared.communicationList[indexPath.row]
+        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(indexPath: indexPath, question: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase), answer: data))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -111,7 +123,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
         case 0:
             return 1
         case 1:
-            return viewModel.communicationList.count
+            return CommunicationData.shared.communicationList.count
         default:
             return 0
         }
@@ -130,14 +142,14 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.setData(data: viewModel.communicationList[indexPath.row])
             cell.delegate = self
+            cell.setData(indexPath: indexPath, data: CommunicationData.shared.communicationList[indexPath.row])
             return cell
         default:
             return UICollectionViewCell()
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
@@ -146,13 +158,14 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
             print("Wrong with section")
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
          if kind == UICollectionView.elementKindSectionHeader {
              guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SortHeaderView.id, for: indexPath) as? SortHeaderView else {
                  return UICollectionReusableView()
              }
-
+             headerView.delegate = self
+             headerView.selectCell(index: CommunicationData.shared.currentSort)
              return headerView
          }
 
@@ -168,15 +181,12 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
     }
 }
 
-extension CommunicationListViewController: SendLikeSignal {
-    func sendLike(_ self: CommunicationDetailCollectionViewCell) {
-        postLike(answerId: self.answerId) { isSuccess in
-            if isSuccess {
-                // 좋아요 성공
-                self.likeButton.tintColor = .red
-            } else {
-                // 좋아요 실패
-            }
-        }
+extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate {
+    func likeButtonClicked(answerId: Int) {
+        self.viewModel.postLike(answerId: answerId)
+    }
+    
+    func changeSort() {
+        self.viewModel.getCommunicationList(date: question.date)
     }
 }

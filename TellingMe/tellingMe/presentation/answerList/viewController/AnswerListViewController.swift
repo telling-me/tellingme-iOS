@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AnswerListViewController: DropDownViewController {
     let viewModel = AnswerListViewModel()
@@ -16,9 +18,10 @@ class AnswerListViewController: DropDownViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var listButton: [UIButton]!
     
+    let disposeBag = DisposeBag()
+
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-        getAnswerList()
     }
 
     override func viewDidLoad() {
@@ -34,6 +37,21 @@ class AnswerListViewController: DropDownViewController {
         yearButton.setTitle(text: "\(viewModel.year)년", isSmall: true)
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
         self.view.bringSubviewToFront(tableView)
+        bindViewModel()
+        viewModel.getAnswerList()
+    }
+    
+    func bindViewModel() {
+        viewModel.responseSubject
+            .subscribe(onNext: { [weak self] response in
+                if response.count == 0 {
+                    self?.containerView.isHidden = true
+                    self?.setNotfoundAnswerList()
+                } else {
+                    self?.noneView.removeFromSuperview()
+                    self?.setContainerView(tag: 0)
+                }
+            }).disposed(by: disposeBag)
     }
 
     func setContainerView(tag: Int) {
@@ -55,7 +73,7 @@ class AnswerListViewController: DropDownViewController {
             addChildAndAddSubview(vc)
         }
     }
-    
+
     func makeSelectedCardButton(selectedIndex: Int, unSelectedIndex: Int) {
         print(selectedIndex)
         listButton[selectedIndex].backgroundColor = UIColor(named: "Side300")
@@ -132,7 +150,7 @@ extension AnswerListViewController {
         }
         tableView.isHidden = true
         tableView.removeFromSuperview()
-        getAnswerList()
+        viewModel.getAnswerList()
     }
 }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 enum LikeAPITarget {
     case postLike(LikeRequest)
@@ -66,6 +67,15 @@ struct LikeAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func postLike(request: LikeRequest) -> Observable<LikeResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .postLike(request))
+        } catch {
+            return Observable.error(APIError.tokenNotFound)
         }
     }
 }
