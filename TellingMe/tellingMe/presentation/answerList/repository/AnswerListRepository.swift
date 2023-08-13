@@ -8,25 +8,25 @@
 import Foundation
 
 extension AnswerListViewController {
-    func getAnswerList() {
-        let month = viewModel.month
-        let year = viewModel.year
-        AnswerAPI.getAnswerList(month: month, year: year) { result in
-            switch result {
-            case .success(let response):
-                if response?.count == 0 {
-                    self.containerView.isHidden = true
-                    self.setNotfoundAnswerList()
-                } else {
-                    self.noneView.removeFromSuperview()
-//                    self.containerView.isHidden = false
-                    self.viewModel.answerList = response!
-                    self.viewModel.answerCount = response!.count
-                    self.setContainerView(tag: 0)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+//    func getAnswerList() {
+//        let month = viewModel.month
+//        let year = viewModel.year
+//        AnswerAPI.getAnswerList(month: month, year: year) { result in
+//            switch result {
+//            case .success(let response):
+//                if response?.count == 0 {
+//                    self.containerView.isHidden = true
+//                    self.setNotfoundAnswerList()
+//                } else {
+//                    self.noneView.removeFromSuperview()
+////                    self.containerView.isHidden = false
+//                    self.viewModel.answerList = response!
+//                    self.viewModel.answerCount = response!.count
+//                    self.setContainerView(tag: 0)
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
 }

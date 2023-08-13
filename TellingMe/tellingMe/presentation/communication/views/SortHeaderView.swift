@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol SendSortDelegate: AnyObject {
+    func changeSort()
+}
+
 class SortHeaderView: UICollectionReusableView {
-    var sortList: [String] = ["인기순", "관련순", "최신순"]
+    weak var delegate: SendSortDelegate?
     static let id = "sortHeaderView"
 
     let collectionView: UICollectionView = {
@@ -30,7 +34,7 @@ class SortHeaderView: UICollectionReusableView {
         super.init(coder: aDecoder)
         setView()
     }
-    
+
     func setView() {
         addSubview(collectionView)
         collectionView.delegate = self
@@ -43,22 +47,36 @@ class SortHeaderView: UICollectionReusableView {
 
         collectionView.register(ChipCollectionViewCell.self, forCellWithReuseIdentifier: ChipCollectionViewCell.id)
     }
+
+    func selectCell(index: Int) {
+        collectionView.selectItem(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: [])
+    }
+
+//    func deselectCell(at indexPath: IndexPath) {
+//        collectionView.deselectItem(at: indexPath, animated: true)
+//    }
 }
 
 extension SortHeaderView: UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sortList.count
+        return CommunicationData.shared.sortingList.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: indexPath) as? ChipCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.setData(with: sortList[indexPath.row])
+        print(CommunicationData.shared.sortingList[indexPath.row].rawValue)
+        cell.setData(with: CommunicationData.shared.sortingList[indexPath.row].rawValue)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 63, height: 32)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        CommunicationData.shared.currentSort = indexPath.row
+        delegate?.changeSort()
     }
 }

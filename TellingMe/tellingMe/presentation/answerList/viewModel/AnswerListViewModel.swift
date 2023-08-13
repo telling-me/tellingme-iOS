@@ -6,17 +6,23 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 class AnswerListViewModel {
     var answerList: [AnswerListResponse] = []
-    var answerCount = 0
+//    var answerCount = 0
     var year = Date().yearFormat()
     var month = Date().monthFormat()
+    var responseSubject = PublishSubject<[AnswerListResponse]>()
 
     var currentTag = 0
     var yearArray: [String] = []
     var monthArray = Array(1...12).map { String($0) }
     let standardYear = 2023
+    
+    let showToastSubject = PublishSubject<String>()
+    let disposeBag = DisposeBag()
 
     init() {
         let today = Date()
@@ -34,5 +40,32 @@ class AnswerListViewModel {
             str += self.month
         }
         return str
+    }
+
+    
+    //                if response?.count == 0 {
+    //                    self.containerView.isHidden = true
+    //                    self.setNotfoundAnswerList()
+    //                } else {
+    //                    self.noneView.removeFromSuperview()
+    ////                    self.containerView.isHidden = false
+    //                    self.viewModel.answerList = response!
+    //                    self.viewModel.answerCount = response!.count
+    //                    self.setContainerView(tag: 0)
+    //                }
+    func getAnswerList() {
+        AnswerAPI.getAnswerList(month: month, year: year)
+            .subscribe(onNext: { [weak self] response in
+                self?.answerList = response
+                self?.responseSubject.onNext(response)
+            }, onError: { [weak self] error in
+                if case APIError.errorData(let errorData) = error {
+                    self?.showToastSubject.onNext(errorData.message)
+                } else if case APIError.tokenNotFound = error {
+                    self?.showToastSubject.onNext("login으로 push할게요")
+                } else {
+                    self?.showToastSubject.onNext("An error occurred")
+                }
+            }).disposed(by: disposeBag)
     }
 }

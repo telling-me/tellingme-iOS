@@ -14,11 +14,18 @@ struct Content: Codable {
     let content: String
     let createdTime: [Int]
     let userId: String
-    let likeCount: Int
+    var likeCount: Int
     let job: Int
     let purpose: String
     let weight: Int
     let emotion: Int
+    var isLiked: Bool
+}
+
+extension Content {
+    static var defaultContent: Content {
+        return Content(answerId: 0, content: "", createdTime: [], userId: "", likeCount: 0, job: 0, purpose: "", weight: 0, emotion: 0, isLiked: false)
+    }
 }
 
 struct Sort: Codable {

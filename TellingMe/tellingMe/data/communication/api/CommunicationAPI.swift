@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 enum CommuncationAPITarget {
     case getQuestionList(query: String)
@@ -81,6 +82,15 @@ struct CommunicationAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func getCommunicationList(date: String, page: Int, size: Int, sort: String) -> Observable<CommunicationListResponse> {
+        do {
+            let provider =  try makeAuthorizedProvider()
+            return provider.request(target: .getCommunicationList(date: date, page: page, size: size, sort: sort))
+        } catch {
+            return Observable.error(error)
         }
     }
 }

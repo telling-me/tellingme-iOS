@@ -100,6 +100,15 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
+    
+    static func getAnswerList(month:String, year: String) -> Observable<[AnswerListResponse]> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.listRequest(target: .getAnswerList(month: month, year: year))
+        } catch {
+            return Observable.error(error)
+        }
+    }
 
     static func getAnswerWithDate(query: String, completion: @escaping(Result<GetAnswerRespose?, APIError>) -> Void) {
         do {

@@ -19,7 +19,7 @@ class CommunityViewController: UIViewController {
         super.viewWillAppear(animated)
         getQuestionList() {
             self.setCardView()
-            CommunicationData.shared?.threeDays = self.viewModel.data
+            CommunicationData.shared.threeDays = self.viewModel.data
         }
     }
 
@@ -42,7 +42,7 @@ extension CommunityViewController: CommunityDelegate {
         guard let vc = self.storyboard?.instantiateViewController(identifier: "communicationDetailViewController") as? CommunicationDetailViewController else {
             return
         }
-        CommunicationData.shared?.currentIndex = view.tag
+        CommunicationData.shared.currentIndex = view.tag
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

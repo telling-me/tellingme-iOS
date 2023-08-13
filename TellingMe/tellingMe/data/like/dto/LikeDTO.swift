@@ -10,3 +10,7 @@ import Foundation
 struct LikeRequest: Codable {
     let answerId: Int
 }
+
+struct LikeResponse: Codable {
+    let isLiked: Bool
+}

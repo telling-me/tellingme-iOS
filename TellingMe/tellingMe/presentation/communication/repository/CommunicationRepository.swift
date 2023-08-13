@@ -24,7 +24,7 @@ extension CommunityViewController {
                 case .tokenNotFound:
                     print("login으로 push할게요")
                 default:
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
             completion()

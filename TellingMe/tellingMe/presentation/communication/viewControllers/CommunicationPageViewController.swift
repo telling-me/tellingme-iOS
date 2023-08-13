@@ -15,13 +15,13 @@ class CommunicationPageViewController: UIPageViewController {
          let vc3 = CommunicationListViewController()
 
         vc1.index = 0
-        vc1.question = CommunicationData.shared!.threeDays[0]
+        vc1.question = CommunicationData.shared.threeDays[0]
 
         vc2.index = 1
-        vc2.question = CommunicationData.shared!.threeDays[1]
+        vc2.question = CommunicationData.shared.threeDays[1]
 
         vc3.index = 2
-        vc3.question = CommunicationData.shared!.threeDays[2]
+        vc3.question = CommunicationData.shared.threeDays[2]
          return [vc1, vc2, vc3]
      }()
 
@@ -31,7 +31,7 @@ class CommunicationPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
 
-        setViewControllers([viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .forward, animated: true)
+        setViewControllers([viewControllersArray[CommunicationData.shared.currentIndex]], direction: .forward, animated: true)
     }
 
     func setFirstViewController() {
@@ -49,7 +49,7 @@ extension CommunicationPageViewController: UIPageViewControllerDelegate, UIPageV
         }
 
         let previousIndex = (index - 1 + viewControllersArray.count) % viewControllersArray.count
-        CommunicationData.shared!.currentIndex = previousIndex
+        CommunicationData.shared.currentIndex = previousIndex
         return viewControllersArray[previousIndex]
     }
 
@@ -59,22 +59,22 @@ extension CommunicationPageViewController: UIPageViewControllerDelegate, UIPageV
         }
 
         let nextIndex = (index + 1) % viewControllersArray.count
-        CommunicationData.shared!.currentIndex = nextIndex
+        CommunicationData.shared.currentIndex = nextIndex
         return viewControllersArray[nextIndex]
     }
 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return CommunicationData.shared!.currentIndex
+        return CommunicationData.shared.currentIndex
     }
 }
 
 extension CommunicationPageViewController {
     func prevPage() {
-        CommunicationData.shared!.currentIndex = (CommunicationData.shared!.currentIndex - 1 + viewControllersArray.count) % viewControllersArray.count
-        setViewControllers([self.viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .reverse, animated: true, completion: nil)
+        CommunicationData.shared.currentIndex = (CommunicationData.shared.currentIndex - 1 + viewControllersArray.count) % viewControllersArray.count
+        setViewControllers([self.viewControllersArray[CommunicationData.shared.currentIndex]], direction: .reverse, animated: true, completion: nil)
     }
     func nextPage() {
-        CommunicationData.shared!.currentIndex = (CommunicationData.shared!.currentIndex + 1) % viewControllersArray.count
-        setViewControllers([self.viewControllersArray[CommunicationData.shared!.currentIndex]], direction: .forward, animated: true, completion: nil)
+        CommunicationData.shared.currentIndex = (CommunicationData.shared.currentIndex + 1) % viewControllersArray.count
+        setViewControllers([self.viewControllersArray[CommunicationData.shared.currentIndex]], direction: .forward, animated: true, completion: nil)
      }
 }

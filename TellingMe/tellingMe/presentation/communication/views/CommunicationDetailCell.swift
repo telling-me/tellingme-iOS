@@ -6,16 +6,19 @@
 //
 
 import UIKit
+//import RxSwift
 
-protocol SendLikeSignal: AnyObject {
-    func sendLike(_ self: CommunicationDetailCollectionViewCell)
+protocol SendLikeDelegate: AnyObject {
+    func likeButtonClicked(answerId: Int)
 }
 
 class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     static let id = "communicationDetailCollectionViewCell"
+    weak var delegate: SendLikeDelegate?
+//    let disposeBag = DisposeBag()
 
     var answerId: Int = 0
-    var delegate: SendLikeSignal?
+    var indexPath: IndexPath = IndexPath()
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +38,7 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     let emotionBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "Side100")
@@ -53,10 +56,20 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     let likeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(UIImage(named: "Heart.fill"), for: .selected)
+        button.setTitleColor(UIColor(named: "Gray7"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFB", size: 12)
         button.tintColor = UIColor(named: "Gray6")
+        let spacing: CGFloat = 4
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing/2, bottom: 0, right: spacing/2)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing/2, bottom: 0, right: -spacing/2)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+//
+//    var buttonTapped: Observable<Void> {
+//        return likeButton.rx.tap.asObservable()
+//    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,7 +83,6 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
 
     func setView() {
         self.layer.cornerRadius = 12
-        likeButton.addTarget(self, action: #selector(clickLike), for: .touchUpInside)
 
         contentView.backgroundColor = UIColor(named: "Side200")
         contentView.addSubview(containerView)
@@ -96,31 +108,70 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         emotionLabel.centerYAnchor.constraint(equalTo: emotionBackgroundView.centerYAnchor).isActive = true
 
         emotionBackgroundView.layer.cornerRadius = 4
-    
+
         containerView.addSubview(answerLabel)
         answerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         answerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         answerLabel.topAnchor.constraint(equalTo: emotionView.bottomAnchor, constant: 8).isActive = true
 
         containerView.addSubview(likeButton)
-        likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+//        likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         likeButton.topAnchor.constraint(equalTo: answerLabel.bottomAnchor).isActive = true
         likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        
+        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func likeButtonTapped() {
+        delegate?.likeButtonClicked(answerId: answerId)
+        CommunicationData.shared.toggleLike(indexPath.row)
+        likeButton.isSelected = CommunicationData.shared.communicationList[indexPath.row].isLiked
+        likeButton.setTitle("\(CommunicationData.shared.communicationList[indexPath.row].likeCount)", for: .normal)
     }
 
-    @objc func clickLike() {
-        delegate?.sendLike(self)
-    }
+//    func updateLike(isLiked: Bool, likeCount: Int) {
+////        if isLiked {
+////            if likeButton.isSelected {
+////                    likeButton.isSelected = false
+////                if likeCount > 1 {
+////                    likeButton.setTitle("\(likeCount)", for: .normal)
+////                } else {
+////                    likeButton.setTitle("", for: .normal)
+////                }
+////            } else {
+////                likeButton.isSelected = true
+////                likeButton.setTitle("\(likeCount)", for: .normal)
+////            }
+////        } else {
+////            if likeButton.isSelected {
+////                    likeButton.isSelected = false
+////                if likeCount > 1 {
+////                    likeButton.setTitle("\(likeCount-1)", for: .normal)
+////                } else {
+////                    likeButton.setTitle("", for: .normal)
+////                }
+////            } else {
+////                likeButton.isSelected = true
+////                likeButton.setTitle("\(likeCount+1)", for: .normal)
+////            }
+////        }
+//        likeButton.isSelected = isLiked
+//        likeButton.setTitle("\(likeCount)", for: .normal)
+//    }
 
-    func setData(data: Content) {
+    func setData(indexPath: IndexPath, data: Content) {
         self.answerId = data.answerId
+        self.indexPath = indexPath
         answerLabel.text = data.content
         emotionView.image = UIImage(named: emotions[data.emotion-1].image)
         emotionLabel.text = emotions[data.emotion-1].text
-        
+
+        likeButton.isSelected = data.isLiked
+        if data.likeCount != 0 {
+            likeButton.setTitle("\(data.likeCount)", for: .normal)
+        }
         emotionLabel.sizeToFit()
-//        emotionLabel.widthAnchor.constraint(equalToConstant: emotionLabel.frame.width + 8).isActive = true
     }
 }

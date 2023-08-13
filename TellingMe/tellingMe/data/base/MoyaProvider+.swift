@@ -92,6 +92,29 @@ extension MoyaProvider {
         }
     }
 
+    func listRequest<T: Decodable>(target: Target) -> Observable<[T]> {
+        return Observable.create { observer in
+            let request = self.request(target) { result in
+                switch result {
+                case .success(let response):
+                    do {
+                        let filteredResponse = try response.filterSuccessfulStatusCodes()
+                        let decodedData = try filteredResponse.map([T].self)
+                        observer.onNext(decodedData)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(APIError.other(error))
+                    }
+                case .failure(let error):
+                    observer.onError(APIError.other(error))
+                }
+            }
+
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
 
     func listRequest<T: Codable>(
         _ target: Target,

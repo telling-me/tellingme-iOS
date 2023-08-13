@@ -11,33 +11,25 @@ import RxCocoa
 
 class CommunicationAnswerViewModel {
     struct ReceiveData {
-        let answerId: Int
+        let indexPath: IndexPath
         let question: QuestionResponse
+        let answer: Content
     }
     var answerId: Int = 0
-    let answerIdSubject = BehaviorSubject<ReceiveData>(value: ReceiveData(answerId: 0, question: QuestionResponse.standardQuestion))
-    let isLike = BehaviorRelay<Bool>(value: false)
-    var responseSubject = PublishSubject<GetAnswerRespose>()
-    
+    var indexPath: IndexPath = IndexPath()
+    // answerviewcontroller와 좋아요 데이터를 공유하기 위한 subject
+    var shareLikeSubject = PublishSubject<LikeResponse>()
+    // 전 뷰컨트롤러로부터 받는 데이터 개체
+    let dataSubject = BehaviorSubject<ReceiveData>(value: ReceiveData(indexPath: IndexPath(), question: QuestionResponse.standardQuestion, answer: Content.defaultContent))
+    var likeResponseData = PublishSubject<LikeResponse>()
     let showToastSubject = PublishSubject<String>()
     let disposeBag = DisposeBag()
 
-    func toggleisLike() {
+    func postLike() {
         let request = LikeRequest(answerId: answerId)
-        LikeAPI.postLike(request: request) { result in
-            switch result {
-            case .success(let resposne):
-                self.isLike.accept(!self.isLike.value)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
-    func fetchAnswerData() {
-        AnswerAPI.getAnswerWithId(query: answerId)
+        LikeAPI.postLike(request: request)
             .subscribe(onNext: { [weak self] response in
-                self?.responseSubject.onNext(response)
+                self?.likeResponseData.onNext(response)
             }, onError: { [weak self] error in
                 if case APIError.errorData(let errorData) = error {
                     self?.showToastSubject.onNext(errorData.message)
@@ -46,7 +38,21 @@ class CommunicationAnswerViewModel {
                 } else {
                     self?.showToastSubject.onNext("An error occurred")
                 }
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
+
+//    func fetchAnswerData() {
+//        AnswerAPI.getAnswerWithId(query: answerId)
+//            .subscribe(onNext: { [weak self] response in
+//                self?.responseSubject.onNext(response)
+//            }, onError: { [weak self] error in
+//                if case APIError.errorData(let errorData) = error {
+//                    self?.showToastSubject.onNext(errorData.message)
+//                } else if case APIError.tokenNotFound = error {
+//                    self?.showToastSubject.onNext("login으로 push할게요")
+//                } else {
+//                    self?.showToastSubject.onNext("An error occurred")
+//                }
+//            }).disposed(by: disposeBag)
+//    }
 }

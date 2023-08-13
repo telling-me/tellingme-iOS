@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CommunicationDetailViewController: UIViewController {
     //    let viewModel = CommunicationDetailViewModel()
@@ -34,7 +36,7 @@ class CommunicationDetailViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func clickPageControlButton(_ sender: UITapGestureRecognizer) {
         // prev
         if sender.view?.tag == 0 {
@@ -44,5 +46,4 @@ class CommunicationDetailViewController: UIViewController {
             pageViewController?.nextPage()
         }
     }
-    
 }
