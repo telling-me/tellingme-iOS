@@ -110,6 +110,9 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIScreen.main.bounds.height == 667 && UIScreen.main.bounds.width == 375 {
+                return 57
+        }
         return 67
     }
 
@@ -118,7 +121,11 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
             self.nextButton.isEnabled = false
             guard let cell = tableView.cellForRow(at: indexPath) as? JobTableViewCell else { return }
             UIView.animate(withDuration: 0.2, animations: {
-                cell.frame.size = CGSize(width: cell.frame.width, height: 114)
+                if UIScreen.main.bounds.height == 667 && UIScreen.main.bounds.width == 375 {
+                    cell.frame.size = CGSize(width: cell.frame.width, height: 104)
+                } else {
+                    cell.frame.size = CGSize(width: cell.frame.width, height: 114)
+                }
             })
             self.setEnabledTextField(cell: cell)
         } else {
@@ -130,7 +137,11 @@ extension GetJobViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.row == (viewModel.jobsCount ?? 0) - 1 {
             guard let cell = tableView.cellForRow(at: indexPath) as? JobTableViewCell else { return }
-            cell.frame.size = CGSize(width: cell.frame.width, height: 67)
+            if UIScreen.main.bounds.height == 667 && UIScreen.main.bounds.width == 375 {
+                cell.frame.size = CGSize(width: cell.frame.width, height: 57)
+            } else {
+                cell.frame.size = CGSize(width: cell.frame.width, height: 67)
+            }
             self.setDisabledTextField()
         }
     }

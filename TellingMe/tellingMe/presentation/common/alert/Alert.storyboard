@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="9vC-3B-i24">
+            <objects>
+                <viewController storyboardIdentifier="alertViewController" id="ssK-hY-t6D" customClass="AlertViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RXa-p1-g0h" customClass="AlertView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IR-Vw-Ig7">
+                                <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20c-1E-Zv1" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="8j6-Tl-7ez"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QQl-Ej-Cod">
+                                        <rect key="frame" x="20" y="75" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKf-FH-flD" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인"/>
+                                                <connections>
+                                                    <action selector="clickOkButton:" destination="ssK-hY-t6D" eventType="touchUpInside" id="szo-1W-pQN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="uaz-Ea-TCH"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="20c-1E-Zv1" secondAttribute="trailing" constant="20" id="CJI-Yl-pZj"/>
+                                    <constraint firstItem="QQl-Ej-Cod" firstAttribute="leading" secondItem="8IR-Vw-Ig7" secondAttribute="leading" constant="20" id="bKx-SP-ru4"/>
+                                    <constraint firstItem="20c-1E-Zv1" firstAttribute="top" secondItem="8IR-Vw-Ig7" secondAttribute="top" constant="30" id="fKe-Di-T5u"/>
+                                    <constraint firstItem="QQl-Ej-Cod" firstAttribute="top" secondItem="20c-1E-Zv1" secondAttribute="bottom" constant="28" id="iHN-c1-BCq"/>
+                                    <constraint firstAttribute="bottom" secondItem="QQl-Ej-Cod" secondAttribute="bottom" constant="20" id="qJj-IX-vRh"/>
+                                    <constraint firstItem="20c-1E-Zv1" firstAttribute="leading" secondItem="8IR-Vw-Ig7" secondAttribute="leading" constant="20" id="vv8-Sa-9ir"/>
+                                    <constraint firstAttribute="trailing" secondItem="QQl-Ej-Cod" secondAttribute="trailing" constant="20" id="yAD-IQ-WVK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5ef-DO-owX"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5ef-DO-owX" firstAttribute="trailing" secondItem="8IR-Vw-Ig7" secondAttribute="trailing" constant="25" id="6xO-0U-t1N"/>
+                            <constraint firstItem="8IR-Vw-Ig7" firstAttribute="leading" secondItem="5ef-DO-owX" secondAttribute="leading" constant="25" id="AiK-oM-HsZ"/>
+                            <constraint firstItem="8IR-Vw-Ig7" firstAttribute="centerY" secondItem="5ef-DO-owX" secondAttribute="centerY" id="Itq-5F-4yL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="20c-1E-Zv1" id="ECq-ED-eV8"/>
+                        <outlet property="okButton" destination="LKf-FH-flD" id="GAy-4G-PV1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C1w-PS-DUS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1844" y="-54"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="20c-1E-Zv1"/>
+        <designable name="LKf-FH-flD">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

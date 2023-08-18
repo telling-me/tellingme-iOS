@@ -16,7 +16,7 @@ class PushNotificationModalViewController: UIViewController {
 
     @IBOutlet weak var okButton: SecondaryTextButton!
     @IBOutlet weak var cancelButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -41,7 +41,7 @@ class PushNotificationModalViewController: UIViewController {
                 completion()
             }
     }
-    
+
     func bindViewModel() {
         okButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
@@ -50,6 +50,9 @@ class PushNotificationModalViewController: UIViewController {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.postNotifiactionStatus(false)
+                if let token = Messaging.messaging().fcmToken {
+                    KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
+                }
                 self?.dismiss(animated: true)
             }).disposed(by: disposeBag)
     }

@@ -17,11 +17,15 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var cancelButton: TeritaryTextButton!
     @IBOutlet weak var okButton: SecondaryTextButton!
 
+    override func viewWillAppear(_ animated: Bool) {
+        view.backgroundColor = .clear
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(red: 0.096, green: 0.096, blue: 0.096, alpha: 0.28)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         view.backgroundColor = .clear
     }

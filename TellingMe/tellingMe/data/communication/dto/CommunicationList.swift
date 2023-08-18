@@ -24,7 +24,7 @@ struct Content: Codable {
 
 extension Content {
     static var defaultContent: Content {
-        return Content(answerId: 0, content: "", createdTime: [], userId: "", likeCount: 0, job: 0, purpose: "", weight: 0, emotion: 0, isLiked: false)
+        return Content(answerId: 0, content: "", createdTime: [], userId: "", likeCount: 0, job: 0, purpose: "", weight: 0, emotion: 1, isLiked: false)
     }
 }
 

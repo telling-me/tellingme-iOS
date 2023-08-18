@@ -17,16 +17,16 @@ class AnswerListViewController: DropDownViewController {
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var listButton: [UIButton]!
-    
+
     let disposeBag = DisposeBag()
 
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        viewModel.getAnswerList()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerView.delegate = self
         yearButton.delegate = self
         monthButton.delegate = self
 
@@ -38,9 +38,8 @@ class AnswerListViewController: DropDownViewController {
         monthButton.setTitle(text: "\(viewModel.month)월", isSmall: true)
         self.view.bringSubviewToFront(tableView)
         bindViewModel()
-        viewModel.getAnswerList()
     }
-    
+
     func bindViewModel() {
         viewModel.responseSubject
             .subscribe(onNext: { [weak self] response in
@@ -49,7 +48,8 @@ class AnswerListViewController: DropDownViewController {
                     self?.setNotfoundAnswerList()
                 } else {
                     self?.noneView.removeFromSuperview()
-                    self?.setContainerView(tag: 0)
+                    self?.containerView.isHidden = false
+                    self?.setContainerView(tag: self?.viewModel.currentlistTag ?? 0)
                 }
             }).disposed(by: disposeBag)
     }
@@ -75,8 +75,7 @@ class AnswerListViewController: DropDownViewController {
     }
 
     func makeSelectedCardButton(selectedIndex: Int, unSelectedIndex: Int) {
-        print(selectedIndex)
-        listButton[selectedIndex].backgroundColor = UIColor(named: "Side300")
+        listButton[selectedIndex].backgroundColor = UIColor(named: "Side200")
         listButton[unSelectedIndex].backgroundColor = UIColor(named: "Side100")
     }
 
@@ -109,6 +108,7 @@ class AnswerListViewController: DropDownViewController {
     }
 
     @IBAction func changeView(_ sender: UIButton) {
+        viewModel.currentlistTag = sender.tag
         setContainerView(tag: sender.tag)
     }
 
@@ -116,21 +116,6 @@ class AnswerListViewController: DropDownViewController {
         let storyboard = UIStoryboard(name: "Answer", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "answer") as? AnswerViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-
-        guard let touch = touches.first else { return }
-        let touchLocation = touch.location(in: view)
-
-        // 현재 터치가 테이블 뷰 내부에 있는지 확인합니다.
-        if !tableView.frame.contains(touchLocation) && !tableView.isHidden {
-            monthButton.setClose()
-            yearButton.setClose()
-            tableView.isHidden.toggle()
-            tableView.removeFromSuperview()
-        }
     }
 }
 
@@ -148,9 +133,9 @@ extension AnswerListViewController {
         default:
             fatalError("currentTag 설정 해주세요")
         }
+        viewModel.getAnswerList()
         tableView.isHidden = true
         tableView.removeFromSuperview()
-        viewModel.getAnswerList()
     }
 }
 
@@ -166,10 +151,12 @@ extension AnswerListViewController: DropDownButtonDelegate {
             break
         }
 
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         if tableView.isHidden {
             button.setOpen()
             view.addSubview(tableView)
-            tableView.isHidden.toggle()
+            tableView.isHidden = false
+
             NSLayoutConstraint.activate([
                 tableView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
                 tableView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
@@ -178,20 +165,9 @@ extension AnswerListViewController: DropDownButtonDelegate {
             ])
         } else {
             button.setClose()
-            tableView.isHidden.toggle()
+            tableView.isHidden = true
             tableView.removeFromSuperview()
         }
         tableView.reloadData()
-    }
-}
-
-extension AnswerListViewController: HeaderViewDelegate {
-    func pushSetting(_ headerView: MainHeaderView) {
-        // push를 수행하는 코드
-        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
-            return
-        }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -16,6 +16,7 @@ extension CommunityViewController {
         CommunicationAPI.getQuestionList(query: date) { result in
             switch result {
             case .success(let response):
+                CommunicationData.shared.threeDays = response!
                 self.viewModel.data = response!
             case .failure(let error):
                 switch error {

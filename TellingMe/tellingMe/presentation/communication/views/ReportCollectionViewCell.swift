@@ -42,6 +42,8 @@ class ReportCollectionViewCell: UICollectionViewCell {
     func setData(text: String) {
         label.text = text
         label.sizeToFit()
+        self.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 20
     }
 
     func setSelected() {

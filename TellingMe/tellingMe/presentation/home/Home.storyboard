@@ -43,7 +43,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-ez-Gvw" customClass="MainHeaderView" customModule="tellingMe" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-ez-Gvw" customClass="MainSettingHeaderView" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="414" height="66"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -51,10 +51,10 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-P9-e8Z">
-                                <rect key="frame" x="174.5" y="122" width="65.5" height="34"/>
+                                <rect key="frame" x="195" y="122" width="24" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEO-Xf-N27" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="10" width="41.5" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEO-Xf-N27" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="10" width="0.0" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Gray5"/>
@@ -125,13 +125,13 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-qn-KoW">
                                         <rect key="frame" x="41.5" y="117" width="325" height="142"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYq-Da-bcO" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYq-Da-bcO" customClass="Body1Bold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="40" width="265" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-K4-8G1" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-K4-8G1" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="77" width="265" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -173,7 +173,7 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH9-tL-FdQ" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH9-tL-FdQ" customClass="CaptionLabelRegular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="141.5" y="34" width="125" height="30"/>
                                         <color key="backgroundColor" name="Side200"/>
                                         <constraints>
@@ -207,7 +207,7 @@
                                             <action selector="presentEmotion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bsa-Uh-PPH"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-oD-GK7" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기록 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-oD-GK7" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="169.5" y="368" width="69" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Logo"/>
@@ -263,7 +263,7 @@
                         <outlet property="dayLabel" destination="lH9-tL-FdQ" id="kF1-aZ-KBu"/>
                         <outlet property="dayStackLabel" destination="yEO-Xf-N27" id="hI8-WI-1te"/>
                         <outlet property="dayStackView" destination="vpw-P9-e8Z" id="WgN-D3-cIV"/>
-                        <outlet property="headerView" destination="m3W-ez-Gvw" id="Eaa-p2-hpj"/>
+                        <outlet property="headerView" destination="m3W-ez-Gvw" id="lK4-x8-fYX"/>
                         <outlet property="questionLabel" destination="QYq-Da-bcO" id="qeb-Oi-y03"/>
                         <outlet property="questionView" destination="UJc-qn-KoW" id="1Yc-bM-fDQ"/>
                         <outlet property="rotateAnimationView" destination="LKD-O2-ULs" id="nKf-ge-Wqm"/>
@@ -338,15 +338,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0y-Zo-dTv">
-                                        <rect key="frame" x="156" y="318" width="52" height="30"/>
+                                        <rect key="frame" x="154.5" y="318" width="55" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="괜찮아요">
                                             <color key="titleColor" name="Gray5"/>
                                         </state>
-                                        <connections>
-                                            <action selector="clickButton:" destination="FRC-dq-hHT" eventType="touchUpInside" id="gOn-MI-Cmb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -355,6 +352,7 @@
                                     <constraint firstItem="ZJx-Hy-hQc" firstAttribute="centerX" secondItem="Vtw-US-F4c" secondAttribute="centerX" id="3KB-DN-tNY"/>
                                     <constraint firstAttribute="height" constant="355" id="66w-3q-86n"/>
                                     <constraint firstItem="lC6-eY-pot" firstAttribute="top" secondItem="ZJx-Hy-hQc" secondAttribute="bottom" constant="24" id="MoG-FX-xIY"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q0y-Zo-dTv" secondAttribute="bottom" constant="16" id="N1W-Jl-6H6"/>
                                     <constraint firstItem="VL1-uj-9yg" firstAttribute="leading" secondItem="Vtw-US-F4c" secondAttribute="leading" constant="20" id="NAd-8B-kCI"/>
                                     <constraint firstItem="Q0y-Zo-dTv" firstAttribute="top" secondItem="lC6-eY-pot" secondAttribute="bottom" constant="20" id="U1d-T1-p7H"/>
                                     <constraint firstAttribute="trailing" secondItem="lC6-eY-pot" secondAttribute="trailing" constant="20" id="YlX-zQ-LZX"/>
@@ -395,9 +393,7 @@
         <designable name="Q80-zb-uES">
             <size key="intrinsicContentSize" width="265.5" height="20.5"/>
         </designable>
-        <designable name="QYq-Da-bcO">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
-        </designable>
+        <designable name="QYq-Da-bcO"/>
         <designable name="Tpz-oD-GK7">
             <size key="intrinsicContentSize" width="68.5" height="20.5"/>
         </designable>
@@ -405,17 +401,11 @@
             <size key="intrinsicContentSize" width="228.5" height="20.5"/>
         </designable>
         <designable name="lC6-eY-pot">
-            <size key="intrinsicContentSize" width="73" height="32"/>
+            <size key="intrinsicContentSize" width="75" height="31"/>
         </designable>
-        <designable name="lH9-tL-FdQ">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
-        </designable>
-        <designable name="pc3-K4-8G1">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
-        </designable>
-        <designable name="yEO-Xf-N27">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
-        </designable>
+        <designable name="lH9-tL-FdQ"/>
+        <designable name="pc3-K4-8G1"/>
+        <designable name="yEO-Xf-N27"/>
     </designables>
     <resources>
         <image name="BellRinging" width="151" height="163"/>

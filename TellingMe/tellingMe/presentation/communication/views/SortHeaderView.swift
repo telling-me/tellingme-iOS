@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SendSortDelegate: AnyObject {
-    func changeSort()
+    func changeSort(_ selectedSort: String)
 }
 
 class SortHeaderView: UICollectionReusableView {
@@ -36,13 +36,14 @@ class SortHeaderView: UICollectionReusableView {
     }
 
     func setView() {
+        self.backgroundColor = UIColor(named: "Side100")
         addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
 
         collectionView.register(ChipCollectionViewCell.self, forCellWithReuseIdentifier: ChipCollectionViewCell.id)
@@ -66,7 +67,7 @@ extension SortHeaderView: UICollectionViewDelegate, UICollectionViewDataSource, 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipCollectionViewCell.id, for: indexPath) as? ChipCollectionViewCell else {
             return UICollectionViewCell()
         }
-        print(CommunicationData.shared.sortingList[indexPath.row].rawValue)
+//        print(CommunicationData.shared.sortingList[indexPath.row].rawValue)
         cell.setData(with: CommunicationData.shared.sortingList[indexPath.row].rawValue)
         return cell
     }
@@ -77,6 +78,6 @@ extension SortHeaderView: UICollectionViewDelegate, UICollectionViewDataSource, 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         CommunicationData.shared.currentSort = indexPath.row
-        delegate?.changeSort()
+        delegate?.changeSort(CommunicationData.shared.sortingList[indexPath.row].rawValue)
     }
 }

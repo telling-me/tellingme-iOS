@@ -17,7 +17,7 @@ class SettingViewModel {
     }
 
     var pushToggleValue: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    let items = [SettingView(id: "myInfo", view: MyInfoViewController()), SettingView(id: "termOfUse", view: TermOfUseViewController()), SettingView(id: "privacyPolicy", view: PrivacyPolicyViewController()), SettingView(id: "withdrawal", view: WithdrawalViewController())]
+    let items = [SettingView(id: "myInfo", view: MyInfoViewController()), SettingView(id: "privacyPolicy", view: UIViewController()), SettingView(id: "privacyPolicy", view: UIViewController()), SettingView(id: "withdrawal", view: WithdrawalViewController())]
     var itemsCount: Int?
 
     let showToastSubject = PublishSubject<String>()
@@ -42,24 +42,6 @@ class SettingViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
-//    func getisAllowedNotification() {
-//        UserAPI.getisAllowedNotification { result in
-//            switch result {
-//            case .success(let response):
-//                self.viewModel.isPushAllowed = response!.allowNotification
-//            case .failure(let error):
-//                switch error {
-//                case .errorData(let errorData):
-//                    self.showToast(message: errorData.message)
-//                case .tokenNotFound:
-//                    fatalError("토큰이 없습니다")
-//                default:
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
 
     func postNotification(_ value: Bool) {
         let request = AllowedNotificationRequest(notificationStatus: value)

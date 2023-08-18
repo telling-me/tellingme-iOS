@@ -14,6 +14,7 @@ protocol SendLikeDelegate: AnyObject {
 
 class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     static let id = "communicationDetailCollectionViewCell"
+    var index = 0
     weak var delegate: SendLikeDelegate?
 //    let disposeBag = DisposeBag()
 
@@ -116,19 +117,24 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
 
         containerView.addSubview(likeButton)
 //        likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        likeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         likeButton.topAnchor.constraint(equalTo: answerLabel.bottomAnchor).isActive = true
         likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
         likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        contentView.layer.cornerRadius = 12
     }
     
     @objc func likeButtonTapped() {
         delegate?.likeButtonClicked(answerId: answerId)
         CommunicationData.shared.toggleLike(indexPath.row)
-        likeButton.isSelected = CommunicationData.shared.communicationList[indexPath.row].isLiked
-        likeButton.setTitle("\(CommunicationData.shared.communicationList[indexPath.row].likeCount)", for: .normal)
+        likeButton.isSelected = CommunicationData.shared.communicationList[index][indexPath.row].isLiked
+        if CommunicationData.shared.communicationList[index][indexPath.row].likeCount == 0 {
+            likeButton.setTitle("", for: .normal)
+        } else {
+            likeButton.setTitle("\(CommunicationData.shared.communicationList[index][indexPath.row].likeCount)", for: .normal)
+        }
     }
 
 //    func updateLike(isLiked: Bool, likeCount: Int) {
@@ -171,6 +177,8 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         likeButton.isSelected = data.isLiked
         if data.likeCount != 0 {
             likeButton.setTitle("\(data.likeCount)", for: .normal)
+        } else {
+            likeButton.setTitle("", for: .normal)
         }
         emotionLabel.sizeToFit()
     }

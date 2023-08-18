@@ -9,15 +9,34 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SendShowReportAlert: AnyObject {
+    func reportCompleted()
+}
+
 class ReportViewController: UIViewController {
     let viewModel = ReportViewModel()
     let disposeBag = DisposeBag()
+    weak var delegate: SendShowReportAlert?
 
     @IBOutlet weak var bottomSheetView: BottomSheet!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomSheetView.setTitle(title: "답변 신고 사유를 선택해주세요", subTitle: "허위 신고 시 서비스 이용이 제한 될 수 있어요.")
+        bottomSheetView.layer.masksToBounds = true
+        bottomSheetView.layer.cornerRadius = 28
+        viewModel.showToastSubject
+            .observe(on: MainScheduler.instance)
+             .subscribe(onNext: { [weak self] message in
+                 self?.showToast(message: message)
+             })
+             .disposed(by: disposeBag)
+        viewModel.successSubject
+            .observe(on: MainScheduler.instance)
+             .subscribe(onNext: { [weak self] message in
+                 self?.dismiss(animated: true)
+                 self?.delegate?.reportCompleted()
+             }).disposed(by: disposeBag)
         bottomSheetView.cancelButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: true)
@@ -30,9 +49,14 @@ class ReportViewController: UIViewController {
         bottomSheetView.okButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.postReport()
-                self?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension ReportViewController: AlertActionDelegate {
+    func clickOk() {
+        self.dismiss(animated: true)
     }
 }
 

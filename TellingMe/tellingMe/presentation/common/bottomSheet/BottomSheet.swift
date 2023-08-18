@@ -65,8 +65,7 @@ class BottomSheet: UIView {
     }
 
     func setView() {
-        self.layer.cornerRadius = 28
-        self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+//        self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 42).isActive = true
@@ -88,6 +87,7 @@ class BottomSheet: UIView {
     }
 
     func setTitle(title: String, subTitle: String) {
+        self.layer.cornerRadius = 28
         titleLabel.text = title
         subTitleLabel.text = subTitle
     }

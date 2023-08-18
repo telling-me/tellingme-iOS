@@ -18,3 +18,9 @@ struct QuestionListResponse: Codable {
     let answerCount: Int
     let phrase: String
 }
+
+extension QuestionListResponse {
+    static var defaultQuestion: QuestionListResponse {
+        return QuestionListResponse(title: "텔링미를 사용하실 때 드는 기분은?", date: [2023, 03, 01], answerCount: 1, phrase: "하루 한번, 질문에 답변하며 나를 깨닫는 시간")
+    }
+}

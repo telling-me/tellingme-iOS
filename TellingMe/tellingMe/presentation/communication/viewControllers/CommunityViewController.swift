@@ -9,6 +9,7 @@ import UIKit
 
 class CommunityViewController: UIViewController {
     let viewModel = CommunicationViewModel()
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
     @IBOutlet weak var cardStackView: UIStackView!
 
     override func viewDidLoad() {
@@ -17,9 +18,17 @@ class CommunityViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        activityIndicator.color = .gray // 인디케이터 색상 설정
+        activityIndicator.center = view.center // 화면 중앙에 위치
+        activityIndicator.hidesWhenStopped = true // 정지 상태일 때 숨김
+        view.addSubview(activityIndicator)
+        view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
         getQuestionList() {
             self.setCardView()
-            CommunicationData.shared.threeDays = self.viewModel.data
+            self.cardStackView.isHidden = false
+            self.view.isUserInteractionEnabled = true
+            self.activityIndicator.stopAnimating()
         }
     }
 

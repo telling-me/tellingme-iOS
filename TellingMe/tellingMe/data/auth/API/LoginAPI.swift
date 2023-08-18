@@ -50,7 +50,7 @@ extension LoginAPITarget: TargetType {
         case .jobInfo:
             return "api/oauth/jobName"
         case .withdrawalUser:
-            return "api/oauth/withdraw"
+            return "api/oauth/withdraw/app"
         case .logout:
             return "api/oauth/logout"
         }

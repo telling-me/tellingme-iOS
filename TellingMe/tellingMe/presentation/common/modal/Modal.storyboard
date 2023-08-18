@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWk-Nh-nI6">
                                 <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변을 등록할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aec-g7-nlc" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 등록할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aec-g7-nlc" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="gq9-bk-kE8"/>
@@ -104,7 +104,7 @@
         <!--Modal View Controller-->
         <scene sceneID="SGE-wG-4Bd">
             <objects>
-                <viewController storyboardIdentifier="modalDeleteAnswer" id="K5S-aj-Czn" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="modalModifyAnswer" id="K5S-aj-Czn" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mfE-wp-t5w">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnU-uP-U77">
                                 <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답변을 삭제할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-br-R31" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 수정할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-br-R31" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="5HD-CX-rgU"/>
@@ -135,7 +135,7 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNo-HL-u2v" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="159" y="0.0" width="144" height="55"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="삭제하기"/>
+                                                <state key="normal" title="수정하기"/>
                                                 <connections>
                                                     <action selector="clickButton:" destination="K5S-aj-Czn" eventType="touchUpInside" id="aMH-Sd-EAG"/>
                                                 </connections>
@@ -178,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pU-DW-LWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-440" y="-42"/>
+            <point key="canvasLocation" x="-488" y="-54"/>
         </scene>
         <!--Modal View Controller-->
         <scene sceneID="xS8-Qx-DRf">
@@ -406,7 +406,7 @@
                                             <constraint firstAttribute="height" constant="55" id="Vj5-o1-fhe"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별과 생년월일은 한번 설정 후 변경할 수 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-oe-qZ2" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별과 출생년도는 한번 설정 후 변경할 수 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-oe-qZ2" customClass="Body2Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55" width="303" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="ZiC-Yc-104"/>
@@ -453,6 +453,85 @@
             </objects>
             <point key="canvasLocation" x="2199" y="-42"/>
         </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="Q0b-o8-scF">
+            <objects>
+                <viewController storyboardIdentifier="modalDeleteAnswer" id="6ZT-UQ-H5p" customClass="ModalViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dzw-SX-13P">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-21-vmc">
+                                <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 삭제할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psm-fE-LOK" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="30" width="303" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="iou-qU-GNH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="geb-8A-lW7">
+                                        <rect key="frame" x="20" y="75" width="303" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzf-92-VAu" customClass="TeritaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="6ZT-UQ-H5p" eventType="touchUpInside" id="QgB-al-EYB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gct-BV-AtZ" customClass="SecondaryTextButton" customModule="tellingMe" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="144" height="55"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="삭제하기"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="6ZT-UQ-H5p" eventType="touchUpInside" id="ERX-qU-YrG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="Pxo-dD-aSD"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="geb-8A-lW7" firstAttribute="top" secondItem="psm-fE-LOK" secondAttribute="bottom" constant="28" id="76r-tP-Fac"/>
+                                    <constraint firstItem="psm-fE-LOK" firstAttribute="leading" secondItem="hJS-21-vmc" secondAttribute="leading" constant="20" id="IRq-1v-9NS"/>
+                                    <constraint firstItem="psm-fE-LOK" firstAttribute="top" secondItem="hJS-21-vmc" secondAttribute="top" constant="30" id="OoX-kW-7ZQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="psm-fE-LOK" secondAttribute="trailing" constant="20" id="RB2-iu-k57"/>
+                                    <constraint firstItem="geb-8A-lW7" firstAttribute="leading" secondItem="hJS-21-vmc" secondAttribute="leading" constant="20" id="Y19-0F-d17"/>
+                                    <constraint firstAttribute="trailing" secondItem="geb-8A-lW7" secondAttribute="trailing" constant="20" id="eMp-os-1Ge"/>
+                                    <constraint firstAttribute="bottom" secondItem="geb-8A-lW7" secondAttribute="bottom" constant="20" id="rtu-Yh-3OI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5bR-kC-fJR"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hJS-21-vmc" firstAttribute="centerY" secondItem="5bR-kC-fJR" secondAttribute="centerY" id="Boz-6S-BIS"/>
+                            <constraint firstItem="hJS-21-vmc" firstAttribute="leading" secondItem="5bR-kC-fJR" secondAttribute="leading" constant="25" id="D5B-zV-gne"/>
+                            <constraint firstItem="5bR-kC-fJR" firstAttribute="trailing" secondItem="hJS-21-vmc" secondAttribute="trailing" constant="25" id="p6y-TT-Fsc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Vzf-92-VAu" id="bk9-Ne-l6c"/>
+                        <outlet property="okButton" destination="gct-BV-AtZ" id="ff7-PM-K34"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fra-eg-7hb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1178" y="-54"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="4ho-Pv-bTu">
@@ -462,7 +541,7 @@
             <size key="intrinsicContentSize" width="170.66666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="8u1-br-R31">
-            <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="115.66666666666667" height="20.333333333333332"/>
         </designable>
         <designable name="9bX-Xl-ln7">
             <size key="intrinsicContentSize" width="52" height="30"/>
@@ -482,6 +561,9 @@
         <designable name="VNo-HL-u2v">
             <size key="intrinsicContentSize" width="52" height="30"/>
         </designable>
+        <designable name="Vzf-92-VAu">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
         <designable name="YHJ-Q4-vGm">
             <size key="intrinsicContentSize" width="276.33333333333331" height="20.333333333333332"/>
         </designable>
@@ -489,7 +571,7 @@
             <size key="intrinsicContentSize" width="208.33333333333334" height="20.333333333333332"/>
         </designable>
         <designable name="aec-g7-nlc">
-            <size key="intrinsicContentSize" width="130.33333333333334" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="115.66666666666667" height="20.333333333333332"/>
         </designable>
         <designable name="dHJ-cB-cEh">
             <size key="intrinsicContentSize" width="30" height="30"/>
@@ -497,11 +579,17 @@
         <designable name="gbL-NG-MDB">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
+        <designable name="gct-BV-AtZ">
+            <size key="intrinsicContentSize" width="52" height="30"/>
+        </designable>
         <designable name="iEW-Iq-qYr">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="nbc-oe-qZ2">
             <size key="intrinsicContentSize" width="324.66666666666669" height="20.333333333333332"/>
+        </designable>
+        <designable name="psm-fE-LOK">
+            <size key="intrinsicContentSize" width="115.66666666666667" height="20.333333333333332"/>
         </designable>
         <designable name="rSZ-bu-UPo">
             <size key="intrinsicContentSize" width="30" height="30"/>

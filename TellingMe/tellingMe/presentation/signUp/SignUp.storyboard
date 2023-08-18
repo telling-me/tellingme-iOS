@@ -528,7 +528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRj-kZ-Z93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947" y="1515"/>
+            <point key="canvasLocation" x="945.60000000000002" y="1514.7783251231529"/>
         </scene>
         <!--Get Job View Controller-->
         <scene sceneID="MUr-rv-5Kp">
@@ -593,7 +593,6 @@
                                     <constraint firstAttribute="trailing" secondItem="C1B-DS-Igk" secondAttribute="trailing" constant="60" id="ZJD-DU-pZc"/>
                                     <constraint firstItem="iWC-O7-SQM" firstAttribute="top" secondItem="XTG-fm-BmH" secondAttribute="top" constant="60" id="fn2-Fa-Nxl"/>
                                     <constraint firstItem="C1B-DS-Igk" firstAttribute="leading" secondItem="XTG-fm-BmH" secondAttribute="leading" constant="60" id="kWt-K5-OqE"/>
-                                    <constraint firstAttribute="bottom" secondItem="C1B-DS-Igk" secondAttribute="bottom" id="kqJ-qM-sll"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-ey-1wW" customClass="SecondaryIconButton" customModule="tellingMe" customModuleProvider="target">
@@ -628,6 +627,7 @@
                             <constraint firstItem="2kQ-ey-1wW" firstAttribute="leading" secondItem="aBN-XW-EZe" secondAttribute="leading" constant="25" id="Pm5-0w-Wif"/>
                             <constraint firstAttribute="bottom" secondItem="2kQ-ey-1wW" secondAttribute="bottom" constant="36" id="VbT-hD-vTk"/>
                             <constraint firstAttribute="bottom" secondItem="Ecu-SZ-6ct" secondAttribute="bottom" constant="36" id="oIL-nu-poP"/>
+                            <constraint firstItem="Ecu-SZ-6ct" firstAttribute="top" secondItem="C1B-DS-Igk" secondAttribute="bottom" id="vog-rN-chh"/>
                             <constraint firstItem="XTG-fm-BmH" firstAttribute="leading" secondItem="aBN-XW-EZe" secondAttribute="leading" id="yMy-vD-z8f"/>
                             <constraint firstItem="XTG-fm-BmH" firstAttribute="top" secondItem="MTs-wH-IEF" secondAttribute="top" id="ywm-6k-haQ"/>
                         </constraints>

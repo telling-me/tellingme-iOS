@@ -73,16 +73,17 @@ class QuestionView: UIView {
         subQuestionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 10).isActive = true
 
         questionContentView.addSubview(dateLabel)
+//        dateLabel.topAnchor.constraint(equalTo: subQuestionLabel.bottomAnchor, constant: 18).isActive = true
         dateLabel.centerXAnchor.constraint(equalTo: questionContentView.centerXAnchor).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: questionContentView.bottomAnchor).isActive = true
-        
+
         addSubview(borderView)
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
         borderView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
+
     func setQuestion(data: QuestionResponse) {
         questionLabel.text = data.title
         subQuestionLabel.text = data.phrase
