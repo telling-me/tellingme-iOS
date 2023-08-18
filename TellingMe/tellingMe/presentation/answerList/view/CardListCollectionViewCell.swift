@@ -48,6 +48,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "NanumSquareRoundOTFR", size: 12)
         textView.textContainer.lineBreakMode = .byWordWrapping
+        textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -62,8 +63,16 @@ class CardListCollectionViewCell: UICollectionViewCell {
         imgView.image = UIImage(named: self.emotions[data.emotion - 1])
         questionLabel.text = data.title.replacingOccurrences(of: "\n", with: " ")
         subQuestionLabel.text = data.phrase
-        paragraphStyle.lineHeightMultiple = 1.62
-        answerTextView.attributedText = NSMutableAttributedString(string: data.content, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        guard let font = answerTextView.font else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.5
+
+        let attributedText = NSMutableAttributedString(string: data.content)
+        attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
+        attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, attributedText.length))
+
+        answerTextView.attributedText = attributedText
         dateLabel.text = "\(data.date[0])년 \(data.date[1])월 \(data.date[2])일"
 
         contentView.backgroundColor = UIColor(named: "Side100")
@@ -99,5 +108,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         dateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 72).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        
+        contentView.layer.cornerRadius = 24
     }
 }

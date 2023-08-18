@@ -62,10 +62,10 @@ extension HomeViewController {
             switch result {
             case .success(let response):
                 if response!.count == 0 {
-                    self.dayStackLabel.text = "오늘도 하루를 돌아봐요!"
-                    self.dayStackLabel.setColorPart(text: "하루")
+                    self.dayStackLabel.text = "오늘도 진정한 나를 만나봐요!"
+                    self.dayStackLabel.setColorPart(text: "진정한 나")
                 } else {
-                    self.dayStackLabel.text = "연속 \(response!.count)일째 답변 중!"
+                    self.dayStackLabel.text = "연속 \(response!.count)일째 기록 중!"
                     self.dayStackLabel.setColorPart(text: String(response!.count))
                 }
             case .failure(let error):

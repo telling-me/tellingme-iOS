@@ -32,7 +32,7 @@ class ModifyAnswerViewController: AnswerViewController {
             self.showToast(message: "4글자 이상 작성해주세요")
             answerTextView.resignFirstResponder()
         } else {
-            self.showModal(id: "modalRegisterAnswer")
+            self.showModal(id: "modalModifyAnswer")
         }
     }
 

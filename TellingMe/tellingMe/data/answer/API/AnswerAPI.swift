@@ -44,9 +44,9 @@ extension AnswerAPITarget: TargetType {
         case .getAnswerList:
             return "api/answer/list"
         case .getAnswerWithDate:
-            return "api/answer"
+            return "api/answer/date"
         case .getAnswerWithId:
-            return "api/answer/completed"
+            return "api/answer/id"
         case .getAnswerRecord:
             return "api/answer/record"
         case .registerAnswer:

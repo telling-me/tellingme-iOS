@@ -110,7 +110,7 @@ struct UserAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func getisAllowedNotification() -> Observable<AllowedNotificationResponse> {
         do {
             let provider = try makeAuthorizedProvider()

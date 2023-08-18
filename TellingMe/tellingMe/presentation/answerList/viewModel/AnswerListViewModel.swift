@@ -16,11 +16,14 @@ class AnswerListViewModel {
     var month = Date().monthFormat()
     var responseSubject = PublishSubject<[AnswerListResponse]>()
 
+    // 카드뷰 0, 테이블 1
+    var currentlistTag = 0
+    // year인지 month인지
     var currentTag = 0
     var yearArray: [String] = []
     var monthArray = Array(1...12).map { String($0) }
     let standardYear = 2023
-    
+
     let showToastSubject = PublishSubject<String>()
     let disposeBag = DisposeBag()
 
@@ -42,17 +45,6 @@ class AnswerListViewModel {
         return str
     }
 
-    
-    //                if response?.count == 0 {
-    //                    self.containerView.isHidden = true
-    //                    self.setNotfoundAnswerList()
-    //                } else {
-    //                    self.noneView.removeFromSuperview()
-    ////                    self.containerView.isHidden = false
-    //                    self.viewModel.answerList = response!
-    //                    self.viewModel.answerCount = response!.count
-    //                    self.setContainerView(tag: 0)
-    //                }
     func getAnswerList() {
         AnswerAPI.getAnswerList(month: month, year: year)
             .subscribe(onNext: { [weak self] response in

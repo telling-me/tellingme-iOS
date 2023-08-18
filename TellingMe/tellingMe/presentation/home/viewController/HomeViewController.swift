@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
 
-    @IBOutlet weak var headerView: MainHeaderView!
+    @IBOutlet weak var headerView: MainSettingHeaderView!
     @IBOutlet weak var dayStackView: UIView!
     @IBOutlet weak var dayStackLabel: CaptionLabelBold!
     @IBOutlet weak var dayLabel: CaptionLabelRegular!

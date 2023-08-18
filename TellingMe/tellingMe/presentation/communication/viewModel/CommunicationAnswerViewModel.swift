@@ -15,6 +15,7 @@ class CommunicationAnswerViewModel {
         let question: QuestionResponse
         let answer: Content
     }
+    var index = 0
     var answerId: Int = 0
     var indexPath: IndexPath = IndexPath()
     // answerviewcontroller와 좋아요 데이터를 공유하기 위한 subject

@@ -59,6 +59,8 @@ class CommunityCardView: UIView {
     }
 
     func setView() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedButton))
         self.backgroundColor = UIColor(named: "Side200")
         self.layer.cornerRadius = 20
 
@@ -89,10 +91,11 @@ class CommunityCardView: UIView {
         button.widthAnchor.constraint(equalToConstant: 36).isActive = true
         button.heightAnchor.constraint(equalToConstant: 36).isActive = true
 
+        self.addGestureRecognizer(tapGesture)
         button.addTarget(self, action: #selector(clickedButton), for: .touchUpInside)
     }
 
-    @objc func clickedButton(sender: UIButton) {
+    @objc func clickedButton() {
         delegate?.communicationButtonClicked(self)
     }
 

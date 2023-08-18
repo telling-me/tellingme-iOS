@@ -53,6 +53,7 @@ extension AnswerCompletedViewController {
                 default:
                     print(error)
                 }
+//                self.navigationController?.popViewController(animated: true)
             }
         }
     }

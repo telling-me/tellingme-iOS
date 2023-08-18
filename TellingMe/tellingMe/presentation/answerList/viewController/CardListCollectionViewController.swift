@@ -26,7 +26,6 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
             return UICollectionViewCell()
         }
         cell.setCell(data: answerList[indexPath.row])
-        cell.layer.cornerRadius = 24
         cell.setShadow(shadowRadius: 20)
         cell.layer.masksToBounds = false
         return cell

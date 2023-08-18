@@ -1,9 +1,9 @@
-//
-//  CommunicationListViewController.swift
-//  tellingMe
-//
-//  Created by 마경미 on 31.07.23.
-//
+////
+////  CommunicationListViewController.swift
+////  tellingMe
+////
+////  Created by 마경미 on 31.07.23.
+////
 
 import UIKit
 import RxSwift
@@ -11,79 +11,118 @@ import RxCocoa
 
 class CommunicationListViewController: UIViewController {
     let viewModel = CommunicationListViewModel()
+    var questionViewOriginalHeightConstraint: NSLayoutConstraint!
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
     let disposeBag = DisposeBag()
 
-    var question: QuestionListResponse = QuestionListResponse(title: "텔링미를 사용하실 때 드는 기분은?", date: [2023, 3, 1], answerCount: 0, phrase: "")
-    var index = 0
+    let questionView: QuestionView = {
+        let view = QuestionView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    let noneView: NoneCommunicationContentView = {
+        let view = NoneCommunicationContentView()
+        view.label.text = "아직 올라온 글이 없어요!"
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var collectionView: UICollectionView = {
-      let view = UICollectionView(frame: .zero, collectionViewLayout: self.getLayout())
-      view.showsVerticalScrollIndicator = true
-      view.contentInset = .zero
-      view.backgroundColor = .clear
-      view.clipsToBounds = true
-      view.translatesAutoresizingMaskIntoConstraints = false
-      return view
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionHeadersPinToVisibleBounds = true
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.showsVerticalScrollIndicator = true
+        view.backgroundColor = UIColor(named: "Side100")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        viewModel.getIntialCommunicationList()
         setView()
         bindViewModel()
     }
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+////        viewModel.getCommunicationList(date: viewModel.question.date)
+////        reloadCollectionView()
+//        //        setView()
+//    }
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.getCommunicationList(date: question.date)
+        if CommunicationData.shared.currentSortValue != viewModel.currentSort {
+            viewModel.getIntialCommunicationList()
+        }
+        reloadCollectionView()
     }
 
     func setView() {
         view.backgroundColor = UIColor(named: "Side100")
+        view.addSubview(questionView)
+        questionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        questionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        questionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
+        questionViewOriginalHeightConstraint.isActive = true
+        questionView.setQuestion(data: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase))
+
         view.addSubview(collectionView)
         collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: questionView.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
-        collectionView.register(QuestionCollectionViewCell.self, forCellWithReuseIdentifier: QuestionCollectionViewCell.id)
         collectionView.register(CommunicationDetailCollectionViewCell.self, forCellWithReuseIdentifier: CommunicationDetailCollectionViewCell.id)
         collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
+        
+        view.addSubview(noneView)
+        noneView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        noneView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        noneView.topAnchor.constraint(equalTo: questionView.bottomAnchor, constant: 60).isActive = true
+        noneView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        //        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        //        collectionView.addSubview(refreshControl)
     }
 
     func bindViewModel() {
+        // communicationList 받기
         viewModel.communciationListSubject
-            .subscribe(onNext: { [weak self] _ in
-                self?.collectionView.reloadData()
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if CommunicationData.shared.communicationList[self.viewModel.index].isEmpty {
+                    self.noneView.isHidden = false
+                } else {
+                    self.noneView.isHidden = true
+                }
+                reloadCollectionView()
+            }).disposed(by: disposeBag)
+        viewModel.answerSuccessSubject
+            .subscribe(onNext: { [weak self] response in
+                self?.pushCommunicationAnswer(response)
+                //                self?.collectionView.isUserInteractionEnabled = true
+            }).disposed(by: disposeBag)
+        viewModel.showToastSubject
+            .subscribe(onNext: { [weak self] response in
+                //                self?.collectionView.isUserInteractionEnabled = true
+                self?.showToast(message: response)
             }).disposed(by: disposeBag)
     }
+    
+    // 맨 마지막 근처인지 확인하는 함수
+    func isNearBottomEdge(scrollView: UIScrollView) -> Bool {
+        let contentHeight = scrollView.contentSize.height
+        let yOffset = scrollView.contentOffset.y
+        let visibleHeight = scrollView.bounds.height
 
-    // case 0 : questionView, case 1 : 정렬 뷰, case 2: 리스트 뷰
-    func getLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
-            switch section {
-            case 0:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-                return section
-            case 1:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(148)))
-                item.contentInsets = .init(top: 0, leading: 0, bottom: 12, trailing: 0)
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(CGFloat((CommunicationData.shared.communicationList.count) * 160))), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
+        // 마지막 아이템이 보여지는 시점에서만 불러오기 위한 변수 값
+        let threshold: CGFloat = 10
 
-                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
-                let boundarySupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-                boundarySupplementaryItem.pinToVisibleBounds = true
-                section.boundarySupplementaryItems = [boundarySupplementaryItem]
-                return section
-            default:
-                return NSCollectionLayoutSection(group: NSCollectionLayoutGroup(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))))
-            }
-        }
+        return yOffset + visibleHeight + threshold >= contentHeight - visibleHeight
     }
 
     func pushCommunicationAnswer(_ indexPath: IndexPath) {
@@ -91,21 +130,10 @@ class CommunicationListViewController: UIViewController {
         guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
             return
         }
-        let data = CommunicationData.shared.communicationList[indexPath.row]
-        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(indexPath: indexPath, question: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase), answer: data))
+        viewController.viewModel.index = viewModel.index
+        let data = CommunicationData.shared.communicationList[viewModel.index][indexPath.row]
+        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(indexPath: indexPath, question: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase), answer: data))
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
-    // 맨 마지막 근처인지 확인하는 함수
-    func isNearBottomEdge(scrollView: UIScrollView) -> Bool {
-        let contentHeight = scrollView.contentSize.height
-        let yOffset = scrollView.contentOffset.y
-        let visibleHeight = scrollView.bounds.height
-
-        // 맨 아래가 아니라 그 근처로 가면 불러오기 위한 변수 값
-        let threshold: CGFloat = 10
-
-        return yOffset + visibleHeight + threshold >= contentHeight
     }
 
     func reloadCollectionView() {
@@ -113,71 +141,48 @@ class CommunicationListViewController: UIViewController {
     }
 }
 
-extension CommunicationListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+extension CommunicationListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 50, height: 148)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 50, height: 60)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return CommunicationData.shared.communicationList.count
-        default:
-            return 0
-        }
+        return CommunicationData.shared.communicationList[viewModel.index].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuestionCollectionViewCell.id, for: indexPath) as? QuestionCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            cell.setData(data: QuestionResponse(date: question.date, title: question.title, phrase: question.phrase))
-
-            return cell
-        case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            cell.delegate = self
-            cell.setData(indexPath: indexPath, data: CommunicationData.shared.communicationList[indexPath.row])
-            return cell
-        default:
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.index = viewModel.index
+//        cell.delegate = self
+        cell.setData(indexPath: indexPath, data: CommunicationData.shared.communicationList[viewModel.index][indexPath.row])
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 1:
-            pushCommunicationAnswer(indexPath)
-        default:
-            print("Wrong with section")
-        }
+        viewModel.fetchAnswerData(answerId: CommunicationData.shared.communicationList[viewModel.index][indexPath.row].answerId, indexPath: indexPath)
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-         if kind == UICollectionView.elementKindSectionHeader {
-             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SortHeaderView.id, for: indexPath) as? SortHeaderView else {
-                 return UICollectionReusableView()
-             }
-             headerView.delegate = self
-             headerView.selectCell(index: CommunicationData.shared.currentSort)
-             return headerView
-         }
-
-         // Return a default view or nil for other kinds if needed
-         return UICollectionReusableView()
-     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if isNearBottomEdge(scrollView: scrollView) {
-                // 더 많은 소통 리스트 불러오기
-                //            loadMoreDataFromAPI()
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SortHeaderView.id, for: indexPath) as? SortHeaderView else {
+                return UICollectionReusableView()
+            }
+            headerView.delegate = self
+            headerView.selectCell(index: CommunicationData.shared.currentSort)
+            return headerView
         }
+
+        return UICollectionReusableView()
     }
 }
 
@@ -185,8 +190,81 @@ extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate {
     func likeButtonClicked(answerId: Int) {
         self.viewModel.postLike(answerId: answerId)
     }
-    
-    func changeSort() {
-        self.viewModel.getCommunicationList(date: question.date)
+
+    func changeSort(_ selectedSort: String) {
+        viewModel.currentSort = selectedSort
+        if CommunicationData.shared.communicationList[viewModel.index].count != 0 {
+//            activityIndicator.color = .gray // 인디케이터 색상 설정
+//            activityIndicator.center = view.center // 화면 중앙에 위치
+//            activityIndicator.hidesWhenStopped = true // 정지 상태일 때 숨김
+//            view.addSubview(activityIndicator)
+//            activityIndicator.startAnimating()
+//            collectionView.removeFromSuperview()
+            self.viewModel.getIntialCommunicationList()
+        }
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if viewModel.isFetchingData {
+            return // 이미 데이터를 가져오는 중이라면 무시
+        }
+
+        let contentOffset = scrollView.contentOffset
+//         if contentOffset.y < 160 {
+//             // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
+//             questionViewOriginalHeightConstraint.isActive = false
+//             questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
+//             questionViewOriginalHeightConstraint.isActive = true
+//         } else {
+//             // 스크롤을 아래로 내릴 때의 작업을 여기에 수행합니다.
+//             questionViewOriginalHeightConstraint.isActive = false
+//             questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 0)
+//             questionViewOriginalHeightConstraint.isActive = true
+//         }
+
+        if contentOffset.y < 160 {
+            // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
+            if !self.viewModel.isTop {
+                self.viewModel.isTop = true
+                self.questionViewOriginalHeightConstraint.isActive = false
+                self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 120)
+                self.questionViewOriginalHeightConstraint.isActive = true
+            } else {
+                return
+            }
+        } else {
+            // 스크롤을 아래로 내릴 때의 작업을 여기에 수행합니다.
+            if self.viewModel.isTop {
+                self.viewModel.isTop = false
+                self.questionViewOriginalHeightConstraint.isActive = false
+                self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 0)
+                self.questionViewOriginalHeightConstraint.isActive = true
+            } else {
+                return
+            }
+        }
+
+         // 레이아웃을 업데이트하고 재계산합니다.
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+
+//    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+//        questionViewOriginalHeightConstraint.isActive = false
+//        questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
+//        questionViewOriginalHeightConstraint.isActive = true
+//
+//        UIView.animate(withDuration: 1, animations: {
+//            self.questionView.layoutIfNeeded()
+//        })
+//    }
+
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        questionViewOriginalHeightConstraint.isActive = false
+//        questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
+//        questionViewOriginalHeightConstraint.isActive = true
+//
+//        view.layoutIfNeeded()
+//    }
 }

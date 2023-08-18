@@ -9,17 +9,20 @@ import Foundation
 
 enum Sorting: String {
     case recent = "최신순"
-    case popular = "인기순"
+    case popular = "공감순"
     case related = "관련순"
 }
 
 class CommunicationData {
     static var shared: CommunicationData = CommunicationData()
-    var sortingList: [Sorting] = [.recent, .popular, .related]
-    var threeDays: [QuestionListResponse]
-    
-    var communicationList: [Content] = []
-    var currentIndex: Int
+    var sortingList: [Sorting] = [.recent, .related, .popular]
+    var threeDays: [QuestionListResponse] = []
+
+    // api page를 위한
+    var currentPage: Int = 0
+    var communicationList: [[Content]] = [[], [], []]
+    // 3일치 질문 중에 index
+    var currentIndex: Int = 0
     var currentSort: Int = 0
     var currentSortValue: String {
         get {
@@ -27,22 +30,17 @@ class CommunicationData {
         }
     }
 
-    private init() {
-        threeDays = []
-        currentIndex = 0
-    }
-
-    func setCommunicatonList(_ contentList: [Content]) {
-        communicationList = contentList
+    func setCommunicatonList(index: Int, contentList: [Content]) {
+        communicationList[index] += contentList
     }
 
     func toggleLike(_ index: Int) {
-        if communicationList[index].isLiked {
-            communicationList[index].isLiked = false
-            communicationList[index].likeCount -= 1
+        if communicationList[currentIndex][index].isLiked {
+            communicationList[currentIndex][index].isLiked = false
+            communicationList[currentIndex][index].likeCount -= 1
         } else {
-            communicationList[index].isLiked = true
-            communicationList[index].likeCount += 1
+            communicationList[currentIndex][index].isLiked = true
+            communicationList[currentIndex][index].likeCount += 1
         }
     }
 }

@@ -19,6 +19,7 @@ class GetOptionViewController: UIViewController {
         nextButton.isEnabled = false
         nextButton.setImage(image: "ArrowRight")
         input.setInputKeyobardStyle()
+        input.setPlaceholder(text: "ex. 1990")
         input.inputBox.delegate = self
     }
 
@@ -62,6 +63,7 @@ class GetOptionViewController: UIViewController {
            let year = viewModel.year {
             SignUpData.shared.gender = gender
             SignUpData.shared.birthDate = year
+            print(year)
         }
     }
 

@@ -12,20 +12,11 @@ protocol HeaderViewDelegate: AnyObject {
 }
 
 class MainHeaderView: UIView {
-    weak var delegate: HeaderViewDelegate?
-
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
-    }()
-
-    let button: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "Setting"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
     }()
 
     override init(frame: CGRect) {
@@ -41,13 +32,36 @@ class MainHeaderView: UIView {
     func setView() {
         backgroundColor = UIColor(named: "Side100")
         addSubview(imageView)
-        addSubview(button)
 
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 34).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 81).isActive = true
+    }
+}
 
+class MainSettingHeaderView: MainHeaderView {
+    weak var delegate: HeaderViewDelegate?
+    
+    let button: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Setting"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addButton()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        addButton()
+    }
+
+    func addButton() {
+        addSubview(button)
         button.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
         button.widthAnchor.constraint(equalToConstant: 24).isActive = true
@@ -55,7 +69,7 @@ class MainHeaderView: UIView {
 
         button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
     }
-
+    
     @objc func didTapButton(_ sender: UIButton) {
         delegate?.pushSetting(self)
     }

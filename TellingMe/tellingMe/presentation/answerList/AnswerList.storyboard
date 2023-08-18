@@ -37,11 +37,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-TU-euW" customClass="MainHeaderView" customModule="tellingMe" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-TU-euW">
                                 <rect key="frame" x="0.0" y="59" width="393" height="66"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나의 공간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNg-Kd-8R0" customClass="Headline6Bold" customModule="tellingMe" customModuleProvider="target">
+                                        <rect key="frame" x="164.66666666666666" y="22.666666666666671" width="64" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Side100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="SpU-B6-ctK"/>
+                                    <constraint firstItem="XNg-Kd-8R0" firstAttribute="centerX" secondItem="4yc-TU-euW" secondAttribute="centerX" id="aCB-nu-Sor"/>
+                                    <constraint firstItem="XNg-Kd-8R0" firstAttribute="centerY" secondItem="4yc-TU-euW" secondAttribute="centerY" id="lXN-ke-vgI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-uk-1b3">
@@ -152,7 +162,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="NiL-KH-zMQ" id="jYB-LA-4jo"/>
-                        <outlet property="headerView" destination="4yc-TU-euW" id="lGW-Of-vog"/>
                         <outlet property="monthButton" destination="EsN-J4-TIF" id="kVg-j4-snf"/>
                         <outlet property="yearButton" destination="DIp-Sm-TfA" id="VDJ-wH-YTI"/>
                         <outletCollection property="listButton" destination="ZZQ-sX-iNd" collectionClass="NSMutableArray" id="gby-sM-Jb4"/>

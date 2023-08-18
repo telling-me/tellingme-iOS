@@ -140,10 +140,10 @@ class MyInfoViewController: DropDownViewController {
                 return
             }
         }
-        if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
-            self.showToast(message: "생일을 전체 선택하여 주세요.")
-            return
-        }
+//        if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
+//            self.showToast(message: "생일을 전체 선택하여 주세요.")
+//            return
+//        }
 
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "myInfoModal") as? ModalViewController else { return }
@@ -152,11 +152,11 @@ class MyInfoViewController: DropDownViewController {
         self.present(vc, animated: true)
         updateUserInfo()
     }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        yearButton.setClose()
-        mbtiButton.setClose()
-        tableView.isHidden = true
-        tableView.removeFromSuperview()
-    }
+//
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        yearButton.setClose()
+//        mbtiButton.setClose()
+//        tableView.isHidden = true
+//        tableView.removeFromSuperview()
+//    }
 }

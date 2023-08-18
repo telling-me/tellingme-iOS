@@ -88,21 +88,43 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-        } else if indexPath.row == 6 {
-            self.signout()
-        } else if indexPath.row == 4 {
+        switch indexPath.row {
+        case 2:
+//            let id = viewModel.items[indexPath.row-1].id
+//            let viewController = viewModel.items[indexPath.row-1].view
+//            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) as? PrivacyPolicyViewController else {
+//                return
+//            }
+//            vc.setTag(tag: 0)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            if let url = URL(string: "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4") {
+                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+             }
+        case 3:
+//            let id = viewModel.items[indexPath.row-1].id
+//            let viewController = viewModel.items[indexPath.row-1].view
+//            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) as? PrivacyPolicyViewController else {
+//                return
+//            }
+//            vc.setTag(tag: 1)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            if let url = URL(string: "https://doana.notion.site/7cdab221ee6d436781f930442040d556?pvs=4") {
+                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+             }
+        case 4:
             if let url = URL(string: "https://doana.notion.site/f7a045872c3b4b02bce5e9f6d6cfc2d8?pvs=4") {
                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
              }
-        } else if indexPath.row == 5 {
+        case 5:
             let id = viewModel.items[3].id
             let viewController = viewModel.items[3].view
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
                 return
             }
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
+        case 6:
+            self.signout()
+        default:
             let id = viewModel.items[indexPath.row-1].id
             let viewController = viewModel.items[indexPath.row-1].view
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
