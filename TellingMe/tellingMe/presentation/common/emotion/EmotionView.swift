@@ -60,7 +60,7 @@ class EmotionView: UIView {
         emotionLabel.bottomAnchor.constraint(equalTo: emotionLabelBackgroundView.bottomAnchor, constant: -4).isActive = true
         emotionLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
     }
-    
+
     func setText(index: Int) {
         emotionLabel.text = emotions[index - 1].text
         emotionImageView.image = UIImage(named: emotions[index - 1].image)

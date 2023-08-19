@@ -15,3 +15,9 @@ struct GetAnswerRespose: Codable {
     let isLiked: Bool
     let isPublic: Bool
 }
+
+extension GetAnswerRespose {
+    static var emptyAnswer: GetAnswerRespose {
+        return GetAnswerRespose(answerId: 0, content: "", emotion: 1, likeCount: 0, isLiked: false, isPublic: false)
+    }
+}

@@ -43,6 +43,7 @@ class SettingViewModel {
             .disposed(by: disposeBag)
     }
 
+    // 푸시알림
     func postNotification(_ value: Bool) {
         let request = AllowedNotificationRequest(notificationStatus: value)
         UserAPI.postNotification(request: request)

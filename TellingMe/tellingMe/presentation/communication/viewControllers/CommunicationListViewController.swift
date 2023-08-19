@@ -23,7 +23,6 @@ class CommunicationListViewController: UIViewController {
 
     let noneView: NoneCommunicationContentView = {
         let view = NoneCommunicationContentView()
-        view.label.text = "아직 올라온 글이 없어요!"
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -48,13 +47,8 @@ class CommunicationListViewController: UIViewController {
         bindViewModel()
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-////        viewModel.getCommunicationList(date: viewModel.question.date)
-////        reloadCollectionView()
-//        //        setView()
-//    }
     override func viewWillAppear(_ animated: Bool) {
+        // 정렬 기준이 바뀌었으면 다시 0부터 불러오기
         if CommunicationData.shared.currentSortValue != viewModel.currentSort {
             viewModel.getIntialCommunicationList()
         }
@@ -79,14 +73,12 @@ class CommunicationListViewController: UIViewController {
 
         collectionView.register(CommunicationDetailCollectionViewCell.self, forCellWithReuseIdentifier: CommunicationDetailCollectionViewCell.id)
         collectionView.register(SortHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SortHeaderView.id)
-        
+
         view.addSubview(noneView)
         noneView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         noneView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         noneView.topAnchor.constraint(equalTo: questionView.bottomAnchor, constant: 60).isActive = true
         noneView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        //        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        //        collectionView.addSubview(refreshControl)
     }
 
     func bindViewModel() {
@@ -94,7 +86,7 @@ class CommunicationListViewController: UIViewController {
         viewModel.communciationListSubject
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                if CommunicationData.shared.communicationList[self.viewModel.index].isEmpty {
+                if response.content.isEmpty {
                     self.noneView.isHidden = false
                 } else {
                     self.noneView.isHidden = true
@@ -112,7 +104,7 @@ class CommunicationListViewController: UIViewController {
                 self?.showToast(message: response)
             }).disposed(by: disposeBag)
     }
-    
+
     // 맨 마지막 근처인지 확인하는 함수
     func isNearBottomEdge(scrollView: UIScrollView) -> Bool {
         let contentHeight = scrollView.contentSize.height
@@ -130,9 +122,8 @@ class CommunicationListViewController: UIViewController {
         guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
             return
         }
-        viewController.viewModel.index = viewModel.index
-        let data = CommunicationData.shared.communicationList[viewModel.index][indexPath.row]
-        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(indexPath: indexPath, question: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase), answer: data))
+        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(index: viewModel.index, indexPath: indexPath, question: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase)))
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -162,9 +153,8 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunicationDetailCollectionViewCell.id, for: indexPath) as? CommunicationDetailCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.index = viewModel.index
-//        cell.delegate = self
-        cell.setData(indexPath: indexPath, data: CommunicationData.shared.communicationList[viewModel.index][indexPath.row])
+        cell.delegate = self
+        cell.setData(index: viewModel.index, indexPath: indexPath, data: CommunicationData.shared.communicationList[viewModel.index][indexPath.row])
         return cell
     }
 
@@ -184,43 +174,13 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
 
         return UICollectionReusableView()
     }
-}
-
-extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate {
-    func likeButtonClicked(answerId: Int) {
-        self.viewModel.postLike(answerId: answerId)
-    }
-
-    func changeSort(_ selectedSort: String) {
-        viewModel.currentSort = selectedSort
-        if CommunicationData.shared.communicationList[viewModel.index].count != 0 {
-//            activityIndicator.color = .gray // 인디케이터 색상 설정
-//            activityIndicator.center = view.center // 화면 중앙에 위치
-//            activityIndicator.hidesWhenStopped = true // 정지 상태일 때 숨김
-//            view.addSubview(activityIndicator)
-//            activityIndicator.startAnimating()
-//            collectionView.removeFromSuperview()
-            self.viewModel.getIntialCommunicationList()
-        }
-    }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.isFetchingData {
             return // 이미 데이터를 가져오는 중이라면 무시
         }
 
         let contentOffset = scrollView.contentOffset
-//         if contentOffset.y < 160 {
-//             // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
-//             questionViewOriginalHeightConstraint.isActive = false
-//             questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
-//             questionViewOriginalHeightConstraint.isActive = true
-//         } else {
-//             // 스크롤을 아래로 내릴 때의 작업을 여기에 수행합니다.
-//             questionViewOriginalHeightConstraint.isActive = false
-//             questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 0)
-//             questionViewOriginalHeightConstraint.isActive = true
-//         }
 
         if contentOffset.y < 160 {
             // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
@@ -249,22 +209,22 @@ extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate {
             self.view.layoutIfNeeded()
         })
     }
+}
 
-//    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-//        questionViewOriginalHeightConstraint.isActive = false
-//        questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
-//        questionViewOriginalHeightConstraint.isActive = true
-//
-//        UIView.animate(withDuration: 1, animations: {
-//            self.questionView.layoutIfNeeded()
-//        })
-//    }
+extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate, SendCurrentLikeDelegate {
+    func likeButtonClicked(answerId: Int) {
+        self.viewModel.postLike(answerId: answerId)
+    }
 
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        questionViewOriginalHeightConstraint.isActive = false
-//        questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
-//        questionViewOriginalHeightConstraint.isActive = true
-//
-//        view.layoutIfNeeded()
-//    }
+    func changeSort(_ selectedSort: String) {
+        viewModel.currentSort = selectedSort
+        if CommunicationData.shared.communicationList[viewModel.index].count != 0 {
+            self.viewModel.getIntialCommunicationList()
+        }
+    }
+
+    func sendLike(isLike: Bool, likeCount: Int) {
+        self.reloadCollectionView()
+    }
+
 }

@@ -11,7 +11,7 @@ import RxSwift
 class PushNotifiactionViewModel {
     let showToastSubject = PublishSubject<String>()
     let disposeBag = DisposeBag()
-    
+
     func postNotifiactionStatus(_ isAgree: Bool) {
         let request = AllowedNotificationRequest(notificationStatus: isAgree)
         UserAPI.postNotification(request: request)
@@ -26,8 +26,9 @@ class PushNotifiactionViewModel {
                 }
             }).disposed(by: disposeBag)
     }
-    
-    func postFirebaseToken() {
+
+    func postFirebaseToken(token: String) {
+        KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
         guard let token = KeychainManager.shared.load(key: Keys.firebaseToken.rawValue) else {
             return
         }

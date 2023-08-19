@@ -14,10 +14,10 @@ protocol SendLikeDelegate: AnyObject {
 
 class CommunicationDetailCollectionViewCell: UICollectionViewCell {
     static let id = "communicationDetailCollectionViewCell"
-    var index = 0
     weak var delegate: SendLikeDelegate?
 //    let disposeBag = DisposeBag()
 
+    var index = 0
     var answerId: Int = 0
     var indexPath: IndexPath = IndexPath()
     let containerView: UIView = {
@@ -121,53 +121,24 @@ class CommunicationDetailCollectionViewCell: UICollectionViewCell {
         likeButton.topAnchor.constraint(equalTo: answerLabel.bottomAnchor).isActive = true
         likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        
+
         likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         contentView.layer.cornerRadius = 12
     }
     
     @objc func likeButtonTapped() {
         delegate?.likeButtonClicked(answerId: answerId)
-        CommunicationData.shared.toggleLike(indexPath.row)
-        likeButton.isSelected = CommunicationData.shared.communicationList[index][indexPath.row].isLiked
-        if CommunicationData.shared.communicationList[index][indexPath.row].likeCount == 0 {
+        let (isLike, likeCount) = CommunicationData.shared.toggleLike(index: index, indexPath: indexPath)
+        likeButton.isSelected = isLike
+        if likeCount == 0 {
             likeButton.setTitle("", for: .normal)
         } else {
-            likeButton.setTitle("\(CommunicationData.shared.communicationList[index][indexPath.row].likeCount)", for: .normal)
+            likeButton.setTitle("\(likeCount)", for: .normal)
         }
     }
 
-//    func updateLike(isLiked: Bool, likeCount: Int) {
-////        if isLiked {
-////            if likeButton.isSelected {
-////                    likeButton.isSelected = false
-////                if likeCount > 1 {
-////                    likeButton.setTitle("\(likeCount)", for: .normal)
-////                } else {
-////                    likeButton.setTitle("", for: .normal)
-////                }
-////            } else {
-////                likeButton.isSelected = true
-////                likeButton.setTitle("\(likeCount)", for: .normal)
-////            }
-////        } else {
-////            if likeButton.isSelected {
-////                    likeButton.isSelected = false
-////                if likeCount > 1 {
-////                    likeButton.setTitle("\(likeCount-1)", for: .normal)
-////                } else {
-////                    likeButton.setTitle("", for: .normal)
-////                }
-////            } else {
-////                likeButton.isSelected = true
-////                likeButton.setTitle("\(likeCount+1)", for: .normal)
-////            }
-////        }
-//        likeButton.isSelected = isLiked
-//        likeButton.setTitle("\(likeCount)", for: .normal)
-//    }
-
-    func setData(indexPath: IndexPath, data: Content) {
+    func setData(index: Int, indexPath: IndexPath, data: Content) {
+        self.index = index
         self.answerId = data.answerId
         self.indexPath = indexPath
         answerLabel.text = data.content

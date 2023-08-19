@@ -13,9 +13,10 @@ protocol CommunityDelegate: AnyObject {
 
 class CommunityCardView: UIView {
     var delegate: CommunityDelegate?
-    
+
     let questionLabel: Body2Regular = {
         let label = Body2Regular()
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -59,7 +60,6 @@ class CommunityCardView: UIView {
     }
 
     func setView() {
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedButton))
         self.backgroundColor = UIColor(named: "Side200")
         self.layer.cornerRadius = 20
@@ -100,7 +100,7 @@ class CommunityCardView: UIView {
     }
 
     func setData(data: QuestionListResponse) {
-        questionLabel.text = data.title.replacingOccurrences(of: "\n", with: "")
+        questionLabel.text = data.title
         dateLabel.text = "\(data.date.intArraytoDate2())"
         commentCountLabel.text = "\(data.answerCount)"
     }

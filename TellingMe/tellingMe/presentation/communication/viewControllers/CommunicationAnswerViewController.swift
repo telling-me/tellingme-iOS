@@ -9,10 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SendCurrentLikeDelegate: AnyObject {
+    func sendLike(isLike: Bool, likeCount: Int)
+}
+
 class CommunicationAnswerViewController: UIViewController {
     let viewModel = CommunicationAnswerViewModel()
+    var delegate: SendCurrentLikeDelegate?
     let disposeBag = DisposeBag()
-//    weak var delegate: SendLikeDelegate?
 
     let likeButton: UIButton = {
         let button = UIButton()
@@ -39,44 +43,65 @@ class CommunicationAnswerViewController: UIViewController {
         likeButton.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -25).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         likeButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
-        
+
         headerView.setDataWithReport(index: 1)
         bindViewModel()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.fetchAnswerData()
+    }
+
     func bindViewModel() {
         viewModel.dataSubject
             .subscribe(onNext: { [weak self] data in
-                self?.viewModel.answerId = data.answer.answerId
+                self?.viewModel.index = data.index
                 self?.viewModel.indexPath = data.indexPath
                 self?.questionView.setQuestion(data: data.question)
-                self?.answerView.setTextWithNoChange(text: data.answer.content)
-                self?.likeButton.isSelected = data.answer.isLiked
-                if data.answer.likeCount == 0 {
-                    self?.likeButton.setTitle("", for: .normal)
-                } else {
-                    self?.likeButton.setTitle("\(data.answer.likeCount)", for: .normal)
-                }
+            }).disposed(by: disposeBag)
+        viewModel.answerSubject
+            .subscribe(onNext: { [weak self] data in
+                self?.viewModel.answerData = data
+                self?.answerView.setTextWithNoChange(text: data.content)
+                self?.headerView.emotionView.setText(index: data.emotion)
+                self?.setLikeButton(isLiked: data.isLiked, likeCount: data.likeCount)
             }).disposed(by: disposeBag)
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                CommunicationData.shared.toggleLike(self?.viewModel.indexPath.row ?? 0)
-                self?.likeButton.isSelected = CommunicationData.shared.communicationList[self?.viewModel.index ?? 0][self?.viewModel.indexPath.row ?? 0].isLiked
-                if CommunicationData.shared.communicationList[self?.viewModel.index ?? 0][self?.viewModel.indexPath.row ?? 0].likeCount == 0 {
-                    self?.likeButton.setTitle("", for: .normal)
-                } else {
-                    self?.likeButton.setTitle("\(CommunicationData.shared.communicationList[self?.viewModel.index ?? 0][self?.viewModel.indexPath.row ?? 0].likeCount)", for: .normal)
-                }
-                self?.viewModel.postLike()
+                self?.toggleLikeButton()
             }).disposed(by: disposeBag)
         headerView.backButtonTapObservable
             .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
+                guard let self = self else { return }
+                let (isLike, likeCount) = CommunicationData.shared.getLikeStatus(index: self.viewModel.index, indexPath: self.viewModel.indexPath)
+                self.delegate?.sendLike(isLike: isLike, likeCount: likeCount)
+                self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
         headerView.reportButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.showReportView()
             }).disposed(by: disposeBag)
+    }
 
+    func setLikeButton(isLiked: Bool, likeCount: Int) {
+        self.likeButton.isSelected = isLiked
+        if likeCount == 0 {
+            likeButton.setTitle("", for: .normal)
+        } else {
+            likeButton.setTitle("\(likeCount)", for: .normal)
+        }
+    }
+
+    func toggleLikeButton() {
+        let (isLiked, likeCount) = CommunicationData.shared.toggleLike(index: self.viewModel.index, indexPath: self.viewModel.indexPath)
+        // 좋아요 취소
+        likeButton.isSelected = isLiked
+        if likeCount == 0 {
+            likeButton.setTitle("", for: .normal)
+        } else {
+            likeButton.setTitle("\(likeCount)", for: .normal)
+        }
+        self.viewModel.postLike()
     }
 
     func showAlert() {
@@ -97,14 +122,6 @@ class CommunicationAnswerViewController: UIViewController {
         viewController.viewModel.answerId = viewModel.answerId
         viewController.modalPresentationStyle = .overFullScreen
         self.present(viewController, animated: true, completion: nil)
-    }
-
-    func updateLikeButton(isLiked: Bool) {
-        if isLiked {
-
-        } else {
-
-        }
     }
 }
 

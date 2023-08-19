@@ -24,11 +24,11 @@ class BackHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     var backButtonTapObservable: Observable<Void> {
          return backButton.rx.tap.asObservable()
      }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -66,7 +66,7 @@ class BackEmotionHeaderView: BackHeaderView {
         button.tag = 1
         return button
     }()
-    
+
     var reportButtonTapObservable: Observable<Void> {
          return reportButton.rx.tap.asObservable()
      }
