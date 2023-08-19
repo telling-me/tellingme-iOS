@@ -55,7 +55,11 @@ class CommunicationAnswerViewModel {
     func fetchAnswerData() {
         AnswerAPI.getAnswerWithId(query: answerId)
             .subscribe(onNext: { [weak self] response in
-                self?.answerSubject.onNext(response)
+                guard let self = self else { return }
+                self.answerSubject.onNext(response)
+                self.answerData = response
+                CommunicationData.shared.communicationList[index][indexPath.row].isLiked = response.isLiked
+                CommunicationData.shared.communicationList[index][indexPath.row].likeCount = response.likeCount
             }, onError: { [weak self] error in
                 if case APIError.errorData(let errorData) = error {
                     self?.showToastSubject.onNext(errorData.message)

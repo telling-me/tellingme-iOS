@@ -61,7 +61,6 @@ class CommunicationAnswerViewController: UIViewController {
             }).disposed(by: disposeBag)
         viewModel.answerSubject
             .subscribe(onNext: { [weak self] data in
-                self?.viewModel.answerData = data
                 self?.answerView.setTextWithNoChange(text: data.content)
                 self?.headerView.emotionView.setText(index: data.emotion)
                 self?.setLikeButton(isLiked: data.isLiked, likeCount: data.likeCount)
