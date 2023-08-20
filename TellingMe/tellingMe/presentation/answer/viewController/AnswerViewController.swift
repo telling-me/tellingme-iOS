@@ -60,7 +60,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
-        self.present(vc, animated: true)
+        self.present(vc, animated: false)
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {

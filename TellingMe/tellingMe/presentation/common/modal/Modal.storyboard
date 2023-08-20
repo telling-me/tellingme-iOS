@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWk-Nh-nI6">
-                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <rect key="frame" x="25" y="731" width="343" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 등록할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aec-g7-nlc" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -87,13 +87,14 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ZWk-Nh-nI6" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="219-GR-jrl"/>
+                            <constraint firstItem="ZWk-Nh-nI6" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="219-GR-jrl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZWk-Nh-nI6" secondAttribute="trailing" constant="25" id="TQa-RZ-jA6"/>
                             <constraint firstItem="ZWk-Nh-nI6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="fen-B0-pbd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="rSZ-bu-UPo" id="8gk-Kd-Pz9"/>
+                        <outlet property="centerYConstraint" destination="219-GR-jrl" id="KWw-9b-GW8"/>
                         <outlet property="okButton" destination="yko-QA-DSc" id="Kju-Kv-T40"/>
                     </connections>
                 </viewController>
@@ -110,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnU-uP-U77">
-                                <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
+                                <rect key="frame" x="25" y="743" width="343" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 수정할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-br-R31" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -168,11 +169,12 @@
                         <constraints>
                             <constraint firstItem="FnU-uP-U77" firstAttribute="leading" secondItem="yj0-8U-tFK" secondAttribute="leading" constant="25" id="cEO-i3-4lj"/>
                             <constraint firstItem="yj0-8U-tFK" firstAttribute="trailing" secondItem="FnU-uP-U77" secondAttribute="trailing" constant="25" id="qwc-h7-x8G"/>
-                            <constraint firstItem="FnU-uP-U77" firstAttribute="centerY" secondItem="yj0-8U-tFK" secondAttribute="centerY" id="zyj-cl-77H"/>
+                            <constraint firstItem="FnU-uP-U77" firstAttribute="centerY" secondItem="yj0-8U-tFK" secondAttribute="bottom" id="zyj-cl-77H"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="dHJ-cB-cEh" id="Ne8-0j-THJ"/>
+                        <outlet property="centerYConstraint" destination="zyj-cl-77H" id="O5C-Jw-KQN"/>
                         <outlet property="okButton" destination="VNo-HL-u2v" id="mhg-fF-FPb"/>
                     </connections>
                 </viewController>
@@ -189,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MH-IG-bqR">
-                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <rect key="frame" x="25" y="731" width="343" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정말로 텔링미를 떠나실건가요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seP-hZ-9WY" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -257,13 +259,14 @@
                         <viewLayoutGuide key="safeArea" id="MQA-iY-tuQ"/>
                         <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2MH-IG-bqR" firstAttribute="centerY" secondItem="MQA-iY-tuQ" secondAttribute="centerY" id="Cqp-S5-wIa"/>
+                            <constraint firstItem="2MH-IG-bqR" firstAttribute="centerY" secondItem="MQA-iY-tuQ" secondAttribute="bottom" id="Cqp-S5-wIa"/>
                             <constraint firstItem="2MH-IG-bqR" firstAttribute="leading" secondItem="MQA-iY-tuQ" secondAttribute="leading" constant="25" id="Qfh-Qr-Jop"/>
                             <constraint firstItem="MQA-iY-tuQ" firstAttribute="trailing" secondItem="2MH-IG-bqR" secondAttribute="trailing" constant="25" id="su8-3G-DMd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="gbL-NG-MDB" id="mlE-5W-Ix2"/>
+                        <outlet property="centerYConstraint" destination="Cqp-S5-wIa" id="Q50-UI-UCS"/>
                         <outlet property="okButton" destination="Ogn-Cm-jxg" id="Olh-ci-T3B"/>
                     </connections>
                 </viewController>
@@ -280,7 +283,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zQ-tp-MMg">
-                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <rect key="frame" x="25" y="731" width="343" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성을 취소하고 나가시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDn-7S-PvN" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -350,11 +353,12 @@
                         <constraints>
                             <constraint firstItem="ABk-xR-PN1" firstAttribute="trailing" secondItem="9zQ-tp-MMg" secondAttribute="trailing" constant="25" id="Cg0-aU-Hsb"/>
                             <constraint firstItem="9zQ-tp-MMg" firstAttribute="leading" secondItem="ABk-xR-PN1" secondAttribute="leading" constant="25" id="dHd-Gp-07d"/>
-                            <constraint firstItem="9zQ-tp-MMg" firstAttribute="centerY" secondItem="ABk-xR-PN1" secondAttribute="centerY" id="eRg-oc-zwt"/>
+                            <constraint firstItem="9zQ-tp-MMg" firstAttribute="centerY" secondItem="ABk-xR-PN1" secondAttribute="bottom" id="eRg-oc-zwt"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Dqc-sL-ShQ" id="Xn2-6E-X8m"/>
+                        <outlet property="centerYConstraint" destination="eRg-oc-zwt" id="RrC-LB-4jo"/>
                         <outlet property="okButton" destination="Klt-o6-1Gt" id="HxC-LZ-ISU"/>
                     </connections>
                 </viewController>
@@ -371,7 +375,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4I-XD-eWo">
-                                <rect key="frame" x="25" y="351.66666666666669" width="343" height="174.00000000000006"/>
+                                <rect key="frame" x="25" y="731" width="343" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원 정보를 수정하시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USX-Ax-bVs" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -441,11 +445,12 @@
                         <constraints>
                             <constraint firstItem="AAz-sL-ObU" firstAttribute="trailing" secondItem="V4I-XD-eWo" secondAttribute="trailing" constant="25" id="9He-Y0-nPu"/>
                             <constraint firstItem="V4I-XD-eWo" firstAttribute="leading" secondItem="AAz-sL-ObU" secondAttribute="leading" constant="25" id="MnO-mi-c7Y"/>
-                            <constraint firstItem="V4I-XD-eWo" firstAttribute="centerY" secondItem="AAz-sL-ObU" secondAttribute="centerY" id="T2s-Y8-wRl"/>
+                            <constraint firstItem="V4I-XD-eWo" firstAttribute="centerY" secondItem="AAz-sL-ObU" secondAttribute="bottom" id="T2s-Y8-wRl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="iEW-Iq-qYr" id="Qxc-YJ-4gc"/>
+                        <outlet property="centerYConstraint" destination="T2s-Y8-wRl" id="z2W-zu-fmD"/>
                         <outlet property="okButton" destination="9bX-Xl-ln7" id="rVy-6f-t1e"/>
                     </connections>
                 </viewController>
@@ -462,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-21-vmc">
-                                <rect key="frame" x="25" y="363.66666666666669" width="343" height="150.00000000000006"/>
+                                <rect key="frame" x="25" y="743" width="343" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글을 삭제할까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psm-fE-LOK" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="303" height="17"/>
@@ -518,13 +523,14 @@
                         <viewLayoutGuide key="safeArea" id="5bR-kC-fJR"/>
                         <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hJS-21-vmc" firstAttribute="centerY" secondItem="5bR-kC-fJR" secondAttribute="centerY" id="Boz-6S-BIS"/>
+                            <constraint firstItem="hJS-21-vmc" firstAttribute="centerY" secondItem="5bR-kC-fJR" secondAttribute="bottom" id="Boz-6S-BIS"/>
                             <constraint firstItem="hJS-21-vmc" firstAttribute="leading" secondItem="5bR-kC-fJR" secondAttribute="leading" constant="25" id="D5B-zV-gne"/>
                             <constraint firstItem="5bR-kC-fJR" firstAttribute="trailing" secondItem="hJS-21-vmc" secondAttribute="trailing" constant="25" id="p6y-TT-Fsc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Vzf-92-VAu" id="bk9-Ne-l6c"/>
+                        <outlet property="centerYConstraint" destination="Boz-6S-BIS" id="vuV-Ga-wQf"/>
                         <outlet property="okButton" destination="gct-BV-AtZ" id="ff7-PM-K34"/>
                     </connections>
                 </viewController>

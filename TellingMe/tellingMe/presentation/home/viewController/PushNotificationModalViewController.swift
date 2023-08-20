@@ -44,24 +44,20 @@ class PushNotificationModalViewController: UIViewController {
     func bindViewModel() {
         okButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-            self?.clickButton()
+                self?.clickButton(true)
             }).disposed(by: disposeBag)
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.postNotifiactionStatus(false)
-                if let token = Messaging.messaging().fcmToken {
-                    self?.viewModel.postFirebaseToken(token: token)
-                }
-                self?.dismiss(animated: true)
+                self?.clickButton(false)
             }).disposed(by: disposeBag)
     }
 
-    func clickButton() {
+    func clickButton(_ agree: Bool) {
+        registerForNotification()
         if let token = Messaging.messaging().fcmToken {
             self.viewModel.postFirebaseToken(token: token)
         }
-        registerForNotification()
-        self.viewModel.postNotifiactionStatus(true)
+        self.viewModel.postNotifiactionStatus(agree)
         self.dismiss(animated: true)
     }
 }

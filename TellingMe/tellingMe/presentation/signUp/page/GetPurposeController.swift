@@ -13,7 +13,7 @@ class GetPurposeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: SecondaryIconButton!
     @IBOutlet weak var prevButton: SecondaryIconButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = true
@@ -22,28 +22,28 @@ class GetPurposeViewController: UIViewController {
         nextButton.setImage(image: "ArrowRight")
     }
     
-        func pushHome() {
-            // 로그인 화면의 뷰 컨트롤러를 생성합니다.
-            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-            guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
-            // MainTabBar의 두 번째 탭으로 이동합니다.
-            tabBarController.selectedIndex = 1
-
-            // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
-            guard let window = UIApplication.shared.windows.first else {
-                return
-            }
-            window.rootViewController = tabBarController
-            window.makeKeyAndVisible()
-
-            tabBarController.showPushNotification()
+    func pushHome() {
+        // 로그인 화면의 뷰 컨트롤러를 생성합니다.
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+        // MainTabBar의 두 번째 탭으로 이동합니다.
+        tabBarController.selectedIndex = 1
+        
+        // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
+        guard let window = UIApplication.shared.windows.first else {
+            return
         }
-
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
+        
+        tabBarController.showPushNotification()
+    }
+    
     @IBAction func nextAction(_ sender: UIButton) {
         SignUpData.shared.purpose = selectedItems.intArraytoString()
         sendSignUpData()
     }
-
+    
     @IBAction func prevAction(_ sender: UIButton) {
         let pageViewController = self.parent as? SignUpPageViewController
         pageViewController?.prevPage()
@@ -54,7 +54,7 @@ extension GetPurposeViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return purposeList.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TeritaryVerticalBothButtonCell.id, for: indexPath) as? TeritaryVerticalBothButtonCell else { return UICollectionViewCell() }
         cell.setData(with: purposeList[indexPath.row])
@@ -62,11 +62,11 @@ extension GetPurposeViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.layer.cornerRadius = 20
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       return CGSize(width: 103, height: 114)
-   }
-
+        return CGSize(width: 103, height: 114)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return collectionView.indexPathsForSelectedItems!.count <  2
     }
@@ -85,10 +85,9 @@ extension GetPurposeViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView.indexPathsForSelectedItems!.count == 0 {
             nextButton.isEnabled = false
-        } else {
-            if let index = selectedItems.firstIndex(of: indexPath.row) {
-                selectedItems.remove(at: index)
-            }
+        }
+        if let index = selectedItems.firstIndex(of: indexPath.row) {
+            selectedItems.remove(at: index)
         }
     }
 }
