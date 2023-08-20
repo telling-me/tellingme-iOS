@@ -26,7 +26,7 @@ class PushNotificationModalViewController: UIViewController {
         self.view.backgroundColor = .clear
     }
 
-    func registerForNotification(completion: @escaping () -> Void) {
+    func registerForNotification() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions) { (granted, error) in
@@ -38,7 +38,6 @@ class PushNotificationModalViewController: UIViewController {
                         self.showToast(message: "푸시 알림을 등록할 수 없습니다.")
                     }
                 }
-                completion()
             }
     }
 
@@ -51,19 +50,17 @@ class PushNotificationModalViewController: UIViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.postNotifiactionStatus(false)
                 if let token = Messaging.messaging().fcmToken {
-                    KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
+                    self?.viewModel.postFirebaseToken(token: token)
                 }
                 self?.dismiss(animated: true)
             }).disposed(by: disposeBag)
     }
 
     func clickButton() {
-        registerForNotification {
-            if let token = Messaging.messaging().fcmToken {
-                KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
-            }
-            self.viewModel.postFirebaseToken()
+        if let token = Messaging.messaging().fcmToken {
+            self.viewModel.postFirebaseToken(token: token)
         }
+        registerForNotification()
         self.viewModel.postNotifiactionStatus(true)
         self.dismiss(animated: true)
     }

@@ -34,13 +34,18 @@ class CommunicationData {
         communicationList[index] += contentList
     }
 
-    func toggleLike(_ index: Int) {
-        if communicationList[currentIndex][index].isLiked {
-            communicationList[currentIndex][index].isLiked = false
-            communicationList[currentIndex][index].likeCount -= 1
+    func toggleLike(index: Int, indexPath: IndexPath) -> (Bool, Int) {
+        if communicationList[index][indexPath.row].isLiked {
+            communicationList[index][indexPath.row].isLiked = false
+            communicationList[index][indexPath.row].likeCount -= 1
         } else {
-            communicationList[currentIndex][index].isLiked = true
-            communicationList[currentIndex][index].likeCount += 1
+            communicationList[index][indexPath.row].isLiked = true
+            communicationList[index][indexPath.row].likeCount += 1
         }
+        return (communicationList[index][indexPath.row].isLiked, communicationList[index][indexPath.row].likeCount)
+    }
+
+    func getLikeStatus(index: Int, indexPath: IndexPath) -> (Bool, Int) {
+        return (communicationList[index][indexPath.row].isLiked, communicationList[index][indexPath.row].likeCount)
     }
 }

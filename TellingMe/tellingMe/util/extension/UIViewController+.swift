@@ -13,6 +13,10 @@ extension UIViewController: BackHeaderViewDelegate {
     func popViewController() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func dismissViewController() {
+        self.dismiss(animated: true)
+    }
 }
 
 extension UIViewController {

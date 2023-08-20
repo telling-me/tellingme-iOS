@@ -295,7 +295,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vtw-US-F4c">
                                 <rect key="frame" x="25" y="277.5" width="364" height="355"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한번 정오에 알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-zb-uES" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한번 오후 6시에 알림을 드려도 될까요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-zb-uES" customClass="Body1Regular" customModule="tellingMe" customModuleProvider="target">
                                         <rect key="frame" x="20" y="30" width="324" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="lw0-h2-qRM"/>
@@ -391,7 +391,7 @@
     </scenes>
     <designables>
         <designable name="Q80-zb-uES">
-            <size key="intrinsicContentSize" width="265.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="295" height="20.5"/>
         </designable>
         <designable name="QYq-Da-bcO"/>
         <designable name="Tpz-oD-GK7">

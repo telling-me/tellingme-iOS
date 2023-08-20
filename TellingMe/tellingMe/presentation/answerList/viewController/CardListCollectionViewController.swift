@@ -30,7 +30,7 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
         cell.layer.masksToBounds = false
         return cell
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let data = answerList[indexPath.row].date.intArraytoDate() else {
             return

@@ -10,9 +10,6 @@ import UIKit
 class CardListCollectionViewCell: UICollectionViewCell {
     static let id = "cardListCollectionViewCell"
     let emotions = ["Happy", "Proud", "Meh", "Tired", "Sad", "Angry"]
-//    var emotion: Int? = nil
-//    var title: String? = nil
-//    var date: [Int]? = nil
     var paragraphStyle = NSMutableParagraphStyle()
     let containerView: UIView = {
         let view = UIView()
@@ -61,7 +58,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
 
     func setCell(data: AnswerListResponse) {
         imgView.image = UIImage(named: self.emotions[data.emotion - 1])
-        questionLabel.text = data.title.replacingOccurrences(of: "\n", with: " ")
+        questionLabel.text = data.title
         subQuestionLabel.text = data.phrase
         guard let font = answerTextView.font else { return }
 

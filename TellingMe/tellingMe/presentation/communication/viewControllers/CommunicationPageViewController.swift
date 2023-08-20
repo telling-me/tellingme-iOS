@@ -22,6 +22,7 @@ class CommunicationPageViewController: UIPageViewController {
 
         vc3.viewModel.index = 2
         vc3.viewModel.question = CommunicationData.shared.threeDays[2]
+
          return [vc1, vc2, vc3]
      }()
 
