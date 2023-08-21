@@ -26,6 +26,15 @@ class SettingViewModel {
 
     init() {
         itemsCount = items.count
+        fetchNotificationData()
+//        pushToggleValue
+//            .distinctUntilChanged()
+//            .skip(1)
+//            .subscribe(onNext: { [weak self] isOn in
+//                self?.postNotification(isOn)
+//            })
+//            .disposed(by: disposeBag)
+
     }
 
     func fetchNotificationData() {
@@ -43,7 +52,7 @@ class SettingViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
+
     func postFirebaseToken() {
         if let token = Messaging.messaging().fcmToken {
             KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
@@ -64,7 +73,8 @@ class SettingViewModel {
     func postNotification(_ value: Bool) {
         let request = AllowedNotificationRequest(notificationStatus: value)
         UserAPI.postNotification(request: request)
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: { [weak self] response in
+                self?.pushToggleValue.accept(response.allowNotification)
             }, onError: { [weak self] error in
                 if case APIError.errorData(let errorData) = error {
                     self?.showToastSubject.onNext(errorData.message)

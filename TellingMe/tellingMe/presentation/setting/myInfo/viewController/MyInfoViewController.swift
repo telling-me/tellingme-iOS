@@ -140,23 +140,11 @@ class MyInfoViewController: DropDownViewController {
                 return
             }
         }
-//        if viewModel.year != nil && (viewModel.month == "" || viewModel.day == "") {
-//            self.showToast(message: "생일을 전체 선택하여 주세요.")
-//            return
-//        }
 
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "myInfoModal") as? ModalViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
         vc.delegate = self
         self.present(vc, animated: false)
-        updateUserInfo()
     }
-//
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        yearButton.setClose()
-//        mbtiButton.setClose()
-//        tableView.isHidden = true
-//        tableView.removeFromSuperview()
-//    }
 }

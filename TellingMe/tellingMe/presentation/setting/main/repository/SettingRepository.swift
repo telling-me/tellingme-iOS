@@ -65,7 +65,7 @@ extension SettingTableViewController {
         LoginAPI.logout { result in
             switch result {
             case .success:
-                KeychainManager.shared.deleteAll()
+                KeychainManager.shared.logout()
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
                 self.navigationController?.pushViewController(vc, animated: true)

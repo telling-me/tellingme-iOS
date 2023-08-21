@@ -40,6 +40,7 @@ class CommunicationListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setInitialViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
         viewModel.getIntialCommunicationList()
@@ -49,6 +50,7 @@ class CommunicationListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         // 정렬 기준이 바뀌었으면 다시 0부터 불러오기
+        print(self.viewModel.currentSort, CommunicationData.shared.currentSortValue)
         if CommunicationData.shared.currentSortValue != viewModel.currentSort {
             viewModel.getIntialCommunicationList()
         }
