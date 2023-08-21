@@ -37,10 +37,6 @@ class CommunicationPageViewController: UIPageViewController {
         setViewControllers([viewControllersArray[CommunicationData.shared.currentIndex]], direction: .forward, animated: true)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        print()
-    }
-
     func setFirstViewController() {
         // 초기에 표시할 뷰 컨트롤러를 지정합니다. (여기서는 첫 번째 뷰 컨트롤러로 설정합니다.)
         if let firstViewController = viewControllersArray.first {

@@ -19,17 +19,24 @@ class CommunicationListViewModel {
     let size = 20 // 데이터를 가져오는 크기
     var isFetchingData = false // 데이터 가져오는 중인지 여부를 나타내는 플래그
     var isLast = false
-    var sortList: [String] = ["인기순", "관련순", "최신순"]
+    let sortList: [String] = ["인기순", "관련순", "최신순"]
     var currentSort: String = CommunicationData.shared.currentSortValue
 //    var communicationList: [Content] = []
-    var answerSuccessSubject = PublishSubject<IndexPath>()
-    var communciationListSubject = PublishSubject<CommunicationListResponse>()
+    let answerSuccessSubject = PublishSubject<IndexPath>()
+    let communciationListSubject = PublishSubject<CommunicationListResponse>()
 //    // 좋아요 누른 cell의 indexpath를 저장하기 위한 subject
 //    var selectedLikeCellIndex = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
     // 선택된 cell의 indexpath와 answerId
     var selectedAnswerId = BehaviorSubject<Int>(value: 0)
     let showToastSubject = PublishSubject<String>()
     let disposeBag = DisposeBag()
+
+    func setInitialViewModel() {
+        isTop = true
+        currentSort = CommunicationData.shared.currentSortValue
+        isFetchingData = false
+        isLast = false
+    }
 
     func setAnswerId(_ answerId: Int) {
         selectedAnswerId.onNext(answerId)

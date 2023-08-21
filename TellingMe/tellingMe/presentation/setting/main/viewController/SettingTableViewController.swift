@@ -19,7 +19,6 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
 
         bindViewModel()
-        self.viewModel.fetchNotificationData()
     }
 
 //    override func viewWillAppear(_ animated: Bool) {
@@ -66,8 +65,12 @@ class SettingTableViewController: UITableViewController {
     }
 
     func bindViewModel() {
+        viewModel.pushToggleValue
+            .bind(to: pushSwitch.rx.isOn)
+            .disposed(by: disposeBag)
         pushSwitch.rx.isOn
-            .bind(onNext: { [weak self] isOn in
+            .skip(1)
+            .subscribe(onNext: { [weak self] isOn in
                 self?.viewModel.postNotification(isOn)
             })
             .disposed(by: disposeBag)
@@ -83,6 +86,8 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            break
         case 2:
             if let url = URL(string: "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4") {
                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
