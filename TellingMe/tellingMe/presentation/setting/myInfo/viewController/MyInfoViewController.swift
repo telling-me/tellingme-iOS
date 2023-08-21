@@ -149,7 +149,7 @@ class MyInfoViewController: DropDownViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "myInfoModal") as? ModalViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
         vc.delegate = self
-        self.present(vc, animated: true)
+        self.present(vc, animated: false)
         updateUserInfo()
     }
 //

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 import RxSwift
 import RxCocoa
 
@@ -42,6 +43,22 @@ class SettingViewModel {
             })
             .disposed(by: disposeBag)
     }
+    
+    func postFirebaseToken() {
+        if let token = Messaging.messaging().fcmToken {
+            KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
+            let request = FirebaseTokenRequest(pushToken: token)
+            UserAPI.postFirebaseToken(request: request)
+                .subscribe(onNext: { _ in
+                }, onError: { [weak self] error in
+                    if case APIError.tokenNotFound = error {
+                        print("should move to login")
+                    } else {
+                        print(error)
+                    }
+                }).disposed(by: disposeBag)
+        }
+    }
 
     // 푸시알림
     func postNotification(_ value: Bool) {
@@ -59,5 +76,9 @@ class SettingViewModel {
                 self?.pushToggleValue.accept(!value)
             })
             .disposed(by: disposeBag)
+
+        if value {
+            postFirebaseToken()
+        }
     }
 }

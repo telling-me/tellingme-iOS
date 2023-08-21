@@ -67,13 +67,16 @@ extension MoyaProvider {
             }
         }
     }
-    
+
     func request<T: Decodable>(target: Target) -> Observable<T> {
         return Observable.create { observer in
             let request = self.request(target) { result in
                 switch result {
                 case .success(let response):
                     do {
+                        if response.data.isEmpty {
+                            observer.onCompleted()
+                        }
                         let filteredResponse = try response.filterSuccessfulStatusCodes()
                         let decodedData = try filteredResponse.map(T.self)
                         observer.onNext(decodedData)

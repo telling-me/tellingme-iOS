@@ -67,16 +67,10 @@ class SettingTableViewController: UITableViewController {
 
     func bindViewModel() {
         pushSwitch.rx.isOn
-            .bind(to: viewModel.pushToggleValue)
+            .bind(onNext: { [weak self] isOn in
+                self?.viewModel.postNotification(isOn)
+            })
             .disposed(by: disposeBag)
-        viewModel.pushToggleValue
-              .bind(to: pushSwitch.rx.isOn)
-              .disposed(by: disposeBag)
-        viewModel.pushToggleValue
-            .distinctUntilChanged() // 이전 값과 다를 때만 전송
-            .subscribe(onNext: { [weak self] value in
-                self?.viewModel.postNotification(value)
-            }).disposed(by: disposeBag)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,24 +84,10 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 2:
-//            let id = viewModel.items[indexPath.row-1].id
-//            let viewController = viewModel.items[indexPath.row-1].view
-//            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) as? PrivacyPolicyViewController else {
-//                return
-//            }
-//            vc.setTag(tag: 0)
-//            self.navigationController?.pushViewController(vc, animated: true)
             if let url = URL(string: "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4") {
                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
              }
         case 3:
-//            let id = viewModel.items[indexPath.row-1].id
-//            let viewController = viewModel.items[indexPath.row-1].view
-//            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: id) as? PrivacyPolicyViewController else {
-//                return
-//            }
-//            vc.setTag(tag: 1)
-//            self.navigationController?.pushViewController(vc, animated: true)
             if let url = URL(string: "https://doana.notion.site/7cdab221ee6d436781f930442040d556?pvs=4") {
                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
              }

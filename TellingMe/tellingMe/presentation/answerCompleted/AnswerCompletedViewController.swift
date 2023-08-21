@@ -70,7 +70,7 @@ extension AnswerCompletedViewController {
             vc.delegate = self
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .coverVertical
-            self.present(vc, animated: true)
+            self.present(vc, animated: false)
         }
         tableView.isHidden = true
         tableView.removeFromSuperview()

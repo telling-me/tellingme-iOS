@@ -341,13 +341,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1X-C0-9Jy">
                                 <rect key="frame" x="25" y="197" width="364" height="57"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="2-8글자 이내" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-FR-jVc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="2-8글자 이내" adjustsFontSizeToFit="NO" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-FR-jVc">
                                         <rect key="frame" x="30" y="16.666666666666657" width="304" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="LbL-jP-vBb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" textContentType="nickname"/>
+                                        <color key="textColor" name="black"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFR" family="NanumSquareRoundOTF" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="YtD-b6-PMT" id="JDS-SD-lse"/>
                                         </connections>
