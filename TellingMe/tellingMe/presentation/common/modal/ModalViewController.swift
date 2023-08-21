@@ -19,7 +19,7 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var okButton: SecondaryTextButton!
 
     override func viewWillAppear(_ animated: Bool) {
-        centerYConstraint.constant -= UIScreen.main.bounds.height / 2
+        centerYConstraint.constant -= view.frame.height / 2
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
         })

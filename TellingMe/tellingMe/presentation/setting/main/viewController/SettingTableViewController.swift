@@ -67,18 +67,10 @@ class SettingTableViewController: UITableViewController {
 
     func bindViewModel() {
         pushSwitch.rx.isOn
-            .bind(onNext: { isOn in
-                self.viewModel.postNotification(isOn)
+            .bind(onNext: { [weak self] isOn in
+                self?.viewModel.postNotification(isOn)
             })
             .disposed(by: disposeBag)
-//        viewModel.pushToggleValue
-//              .bind(to: pushSwitch.rx.isOn)
-//              .disposed(by: disposeBag)
-//        viewModel.pushToggleValue
-//            .distinctUntilChanged() // 이전 값과 다를 때만 전송
-//            .subscribe(onNext: { [weak self] value in
-//                self?.viewModel.postNotification(value)
-//            }).disposed(by: disposeBag)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
