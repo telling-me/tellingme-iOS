@@ -162,6 +162,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이전 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbA-rv-ehm" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="5.6666666666666288" width="64" height="21"/>
+                                                <color key="backgroundColor" name="Side100"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>
@@ -190,6 +191,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8A-Z2-ykn" customClass="CaptionLabelBold" customModule="tellingMe" customModuleProvider="target">
                                                 <rect key="frame" x="-17" y="5.6666666666666288" width="64" height="21"/>
+                                                <color key="backgroundColor" name="Side100"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Gray6"/>
                                                 <nil key="highlightedColor"/>

@@ -70,7 +70,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, attributedText.length))
 
         answerTextView.attributedText = attributedText
-        dateLabel.text = "\(data.date[0])년 \(data.date[1])월 \(data.date[2])일"
+        dateLabel.text = data.date.intArraytoDate2()
 
         contentView.backgroundColor = UIColor(named: "Side100")
         contentView.addSubview(containerView)
@@ -102,10 +102,10 @@ class CardListCollectionViewCell: UICollectionViewCell {
         answerTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         answerTextView.heightAnchor.constraint(equalToConstant: 154).isActive = true
 
-        dateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 72).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -72).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        
+
         contentView.layer.cornerRadius = 24
     }
 }
