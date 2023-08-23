@@ -226,6 +226,13 @@
 		58F2E7992A96008700F3667A /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7982A96008700F3667A /* KakaoSDKTalk */; };
 		58F2E79B2A96008700F3667A /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E79A2A96008700F3667A /* KakaoSDKUser */; };
 		58F2E79D2A9601B200F3667A /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E79C2A9601B200F3667A /* ProgressBar.swift */; };
+		58F2E7A32A9606CE00F3667A /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7A22A9606CE00F3667A /* AlarmViewModel.swift */; };
+		58F2E7A52A96071200F3667A /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7A42A96071200F3667A /* AlarmViewController.swift */; };
+		58F2E7A92A96120600F3667A /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7A82A96120600F3667A /* AlarmTableViewCell.swift */; };
+		58F2E7AB2A96132100F3667A /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AA2A96132100F3667A /* UIStackView+.swift */; };
+		58F2E7AD2A9619DF00F3667A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AC2A9619DF00F3667A /* UIFont+.swift */; };
+		58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AF2A961A7500F3667A /* CustomFont.swift */; };
+		58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7B12A961BFF00F3667A /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -424,6 +431,13 @@
 		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
 		58F2E7622A95E36700F3667A /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
 		58F2E79C2A9601B200F3667A /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		58F2E7A22A9606CE00F3667A /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		58F2E7A42A96071200F3667A /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		58F2E7A82A96120600F3667A /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		58F2E7AA2A96132100F3667A /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		58F2E7AC2A9619DF00F3667A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		58F2E7AF2A961A7500F3667A /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		58F2E7B12A961BFF00F3667A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -589,6 +603,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				58F2E79E2A96058A00F3667A /* alarm */,
 				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
 				3AC204762A6BC1460005709A /* communication */,
@@ -624,6 +639,7 @@
 		3A2A503029B8805F002FE5E4 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				58F2E7AE2A961A5800F3667A /* nameSpace */,
 				3A29B5722A169738006F1E8D /* leftAlignedCollectionView */,
 				3AEED26129C99EDA00D02F3F /* custom */,
 				3A775D0629C1DBA900FCD3BC /* designable */,
@@ -858,6 +874,8 @@
 				3A409B3F29E05F4700A05B22 /* Array+.swift */,
 				3ACCBAB329E94F8A0082C32C /* UIViewController+.swift */,
 				3A559DED2A1CE18000A49722 /* UILabel+.swift */,
+				58F2E7AA2A96132100F3667A /* UIStackView+.swift */,
+				58F2E7AC2A9619DF00F3667A /* UIFont+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1465,6 +1483,49 @@
 			path = api;
 			sourceTree = "<group>";
 		};
+		58F2E79E2A96058A00F3667A /* alarm */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7A12A9606C100F3667A /* views */,
+				58F2E7A02A96059E00F3667A /* viewControllers */,
+				58F2E79F2A96059900F3667A /* viewModel */,
+			);
+			path = alarm;
+			sourceTree = "<group>";
+		};
+		58F2E79F2A96059900F3667A /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7A22A9606CE00F3667A /* AlarmViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		58F2E7A02A96059E00F3667A /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7A42A96071200F3667A /* AlarmViewController.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		58F2E7A12A9606C100F3667A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7A82A96120600F3667A /* AlarmTableViewCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		58F2E7AE2A961A5800F3667A /* nameSpace */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7AF2A961A7500F3667A /* CustomFont.swift */,
+				58F2E7B12A961BFF00F3667A /* Color+.swift */,
+			);
+			path = nameSpace;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1600,6 +1661,7 @@
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3ABB84C92A83BFA100540269 /* ReportAPI.swift in Sources */,
+				58F2E7A52A96071200F3667A /* AlarmViewController.swift in Sources */,
 				3A409B4029E05F4700A05B22 /* Array+.swift in Sources */,
 				3AB0E3C92A1B39A700B13755 /* ModifyAnswerViewModel.swift in Sources */,
 				3AE006192A360FAC0016CACE /* NoneAnswerListView.swift in Sources */,
@@ -1640,6 +1702,7 @@
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
 				3A3739BD2A125F4D00739543 /* ChipPurposeViewController.swift in Sources */,
+				58F2E7AD2A9619DF00F3667A /* UIFont+.swift in Sources */,
 				3A4C38512A0CC95900FEFAAE /* DropDownViewController.swift in Sources */,
 				3ABB84CB2A83C01C00540269 /* ReportDTO.swift in Sources */,
 				3ACC45ED29D19A07000843F5 /* JobTableViewCell.swift in Sources */,
@@ -1698,11 +1761,13 @@
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A1A35A82A8679B300F9FA92 /* PushNotificationViewModel.swift in Sources */,
 				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
+				58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */,
 				3A409B3A29E046C400A05B22 /* LoginViewModel.swift in Sources */,
 				3ABB848C2A833F3500540269 /* ReportCollectionViewCell.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
 				3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */,
+				58F2E7AB2A96132100F3667A /* UIStackView+.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3ABB84C12A8382EA00540269 /* ReportViewModel.swift in Sources */,
@@ -1720,6 +1785,7 @@
 				3ABB84852A80C7D300540269 /* CommunicationAnswerViewModel.swift in Sources */,
 				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
 				3A320F542A73E3470098E8C9 /* CommunicationDetailViewController.swift in Sources */,
+				58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */,
 				3A1F6B042A5DA5D000E7B107 /* GetMBTIViewModel.swift in Sources */,
 				3A82989C2A00F883001938B9 /* AnswerRepository.swift in Sources */,
 				3AA289CF29B8506F0030057E /* LoginViewController.swift in Sources */,
@@ -1741,6 +1807,7 @@
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,
+				58F2E7A92A96120600F3667A /* AlarmTableViewCell.swift in Sources */,
 				3A320F602A7621110098E8C9 /* QuestionCollctionViewCell.swift in Sources */,
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3AB7957F2A6E9D61009961CF /* QuestionList.swift in Sources */,
@@ -1751,6 +1818,7 @@
 				3A1F1E6B2A87ABFF00D7523D /* LikeButton.swift in Sources */,
 				3A3739C52A13E37500739543 /* ChipGenderViewController.swift in Sources */,
 				3ACC45F829D2090E000843F5 /* UITextField+.swift in Sources */,
+				58F2E7A32A9606CE00F3667A /* AlarmViewModel.swift in Sources */,
 				3A7121442A03A9D300A02054 /* AnswerAPI.swift in Sources */,
 				3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */,
 				3AB0E3C72A1B394D00B13755 /* ModifyAnswerViewController.swift in Sources */,
