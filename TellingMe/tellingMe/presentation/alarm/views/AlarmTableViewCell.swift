@@ -7,17 +7,44 @@
 
 import UIKit
 
-class AlarmTableViewCell: UITableViewCell {
+import SnapKit
+import Then
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+final class AlarmTableViewCell: UITableViewCell {
+    
+    private let titleLabel = UILabel()
+    private let subTitleLabel = UILabel()
+    private let titleStackView = UIStackView()
+    private let dateLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setStyles()
+        setLayout()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+}
 
+extension AlarmTableViewCell {
+    private func setStyles() {
+        self.backgroundColor = UIColor(named: "Side100")
+        
+        titleLabel.do {
+            $0.font = UIFont(name: "NanumSquareRoundOTFB", size: 14)
+            $0.textColor = UIColor(named: "Gray8")
+            $0.numberOfLines = 1
+        }
+        
+        subTitleLabel.do {
+            $0.font
+        }
+    }
+    
+    private func setLayout() {
+        self.addSubviews()
+        
+    }
 }
