@@ -243,8 +243,13 @@
             <point key="canvasLocation" x="1451" y="-308"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="XNg-Kd-8R0">
+            <size key="intrinsicContentSize" width="63.333333333333336" height="20.333333333333332"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="MyAnswers" width="25" height="25"/>
+        <image name="MyAnswers" width="41" height="41"/>
         <image name="MyAnswers_selected" width="81" height="78"/>
         <image name="cardlist_selected" width="20" height="21"/>
         <image name="tablelist_selected" width="20" height="20"/>

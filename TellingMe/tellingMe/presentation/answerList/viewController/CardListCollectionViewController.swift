@@ -10,11 +10,13 @@ import UIKit
 class CardListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     static let id = "cardListCollectionViewController"
     var answerList: [AnswerListResponse] = []
+    var row = 0
     let leadingPadding: CGFloat = 36
     let itemSpacing: CGFloat = 21
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.decelerationRate = .fast
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,27 +68,32 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
       }
 
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
         let itemWidth = collectionView.bounds.width - (leadingPadding * 2)
 
-        let collectionViewCenterX = targetContentOffset.pointee.x + collectionView.bounds.width / 2
+        let cellWidthIncludingSpacing = targetContentOffset.pointee.x + collectionView.bounds.width / 2
 
-        // 스크롤 방향을 확인하여 페이지를 결정합니다.
-        let targetPage: CGFloat
+        // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
+        let estimatedIndex = cellWidthIncludingSpacing / itemWidth
+        // 스크롤 방향 체크
+        // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
         if velocity.x > 0 {
-            targetPage = ceil(collectionViewCenterX / itemWidth)
+            if row < answerList.count - 1 {
+                row += 1
+            }
         } else if velocity.x < 0 {
-            targetPage = floor(collectionViewCenterX / itemWidth)
+            if row > 0 {
+                row -= 1
+            }
         } else {
-            targetPage = round(collectionViewCenterX / itemWidth)
         }
-        if targetPage == 0 {
-            targetContentOffset.pointee = CGPoint(x: 0, y: targetContentOffset.pointee.y)
-        } else if Int(targetPage) == answerList.count - 1 {
-            targetContentOffset.pointee = CGPoint(x: CGFloat(answerList.count) * collectionView.bounds.width, y: targetContentOffset.pointee.y)
+
+        if row == 0 {
+            targetContentOffset.pointee = CGPoint(x: 0, y: 0)
+        } else if row == answerList.count - 1 {
+            targetContentOffset.pointee = CGPoint(x: CGFloat(answerList.count - 1) * collectionView.bounds.width, y: 0)
         } else {
-            let offsetX = targetPage*(itemWidth + itemSpacing)
-            // targetContentOffset을 변경하여 중앙 정렬을 구현합니다.
-            targetContentOffset.pointee = CGPoint(x: offsetX, y: targetContentOffset.pointee.y)
+            targetContentOffset.pointee = CGPoint(x: row * Int((itemWidth + itemSpacing)), y: 0)
         }
     }
 }
