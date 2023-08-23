@@ -8,6 +8,12 @@
 import UIKit
 
 extension UIView {
+    func addSubviews(_ views: UIView...) {
+        views.forEach {
+            self.addSubview($0)
+        }
+    }
+    
     func setGradient(color1: UIColor, color2: UIColor) {
         let shapes = UIView()
         shapes.frame = self.frame
