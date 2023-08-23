@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GradientProgress
 
 class SignUpViewController: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
