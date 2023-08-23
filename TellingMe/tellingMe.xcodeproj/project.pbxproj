@@ -198,6 +198,10 @@
 		536CCE8919CDCAA84AABE278 /* Pods_tellingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB474FE11401CD3EDC60F2E /* Pods_tellingMe.framework */; };
 		58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7512A95C1D500F3667A /* SnapKit */; };
 		58F2E7552A95C1E900F3667A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7542A95C1E900F3667A /* Then */; };
+		58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7592A95C62200F3667A /* AlarmAPI.swift */; };
+		58F2E75C2A95C63500F3667A /* AlarmDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E75B2A95C63500F3667A /* AlarmDTO.swift */; };
+		58F2E7612A95E35B00F3667A /* MyPageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7602A95E35B00F3667A /* MyPageAPI.swift */; };
+		58F2E7632A95E36700F3667A /* MyPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7622A95E36700F3667A /* MyPageDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -393,6 +397,10 @@
 		3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewModel.swift; sourceTree = "<group>"; };
 		3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
 		3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButton.swift; sourceTree = "<group>"; };
+		58F2E7592A95C62200F3667A /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
+		58F2E75B2A95C63500F3667A /* AlarmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDTO.swift; sourceTree = "<group>"; };
+		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
+		58F2E7622A95E36700F3667A /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
 		8EB474FE11401CD3EDC60F2E /* Pods_tellingMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tellingMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C7151D0F235DEE41229D3 /* Pods-tellingMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tellingMe.release.xcconfig"; path = "Target Support Files/Pods-tellingMe/Pods-tellingMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -554,6 +562,8 @@
 		3A2A502F29B87C46002FE5E4 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				58F2E75D2A95E33B00F3667A /* mypage */,
+				58F2E7562A95C5FE00F3667A /* alarm */,
 				3AC0BA6229EF0F0000888868 /* base */,
 				3ABB84512A7ACD3100540269 /* like */,
 				3ABB84C52A83BF7B00540269 /* report */,
@@ -1379,6 +1389,56 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		58F2E7562A95C5FE00F3667A /* alarm */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7572A95C60B00F3667A /* api */,
+				58F2E7582A95C61000F3667A /* dto */,
+			);
+			path = alarm;
+			sourceTree = "<group>";
+		};
+		58F2E7572A95C60B00F3667A /* api */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7592A95C62200F3667A /* AlarmAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		58F2E7582A95C61000F3667A /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E75B2A95C63500F3667A /* AlarmDTO.swift */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
+		58F2E75D2A95E33B00F3667A /* mypage */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E75F2A95E34D00F3667A /* api */,
+				58F2E75E2A95E34400F3667A /* dto */,
+			);
+			path = mypage;
+			sourceTree = "<group>";
+		};
+		58F2E75E2A95E34400F3667A /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7622A95E36700F3667A /* MyPageDTO.swift */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
+		58F2E75F2A95E34D00F3667A /* api */ = {
+			isa = PBXGroup;
+			children = (
+				58F2E7602A95E35B00F3667A /* MyPageAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1565,6 +1625,7 @@
 				3A70A64E2A272F05009D8D76 /* UserAPI.swift in Sources */,
 				3ABB84C32A838B6A00540269 /* EmotionView.swift in Sources */,
 				3AA1677529E8309100B93850 /* PageViewModel.swift in Sources */,
+				58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */,
@@ -1577,6 +1638,7 @@
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
+				58F2E7632A95E36700F3667A /* MyPageDTO.swift in Sources */,
 				3ABB84802A80BCF300540269 /* CommunicationAnswerViewController.swift in Sources */,
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
 				3AB0E3CB2A1B3A0700B13755 /* ModifyAnswerRepository.swift in Sources */,
@@ -1591,6 +1653,7 @@
 				3A157CFD29CAFFD500D61AD3 /* HomeViewController.swift in Sources */,
 				3A320F5C2A754CB60098E8C9 /* CommunicationPageViewController.swift in Sources */,
 				3A1E403B2A1A611800F1F109 /* ModalViewController.swift in Sources */,
+				58F2E7612A95E35B00F3667A /* MyPageAPI.swift in Sources */,
 				3AF817B82A3748C300D788EC /* MyInfoViewController+.swift in Sources */,
 				3ABB84832A80BD8C00540269 /* AnswerTextView.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
@@ -1634,6 +1697,7 @@
 				3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */,
 				3A320F5E2A7583E40098E8C9 /* CommunicationListRepository.swift in Sources */,
 				3A59B8F42A41F5040091322E /* AgreementDetailViewController.swift in Sources */,
+				58F2E75C2A95C63500F3667A /* AlarmDTO.swift in Sources */,
 				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
 				3AB795862A6EA6A9009961CF /* CommunicationViewModel.swift in Sources */,
 				3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */,
