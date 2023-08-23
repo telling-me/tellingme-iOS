@@ -32,9 +32,11 @@ class CommunicationListViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.sectionHeadersPinToVisibleBounds = true
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.alwaysBounceVertical = false
         view.showsVerticalScrollIndicator = true
         view.backgroundColor = UIColor(named: "Side100")
         view.translatesAutoresizingMaskIntoConstraints = false
+//        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         return view
     }()
 
@@ -177,39 +179,54 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
         return UICollectionReusableView()
     }
     
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        self.viewModel.isTop = true
+        self.questionViewOriginalHeightConstraint.isActive = false
+        self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 120)
+        self.questionViewOriginalHeightConstraint.isActive = true
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.isFetchingData {
             return // 이미 데이터를 가져오는 중이라면 무시
         }
-
+        
         let contentOffset = scrollView.contentOffset
-
-        if contentOffset.y < 160 {
+        if contentOffset.y <= 10 {
             // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
             if !self.viewModel.isTop {
                 self.viewModel.isTop = true
                 self.questionViewOriginalHeightConstraint.isActive = false
                 self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 120)
                 self.questionViewOriginalHeightConstraint.isActive = true
-            } else {
-                return
+
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
-        } else {
-            // 스크롤을 아래로 내릴 때의 작업을 여기에 수행합니다.
+        }
+
+        if isNearBottomEdge(scrollView: scrollView) && !self.viewModel.isTop {
+            viewModel.getCommunicationList()
+            return
+        }
+
+        if contentOffset.y > 120 {
             if self.viewModel.isTop {
                 self.viewModel.isTop = false
                 self.questionViewOriginalHeightConstraint.isActive = false
                 self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 0)
                 self.questionViewOriginalHeightConstraint.isActive = true
-            } else {
-                return
+
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
         }
-
-         // 레이아웃을 업데이트하고 재계산합니다.
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
     }
 }
 
