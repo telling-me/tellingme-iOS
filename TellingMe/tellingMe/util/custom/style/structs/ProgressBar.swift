@@ -7,12 +7,12 @@
 
 import UIKit
 
-public class GradientProgressBar : UIProgressView {
+final class GradientProgressBar : UIProgressView {
     
     // MARK: - Properties
     
     /// An array of CGColorRef objects defining the color of each gradient stop. Animatable.
-    public var gradientColors: [CGColor] = [#colorLiteral(red: 0.2666666667, green: 0.1803921569, blue: 0.8470588235, alpha: 1).cgColor, #colorLiteral(red: 0.8392156863, green: 0.2588235294, blue: 0.5333333333, alpha: 1).cgColor, #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor, #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1).cgColor] {
+    var gradientColors: [CGColor] = [#colorLiteral(red: 0.2666666667, green: 0.1803921569, blue: 0.8470588235, alpha: 1).cgColor, #colorLiteral(red: 0.8392156863, green: 0.2588235294, blue: 0.5333333333, alpha: 1).cgColor, #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor, #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1).cgColor] {
         didSet {
             gradientLayer.colors = gradientColors
         }
@@ -22,14 +22,14 @@ public class GradientProgressBar : UIProgressView {
     /** The radius to use when drawing rounded corners for the gradient layer and progress view backgrounds. Animatable.
     *   The default value of this property is 0.0.
     */
-    @IBInspectable public override var cornerRadius: CGFloat {
+    @IBInspectable override var cornerRadius: CGFloat {
         didSet {
             self.layer.cornerRadius = cornerRadius
             self.clipsToBounds = true
         }
     }
     
-    public override var trackTintColor: UIColor? {
+    override var trackTintColor: UIColor? {
         didSet {
             if trackTintColor != UIColor.clear {
                 backgroundColor = trackTintColor
@@ -38,7 +38,7 @@ public class GradientProgressBar : UIProgressView {
         }
     }
     
-    public override var progressTintColor: UIColor? {
+    override var progressTintColor: UIColor? {
         didSet {
             if progressTintColor != UIColor.clear {
                 progressTintColor = UIColor.clear
@@ -50,24 +50,24 @@ public class GradientProgressBar : UIProgressView {
 
     // MARK: - init methods
     
-    override public init (frame : CGRect) {
+    override init (frame : CGRect) {
         super.init(frame : frame)
         setup()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Layout
     
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         updateGradientLayer()
     }
     
-    override public func setProgress(_ progress: Float, animated: Bool) {
+    override func setProgress(_ progress: Float, animated: Bool) {
         super.setProgress(progress, animated: animated)
         updateGradientLayer()
     }
