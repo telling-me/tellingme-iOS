@@ -9,6 +9,7 @@ import UIKit
 
 protocol HeaderViewDelegate: AnyObject {
     func pushSetting(_ headerView: MainHeaderView)
+    func pushAlarmNotice(_ headerView: MainHeaderView)
 }
 
 class MainHeaderView: UIView {
@@ -49,6 +50,13 @@ class MainSettingHeaderView: MainHeaderView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private let alarmNoticeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "NoticeAlarm"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,16 +69,27 @@ class MainSettingHeaderView: MainHeaderView {
     }
 
     func addButton() {
-        addSubview(button)
+        addSubviews(button, alarmNoticeButton)
         button.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
         button.widthAnchor.constraint(equalToConstant: 24).isActive = true
         button.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
         button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        
+        alarmNoticeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
+        alarmNoticeButton.trailingAnchor.constraint(equalTo: self.button.leadingAnchor, constant: -16).isActive = true
+        alarmNoticeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        alarmNoticeButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        alarmNoticeButton.addTarget(self, action: #selector(didTapAlarmButton(_:)), for: .touchUpInside)
     }
     
     @objc func didTapButton(_ sender: UIButton) {
         delegate?.pushSetting(self)
+    }
+    
+    @objc func didTapAlarmButton(_ sender: UIButton) {
+        delegate?.pushAlarmNotice(self)
     }
 }
