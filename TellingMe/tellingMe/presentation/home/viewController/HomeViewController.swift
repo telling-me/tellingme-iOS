@@ -131,6 +131,12 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HeaderViewDelegate {
+    func pushAlarmNotice(_ headerView: MainHeaderView) {
+        let vc = AlarmViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
+    
     func pushSetting(_ headerView: MainHeaderView) {
         // push를 수행하는 코드
         let storyboard = UIStoryboard(name: "Setting", bundle: nil)
