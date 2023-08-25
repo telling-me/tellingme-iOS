@@ -70,55 +70,7 @@ extension AlarmAPITarget: TargetType {
 
 struct AlarmNotificationAPI: Networkable {
     typealias Target = AlarmAPITarget
-    
-//    static func getAllAlarmNotice(completion: @escaping (Result<[AlarmNotificationResponse]?,APIError>) -> Void) {
-//        do {
-//            try makeAuthorizedProvider().request(.getAllAlarmNotice, dtoType: [AlarmNotificationResponse].self, completion: completion)
-//        } catch APIError.tokenNotFound {
-//            completion(.failure(APIError.tokenNotFound))
-//        } catch APIError.errorData(let error) {
-//            completion(.failure(APIError.errorData(error)))
-//        } catch {
-//            completion(.failure(APIError.other(error)))
-//        }
-//    }
-    
-    static func getAlarmSummary(completion: @escaping (Result<AlarmSummaryResponse?,APIError>) -> Void) {
-        do {
-            try makeAuthorizedProvider().request(.getAlarmSummary, dtoType: AlarmSummaryResponse.self, completion: completion)
-        } catch APIError.tokenNotFound {
-            completion(.failure(APIError.tokenNotFound))
-        } catch APIError.errorData(let error) {
-            completion(.failure(APIError.errorData(error)))
-        } catch {
-            completion(.failure(APIError.other(error)))
-        }
-    }
-    
-    static func postAllAlarmAsRead(completion: @escaping (Result<EmptyResponse?,APIError>) -> Void) {
-        do {
-            try makeAuthorizedProvider().request(.postAllAlarmAsRead, dtoType: EmptyResponse.self, completion: completion)
-        } catch APIError.tokenNotFound {
-            completion(.failure(APIError.tokenNotFound))
-        } catch APIError.errorData(let error) {
-            completion(.failure(APIError.errorData(error)))
-        } catch {
-            completion(.failure(APIError.other(error)))
-        }
-    }
-    
-    static func postSingleAlarmAsRead(selectedId: Int, completion: @escaping (Result<EmptyResponse?,APIError>) -> Void) {
-        do {
-            try makeAuthorizedProvider().request(.postSingleAlarmAsRead(.init(noticeId: selectedId)), dtoType: EmptyResponse.self, completion: completion)
-        } catch APIError.tokenNotFound {
-            completion(.failure(APIError.tokenNotFound))
-        } catch APIError.errorData(let error) {
-            completion(.failure(APIError.errorData(error)))
-        } catch {
-            completion(.failure(APIError.other(error)))
-        }
-    }
-    
+        
     static func getAllAlarmNotice() -> Observable<[AlarmNotificationResponse]> {
         do {
             let provider = try makeAuthorizedProvider()
