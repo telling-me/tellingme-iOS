@@ -79,8 +79,6 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
                 }
             })
             .disposed(by: disposeBag)
-        
-        fetchNoticeData()
     }
 }
 
