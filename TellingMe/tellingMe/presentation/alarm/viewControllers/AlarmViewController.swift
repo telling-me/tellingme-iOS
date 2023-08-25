@@ -35,11 +35,6 @@ final class AlarmViewController: UIViewController {
 
 extension AlarmViewController {
     private func bindViewModel() {
-        AlarmNotificationAPI.getAllAlarmNoticeWithClosure { result in
-            print(result)
-        }
-        
-        
         navigationBarView.dismissButton.rx.tap
             .bind { [weak self] in
                 self?.dismiss(animated: true)
@@ -61,32 +56,23 @@ extension AlarmViewController {
             }
             .disposed(by: disposeBag)
         
-        /**
-         이게 문제가 생기면 이걸로
-         Observable.zip(tableView.rx.modelSelected(Item.self), tableView.rx.itemSelected)
-             .bind { [weak self] (item, indexPath) in
-                     print(item.name)
-                     self?.tableView.deselectRow(at: indexPath, animated: true)
-             }
-             disposed(by: disposeBag)
-         -> IndexPath 가 필요한 경우일 수 있잖아.
-         ❓ Deselect 가 꼭 들어가야할까?
-         */
-        alarmNoticeTableView.rx.modelSelected(AlarmTableViewCell.self)
-            .subscribe(onNext: { [weak self] in
-                $0.noticeIsRead()
-                let hasLinkToSafari = $0.hasOutboundLink()
-                let answerId = $0.getAnswerId()
+        Observable.zip(alarmNoticeTableView.rx.itemSelected, alarmNoticeTableView.rx.modelSelected(AlarmNotificationResponse.self))
+            .subscribe(onNext: { [weak self] indexPath, item in
+                guard let cell = self?.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
+                cell.noticeIsRead()
+                let hasLinkToSafari = cell.hasOutboundLink()
+                let answerId = cell.getAnswerId()
                 
                 if hasLinkToSafari != false {
                     // 외부 링크로 나가기
                 }
-                
+
                 if let answerId = answerId {
                     if answerId == -1 {
                         // 나의 서재로 넘어가기
                         // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
                     } else {
+                        print(item)
                         // answerId 를 가지고 answer 화면으로 넘어가기
                         // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
                     }
