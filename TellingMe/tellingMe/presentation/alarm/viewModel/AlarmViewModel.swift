@@ -39,66 +39,73 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
     var outputs: AlarmNoticeViewModelOutpus {return self}
     
     init() {
-        AlarmNotificationAPI.getAllAlarmNotice()
-            .bind(to: self.alarmNotices)
-            .disposed(by: self.disposeBag)
-        AlarmNotificationAPI.getAlarmSummary()
-            .map { $0.status }
-            .bind(to: self.isAlarmAllRead)
-            .disposed(by: disposeBag)
-        print("ETETET🤨")
-        
+        fetchNoticeData()
+        fetchIsNoticeAllRead()
     }
     
     func readAllNotice() {
-        print("START FUNC")
         AlarmNotificationAPI.postAllAlarmAsRead()
-            .subscribe { [unowned self] in
-                print("1️⃣")
-                switch $0 {
-                case let .success(response):
-                    print(response.statusCode)
-                    print("2️⃣")
-                    AlarmNotificationAPI.getAllAlarmNotice()
-                        .bind(to: self.alarmNotices)
-                        .disposed(by: self.disposeBag)
-                case let .failure(error):
-                    print("aaaa")
-                    print("3️⃣")
+            .subscribe(onNext: { _ in
+                print("Alarms are all read.")
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
                 }
-                print("4️⃣")
-            }
+            })
             .disposed(by: disposeBag)
-        print("END FUNC")
+        
+        fetchNoticeData()
     }
     
     func readNotice(idOf id: Int) {
         AlarmNotificationAPI.postSingleAlarmAsRead(selectedId: id)
-            .subscribe {
-                switch $0 {
-                case let .success(response):
-                    print(response.statusCode)
-                case let .failure(error):
-                    print(error)
+            .subscribe(onNext: { _ in
+                print("✅ Notice Id: \(id) has been read.")
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
                 }
-            }
+            })
             .disposed(by: disposeBag)
     }
     
     func deleteNotice(idOf id: Int) {
         AlarmNotificationAPI.deleteSingleAlarm(selectedId: id)
-            .subscribe { [unowned self] in
-                switch $0 {
-                case let .success(response):
-                    print(response.statusCode)
-                    
-                    AlarmNotificationAPI.getAllAlarmNotice()
-                        .bind(to: self.alarmNotices)
-                        .disposed(by: self.disposeBag)
-                case let .failure(error):
-                    print(error)
+            .subscribe(onNext: { _ in
+                print("🗑️ Notice Id: \(id) has been removed.")
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
                 }
-            }
+            })
+            .disposed(by: disposeBag)
+        
+        fetchNoticeData()
+    }
+}
+
+extension AlarmNoticeViewModel {
+    private func fetchNoticeData() {
+        AlarmNotificationAPI.getAllAlarmNotice()
+            .subscribe(onNext: { [weak self] response in
+                self?.alarmNotices.onNext(response)
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func fetchIsNoticeAllRead() {
+        AlarmNotificationAPI.getAlarmSummary()
+            .subscribe(onNext: { [weak self] response in
+                self?.isAlarmAllRead.accept(response.status)
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
+                }
+            })
             .disposed(by: disposeBag)
     }
 }
