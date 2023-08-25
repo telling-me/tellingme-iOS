@@ -80,6 +80,19 @@ extension AlarmViewController {
             })
             .disposed(by: disposeBag)
         
+        alarmNoticeTableView.rx.itemDeleted
+            .subscribe(onNext: { [weak self] indexPath in
+                do {
+                    var newData: [AlarmNotificationResponse] = []
+                    guard let dataChanged = try self?.viewModel.outputs.alarmNotices.value() else { return }
+                    newData = dataChanged
+                    newData.remove(at: indexPath.row)
+                    self?.viewModel.outputs.alarmNotices.onNext(newData)
+                } catch let error {
+                    print(error)
+                }
+            })
+            .disposed(by: disposeBag)
         
         alarmNoticeTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -128,4 +141,18 @@ extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let swipeAction = UIContextualAction(style: .destructive, title: "삭제") { [weak self] (action, view, completionHandler) in
+            guard let cell = tableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
+            guard let answerId = cell.getAnswerId() else { return }
+            self?.viewModel.inputs.deleteNotice(idOf: answerId)
+            completionHandler(true)
+        }
+        
+        let action = UISwipeActionsConfiguration(actions: [swipeAction])
+
+        return action
+    }
 }
+
