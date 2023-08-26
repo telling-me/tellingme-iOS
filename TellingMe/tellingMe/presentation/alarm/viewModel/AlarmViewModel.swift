@@ -10,8 +10,6 @@ import UIKit
 import RxCocoa
 import RxMoya
 import RxSwift
-import SnapKit
-import Then
 
 protocol AlarmNoticeViewModelInputs {
     func readAllNotice()
