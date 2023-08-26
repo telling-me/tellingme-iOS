@@ -81,6 +81,7 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
 }
 
 extension AlarmNoticeViewModel {
+    
     private func fetchNoticeData() {
         AlarmNotificationAPI.getAllAlarmNotice()
             .subscribe(onNext: { [weak self] response in
@@ -96,7 +97,7 @@ extension AlarmNoticeViewModel {
     private func fetchIsNoticeAllRead() {
         AlarmNotificationAPI.getAlarmSummary()
             .subscribe(onNext: { [weak self] response in
-                self?.isAlarmAllRead.accept(response.status)
+                self?.isAlarmAllRead.accept(!response.status)
             }, onError: { error in
                 if case APIError.errorData(_) = error {
                 } else if case APIError.tokenNotFound = error {

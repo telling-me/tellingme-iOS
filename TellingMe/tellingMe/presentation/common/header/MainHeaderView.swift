@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 protocol HeaderViewDelegate: AnyObject {
     func pushSetting(_ headerView: MainHeaderView)
     func pushAlarmNotice(_ headerView: MainHeaderView)
@@ -51,7 +54,7 @@ class MainSettingHeaderView: MainHeaderView {
         return button
     }()
     
-    private let alarmNoticeButton: UIButton = {
+    let alarmNoticeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "NoticeAlarm"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
