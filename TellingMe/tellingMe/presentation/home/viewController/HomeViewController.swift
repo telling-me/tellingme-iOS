@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animation()
+        getNotice()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -133,7 +134,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HeaderViewDelegate {
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
     
@@ -144,5 +145,17 @@ extension HomeViewController: HeaderViewDelegate {
             return
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func getNotice() {
+        viewModel.getNewNotices { [weak self] isNewNotice in
+            if isNewNotice != false {
+                self?.headerView.alarmNoticeButton.setImage(UIImage(named: "NoticeAlarmWithDot"), for: .normal)
+                print("🅾️ New Notices exist.")
+            } else {
+                self?.headerView.alarmNoticeButton.setImage(UIImage(named: "NoticeAlarm"), for: .normal)
+                print("❎ New Notices doesn't exist.")
+            }
+        }
     }
 }
