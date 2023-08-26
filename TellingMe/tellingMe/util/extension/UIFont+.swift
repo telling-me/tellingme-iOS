@@ -7,8 +7,8 @@
 
 import UIKit
 
-//extension UIFont {
-//    public static func fontNamu(_ fontLevel: FontLevel) -> UIFont {
-//        return UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize)!
-//    }
-//}
+extension UIFont {
+    static func fontNanum(_ fontLevel: FontLevel) -> UIFont {
+        return UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize)!
+    }
+}
