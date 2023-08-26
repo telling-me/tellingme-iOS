@@ -93,6 +93,18 @@ struct AlarmNotificationAPI: Networkable {
         }
     }
     
+    static func getAlarmSummary(completion: @escaping (Result<AlarmSummaryResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.getAlarmSummary, dtoType: AlarmSummaryResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
     static func postAllAlarmAsRead() -> Observable<EmptyResponse> {
         do {
             let provider = try makeAuthorizedProvider()
