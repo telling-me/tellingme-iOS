@@ -27,14 +27,33 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 
                 var frame = attributes.frame
                 if let cellAttrs = super.layoutAttributesForItem(at: attributes.indexPath) {
-                    frame.origin.x = frame.origin.x
-                    frame.size.height = sectionInset.top
-                    frame.size.width = cellAttrs.frame.size.width
+                    // 헤더와 셀들을 같은 수평에 배치
+                    frame.origin.y = cellAttrs.frame.origin.y
+                    frame.size.width = 33
+                    frame.size.height = 40
                     attributes.frame = frame
                 }
             }
         }
 
         return allAttributes
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes
+        
+        // 첫 번째 셀의 x좌표를 헤더의 너비와 간격만큼 더한 값으로 설정
+        if indexPath.item > 0 {
+            let previousIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
+            if let previousAttributes = super.layoutAttributesForItem(at: previousIndexPath) {
+                let x = previousAttributes.frame.origin.x + previousAttributes.frame.size.width + 24
+                attributes?.frame.origin.x = x
+            }
+        } else if let headerAttributes = super.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
+            let x = headerAttributes.frame.size.width + 24
+            attributes?.frame.origin.x = x
+        }
+
+        return attributes
     }
 }

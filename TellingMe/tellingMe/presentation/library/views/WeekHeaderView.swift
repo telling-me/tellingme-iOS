@@ -52,6 +52,9 @@ extension WeekHeaderView {
         countLabel.do {
             $0.backgroundColor = .black
             $0.textColor = .red
+            $0.textAlignment = .center
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 8
         }
     }
 }
