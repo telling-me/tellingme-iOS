@@ -22,7 +22,6 @@ final class LibraryViewController: UIViewController {
     let descriptionLabel = Headline5Regular()
     let libraryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: HorizontalHeaderCollectionViewFlowLayout())
 
-    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -76,11 +75,21 @@ extension LibraryViewController {
                 return "\(item)"
             }
             .disposed(by: disposeBag)
+        yearPickerView.rx.itemSelected
+            .subscribe(onNext: { (row, value) in
+                print("미치겠어")
+            })
+            .disposed(by: disposeBag)
         Observable.just(viewModel.months)
              .bind(to: monthPickerView.rx.itemTitles) { _, item in
                  return "\(item)"
              }
              .disposed(by: disposeBag)
+        monthPickerView.rx.itemSelected
+            .subscribe(onNext: { (row, value) in
+                print("미치겠어")
+            })
+            .disposed(by: disposeBag)
         viewModel.outputs.toastSubject
             .observe(on: MainScheduler.instance)
             .bind(onNext: { [weak self] message in
@@ -110,7 +119,7 @@ extension LibraryViewController {
         descriptionLabel.do {
             $0.numberOfLines = 2
             $0.textColor = .black
-            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n 총 \(viewModel.answerListCount)권을 채웠어요!")
+            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(viewModel.answerListCount)권을 채웠어요!")
             let range = (attributedString.string as NSString).range(of: "\(viewModel.answerListCount)")
             attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: range)
             $0.attributedText = attributedString
@@ -173,6 +182,10 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
          return UIEdgeInsets(top: 0, left: 73, bottom: 0, right: 0)
      }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
