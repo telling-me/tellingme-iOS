@@ -1,109 +1,89 @@
-////
-////  CustomFont.swift
-////  tellingMe
-////
-////  Created by KYUBO A. SHIM on 2023/08/23.
-////
 //
-//import Foundation
+//  CustomFont.swift
+//  tellingMe
 //
-//enum AppleSDGothicNeoType: String {
+//  Created by KYUBO A. SHIM on 2023/08/23.
 //
-//    case regular = "NanumSquareRoundOTFR"
-//    case bold = "NanumSquareRoundOTFB"
-//}
-//
-//enum FontLevel {
-//
-//    // MARK: - Korean
-//
-//    case H3_Bold //26
-//    case H3_Regular
-//    case H4_Bold // 24
-//    case H4_Regular //24
-//
-//    case H5_Bold //19
-//    case H5_Regular
-//    case H6_Bold // 17
-//    case H6_Regular
-//    case B1_Bold // 15
-//    case B1_Regular
-//
-//    case B2_Bold // 14
-//    case B2_Regular
-//    case C1_Bold // 12
-//    case C1_Regular //
-//}
-//
-//extension FontLevel {
-//
-//    public var fontWeight: String {
-//        switch self {
-//        case .heading1_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .heading2_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .heading3_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .heading4_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .body1_bold_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .body1_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        case .body2_bold_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .body2_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        case .body3_bold_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .body3_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        case .detail1_bold_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .detail1_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        case .detail2_bold_kor:
-//            return AppleSDGothicNeoType.bold.rawValue
-//        case .detail2_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        case .detail3_regular_kor:
-//            return AppleSDGothicNeoType.regular.rawValue
-//        }
-//    }
-//
-//    public var fontSize: CGFloat {
-//        switch self {
-//        case .heading1_kor:
-//            return 24
-//        case .heading2_kor:
-//            return 22
-//        case .heading3_kor:
-//            return 20
-//        case .heading4_kor:
-//            return 18
-//        case .body1_bold_kor:
-//            return 16
-//        case .body1_regular_kor:
-//            return 16
-//        case .body2_bold_kor:
-//            return 15
-//        case .body2_regular_kor:
-//            return 15
-//        case .body3_bold_kor:
-//            return 14
-//        case .body3_regular_kor:
-//            return 14
-//        case .detail1_bold_kor:
-//            return 13
-//        case .detail1_regular_kor:
-//            return 13
-//        case .detail2_bold_kor:
-//            return 12
-//        case .detail2_regular_kor:
-//            return 12
-//        case .detail3_regular_kor:
-//            return 11
-//        }
-//    }
-//}
+
+import Foundation
+
+enum NanumSquareRoundType {
+    case regular
+    case bold
+    
+    var weight: String {
+        switch self {
+        case .regular:
+            return "NanumSquareRoundOTFR"
+        case .bold:
+            return "NanumSquareRoundOTFB"
+        }
+    }
+}
+
+enum FontLevel {
+
+    // MARK: - Korean
+
+    case H3_Bold //26
+    case H3_Regular
+    case H4_Bold // 24
+    case H4_Regular //24
+
+    case H5_Bold //19
+    case H5_Regular
+    case H6_Bold // 17
+    case H6_Regular
+    case B1_Bold // 15
+    case B1_Regular
+
+    case B2_Bold // 14
+    case B2_Regular
+    case C1_Bold // 12
+    case C1_Regular //
+}
+
+extension FontLevel {
+
+    public var fontWeight: String {
+        switch self {
+        case .H3_Bold, .H4_Bold, .H5_Bold, .H6_Bold, .B1_Bold, .B2_Bold, .C1_Bold:
+            return NanumSquareRoundType.bold.weight
+        case .H3_Regular, .H4_Regular, .H5_Regular, .H6_Regular, .B1_Regular, .B2_Regular ,.C1_Regular:
+            return NanumSquareRoundType.regular.weight
+        }
+    }
+
+    public var fontSize: CGFloat {
+        switch self {
+        case .H3_Bold:
+            return 26
+        case .H3_Regular:
+            return 26
+        case .H4_Bold:
+            return 24
+        case .H4_Regular:
+            return 24
+        case .H5_Bold:
+            return 19
+        case .H5_Regular:
+            return 19
+        case .H6_Bold:
+            return 17
+        case .H6_Regular:
+            return 17
+        case .B1_Bold:
+            return 15
+        case .B1_Regular:
+            return 15
+        case .B2_Bold:
+            return 14
+        case .B2_Regular:
+            return 14
+        case .C1_Bold:
+            return 12
+        case .C1_Regular:
+            return 12
+        }
+    }
+}

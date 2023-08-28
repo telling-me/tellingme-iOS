@@ -36,8 +36,10 @@ extension LibraryViewController {
     private func bindViewModel() {
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, LibraryAnswerList>>(
             configureCell: { dataSource, collectionView, indexPath, item in
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.id, for: indexPath) as! LibraryCollectionViewCell
-                cell.setData(emotion: 1)
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.id, for: indexPath) as? LibraryCollectionViewCell  else {
+                    return UICollectionViewCell()
+                }
+                cell.setData(data: item)
                 return cell
             },
             configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
@@ -69,6 +71,11 @@ extension LibraryViewController {
                 return sections
             }
             .bind(to: libraryCollectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        viewModel.outputs.answerListCount
+            .bind(onNext: { [weak self] count in
+                self?.setDescriptionLabel(count: count)
+            })
             .disposed(by: disposeBag)
         Observable.just(viewModel.years)
             .bind(to: yearPickerView.rx.itemTitles) { _, item in
@@ -118,11 +125,7 @@ extension LibraryViewController {
 
         descriptionLabel.do {
             $0.numberOfLines = 2
-            $0.textColor = .black
-            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(viewModel.answerListCount)권을 채웠어요!")
-            let range = (attributedString.string as NSString).range(of: "\(viewModel.answerListCount)")
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: range)
-            $0.attributedText = attributedString
+            $0.textColor = .Black
         }
         
         libraryCollectionView.do {
@@ -131,6 +134,13 @@ extension LibraryViewController {
             $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
             $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
         }
+    }
+    
+    private func setDescriptionLabel(count: Int) {
+        let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(count)권을 채웠어요!")
+        let range = (attributedString.string as NSString).range(of: "\(count)")
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
+        descriptionLabel.attributedText = attributedString
     }
     
     private func setLayout() {

@@ -25,8 +25,15 @@ class LibraryCollectionViewCell: UICollectionViewCell {
         setStyles()
     }
     
-    func setData(emotion: Int, isLast: Bool = false) {
-        stick.backgroundColor = Emotions(intValue: emotion)?.color
+    func setData(data: LibraryAnswerList) {
+        if data.isEmpty {
+            stick.backgroundColor = .clear
+        } else if data.isLast {
+            stick.transform = CGAffineTransform(rotationAngle: -8 * CGFloat.pi / 180)
+            stick.backgroundColor = data.emotion.color
+        } else {
+            stick.backgroundColor = data.emotion.color
+        }
     }
 }
 

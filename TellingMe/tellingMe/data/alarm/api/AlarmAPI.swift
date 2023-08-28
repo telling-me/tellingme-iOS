@@ -8,6 +8,7 @@
 import Foundation
 
 import Moya
+import RxMoya
 import RxSwift
 
 enum AlarmAPITarget {
@@ -52,6 +53,13 @@ extension AlarmAPITarget: TargetType {
         }
     }
     
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        default:
+            return JSONEncoding.default
+        }
+     }
+    
     var headers: [String: String]? {
         switch self {
         default:
@@ -62,10 +70,71 @@ extension AlarmAPITarget: TargetType {
 
 struct AlarmNotificationAPI: Networkable {
     typealias Target = AlarmAPITarget
+        
+    static func getAllAlarmNotice() -> Observable<[AlarmNotificationResponse]> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .getAllAlarmNotice)
+                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
+        } catch {
+            print("Alarm Error 01")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
     
-    static func getAllAlarmNotice() {}
-    static func getAlarmSummary() {}
-    static func postAllAlarmAsRead() {}
-    static func postSingleAlarmAsRead(selectedId: Int) {}
-    static func deleteSingleAlarm(selectedId: Int) {}
+    static func getAlarmSummary() -> Observable<AlarmSummaryResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .getAlarmSummary)
+                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
+        } catch {
+            print("Alarm Error 02")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func getAlarmSummary(completion: @escaping (Result<AlarmSummaryResponse?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.getAlarmSummary, dtoType: AlarmSummaryResponse.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func postAllAlarmAsRead() -> Observable<EmptyResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .postAllAlarmAsRead)
+                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
+        } catch {
+            print("Alarm Error 03")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func postSingleAlarmAsRead(selectedId: Int) -> Observable<EmptyResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .postSingleAlarmAsRead(.init(noticeId: selectedId)))
+                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
+        } catch {
+            print("Alarm Error 04")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func deleteSingleAlarm(selectedId: Int) -> Observable<EmptyResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .deleteSingleAlarm(.init(noticeId: selectedId)))
+                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
+        } catch {
+            print("Alarm Error 05")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
 }

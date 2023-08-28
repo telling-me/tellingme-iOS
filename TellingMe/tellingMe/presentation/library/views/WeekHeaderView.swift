@@ -46,12 +46,12 @@ extension WeekHeaderView {
     func setStyles() {
         weekLabel.do {
             $0.text = "week"
-            $0.textColor = .red
+            $0.textColor = .Side500
         }
         
         countLabel.do {
-            $0.backgroundColor = .black
-            $0.textColor = .red
+            $0.backgroundColor = .Side200
+            $0.textColor = .Side500
             $0.textAlignment = .center
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 8

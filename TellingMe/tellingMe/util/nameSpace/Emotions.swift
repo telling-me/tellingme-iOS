@@ -53,17 +53,17 @@ enum Emotions {
     var color: UIColor {
         switch self {
         case .happy:
-            return .red
+            return .Emotion100
         case .proud:
-            return .blue
+            return .Emotion200
         case .meh:
-            return .yellow
+            return .Emotion300
         case .tired:
-            return .orange
+            return .Emotion400
         case .sad:
-            return .green
+            return .Emotion500
         case .angry:
-            return .purple
+            return .Emotion600
         }
     }
 
