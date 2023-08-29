@@ -25,7 +25,7 @@ struct AlarmNotificationResponse: Codable {
     let title: String?
     let content: String
     let isRead: Bool
-    let createdAt: String
+    let createdAt: [Int]
     let link: String?
     let isInternal: Bool
     let answerId: Int?
