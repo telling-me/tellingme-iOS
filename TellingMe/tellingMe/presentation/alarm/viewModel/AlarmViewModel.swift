@@ -15,6 +15,7 @@ protocol AlarmNoticeViewModelInputs {
     func readAllNotice()
     func readNotice(idOf id: Int)
     func deleteNotice(idOf id: Int)
+    func openSafariWithUrl(url: String?)
 }
 
 protocol AlarmNoticeViewModelOutpus {
@@ -77,6 +78,15 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func openSafariWithUrl(url: String?) {
+        if let urlString = url {
+            guard let url = URL(string: urlString) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            print("Wrong Url.")
+        }
     }
 }
 
