@@ -62,17 +62,23 @@ extension AlarmViewController {
                 cell.noticeIsRead()
                 let hasLinkToSafari = cell.hasOutboundLink()
                 let answerId = cell.getAnswerId()
+                let link: String? = cell.getLinkString()
+                let noticeId = cell.getNoticeId()
+                
+                self?.viewModel.inputs.readNotice(idOf: noticeId)
                 
                 if hasLinkToSafari != false {
-                    // 외부 링크로 나가기
+                    self?.viewModel.inputs.openSafariWithUrl(url: link)
                 }
 
                 if let answerId = answerId {
                     if answerId == -1 {
+                        print("✅ The AnswerId is -1.")
                         // 나의 서재로 넘어가기
                         // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
                     } else {
                         print(item)
+                        
                         // answerId 를 가지고 answer 화면으로 넘어가기
                         // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
                     }
@@ -83,15 +89,37 @@ extension AlarmViewController {
         alarmNoticeTableView.rx.itemDeleted
             .subscribe(onNext: { [weak self] indexPath in
                 do {
+                    guard let cell = self?.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
+                    let noticeId = cell.getNoticeId()
                     var newData: [AlarmNotificationResponse] = []
                     guard let dataChanged = try self?.viewModel.outputs.alarmNotices.value() else { return }
+                    print("🔸🔸🔸")
+                    print(dataChanged)
+                    print("🔸🔸🔸")
                     newData = dataChanged
                     newData.remove(at: indexPath.row)
+                    print("🔸🔸🔸🔸🔸")
+                    print(newData)
+                    print("🔸🔸🔸🔸🔸")
+                    self?.viewModel.inputs.deleteNotice(idOf: noticeId)
                     self?.viewModel.outputs.alarmNotices.onNext(newData)
+
+//                    DispatchQueue.main.async {
+//                        self?.alarmNoticeTableView.performBatchUpdates({
+//                            self?.alarmNoticeTableView.deleteRows(at: [indexPath], with: .top)
+//                        },completion: nil)
+//                    }
                 } catch let error {
                     print(error)
                 }
             })
+            .disposed(by: disposeBag)
+        
+        isNoticeAllRead
+            .asDriver()
+            .drive { [weak self] bool in
+                self?.alarmSectionView.isAllNoticeRead(bool)
+            }
             .disposed(by: disposeBag)
         
         alarmNoticeTableView.rx.setDelegate(self)
@@ -140,19 +168,6 @@ extension AlarmViewController {
 extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let swipeAction = UIContextualAction(style: .destructive, title: "삭제") { [weak self] (action, view, completionHandler) in
-            guard let cell = tableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
-            guard let answerId = cell.getAnswerId() else { return }
-            self?.viewModel.inputs.deleteNotice(idOf: answerId)
-            completionHandler(true)
-        }
-        
-        let action = UISwipeActionsConfiguration(actions: [swipeAction])
-
-        return action
     }
 }
 
