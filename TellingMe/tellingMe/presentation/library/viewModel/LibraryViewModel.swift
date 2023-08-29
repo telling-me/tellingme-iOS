@@ -36,8 +36,10 @@ public final class LibraryViewModel: LibraryViewModelType, LibraryViewModelInput
         7: Array(1...31), 8: Array(1...30), 9: Array(1...31),
         10: Array(1...30), 11: Array(1...31), 12: Array(1...30)
     ]
-    public let years: [Int] = Array(2023...(Int(Date().yearFormat()) ?? 2023))
-    public let months: [Int] = Array(1...12)
+    private let yearArray: [Int] = Array(2023...2073)
+    private let monthArray: [Int] = Array(1...12)
+    public lazy var years: Observable<[Int]> = Observable<[Int]>.just(yearArray)
+    public lazy var months: Observable<[Int]> = Observable<[Int]>.just(monthArray)
     
     // input
     public var selectedYear: Int = Int(Date().yearFormat()) ?? 2023

@@ -15,12 +15,17 @@ import Then
 final class LibraryViewController: UIViewController {
 
     let viewModel = LibraryViewModel()
+    
+    let yearDropdownButton = DropDownButton()
+    let yearDropdown = UITableView()
+    let monthDropdownButton = DropDownButton()
+    let monthDropdown = UITableView()
     let headerView = InlineHeaderView()
-    let monthPickerView = UIPickerView()
-    let yearPickerView = UIPickerView()
     let shareButton = UIButton()
     let descriptionLabel = Headline5Regular()
     let libraryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: HorizontalHeaderCollectionViewFlowLayout())
+    let libraryItem1 = UIImageView()
+    let libraryItem2 = UIImageView()
 
     let disposeBag = DisposeBag()
     
@@ -59,7 +64,34 @@ extension LibraryViewController {
                     fatalError("Unsupported supplementary view kind")
                 }
             })
-        
+        viewModel.years
+            .bind(to: yearDropdown.rx.items(cellIdentifier: DropDownTableViewCell.id, cellType: DropDownTableViewCell.self)) { row, element, cell in
+                cell.setCell(text: "\(element)년")
+            }
+            .disposed(by: disposeBag)
+        viewModel.months
+            .bind(to: monthDropdown.rx.items(cellIdentifier: DropDownTableViewCell.id, cellType: DropDownTableViewCell.self)) { row, element, cell in
+                cell.setCell(text: "\(element)월")
+            }
+            .disposed(by: disposeBag)
+        yearDropdown.rx.modelSelected(Int.self)
+            .subscribe(onNext: { [weak self] item in
+                self?.viewModel.selectedYear = item
+                self?.viewModel.fetchAnswerList()
+                self?.yearDropdownButton.setTitle(text: "\(item)년", isSmall: true)
+                self?.yearDropdownButton.toggleOpen()
+                self?.yearDropdown.isHidden.toggle()
+            })
+            .disposed(by: disposeBag)
+        monthDropdown.rx.modelSelected(Int.self)
+            .subscribe(onNext: { [weak self] item in
+                self?.viewModel.selectedMonth = item
+                self?.viewModel.fetchAnswerList()
+                self?.monthDropdownButton.setTitle(text: "\(item)월", isSmall: true)
+                self?.monthDropdownButton.toggleOpen()
+                self?.monthDropdown.isHidden.toggle()
+            })
+            .disposed(by: disposeBag)
          viewModel.outputs.answerLists
             .map { list -> [SectionModel] in
                 // 데이터를 7개씩 묶어서 섹션별로 나누기
@@ -77,24 +109,16 @@ extension LibraryViewController {
                 self?.setDescriptionLabel(count: count)
             })
             .disposed(by: disposeBag)
-        Observable.just(viewModel.years)
-            .bind(to: yearPickerView.rx.itemTitles) { _, item in
-                return "\(item)"
-            }
-            .disposed(by: disposeBag)
-        yearPickerView.rx.itemSelected
-            .subscribe(onNext: { (row, value) in
-                print("미치겠어")
+        yearDropdownButton.tapped
+            .bind(onNext: { [weak self] _ in
+                self?.yearDropdownButton.toggleOpen()
+                self?.yearDropdown.isHidden.toggle()
             })
             .disposed(by: disposeBag)
-        Observable.just(viewModel.months)
-             .bind(to: monthPickerView.rx.itemTitles) { _, item in
-                 return "\(item)"
-             }
-             .disposed(by: disposeBag)
-        monthPickerView.rx.itemSelected
-            .subscribe(onNext: { (row, value) in
-                print("미치겠어")
+        monthDropdownButton.tapped
+            .bind(onNext: { [weak self] _ in
+                self?.monthDropdownButton.toggleOpen()
+                self?.monthDropdown.isHidden.toggle()
             })
             .disposed(by: disposeBag)
         viewModel.outputs.toastSubject
@@ -107,22 +131,37 @@ extension LibraryViewController {
     
     private func setStyles() {
         view.backgroundColor = .white
-        yearPickerView.do{
+        yearDropdownButton.do{
             $0.tag = 2
-            $0.backgroundColor = .blue
-            $0.selectRow(viewModel.years.firstIndex(of: viewModel.selectedYear) ?? 0 , inComponent: 0, animated: false)
+            $0.backgroundColor = .Side200
+            $0.setSmallLayout()
+            $0.setTitle(text: "\(viewModel.selectedYear)년", isSmall: true)
         }
-        
-        monthPickerView.do{
+        monthDropdownButton.do{
             $0.tag = 1
-            $0.backgroundColor = .red
-            $0.selectRow(viewModel.selectedMonth - 1, inComponent: 0, animated: false)
+            $0.backgroundColor = .Side200
+            $0.setSmallLayout()
+            $0.setTitle(text: "\(viewModel.selectedMonth)월", isSmall: true)
         }
-        
+        monthDropdown.do {
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 18
+            $0.bounces = false
+            $0.separatorStyle = .none
+            $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.id)
+            $0.isHidden = true
+        }
+        yearDropdown.do {
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 18
+            $0.bounces = false
+            $0.separatorStyle = .none
+            $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.id)
+            $0.isHidden = true
+        }
         headerView.do {
             $0.setHeader(title: "나의 서재", buttonImage: "questionmark.circle")
         }
-
         descriptionLabel.do {
             $0.numberOfLines = 2
             $0.textColor = .Black
@@ -134,43 +173,80 @@ extension LibraryViewController {
             $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
             $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
         }
+        libraryItem1.do {
+            $0.image = UIImage(named: "LibraryItem1")
+        }
+        libraryItem2.do {
+            $0.image = UIImage(named: "LibraryItem2")
+        }
     }
     
     private func setDescriptionLabel(count: Int) {
-        let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(count)권을 채웠어요!")
-        let range = (attributedString.string as NSString).range(of: "\(count)")
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
-        descriptionLabel.attributedText = attributedString
+        if viewModel.selectedMonth == Int(Date().monthFormat()) {
+            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(count)권을 채웠어요!")
+            let range = (attributedString.string as NSString).range(of: "\(count)")
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
+            descriptionLabel.attributedText = attributedString
+        } else {
+            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 한 달 동안 \n총 \(count)권을 채웠어요!")
+            let range = (attributedString.string as NSString).range(of: "\(count)")
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
+            descriptionLabel.attributedText = attributedString
+        }
+    }
+    
+    private func showDropdown() {
+        
     }
     
     private func setLayout() {
-        view.addSubviews(headerView, yearPickerView, monthPickerView, descriptionLabel, libraryCollectionView)
+        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown)
         headerView.snp.makeConstraints {
-            $0.leading.trailing.top.equalToSuperview()
-            $0.bottom.equalTo(yearPickerView.snp.top)
+            $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
         }
-        yearPickerView.snp.makeConstraints {
+        yearDropdownButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(25)
-            $0.top.equalTo(monthPickerView.snp.top)
+            $0.top.equalTo(headerView.snp.bottom)
             $0.width.equalTo(111)
             $0.height.equalTo(40)
         }
-        monthPickerView.snp.makeConstraints {
-            $0.leading.equalTo(yearPickerView.snp.trailing).offset(8)
+        monthDropdownButton.snp.makeConstraints {
+            $0.leading.equalTo(yearDropdownButton.snp.trailing).offset(8)
+            $0.centerY.equalTo(yearDropdownButton.snp.centerY)
             $0.width.equalTo(94)
             $0.height.equalTo(40)
         }
+        yearDropdown.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(yearDropdownButton.snp.horizontalEdges)
+            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(8)
+            $0.height.equalTo(208)
+        }
+        monthDropdown.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(monthDropdownButton.snp.horizontalEdges)
+            $0.top.equalTo(monthDropdownButton.snp.bottom).offset(8)
+            $0.height.equalTo(208)
+        }
         descriptionLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(25)
-            $0.top.equalTo(yearPickerView.snp.bottom).offset(36)
+            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(36)
         }
         libraryCollectionView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview().inset(36)
             $0.trailing.equalToSuperview().inset(96)
             // tabbar에 가려짐 => tabbar 크기를 알아야하나용?
-            $0.bottom.equalToSuperview().inset(88)
+            $0.bottom.equalToSuperview().inset(185)
+        }
+        libraryItem1.snp.makeConstraints {
+            $0.width.height.equalTo(36)
+            $0.bottom.equalTo(libraryCollectionView.snp.bottom).inset(8)
+            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(52)
+        }
+        libraryItem2.snp.makeConstraints {
+            $0.width.height.equalTo(36)
+            $0.bottom.equalTo(libraryCollectionView.snp.bottom).inset(8)
+            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(9)
         }
     }
 }

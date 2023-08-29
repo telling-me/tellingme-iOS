@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol DropDownButtonDelegate: AnyObject {
     func showDropDown(_ button: DropDownButton)
@@ -13,7 +15,9 @@ protocol DropDownButtonDelegate: AnyObject {
 
 class DropDownButton: UIView {
     weak var delegate: DropDownButtonDelegate?
-
+    var isOpened: Bool = false
+    private var tapSubject = PublishSubject<Void>()
+        
     let label: Body1Regular = {
         let label = Body1Regular()
         label.textColor = UIColor(named: "Gray4")
@@ -31,9 +35,14 @@ class DropDownButton: UIView {
 
     let smallLabel: Body2Regular = {
         let label = Body2Regular()
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    var tapped: Observable<Void> {
+         return tapSubject.asObservable()
+     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -112,6 +121,15 @@ class DropDownButton: UIView {
         imageView.image = UIImage(systemName: "chevron.down")
     }
 
+    func toggleOpen() {
+        if isOpened {
+            imageView.image = UIImage(systemName: "chevron.down")
+        } else {
+            imageView.image = UIImage(systemName: "chevron.up")
+        }
+        isOpened.toggle()
+    }
+
     func setDisabled() {
         self.isUserInteractionEnabled = false
         self.backgroundColor = UIColor(named: "Gray1")
@@ -119,5 +137,6 @@ class DropDownButton: UIView {
 
     @objc func didTapButton(_ sender: UIButton) {
         delegate?.showDropDown(self)
+        tapSubject.onNext(())
     }
 }
