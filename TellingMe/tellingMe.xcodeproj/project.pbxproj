@@ -197,6 +197,13 @@
 		583B80A62A9674E6009399D1 /* AlarmNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A52A9674E6009399D1 /* AlarmNavigationBarView.swift */; };
 		583B80A82A96783E009399D1 /* AlarmReadAllSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */; };
 		585865F12A9A17EE0004A276 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */; };
+		58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */; };
+		58A6AD422A9DCA1400BCC2AC /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */; };
+		58A6AD432A9DCA1400BCC2AC /* MyPageMainIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconView.swift */; };
+		58A6AD442A9DCA1400BCC2AC /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3B2A9DCA1400BCC2AC /* MyPageTableViewCell.swift */; };
+		58A6AD452A9DCA1400BCC2AC /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */; };
+		58A6AD462A9DCA1400BCC2AC /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */; };
+		58A6AD472A9DCA1400BCC2AC /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */; };
 		58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7512A95C1D500F3667A /* SnapKit */; };
 		58F2E7552A95C1E900F3667A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7542A95C1E900F3667A /* Then */; };
 		58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7592A95C62200F3667A /* AlarmAPI.swift */; };
@@ -432,6 +439,13 @@
 		583B80A52A9674E6009399D1 /* AlarmNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmNavigationBarView.swift; sourceTree = "<group>"; };
 		583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReadAllSectionView.swift; sourceTree = "<group>"; };
 		585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageBoxView.swift; sourceTree = "<group>"; };
+		58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
+		58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMainIconView.swift; sourceTree = "<group>"; };
+		58A6AD3B2A9DCA1400BCC2AC /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
+		58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		58F2E7592A95C62200F3667A /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		58F2E75B2A95C63500F3667A /* AlarmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDTO.swift; sourceTree = "<group>"; };
 		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
@@ -609,6 +623,7 @@
 		3A2A502E29B87C38002FE5E4 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				58A6AD352A9DC9C700BCC2AC /* myPage */,
 				58F2E79E2A96058A00F3667A /* alarm */,
 				3A4C38522A0CCC9300FEFAAE /* common */,
 				3ACACB4729F7FDA7004A6004 /* tab */,
@@ -1440,6 +1455,52 @@
 			path = modal;
 			sourceTree = "<group>";
 		};
+		58A6AD352A9DC9C700BCC2AC /* myPage */ = {
+			isa = PBXGroup;
+			children = (
+				58A6AD3F2A9DCA1400BCC2AC /* viewControllers */,
+				58A6AD3D2A9DCA1400BCC2AC /* viewModel */,
+				58A6AD362A9DCA1400BCC2AC /* views */,
+			);
+			path = myPage;
+			sourceTree = "<group>";
+		};
+		58A6AD362A9DCA1400BCC2AC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */,
+				58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */,
+				58A6AD392A9DCA1400BCC2AC /* components */,
+				58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		58A6AD392A9DCA1400BCC2AC /* components */ = {
+			isa = PBXGroup;
+			children = (
+				58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconView.swift */,
+				58A6AD3B2A9DCA1400BCC2AC /* MyPageTableViewCell.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		58A6AD3D2A9DCA1400BCC2AC /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		58A6AD3F2A9DCA1400BCC2AC /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
 		58F2E7562A95C5FE00F3667A /* alarm */ = {
 			isa = PBXGroup;
 			children = (
@@ -1665,6 +1726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A6AD422A9DCA1400BCC2AC /* MyPageHeaderView.swift in Sources */,
 				3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */,
 				3A89B3C22A779943002DFBCD /* CommunicationListViewController.swift in Sources */,
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
@@ -1683,6 +1745,7 @@
 				3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */,
 				3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
+				58A6AD442A9DCA1400BCC2AC /* MyPageTableViewCell.swift in Sources */,
 				3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */,
@@ -1710,6 +1773,7 @@
 				3ABB84572A7ACD8100540269 /* LikeDTO.swift in Sources */,
 				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
+				58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */,
 				3A713F9B29F2D1900024C2C9 /* ErrorToast.swift in Sources */,
 				3A3739BD2A125F4D00739543 /* ChipPurposeViewController.swift in Sources */,
 				58F2E7AD2A9619DF00F3667A /* UIFont+.swift in Sources */,
@@ -1741,6 +1805,7 @@
 				3A70A64C2A272ED0009D8D76 /* MyInfoRepository.swift in Sources */,
 				3A338B0429E67C5000786D08 /* LoginRepository.swift in Sources */,
 				3A1F6B082A5DAF0F00E7B107 /* PushNotificationModalRepository.swift in Sources */,
+				58A6AD472A9DCA1400BCC2AC /* MyPageViewController.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* String+.swift in Sources */,
 				3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */,
@@ -1768,6 +1833,7 @@
 				3AB795862A6EA6A9009961CF /* CommunicationViewModel.swift in Sources */,
 				3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */,
 				3AF97FC22A1916DE008FB590 /* UpdateAnswerDTO.swift in Sources */,
+				58A6AD432A9DCA1400BCC2AC /* MyPageMainIconView.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				3A1A35A82A8679B300F9FA92 /* PushNotificationViewModel.swift in Sources */,
 				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
@@ -1778,6 +1844,7 @@
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
 				3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */,
+				58A6AD462A9DCA1400BCC2AC /* MyPageViewModel.swift in Sources */,
 				58F2E7AB2A96132100F3667A /* UIStackView+.swift in Sources */,
 				3A5076F529C8352200C7A5E9 /* LoginAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
@@ -1822,6 +1889,7 @@
 				3A320F602A7621110098E8C9 /* QuestionCollctionViewCell.swift in Sources */,
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3AB7957F2A6E9D61009961CF /* QuestionList.swift in Sources */,
+				58A6AD452A9DCA1400BCC2AC /* MyPageProfileView.swift in Sources */,
 				3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
 				583B80A82A96783E009399D1 /* AlarmReadAllSectionView.swift in Sources */,

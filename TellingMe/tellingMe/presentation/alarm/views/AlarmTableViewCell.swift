@@ -12,7 +12,7 @@ import Then
 
 final class AlarmTableViewCell: UITableViewCell {
     
-    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: "", link: nil, isInternal: false, answerId: nil)
+    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil)
     
     private let titleLabel = UILabel()
     private let subTitleLabel = UILabel()
@@ -79,11 +79,11 @@ extension AlarmTableViewCell {
     private func setTextsFromData(title: String?, subTitle: String?, date: String) {
         titleLabel.text = title
         subTitleLabel.text = subTitle
-        dateLabel.text = date.stringDateToFormattedString()
+        dateLabel.text = date
     }
     
     private func resetProperties() {
-        self.alarmNoticeInformation = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: "", link: nil, isInternal: false, answerId: nil)
+        self.alarmNoticeInformation = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil)
         self.titleLabel.text = nil
         self.titleLabel.textColor = .Gray8
         self.subTitleLabel.text = nil
@@ -96,7 +96,18 @@ extension AlarmTableViewCell {
 extension AlarmTableViewCell {
     func configrue(noticeData: AlarmNotificationResponse) {
         self.alarmNoticeInformation = noticeData
-        setTextsFromData(title: alarmNoticeInformation.title, subTitle: alarmNoticeInformation.content, date: alarmNoticeInformation.createdAt)
+        let dateCreated = noticeData.createdAt
+        var dateCombined: String = ""
+        
+        for index in 0...2 {
+            if index != 2 {
+                dateCombined += String(dateCreated[index]) + "."
+            } else {
+                dateCombined += String(dateCreated[index])
+            }
+        }
+            
+        setTextsFromData(title: alarmNoticeInformation.title, subTitle: alarmNoticeInformation.content, date: dateCombined)
         if alarmNoticeInformation.isRead != false {
             noticeIsRead()
         }
@@ -114,6 +125,14 @@ extension AlarmTableViewCell {
         titleLabel.textColor = .Gray3
         subTitleLabel.textColor = .Gray3
         dateLabel.textColor = .Gray3
+    }
+    
+    func getLinkString() -> String? {
+        return alarmNoticeInformation.link
+    }
+    
+    func getNoticeId() -> Int {
+        return alarmNoticeInformation.noticeId
     }
     
     // answerId 가 -1 일때? 가 무슨 말일까?

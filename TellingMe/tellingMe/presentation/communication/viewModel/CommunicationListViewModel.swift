@@ -45,7 +45,7 @@ class CommunicationListViewModel {
     func postLike(answerId: Int) {
         let request = LikeRequest(answerId: answerId)
         LikeAPI.postLike(request: request)
-            .subscribe(onNext: { [weak self] response in
+            .subscribe(onNext: { response in
             }, onError: { [weak self] error in
                 if case APIError.errorData(let errorData) = error {
                     self?.showToastSubject.onNext(errorData.message)
