@@ -75,7 +75,6 @@ struct AlarmNotificationAPI: Networkable {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .getAllAlarmNotice)
-                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
         } catch {
             print("Alarm Error 01")
             return Observable.error(APIError.tokenNotFound)
@@ -86,7 +85,6 @@ struct AlarmNotificationAPI: Networkable {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .getAlarmSummary)
-                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
         } catch {
             print("Alarm Error 02")
             return Observable.error(APIError.tokenNotFound)
@@ -109,7 +107,6 @@ struct AlarmNotificationAPI: Networkable {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postAllAlarmAsRead)
-                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
         } catch {
             print("Alarm Error 03")
             return Observable.error(APIError.tokenNotFound)
@@ -120,7 +117,6 @@ struct AlarmNotificationAPI: Networkable {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postSingleAlarmAsRead(.init(noticeId: selectedId)))
-                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
         } catch {
             print("Alarm Error 04")
             return Observable.error(APIError.tokenNotFound)
@@ -131,7 +127,6 @@ struct AlarmNotificationAPI: Networkable {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .deleteSingleAlarm(.init(noticeId: selectedId)))
-                .timeout(.seconds(10), scheduler: ConcurrentMainScheduler.instance)
         } catch {
             print("Alarm Error 05")
             return Observable.error(APIError.tokenNotFound)
