@@ -186,3 +186,25 @@ extension UIColor {
         return UIColor(hex: "#404642")
     }
 }
+
+extension UIColor {
+    // MARK: - Emotion Colors
+    static var Emotion100: UIColor {
+        return UIColor(hex: "#FFE26C")
+    }
+    static var Emotion200: UIColor {
+        return UIColor(hex: "#B1F981")
+    }
+    static var Emotion300: UIColor {
+        return UIColor(hex: "#87F0AE")
+    }
+    static var Emotion400: UIColor {
+        return UIColor(hex: "#9B9BFF")
+    }
+    static var Emotion500: UIColor {
+        return UIColor(hex: "#A0E4F5")
+    }
+    static var Emotion600: UIColor {
+        return UIColor(hex: "#FAB0CF")
+    }
+}

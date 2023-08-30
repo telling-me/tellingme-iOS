@@ -56,10 +56,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 case .notJoin(let response):
                     KeychainManager.shared.save(response.socialId, key: Keys.socialId.rawValue)
                     KeychainManager.shared.save(response.socialLoginType, key: Keys.socialLoginType.rawValue)
-                    self.pushSignUp()
                 default:
                     print(error)
                 }
+                self.pushSignUp()
             }
         }
     }
