@@ -10,11 +10,6 @@ import UIKit
 class MainTabBarController: UITabBarController {
     let shadowView = UIView()
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.tabBar.isHidden = false
-//    }
-
     override func viewDidLoad() {
         tabBar.frame = CGRect(x: 0, y: view.frame.height - 88, width: view.frame.width, height: 88)
         super.viewDidLoad()
@@ -22,6 +17,8 @@ class MainTabBarController: UITabBarController {
         self.delegate = self
         tabBar.layer.cornerRadius = 32
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        // Storyboard 에서만 세팅되어 있는 걸 여기서 한번 더 ensure 하기 위해 선언
+        tabBar.backgroundColor = .Side100
     }
 
     func showPushNotification() {
