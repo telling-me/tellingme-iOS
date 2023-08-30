@@ -34,7 +34,8 @@ extension HomeViewController {
     }
 
     func getAnswer() {
-        guard let date = viewModel.questionDate else {
+        let newDateString = Date().getQuestionDate()
+        guard let date = newDateString else {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
         }
@@ -56,7 +57,8 @@ extension HomeViewController {
     }
 
     func getAnswerRecord() {
-        guard let date = viewModel.questionDate else {
+        let newDateString = Date().getQuestionDate()
+        guard let date = newDateString else {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
         }
