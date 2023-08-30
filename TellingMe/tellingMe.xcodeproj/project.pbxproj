@@ -136,6 +136,7 @@
 		3AB213222A892F3F0035EA56 /* CommunicationNoneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB213212A892F3F0035EA56 /* CommunicationNoneViewCell.swift */; };
 		3AB213252A8939640035EA56 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB213242A8939640035EA56 /* Alert.storyboard */; };
 		3AB213272A8939830035EA56 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB213262A8939830035EA56 /* AlertViewController.swift */; };
+		3AB25D9C2A9F642B004C2872 /* PushNotificationInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB25D9B2A9F642B004C2872 /* PushNotificationInfoDTO.swift */; };
 		3AB33EE32A99DD5300470CD5 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB33EE22A99DD5300470CD5 /* LibraryViewController.swift */; };
 		3AB33EE52A99E38700470CD5 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB33EE42A99E38700470CD5 /* LibraryViewModel.swift */; };
 		3AB33EE72A99F2F500470CD5 /* InlineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB33EE62A99F2F500470CD5 /* InlineHeaderView.swift */; };
@@ -384,6 +385,7 @@
 		3AB213212A892F3F0035EA56 /* CommunicationNoneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationNoneViewCell.swift; sourceTree = "<group>"; };
 		3AB213242A8939640035EA56 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		3AB213262A8939830035EA56 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		3AB25D9B2A9F642B004C2872 /* PushNotificationInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationInfoDTO.swift; sourceTree = "<group>"; };
 		3AB33EE22A99DD5300470CD5 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		3AB33EE42A99E38700470CD5 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		3AB33EE62A99F2F500470CD5 /* InlineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineHeaderView.swift; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 				3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */,
 				3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */,
 				3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */,
+				3AB25D9B2A9F642B004C2872 /* PushNotificationInfoDTO.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -1909,6 +1912,7 @@
 				3AEED26329C99F1500D02F3F /* HeadlineLabel.swift in Sources */,
 				3AB7957D2A6E98AD009961CF /* CommunicationAPI.swift in Sources */,
 				3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */,
+				3AB25D9C2A9F642B004C2872 /* PushNotificationInfoDTO.swift in Sources */,
 				3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */,
 				3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */,
 				3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */,

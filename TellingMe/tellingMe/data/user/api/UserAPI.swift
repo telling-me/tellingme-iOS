@@ -12,6 +12,8 @@ import RxSwift
 enum UserAPITarget {
     case getUserInfo
     case updateUserInfo(UpdateUserInfoRequest)
+    case getPushNotificationInfo
+    case postPushNotificationInfo(PushNotificationInfoRequest)
     case getisAllowedNotification
     case postisAllowedNotification(AllowedNotificationRequest)
     case postFirebaseToken(FirebaseTokenRequest)
@@ -25,6 +27,8 @@ extension UserAPITarget: TargetType {
         case .postFirebaseToken(let body):
             return .requestJSONEncodable(body)
         case .postisAllowedNotification(let body):
+            return .requestJSONEncodable(body)
+        case .postPushNotificationInfo(let body):
             return .requestJSONEncodable(body)
         default:
             return .requestPlain
@@ -43,6 +47,10 @@ extension UserAPITarget: TargetType {
             return "api/user/update/notification"
         case .postFirebaseToken:
             return "api/user/update/pushToken"
+        case .getPushNotificationInfo:
+            return "api/user/push"
+        case .postPushNotificationInfo:
+            return "api/user/update/push"
         }
     }
 
@@ -50,7 +58,7 @@ extension UserAPITarget: TargetType {
         switch self {
         case .updateUserInfo:
             return .patch
-        case .postisAllowedNotification, .postFirebaseToken:
+        case .postisAllowedNotification, .postFirebaseToken, .postPushNotificationInfo:
             return .post
         default:
             return .get
@@ -133,6 +141,24 @@ struct UserAPI: Networkable {
         do {
             let provider =  try makeAuthorizedProvider()
             return provider.request(target: .postFirebaseToken(request))
+        } catch {
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func getPushNotificationInfo() -> Observable<PushNotificationInfoResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .getPushNotificationInfo)
+        } catch {
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func postPushNotificationInfo(request: PushNotificationInfoRequest) -> Observable<PushNotificationInfoResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .postPushNotificationInfo(request))
         } catch {
             return Observable.error(APIError.tokenNotFound)
         }
