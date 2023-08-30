@@ -28,7 +28,10 @@ final class MyPageTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         if isToggleCell != false {
-            
+            setSwitchView()
+        }
+        if isLogoutCell != false {
+            setLogoutView()
         }
     }
     
@@ -85,6 +88,10 @@ extension MyPageTableViewCell {
             $0.width.equalTo(50)
             $0.height.equalTo(30)
         }
+    }
+    
+    private func setLogoutView() {
+        chevronImageView.removeFromSuperview()
     }
 }
 
