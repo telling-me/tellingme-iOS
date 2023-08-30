@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
@@ -22,11 +24,14 @@ class HomeViewController: UIViewController {
     @IBOutlet var shadowViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
     @IBOutlet weak var answerCompletedLabel: CaptionLabelRegular!
+    
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
         checkNofitication()
+        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -157,5 +162,14 @@ extension HomeViewController: HeaderViewDelegate {
                 print("❎ New Notices doesn't exist.")
             }
         }
+    }
+    
+    func bindViewModel() {
+        viewModel.pushNotificationInfoSubject
+            .skip(1)
+            .bind(onNext: { [weak self] _ in
+                self?.showPushNotification()
+            })
+            .disposed(by: disposeBag)
     }
 }

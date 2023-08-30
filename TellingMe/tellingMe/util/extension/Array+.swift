@@ -70,4 +70,10 @@ extension Array {
 
         return "1999년 09월 01일"
     }
+
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
 }
