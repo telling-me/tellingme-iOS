@@ -44,6 +44,7 @@ extension WeekHeaderView {
     }
     
     func setStyles() {
+        self.backgroundColor = .Side100
         weekLabel.do {
             $0.text = "week"
             $0.textColor = .Side500

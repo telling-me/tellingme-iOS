@@ -13,7 +13,6 @@ import SnapKit
 import Then
 
 final class LibraryViewController: UIViewController {
-
     let viewModel = LibraryViewModel()
     
     let yearDropdownButton = DropDownButton()
@@ -21,11 +20,12 @@ final class LibraryViewController: UIViewController {
     let monthDropdownButton = DropDownButton()
     let monthDropdown = UITableView()
     let headerView = InlineHeaderView()
-    let shareButton = UIButton()
+    let infoButton = UIButton()
     let descriptionLabel = Headline5Regular()
     let libraryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: HorizontalHeaderCollectionViewFlowLayout())
     let libraryItem1 = UIImageView()
     let libraryItem2 = UIImageView()
+    let bottomSheet = LibraryInfoView()
 
     let disposeBag = DisposeBag()
     
@@ -34,6 +34,14 @@ final class LibraryViewController: UIViewController {
         bindViewModel()
         setStyles()
         setLayout()
+    }
+    
+    func toggleBottomSheet() {
+        bottomSheet.isHidden.toggle()
+        self.tabBarController?.tabBar.isHidden.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -127,10 +135,20 @@ extension LibraryViewController {
                 self?.showToast(message: message)
             })
             .disposed(by: disposeBag)
+        bottomSheet.okButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                self?.toggleBottomSheet()
+            })
+            .disposed(by: disposeBag)
+        headerView.rightButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                self?.toggleBottomSheet()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setStyles() {
-        view.backgroundColor = .white
+        view.backgroundColor = .Side100
         yearDropdownButton.do{
             $0.tag = 2
             $0.backgroundColor = .Side200
@@ -160,7 +178,7 @@ extension LibraryViewController {
             $0.isHidden = true
         }
         headerView.do {
-            $0.setHeader(title: "나의 서재", buttonImage: "questionmark.circle")
+            $0.setHeader(title: "나의 서재", buttonImage: "Question")
         }
         descriptionLabel.do {
             $0.numberOfLines = 2
@@ -169,6 +187,7 @@ extension LibraryViewController {
         
         libraryCollectionView.do {
             $0.delegate = self
+            $0.backgroundColor = .Side100
             $0.register(WeekHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeekHeaderView.id)
             $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
             $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
@@ -178,6 +197,9 @@ extension LibraryViewController {
         }
         libraryItem2.do {
             $0.image = UIImage(named: "LibraryItem2")
+        }
+        bottomSheet.do {
+            $0.isHidden = true
         }
     }
     
@@ -194,13 +216,9 @@ extension LibraryViewController {
             descriptionLabel.attributedText = attributedString
         }
     }
-    
-    private func showDropdown() {
-        
-    }
-    
+
     private func setLayout() {
-        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown)
+        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown, bottomSheet)
         headerView.snp.makeConstraints {
             $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
@@ -247,6 +265,9 @@ extension LibraryViewController {
             $0.width.height.equalTo(36)
             $0.bottom.equalTo(libraryCollectionView.snp.bottom).inset(8)
             $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(9)
+        }
+        bottomSheet.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

@@ -36,11 +36,11 @@ class InlineHeaderView: UIView {
     func setHeader(title: String, buttonImage: String? = nil) {
         if let buttonImage = buttonImage {
             self.title.text = title
-            rightButton.isHidden = true
-            rightButton.setImage(UIImage(systemName: buttonImage), for: .normal)
+            rightButton.isHidden = false
+            rightButton.setImage(UIImage(named: buttonImage), for: .normal)
         } else {
             self.title.text = title
-            rightButton.isHidden = false
+            rightButton.isHidden = true
 
         }
     }

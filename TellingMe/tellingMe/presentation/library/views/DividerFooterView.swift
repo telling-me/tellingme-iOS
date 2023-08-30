@@ -34,6 +34,7 @@ extension DividerFooterView {
     }
     
     func setStyles() {
+        self.backgroundColor = .Side100
         view.do {
             $0.backgroundColor = .Sub100
             $0.layer.cornerRadius = 4

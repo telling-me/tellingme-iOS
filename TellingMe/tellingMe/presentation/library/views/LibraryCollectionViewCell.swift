@@ -46,6 +46,7 @@ extension LibraryCollectionViewCell {
     }
 
     func setStyles() {
+        self.backgroundColor = .Side100
         stick.do {
             $0.layer.cornerRadius = 4
         }

@@ -8,15 +8,32 @@
 import Foundation
 import UIKit
 
-enum Emotions {
-    case happy
-    case proud
-    case meh
-    case tired
-    case sad
-    case angry
+enum Emotions: String {
+    case happy = "Happy"
+    case proud = "Proud"
+    case meh = "Meh"
+    case tired = "Tired"
+    case sad = "Sad"
+    case angry = "Angry"
 
     var stringValue: String {
+        switch self {
+        case .happy:
+            return "행복해요"
+        case .proud:
+            return "자랑스러워요"
+        case .meh:
+            return "별로에요"
+        case .tired:
+            return "피곤해요"
+        case .sad:
+            return "슬퍼요"
+        case .angry:
+            return "화나요"
+        }
+    }
+    
+    var imageValue: String {
         switch self {
         case .happy:
             return "행복해요"
@@ -103,5 +120,9 @@ enum Emotions {
         default:
             return nil
         }
+    }
+    
+    static var emotionArray: [Emotions] {
+        return [.happy, .proud, .meh, .tired, .sad, .angry]
     }
 }
