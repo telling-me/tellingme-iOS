@@ -102,12 +102,12 @@ extension LibraryViewController {
             .disposed(by: disposeBag)
          viewModel.outputs.answerLists
             .map { list -> [SectionModel] in
-                // 데이터를 7개씩 묶어서 섹션별로 나누기
                 let groupedItems = list.chunked(into: 7)
-
-                let sections = groupedItems.map { itemsChunk in
+                
+                var sections = groupedItems.map { itemsChunk in
                     SectionModel(model: "header", items: itemsChunk)
                 }
+                
                 return sections
             }
             .bind(to: libraryCollectionView.rx.items(dataSource: dataSource))
@@ -130,6 +130,7 @@ extension LibraryViewController {
             })
             .disposed(by: disposeBag)
         viewModel.outputs.toastSubject
+            .skip(1)
             .observe(on: MainScheduler.instance)
             .bind(onNext: { [weak self] message in
                 self?.showToast(message: message)
@@ -254,17 +255,18 @@ extension LibraryViewController {
             $0.leading.equalToSuperview().inset(36)
             $0.trailing.equalToSuperview().inset(96)
             // tabbar에 가려짐 => tabbar 크기를 알아야하나용?
-            $0.bottom.equalToSuperview().inset(185)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         libraryItem1.snp.makeConstraints {
-            $0.width.height.equalTo(36)
-            $0.bottom.equalTo(libraryCollectionView.snp.bottom).inset(8)
+            $0.width.equalTo(36)
+            $0.height.equalTo(10)
+            $0.top.equalTo(libraryCollectionView.snp.top).inset(327)
             $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(52)
         }
         libraryItem2.snp.makeConstraints {
             $0.width.height.equalTo(36)
-            $0.bottom.equalTo(libraryCollectionView.snp.bottom).inset(8)
-            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(9)
+            $0.top.equalTo(libraryCollectionView.snp.top).inset(301)
+            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(8)
         }
         bottomSheet.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -279,20 +281,20 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 33, height: 40)
+        return CGSize(width: 33, height: 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 8)
+        return CGSize(width: collectionView.bounds.width, height: 28)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
          return UIEdgeInsets(top: 0, left: 73, bottom: 0, right: 0)
      }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 20
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4

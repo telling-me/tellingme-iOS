@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout, UICollectionViewDelegateFlowLayout {
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let originalAttributes = super.layoutAttributesForElements(in: rect) else {
@@ -28,10 +28,12 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 var frame = attributes.frame
                 if let cellAttrs = super.layoutAttributesForItem(at: attributes.indexPath) {
                     // 헤더와 셀들을 같은 수평에 배치
+                    print(frame, cellAttrs.frame)
                     frame.origin.y = cellAttrs.frame.origin.y
                     frame.size.width = 33
                     frame.size.height = 40
                     attributes.frame = frame
+                    print(frame, cellAttrs.frame)
                 }
             }
         }
@@ -42,7 +44,6 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes
         
-        // 첫 번째 셀의 x좌표를 헤더의 너비와 간격만큼 더한 값으로 설정
         if indexPath.item > 0 {
             let previousIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
             if let previousAttributes = super.layoutAttributesForItem(at: previousIndexPath) {
