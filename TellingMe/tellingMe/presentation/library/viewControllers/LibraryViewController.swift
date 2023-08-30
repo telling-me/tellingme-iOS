@@ -21,7 +21,8 @@ final class LibraryViewController: UIViewController {
     let monthDropdown = UITableView()
     let headerView = InlineHeaderView()
     let infoButton = UIButton()
-    let descriptionLabel = Headline5Regular()
+    let descriptionTopLabel = UILabel()
+    let descriptionBottomLabel = UILabel()
     let libraryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: HorizontalHeaderCollectionViewFlowLayout())
     let libraryItem1 = UIImageView()
     let libraryItem2 = UIImageView()
@@ -36,6 +37,10 @@ final class LibraryViewController: UIViewController {
         setLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchAnswerList()
+    }
+
     func toggleBottomSheet() {
         bottomSheet.isHidden.toggle()
         self.tabBarController?.tabBar.isHidden.toggle()
@@ -43,6 +48,23 @@ final class LibraryViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    private func setDescriptionLabel(count: Int) {
+        if viewModel.selectedMonth == Int(Date().monthFormat()) {
+            descriptionTopLabel.text = "\(viewModel.selectedMonth)월 지금까지"
+            let attributedString = NSMutableAttributedString(string: "총 \(count)권을 채웠어요!")
+            let range = (attributedString.string as NSString).range(of: "\(count)")
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
+            descriptionBottomLabel.attributedText = attributedString
+        } else {
+            descriptionTopLabel.text = "\(viewModel.selectedMonth)월 한 달 동안"
+            let attributedString = NSMutableAttributedString(string: "총 \(count)권을 채웠어요!")
+            let range = (attributedString.string as NSString).range(of: "\(count)")
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
+            descriptionBottomLabel.attributedText = attributedString
+        }
+    }
+
 }
 
 extension LibraryViewController {
@@ -150,6 +172,9 @@ extension LibraryViewController {
     
     private func setStyles() {
         view.backgroundColor = .Side100
+        headerView.do {
+            $0.setHeader(title: "나의 서재", buttonImage: "Question")
+        }
         yearDropdownButton.do{
             $0.tag = 2
             $0.backgroundColor = .Side200
@@ -161,6 +186,29 @@ extension LibraryViewController {
             $0.backgroundColor = .Side200
             $0.setSmallLayout()
             $0.setTitle(text: "\(viewModel.selectedMonth)월", isSmall: true)
+        }
+        descriptionTopLabel.do {
+            $0.numberOfLines = 1
+            $0.font = .fontNanum(.H5_Regular)
+            $0.textColor = .Black
+        }
+        descriptionBottomLabel.do {
+            $0.numberOfLines = 1
+            $0.font = .fontNanum(.H5_Regular)
+            $0.textColor = .Black
+        }
+        libraryCollectionView.do {
+            $0.delegate = self
+            $0.backgroundColor = .Side100
+            $0.register(WeekHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeekHeaderView.id)
+            $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
+            $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
+        }
+        libraryItem1.do {
+            $0.image = UIImage(named: "LibraryItem1")
+        }
+        libraryItem2.do {
+            $0.image = UIImage(named: "LibraryItem2")
         }
         monthDropdown.do {
             $0.clipsToBounds = true
@@ -178,48 +226,13 @@ extension LibraryViewController {
             $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.id)
             $0.isHidden = true
         }
-        headerView.do {
-            $0.setHeader(title: "나의 서재", buttonImage: "Question")
-        }
-        descriptionLabel.do {
-            $0.numberOfLines = 2
-            $0.textColor = .Black
-        }
-        
-        libraryCollectionView.do {
-            $0.delegate = self
-            $0.backgroundColor = .Side100
-            $0.register(WeekHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeekHeaderView.id)
-            $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
-            $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
-        }
-        libraryItem1.do {
-            $0.image = UIImage(named: "LibraryItem1")
-        }
-        libraryItem2.do {
-            $0.image = UIImage(named: "LibraryItem2")
-        }
         bottomSheet.do {
             $0.isHidden = true
         }
     }
-    
-    private func setDescriptionLabel(count: Int) {
-        if viewModel.selectedMonth == Int(Date().monthFormat()) {
-            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 지금까지 \n총 \(count)권을 채웠어요!")
-            let range = (attributedString.string as NSString).range(of: "\(count)")
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
-            descriptionLabel.attributedText = attributedString
-        } else {
-            let attributedString = NSMutableAttributedString(string: "\(viewModel.selectedMonth)월 한 달 동안 \n총 \(count)권을 채웠어요!")
-            let range = (attributedString.string as NSString).range(of: "\(count)")
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Logo, range: range)
-            descriptionLabel.attributedText = attributedString
-        }
-    }
 
     private func setLayout() {
-        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown, bottomSheet)
+        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionTopLabel, descriptionBottomLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown, bottomSheet)
         headerView.snp.makeConstraints {
             $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
@@ -236,6 +249,31 @@ extension LibraryViewController {
             $0.width.equalTo(94)
             $0.height.equalTo(40)
         }
+        descriptionTopLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(25)
+            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(36)
+        }
+        descriptionBottomLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(25)
+            $0.top.equalTo(descriptionTopLabel.snp.bottom).offset(8)
+        }
+        libraryCollectionView.snp.makeConstraints {
+            $0.top.equalTo(descriptionBottomLabel.snp.bottom).offset(28)
+            $0.leading.equalToSuperview().inset(36)
+            $0.trailing.equalToSuperview().inset(96)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        libraryItem1.snp.makeConstraints {
+            $0.width.equalTo(36)
+            $0.height.equalTo(10)
+            $0.top.equalTo(libraryCollectionView.snp.top).inset(327)
+            $0.trailing.equalTo(libraryItem2.snp.leading).offset(-8)
+        }
+        libraryItem2.snp.makeConstraints {
+            $0.size.equalTo(36)
+            $0.top.equalTo(libraryCollectionView.snp.top).inset(301)
+            $0.trailing.equalTo(libraryCollectionView.snp.trailing).offset(-9)
+        }
         yearDropdown.snp.makeConstraints {
             $0.horizontalEdges.equalTo(yearDropdownButton.snp.horizontalEdges)
             $0.top.equalTo(yearDropdownButton.snp.bottom).offset(8)
@@ -245,28 +283,6 @@ extension LibraryViewController {
             $0.horizontalEdges.equalTo(monthDropdownButton.snp.horizontalEdges)
             $0.top.equalTo(monthDropdownButton.snp.bottom).offset(8)
             $0.height.equalTo(208)
-        }
-        descriptionLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(25)
-            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(36)
-        }
-        libraryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(28)
-            $0.leading.equalToSuperview().inset(36)
-            $0.trailing.equalToSuperview().inset(96)
-            // tabbar에 가려짐 => tabbar 크기를 알아야하나용?
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        libraryItem1.snp.makeConstraints {
-            $0.width.equalTo(36)
-            $0.height.equalTo(10)
-            $0.top.equalTo(libraryCollectionView.snp.top).inset(327)
-            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(52)
-        }
-        libraryItem2.snp.makeConstraints {
-            $0.width.height.equalTo(36)
-            $0.top.equalTo(libraryCollectionView.snp.top).inset(301)
-            $0.trailing.equalTo(libraryCollectionView.snp.trailing).inset(8)
         }
         bottomSheet.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -291,11 +307,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
          return UIEdgeInsets(top: 0, left: 73, bottom: 0, right: 0)
      }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20
-//    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }

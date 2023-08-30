@@ -48,7 +48,6 @@ class EmotionViewController: UIViewController {
             self.dismiss(animated: true)
             self.delegate?.emotionViewCancel()
         } else {
-            self.showToast(message: "감정을 선택해주세요")
             self.dismiss(animated: true)
             self.delegate?.showCompletedModal()
         }
