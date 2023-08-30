@@ -199,6 +199,7 @@
 		5844457F2A9E0086004433D1 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844457E2A9E0086004433D1 /* CacheManager.swift */; };
 		584445812A9E00B8004433D1 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584445802A9E00B8004433D1 /* UIImageView+.swift */; };
 		585865F12A9A17EE0004A276 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */; };
+		588B45F52A9E507500B0ADF1 /* MyPageSettingElementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */; };
 		58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */; };
 		58A6AD422A9DCA1400BCC2AC /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */; };
 		58A6AD432A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */; };
@@ -443,6 +444,7 @@
 		5844457E2A9E0086004433D1 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		584445802A9E00B8004433D1 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingElementsModel.swift; sourceTree = "<group>"; };
 		58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageBoxView.swift; sourceTree = "<group>"; };
 		58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMainIconCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1553,6 +1555,7 @@
 			isa = PBXGroup;
 			children = (
 				58F2E7622A95E36700F3667A /* MyPageDTO.swift */,
+				588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -1891,6 +1894,7 @@
 				3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */,
 				3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */,
 				3AF97FC02A1916B4008FB590 /* AnswerRecordDTO.swift in Sources */,
+				588B45F52A9E507500B0ADF1 /* MyPageSettingElementsModel.swift in Sources */,
 				3A26202629D05B770061F9D8 /* SignUpViewController.swift in Sources */,
 				3A8667CD2A5319C900C6BE96 /* CardListCollectionViewController.swift in Sources */,
 				3ACCBAB429E94F8A0082C32C /* UIViewController+.swift in Sources */,
