@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Gz5-lH-4QR" secondAttribute="bottom" constant="14" id="prU-u4-XEP"/>
                                 </constraints>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4SJ-68-6xM" customClass="GradientProgressBar" customModule="GradientProgress">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4SJ-68-6xM" customClass="GradientProgressBar" customModule="tellingMe" customModuleProvider="target">
                                 <rect key="frame" x="25" y="116" width="325" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="wQs-nV-aOs"/>
