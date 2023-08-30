@@ -9,7 +9,9 @@ import Foundation
 
 extension HomeViewController {
     func getQuestion() {
-        guard let date = viewModel.questionDate else {
+        // 함수가 호출될 때마다, 새롭게 Date 인스턴스를 만듭니다.
+        let newDateString = Date().getQuestionDate()
+        guard let date = newDateString else {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
         }
