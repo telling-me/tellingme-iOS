@@ -20,10 +20,6 @@ class MainTabBarController: UITabBarController {
         // Storyboard 에서만 세팅되어 있는 걸 여기서 한번 더 ensure 하기 위해 선언
         tabBar.backgroundColor = .Side100
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
 
     func showPushNotification() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
