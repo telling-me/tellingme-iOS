@@ -28,12 +28,11 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout, UICo
                 var frame = attributes.frame
                 if let cellAttrs = super.layoutAttributesForItem(at: attributes.indexPath) {
                     // 헤더와 셀들을 같은 수평에 배치
-                    print(frame, cellAttrs.frame)
+
                     frame.origin.y = cellAttrs.frame.origin.y
                     frame.size.width = 33
                     frame.size.height = 40
                     attributes.frame = frame
-                    print(frame, cellAttrs.frame)
                 }
             }
         }
