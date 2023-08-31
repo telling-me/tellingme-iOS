@@ -33,8 +33,8 @@ public final class LibraryViewModel: LibraryViewModelType, LibraryViewModelInput
     public let dates: [Int: [Int]] = [
         1: Array(1...31), 2: Array(1...28), 3: Array(1...31),
         4: Array(1...30), 5: Array(1...31), 6: Array(1...30),
-        7: Array(1...31), 8: Array(1...30), 9: Array(1...31),
-        10: Array(1...30), 11: Array(1...31), 12: Array(1...30)
+        7: Array(1...31), 8: Array(1...31), 9: Array(1...30),
+        10: Array(1...31), 11: Array(1...30), 12: Array(1...31)
     ]
     private let yearArray: [Int] = Array(2023...2073)
     private let monthArray: [Int] = Array(1...12)
