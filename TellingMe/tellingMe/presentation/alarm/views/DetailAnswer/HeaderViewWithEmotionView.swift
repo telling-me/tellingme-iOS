@@ -92,7 +92,6 @@ extension HeaderViewWithEmotionView {
         backButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(21)
             $0.top.equalToSuperview().inset(20)
-            // 터치영역 맞음?
             $0.size.equalTo(24)
         }
         
