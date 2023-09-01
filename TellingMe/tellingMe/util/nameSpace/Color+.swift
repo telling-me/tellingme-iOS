@@ -138,19 +138,19 @@ extension UIColor {
         return UIColor(hex: "#F9F2DF")
     }
     static var Error100: UIColor {
-        return UIColor(hex: "#FFFDFA")
+        return UIColor(hex: "#FFF5F4")
     }
     static var Error200: UIColor {
-        return UIColor(hex: "#F9F7F2")
+        return UIColor(hex: "#FFDCDA")
     }
     static var Error300: UIColor {
-        return UIColor(hex: "#E6E4E2")
+        return UIColor(hex: "#FF7A72")
     }
     static var Error400: UIColor {
-        return UIColor(hex: "#СССАС8")
+        return UIColor(hex: "#FF574c")
     }
     static var Error500: UIColor {
-        return UIColor(hex: "#807F7D")
+        return UIColor(hex: "#FF3838")
     }
 }
 
