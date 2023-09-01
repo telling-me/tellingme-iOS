@@ -36,7 +36,7 @@ struct AlarmNotificationResponse: Codable {
     let link: String?
     let isInternal: Bool
     let answerId: Int?
-    let date: String
+    let date: [Int]?
 }
 
 /**
@@ -53,4 +53,29 @@ struct AlarmDetailAnswerModel: Codable {
  */
 struct AlarmSummaryResponse: Codable {
     let status: Bool
+}
+
+/**
+ 알림에서 개별 알림을 누르면 넘어가는 상세 답변창의 모델입니다.
+ */
+struct AnswerForAlarmModel {
+    let emotion: Int
+    let question: String
+    let subQuestion: String
+    let publshedDate: String
+}
+
+struct ContentForAlarmModel {
+    let contentText: String
+    let likeCount: Int
+}
+
+/**
+ AnswerForAlarmModel 와 ContentForAlarmModel 를 합친 모델입니다.
+ */
+struct DetailAnswerForEachNotceModel {
+    let withContent: ContentForAlarmModel
+    let withQuestion: AnswerForAlarmModel
+    
+    static let defaultValue = DetailAnswerForEachNotceModel(withContent: .init(contentText: "", likeCount: 0), withQuestion: .init(emotion: 0, question: "", subQuestion: "", publshedDate: ""))
 }
