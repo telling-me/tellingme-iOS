@@ -17,6 +17,7 @@ enum AlarmAPITarget {
     case postAllAlarmAsRead
     case postSingleAlarmAsRead(AlarmNotificationIdRequest)
     case deleteSingleAlarm(AlarmNotificationIdRequest)
+    case fetchQuestionsWithDate(AlarmFetchDataWithDateRequest)
 }
 
 extension AlarmAPITarget: TargetType {
@@ -32,12 +33,14 @@ extension AlarmAPITarget: TargetType {
             return "api/notice/read/\(noticeId.noticeId)"
         case .deleteSingleAlarm(let noticeId):
             return "api/notice/\(noticeId.noticeId)"
+        case .fetchQuestionsWithDate:
+            return "api/question"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAllAlarmNotice, .getAlarmSummary:
+        case .getAllAlarmNotice, .getAlarmSummary, .fetchQuestionsWithDate:
             return .get
         case .postAllAlarmAsRead, .postSingleAlarmAsRead:
             return .post
@@ -50,6 +53,8 @@ extension AlarmAPITarget: TargetType {
         switch self {
         case .getAllAlarmNotice, .getAlarmSummary, .postAllAlarmAsRead, .postSingleAlarmAsRead, .deleteSingleAlarm:
             return .requestPlain
+        case .fetchQuestionsWithDate(let madeDate):
+            return .requestParameters(parameters: ["date": madeDate.date], encoding: URLEncoding.queryString)
         }
     }
     
@@ -78,6 +83,29 @@ struct AlarmNotificationAPI: Networkable {
         } catch {
             print("Alarm Error 01")
             return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    /// Parameter 의 date 의 형식은 "2023-05-12" 입니다.
+    static func getQuestionForNotice(publishedDate: String) -> Observable<AlarmDetailAnswerModel> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .fetchQuestionsWithDate(.init(date: publishedDate)))
+        } catch {
+            print("Alarm Error 01-1")
+            return Observable.error(APIError.tokenNotFound)
+        }
+    }
+    
+    static func getQuestionForNotice(publishedDate: String, completion: @escaping (Result<AlarmDetailAnswerModel?, APIError>) -> Void) {
+        do {
+            try makeAuthorizedProvider().request(.fetchQuestionsWithDate(.init(date: publishedDate)), dtoType: AlarmDetailAnswerModel.self, completion: completion)
+        } catch APIError.tokenNotFound {
+            completion(.failure(APIError.tokenNotFound))
+        } catch APIError.errorData(let error) {
+            completion(.failure(APIError.errorData(error)))
+        } catch {
+            completion(.failure(APIError.other(error)))
         }
     }
     
