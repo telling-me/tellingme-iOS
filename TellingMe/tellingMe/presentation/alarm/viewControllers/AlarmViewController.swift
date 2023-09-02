@@ -11,6 +11,10 @@ import RxCocoa
 import RxMoya
 import RxSwift
 
+protocol AlarmReadAllTappedProtocol: AnyObject {
+    func readAllTapped()
+}
+
 final class AlarmViewController: UIViewController {
 
     private let navigationBarView = AlarmNavigationBarView()
@@ -20,6 +24,8 @@ final class AlarmViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private let viewModel = AlarmNoticeViewModel()
     private lazy var isNoticeAllRead: BehaviorRelay<Bool> = viewModel.outputs.isAlarmAllRead
+    
+    weak var delegate: AlarmReadAllTappedProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +62,7 @@ extension AlarmViewController {
                 self?.viewModel.inputs.readAllNotice()
                 self?.alarmSectionView.isAllNoticeRead(true)
                 self?.alarmNoticeTableView.reloadData()
+                self?.delegate?.readAllTapped()
             }
             .disposed(by: disposeBag)
         

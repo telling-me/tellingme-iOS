@@ -136,7 +136,11 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: HeaderViewDelegate {
+extension HomeViewController: HeaderViewDelegate, AlarmReadAllTappedProtocol {
+    func readAllTapped() {
+        self.headerView.alarmNoticeButton.setImage(UIImage(named: "NoticeAlarm"), for: .normal)
+    }
+    
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
         let navigationNewController = UINavigationController(rootViewController: vc)
@@ -163,6 +167,7 @@ extension HomeViewController: HeaderViewDelegate {
                 print("❎ New Notices doesn't exist.")
             }
         }
+        
     }
     
     func bindViewModel() {
