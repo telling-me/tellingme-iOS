@@ -27,6 +27,16 @@ final class AlarmViewController: UIViewController {
         setStyles()
         setLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     deinit {
         print("AlarmView Dismissed.")
@@ -45,6 +55,7 @@ extension AlarmViewController {
             .bind { [weak self] in
                 self?.viewModel.inputs.readAllNotice()
                 self?.alarmSectionView.isAllNoticeRead(true)
+                self?.alarmNoticeTableView.reloadData()
             }
             .disposed(by: disposeBag)
         
@@ -52,6 +63,8 @@ extension AlarmViewController {
             .bind(to: alarmNoticeTableView.rx.items(cellIdentifier: "noticeTableView", cellType: AlarmTableViewCell.self)) {
                 index, data, cell in
                 cell.configrue(noticeData: data)
+                print(cell.getDateString())
+
                 cell.selectionStyle = .none
             }
             .disposed(by: disposeBag)
@@ -64,9 +77,10 @@ extension AlarmViewController {
                 let answerId = cell.getAnswerId()
                 let link: String? = cell.getLinkString()
                 let noticeId = cell.getNoticeId()
+                let datePublished = cell.getDateString()
                 
                 self?.viewModel.inputs.readNotice(idOf: noticeId)
-                
+                                
                 if hasLinkToSafari != false {
                     self?.viewModel.inputs.openSafariWithUrl(url: link)
                 }
@@ -74,13 +88,13 @@ extension AlarmViewController {
                 if let answerId = answerId {
                     if answerId == -1 {
                         print("✅ The AnswerId is -1.")
-                        // 나의 서재로 넘어가기
-                        // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                        let vc = LibraryViewController()
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     } else {
-                        print(item)
-                        
-                        // answerId 를 가지고 answer 화면으로 넘어가기
-                        // self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                        print("✅ The AnswerId is not -1.")
+                        let vc = DetailAnswerViewController()
+                        vc.setData(answerId: answerId, datePublished: datePublished)
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
             })
@@ -93,22 +107,10 @@ extension AlarmViewController {
                     let noticeId = cell.getNoticeId()
                     var newData: [AlarmNotificationResponse] = []
                     guard let dataChanged = try self?.viewModel.outputs.alarmNotices.value() else { return }
-                    print("🔸🔸🔸")
-                    print(dataChanged)
-                    print("🔸🔸🔸")
                     newData = dataChanged
                     newData.remove(at: indexPath.row)
-                    print("🔸🔸🔸🔸🔸")
-                    print(newData)
-                    print("🔸🔸🔸🔸🔸")
                     self?.viewModel.inputs.deleteNotice(idOf: noticeId)
                     self?.viewModel.outputs.alarmNotices.onNext(newData)
-
-//                    DispatchQueue.main.async {
-//                        self?.alarmNoticeTableView.performBatchUpdates({
-//                            self?.alarmNoticeTableView.deleteRows(at: [indexPath], with: .top)
-//                        },completion: nil)
-//                    }
                 } catch let error {
                     print(error)
                 }
@@ -170,4 +172,3 @@ extension AlarmViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
 }
-

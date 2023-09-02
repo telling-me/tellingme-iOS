@@ -67,4 +67,13 @@ extension Date {
         }
         return nil
     }
+    
+    func getDashString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        
+        return dateFormatter.string(from: self)
+    }
 }

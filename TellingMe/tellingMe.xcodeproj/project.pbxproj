@@ -212,6 +212,7 @@
 		583B80A62A9674E6009399D1 /* AlarmNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A52A9674E6009399D1 /* AlarmNavigationBarView.swift */; };
 		583B80A82A96783E009399D1 /* AlarmReadAllSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */; };
 		585865F12A9A17EE0004A276 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */; };
+		5876D10B2AA17CD0009BF9DA /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */; };
 		58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */; };
 		58A6AD422A9DCA1400BCC2AC /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */; };
 		58A6AD432A9DCA1400BCC2AC /* MyPageMainIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconView.swift */; };
@@ -219,6 +220,9 @@
 		58A6AD452A9DCA1400BCC2AC /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */; };
 		58A6AD462A9DCA1400BCC2AC /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */; };
 		58A6AD472A9DCA1400BCC2AC /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */; };
+		58AFC84C2AA1F0BF0045B876 /* DetailAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */; };
+		58AFC84E2AA20E060045B876 /* HeaderViewWithEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */; };
+		58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */; };
 		58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7512A95C1D500F3667A /* SnapKit */; };
 		58F2E7552A95C1E900F3667A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7542A95C1E900F3667A /* Then */; };
 		58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7592A95C62200F3667A /* AlarmAPI.swift */; };
@@ -467,6 +471,7 @@
 		583B80A52A9674E6009399D1 /* AlarmNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmNavigationBarView.swift; sourceTree = "<group>"; };
 		583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReadAllSectionView.swift; sourceTree = "<group>"; };
 		585865F02A9A17EE0004A276 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageBoxView.swift; sourceTree = "<group>"; };
 		58A6AD382A9DCA1400BCC2AC /* MyPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMainIconView.swift; sourceTree = "<group>"; };
@@ -474,6 +479,9 @@
 		58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
 		58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnswerViewController.swift; sourceTree = "<group>"; };
+		58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewWithEmotionView.swift; sourceTree = "<group>"; };
+		58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWithTextView.swift; sourceTree = "<group>"; };
 		58F2E7592A95C62200F3667A /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		58F2E75B2A95C63500F3667A /* AlarmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDTO.swift; sourceTree = "<group>"; };
 		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
@@ -1583,6 +1591,15 @@
 			path = viewControllers;
 			sourceTree = "<group>";
 		};
+		58AFC84F2AA21D980045B876 /* DetailAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */,
+				58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */,
+			);
+			path = DetailAnswer;
+			sourceTree = "<group>";
+		};
 		58F2E7562A95C5FE00F3667A /* alarm */ = {
 			isa = PBXGroup;
 			children = (
@@ -1655,6 +1672,7 @@
 			isa = PBXGroup;
 			children = (
 				58F2E7A42A96071200F3667A /* AlarmViewController.swift */,
+				58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1662,6 +1680,7 @@
 		58F2E7A12A9606C100F3667A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				58AFC84F2AA21D980045B876 /* DetailAnswer */,
 				58F2E7A82A96120600F3667A /* AlarmTableViewCell.swift */,
 				583B80A52A9674E6009399D1 /* AlarmNavigationBarView.swift */,
 				583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */,
@@ -1675,6 +1694,7 @@
 				58F2E7AF2A961A7500F3667A /* CustomFont.swift */,
 				58F2E7B12A961BFF00F3667A /* Color+.swift */,
 				3AB33EEC2A9A517F00470CD5 /* Emotions.swift */,
+				5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */,
 			);
 			path = nameSpace;
 			sourceTree = "<group>";
@@ -1847,12 +1867,14 @@
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */,
+				58AFC84C2AA1F0BF0045B876 /* DetailAnswerViewController.swift in Sources */,
 				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
 				3AF338242A38B24E00F9733B /* UserDefaults+.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
 				3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */,
 				3A1E403D2A1A650600F1F109 /* AnswerViewController+.swift in Sources */,
 				3A70A64A2A272CD2009D8D76 /* NotificationDTO.swift in Sources */,
+				58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */,
 				3AA4B63B2A9F045300824313 /* LibraryInfoCollectionViewCell.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */,
@@ -1885,6 +1907,7 @@
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
 				3A5076F329C8335900C7A5E9 /* OauthDTO.swift in Sources */,
 				3ABB84592A7BD37300540269 /* WithdrawlDTO.swift in Sources */,
+				5876D10B2AA17CD0009BF9DA /* StringLiteral.swift in Sources */,
 				3A3739B72A1243B700739543 /* ChipCollectionViewCell.swift in Sources */,
 				3A50EEFF29CCB2C400A27504 /* GetOptionViewController.swift in Sources */,
 				3A3739BB2A125F3B00739543 /* ChipJobViewController.swift in Sources */,
@@ -1903,6 +1926,7 @@
 				3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */,
 				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */,
+				58AFC84E2AA20E060045B876 /* HeaderViewWithEmotionView.swift in Sources */,
 				3ABB09F02A1A755100C6596B /* AnswerCompletedViewController.swift in Sources */,
 				3A7121392A03902800A02054 /* AnswerListViewModel.swift in Sources */,
 				3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */,

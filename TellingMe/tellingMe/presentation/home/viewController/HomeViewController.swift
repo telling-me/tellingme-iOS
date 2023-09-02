@@ -139,8 +139,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HeaderViewDelegate {
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        let navigationNewController = UINavigationController(rootViewController: vc)
+        navigationNewController.modalPresentationStyle = .overFullScreen
+        self.present(navigationNewController, animated: true)
     }
     
     func pushSetting(_ headerView: MainHeaderView) {

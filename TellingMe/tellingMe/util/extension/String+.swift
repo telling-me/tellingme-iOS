@@ -37,4 +37,22 @@ extension String {
         let result = year + "." + month + "." + day
         return result
     }
+    
+    /**
+     "2023-08-01" 을 [2023, 08, 01] 형식으로 바꿉니다.
+     */
+    func stringDateToDividedArray() -> [Int] {
+        var result: [Int] = []
+        let year = String(self[self.startIndex..<self.index(self.startIndex, offsetBy: 4)])
+        let month = String(self[self.index(self.startIndex, offsetBy: 5)..<self.index(self.startIndex, offsetBy: 7)])
+        let day = String(self[self.index(self.startIndex, offsetBy: 8)..<self.index(self.startIndex, offsetBy: 10)])
+        guard let yearInt = Int(year), let monthInt = Int(month), let dayInt = Int(day) else {
+            return [2023, 01, 01]
+        }
+        
+        result.append(yearInt)
+        result.append(monthInt)
+        result.append(dayInt)
+        return result
+    }
 }
