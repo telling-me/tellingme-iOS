@@ -8,7 +8,7 @@
 import UIKit
 
 class GetPurposeViewController: UIViewController {
-    let purposeList: [TeritaryBothData] = [TeritaryBothData(imgName: "Pen_Gradient", title: "학업/진로"), TeritaryBothData(imgName: "Handshake_Gradient", title: "대인 관계"), TeritaryBothData(imgName: "Values_Gradient", title: "성격/가치관"), TeritaryBothData(imgName: "Magnet_Gradient", title: "행동/습관"), TeritaryBothData(imgName: "Health_Gradient", title: "건강"), TeritaryBothData(imgName: "Heart_Gradient", title: "기타")]
+    let purposeList: [TeritaryBothData] = [TeritaryBothData(imgName: "Pen", title: "학업/진로"), TeritaryBothData(imgName: "Handshake", title: "대인 관계"), TeritaryBothData(imgName: "Values", title: "성격/가치관"), TeritaryBothData(imgName: "Magnet", title: "행동/습관"), TeritaryBothData(imgName: "Health", title: "건강"), TeritaryBothData(imgName: "Etc", title: "기타")]
     var selectedItems: [Int] = []
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: SecondaryIconButton!
@@ -27,7 +27,7 @@ class GetPurposeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
         // MainTabBar의 두 번째 탭으로 이동합니다.
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         
         // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
         guard let window = UIApplication.shared.windows.first else {
@@ -40,7 +40,7 @@ class GetPurposeViewController: UIViewController {
     }
     
     @IBAction func nextAction(_ sender: UIButton) {
-        SignUpData.shared.purpose = selectedItems.intArraytoString()
+        SignUpData.shared.purpose = selectedItems.sorted().intArraytoString()
         sendSignUpData()
     }
     

@@ -27,7 +27,7 @@ extension DividerFooterView {
     func setLayout() {
         addSubview(view)
         view.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(57)
+            $0.leading.equalToSuperview().inset(67)
             $0.top.trailing.equalToSuperview()
             $0.height.equalTo(8)
         }

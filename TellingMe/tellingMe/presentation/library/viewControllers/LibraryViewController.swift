@@ -125,7 +125,6 @@ extension LibraryViewController {
          viewModel.outputs.answerLists
             .map { list -> [SectionModel] in
                 let groupedItems = list.chunked(into: 7)
-                
                 var sections = groupedItems.map { itemsChunk in
                     SectionModel(model: "header", items: itemsChunk)
                 }
@@ -260,7 +259,7 @@ extension LibraryViewController {
         libraryCollectionView.snp.makeConstraints {
             $0.top.equalTo(descriptionBottomLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview().inset(36)
-            $0.trailing.equalToSuperview().inset(96)
+            $0.trailing.equalToSuperview().inset(86)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         libraryItem1.snp.makeConstraints {
@@ -305,7 +304,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-         return UIEdgeInsets(top: 0, left: 73, bottom: 0, right: 0)
+         return UIEdgeInsets(top: 0, left: 87, bottom: 0, right: 0)
      }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

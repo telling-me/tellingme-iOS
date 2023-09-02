@@ -83,6 +83,9 @@ class CommunicationListViewModel {
 
         CommunicationAPI.getCommunicationList(date: date, page: CommunicationData.shared.currentPage, size: size, sort: CommunicationData.shared.currentSortValue)
             .subscribe(onNext: { [weak self] response in
+                if response.last {
+                    self?.isLast = true
+                }
                 CommunicationData.shared.setCommunicatonList(index: self?.index ?? 0, contentList: response.content)
                 self?.communciationListSubject.onNext(response)
             }, onError: { [weak self] error in
@@ -108,7 +111,6 @@ class CommunicationListViewModel {
         CommunicationAPI.getCommunicationList(date: date, page: CommunicationData.shared.currentPage, size: size, sort: CommunicationData.shared.currentSortValue)
             .subscribe(onNext: { [weak self] response in
                 CommunicationData.shared.setCommunicatonList(index: self?.index ?? 0, contentList: response.content)
-//                self?.communicationList = / response.content
                 if response.last {
                     self?.isLast = true
                 }

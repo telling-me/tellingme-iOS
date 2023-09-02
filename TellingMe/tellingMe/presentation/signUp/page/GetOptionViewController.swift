@@ -63,7 +63,6 @@ class GetOptionViewController: UIViewController {
            let year = viewModel.year {
             SignUpData.shared.gender = gender
             SignUpData.shared.birthDate = year
-            print(year)
         }
     }
 
