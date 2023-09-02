@@ -21,9 +21,9 @@ enum Emotions: String {
         case .happy:
             return "행복해요"
         case .proud:
-            return "자랑스러워요"
+            return "뿌듯해요"
         case .meh:
-            return "별로에요"
+            return "그저 그래요"
         case .tired:
             return "피곤해요"
         case .sad:
@@ -38,9 +38,9 @@ enum Emotions: String {
         case .happy:
             return "행복해요"
         case .proud:
-            return "자랑스러워요"
+            return "뿌듯해요"
         case .meh:
-            return "별로에요"
+            return "그저 그래요"
         case .tired:
             return "피곤해요"
         case .sad:

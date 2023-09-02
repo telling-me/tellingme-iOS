@@ -13,7 +13,7 @@ extension Array {
         for i in 0..<self.count {
             string += "\(self[i])"
             if i != self.count - 1 {
-                string += ", "
+                string += ","
             }
         }
         string += "]"

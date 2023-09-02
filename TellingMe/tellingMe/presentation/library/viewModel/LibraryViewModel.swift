@@ -30,12 +30,7 @@ protocol LibraryViewModelType {
 
 public final class LibraryViewModel: LibraryViewModelType, LibraryViewModelInputs, LibraryViewModelOutputs {
 
-    public let dates: [Int: [Int]] = [
-        1: Array(1...31), 2: Array(1...28), 3: Array(1...31),
-        4: Array(1...30), 5: Array(1...31), 6: Array(1...30),
-        7: Array(1...31), 8: Array(1...31), 9: Array(1...30),
-        10: Array(1...31), 11: Array(1...30), 12: Array(1...31)
-    ]
+    public let dates: [Int] = Array(1...31)
     private let yearArray: [Int] = Array(2023...2073)
     private let monthArray: [Int] = Array(1...12)
     public lazy var years: Observable<[Int]> = Observable<[Int]>.just(yearArray)
@@ -54,9 +49,9 @@ public final class LibraryViewModel: LibraryViewModelType, LibraryViewModelInput
     var inputs: LibraryViewModelInputs { return self }
     var outputs: LibraryViewModelOutputs { return self }
     
-    init() {
-        fetchAnswerList()
-    }
+//    init() {
+//        fetchAnswerList()
+//    }
     
     public func refresh() {}
     
@@ -85,9 +80,9 @@ extension LibraryViewModel {
     }
     
     func remakeData(list: [AnswerListResponse]) -> [LibraryAnswerList] {
-        let existDates = list.map { $0.date[2] }
+        let existDates = list.map { $0.date[2] }.sorted()
         var result: [LibraryAnswerList] = []
-        for date in dates[selectedMonth]! {
+        for date in dates {
             var temp: LibraryAnswerList = LibraryAnswerList()
             if let index = existDates.firstIndex(of: date) {
                 temp.isEmpty = false
@@ -98,6 +93,11 @@ extension LibraryViewModel {
             }
             result.append(temp)
         }
+        
+        if list.isEmpty {
+            return result
+        }
+
         for i in 0..<4 {
             for j in [6, 5, 4, 3, 2, 1, 0] {
                 let index = i * 7 + j
@@ -107,8 +107,13 @@ extension LibraryViewModel {
                     }
                     result[index].isLast = false
                 } else {
-                    if result[index-1].isEmpty {
+                    if (index % 7) == 0 {
                         result[index].isLast = false
+                        continue
+                    } else {
+                        if result[index-1].isEmpty {
+                            result[index].isLast = false
+                        }
                     }
                     break
                 }

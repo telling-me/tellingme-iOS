@@ -54,7 +54,7 @@ extension SplashViewController {
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
         
         // MainTabBar의 두 번째 탭으로 이동합니다.
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         
         // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
         guard let window = UIApplication.shared.windows.first else {
