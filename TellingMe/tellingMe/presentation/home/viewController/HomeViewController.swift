@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         setView()
         checkNofitication()
         bindViewModel()
+        setNotificationCenterForBecomeActive()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +63,10 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     func setView() {
@@ -137,10 +142,11 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HeaderViewDelegate {
+    
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
         let navigationNewController = UINavigationController(rootViewController: vc)
-        navigationNewController.modalPresentationStyle = .overFullScreen
+        navigationNewController.modalPresentationStyle = .fullScreen
         self.present(navigationNewController, animated: true)
     }
     
@@ -163,6 +169,7 @@ extension HomeViewController: HeaderViewDelegate {
                 print("❎ New Notices doesn't exist.")
             }
         }
+        
     }
     
     func bindViewModel() {
@@ -172,5 +179,32 @@ extension HomeViewController: HeaderViewDelegate {
                 self?.showPushNotification()
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    private func setNotificationCenterForBecomeActive() {
+        print("NotificationCenter Added for background check.")
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshNetwork), name: Notification.Name("RefreshHomeView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAnimation), name: Notification.Name("RefreshAnimation"), object: nil)
+    }
+    
+    private func restartAnimation() {
+        animation()
+    }
+}
+
+extension HomeViewController {
+    @objc
+    private func refreshNetwork() {
+        print("Back From Background, refreshed the question.")
+        getQuestion()
+    }
+    
+    @objc
+    private func refreshAnimation() {
+        print("Back From Background, refreshed the animation.")
+        /// This doesn't work.
+        restartAnimation()
     }
 }

@@ -15,10 +15,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.delegate = self
-        tabBar.layer.cornerRadius = 32
-        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        // Storyboard 에서만 세팅되어 있는 걸 여기서 한번 더 ensure 하기 위해 선언
-        tabBar.backgroundColor = .Side100
+        setTabBarAppearance()
     }
 
     func showPushNotification() {
@@ -26,6 +23,19 @@ class MainTabBarController: UITabBarController {
         guard let vc = storyboard.instantiateViewController(identifier: "pushNotificationModal") as? PushNotificationModalViewController else { return }
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
+    }
+    
+    private func setTabBarAppearance() {
+        let appearance = UITabBarAppearance()
+        tabBar.layer.masksToBounds = true
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .Side100
+        appearance.shadowImage = nil
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        
+        tabBar.layer.cornerRadius = 32
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
 
