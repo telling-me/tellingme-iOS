@@ -11,22 +11,17 @@ import RxCocoa
 import RxMoya
 import RxSwift
 
-protocol AlarmReadAllTappedProtocol: AnyObject {
-    func readAllTapped()
-}
-
 final class AlarmViewController: UIViewController {
 
     private let navigationBarView = AlarmNavigationBarView()
     private let alarmSectionView = AlarmReadAllSectionView()
     private let alarmNoticeTableView = UITableView(frame: .zero)
+    private let indicatorView = UIActivityIndicatorView(style: .large)
     
     private var disposeBag = DisposeBag()
     private let viewModel = AlarmNoticeViewModel()
     private lazy var isNoticeAllRead: BehaviorRelay<Bool> = viewModel.outputs.isAlarmAllRead
-    
-    weak var delegate: AlarmReadAllTappedProtocol?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -61,8 +56,12 @@ extension AlarmViewController {
             .bind { [weak self] in
                 self?.viewModel.inputs.readAllNotice()
                 self?.alarmSectionView.isAllNoticeRead(true)
-                self?.alarmNoticeTableView.reloadData()
-                self?.delegate?.readAllTapped()
+                self?.loadingStarts()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                    self?.viewModel.fetchNoticeData()
+                    self?.loadingStops()
+                }
             }
             .disposed(by: disposeBag)
         
@@ -70,8 +69,6 @@ extension AlarmViewController {
             .bind(to: alarmNoticeTableView.rx.items(cellIdentifier: "noticeTableView", cellType: AlarmTableViewCell.self)) {
                 index, data, cell in
                 cell.configrue(noticeData: data)
-                print(cell.getDateString())
-
                 cell.selectionStyle = .none
             }
             .disposed(by: disposeBag)
@@ -149,6 +146,10 @@ extension AlarmViewController {
         alarmSectionView.do {
             $0.isAllNoticeRead(false)
         }
+        
+        indicatorView.do {
+            $0.color = .Logo
+        }
     }
 
     private func setLayout() {
@@ -177,5 +178,22 @@ extension AlarmViewController {
 extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension AlarmViewController {
+    private func loadingStarts() {
+        view.addSubview(indicatorView)
+        
+        indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        indicatorView.startAnimating()
+    }
+    
+    private func loadingStops() {
+        indicatorView.stopAnimating()
+        indicatorView.removeFromSuperview()
     }
 }
