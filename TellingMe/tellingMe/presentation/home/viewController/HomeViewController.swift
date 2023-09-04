@@ -144,7 +144,7 @@ extension HomeViewController: HeaderViewDelegate, AlarmReadAllTappedProtocol {
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
         let navigationNewController = UINavigationController(rootViewController: vc)
-        navigationNewController.modalPresentationStyle = .overFullScreen
+        navigationNewController.modalPresentationStyle = .fullScreen
         self.present(navigationNewController, animated: true)
     }
     
