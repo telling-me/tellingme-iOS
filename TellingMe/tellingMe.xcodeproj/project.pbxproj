@@ -223,6 +223,7 @@
 		58AFC84C2AA1F0BF0045B876 /* DetailAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */; };
 		58AFC84E2AA20E060045B876 /* HeaderViewWithEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */; };
 		58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */; };
+		58B735192AA4A8C5007485F7 /* MetaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B735182AA4A8C5007485F7 /* MetaManager.swift */; };
 		58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7512A95C1D500F3667A /* SnapKit */; };
 		58F2E7552A95C1E900F3667A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7542A95C1E900F3667A /* Then */; };
 		58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7592A95C62200F3667A /* AlarmAPI.swift */; };
@@ -482,6 +483,7 @@
 		58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnswerViewController.swift; sourceTree = "<group>"; };
 		58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewWithEmotionView.swift; sourceTree = "<group>"; };
 		58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWithTextView.swift; sourceTree = "<group>"; };
+		58B735182AA4A8C5007485F7 /* MetaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaManager.swift; sourceTree = "<group>"; };
 		58F2E7592A95C62200F3667A /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		58F2E75B2A95C63500F3667A /* AlarmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDTO.swift; sourceTree = "<group>"; };
 		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
@@ -989,6 +991,7 @@
 			children = (
 				3A89B3C82A78E6AE002DFBCD /* Emotion.swift */,
 				3AB2131F2A8922DD0035EA56 /* ToastMessage.swift */,
+				58B735182AA4A8C5007485F7 /* MetaManager.swift */,
 			);
 			path = globalData;
 			sourceTree = "<group>";
@@ -1852,6 +1855,7 @@
 				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
 				3A7121472A03E2C400A02054 /* HomeViewModel.swift in Sources */,
 				3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */,
+				58B735192AA4A8C5007485F7 /* MetaManager.swift in Sources */,
 				3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				58A6AD442A9DCA1400BCC2AC /* MyPageTableViewCell.swift in Sources */,

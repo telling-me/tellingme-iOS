@@ -7,10 +7,15 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class CardListCollectionViewCell: UICollectionViewCell {
     static let id = "cardListCollectionViewCell"
     let emotions = ["Happy", "Proud", "Meh", "Tired", "Sad", "Angry"]
     var paragraphStyle = NSMutableParagraphStyle()
+    private let instaManager = MetaManager()
+    
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +58,13 @@ class CardListCollectionViewCell: UICollectionViewCell {
     let dateLabel: UILabel = {
         let label = CaptionLabelRegular()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .Side500
+        label.font = .fontNanum(.C1_Regular)
         return label
     }()
+    
+    private let shareIconButton = UIButton()
+    private let tellingMeSignatureImageView = UIImageView()
 
     func setCell(data: AnswerListResponse) {
         imgView.image = UIImage(named: self.emotions[data.emotion - 1])
@@ -102,10 +112,71 @@ class CardListCollectionViewCell: UICollectionViewCell {
         answerTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         answerTextView.heightAnchor.constraint(equalToConstant: 154).isActive = true
 
-        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -72).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
         contentView.layer.cornerRadius = 24
+        
+        setStyles()
+        setLayout()
+    }
+}
+
+extension CardListCollectionViewCell {
+    
+    private func setStyles() {
+        shareIconButton.do {
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
+            $0.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
+            $0.tintColor = .Gray3
+            $0.contentMode = .scaleAspectFit
+            $0.addTarget(self, action: #selector(tapToShare), for: .touchUpInside)
+        }
+        
+        tellingMeSignatureImageView.do {
+            $0.image = UIImage(named: "Logo")?.withTintColor(.Gray3, renderingMode: .alwaysTemplate)
+            $0.contentMode = .scaleAspectFit
+        }
+    }
+    
+    private func setLayout() {
+        self.addSubview(shareIconButton)
+        
+        shareIconButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(33)
+            $0.leading.equalToSuperview().inset(30)
+        }
+    }
+}
+
+extension CardListCollectionViewCell {
+    @objc
+    private func tapToShare() {
+        removeImageFromTheSuperViewForSharing()
+        instaManager.shareInstagram(sharingView: self)
+        reappearImageForConfiguring()
+    }
+}
+
+extension CardListCollectionViewCell {
+    private func removeImageFromTheSuperViewForSharing() {
+        self.shareIconButton.removeFromSuperview()
+        self.addSubview(tellingMeSignatureImageView)
+        
+        tellingMeSignatureImageView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(33)
+            $0.leading.equalToSuperview().inset(30)
+        }
+    }
+    
+    private func reappearImageForConfiguring() {
+        self.addSubview(shareIconButton)
+        tellingMeSignatureImageView.removeFromSuperview()
+        
+        shareIconButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(33)
+            $0.leading.equalToSuperview().inset(30)
+        }
     }
 }
