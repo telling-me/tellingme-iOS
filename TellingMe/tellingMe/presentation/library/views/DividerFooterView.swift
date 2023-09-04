@@ -29,7 +29,7 @@ extension DividerFooterView {
         view.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(67)
             $0.top.trailing.equalToSuperview()
-            $0.height.equalTo(8)
+            $0.height.equalToSuperview().multipliedBy(0.3)
         }
     }
     

@@ -40,10 +40,31 @@ final class LibraryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.fetchAnswerList()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let collectionViewHeight = libraryCollectionView.frame.height
+        libraryItem1.snp.makeConstraints {
+            let offsetValue = collectionViewHeight * 0.07
+               $0.bottom.equalTo(libraryCollectionView.snp.bottom).offset(-offsetValue)
+           }
+        libraryItem2.snp.makeConstraints {
+            let offsetValue = collectionViewHeight * 0.07
+               $0.bottom.equalTo(libraryCollectionView.snp.bottom).offset(-offsetValue)
+           }
+    }
 
     func toggleBottomSheet() {
         bottomSheet.isHidden.toggle()
+        if bottomSheet.isHidden {
+            bottomSheet.dismissAnimate()
+        } else {
+            bottomSheet.animate()
+        }
         self.tabBarController?.tabBar.isHidden.toggle()
+
+        
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -128,7 +149,6 @@ extension LibraryViewController {
                 var sections = groupedItems.map { itemsChunk in
                     SectionModel(model: "header", items: itemsChunk)
                 }
-                
                 return sections
             }
             .bind(to: libraryCollectionView.rx.items(dataSource: dataSource))
@@ -199,12 +219,14 @@ extension LibraryViewController {
         libraryCollectionView.do {
             $0.delegate = self
             $0.backgroundColor = .Side100
+            $0.isScrollEnabled = false
             $0.register(WeekHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeekHeaderView.id)
             $0.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
             $0.register(DividerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DividerFooterView.id)
         }
         libraryItem1.do {
             $0.image = UIImage(named: "LibraryItem1")
+            $0.contentMode = .bottom
         }
         libraryItem2.do {
             $0.image = UIImage(named: "LibraryItem2")
@@ -257,20 +279,19 @@ extension LibraryViewController {
             $0.top.equalTo(descriptionTopLabel.snp.bottom).offset(8)
         }
         libraryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(descriptionBottomLabel.snp.bottom).offset(28)
+            $0.top.equalTo(descriptionBottomLabel.snp.bottom).offset(36)
             $0.leading.equalToSuperview().inset(36)
             $0.trailing.equalToSuperview().inset(86)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(113)
         }
         libraryItem1.snp.makeConstraints {
-            $0.width.equalTo(36)
-            $0.height.equalTo(10)
-            $0.top.equalTo(libraryCollectionView.snp.top).inset(327)
+            $0.width.equalTo(libraryCollectionView.snp.width).multipliedBy(0.13)
+            $0.height.equalTo(libraryCollectionView.snp.height).multipliedBy(0.03)
             $0.trailing.equalTo(libraryItem2.snp.leading).offset(-8)
         }
         libraryItem2.snp.makeConstraints {
-            $0.size.equalTo(36)
-            $0.top.equalTo(libraryCollectionView.snp.top).inset(301)
+            $0.width.equalTo(libraryCollectionView.snp.width).multipliedBy(0.13)
+            $0.height.equalTo(libraryCollectionView.snp.height).multipliedBy(0.1)
             $0.trailing.equalTo(libraryCollectionView.snp.trailing).offset(-9)
         }
         yearDropdown.snp.makeConstraints {
@@ -291,7 +312,8 @@ extension LibraryViewController {
 
 extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: 18, height: 44)
+        print(collectionView.frame)
+        let cellSize = CGSize(width: collectionView.frame.width * 0.07, height: collectionView.frame.height * 0.12)
         return cellSize
     }
     
@@ -300,11 +322,11 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 28)
+        return CGSize(width: collectionView.frame.width * 0.75, height: collectionView.frame.height * 0.08)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-         return UIEdgeInsets(top: 0, left: 87, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: collectionView.frame.width * 0.32, bottom: 0, right: 0)
      }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

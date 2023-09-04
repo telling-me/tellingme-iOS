@@ -32,14 +32,15 @@ extension WeekHeaderView {
     func setLayout() {
         addSubviews(weekLabel, countLabel)
 
-        weekLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(countLabel.snp.top).offset(2)
+        weekLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
         
-        countLabel.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+        countLabel.snp.makeConstraints {
+            $0.top.equalTo(weekLabel.snp.bottom).offset(2)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.6)
         }
     }
     

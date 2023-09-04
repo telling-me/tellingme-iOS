@@ -30,8 +30,8 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout, UICo
                     // 헤더와 셀들을 같은 수평에 배치
 
                     frame.origin.y = cellAttrs.frame.origin.y
-                    frame.size.width = 33
-                    frame.size.height = 40
+                    frame.size.width = (collectionView?.frame.width ?? 0) * 0.125
+                    frame.size.height = (collectionView?.frame.height ?? 0) * 0.11
                     attributes.frame = frame
                 }
             }
@@ -46,11 +46,11 @@ class HorizontalHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout, UICo
         if indexPath.item > 0 {
             let previousIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
             if let previousAttributes = super.layoutAttributesForItem(at: previousIndexPath) {
-                let x = previousAttributes.frame.origin.x + previousAttributes.frame.size.width + 24
+                let x = previousAttributes.frame.origin.x + previousAttributes.frame.size.width + 31
                 attributes?.frame.origin.x = x
             }
         } else if let headerAttributes = super.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
-            let x = headerAttributes.frame.size.width + 24
+            let x = headerAttributes.frame.size.width + 31
             attributes?.frame.origin.x = x
         }
 
