@@ -12,7 +12,7 @@ import Then
 
 final class AlarmTableViewCell: UITableViewCell {
     
-    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
+    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: "", content: nil, isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
     
     private let titleLabel = UILabel()
     private let subTitleLabel = UILabel()
@@ -83,7 +83,7 @@ extension AlarmTableViewCell {
     }
     
     private func resetProperties() {
-        self.alarmNoticeInformation = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
+        self.alarmNoticeInformation = .init(noticeId: 0, title: "", content: nil, isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
         self.titleLabel.text = nil
         self.titleLabel.textColor = .Gray8
         self.subTitleLabel.text = nil
