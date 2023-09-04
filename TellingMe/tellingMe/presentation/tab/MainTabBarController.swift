@@ -27,10 +27,13 @@ class MainTabBarController: UITabBarController {
     
     private func setTabBarAppearance() {
         let appearance = UITabBarAppearance()
+        tabBar.layer.masksToBounds = true
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .Side100
+        appearance.shadowImage = nil
         tabBar.standardAppearance = appearance
-//        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        
         tabBar.layer.cornerRadius = 32
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
