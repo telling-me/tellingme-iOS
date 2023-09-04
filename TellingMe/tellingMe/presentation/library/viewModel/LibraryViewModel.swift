@@ -80,7 +80,7 @@ extension LibraryViewModel {
     }
     
     func remakeData(list: [AnswerListResponse]) -> [LibraryAnswerList] {
-        let existDates = list.map { $0.date[2] }.sorted()
+        let existDates = list.map { $0.date[2] }
         var result: [LibraryAnswerList] = []
         for date in dates {
             var temp: LibraryAnswerList = LibraryAnswerList()

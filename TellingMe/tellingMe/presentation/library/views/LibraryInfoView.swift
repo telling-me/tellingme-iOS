@@ -32,6 +32,14 @@ class LibraryInfoView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    func animate() {
+        setSheetLayout()
+    }
+    
+    func dismissAnimate() {
+        setLayout()
+    }
 }
 
 extension LibraryInfoView {
@@ -46,15 +54,24 @@ extension LibraryInfoView {
             .disposed(by: disposeBag)
     }
     func setLayout() {
+        sheetView.snp.removeConstraints()
         addSubviews(backgroundView, sheetView)
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         sheetView.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.6)
+            $0.height.equalToSuperview().multipliedBy(0)
         }
         sheetView.addSubviews(titleLabel, descriptionLabel, collectionView, okButton)
+    }
+    
+    func setSheetLayout() {
+        sheetView.snp.removeConstraints()
+        sheetView.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.6)
+        }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(42)
             $0.leading.trailing.equalToSuperview().inset(20)
