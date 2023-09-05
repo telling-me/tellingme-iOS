@@ -14,6 +14,9 @@ import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    private(set) var deviceHeight: CGFloat = 0.0
+    private(set) var deviceWidth: CGFloat = 0.0
+    
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KakaoSDK.initSDK(appKey: Bundle.main.kakaoNativeAppKey)
@@ -24,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         UNUserNotificationCenter.current().delegate = self
         application.registerForRemoteNotifications()
+                
         return true
     }
 
@@ -41,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func setDeviceDimensions(height: CGFloat, width: CGFloat) {
+        self.deviceHeight = height
+        self.deviceWidth = width
+    }
 }
 
 extension AppDelegate {
