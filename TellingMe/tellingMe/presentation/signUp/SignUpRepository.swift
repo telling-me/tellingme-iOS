@@ -40,9 +40,9 @@ extension GetPurposeViewController {
         LoginAPI.signIn(type: type, token: idToken) { result in
             switch result {
             case .success(let response):
-                self.pushHome()
                 KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
                 KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
+                self.pushHome()
             case .failure(let error):
                 switch error {
                 case let .errorData(errorData):

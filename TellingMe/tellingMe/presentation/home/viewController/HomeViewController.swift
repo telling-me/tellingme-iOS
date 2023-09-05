@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
@@ -22,11 +24,15 @@ class HomeViewController: UIViewController {
     @IBOutlet var shadowViews: [UIImageView]!
     @IBOutlet weak var rotateAnimationView: UIImageView!
     @IBOutlet weak var answerCompletedLabel: CaptionLabelRegular!
+    
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
         checkNofitication()
+        bindViewModel()
+        setNotificationCenterForBecomeActive()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +63,10 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     func setView() {
@@ -132,10 +142,12 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HeaderViewDelegate {
+    
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        let navigationNewController = UINavigationController(rootViewController: vc)
+        navigationNewController.modalPresentationStyle = .fullScreen
+        self.present(navigationNewController, animated: true)
     }
     
     func pushSetting(_ headerView: MainHeaderView) {
@@ -157,5 +169,42 @@ extension HomeViewController: HeaderViewDelegate {
                 print("❎ New Notices doesn't exist.")
             }
         }
+        
+    }
+    
+    func bindViewModel() {
+        viewModel.pushNotificationInfoSubject
+            .skip(1)
+            .bind(onNext: { [weak self] _ in
+                self?.showPushNotification()
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    private func setNotificationCenterForBecomeActive() {
+        print("NotificationCenter Added for background check.")
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshNetwork), name: Notification.Name("RefreshHomeView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAnimation), name: Notification.Name("RefreshAnimation"), object: nil)
+    }
+    
+    private func restartAnimation() {
+        animation()
+    }
+}
+
+extension HomeViewController {
+    @objc
+    private func refreshNetwork() {
+        print("Back From Background, refreshed the question.")
+        getQuestion()
+    }
+    
+    @objc
+    private func refreshAnimation() {
+        print("Back From Background, refreshed the animation.")
+        /// This doesn't work.
+        restartAnimation()
     }
 }

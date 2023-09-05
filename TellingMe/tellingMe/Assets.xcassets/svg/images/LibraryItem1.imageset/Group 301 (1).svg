@@ -1,0 +1,39 @@
+<svg width="36" height="10" viewBox="0 0 36 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 301">
+<g id="Rectangle 516">
+<mask id="path-1-inside-1_4038_44112" fill="white">
+<path d="M0 0H36V2H0V0Z"/>
+</mask>
+<path d="M0 0H36V2H0V0Z" fill="#F0F4F6"/>
+<path d="M36 1.5H0V2.5H36V1.5Z" fill="#D7DFE2" mask="url(#path-1-inside-1_4038_44112)"/>
+</g>
+<g id="Rectangle 520">
+<mask id="path-3-inside-2_4038_44112" fill="white">
+<path d="M0 6H36V8H0V6Z"/>
+</mask>
+<path d="M0 6H36V8H0V6Z" fill="#F0F4F6"/>
+<path d="M36 7.5H0V8.5H36V7.5Z" fill="#D7DFE2" mask="url(#path-3-inside-2_4038_44112)"/>
+</g>
+<g id="Rectangle 518">
+<mask id="path-5-inside-3_4038_44112" fill="white">
+<path d="M0 2H36V4H0V2Z"/>
+</mask>
+<path d="M0 2H36V4H0V2Z" fill="#F0F4F6"/>
+<path d="M36 3.5H0V4.5H36V3.5Z" fill="#D7DFE2" mask="url(#path-5-inside-3_4038_44112)"/>
+</g>
+<g id="Rectangle 522">
+<mask id="path-7-inside-4_4038_44112" fill="white">
+<path d="M0 8H36V10H0V8Z"/>
+</mask>
+<path d="M0 8H36V10H0V8Z" fill="#F0F4F7"/>
+<path d="M36 9.5H0V10.5H36V9.5Z" fill="#D7DFE2" mask="url(#path-7-inside-4_4038_44112)"/>
+</g>
+<g id="Rectangle 519">
+<mask id="path-9-inside-5_4038_44112" fill="white">
+<path d="M0 4H36V6H0V4Z"/>
+</mask>
+<path d="M0 4H36V6H0V4Z" fill="#F0F4F7"/>
+<path d="M36 5.5H0V6.5H36V5.5Z" fill="#D7DFE2" mask="url(#path-9-inside-5_4038_44112)"/>
+</g>
+</g>
+</svg>

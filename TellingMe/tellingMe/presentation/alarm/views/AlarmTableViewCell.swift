@@ -12,7 +12,7 @@ import Then
 
 final class AlarmTableViewCell: UITableViewCell {
     
-    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil)
+    private var alarmNoticeInformation: AlarmNotificationResponse = .init(noticeId: 0, title: "", content: nil, isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
     
     private let titleLabel = UILabel()
     private let subTitleLabel = UILabel()
@@ -83,7 +83,7 @@ extension AlarmTableViewCell {
     }
     
     private func resetProperties() {
-        self.alarmNoticeInformation = .init(noticeId: 0, title: nil, content: "", isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil)
+        self.alarmNoticeInformation = .init(noticeId: 0, title: "", content: nil, isRead: false, createdAt: [], link: nil, isInternal: false, answerId: nil, date: nil)
         self.titleLabel.text = nil
         self.titleLabel.textColor = .Gray8
         self.subTitleLabel.text = nil
@@ -91,21 +91,25 @@ extension AlarmTableViewCell {
         self.dateLabel.text = nil
         self.dateLabel.textColor = .Gray8
     }
+    
+    private func zipSeperateDateComponentsIntoOne(dateArray: [Int]) -> String {
+        var dateCombined: String = ""
+        
+        for index in 0...2 {
+            if index != 2 {
+                dateCombined += String(dateArray[index]) + "."
+            } else {
+                dateCombined += String(dateArray[index])
+            }
+        }
+        return dateCombined
+    }
 }
 
 extension AlarmTableViewCell {
     func configrue(noticeData: AlarmNotificationResponse) {
         self.alarmNoticeInformation = noticeData
-        let dateCreated = noticeData.createdAt
-        var dateCombined: String = ""
-        
-        for index in 0...2 {
-            if index != 2 {
-                dateCombined += String(dateCreated[index]) + "."
-            } else {
-                dateCombined += String(dateCreated[index])
-            }
-        }
+        let dateCombined = zipSeperateDateComponentsIntoOne(dateArray: noticeData.createdAt)
             
         setTextsFromData(title: alarmNoticeInformation.title, subTitle: alarmNoticeInformation.content, date: dateCombined)
         if alarmNoticeInformation.isRead != false {
@@ -135,5 +139,11 @@ extension AlarmTableViewCell {
         return alarmNoticeInformation.noticeId
     }
     
-    // answerId 가 -1 일때? 가 무슨 말일까?
+    func getDateString() -> String {
+        guard let dateArray = alarmNoticeInformation.date else {
+            return "" }
+        guard let result = dateArray.intArraytoDate() else {
+            return ""}
+        return result
+    }
 }

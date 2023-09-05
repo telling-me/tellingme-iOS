@@ -16,11 +16,13 @@ protocol AlarmNoticeViewModelInputs {
     func readNotice(idOf id: Int)
     func deleteNotice(idOf id: Int)
     func openSafariWithUrl(url: String?)
+    func initializeAnswerData(answerId: Int, publishedDate: String)
 }
 
 protocol AlarmNoticeViewModelOutpus {
     var alarmNotices: BehaviorSubject<[AlarmNotificationResponse]> { get }
     var isAlarmAllRead: BehaviorRelay<Bool> { get }
+    var answerData: BehaviorSubject<DetailAnswerForEachNotceModel> { get }
 }
 
 protocol AlarmNoticeViewModelType {
@@ -30,6 +32,8 @@ protocol AlarmNoticeViewModelType {
 
 final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewModelOutpus, AlarmNoticeViewModelType {
     
+    /// Needs to modified
+    var answerData: BehaviorSubject<DetailAnswerForEachNotceModel> = BehaviorSubject(value: DetailAnswerForEachNotceModel.defaultValue)
     var isAlarmAllRead: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var alarmNotices: BehaviorSubject<[AlarmNotificationResponse]> = BehaviorSubject(value: [])
     private var disposeBag = DisposeBag()
@@ -42,6 +46,26 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
         fetchIsNoticeAllRead()
     }
     
+    init(answerId: Int, datePublished: String) {
+        initializeAnswerData(answerId: answerId, publishedDate: datePublished)
+    }
+    
+    /// 1️⃣ Cell 의 answerId 를 가져온다.
+    /// 2️⃣ emotion, like, content 를 가져온다.
+    func initializeAnswerData(answerId: Int, publishedDate: String) {
+        Observable.zip(AnswerAPI.getAnswerWithId(query: answerId), AlarmNotificationAPI.getQuestionForNotice(publishedDate: publishedDate))
+            .subscribe(onNext: { [weak self] responseWithContent, responseWithQuestion in
+                let dateJoined = responseWithQuestion.date.intArraytoDate3()
+                let newData = DetailAnswerForEachNotceModel(withContent: .init(contentText: responseWithContent.content, likeCount: responseWithContent.likeCount), withQuestion: .init(emotion: responseWithContent.emotion, question: responseWithQuestion.title, subQuestion: responseWithQuestion.phrase, publshedDate: dateJoined))
+                self?.answerData.onNext(newData)
+            }, onError: { error in
+                if case APIError.errorData(let errorData) = error {
+                    print(errorData)
+                } else if case APIError.tokenNotFound = error {
+                }
+            }).disposed(by: disposeBag)
+    }
+    
     func readAllNotice() {
         AlarmNotificationAPI.postAllAlarmAsRead()
             .subscribe(onNext: { _ in
@@ -52,8 +76,6 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
                 }
             })
             .disposed(by: disposeBag)
-        
-        fetchNoticeData()
     }
     
     func readNotice(idOf id: Int) {
@@ -92,7 +114,7 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
 
 extension AlarmNoticeViewModel {
     
-    private func fetchNoticeData() {
+    func fetchNoticeData() {
         AlarmNotificationAPI.getAllAlarmNotice()
             .subscribe(onNext: { [weak self] response in
                 self?.alarmNotices.onNext(response)

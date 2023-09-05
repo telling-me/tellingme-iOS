@@ -178,23 +178,8 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
 
         return UICollectionReusableView()
     }
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        self.viewModel.isTop = true
-        self.questionViewOriginalHeightConstraint.isActive = false
-        self.questionViewOriginalHeightConstraint = self.questionView.heightAnchor.constraint(equalToConstant: 120)
-        self.questionViewOriginalHeightConstraint.isActive = true
-
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if viewModel.isFetchingData {
-            return // 이미 데이터를 가져오는 중이라면 무시
-        }
-        
         let contentOffset = scrollView.contentOffset
         if contentOffset.y <= 10 {
             // 스크롤을 위로 올릴 때의 작업을 여기에 수행합니다.
@@ -210,9 +195,9 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
             }
         }
 
-        if isNearBottomEdge(scrollView: scrollView) && !self.viewModel.isTop {
+        if isNearBottomEdge(scrollView: scrollView) && !viewModel.isLast {
             viewModel.getCommunicationList()
-            return
+//            return
         }
 
         if contentOffset.y > 120 {
