@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         checkNofitication()
         bindViewModel()
         setNotificationCenterForBecomeActive()
+        passDeviceDimension()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -191,6 +192,14 @@ extension HomeViewController {
     
     private func restartAnimation() {
         animation()
+    }
+    
+    private func passDeviceDimension() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        
+        appDelegate.setDeviceDimensions(height: height, width: width)
     }
 }
 
