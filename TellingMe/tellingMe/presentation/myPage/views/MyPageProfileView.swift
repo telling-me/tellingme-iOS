@@ -13,7 +13,8 @@ import Then
 final class MyPageProfileView: UIView {
     
     private var consecutiveDays: Int = 0
-
+    private let cacheManager = ImageCacheManager.shared
+    
     private let userImageView = UIImageView()
     private let userNameLabel = UILabel()
     private let consecutiveLabel = UILabel()
@@ -27,7 +28,7 @@ final class MyPageProfileView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        userImageView.layer.cornerRadius = userImageView.frame.width/2
+        userImageView.layer.cornerRadius = userImageView.frame.height/2
         setAttributedStringForConsecutiveLabel()
     }
     
@@ -59,7 +60,6 @@ extension MyPageProfileView {
         }
         
         premiumBadgeImageView.do {
-            $0.image = UIImage(named: "PremiumBadge")
             $0.contentMode = .scaleAspectFit
             $0.layer.masksToBounds = true
         }
@@ -68,17 +68,16 @@ extension MyPageProfileView {
     private func setLayout() {
         self.addSubviews(userImageView, userNameLabel, consecutiveLabel, premiumBadgeImageView)
         
-        // View Height 56
-        // Inset Of 25
         userImageView.snp.makeConstraints {
             $0.leading.centerY.equalToSuperview()
-            $0.size.equalTo(56)
+            $0.height.equalToSuperview()
+            $0.width.equalTo(userImageView.snp.height)
         }
         
         userNameLabel.snp.makeConstraints {
-            $0.leading.equalTo(userImageView.snp.trailing).offset(12)
-            $0.top.equalToSuperview().offset(16)
-            $0.width.lessThanOrEqualTo(110)
+            $0.leading.equalTo(userImageView.snp.trailing).offset(15)
+            $0.centerY.equalToSuperview().offset(-10)
+            $0.width.lessThanOrEqualTo(170)
         }
         
         consecutiveLabel.snp.makeConstraints {
@@ -142,5 +141,15 @@ extension MyPageProfileView {
     
     func setConsecutiveDay(day: Int) {
         self.consecutiveDays = day
+    }
+    
+    func setUserProfileImage(urlString: String) {
+        self.userImageView.load(url: urlString)
+    }
+    
+    func isUserPremiumUser(isPremium: Bool) {
+        if isPremium != false {
+            premiumBadgeImageView.image = UIImage(named: "PremiumBadge")
+        }
     }
 }
