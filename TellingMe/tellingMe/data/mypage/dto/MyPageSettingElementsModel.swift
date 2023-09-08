@@ -8,7 +8,6 @@
 import Foundation
 
 struct MyPageSettingElementsModel {
-    let isElementWithToggle: Bool
     let isElementWithLogout: Bool
     let elementTitle: String
 }
