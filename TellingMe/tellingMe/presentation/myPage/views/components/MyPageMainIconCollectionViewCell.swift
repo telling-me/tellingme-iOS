@@ -12,8 +12,11 @@ import Then
 
 final class MyPageMainIconCollectionViewCell: UICollectionViewCell {
     
+    private var imageSize = 32
+    
     private let iconImageView = UIImageView()
     private let iconTitleLabel = UILabel()
+    private let iconStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,26 +43,41 @@ extension MyPageMainIconCollectionViewCell {
             $0.textAlignment = .center
             $0.textColor = .Gray7
         }
+        
+        iconStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 8
+            $0.alignment = .center
+        }
     }
     
     private func setLayout() {
-        self.addSubviews(iconImageView, iconTitleLabel)
+        iconStackView.addArrangedSubviews(iconImageView, iconTitleLabel)
+        self.addSubview(iconStackView)
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            self.imageSize = Int(appDelegate.deviceWidth/11.7)
+        }
         
         iconImageView.snp.makeConstraints {
-            $0.size.equalTo(32)
+            $0.size.equalTo(imageSize)
             $0.top.centerX.equalToSuperview()
         }
         
-        iconTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(iconImageView.snp.bottom).offset(8)
-            $0.centerX.equalTo(iconImageView.snp.centerX)
+//        iconTitleLabel.snp.makeConstraints {
+//            $0.top.equalTo(iconImageView.snp.bottom).offset(8)
+//            $0.centerX.equalTo(iconImageView.snp.centerX)
+//        }
+        
+        iconStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
 
 extension MyPageMainIconCollectionViewCell {
-    func configure(imageUrl: String, title: String) {
-        iconImageView.load(url: imageUrl)
+    func configure(imageName: String, title: String) {
+        iconImageView.image = UIImage(named: imageName)
         iconTitleLabel.text = title
     }
 }
