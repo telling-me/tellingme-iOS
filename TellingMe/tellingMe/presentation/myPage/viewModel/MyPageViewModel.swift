@@ -39,13 +39,16 @@ protocol MyPageViewModelType {
 
 final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
     
+    private let userDefaults = UserDefaults.standard
+    
     private let settingElementsData: [MyPageSettingElementsModel] = [
-        MyPageSettingElementsModel(isElementWithToggle: true, isElementWithLogout: false, elementTitle: "푸시 알림 받기"),
-        MyPageSettingElementsModel(isElementWithToggle: false, isElementWithLogout: false, elementTitle: "잠금 설정"),
-        MyPageSettingElementsModel(isElementWithToggle: false, isElementWithLogout: false, elementTitle: "이용 약관"),
-        MyPageSettingElementsModel(isElementWithToggle: false, isElementWithLogout: false, elementTitle: "개인정보 처리방침"),
-        MyPageSettingElementsModel(isElementWithToggle: false, isElementWithLogout: false, elementTitle: "회원 탈퇴"),
-        MyPageSettingElementsModel(isElementWithToggle: false, isElementWithLogout: true, elementTitle: "로그아웃")
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "푸시 알림 받기"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "잠금 설정"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "이용 약관"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "개인정보 처리방침"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "고객 센터"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "회원 탈퇴"),
+        MyPageSettingElementsModel( isElementWithLogout: true, elementTitle: "로그아웃")
     ]
     private let boxElementsData: [MyPageBoxElementsModel] = [
         MyPageBoxElementsModel(iconImage: "PremiumIcon", iconTitle: "프리미엄"),
@@ -120,7 +123,9 @@ extension MyPageViewModel {
         
         MyPageAPI.getMyPageInformation(request: .init(date: currentDate))
             .subscribe(onNext: { [weak self] response in
+                let isPushNotificationPermittedKey = StringLiterals.isPushNotificationPermittedKey
                 self?.userInformation.accept(response)
+                let userDefaults = self?.userDefaults.bool(forKey: isPushNotificationPermittedKey)
             }, onError: { error in
                 if case APIError.errorData(_) = error {
                 } else if case APIError.tokenNotFound = error {
