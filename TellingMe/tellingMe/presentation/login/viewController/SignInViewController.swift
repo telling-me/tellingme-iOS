@@ -45,9 +45,9 @@ extension SignInViewController {
     }
     
     func setStyles() {
-        collectionView.do {
-            $0.
-        }
+//        collectionView.do {
+//            $0.
+//        }
         
         kakaoButton.do {
             $0.backgroundColor = UIColor(hex: "#FEE500")
