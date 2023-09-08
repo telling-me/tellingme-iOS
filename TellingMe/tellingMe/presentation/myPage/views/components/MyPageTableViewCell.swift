@@ -12,12 +12,10 @@ import Then
 
 final class MyPageTableViewCell: UITableViewCell {
     
-    private var isToggleCell: Bool = false
     private var isLogoutCell: Bool = false
     
     private let cellTitleLabel = UILabel()
     private let chevronImageView = UIImageView()
-    let notificationToggle = UISwitch()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,9 +25,6 @@ final class MyPageTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if isToggleCell != false {
-            setSwitchView()
-        }
         if isLogoutCell != false {
             setLogoutView()
         }
@@ -48,12 +43,6 @@ extension MyPageTableViewCell {
         cellTitleLabel.do {
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Gray8
-        }
-        
-        notificationToggle.do {
-            $0.isOn = false
-            $0.preferredStyle = .sliding
-            $0.onTintColor = .Logo
         }
         
         chevronImageView.do {
@@ -78,27 +67,14 @@ extension MyPageTableViewCell {
 }
 
 extension MyPageTableViewCell {
-    private func setSwitchView() {
-        chevronImageView.removeFromSuperview()
-        self.addSubview(notificationToggle)
-        
-        notificationToggle.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(21)
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(50)
-            $0.height.equalTo(30)
-        }
-    }
-    
     private func setLogoutView() {
         chevronImageView.removeFromSuperview()
     }
 }
 
 extension MyPageTableViewCell {
-    func configure(title: String, isToggleCell: Bool = false, isLogoutCell: Bool = false) {
+    func configure(title: String, isLogoutCell: Bool = false) {
         cellTitleLabel.text = title
-        self.isToggleCell = isToggleCell
         self.isLogoutCell = isLogoutCell
     }
 }
