@@ -33,6 +33,9 @@ extension SignUpPageViewController: UIPageViewControllerDelegate, UIPageViewCont
 
 extension SignUpPageViewController {
     func prevPage() {
+        guard viewModel.currentIndex >= 1 else {
+            return
+        }
         let viewController = self.parent as? SignUpViewController
         self.viewModel.currentIndex -= 1
         if self.viewModel.currentIndex != 2 {
@@ -43,7 +46,11 @@ extension SignUpPageViewController {
         setViewControllers([viewModel.pages[viewModel.currentIndex]], direction: .reverse, animated: true, completion: nil)
         viewController?.setProgress(with: Float(viewModel.currentIndex)/Float(viewModel.pagesCount))
     }
+
     func nextPage() {
+        guard viewModel.currentIndex <= 3 else {
+            return
+        }
         let viewController = self.parent as? SignUpViewController
         self.viewModel.currentIndex += 1
         if self.viewModel.currentIndex != 2 {

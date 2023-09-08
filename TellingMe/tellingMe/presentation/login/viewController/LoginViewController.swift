@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
 
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         guard let window = UIApplication.shared.windows.first else {
             return
         }
