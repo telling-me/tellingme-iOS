@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         setView()
         checkNofitication()
         bindViewModel()
+        checkAbnormalDevice()
         setNotificationCenterForBecomeActive()
         passDeviceDimension()
     }
@@ -153,10 +154,14 @@ extension HomeViewController: HeaderViewDelegate {
     
     func pushSetting(_ headerView: MainHeaderView) {
         // push를 수행하는 코드
-        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
-            return
-        }
+//        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+//        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
+//            return
+//        }
+        let vc = MyPageViewController()
+        let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
+        vc.hidesBottomBarWhenPushed = true
+        vc.setAbnormalDeviceForLayout(isDeviceAbnormal: isDeviceAbnormal)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -200,6 +205,24 @@ extension HomeViewController {
         let width = view.frame.size.width
         
         appDelegate.setDeviceDimensions(height: height, width: width)
+    }
+    
+    private func checkAbnormalDevice() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: StringLiterals.isDeviceChecked) != false {
+            return
+        }
+        
+        let deviceName = UIDevice.current.name
+        let abnormalDeviceList = DeviceLiterals.allCases
+        
+        abnormalDeviceList.forEach { device in
+            if deviceName == device.deviceName {
+                userDefaults.set(true, forKey: StringLiterals.isDeviceAbnormal)
+                return
+            }
+        }
+        userDefaults.set(true, forKey: StringLiterals.isDeviceChecked)
     }
 }
 
