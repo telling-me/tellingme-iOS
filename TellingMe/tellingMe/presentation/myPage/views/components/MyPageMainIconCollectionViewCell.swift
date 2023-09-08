@@ -64,11 +64,6 @@ extension MyPageMainIconCollectionViewCell {
             $0.top.centerX.equalToSuperview()
         }
         
-//        iconTitleLabel.snp.makeConstraints {
-//            $0.top.equalTo(iconImageView.snp.bottom).offset(8)
-//            $0.centerX.equalTo(iconImageView.snp.centerX)
-//        }
-        
         iconStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
