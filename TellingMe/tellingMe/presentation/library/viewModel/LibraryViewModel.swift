@@ -12,9 +12,6 @@ import RxCocoa
 protocol LibraryViewModelInputs {
     var selectedYear: Int { get set }
     var selectedMonth: Int { get set }
-    func refresh()
-    func viewDidLoad()
-    func viewWillAppear(animated: Bool)
 }
 
 protocol LibraryViewModelOutputs {
@@ -48,17 +45,6 @@ public final class LibraryViewModel: LibraryViewModelType, LibraryViewModelInput
     private var disposeBag = DisposeBag()
     var inputs: LibraryViewModelInputs { return self }
     var outputs: LibraryViewModelOutputs { return self }
-    
-//    init() {
-//        fetchAnswerList()
-//    }
-    
-    public func refresh() {}
-    
-    public func viewDidLoad() {}
-    
-    public func viewWillAppear(animated: Bool) {}
-    
 }
 
 extension LibraryViewModel {

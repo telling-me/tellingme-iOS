@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 import Moya
 
 enum LoginAPITarget {
@@ -110,6 +112,11 @@ struct LoginAPI: Networkable {
         }
     }
     
+    static func signIn(type: String, token: String) -> Observable<SignInResponse> {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .signIn(type: type, token: token))
+    }
+
     static func autologin(type: String, request: AutologinRequest, completion: @escaping (Result<SignInResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.autologin(type: type, body: request), dtoType: SignInResponse.self) { result in
             switch result {

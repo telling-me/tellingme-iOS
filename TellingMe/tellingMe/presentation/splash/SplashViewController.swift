@@ -24,13 +24,6 @@ class SplashViewController: UIViewController {
         animationView.topAnchor.constraint(equalTo: splashView.topAnchor).isActive = true
         animationView.bottomAnchor.constraint(equalTo: splashView.bottomAnchor).isActive = true
 
-        let loginObservable = Observable.create { observer in
-            let isLogined = self.performAutoLogin()
-            observer.onNext(isLogined)
-            observer.onCompleted()
-            return Disposables.create()
-        }
-
         animationView.play { _ in
              self.performAutoLoginAndNavigate()
          }
