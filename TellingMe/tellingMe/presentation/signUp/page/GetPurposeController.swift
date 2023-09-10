@@ -40,6 +40,7 @@ class GetPurposeViewController: UIViewController {
     }
     
     @IBAction func nextAction(_ sender: UIButton) {
+        sender.isEnabled = false
         SignUpData.shared.purpose = selectedItems.sorted().intArraytoString()
         sendSignUpData()
     }
