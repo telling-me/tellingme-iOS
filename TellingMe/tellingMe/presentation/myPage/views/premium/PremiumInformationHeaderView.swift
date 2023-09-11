@@ -1,5 +1,5 @@
 //
-//  PremiumHeaderView.swift
+//  PremiumInformationHeaderView.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/11.
@@ -18,11 +18,11 @@ final class PremiumInformationHeaderView: UICollectionReusableView {
         super.init(frame: frame)
         setStyles()
         setLayout()
+        setAttributedStringForConsecutiveLabel()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setAttributedStringForConsecutiveLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +38,7 @@ extension PremiumInformationHeaderView {
         descriptionLabel.do {
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Black
+            $0.numberOfLines = 2
         }
     }
     
