@@ -13,7 +13,7 @@ import RxSwift
 
 final class AlarmViewController: UIViewController {
 
-    private let navigationBarView = AlarmNavigationBarView()
+    private let navigationBarView = CustomModalBarView()
     private let alarmSectionView = AlarmReadAllSectionView()
     private let alarmNoticeTableView = UITableView(frame: .zero)
     private let indicatorView = UIActivityIndicatorView(style: .large)
@@ -134,6 +134,10 @@ extension AlarmViewController {
         
     private func setStyles() {
         view.backgroundColor = .Side100
+        
+        navigationBarView.do {
+            $0.setTitle(with: "알림")
+        }
         
         alarmNoticeTableView.do {
             $0.rowHeight = UITableView.automaticDimension
