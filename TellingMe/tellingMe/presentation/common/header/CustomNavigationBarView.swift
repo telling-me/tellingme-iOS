@@ -36,7 +36,6 @@ extension CustomNavigationBarView {
         }
         
         titleLabel.do {
-            $0.text = "마이페이지"
             $0.textColor = .Gray6
             $0.font = .fontNanum(.H6_Bold)
             $0.textAlignment = .center
@@ -58,3 +57,10 @@ extension CustomNavigationBarView {
         }
     }
 }
+
+extension CustomNavigationBarView {
+    func setTitle(with title: String) {
+        self.titleLabel.text = title
+    }
+}
+

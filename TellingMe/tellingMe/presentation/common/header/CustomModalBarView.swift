@@ -1,5 +1,5 @@
 //
-//  CustomNavigationBarView.swift
+//  CustomModalBarView.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/08/24.
@@ -28,6 +28,7 @@ extension CustomModalBarView {
         self.backgroundColor = .Side100
         
         titleLabel.do {
+            $0.text = "알림"
             $0.font = .fontNanum(.H6_Bold)
             $0.textColor = .Gray6
         }
