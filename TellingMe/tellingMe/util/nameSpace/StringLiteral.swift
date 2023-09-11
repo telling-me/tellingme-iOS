@@ -16,12 +16,12 @@ enum StringLiterals {
 
 enum ArrayLiterals {}
 
-//enum UrlLiterals {
-//    static let termsOfUseUrl: String = "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4"
-//    static let privacyPolicyUrl: String = "https://doana.notion.site/7cdab221ee6d436781f930442040d556?pvs=4"
-//    static let faqUrl: String = "https://doana.notion.site/f7a045872c3b4b02bce5e9f6d6cfc2d8?pvs=4"
-//    static let questionPlant: String = "https://tally.so/r/3Nlvlp"
-//}
+enum UrlLiterals {
+    static let termsOfUseUrl: String = "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4"
+    static let privacyPolicyUrl: String = "https://doana.notion.site/7cdab221ee6d436781f930442040d556?pvs=4"
+    static let faqUrl: String = "https://doana.notion.site/f7a045872c3b4b02bce5e9f6d6cfc2d8?pvs=4"
+    static let questionPlant: String = "https://tally.so/r/3Nlvlp"
+}
 
 enum DeviceLiterals: CaseIterable {
     case six
