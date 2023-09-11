@@ -113,10 +113,11 @@ extension MyPageProfileView {
         do {
             let regex = try NSRegularExpression(pattern: "\\d+")
             let matches = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
-            
             for match in matches {
-                let numberRange = match.range(at: 1)
+                print(match)
+                let numberRange = match.range(at: 0)
                 attributedString.addAttributes(attributes, range: numberRange)
+                break
             }
         } catch let error {
             print("Error Regex: \(error)")

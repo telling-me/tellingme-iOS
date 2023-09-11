@@ -53,8 +53,7 @@ extension MyPageToggleTableViewCell {
                 self?.notificationToggle.isEnabled = true
             }
             .subscribe(onNext: { [weak self] response in
-                print("🧩 Posting Push Permission Sent to the server. : toggled to - \(response)")
-                self?.settingViewModel.postNotification(response)
+                self?.viewModel.inputs.togglePushAlarmPermission(to: response)
             })
             .disposed(by: disposeBag)
     }
