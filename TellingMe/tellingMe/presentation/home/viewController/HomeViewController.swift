@@ -32,6 +32,9 @@ class HomeViewController: UIViewController {
         setView()
         checkNofitication()
         bindViewModel()
+        checkAbnormalDevice()
+        setNotificationCenterForBecomeActive()
+        passDeviceDimension()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +65,10 @@ class HomeViewController: UIViewController {
         for animationView in animationViews {
             animationView.layer.removeAllAnimations()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     func setView() {
@@ -137,19 +144,24 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HeaderViewDelegate {
+    
     func pushAlarmNotice(_ headerView: MainHeaderView) {
         let vc = AlarmViewController()
         let navigationNewController = UINavigationController(rootViewController: vc)
-        navigationNewController.modalPresentationStyle = .overFullScreen
+        navigationNewController.modalPresentationStyle = .fullScreen
         self.present(navigationNewController, animated: true)
     }
     
     func pushSetting(_ headerView: MainHeaderView) {
         // push를 수행하는 코드
-        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
-            return
-        }
+//        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+//        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
+//            return
+//        }
+        let vc = MyPageViewController()
+        let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
+        vc.hidesBottomBarWhenPushed = true
+        vc.setAbnormalDeviceForLayout(isDeviceAbnormal: isDeviceAbnormal)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -163,6 +175,7 @@ extension HomeViewController: HeaderViewDelegate {
                 print("❎ New Notices doesn't exist.")
             }
         }
+        
     }
     
     func bindViewModel() {
@@ -172,5 +185,58 @@ extension HomeViewController: HeaderViewDelegate {
                 self?.showPushNotification()
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    private func setNotificationCenterForBecomeActive() {
+        print("NotificationCenter Added for background check.")
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshNetwork), name: Notification.Name("RefreshHomeView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAnimation), name: Notification.Name("RefreshAnimation"), object: nil)
+    }
+    
+    private func restartAnimation() {
+        animation()
+    }
+    
+    private func passDeviceDimension() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        
+        appDelegate.setDeviceDimensions(height: height, width: width)
+    }
+    
+    private func checkAbnormalDevice() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: StringLiterals.isDeviceChecked) != false {
+            return
+        }
+        
+        let deviceName = UIDevice.current.name
+        let abnormalDeviceList = DeviceLiterals.allCases
+        
+        abnormalDeviceList.forEach { device in
+            if deviceName == device.deviceName {
+                userDefaults.set(true, forKey: StringLiterals.isDeviceAbnormal)
+                return
+            }
+        }
+        userDefaults.set(true, forKey: StringLiterals.isDeviceChecked)
+    }
+}
+
+extension HomeViewController {
+    @objc
+    private func refreshNetwork() {
+        print("Back From Background, refreshed the question.")
+        getQuestion()
+    }
+    
+    @objc
+    private func refreshAnimation() {
+        print("Back From Background, refreshed the animation.")
+        /// This doesn't work.
+        restartAnimation()
     }
 }

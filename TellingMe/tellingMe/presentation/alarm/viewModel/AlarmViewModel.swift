@@ -76,8 +76,6 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
                 }
             })
             .disposed(by: disposeBag)
-        
-        fetchNoticeData()
     }
     
     func readNotice(idOf id: Int) {
@@ -116,7 +114,7 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
 
 extension AlarmNoticeViewModel {
     
-    private func fetchNoticeData() {
+    func fetchNoticeData() {
         AlarmNotificationAPI.getAllAlarmNotice()
             .subscribe(onNext: { [weak self] response in
                 self?.alarmNotices.onNext(response)

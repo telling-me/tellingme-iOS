@@ -29,8 +29,8 @@ struct AlarmFetchDataWithDateRequest: Codable {
  */
 struct AlarmNotificationResponse: Codable {
     let noticeId: Int
-    let title: String?
-    let content: String
+    let title: String
+    let content: String?
     let isRead: Bool
     let createdAt: [Int]
     let link: String?
