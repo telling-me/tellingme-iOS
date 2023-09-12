@@ -10,23 +10,17 @@ import UIKit
 import RxSwift
 
 extension SplashViewController {
-    func performAutoLogin() -> Observable<Bool> {
+    func performAutoLogin(type: String, socialId: String) -> Observable<Bool> {
         return Observable.create { observer in
-            if let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue),
-               let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) {
-                LoginAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in
-                    switch result {
-                    case .success(let response):
-                        KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
-                        KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
-                        observer.onNext(true)
-                    case .failure(let error):
-                        observer.onNext(false)
-                    }
-                    observer.onCompleted()
+            LoginAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in
+                switch result {
+                case .success(let response):
+                    KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
+                    KeychainManager.shared.save(response!.refreshToken, key: Keys.refreshToken.rawValue)
+                    observer.onNext(true)
+                case .failure(let error):
+                    observer.onNext(false)
                 }
-            } else {
-                observer.onNext(false)
                 observer.onCompleted()
             }
             
@@ -35,8 +29,19 @@ extension SplashViewController {
     }
     
     func performAutoLoginAndNavigate() {
-        performAutoLogin()
-            .observeOn(MainScheduler.instance) // UI 스레드에서 실행
+        if UserDefaults.isFirstLaunch() {
+            self.showOnboarding()
+            KeychainManager.shared.deleteAll()
+            return
+        }
+
+        guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue),
+              let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
+            self.showLogin()
+            return
+        }
+        performAutoLogin(type: type, socialId: socialId)
+            .observe(on: MainScheduler.instance) // UI 스레드에서 실행
             .subscribe(onNext: { [weak self] isLogined in
                 if isLogined {
                     self?.showHome()
@@ -75,6 +80,16 @@ extension SplashViewController {
             return
         }
         
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+    }
+    
+    func showOnboarding() {
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+        
+        let vc = OnBoardingViewController()
         window.rootViewController = vc
         window.makeKeyAndVisible()
     }
