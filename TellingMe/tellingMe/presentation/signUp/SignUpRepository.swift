@@ -29,6 +29,7 @@ extension GetPurposeViewController {
                     print(error)
                 }
             }
+            self.nextButton.isEnabled = true
         }
     }
 
