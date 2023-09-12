@@ -5,6 +5,7 @@
 //  Created by KYUBO A. SHIM on 2023/08/29.
 //
 
+import MessageUI
 import UIKit
 
 import RxCocoa
@@ -12,8 +13,9 @@ import RxSwift
 import SnapKit
 import Then
 
-final class MyPageViewController: UIViewController {
+final class MyPageViewController: EmailFeedbackViewController {
     
+    private var userName: String = ""
     private var disposeBag = DisposeBag()
     private let viewModel = MyPageViewModel()
     private var isDeviceAbnormal = false
@@ -46,7 +48,7 @@ final class MyPageViewController: UIViewController {
         }
     }
     
-    private let navigationBarView = MyPageHeaderView()
+    private let navigationBarView = CustomNavigationBarView()
     private let profileView = MyPageProfileView()
     private let boxView = MyPageBoxView()
     private let settingTableView = UITableView()
@@ -75,6 +77,7 @@ extension MyPageViewController {
         
         viewModel.outputs.userInformation
             .bind { [weak self] response in
+                self?.userName = response.nickname
                 self?.profileView.setUserName(userName: response.nickname)
                 self?.profileView.setConsecutiveDay(day: response.answerRecord)
                 self?.profileView.setUserProfileImage(urlString: response.profileUrl)
@@ -83,8 +86,28 @@ extension MyPageViewController {
             .disposed(by: disposeBag)
         
         boxView.mainIconCollectionView.rx.itemSelected
-            .subscribe {
-                print($0, "🍕")
+            .subscribe { [weak self] indexPath in
+                guard let index = indexPath.element?.row else { return }
+                switch index {
+                case 0:
+                    self?.viewModel.inputs.premiumInAppPurchaseTapped()
+                    let premiumViewController = PremiumInformationViewController()
+                    self?.navigationController?.pushViewController(premiumViewController, animated: true)
+                case 1:
+                    self?.viewModel.inputs.tellingMeBootPayPurchaseTapped()
+                case 2:
+                    self?.viewModel.inputs.faqTapped()
+                case 3:
+                    self?.viewModel.inputs.myProfileTapped()
+                    let settingViewModel = SettingViewModel()
+                    let id = settingViewModel.items[0].id
+                    let viewController = settingViewModel.items[0].view
+                    let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: id)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                default:
+                    break
+                }
             }
             .disposed(by: disposeBag)
         
@@ -104,10 +127,38 @@ extension MyPageViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        settingTableView.rx.itemSelected
+            .subscribe { [weak self] indexPath in
+                guard let index = indexPath.element?.row else { return }
+                switch index {
+                case 1:
+                    self?.viewModel.inputs.lockSettingTapped()
+                case 2:
+                    self?.viewModel.inputs.termsOfUseTapped()
+                case 3:
+                    self?.viewModel.inputs.privatePolicyTapped()
+                case 4:
+                    self?.viewModel.inputs.feedBackWithMailTapped()
+                    self?.sendFeedbackMail(userOf: self?.userName)
+                case 5:
+                    self?.viewModel.inputs.questionPlantTapped()
+                case 6:
+                    self?.viewModel.inputs.logoutTapped()
+                    self?.signout()
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setStyles() {
         view.backgroundColor = .Side100
+        
+        navigationBarView.do {
+            $0.setTitle(with: "마이페이지")
+        }
         
         settingTableView.do {
             $0.register(MyPageToggleTableViewCell.self, forCellReuseIdentifier: "settingToggleTableView")
@@ -155,6 +206,29 @@ extension MyPageViewController {
             $0.top.equalTo(settingTableView.snp.bottom)
             $0.bottom.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(30)
+        }
+    }
+}
+
+extension MyPageViewController {
+    func signout() {
+        LoginAPI.logout { result in
+            switch result {
+            case .success:
+                KeychainManager.shared.logout()
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .failure(let error):
+                switch error {
+                case .errorData(let errorData):
+                    self.showToast(message: errorData.message)
+                case .tokenNotFound:
+                    print("토큰 업슴")
+                default:
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }
