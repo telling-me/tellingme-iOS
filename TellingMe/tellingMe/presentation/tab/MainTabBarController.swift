@@ -16,6 +16,7 @@ class MainTabBarController: UITabBarController {
         
         self.delegate = self
         setTabBarAppearance()
+//        showFeedback()
     }
 
     func showPushNotification() {
@@ -36,6 +37,14 @@ class MainTabBarController: UITabBarController {
         
         tabBar.layer.cornerRadius = 32
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    func showFeedback() {
+        let vc = UINavigationController(rootViewController: FeedbackViewController())
+        vc.isNavigationBarHidden = true
+
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
     }
 }
 

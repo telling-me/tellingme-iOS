@@ -10,6 +10,7 @@ import UIKit
 
 class InlineHeaderView: UIView {
     let title = Headline6Bold()
+    let leftButton = UIButton()
     let rightButton = UIButton()
 
     override init(frame: CGRect) {
@@ -22,7 +23,12 @@ class InlineHeaderView: UIView {
     }
 
     func setLayout() {
-       addSubviews(title, rightButton)
+       addSubviews(leftButton, title, rightButton)
+        leftButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(21)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(32)
+        }
         title.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
@@ -33,7 +39,18 @@ class InlineHeaderView: UIView {
         }
     }
     
-    func setHeader(title: String, buttonImage: String? = nil) {
+    func setStyles() {
+        leftButton.do {
+            $0.setImage(UIImage(named: "ArrowLeft"), for: .normal)
+        }
+    }
+    
+    func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
+        if isFirstView {
+            leftButton.isHidden = true
+        } else {
+            leftButton.isHidden = false
+        }
         if let buttonImage = buttonImage {
             self.title.text = title
             rightButton.isHidden = false
