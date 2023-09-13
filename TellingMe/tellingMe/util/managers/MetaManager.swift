@@ -8,12 +8,11 @@
 import UIKit
 
 final class MetaManager {
-    func shareInstagram(sharingView: UIView) {
-        let metaKey = Bundle.main.metaShareKey
-        guard let instagramURL = URL(string: "instagram-stories://share?source_application=" + "\(metaKey)") else { return }
-
+    func shareInstagram(sharingView: UIView, scaleOf scale: CGFloat = 4.0) {
+        let instagramURL = authenticateForMeta()
+        
         if isInstagramInstalled() != false {
-            guard let imageData = sharingView.saveUIViewWithScale(with: 4) else { return }
+            guard let imageData = sharingView.saveUIViewWithScale(with: scale) else { return }
             
             let pasteboardItems: [String: Any] = [
                 "com.instagram.sharedSticker.stickerImage": imageData,
@@ -23,7 +22,7 @@ final class MetaManager {
             let pasteboardOptions = [
                 UIPasteboard.OptionsKey.expirationDate : Date().addingTimeInterval(300)
             ]
-
+            
             UIPasteboard.general.setItems([pasteboardItems], options: pasteboardOptions)
             UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
         } else {
@@ -34,10 +33,34 @@ final class MetaManager {
         }
     }
     
+    func shareInstagramWithActivityViewController(sharingView: UIView, scaleOf scale: CGFloat = 4.0) -> UIImage {
+        let renderedImage = renderImage(from: sharingView, scaleOf: scale)
+        return renderedImage
+    }
+    
+    func saveImage(from view: UIView, scaleOf scale: CGFloat = 4.0) -> UIImage {
+        let renderedImageToSave = renderImage(from: view, scaleOf: scale)
+        return renderedImageToSave
+    }
+}
+
+extension MetaManager {
     private func isInstagramInstalled() -> Bool {
         guard let instagramURL = URL(string: "instagram-stories://share") else {
             return false
         }
         return UIApplication.shared.canOpenURL(instagramURL)
+    }
+    
+    private func authenticateForMeta() -> URL {
+        let metaKey = Bundle.main.metaShareKey
+        guard let instagramURL = URL(string: "instagram-stories://share?source_application=" + "\(metaKey)") else { return URL(string: "")! }
+        return instagramURL
+    }
+    
+    private func renderImage(from view: UIView, scaleOf scale: CGFloat = 4.0) -> UIImage {
+        guard let imageData = view.saveUIViewWithScale(with: scale) else { return UIImage() }
+        guard let renderedImage = UIImage(data: imageData) else { return UIImage() }
+        return renderedImage
     }
 }
