@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KakaoSDK.initSDK(appKey: Bundle.main.kakaoNativeAppKey)
-        removeKeychainAtFirstLaunch()
         FirebaseApp.configure()
 
         Messaging.messaging().delegate = self
@@ -48,14 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func setDeviceDimensions(height: CGFloat, width: CGFloat) {
         self.deviceHeight = height
         self.deviceWidth = width
-    }
-}
-
-extension AppDelegate {
-    private func removeKeychainAtFirstLaunch() {
-        if UserDefaults.isFirstLaunch() {
-            KeychainManager.shared.deleteAll()
-        }
     }
 }
 

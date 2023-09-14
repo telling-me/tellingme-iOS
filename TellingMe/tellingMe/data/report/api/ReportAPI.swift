@@ -56,7 +56,6 @@ extension ReportAPITarget: TargetType {
 struct ReportAPI: Networkable {
     typealias Target = ReportAPITarget
 
-    // date를 query로 보내서 요청
     static func postReport(request: ReportRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {
         do {
             try makeAuthorizedProvider().request(.postReport(request), dtoType: EmptyResponse.self, completion: completion)
