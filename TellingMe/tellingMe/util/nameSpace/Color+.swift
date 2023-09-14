@@ -207,4 +207,9 @@ extension UIColor {
     static var Emotion600: UIColor {
         return UIColor(hex: "#FAB0CF")
     }
+    
+    // MARK: - Etc
+    static var EBookNavigationColor: UIColor {
+        return UIColor(hex: "#FFEDA4")
+    }
 }
