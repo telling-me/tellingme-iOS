@@ -20,7 +20,7 @@ final class PremiumInformationViewController: UIViewController {
     
     private let navigationBarView = CustomNavigationBarView()
     private lazy var informationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: setFlowLayout())
-    private let readyButton = PremiumInformationButton()
+    private let readyButton = UpcomingInformationButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +83,8 @@ extension PremiumInformationViewController {
             $0.isUserInteractionEnabled = true
             $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         }
+        
+        readyButton.setTitleFor("프리미엄 모드 출시 준비 중이에요!")
     }
     
     private func setLayout() {
