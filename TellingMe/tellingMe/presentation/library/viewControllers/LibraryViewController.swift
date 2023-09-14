@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import RxSwift
+
 import RxCocoa
 import RxDataSources
+import RxSwift
 import SnapKit
 import Then
 
@@ -27,6 +28,8 @@ final class LibraryViewController: UIViewController {
     let libraryItem1 = UIImageView()
     let libraryItem2 = UIImageView()
     let bottomSheet = LibraryInfoView()
+    private let contentView = UIView()
+    private let sharingIconButton = UIButton()
 
     let disposeBag = DisposeBag()
     
@@ -250,10 +253,20 @@ extension LibraryViewController {
         bottomSheet.do {
             $0.isHidden = true
         }
+        
+        sharingIconButton.do {
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
+            $0.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
+            $0.tintColor = .Gray3
+            $0.contentMode = .scaleAspectFit
+            $0.addTarget(self, action: #selector(tapToShare), for: .touchUpInside)
+        }
     }
 
     private func setLayout() {
-        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, descriptionTopLabel, descriptionBottomLabel, libraryCollectionView, libraryItem1, libraryItem2, yearDropdown, monthDropdown, bottomSheet)
+        view.addSubviews(headerView, yearDropdownButton, monthDropdownButton, contentView, yearDropdown, monthDropdown, bottomSheet, sharingIconButton)
+        contentView.addSubviews(descriptionTopLabel, descriptionBottomLabel, libraryCollectionView, libraryItem1, libraryItem2)
+        
         headerView.snp.makeConstraints {
             $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
@@ -264,6 +277,14 @@ extension LibraryViewController {
             $0.width.equalTo(111)
             $0.height.equalTo(40)
         }
+        
+        contentView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(25)
+            $0.trailing.equalToSuperview().inset(86)
+            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(36)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(113)
+        }
+        
         monthDropdownButton.snp.makeConstraints {
             $0.leading.equalTo(yearDropdownButton.snp.trailing).offset(8)
             $0.centerY.equalTo(yearDropdownButton.snp.centerY)
@@ -271,18 +292,18 @@ extension LibraryViewController {
             $0.height.equalTo(40)
         }
         descriptionTopLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(25)
-            $0.top.equalTo(yearDropdownButton.snp.bottom).offset(36)
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview()
         }
         descriptionBottomLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(25)
+            $0.leading.equalToSuperview()
             $0.top.equalTo(descriptionTopLabel.snp.bottom).offset(8)
         }
         libraryCollectionView.snp.makeConstraints {
             $0.top.equalTo(descriptionBottomLabel.snp.bottom).offset(36)
-            $0.leading.equalToSuperview().inset(36)
-            $0.trailing.equalToSuperview().inset(86)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(113)
+            $0.leading.equalToSuperview().inset(11)
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         libraryItem1.snp.makeConstraints {
             $0.width.equalTo(libraryCollectionView.snp.width).multipliedBy(0.13)
@@ -306,6 +327,12 @@ extension LibraryViewController {
         }
         bottomSheet.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        sharingIconButton.snp.makeConstraints {
+            $0.size.equalTo(24)
+            $0.trailing.equalToSuperview().inset(21)
+            $0.centerY.equalTo(yearDropdownButton.snp.centerY)
         }
     }
 }
@@ -331,5 +358,24 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
+    }
+}
+
+extension LibraryViewController {
+    @objc
+    private func tapToShare() {
+        let bottomSheetViewController = SharingBottomViewController()
+        bottomSheetViewController.modalPresentationStyle = .pageSheet
+        bottomSheetViewController.passUIView(contentView)
+        bottomSheetViewController.changeSharingViewType()
+        
+        if let sheet = bottomSheetViewController.sheetPresentationController {
+            sheet.detents = [.custom { _ in
+                return 56 * 3 + 45
+            }]
+            sheet.preferredCornerRadius = 16
+            sheet.prefersGrabberVisible = true
+        }
+        self.navigationController?.present(bottomSheetViewController, animated: true)
     }
 }
