@@ -30,6 +30,7 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
         cell.setCell(data: answerList[indexPath.row])
         cell.setShadow(shadowRadius: 20)
         cell.layer.masksToBounds = false
+        cell.delegate = self
         return cell
     }
 
@@ -95,5 +96,22 @@ class CardListCollectionViewController: UICollectionViewController, UICollection
         } else {
             targetContentOffset.pointee = CGPoint(x: row * Int((itemWidth + itemSpacing)), y: 0)
         }
+    }
+}
+
+extension CardListCollectionViewController: ShareButtonTappedProtocol {
+    func shareButtonTapped(passing view: UIView) {
+        let bottomSheetViewController = SharingBottomViewController()
+        bottomSheetViewController.modalPresentationStyle = .pageSheet
+        bottomSheetViewController.passUIView(view)
+        
+        if let sheet = bottomSheetViewController.sheetPresentationController {
+            sheet.detents = [.custom { _ in
+                return 56 * 3 + 45
+            }]
+            sheet.preferredCornerRadius = 16
+            sheet.prefersGrabberVisible = true
+        }
+        self.navigationController?.present(bottomSheetViewController, animated: true)
     }
 }
