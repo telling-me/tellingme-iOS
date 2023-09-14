@@ -1,5 +1,5 @@
 //
-//  PremiumInformationButton.swift
+//  UpcomingInformationButton.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/11.
@@ -20,14 +20,18 @@ final class UpcomingInformationButton: UIButton {
 }
 
 extension UpcomingInformationButton {
-    
     private func setStyles() {
         self.isUserInteractionEnabled = false
         self.isEnabled = false
         self.cornerRadius = 20
         self.backgroundColor = .Primary25
-        self.setTitle("프리미엄 모드 출시 준비 중이에요!", for: .normal)
         self.setTitleColor(.Logo, for: .normal)
         self.titleLabel?.font = .fontNanum(.H6_Regular)
+    }
+}
+
+extension UpcomingInformationButton {
+    func setTitleFor(_ title: String) {
+        self.setTitle(title, for: .normal)
     }
 }
