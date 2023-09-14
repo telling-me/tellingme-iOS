@@ -62,5 +62,9 @@ extension CustomNavigationBarView {
     func setTitle(with title: String) {
         self.titleLabel.text = title
     }
+    
+    func setColor(with color: UIColor) {
+        self.backgroundColor = color
+    }
 }
 

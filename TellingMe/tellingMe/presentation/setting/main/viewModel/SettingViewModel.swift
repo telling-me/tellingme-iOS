@@ -27,14 +27,6 @@ class SettingViewModel {
     init() {
         itemsCount = items.count
         fetchNotificationData()
-//        pushToggleValue
-//            .distinctUntilChanged()
-//            .skip(1)
-//            .subscribe(onNext: { [weak self] isOn in
-//                self?.postNotification(isOn)
-//            })
-//            .disposed(by: disposeBag)
-
     }
 
     func fetchNotificationData() {
