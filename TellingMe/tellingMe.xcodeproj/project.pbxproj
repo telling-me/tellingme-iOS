@@ -214,6 +214,7 @@
 		583B80A82A96783E009399D1 /* AlarmReadAllSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */; };
 		5844457F2A9E0086004433D1 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844457E2A9E0086004433D1 /* CacheManager.swift */; };
 		584445812A9E00B8004433D1 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584445802A9E00B8004433D1 /* UIImageView+.swift */; };
+		58690DA62AB2FBF4002BAB82 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58690DA52AB2FBF4002BAB82 /* UIImage+.swift */; };
 		586EC5AB2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */; };
 		5876D10B2AA17CD0009BF9DA /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */; };
 		588B45F52A9E507500B0ADF1 /* MyPageSettingElementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */; };
@@ -221,7 +222,7 @@
 		589E78442AAF306C00BB9213 /* PremiumInformationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78432AAF306C00BB9213 /* PremiumInformationHeaderView.swift */; };
 		589E78462AAF38B500BB9213 /* PremiumInformationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78452AAF38B500BB9213 /* PremiumInformationFooterView.swift */; };
 		589E78482AAF450600BB9213 /* PremiumDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78472AAF450600BB9213 /* PremiumDataSource.swift */; };
-		589E784A2AAF4BCA00BB9213 /* PremiumInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78492AAF4BCA00BB9213 /* PremiumInformationButton.swift */; };
+		589E784A2AAF4BCA00BB9213 /* UpcomingInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78492AAF4BCA00BB9213 /* UpcomingInformationButton.swift */; };
 		58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */; };
 		58A6AD422A9DCA1400BCC2AC /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD382A9DCA1400BCC2AC /* CustomNavigationBarView.swift */; };
 		58A6AD432A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */; };
@@ -229,6 +230,11 @@
 		58A6AD452A9DCA1400BCC2AC /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */; };
 		58A6AD462A9DCA1400BCC2AC /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */; };
 		58A6AD472A9DCA1400BCC2AC /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */; };
+		58AF35542AB047A200B1AF2F /* SharingBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF35532AB047A200B1AF2F /* SharingBottomViewController.swift */; };
+		58AF35582AB0483F00B1AF2F /* SharingToInstagramViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF35572AB0483F00B1AF2F /* SharingToInstagramViewModel.swift */; };
+		58AF355A2AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF35592AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift */; };
+		58AF355D2AB0512400B1AF2F /* SharingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF355C2AB0512400B1AF2F /* SharingBackgroundView.swift */; };
+		58AF355F2AB07EDD00B1AF2F /* ImageSavedToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF355E2AB07EDD00B1AF2F /* ImageSavedToastView.swift */; };
 		58AFC84C2AA1F0BF0045B876 /* DetailAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */; };
 		58AFC84E2AA20E060045B876 /* HeaderViewWithEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */; };
 		58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */; };
@@ -275,6 +281,7 @@
 		58F2E7AD2A9619DF00F3667A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AC2A9619DF00F3667A /* UIFont+.swift */; };
 		58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AF2A961A7500F3667A /* CustomFont.swift */; };
 		58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7B12A961BFF00F3667A /* Color+.swift */; };
+		58F31AD52AB20F0000949AFD /* TellingEBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F31AD42AB20F0000949AFD /* TellingEBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -486,6 +493,7 @@
 		583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReadAllSectionView.swift; sourceTree = "<group>"; };
 		5844457E2A9E0086004433D1 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		584445802A9E00B8004433D1 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		58690DA52AB2FBF4002BAB82 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageToggleTableViewCell.swift; sourceTree = "<group>"; };
 		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingElementsModel.swift; sourceTree = "<group>"; };
@@ -493,7 +501,7 @@
 		589E78432AAF306C00BB9213 /* PremiumInformationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationHeaderView.swift; sourceTree = "<group>"; };
 		589E78452AAF38B500BB9213 /* PremiumInformationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationFooterView.swift; sourceTree = "<group>"; };
 		589E78472AAF450600BB9213 /* PremiumDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumDataSource.swift; sourceTree = "<group>"; };
-		589E78492AAF4BCA00BB9213 /* PremiumInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationButton.swift; sourceTree = "<group>"; };
+		589E78492AAF4BCA00BB9213 /* UpcomingInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingInformationButton.swift; sourceTree = "<group>"; };
 		58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageBoxView.swift; sourceTree = "<group>"; };
 		58A6AD382A9DCA1400BCC2AC /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMainIconCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -501,6 +509,11 @@
 		58A6AD3C2A9DCA1400BCC2AC /* MyPageProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
 		58A6AD3E2A9DCA1400BCC2AC /* MyPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		58AF35532AB047A200B1AF2F /* SharingBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingBottomViewController.swift; sourceTree = "<group>"; };
+		58AF35572AB0483F00B1AF2F /* SharingToInstagramViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingToInstagramViewModel.swift; sourceTree = "<group>"; };
+		58AF35592AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingToInstagramTableViewCell.swift; sourceTree = "<group>"; };
+		58AF355C2AB0512400B1AF2F /* SharingBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingBackgroundView.swift; sourceTree = "<group>"; };
+		58AF355E2AB07EDD00B1AF2F /* ImageSavedToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSavedToastView.swift; sourceTree = "<group>"; };
 		58AFC84B2AA1F0BF0045B876 /* DetailAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnswerViewController.swift; sourceTree = "<group>"; };
 		58AFC84D2AA20E060045B876 /* HeaderViewWithEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewWithEmotionView.swift; sourceTree = "<group>"; };
 		58AFC8502AA21DEF0045B876 /* ContentWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWithTextView.swift; sourceTree = "<group>"; };
@@ -520,6 +533,7 @@
 		58F2E7AC2A9619DF00F3667A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		58F2E7AF2A961A7500F3667A /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		58F2E7B12A961BFF00F3667A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		58F31AD42AB20F0000949AFD /* TellingEBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellingEBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,6 +836,7 @@
 		3A4C38522A0CCC9300FEFAAE /* common */ = {
 			isa = PBXGroup;
 			children = (
+				58AF355B2AB0510F00B1AF2F /* sharing */,
 				58BFBB3D2AAD9850004A84E8 /* feedbackMail */,
 				3AB213232A89395A0035EA56 /* alert */,
 				3ABB84C42A838B6F00540269 /* emotion */,
@@ -979,6 +994,7 @@
 				58F2E7AA2A96132100F3667A /* UIStackView+.swift */,
 				58F2E7AC2A9619DF00F3667A /* UIFont+.swift */,
 				584445802A9E00B8004433D1 /* UIImageView+.swift */,
+				58690DA52AB2FBF4002BAB82 /* UIImage+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1019,7 +1035,6 @@
 			children = (
 				3A89B3C82A78E6AE002DFBCD /* Emotion.swift */,
 				3AB2131F2A8922DD0035EA56 /* ToastMessage.swift */,
-				58B735182AA4A8C5007485F7 /* MetaManager.swift */,
 			);
 			path = globalData;
 			sourceTree = "<group>";
@@ -1431,6 +1446,7 @@
 		3AE006122A360C5B0016CACE /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				58AF35522AB0477900B1AF2F /* sharingToInstagram */,
 				3A71213A2A039A0200A02054 /* AnswerListViewController.swift */,
 				3A8667CC2A5319C900C6BE96 /* CardListCollectionViewController.swift */,
 				3A8667D02A531A8500C6BE96 /* ListTableViewController.swift */,
@@ -1441,6 +1457,7 @@
 		3AE006132A360C640016CACE /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				58AF35562AB0482100B1AF2F /* sharingToInstagram */,
 				3A7121382A03902800A02054 /* AnswerListViewModel.swift */,
 				3A8667D42A531C6300C6BE96 /* AnswerListStruct.swift */,
 			);
@@ -1450,6 +1467,7 @@
 		3AE006142A360C730016CACE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				58AF35552AB047A700B1AF2F /* sharingToInstagram */,
 				3A7121362A02D01A00A02054 /* AnswerListTableViewCell.swift */,
 				3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */,
 				3A8667D22A531B9800C6BE96 /* CardListCollectionViewCell.swift */,
@@ -1582,6 +1600,7 @@
 			children = (
 				5844457E2A9E0086004433D1 /* CacheManager.swift */,
 				58BFBB402AADA1CC004A84E8 /* VersionManager.swift */,
+				58B735182AA4A8C5007485F7 /* MetaManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -1631,8 +1650,42 @@
 			children = (
 				58A6AD402A9DCA1400BCC2AC /* MyPageViewController.swift */,
 				589E78412AAF2D3200BB9213 /* PremiumInformationViewController.swift */,
+				58F31AD42AB20F0000949AFD /* TellingEBookViewController.swift */,
 			);
 			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		58AF35522AB0477900B1AF2F /* sharingToInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				58AF35532AB047A200B1AF2F /* SharingBottomViewController.swift */,
+			);
+			path = sharingToInstagram;
+			sourceTree = "<group>";
+		};
+		58AF35552AB047A700B1AF2F /* sharingToInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				58AF35592AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift */,
+				58AF355E2AB07EDD00B1AF2F /* ImageSavedToastView.swift */,
+			);
+			path = sharingToInstagram;
+			sourceTree = "<group>";
+		};
+		58AF35562AB0482100B1AF2F /* sharingToInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				58AF35572AB0483F00B1AF2F /* SharingToInstagramViewModel.swift */,
+			);
+			path = sharingToInstagram;
+			sourceTree = "<group>";
+		};
+		58AF355B2AB0510F00B1AF2F /* sharing */ = {
+			isa = PBXGroup;
+			children = (
+				58AF355C2AB0512400B1AF2F /* SharingBackgroundView.swift */,
+			);
+			path = sharing;
 			sourceTree = "<group>";
 		};
 		58AFC84F2AA21D980045B876 /* DetailAnswer */ = {
@@ -1658,7 +1711,7 @@
 				58BFBB462AADCC66004A84E8 /* PremiumInformationCollectionViewCell.swift */,
 				589E78432AAF306C00BB9213 /* PremiumInformationHeaderView.swift */,
 				589E78452AAF38B500BB9213 /* PremiumInformationFooterView.swift */,
-				589E78492AAF4BCA00BB9213 /* PremiumInformationButton.swift */,
+				589E78492AAF4BCA00BB9213 /* UpcomingInformationButton.swift */,
 			);
 			path = premium;
 			sourceTree = "<group>";
@@ -1900,7 +1953,9 @@
 				58A6AD422A9DCA1400BCC2AC /* CustomNavigationBarView.swift in Sources */,
 				3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */,
 				3A89B3C22A779943002DFBCD /* CommunicationListViewController.swift in Sources */,
+				58AF35542AB047A200B1AF2F /* SharingBottomViewController.swift in Sources */,
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
+				58AF355A2AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3ABB84C92A83BFA100540269 /* ReportAPI.swift in Sources */,
 				58F2E7A52A96071200F3667A /* AlarmViewController.swift in Sources */,
@@ -1929,6 +1984,7 @@
 				3A238C8F2A9B2D5F00F27AB1 /* WeekHeaderView.swift in Sources */,
 				58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
+				58AF35582AB0483F00B1AF2F /* SharingToInstagramViewModel.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
 				3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */,
 				58BFBB3F2AAD98EF004A84E8 /* EmailFeedbackViewController.swift in Sources */,
@@ -1964,11 +2020,12 @@
 				58F2E7612A95E35B00F3667A /* MyPageAPI.swift in Sources */,
 				3AF817B82A3748C300D788EC /* MyInfoViewController+.swift in Sources */,
 				3ABB84832A80BD8C00540269 /* AnswerTextView.swift in Sources */,
-				589E784A2AAF4BCA00BB9213 /* PremiumInformationButton.swift in Sources */,
+				589E784A2AAF4BCA00BB9213 /* UpcomingInformationButton.swift in Sources */,
 				3A409B3829E0142500A05B22 /* MoyaProvider+.swift in Sources */,
 				3ABB09EE2A1A73F600C6596B /* PullDownViewController.swift in Sources */,
 				3AB33EEB2A9A4E5F00470CD5 /* LibraryCollectionViewCell.swift in Sources */,
 				3AF97FBE2A19167F008FB590 /* DeleteAnswerDTO.swift in Sources */,
+				58AF355D2AB0512400B1AF2F /* SharingBackgroundView.swift in Sources */,
 				586EC5AB2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift in Sources */,
 				3A89B3C42A77ABA0002DFBCD /* CommunicationData.swift in Sources */,
 				3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */,
@@ -1979,6 +2036,7 @@
 				3A50EEFF29CCB2C400A27504 /* GetOptionViewController.swift in Sources */,
 				3A3739BB2A125F3B00739543 /* ChipJobViewController.swift in Sources */,
 				3AB213202A8922DD0035EA56 /* ToastMessage.swift in Sources */,
+				58690DA62AB2FBF4002BAB82 /* UIImage+.swift in Sources */,
 				3A89B3C62A78C312002DFBCD /* SortHeaderView.swift in Sources */,
 				3AB795782A6E960F009961CF /* CommunityViewController.swift in Sources */,
 				3A00B74C29FBF18C00285CA8 /* HomeRepository.swift in Sources */,
@@ -2049,6 +2107,7 @@
 				3A5076E929C82DFE00C7A5E9 /* TargetType+.swift in Sources */,
 				3ACE33962A39A32D008FCC03 /* SplashRepository.swift in Sources */,
 				3AEED26529C99F7D00D02F3F /* BodyLabel.swift in Sources */,
+				58F31AD52AB20F0000949AFD /* TellingEBookViewController.swift in Sources */,
 				3A71213D2A039FD400A02054 /* AnswerListRepository.swift in Sources */,
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
 				3ACC45EB29D198D9000843F5 /* GetJobViewController.swift in Sources */,
@@ -2084,6 +2143,7 @@
 				3A320F602A7621110098E8C9 /* QuestionCollctionViewCell.swift in Sources */,
 				3A7570C129F1589E00D24116 /* AllowNotificationViewController.swift in Sources */,
 				3AB7957F2A6E9D61009961CF /* QuestionList.swift in Sources */,
+				58AF355F2AB07EDD00B1AF2F /* ImageSavedToastView.swift in Sources */,
 				58A6AD452A9DCA1400BCC2AC /* MyPageProfileView.swift in Sources */,
 				3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3A5076E129C82D4A00C7A5E9 /* NetworkLoggerPlugin.swift in Sources */,
@@ -2245,6 +2305,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자가 만든 카드를 앨범에 저장하기 위해 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
@@ -2277,6 +2338,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자가 만든 카드를 앨범에 저장하기 위해 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;

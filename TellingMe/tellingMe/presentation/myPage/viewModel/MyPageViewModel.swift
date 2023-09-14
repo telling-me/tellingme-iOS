@@ -47,14 +47,16 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
     typealias PremiumImageName = String
     
     private let userDefaults = UserDefaults.standard
-    
+    private let settingViewModel = SettingViewModel()
+
     private let settingElementsData: [MyPageSettingElementsModel] = [
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "푸시 알림 받기"),
-        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "잠금 설정"),
+//        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "잠금 설정"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "이용 약관"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "개인정보 처리방침"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "고객 센터"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "듀이의 질문 제작소"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "회원 탈퇴"),
         MyPageSettingElementsModel( isElementWithLogout: true, elementTitle: "로그아웃")
     ]
     private let boxElementsData: [MyPageBoxElementsModel] = [
@@ -106,7 +108,6 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
     }
     
     func togglePushAlarmPermission(to permission: Bool) {
-        let settingViewModel = SettingViewModel()
         print("🧩 Posting Push Permission Sent to the server. : toggled to - \(permission)")
         settingViewModel.postNotification(permission)
     }
