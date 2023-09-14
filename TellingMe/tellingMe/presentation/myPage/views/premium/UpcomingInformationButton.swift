@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PremiumInformationButton: UIButton {
+final class UpcomingInformationButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +19,7 @@ final class PremiumInformationButton: UIButton {
     }
 }
 
-extension PremiumInformationButton {
+extension UpcomingInformationButton {
     
     private func setStyles() {
         self.isUserInteractionEnabled = false
