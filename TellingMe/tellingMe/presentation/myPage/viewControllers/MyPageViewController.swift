@@ -95,6 +95,8 @@ extension MyPageViewController {
                     self?.navigationController?.pushViewController(premiumViewController, animated: true)
                 case 1:
                     self?.viewModel.inputs.tellingMeBootPayPurchaseTapped()
+                    let tellingEBookViewController = TellingEBookViewController()
+                    self?.navigationController?.pushViewController(tellingEBookViewController, animated: true)
                 case 2:
                     self?.viewModel.inputs.faqTapped()
                 case 3:
@@ -133,16 +135,24 @@ extension MyPageViewController {
                 guard let index = indexPath.element?.row else { return }
                 switch index {
                 case 1:
-                    self?.viewModel.inputs.lockSettingTapped()
-                case 2:
                     self?.viewModel.inputs.termsOfUseTapped()
-                case 3:
+                case 2:
                     self?.viewModel.inputs.privatePolicyTapped()
-                case 4:
+                case 3:
                     self?.viewModel.inputs.feedBackWithMailTapped()
                     self?.sendFeedbackMail(userOf: self?.userName)
-                case 5:
+                case 4:
                     self?.viewModel.inputs.questionPlantTapped()
+                case 5:
+                    self?.viewModel.inputs.withdrawalTapped()
+                    let settingViewModel = SettingViewModel()
+                    let id = settingViewModel.items[3].id
+                    let viewController = settingViewModel.items[3].view
+                    let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+                    guard let vc = storyboard.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
+                        return
+                    }
+                    self?.navigationController?.pushViewController(vc, animated: true)
                 case 6:
                     self?.viewModel.inputs.logoutTapped()
                     self?.signout()
