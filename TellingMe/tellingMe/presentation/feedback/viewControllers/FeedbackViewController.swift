@@ -69,6 +69,12 @@ extension FeedbackViewController {
                 self?.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
+        badButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                let vc = BadFeedbackViewController()
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setLayout() {

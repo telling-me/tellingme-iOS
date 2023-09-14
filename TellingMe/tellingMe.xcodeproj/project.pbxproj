@@ -40,6 +40,7 @@
 		3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
+		3A31C6C62AB3395400E8B674 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A31C6C52AB3395400E8B674 /* CustomTextView.swift */; };
 		3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F252A6F6EE90098E8C9 /* QuestionView.swift */; };
 		3A320F542A73E3470098E8C9 /* CommunicationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F532A73E3470098E8C9 /* CommunicationDetailViewController.swift */; };
 		3A320F562A73E4CA0098E8C9 /* CommunicationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F552A73E4CA0098E8C9 /* CommunicationListViewModel.swift */; };
@@ -197,6 +198,8 @@
 		3ACEBAFC2AB08085008F4600 /* QuestionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACEBAFB2AB08085008F4600 /* QuestionSheetView.swift */; };
 		3ACEBAFE2AB08B81008F4600 /* GoodFeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACEBAFD2AB08B81008F4600 /* GoodFeedbackViewModel.swift */; };
 		3ACEBB002AB0E135008F4600 /* TeritaryModifiedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACEBAFF2AB0E135008F4600 /* TeritaryModifiedTextButton.swift */; };
+		3ACEBB062AB2EBCE008F4600 /* BadFeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACEBB052AB2EBCE008F4600 /* BadFeedbackViewModel.swift */; };
+		3ACEBB082AB30058008F4600 /* BadFeedbackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACEBB072AB30058008F4600 /* BadFeedbackCollectionViewCell.swift */; };
 		3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */; };
 		3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */; };
 		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
@@ -330,6 +333,7 @@
 		3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameInputViewController.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A2CBF1E2A8F875A007509C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A31C6C52AB3395400E8B674 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		3A320F252A6F6EE90098E8C9 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		3A320F532A73E3470098E8C9 /* CommunicationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDetailViewController.swift; sourceTree = "<group>"; };
 		3A320F552A73E4CA0098E8C9 /* CommunicationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationListViewModel.swift; sourceTree = "<group>"; };
@@ -489,6 +493,8 @@
 		3ACEBAFB2AB08085008F4600 /* QuestionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSheetView.swift; sourceTree = "<group>"; };
 		3ACEBAFD2AB08B81008F4600 /* GoodFeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodFeedbackViewModel.swift; sourceTree = "<group>"; };
 		3ACEBAFF2AB0E135008F4600 /* TeritaryModifiedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryModifiedTextButton.swift; sourceTree = "<group>"; };
+		3ACEBB052AB2EBCE008F4600 /* BadFeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadFeedbackViewModel.swift; sourceTree = "<group>"; };
+		3ACEBB072AB30058008F4600 /* BadFeedbackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadFeedbackCollectionViewCell.swift; sourceTree = "<group>"; };
 		3AD53A5A2A2DC7A100AFE17D /* AnswerCompleted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnswerCompleted.storyboard; sourceTree = "<group>"; };
 		3AD8153D2A29B001000049D7 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
@@ -833,6 +839,7 @@
 			children = (
 				3A392EA22AAF5B5500D82221 /* FeedbackView.swift */,
 				3ACEBAFB2AB08085008F4600 /* QuestionSheetView.swift */,
+				3ACEBB072AB30058008F4600 /* BadFeedbackCollectionViewCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -853,6 +860,7 @@
 			children = (
 				3A392EA02AAF5AD700D82221 /* FeedbackViewModel.swift */,
 				3ACEBAFD2AB08B81008F4600 /* GoodFeedbackViewModel.swift */,
+				3ACEBB052AB2EBCE008F4600 /* BadFeedbackViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -1622,6 +1630,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2742CE29D5CDDA005E4C5F /* style */,
+				3A31C6C52AB3395400E8B674 /* CustomTextView.swift */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -2054,6 +2063,7 @@
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
 				58AF355A2AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
+				3ACEBB062AB2EBCE008F4600 /* BadFeedbackViewModel.swift in Sources */,
 				3ABB84C92A83BFA100540269 /* ReportAPI.swift in Sources */,
 				58F2E7A52A96071200F3667A /* AlarmViewController.swift in Sources */,
 				3A238C9C2A9B655900F27AB1 /* LibraryNavigationViewController.swift in Sources */,
@@ -2159,6 +2169,7 @@
 				3A1C06862A0C0C0A00534BAE /* SettingViewController.swift in Sources */,
 				3A8667D12A531A8500C6BE96 /* ListTableViewController.swift in Sources */,
 				3A320F562A73E4CA0098E8C9 /* CommunicationListViewModel.swift in Sources */,
+				3ACEBB082AB30058008F4600 /* BadFeedbackCollectionViewCell.swift in Sources */,
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3A8667D32A531B9800C6BE96 /* CardListCollectionViewCell.swift in Sources */,
@@ -2271,6 +2282,7 @@
 				589E78442AAF306C00BB9213 /* PremiumInformationHeaderView.swift in Sources */,
 				3AB213272A8939830035EA56 /* AlertViewController.swift in Sources */,
 				3ACEBAFC2AB08085008F4600 /* QuestionSheetView.swift in Sources */,
+				3A31C6C62AB3395400E8B674 /* CustomTextView.swift in Sources */,
 				3ACBA4602A2508B800FCE72B /* KeyChain+.swift in Sources */,
 				3A70A6482A272C58009D8D76 /* UpdateUserInfoDTO.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* MainHeaderView.swift in Sources */,
