@@ -10,7 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-class CardListCollectionViewCell: UICollectionViewCell {
+protocol ShareButtonTappedProtocol: AnyObject {
+    func shareButtonTapped(passing view: UIView)
+}
+
+final class CardListCollectionViewCell: UICollectionViewCell {
+    weak var delegate: ShareButtonTappedProtocol?
     static let id = "cardListCollectionViewCell"
     let emotions = ["Happy", "Proud", "Meh", "Tired", "Sad", "Angry"]
     var paragraphStyle = NSMutableParagraphStyle()
@@ -52,6 +57,7 @@ class CardListCollectionViewCell: UICollectionViewCell {
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textColor = .Black
         return textView
     }()
 
@@ -63,8 +69,27 @@ class CardListCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let shareIconButton = UIButton()
-    private let tellingMeSignatureImageView = UIImageView()
+    let shareIconButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
+        button.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .Gray3
+        button.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        // 밖에서 처리하기
+        button.addTarget(self, action: #selector(tapToShare(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let tellingMeSignatureImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Logo")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .Gray3
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     func setCell(data: AnswerListResponse) {
         imgView.image = UIImage(named: self.emotions[data.emotion - 1])
@@ -95,6 +120,8 @@ class CardListCollectionViewCell: UICollectionViewCell {
         containerView.addSubview(subQuestionLabel)
         containerView.addSubview(answerTextView)
         containerView.addSubview(dateLabel)
+        containerView.addSubview(shareIconButton)
+        containerView.addSubview(tellingMeSignatureImageView)
 
         imgView.widthAnchor.constraint(equalToConstant: 56).isActive = true
         imgView.heightAnchor.constraint(equalToConstant: 56).isActive = true
@@ -118,65 +145,15 @@ class CardListCollectionViewCell: UICollectionViewCell {
 
         contentView.layer.cornerRadius = 24
         
-        setStyles()
-        setLayout()
-    }
-}
-
-extension CardListCollectionViewCell {
-    
-    private func setStyles() {
-        shareIconButton.do {
-            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
-            $0.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
-            $0.tintColor = .Gray3
-            $0.contentMode = .scaleAspectFit
-            $0.addTarget(self, action: #selector(tapToShare), for: .touchUpInside)
-        }
-        
-        tellingMeSignatureImageView.do {
-            $0.image = UIImage(named: "Logo")?.withTintColor(.Gray3, renderingMode: .alwaysTemplate)
-            $0.contentMode = .scaleAspectFit
-        }
-    }
-    
-    private func setLayout() {
-        self.addSubview(shareIconButton)
-        
-        shareIconButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(33)
-            $0.leading.equalToSuperview().inset(30)
-        }
+        shareIconButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33).isActive = true
+        shareIconButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        shareIconButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
     }
 }
 
 extension CardListCollectionViewCell {
     @objc
-    private func tapToShare() {
-        removeImageFromTheSuperViewForSharing()
-        instaManager.shareInstagram(sharingView: self)
-        reappearImageForConfiguring()
-    }
-}
-
-extension CardListCollectionViewCell {
-    private func removeImageFromTheSuperViewForSharing() {
-        self.shareIconButton.removeFromSuperview()
-        self.addSubview(tellingMeSignatureImageView)
-        
-        tellingMeSignatureImageView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(33)
-            $0.leading.equalToSuperview().inset(30)
-        }
-    }
-    
-    private func reappearImageForConfiguring() {
-        self.addSubview(shareIconButton)
-        tellingMeSignatureImageView.removeFromSuperview()
-        
-        shareIconButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(33)
-            $0.leading.equalToSuperview().inset(30)
-        }
+    private func tapToShare(_ sender: UIButton) {
+        self.delegate?.shareButtonTapped(passing: self)
     }
 }
