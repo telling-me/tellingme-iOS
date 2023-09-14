@@ -52,6 +52,7 @@ extension MyPageToggleTableViewCell {
             .do { [weak self] _ in
                 self?.notificationToggle.isEnabled = true
             }
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
                 self?.viewModel.inputs.togglePushAlarmPermission(to: response)
             })
