@@ -33,10 +33,28 @@ final class SharingToInstagramViewModel: NSObject, SharingToInstagramInputs, Sha
         case myLibrary
     }
     
+    enum SharingPlatform {
+        case kakao
+        case instagram
+        case toAlbum
+        
+        var platform: String {
+            switch self {
+            case .kakao:
+                return "Kakao"
+            case .instagram:
+                return "Instagram"
+            case .toAlbum:
+                return "Saved to album"
+            }
+        }
+    }
+    
     private let metaManager = MetaManager()
     private var sharingView: UIView = UIView()
     private let sharingTableElementsArray: [String] = ["이미지로 저장하기", "인스타 스토리로 공유하기", "다른 방법으로 공유하기"]
     private var sharingType: SharingType = .myAnswers
+    private var disposeBag = DisposeBag()
     
     var sharingTableElements: Observable<[String]>
     var imageSavedSuccess: PublishSubject<(Bool, Error?)> = PublishSubject<(Bool, Error?)>()
@@ -55,6 +73,7 @@ final class SharingToInstagramViewModel: NSObject, SharingToInstagramInputs, Sha
     
     func shareImageToInstagramTapped() {
         setSharingImage()
+        postSharingAction(type: .instagram)
     }
     
     func openSharingControllerTapped(completion: @escaping (UIImage) -> Void) {
@@ -70,6 +89,7 @@ extension SharingToInstagramViewModel {
             imageSavedSuccess.onNext((false,error))
         } else {
             imageSavedSuccess.onNext((true, nil))
+            postSharingAction(type: .toAlbum)
         }
     }
     
@@ -184,6 +204,12 @@ extension SharingToInstagramViewModel {
         let savedImage = metaManager.saveImage(from: backgroundView)
         
         return savedImage
+    }
+    
+    private func postSharingAction(type: SharingPlatform) {
+        ShareAPI.postShareType(request: .init(type: type.platform))
+            .subscribe(onNext: { _ in })
+            .disposed(by: disposeBag)
     }
 }
 
