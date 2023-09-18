@@ -118,6 +118,8 @@ class MyInfoViewController: DropDownViewController {
             }
             if viewModel.nickname != viewModel.originalNickname {
                 self.checkNickname(nickname: nickname) { isChecked in
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(nickname, forKey: StringLiterals.savedUserName)
                     if !isChecked {
                         return
                     }
