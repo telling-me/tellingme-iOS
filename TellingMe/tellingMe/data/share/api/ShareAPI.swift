@@ -19,7 +19,7 @@ extension ShareAPITarget: TargetType {
     var path: String {
         switch self {
         case .postSharedType(let type):
-            return "api/mypage/\(type)"
+            return "api/share/\(type)"
         }
     }
     
