@@ -12,6 +12,7 @@ enum StringLiterals {
     static let isPushNotificationPermittedKey: String = "PushPermit"
     static let isDeviceAbnormal: String = "DeviceAbnormal"
     static let isDeviceChecked: String = "DeviceEverChecked"
+    static let savedUserName: String = "SavedUserName"
 }
 
 enum ArrayLiterals {}
