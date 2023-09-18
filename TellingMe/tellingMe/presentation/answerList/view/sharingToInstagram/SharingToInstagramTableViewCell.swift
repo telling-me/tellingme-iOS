@@ -29,7 +29,6 @@ extension SharingToInstagramTableViewCell {
     
     private func setStyles() {
         self.backgroundColor = .Side100
-        self.selectionStyle = .none
         
         titleLabel.do {
             $0.font = .fontNanum(.B2_Regular)
