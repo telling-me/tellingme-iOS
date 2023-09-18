@@ -40,11 +40,22 @@ extension EmailFeedbackViewController: MFMailComposeViewControllerDelegate {
                           """
             mailViewController.mailComposeDelegate = self
             mailViewController.setToRecipients([toMail])
-            mailViewController.setSubject("")
+            mailViewController.setSubject("[텔링미 고객센터] 전달사항이 있어요!")
             mailViewController.setMessageBody(message, isHTML: false)
             self.present(mailViewController, animated: true)
         } else {
-            print("Popping the EmailVC up failed.")
+            guard let settingUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+            let alert = UIAlertController(title: "기기의 'Mail'에 먼저 로그인 해주세요.", message: "설정에서 Apple 로그인을 해주세요.", preferredStyle: .alert)
+            let moveToDeviceSettingAction = UIAlertAction(title: "설정", style: .default) { _ in
+                UIApplication.shared.open(settingUrl)
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+            
+            alert.addAction(moveToDeviceSettingAction)
+            alert.addAction(cancelAction)
+            alert.preferredAction = moveToDeviceSettingAction
+
+            present(alert, animated: true)
         }
     }
     
