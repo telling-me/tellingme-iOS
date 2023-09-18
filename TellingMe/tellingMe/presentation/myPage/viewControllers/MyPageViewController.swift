@@ -61,6 +61,16 @@ final class MyPageViewController: EmailFeedbackViewController {
         setStyles()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadUserName()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enableWhenNeeded()
+    }
+    
     deinit {
         print("MyPageViewController Out")
     }
@@ -78,16 +88,17 @@ extension MyPageViewController {
         viewModel.outputs.userInformation
             .bind { [weak self] response in
                 self?.userName = response.nickname
-                self?.profileView.setUserName(userName: response.nickname)
+                self?.profileView.setUserName(newName: response.nickname)
                 self?.profileView.setConsecutiveDay(day: response.answerRecord)
                 self?.profileView.setUserProfileImage(urlString: response.profileUrl)
                 self?.profileView.isUserPremiumUser(isPremium: response.isPremium)
+                self?.profileView.setAttributedStringForConsecutiveLabel(day: response.answerRecord)
             }
             .disposed(by: disposeBag)
         
         boxView.mainIconCollectionView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                guard let index = indexPath.element?.row else { return }
+            .bind (onNext: { [weak self] indexPath in
+                let index = indexPath.row
                 switch index {
                 case 0:
                     self?.viewModel.inputs.premiumInAppPurchaseTapped()
@@ -110,7 +121,7 @@ extension MyPageViewController {
                 default:
                     break
                 }
-            }
+            })
             .disposed(by: disposeBag)
         
         viewModel.outputs.settingElements
@@ -131,8 +142,9 @@ extension MyPageViewController {
             .disposed(by: disposeBag)
         
         settingTableView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                guard let index = indexPath.element?.row else { return }
+            .bind(onNext: { [weak self] indexPath in
+                self?.settingTableView.deselectRow(at: indexPath, animated: true)
+                let index = indexPath.row
                 switch index {
                 case 1:
                     self?.viewModel.inputs.termsOfUseTapped()
@@ -159,7 +171,7 @@ extension MyPageViewController {
                 default:
                     break
                 }
-            }
+            })
             .disposed(by: disposeBag)
     }
     
@@ -221,7 +233,7 @@ extension MyPageViewController {
 }
 
 extension MyPageViewController {
-    func signout() {
+    private func signout() {
         LoginAPI.logout { result in
             switch result {
             case .success:
@@ -239,6 +251,24 @@ extension MyPageViewController {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    private func reloadUserName() {
+        if let userNameSaved = UserDefaults.standard.string(forKey: StringLiterals.savedUserName) {
+            if self.userName == userNameSaved {
+                return
+            } else {
+                profileView.setUserName(newName: userNameSaved, oldName: self.userName)
+            }
+        }
+    }
+    
+    private func enableWhenNeeded() {
+        if settingTableView.contentSize.height > settingTableView.frame.size.height {
+            settingTableView.isScrollEnabled = true
+        } else {
+            settingTableView.isScrollEnabled = false
         }
     }
 }

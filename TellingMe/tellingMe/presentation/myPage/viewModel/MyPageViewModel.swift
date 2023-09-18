@@ -60,7 +60,7 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
         MyPageSettingElementsModel( isElementWithLogout: true, elementTitle: "로그아웃")
     ]
     private let boxElementsData: [MyPageBoxElementsModel] = [
-        MyPageBoxElementsModel(iconImage: "PremiumIcon", iconTitle: "프리미엄"),
+        MyPageBoxElementsModel(iconImage: "PremiumIcon", iconTitle: "PLUS"),
         MyPageBoxElementsModel(iconImage: "TellingMeBookIcon", iconTitle: "텔링e북"),
         MyPageBoxElementsModel(iconImage: "FAQIcon", iconTitle: "FAQ"),
         MyPageBoxElementsModel(iconImage: "SettingProfileIcon", iconTitle: "내 정보")

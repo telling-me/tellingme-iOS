@@ -14,6 +14,7 @@ final class MyPageProfileView: UIView {
     
     private var consecutiveDays: Int = 0
     private let cacheManager = ImageCacheManager.shared
+    private let userDefaults = UserDefaults.standard
     
     private let userImageView = UIImageView()
     private let userNameLabel = UILabel()
@@ -29,7 +30,6 @@ final class MyPageProfileView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         userImageView.layer.cornerRadius = userImageView.frame.height/2
-        setAttributedStringForConsecutiveLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -95,9 +95,9 @@ extension MyPageProfileView {
 }
 
 extension MyPageProfileView {
-    private func setAttributedStringForConsecutiveLabel() {
+    func setAttributedStringForConsecutiveLabel(day: Int) {
         let colorAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.Logo]
-        if self.consecutiveDays == 0 {
+        if day == 0 {
             let text: String = "오늘도 진정한 나를 만나봐요!"
             let coloredText: String = "진정한 나"
             consecutiveLabel.attributedText = setPartialTextGreen(text: text, targetText: coloredText, attributes: colorAttributes)
@@ -136,8 +136,17 @@ extension MyPageProfileView {
 }
 
 extension MyPageProfileView {
-    func setUserName(userName: String) {
-        userNameLabel.text = "\(userName) 님"
+    func setUserName(newName: String, oldName: String = "") {
+        if newName == oldName {
+            return
+        }
+
+        if let userNameFromUserDefaults = userDefaults.string(forKey: StringLiterals.savedUserName) {
+            userNameLabel.text = userNameFromUserDefaults
+        } else {
+            userDefaults.set(newName, forKey: StringLiterals.savedUserName)
+            userNameLabel.text = "\(newName) 님"
+        }
     }
     
     func setConsecutiveDay(day: Int) {
