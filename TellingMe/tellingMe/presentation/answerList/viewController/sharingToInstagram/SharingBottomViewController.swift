@@ -43,9 +43,10 @@ extension SharingBottomViewController {
             .disposed(by: disposeBag)
         
         sharingTableView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                guard let index = indexPath.element?.row else { return }
+            .bind(onNext: { [weak self] indexPath in
                 guard let self else { return }
+                self.sharingTableView.deselectRow(at: indexPath, animated: true)
+                let index = indexPath.row
                 switch index {
                 case 0:
                     self.loadingViewActivate()
@@ -61,7 +62,7 @@ extension SharingBottomViewController {
                 default:
                     break
                 }
-            }
+            })
             .disposed(by: disposeBag)
         
         viewModel.outputs.imageSavedSuccess
