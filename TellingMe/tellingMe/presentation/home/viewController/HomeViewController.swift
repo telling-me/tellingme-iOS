@@ -42,6 +42,7 @@ class HomeViewController: UIViewController {
         getQuestion()
         getAnswerRecord()
         getAnswer()
+        restartAnimation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -237,6 +238,6 @@ extension HomeViewController {
     private func refreshAnimation() {
         print("Back From Background, refreshed the animation.")
         /// This doesn't work.
-        restartAnimation()
+        animation()
     }
 }
