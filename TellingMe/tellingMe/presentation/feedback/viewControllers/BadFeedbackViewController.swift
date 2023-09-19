@@ -31,6 +31,11 @@ final class BadFeedbackViewController: UIViewController {
         setLayout()
         setStyles()
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      super.touchesEnded(touches, with: event)
+      self.view.endEditing(true)
+    }
 }
 
 extension BadFeedbackViewController {
@@ -65,6 +70,20 @@ extension BadFeedbackViewController {
                 
             })
             .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { [weak self] notification in
+                guard let self = self else { return }
+                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+                let offsetY = self.textView.frame.maxY + keyboardSize.height
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .subscribe(onNext: { [weak self] notification in
+                self?.scrollView.contentInset.bottom = 0
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
@@ -75,11 +94,11 @@ extension BadFeedbackViewController {
         }
         scrollView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-63)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalToSuperview()
         }
         bottomContainerView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.snp.bottom)
             $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(63)
         }
@@ -133,6 +152,10 @@ extension BadFeedbackViewController {
             $0.setHeader(isFirstView: false, title: "소중한 피드백", buttonImage: "Xmark")
         }
         
+        scrollView.do {
+            $0.keyboardDismissMode = .onDrag
+        }
+
         titleLabel.do {
             $0.font = .fontNanum(.H5_Bold)
             $0.textColor = .Gray6
