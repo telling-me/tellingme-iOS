@@ -63,7 +63,7 @@ extension PremiumInformationViewController {
             $0.layer.masksToBounds = true
         }
         
-        readyButton.setTitleFor("프리미엄 모드 출시 준비 중이에요!")
+        readyButton.setTitleFor("텔링미 플러스를 준비 중이에요!")
     }
     
     private func setLayout() {
