@@ -142,7 +142,7 @@ extension MyPageProfileView {
         }
 
         if let userNameFromUserDefaults = userDefaults.string(forKey: StringLiterals.savedUserName) {
-            userNameLabel.text = userNameFromUserDefaults
+            userNameLabel.text = "\(userNameFromUserDefaults) 님"
         } else {
             userDefaults.set(newName, forKey: StringLiterals.savedUserName)
             userNameLabel.text = "\(newName) 님"
