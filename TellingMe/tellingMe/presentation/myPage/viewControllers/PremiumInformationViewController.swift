@@ -16,7 +16,6 @@ final class PremiumInformationViewController: UIViewController {
 
     private var disposeBag = DisposeBag()
     
-    private let backgroundView = UIView()
     private let navigationBarView = CustomNavigationBarView()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -48,12 +47,8 @@ extension PremiumInformationViewController {
     private func setStyles() {
         self.view.backgroundColor = .Side100
         
-        backgroundView.do {
-            $0.backgroundColor = .Side100
-        }
-        
         navigationBarView.do {
-            $0.setColor(with: .EBookNavigationColor)
+            $0.setColor(with: .Side100)
             $0.setTitle(with: "텔링미 PLUS")
         }
         
@@ -72,15 +67,10 @@ extension PremiumInformationViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(backgroundView, navigationBarView, readyButton, scrollView)
+        view.addSubviews(navigationBarView, readyButton, scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubviews(informationImageView)
-        
-        backgroundView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(400)
-        }
-        
+
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
