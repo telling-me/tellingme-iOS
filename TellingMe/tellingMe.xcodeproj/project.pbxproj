@@ -2341,7 +2341,7 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
@@ -2374,7 +2374,7 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HVC3NZCRB5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";

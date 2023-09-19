@@ -241,6 +241,12 @@ extension MyPageViewController {
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
                 self.navigationController?.pushViewController(vc, animated: true)
+                
+                if let bundleId = Bundle.main.bundleIdentifier {
+                    print("All UserDefaults are removed.")
+                    UserDefaults.standard.removePersistentDomain(forName: bundleId)
+                    UserDefaults.setLaunchedBeforeFlag()
+                }
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
