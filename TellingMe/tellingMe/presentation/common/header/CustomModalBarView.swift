@@ -1,5 +1,5 @@
 //
-//  AlarmNavigationBarView.swift
+//  CustomModalBarView.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/08/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlarmNavigationBarView: UIView {
+final class CustomModalBarView: UIView {
     
     private let titleLabel = UILabel()
     let dismissButton = UIButton()
@@ -23,7 +23,7 @@ final class AlarmNavigationBarView: UIView {
     }
 }
 
-extension AlarmNavigationBarView {
+extension CustomModalBarView {
     private func setStyles() {
         self.backgroundColor = .Side100
         
@@ -53,5 +53,11 @@ extension AlarmNavigationBarView {
             $0.centerY.equalTo(titleLabel.snp.centerY)
             $0.trailing.equalToSuperview().inset(25)
         }
+    }
+}
+
+extension CustomModalBarView {
+    func setTitle(with title: String) {
+        self.titleLabel.text = title
     }
 }

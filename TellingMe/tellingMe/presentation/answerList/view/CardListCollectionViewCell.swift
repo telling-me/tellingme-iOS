@@ -7,10 +7,20 @@
 
 import UIKit
 
-class CardListCollectionViewCell: UICollectionViewCell {
+import SnapKit
+import Then
+
+protocol ShareButtonTappedProtocol: AnyObject {
+    func shareButtonTapped(passing view: UIView)
+}
+
+final class CardListCollectionViewCell: UICollectionViewCell {
+    weak var delegate: ShareButtonTappedProtocol?
     static let id = "cardListCollectionViewCell"
     let emotions = ["Happy", "Proud", "Meh", "Tired", "Sad", "Angry"]
     var paragraphStyle = NSMutableParagraphStyle()
+    private let instaManager = MetaManager()
+    
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -47,13 +57,38 @@ class CardListCollectionViewCell: UICollectionViewCell {
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textColor = .Black
         return textView
     }()
 
     let dateLabel: UILabel = {
         let label = CaptionLabelRegular()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .Side500
+        label.font = .fontNanum(.C1_Regular)
         return label
+    }()
+    
+    let shareIconButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
+        button.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .Gray3
+        button.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        // 밖에서 처리하기
+        button.addTarget(self, action: #selector(tapToShare(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let tellingMeSignatureImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Logo")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .Gray3
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
 
     func setCell(data: AnswerListResponse) {
@@ -85,6 +120,8 @@ class CardListCollectionViewCell: UICollectionViewCell {
         containerView.addSubview(subQuestionLabel)
         containerView.addSubview(answerTextView)
         containerView.addSubview(dateLabel)
+        containerView.addSubview(shareIconButton)
+        containerView.addSubview(tellingMeSignatureImageView)
 
         imgView.widthAnchor.constraint(equalToConstant: 56).isActive = true
         imgView.heightAnchor.constraint(equalToConstant: 56).isActive = true
@@ -102,10 +139,21 @@ class CardListCollectionViewCell: UICollectionViewCell {
         answerTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         answerTextView.heightAnchor.constraint(equalToConstant: 154).isActive = true
 
-        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -72).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
         contentView.layer.cornerRadius = 24
+        
+        shareIconButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33).isActive = true
+        shareIconButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        shareIconButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+    }
+}
+
+extension CardListCollectionViewCell {
+    @objc
+    private func tapToShare(_ sender: UIButton) {
+        self.delegate?.shareButtonTapped(passing: self)
     }
 }

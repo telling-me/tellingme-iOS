@@ -51,3 +51,30 @@ extension UIView {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
+
+extension UIView {
+    func scaleView(by scale: CGFloat) {
+        self.contentScaleFactor = scale
+        for subview in self.subviews {
+            subview.scaleView(by: scale)
+        }
+    }
+    
+    /**
+     UIView 는 디바이스 내에 한정된 픽셀에서 만들어진 작은 해상도의 View 인데, 그대로 공유를 하게 되면 깨지게 되어 스케일 업을 시켜야 한다. 추천하는 사이즈는 3~5 이다. 그 이상으로 하게 되면 지나치게 용량이 커지게 된다.
+     */
+    func saveUIViewWithScale(with scale: CGFloat? = nil) -> Data? {
+        let newScale = scale ?? UIScreen.main.scale
+        self.scaleView(by: newScale)
+        
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = newScale
+        let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
+        let image = renderer.image { context in
+            self.layer.render(in: context.cgContext)
+        }
+        let imageData = image.pngData()
+        
+        return imageData
+    }
+}

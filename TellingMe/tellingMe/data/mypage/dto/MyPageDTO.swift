@@ -20,12 +20,12 @@ struct MypageRequest: Codable {
  2. 프로필 이미지 Url
  3. 연속 답변일
  4. 프리미엄 모드 유무
- 5. 푸피 알림 허용 상태
+ 5. 푸시 알림 허용 상태
  */
 struct MyPageResponse: Codable {
     let nickname: String
     let profileUrl: String
     let answerRecord: Int
-    let isPremium: Int
+    let isPremium: Bool
     let allowNotification: Bool
 }
