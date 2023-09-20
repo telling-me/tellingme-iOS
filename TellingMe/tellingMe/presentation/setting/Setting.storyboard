@@ -226,7 +226,7 @@
                                                         <rect key="frame" x="25" y="60.333333333333314" width="343" height="133.66666666666666"/>
                                                     </containerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1u-Jc-qrv" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
-                                                        <rect key="frame" x="25" y="24" width="29.666666666666671" height="20.333333333333329"/>
+                                                        <rect key="frame" x="35" y="24" width="29.666666666666671" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -236,7 +236,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="sUO-kf-e6m" secondAttribute="trailing" constant="25" id="8ig-7n-ucP"/>
                                                     <constraint firstAttribute="height" constant="218" id="Bd1-v5-8lC"/>
-                                                    <constraint firstItem="X1u-Jc-qrv" firstAttribute="leading" secondItem="jaH-SI-WSg" secondAttribute="leading" constant="25" id="NIH-5w-Hfh"/>
+                                                    <constraint firstItem="X1u-Jc-qrv" firstAttribute="leading" secondItem="jaH-SI-WSg" secondAttribute="leading" constant="35" id="NIH-5w-Hfh"/>
                                                     <constraint firstItem="sUO-kf-e6m" firstAttribute="top" secondItem="X1u-Jc-qrv" secondAttribute="bottom" constant="16" id="VKc-HV-2S1"/>
                                                     <constraint firstItem="sUO-kf-e6m" firstAttribute="leading" secondItem="jaH-SI-WSg" secondAttribute="leading" constant="25" id="WQL-mK-5Ef"/>
                                                     <constraint firstItem="X1u-Jc-qrv" firstAttribute="top" secondItem="jaH-SI-WSg" secondAttribute="top" constant="24" id="kcK-gU-fKu"/>
@@ -353,7 +353,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mbti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQi-88-ozM" customClass="Headline6Regular" customModule="tellingMe" customModuleProvider="target">
-                                                        <rect key="frame" x="25" y="24" width="34" height="20.333333333333329"/>
+                                                        <rect key="frame" x="35" y="24" width="34" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -362,7 +362,7 @@
                                                 <color key="backgroundColor" name="Side100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="qjj-gj-nng" secondAttribute="trailing" constant="25" id="5Uw-I5-i1W"/>
-                                                    <constraint firstItem="mQi-88-ozM" firstAttribute="leading" secondItem="dft-Kx-bnb" secondAttribute="leading" constant="25" id="Jvl-S1-9op"/>
+                                                    <constraint firstItem="mQi-88-ozM" firstAttribute="leading" secondItem="dft-Kx-bnb" secondAttribute="leading" constant="35" id="Jvl-S1-9op"/>
                                                     <constraint firstItem="qjj-gj-nng" firstAttribute="leading" secondItem="dft-Kx-bnb" secondAttribute="leading" constant="25" id="W7w-5T-IOt"/>
                                                     <constraint firstAttribute="height" constant="108" id="eB0-2S-fML"/>
                                                     <constraint firstItem="mQi-88-ozM" firstAttribute="top" secondItem="dft-Kx-bnb" secondAttribute="top" constant="24" id="fst-qE-dyD"/>
