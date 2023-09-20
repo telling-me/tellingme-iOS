@@ -1,9 +1,9 @@
-////
-////  CommunicationListViewController.swift
-////  tellingMe
-////
-////  Created by 마경미 on 31.07.23.
-////
+//
+//  CommunicationListViewController.swift
+//  tellingMe
+//
+//  Created by 마경미 on 31.07.23.
+//
 
 import UIKit
 import RxSwift
