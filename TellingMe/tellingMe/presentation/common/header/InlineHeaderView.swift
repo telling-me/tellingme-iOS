@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class InlineHeaderView: UIView {
-    let title = Headline6Bold()
+final class InlineHeaderView: UIView {
+    private let title = Headline6Bold()
     let leftButton = UIButton()
     let rightButton = UIButton()
 
@@ -22,7 +22,26 @@ class InlineHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("")
     }
+    
+    func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
+        if isFirstView {
+            leftButton.isHidden = true
+        } else {
+            leftButton.isHidden = false
+        }
+        if let buttonImage = buttonImage {
+            self.title.text = title
+            rightButton.isHidden = false
+            rightButton.setImage(UIImage(named: buttonImage), for: .normal)
+        } else {
+            self.title.text = title
+            rightButton.isHidden = true
 
+        }
+    }
+}
+
+extension InlineHeaderView {
     func setLayout() {
        addSubviews(leftButton, title, rightButton)
         leftButton.snp.makeConstraints {
@@ -44,22 +63,10 @@ class InlineHeaderView: UIView {
         leftButton.do {
             $0.setImage(UIImage(named: "ArrowLeft"), for: .normal)
         }
-    }
-    
-    func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
-        if isFirstView {
-            leftButton.isHidden = true
-        } else {
-            leftButton.isHidden = false
-        }
-        if let buttonImage = buttonImage {
-            self.title.text = title
-            rightButton.isHidden = false
-            rightButton.setImage(UIImage(named: buttonImage), for: .normal)
-        } else {
-            self.title.text = title
-            rightButton.isHidden = true
-
+        
+        title.do {
+            $0.font = .fontNanum(.H6_Bold)
+            $0.textColor = .Gray6
         }
     }
 }

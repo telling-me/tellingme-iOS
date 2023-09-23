@@ -10,19 +10,18 @@ import SnapKit
 import RxSwift
 
 final class BadFeedbackViewController: UIViewController {
+    private let viewModel = BadFeedbackViewModel()
+
     private let headerView: InlineHeaderView = InlineHeaderView()
     private let scrollView: UIScrollView = UIScrollView()
     private let scrollContainerView: UIView = UIView()
     private let titleLabel: UILabel = UILabel()
     private let captionLabel: UILabel = UILabel()
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let secondQuestionLabel: UILabel = UILabel()
-    private let containerView: UIView = UIView()
-    private let textView: CustomTextView = CustomTextView()
+    private let otherFeedbackView: OtherFeedbackView = OtherFeedbackView()
     private let bottomContainerView: UIView = UIView()
     private let submitButton: SecondaryTextButton = SecondaryTextButton()
     
-    private let viewModel = BadFeedbackViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -55,11 +54,6 @@ extension BadFeedbackViewController {
                 self?.popViewController()
             })
             .disposed(by: disposeBag)
-        submitButton.rx.tap
-            .bind(onNext: { [weak self] _ in
-                self?.viewModel.postFeedback()
-            })
-            .disposed(by: disposeBag)
         collectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
                 
@@ -70,20 +64,27 @@ extension BadFeedbackViewController {
                 
             })
             .disposed(by: disposeBag)
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .subscribe(onNext: { [weak self] notification in
+        submitButton.rx.tap
+            .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-                let offsetY = self.textView.frame.maxY + keyboardSize.height
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+                self.viewModel.postFeedback()
+                let vc = FinishFeedbackViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .subscribe(onNext: { [weak self] notification in
-                self?.scrollView.contentInset.bottom = 0
-            })
-            .disposed(by: disposeBag)
+//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+//            .subscribe(onNext: { [weak self] notification in
+//                guard let self = self else { return }
+//                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+//                let offsetY = self.textView.frame.maxY + keyboardSize.height
+//                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+//            })
+//            .disposed(by: disposeBag)
+//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+//            .subscribe(onNext: { [weak self] notification in
+//                self?.scrollView.contentInset.bottom = 0
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
@@ -106,7 +107,7 @@ extension BadFeedbackViewController {
         scrollContainerView.snp.makeConstraints {
             $0.edges.width.equalToSuperview()
         }
-        scrollContainerView.addSubviews(titleLabel, captionLabel, collectionView, secondQuestionLabel, containerView)
+        scrollContainerView.addSubviews(titleLabel, captionLabel, collectionView, otherFeedbackView)
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(42)
             $0.horizontalEdges.equalToSuperview().inset(25)
@@ -122,21 +123,10 @@ extension BadFeedbackViewController {
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.height.equalTo(348)
         }
-        secondQuestionLabel.snp.makeConstraints {
+        otherFeedbackView.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom).offset(32)
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.height.equalTo(38)
-        }
-        containerView.snp.makeConstraints {
-            $0.top.equalTo(secondQuestionLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.height.equalTo(190)
             $0.bottom.equalToSuperview()
-        }
-        containerView.addSubview(textView)
-        textView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.verticalEdges.equalToSuperview().inset(20)
         }
         bottomContainerView.addSubview(submitButton)
         submitButton.snp.makeConstraints {
@@ -151,11 +141,9 @@ extension BadFeedbackViewController {
         headerView.do {
             $0.setHeader(isFirstView: false, title: "소중한 피드백", buttonImage: "Xmark")
         }
-        
         scrollView.do {
             $0.keyboardDismissMode = .onDrag
         }
-
         titleLabel.do {
             $0.font = .fontNanum(.H5_Bold)
             $0.textColor = .Gray6
@@ -167,39 +155,17 @@ extension BadFeedbackViewController {
             attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Error400, range: range)
             $0.attributedText = attributedString
         }
-        
         captionLabel.do {
             $0.text = "다중 선택 가능"
             $0.font = .fontNanum(.C1_Regular)
             $0.textColor = .Gray6
         }
-        
         collectionView.do {
             $0.delegate = self
             $0.register(BadFeedbackCollectionViewCell.self, forCellWithReuseIdentifier: BadFeedbackCollectionViewCell.id)
             $0.allowsMultipleSelection = true
             $0.isScrollEnabled = false
         }
-        
-        secondQuestionLabel.do {
-            $0.text = "그 외 하고 싶은 말을\n자유롭게 적어주세요."
-            $0.textColor = .Gray8
-            $0.font = .fontNanum(.B1_Regular)
-            $0.numberOfLines = 2
-        }
-        
-        containerView.do {
-            $0.cornerRadius = 18
-            $0.backgroundColor = .Side200
-        }
-        
-        textView.do {
-            $0.placeholder = "500자 이내"
-            $0.backgroundColor = .clear
-            $0.font = .fontNanum(.B1_Regular)
-            $0.textColor = .Gray7
-        }
-        
         submitButton.do {
             $0.setText(text: "제출하기")
         }

@@ -27,6 +27,12 @@ protocol GoodFeedbackViewModelType {
 }
 
 final class GoodFeedbackViewModel {
-    private let questions: [String] = ["질문과 아래 문구가\n자연스럽게 연결되나요? *", "스스로에 대해 생각할\n수 있는 질문이었나요? *", "답변을 작성할 때\n어렵거나 막막했나요?", "그 외 하고 싶은 말을\n자유롭게 적어주세요."]
+    let questions: [String] = ["질문과 아래 문구가\n자연스럽게 연결되나요? *", "스스로에 대해 생각할\n수 있는 질문이었나요? *", "답변을 작성할 때\n어렵거나 막막했나요? *"]
     private let disposeBag = DisposeBag()
+}
+
+extension GoodFeedbackViewModel {
+    func postFeedback() {
+        
+    }
 }

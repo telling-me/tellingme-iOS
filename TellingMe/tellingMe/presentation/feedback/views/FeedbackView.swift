@@ -12,8 +12,10 @@ import RxRelay
 
 final class FeedbackView: UIView {
     public let slider: UISlider = UISlider()
+
     private let numberLabel: UILabel = UILabel()
     private let questionLabel: UILabel = UILabel()
+    private let stepView: UIStackView = UIStackView()
     private let agreeLabel: UILabel = UILabel()
     private let badLabel: UILabel = UILabel()
     
@@ -21,6 +23,7 @@ final class FeedbackView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        bindViewModel()
         setLayout()
         setStyles()
     }
@@ -29,21 +32,29 @@ final class FeedbackView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setFeedbackQuestion(question: String) {
+    func setFeedbackQuestion(index: Int, question: String) {
+        numberLabel.text = "\(index)"
         questionLabel.text = question
-        let attributedString = NSMutableAttributedString(string: question)
-        let range = (attributedString.string as NSString).range(of: "*")
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Error400, range: range)
-        questionLabel.attributedText = attributedString
+        questionLabel.setColorPart(text: "*", color: .Error400)
+    }
+    
+    func handleSliderValueChange(value: Float) {
+        let roundedValue = round(value)
+        slider.value = roundedValue
     }
 }
 
 extension FeedbackView {
     private func bindViewModel() {
+        slider.rx.value
+            .bind(onNext: { [weak self] value in
+                self?.handleSliderValueChange(value: value)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
-        addSubviews(numberLabel, questionLabel, slider, badLabel, agreeLabel)
+        addSubviews(numberLabel, questionLabel, slider, stepView, badLabel, agreeLabel)
         numberLabel.snp.makeConstraints {
             $0.size.equalTo(20)
             $0.top.leading.equalToSuperview()
@@ -61,6 +72,12 @@ extension FeedbackView {
             $0.height.equalTo(10)
         }
         
+        stepView.snp.makeConstraints {
+            $0.top.equalTo(slider.snp.bottom).offset(10)
+            $0.height.equalTo(8)
+            $0.horizontalEdges.equalToSuperview().inset(43)
+        }
+        
         badLabel.snp.makeConstraints {
             $0.top.equalTo(agreeLabel.snp.top)
             $0.trailing.equalToSuperview()
@@ -68,7 +85,7 @@ extension FeedbackView {
         }
 
         agreeLabel.snp.makeConstraints {
-            $0.top.equalTo(slider.snp.bottom).offset(22)
+            $0.top.equalTo(stepView.snp.bottom).offset(4)
             $0.leading.bottom.equalToSuperview()
             $0.height.equalTo(28)
         }
@@ -77,9 +94,11 @@ extension FeedbackView {
     private func setStyles() {
         numberLabel.do {
             $0.backgroundColor = .Side500
-            $0.cornerRadius = 10
             $0.textColor = .Side100
             $0.textAlignment = .center
+            $0.clipsToBounds = true
+            $0.cornerRadius = 10
+            $0.font = .fontNanum(.C1_Bold)
         }
         
         questionLabel.do {
@@ -89,15 +108,19 @@ extension FeedbackView {
         }
         
         slider.do {
-            $0.tintColor = .Logo
-            $0.backgroundColor = .Side300
-            $0.maximumValue = 4
-            $0.minimumValue = 0
+            $0.maximumValue = 5
+            $0.minimumValue = 1
+            $0.value = 3
             $0.isContinuous = false
+            $0.cornerRadius = 5
+            $0.setThumbImage(UIImage(named: "Thumb"), for: .normal)
+            $0.setMinimumTrackImage(UIImage(named: "Range"), for: .normal)
+            $0.setMaximumTrackImage(UIImage(named: "Track"), for: .normal)
         }
         
         badLabel.do {
             $0.text = "그렇지\n않다"
+            $0.numberOfLines = 2
             $0.textAlignment = .center
             $0.textColor = .Gray5
             $0.font = .fontNanum(.C1_Regular)
@@ -111,5 +134,15 @@ extension FeedbackView {
             $0.font = .fontNanum(.C1_Regular)
             $0.sizeToFit()
         }
+    }
+}
+
+extension UIImage {
+    func resizedImage(newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage ?? self
     }
 }
