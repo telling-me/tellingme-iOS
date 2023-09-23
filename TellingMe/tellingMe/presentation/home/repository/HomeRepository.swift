@@ -7,6 +7,9 @@
 
 import Foundation
 
+import RxCocoa
+import RxSwift
+
 extension HomeViewController {
     func getQuestion() {
         // 함수가 호출될 때마다, 새롭게 Date 인스턴스를 만듭니다.
@@ -15,22 +18,35 @@ extension HomeViewController {
             self.showToast(message: "날짜를 불러올 수 없습니다.")
             return
         }
-        QuestionAPI.getTodayQuestion(query: date) { result in
-            switch result {
-            case .success(let response):
-                self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
-                self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
-            case .failure(let error):
-                switch error {
-                case let .errorData(errorData):
-                    self.showToast(message: errorData.message)
-                case .tokenNotFound:
-                    print("login으로 push할게요")
-                default:
-                    print(error)
-                }
-            }
-        }
+//
+        QuestionAPI.getTodayQuestion(qeury: date)
+            .retry(maxAttempts: 3, delay: 2)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                self.questionLabel.text = response.title.replacingOccurrences(of: "\\n", with: "\n")
+                self.subQuestionLabel.text = response.phrase.replacingOccurrences(of: "\\n", with: "\n")
+            }, onError: { error in
+                print(error)
+                
+            })
+            .disposed(by: disposeBag)
+        
+//        QuestionAPI.getTodayQuestion(query: date) { result in
+//            switch result {
+//            case .success(let response):
+//                self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
+//                self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
+//            case .failure(let error):
+//                switch error {
+//                case let .errorData(errorData):
+//                    self.showToast(message: errorData.message)
+//                case .tokenNotFound:
+//                    print("login으로 push할게요")
+//                default:
+//                    print(error)
+//                }
+//            }
+//        }
     }
 
     func getAnswer() {

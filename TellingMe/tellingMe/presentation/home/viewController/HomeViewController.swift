@@ -154,11 +154,6 @@ extension HomeViewController: HeaderViewDelegate {
     }
     
     func pushSetting(_ headerView: MainHeaderView) {
-        // push를 수행하는 코드
-//        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-//        guard let vc = storyboard.instantiateViewController(identifier: "setting") as? SettingViewController else {
-//            return
-//        }
         let vc = MyPageViewController()
         let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
         vc.hidesBottomBarWhenPushed = true
