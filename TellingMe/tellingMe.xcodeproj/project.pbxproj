@@ -212,6 +212,7 @@
 		3AFA371D2A1A1A3D008A5657 /* AnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */; };
 		3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */; };
 		3AFF8B7E29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */; };
+		583814F62ABD338E008D808A /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583814F52ABD338E008D808A /* RxSwift+.swift */; };
 		583B80A62A9674E6009399D1 /* CustomModalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A52A9674E6009399D1 /* CustomModalBarView.swift */; };
 		583B80A82A96783E009399D1 /* AlarmReadAllSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */; };
 		5844457F2A9E0086004433D1 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844457E2A9E0086004433D1 /* CacheManager.swift */; };
@@ -495,6 +496,7 @@
 		3AFA371C2A1A1A3D008A5657 /* AnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewModel.swift; sourceTree = "<group>"; };
 		3AFA371F2A1A5AB0008A5657 /* Modal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
 		3AFF8B7D29D47AA5005A7A6B /* TeritaryVerticalBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButton.swift; sourceTree = "<group>"; };
+		583814F52ABD338E008D808A /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		583B80A52A9674E6009399D1 /* CustomModalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalBarView.swift; sourceTree = "<group>"; };
 		583B80A72A96783E009399D1 /* AlarmReadAllSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReadAllSectionView.swift; sourceTree = "<group>"; };
 		5844457E2A9E0086004433D1 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 				58F2E7AC2A9619DF00F3667A /* UIFont+.swift */,
 				584445802A9E00B8004433D1 /* UIImageView+.swift */,
 				58690DA52AB2FBF4002BAB82 /* UIImage+.swift */,
+				583814F52ABD338E008D808A /* RxSwift+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1985,6 +1988,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583814F62ABD338E008D808A /* RxSwift+.swift in Sources */,
 				589E78482AAF450600BB9213 /* PremiumDataSource.swift in Sources */,
 				58A6AD422A9DCA1400BCC2AC /* CustomNavigationBarView.swift in Sources */,
 				3AD8153E2A29B001000049D7 /* PrivacyPolicyViewController.swift in Sources */,
@@ -2341,7 +2345,7 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HVC3NZCRB5;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
@@ -2374,7 +2378,7 @@
 				CODE_SIGN_ENTITLEMENTS = tellingMe/tellingMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HVC3NZCRB5;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tellingMe/keyChain/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "텔링미";
