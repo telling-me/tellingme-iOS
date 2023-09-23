@@ -9,12 +9,25 @@ import UIKit
 
 class BaseView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        bindViewModel()
+        setStyles()
+        setLayout()
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        print("View has been successfully Removed")
+    }
+}
 
+extension BaseView {
+    private func bindViewModel() {}
+    private func setStyles() {}
+    private func setLayout() {}
 }
