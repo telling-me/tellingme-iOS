@@ -124,23 +124,23 @@ extension HHomeViewModel {
     }
     
     /// 디바이스가 iPhone SE 모델과 같은 비정상적인 비율을 가진 모델인지 확인합니다.
-//    private func checkAbnormalDevice() {
-//        let userDefaults = UserDefaults.standard
-//        if userDefaults.bool(forKey: StringLiterals.isDeviceChecked) != false {
-//            return
-//        }
-//        
-//        let deviceName = UIDevice.current.name
-//        let abnormalDeviceList = DeviceLiterals.allCases
-//        
-//        abnormalDeviceList.forEach { device in
-//            if deviceName == device.deviceName {
-//                userDefaults.set(true, forKey: StringLiterals.isDeviceAbnormal)
-//                return
-//            }
-//        }
-//        userDefaults.set(true, forKey: StringLiterals.isDeviceChecked)
-//    }
+    private func checkAbnormalDevice() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: StringLiterals.isDeviceChecked) != false {
+            return
+        }
+
+        let deviceName = UIDevice.current.name
+        let abnormalDeviceList = DeviceLiterals.allCases
+
+        abnormalDeviceList.forEach { device in
+            if deviceName == device.deviceName {
+                userDefaults.set(true, forKey: StringLiterals.isDeviceAbnormal)
+                return
+            }
+        }
+        userDefaults.set(true, forKey: StringLiterals.isDeviceChecked)
+    }
 }
 
 extension HHomeViewModel {
