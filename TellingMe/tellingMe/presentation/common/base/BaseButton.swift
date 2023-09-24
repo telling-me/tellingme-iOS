@@ -1,5 +1,5 @@
 //
-//  HomeWritingButtonView.swift
+//  BaseButton.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeWritingButtonView: UIButton {
+class BaseButton: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
