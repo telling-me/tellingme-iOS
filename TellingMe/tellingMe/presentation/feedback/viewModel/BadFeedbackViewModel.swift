@@ -10,13 +10,16 @@ import RxSwift
 import RxCocoa
 
 protocol BadFeedbackViewModelInputs {
-    var itemSelected: PublishSubject<Int> { get }
-    var itemDeselected: PublishSubject<Int> { get }
+    var itemSelected: PublishSubject<IndexPath> { get }
+    var itemDeselected: PublishSubject<IndexPath> { get }
 }
 
 protocol BadFeedbackViewModelOutputs {
-    var selectedFeedback: BehaviorRelay<[Int]> { get }
-    var etcText: String { get }
+    var selectedFeedback: String { get }
+    var reasonText: String { get }
+    
+    var successSubject: PublishSubject<QuestionFeedbackResponse> { get }
+    var showToastSubject: PublishSubject<String> { get }
 }
 
 protocol BadFeedbackViewModelType {
@@ -25,14 +28,6 @@ protocol BadFeedbackViewModelType {
 }
 
 final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewModelOutputs {
-    // input
-    var itemSelected: PublishSubject<Int> = PublishSubject<Int>()
-    var itemDeselected: PublishSubject<Int> = PublishSubject<Int>()
-    
-    // output
-    var selectedFeedback: RxRelay.BehaviorRelay<[Int]> = BehaviorRelay(value: [])
-    var etcText: String = ""
-    
     let feedbackList: Observable<[String]> = Observable.just([
         "질문이 너무 식상해요.",
         "질문을 이해하기 어려워요.",
@@ -42,9 +37,19 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
         "기타"
     ])
 
-    private let disposeBag = DisposeBag()
+    // input
     var inputs: BadFeedbackViewModelInputs { return self }
+    var itemSelected  = PublishSubject<IndexPath>()
+    var itemDeselected = PublishSubject<IndexPath>()
+    
+    // output
     var outputs: BadFeedbackViewModelOutputs { return self }
+    var selectedFeedback: String = ""
+    var reasonText: String = ""
+    var successSubject = PublishSubject<QuestionFeedbackResponse>()
+    var showToastSubject = PublishSubject<String>()
+
+    private let disposeBag = DisposeBag()
     
     func selectCell(index: Int) {
 
@@ -52,8 +57,28 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
     
     func deselectCell(index: Int) {
     }
-    
+
+}
+
+extension BadFeedbackViewModel {
     func postFeedback() {
-        
+        guard let date = Date().getQuestionDate() else {
+            return
+        }
+        let request: QuestionFeedbackRequest = QuestionFeedbackRequest(date: date, isPositive: true, question1: nil, question2: nil, question3: nil, reason: outputs.selectedFeedback, other: nil, etc: outputs.reasonText)
+        QuestionFeedbackAPI.postQuestionFeedback(request: request)
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                self.successSubject.onNext(response)
+            }, onError: { [weak self] error in
+                guard let self = self else { return }
+                switch error {
+                case APIError.errorData(let errorData):
+                    self.showToastSubject.onNext(errorData.message)
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -30,6 +30,17 @@ final class GoodFeedbackViewController: UIViewController {
         setLayout()
         setStyles()
     }
+    
+    override func viewDidLayoutSubviews() {
+        for (index, view) in stackView.arrangedSubviews.enumerated() {
+            guard let view = view as? FeedbackView else {
+                return
+            }
+            view.slider.rx.value
+                .bind(to: viewModel.inputs.sliderObservables[index])
+                .disposed(by: disposeBag)
+        }
+    }
 }
 
 extension GoodFeedbackViewController {
@@ -45,6 +56,9 @@ extension GoodFeedbackViewController {
                 guard let self = self else { return }
                 self.dismiss(animated: true)
             })
+            .disposed(by: disposeBag)
+        lastFeedbackView.textObservable
+            .bind(to: viewModel.inputs.textObservables)
             .disposed(by: disposeBag)
         submitButton.rx.tap
             .bind(onNext: { [weak self] _ in
@@ -119,6 +133,10 @@ extension GoodFeedbackViewController {
                 feedbackView.setFeedbackQuestion(index: index+1, question: data)
                 $0.addArrangedSubview(feedbackView)
             }
+        }
+        
+        submitButton.do {
+            $0.setText(text: "제출하기")
         }
     }
 }

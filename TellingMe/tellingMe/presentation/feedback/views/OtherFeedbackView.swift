@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -14,9 +16,13 @@ final class OtherFeedbackView: UIView {
     private let questionLabel: UILabel = UILabel()
     private let containerView: UIView = UIView()
     private let textView: CustomTextView = CustomTextView()
+    private let disposeBag = DisposeBag()
+    
+    let textObservable = BehaviorRelay<String?>(value: nil)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        bindViewModel()
         setLayout()
         setStyles()
     }
@@ -27,6 +33,12 @@ final class OtherFeedbackView: UIView {
 }
 
 extension OtherFeedbackView {
+    private func bindViewModel() {
+        textView.rx.text
+            .bind(to: textObservable)
+            .disposed(by: disposeBag)
+    }
+
     private func setLayout() {
         addSubviews(questionLabel, containerView, textView)
         questionLabel.snp.makeConstraints {
