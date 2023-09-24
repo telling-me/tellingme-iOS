@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
-final class BadFeedbackViewController: UIViewController {
+final class BadFeedbackViewController: UIViewController, UIScrollViewDelegate {
     private let viewModel = BadFeedbackViewModel()
 
     private let headerView: InlineHeaderView = InlineHeaderView()
@@ -54,14 +54,18 @@ extension BadFeedbackViewController {
                 self?.popViewController()
             })
             .disposed(by: disposeBag)
+        collectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         collectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                
+                guard let self = self else { return }
+                self.viewModel.selectItem(indexPath: indexPath)
             })
             .disposed(by: disposeBag)
         collectionView.rx.itemDeselected
             .bind(onNext: { [weak self] indexPath in
-                
+                guard let self = self else { return }
+                self.viewModel.deselectItem(indexPath: indexPath)
             })
             .disposed(by: disposeBag)
         submitButton.rx.tap
@@ -161,7 +165,6 @@ extension BadFeedbackViewController {
             $0.textColor = .Gray6
         }
         collectionView.do {
-            $0.delegate = self
             $0.register(BadFeedbackCollectionViewCell.self, forCellWithReuseIdentifier: BadFeedbackCollectionViewCell.id)
             $0.allowsMultipleSelection = true
             $0.isScrollEnabled = false
@@ -176,7 +179,7 @@ extension BadFeedbackViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 48)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12
     }

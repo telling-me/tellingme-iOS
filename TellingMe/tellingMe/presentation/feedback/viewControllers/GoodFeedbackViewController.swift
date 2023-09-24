@@ -64,8 +64,8 @@ extension GoodFeedbackViewController {
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.postFeedback()
-                let vc = FinishFeedbackViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = FinishFeedbackViewController()
+//                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
     }

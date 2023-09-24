@@ -15,9 +15,10 @@ protocol BadFeedbackViewModelInputs {
 }
 
 protocol BadFeedbackViewModelOutputs {
-    var selectedFeedback: String { get }
+    var selectedFeedback: BehaviorRelay<[Int]> { get }
     var reasonText: String { get }
     
+    var alertSubject: PublishSubject<String> { get }
     var successSubject: PublishSubject<QuestionFeedbackResponse> { get }
     var showToastSubject: PublishSubject<String> { get }
 }
@@ -39,42 +40,56 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
 
     // input
     var inputs: BadFeedbackViewModelInputs { return self }
-    var itemSelected  = PublishSubject<IndexPath>()
+    var itemSelected = PublishSubject<IndexPath>()
     var itemDeselected = PublishSubject<IndexPath>()
     
     // output
     var outputs: BadFeedbackViewModelOutputs { return self }
-    var selectedFeedback: String = ""
+    var selectedFeedback = BehaviorRelay<[Int]>(value: [])
     var reasonText: String = ""
+    var alertSubject = PublishSubject<String>()
     var successSubject = PublishSubject<QuestionFeedbackResponse>()
     var showToastSubject = PublishSubject<String>()
 
     private let disposeBag = DisposeBag()
     
-    func selectCell(index: Int) {
-
+    func selectItem(indexPath: IndexPath) {
+        var array = selectedFeedback.value
+        array.append(indexPath.row)
+        selectedFeedback.accept(array)
     }
     
-    func deselectCell(index: Int) {
+    func deselectItem(indexPath: IndexPath) {
+        var array = selectedFeedback.value
+        array.removeAll(where: { $0 == indexPath.row })
+        selectedFeedback.accept(array)
     }
-
 }
 
 extension BadFeedbackViewModel {
     func postFeedback() {
         guard let date = Date().getQuestionDate() else {
+            self.outputs.showToastSubject.onNext("날짜를 불러올 수 없습니다.")
             return
         }
-        let request: QuestionFeedbackRequest = QuestionFeedbackRequest(date: date, isPositive: true, question1: nil, question2: nil, question3: nil, reason: outputs.selectedFeedback, other: nil, etc: outputs.reasonText)
+        
+        guard outputs.selectedFeedback.value.isEmpty else {
+            self.outputs.alertSubject.onNext("필수 항목을 완료해주세요.")
+            return
+        }
+
+        let reason = outputs.selectedFeedback.value.sorted().intArraytoString()
+        let request: QuestionFeedbackRequest = QuestionFeedbackRequest(date: date, isPositive: true, question1: nil, question2: nil, question3: nil, reason: reason, other: nil, etc: outputs.reasonText)
+
         QuestionFeedbackAPI.postQuestionFeedback(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                self.successSubject.onNext(response)
+                self.outputs.successSubject.onNext(response)
             }, onError: { [weak self] error in
                 guard let self = self else { return }
                 switch error {
                 case APIError.errorData(let errorData):
-                    self.showToastSubject.onNext(errorData.message)
+                    self.outputs.showToastSubject.onNext(errorData.message)
                 default:
                     break
                 }
