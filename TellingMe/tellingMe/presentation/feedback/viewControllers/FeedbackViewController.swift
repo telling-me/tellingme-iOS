@@ -75,6 +75,12 @@ extension FeedbackViewController {
                 self?.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
+        viewModel.outputs.successSubject
+            .bind(onNext: { [weak self] response in
+                guard let self = self else { return }
+                self.bottomSheet.setQuestion(data: response)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setLayout() {

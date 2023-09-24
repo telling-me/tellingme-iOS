@@ -59,7 +59,6 @@ extension FeedbackView {
             $0.size.equalTo(20)
             $0.top.leading.equalToSuperview()
         }
-        
         questionLabel.snp.makeConstraints {
             $0.top.equalTo(numberLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
@@ -100,13 +99,11 @@ extension FeedbackView {
             $0.cornerRadius = 10
             $0.font = .fontNanum(.C1_Bold)
         }
-        
         questionLabel.do {
             $0.numberOfLines = 2
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Gray8
         }
-        
         slider.do {
             $0.maximumValue = 5
             $0.minimumValue = 1
@@ -117,7 +114,6 @@ extension FeedbackView {
             $0.setMinimumTrackImage(UIImage(named: "Range"), for: .normal)
             $0.setMaximumTrackImage(UIImage(named: "Track"), for: .normal)
         }
-        
         badLabel.do {
             $0.text = "그렇지\n않다"
             $0.numberOfLines = 2
@@ -126,7 +122,6 @@ extension FeedbackView {
             $0.font = .fontNanum(.C1_Regular)
             $0.sizeToFit()
         }
-        
         agreeLabel.do {
             $0.text = "그렇다"
             $0.textAlignment = .right

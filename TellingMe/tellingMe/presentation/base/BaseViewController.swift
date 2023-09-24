@@ -7,9 +7,12 @@
 
 import UIKit
 
+import RxSwift
+
 class BaseViewController: UIViewController {
     private var alertView: CustomAlertView?
     // bottomsheet 등 정의해두는게 어떨까?
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,9 @@ extension BaseViewController {
 }
 
 extension BaseViewController {
-    private func showAlertView() {
-        alertView = CustomAlertView()
-    
+    func showAlertView(message: String) {
+        alertView = CustomAlertView(frame: .zero, message: message)
+
         guard let alertView else {
             return
         }
@@ -37,9 +40,16 @@ extension BaseViewController {
         }
         
         alertView.showAlert()
+        
+        alertView.buttonTapObserver
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.dismissAlertView()
+            })
+            .disposed(by: disposeBag)
     }
     
-    private func dissmissAlertView() {
+    func dismissAlertView() {
         alertView?.removeFromSuperview()
         
         alertView?.dismissAlert()

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
-final class BadFeedbackViewController: UIViewController, UIScrollViewDelegate {
+final class BadFeedbackViewController: BaseViewController, UIScrollViewDelegate {
     private let viewModel = BadFeedbackViewModel()
 
     private let headerView: InlineHeaderView = InlineHeaderView()
@@ -18,7 +18,7 @@ final class BadFeedbackViewController: UIViewController, UIScrollViewDelegate {
     private let titleLabel: UILabel = UILabel()
     private let captionLabel: UILabel = UILabel()
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let otherFeedbackView: OtherFeedbackView = OtherFeedbackView()
+    private let otherFeedbackView: OtherFeedbackView = OtherFeedbackView(frame: .zero, index: nil)
     private let bottomContainerView: UIView = UIView()
     private let submitButton: SecondaryTextButton = SecondaryTextButton()
     
@@ -34,6 +34,11 @@ final class BadFeedbackViewController: UIViewController, UIScrollViewDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
       super.touchesEnded(touches, with: event)
       self.view.endEditing(true)
+    }
+    
+    private func pushToFinishFeedbackViewController() {
+        let vc = FinishFeedbackViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -75,23 +80,33 @@ extension BadFeedbackViewController {
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.postFeedback()
-                let vc = FinishFeedbackViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-//            .subscribe(onNext: { [weak self] notification in
-//                guard let self = self else { return }
-//                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//                let offsetY = self.textView.frame.maxY + keyboardSize.height
-//                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
-//            })
-//            .disposed(by: disposeBag)
-//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-//            .subscribe(onNext: { [weak self] notification in
-//                self?.scrollView.contentInset.bottom = 0
-//            })
-//            .disposed(by: disposeBag)
+        viewModel.outputs.alertSubject
+            .bind(onNext: { [weak self] message in
+                guard let self = self else { return }
+                self.showAlertView(message: message)
+            })
+            .disposed(by: disposeBag)
+        viewModel.outputs.successSubject
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.pushToFinishFeedbackViewController()
+            })
+            .disposed(by: disposeBag)
+        viewModel.outputs.showToastSubject
+            .bind(onNext: { [weak self] message in
+                guard let self = self else { return }
+                self.showToast(message: message)
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { [weak self] notification in
+                guard let self = self else { return }
+                let offsetY = self.collectionView.frame.maxY - 55
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {

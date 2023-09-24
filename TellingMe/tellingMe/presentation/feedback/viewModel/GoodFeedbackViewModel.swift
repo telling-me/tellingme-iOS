@@ -17,7 +17,7 @@ protocol GoodFeedbackViewModelInputs {
 protocol GoodFeedbackViewModelOutputs {
     var sliderValues: [Int] { get set }
     var reasonText: String? { get }
-    var successSubject: PublishSubject<QuestionFeedbackResponse> { get }
+    var successSubject: PublishSubject<EmptyResponse> { get }
     var showToastSubject: PublishSubject<String> { get }
 }
 
@@ -38,7 +38,7 @@ final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewMo
     var outputs: GoodFeedbackViewModelOutputs { return self }
     var sliderValues: [Int] = [3, 3, 3]
     var reasonText: String? = nil
-    let successSubject = PublishSubject<QuestionFeedbackResponse>()
+    let successSubject = PublishSubject<EmptyResponse>()
     let showToastSubject = PublishSubject<String>()
     
     private let disposeBag = DisposeBag()
@@ -64,20 +64,29 @@ extension GoodFeedbackViewModel {
         guard let date = Date().getQuestionDate() else {
             return
         }
+        
+        guard outputs.reasonText?.count ?? 0 <= 500 else {
+            self.outputs.showToastSubject.onNext("하고싶은 말은 500자 이내로 작성해주세요.")
+            return
+        }
+
         let request: QuestionFeedbackRequest = QuestionFeedbackRequest(date: date, isPositive: true, question1: outputs.sliderValues[0], question2: outputs.sliderValues[1], question3: outputs.sliderValues[2], reason: nil, other: nil, etc: outputs.reasonText)
+
         QuestionFeedbackAPI.postQuestionFeedback(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                self.successSubject.onNext(response)
+                //여기여? 여기실행안되엇으.
+                self.outputs.successSubject.onNext(response)
             }, onError: { [weak self] error in
                 guard let self = self else { return }
                 switch error {
                 case APIError.errorData(let errorData):
-                    self.showToastSubject.onNext(errorData.message)
+                    self.outputs.showToastSubject.onNext(errorData.message)
                 default:
                     break
                 }
             })
             .disposed(by: disposeBag)
     }
+    
 }

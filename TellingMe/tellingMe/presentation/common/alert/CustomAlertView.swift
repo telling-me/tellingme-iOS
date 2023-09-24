@@ -21,11 +21,12 @@ class CustomAlertView: UIView {
 
     let buttonTapObserver = PublishSubject<Void>()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, message: String) {
         super.init(frame: frame)
         bindViewModel()
         setLayout()
         setStyles()
+        setAlertText(text: message)
     }
     
     required init?(coder: NSCoder) {
@@ -37,24 +38,22 @@ class CustomAlertView: UIView {
     }
     
     func showAlert() {
-        alertView.isHidden = false
         alertView.snp.updateConstraints {
             $0.centerY.equalToSuperview()
         }
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.layoutIfNeeded()
+            self.alertView.layoutIfNeeded()
         })
     }
     
     func dismissAlert() {
-        alertView.isHidden = false
         alertView.snp.updateConstraints {
-            $0.centerY.equalTo(self.snp.bottom)
+            $0.centerY.equalToSuperview().offset(-300)
         }
 
         UIView.animate(withDuration: 0.5, animations: {
-            self.layoutIfNeeded()
+            self.alertView.layoutIfNeeded()
         })
     }
 }
@@ -70,7 +69,7 @@ extension CustomAlertView {
         addSubviews(alertView)
         alertView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.centerY.equalTo(self.snp.bottom)
+            $0.centerY.equalToSuperview().offset(-300)
         }
         alertView.addSubviews(alertTextLabel, okButton)
         alertTextLabel.snp.makeConstraints {
@@ -80,6 +79,7 @@ extension CustomAlertView {
         okButton.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview().inset(20)
             $0.top.equalTo(alertTextLabel.snp.bottom).offset(28)
+            $0.height.equalTo(55)
         }
     }
     
@@ -88,7 +88,7 @@ extension CustomAlertView {
         alertView.do {
             $0.backgroundColor = .Side100
             $0.layer.cornerRadius = 20
-            $0.isHidden = true
+//            $0.isHidden = true
         }
         alertTextLabel.do {
             $0.font = .fontNanum(.B1_Regular)

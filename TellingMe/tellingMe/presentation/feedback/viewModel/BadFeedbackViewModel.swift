@@ -17,10 +17,10 @@ protocol BadFeedbackViewModelInputs {
 
 protocol BadFeedbackViewModelOutputs {
     var selectedFeedback: BehaviorRelay<[Int]> { get }
-    var reasonText: String { get }
+    var reasonText: String? { get }
     
     var alertSubject: PublishSubject<String> { get }
-    var successSubject: PublishSubject<QuestionFeedbackResponse> { get }
+    var successSubject: PublishSubject<EmptyResponse> { get }
     var showToastSubject: PublishSubject<String> { get }
 }
 
@@ -48,12 +48,20 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
     // output
     var outputs: BadFeedbackViewModelOutputs { return self }
     var selectedFeedback = BehaviorRelay<[Int]>(value: [])
-    var reasonText: String = ""
+    var reasonText: String? = nil
     var alertSubject = PublishSubject<String>()
-    var successSubject = PublishSubject<QuestionFeedbackResponse>()
+    var successSubject = PublishSubject<EmptyResponse>()
     var showToastSubject = PublishSubject<String>()
 
     private let disposeBag = DisposeBag()
+    
+    init() {
+        textObservable.bind(onNext: { [weak self] text in
+            guard let self = self else { return }
+            self.reasonText = text
+        })
+        .disposed(by: disposeBag)
+    }
     
     func selectItem(indexPath: IndexPath) {
         var array = selectedFeedback.value
@@ -75,7 +83,12 @@ extension BadFeedbackViewModel {
             return
         }
         
-        guard outputs.selectedFeedback.value.isEmpty else {
+        guard outputs.reasonText?.count ?? 0 <= 500 else {
+            self.outputs.showToastSubject.onNext("하고싶은 말은 500자 이내로 작성해주세요.")
+            return
+        }
+
+        guard !outputs.selectedFeedback.value.isEmpty else {
             self.outputs.alertSubject.onNext("필수 항목을 완료해주세요.")
             return
         }

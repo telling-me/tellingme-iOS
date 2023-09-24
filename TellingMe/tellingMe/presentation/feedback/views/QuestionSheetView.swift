@@ -36,10 +36,10 @@ final class QuestionSheetView: UIView {
         setLayout()
     }
     
-    public func setQuestion(question: String, subQuestion: String) {
-        questionLabel.text = question
+    public func setQuestion(data: QuestionResponse) {
+        questionLabel.text = data.title
         questionLabel.sizeToFit()
-        subQuestionLabel.text = subQuestion
+        subQuestionLabel.text = data.phrase
         subQuestionLabel.sizeToFit()
     }
 }
@@ -111,10 +111,12 @@ extension QuestionSheetView {
         questionLabel.do {
             $0.textColor = .black
             $0.font = .fontNanum(.B2_Regular)
+            $0.numberOfLines = 2
         }
         subQuestionLabel.do {
             $0.textColor = .Gray6
             $0.font = .fontNanum(.B2_Regular)
+            $0.numberOfLines = 2
         }
         okButton.do {
             $0.setText(text: "확인")

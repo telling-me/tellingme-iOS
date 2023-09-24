@@ -13,6 +13,7 @@ import SnapKit
 import Then
 
 final class OtherFeedbackView: UIView {
+    private let numberLabel: UILabel = UILabel()
     private let questionLabel: UILabel = UILabel()
     private let containerView: UIView = UIView()
     private let textView: CustomTextView = CustomTextView()
@@ -20,15 +21,24 @@ final class OtherFeedbackView: UIView {
     
     let textObservable = BehaviorRelay<String?>(value: nil)
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, index: Int?) {
         super.init(frame: frame)
         bindViewModel()
         setLayout()
         setStyles()
+        setNumberLabel(index: index)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setNumberLabel(index: Int?) {
+        if let index = index {
+            numberLabel.text = "\(index)"
+        } else {
+            numberLabel.isHidden = true
+        }
     }
 }
 
@@ -40,7 +50,11 @@ extension OtherFeedbackView {
     }
 
     private func setLayout() {
-        addSubviews(questionLabel, containerView, textView)
+        addSubviews(numberLabel, questionLabel, containerView, textView)
+        numberLabel.snp.makeConstraints {
+            $0.size.equalTo(20)
+            $0.top.leading.equalToSuperview()
+        }
         questionLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
@@ -60,6 +74,14 @@ extension OtherFeedbackView {
     }
     
     private func setStyles() {
+        numberLabel.do {
+            $0.backgroundColor = .Side500
+            $0.textColor = .Side100
+            $0.textAlignment = .center
+            $0.clipsToBounds = true
+            $0.cornerRadius = 10
+            $0.font = .fontNanum(.C1_Bold)
+        }
         questionLabel.do {
             $0.text = "그 외 하고 싶은 말을\n자유롭게 적어주세요."
             $0.textColor = .Gray8

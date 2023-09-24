@@ -6,8 +6,11 @@
 //
 
 import UIKit
+
 import RxSwift
 import RxCocoa
+import SnapKit
+import Then
 
 final class GoodFeedbackViewController: UIViewController {
     private let viewModel = GoodFeedbackViewModel()
@@ -17,7 +20,7 @@ final class GoodFeedbackViewController: UIViewController {
     private let scrollContainerView: UIView = UIView()
     private let titleLabel: UILabel = UILabel()
     private let stackView: UIStackView = UIStackView()
-    private let lastFeedbackView: OtherFeedbackView = OtherFeedbackView()
+    private let lastFeedbackView: OtherFeedbackView = OtherFeedbackView(frame: .zero, index: 4)
     private let bottomContainerView: UIView = UIView()
     private let submitButton: SecondaryTextButton = SecondaryTextButton()
     
@@ -40,6 +43,11 @@ final class GoodFeedbackViewController: UIViewController {
                 .bind(to: viewModel.inputs.sliderObservables[index])
                 .disposed(by: disposeBag)
         }
+    }
+    
+    private func pushToFinishFeedbackViewController() {
+        let vc = FinishFeedbackViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -64,8 +72,25 @@ extension GoodFeedbackViewController {
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.postFeedback()
-//                let vc = FinishFeedbackViewController()
-//                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+        viewModel.outputs.successSubject
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.pushToFinishFeedbackViewController()
+            })
+            .disposed(by: disposeBag)
+        viewModel.outputs.showToastSubject
+            .bind(onNext: { [weak self] message in
+                guard let self = self else { return }
+                self.showToast(message: message)
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { [weak self] notification in
+                guard let self = self else { return }
+                let offsetY = stackView.frame.maxY - 55
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -117,14 +142,15 @@ extension GoodFeedbackViewController {
         headerView.do {
             $0.setHeader(isFirstView: false, title: "소중한 피드백", buttonImage: "Xmark")
         }
-        
+        scrollView.do {
+            $0.keyboardDismissMode = .onDrag
+        }
         titleLabel.do {
             $0.text = "더 나은 텔링미가 될 수 있도록\n3가지 질문에 답해주세요!"
             $0.numberOfLines = 2
             $0.font = .fontNanum(.H5_Bold)
             $0.textColor = .Gray6
         }
-        
         stackView.do {
             $0.axis = .vertical
             $0.spacing = 40
@@ -134,7 +160,6 @@ extension GoodFeedbackViewController {
                 $0.addArrangedSubview(feedbackView)
             }
         }
-        
         submitButton.do {
             $0.setText(text: "제출하기")
         }
