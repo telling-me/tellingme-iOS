@@ -68,6 +68,9 @@ extension BadFeedbackViewController {
                 self.viewModel.deselectItem(indexPath: indexPath)
             })
             .disposed(by: disposeBag)
+        otherFeedbackView.textObservable
+            .bind(to: viewModel.inputs.textObservable)
+            .disposed(by: disposeBag)
         submitButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }

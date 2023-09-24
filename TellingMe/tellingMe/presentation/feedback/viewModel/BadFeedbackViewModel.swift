@@ -12,6 +12,7 @@ import RxCocoa
 protocol BadFeedbackViewModelInputs {
     var itemSelected: PublishSubject<IndexPath> { get }
     var itemDeselected: PublishSubject<IndexPath> { get }
+    var textObservable: BehaviorRelay<String?> { get }
 }
 
 protocol BadFeedbackViewModelOutputs {
@@ -42,6 +43,7 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
     var inputs: BadFeedbackViewModelInputs { return self }
     var itemSelected = PublishSubject<IndexPath>()
     var itemDeselected = PublishSubject<IndexPath>()
+    var textObservable = BehaviorRelay<String?>(value: nil)
     
     // output
     var outputs: BadFeedbackViewModelOutputs { return self }
