@@ -68,8 +68,6 @@ extension SplashViewController {
         
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
-        
-        tabBarController.showFeedback()
     }
     
     func showLogin() {
