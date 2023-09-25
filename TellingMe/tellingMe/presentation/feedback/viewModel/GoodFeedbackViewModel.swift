@@ -6,8 +6,10 @@
 //
 
 import Foundation
-import RxSwift
+
 import RxCocoa
+import RxRelay
+import RxSwift
 
 protocol GoodFeedbackViewModelInputs {
     var sliderObservables: [BehaviorRelay<Float>] { get set }
@@ -27,7 +29,12 @@ protocol GoodFeedbackViewModelType {
 }
 
 final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewModelInputs, GoodFeedbackViewModelOutputs {
-    let questions: [String] = ["질문과 아래 문구가\n자연스럽게 연결되나요? *", "스스로에 대해 생각할\n수 있는 질문이었나요? *", "답변을 작성할 때\n어렵거나 막막했나요? *"]
+    let questions: [String] = [
+        "질문과 아래 문구가\n자연스럽게 연결되나요? *",
+        "스스로에 대해 생각할\n수 있는 질문이었나요? *",
+        "답변을 작성할 때\n어렵거나 막막했나요? *"
+    ]
+    private let disposeBag = DisposeBag()
     
     // input
     var inputs: GoodFeedbackViewModelInputs { return self }
@@ -40,8 +47,6 @@ final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewMo
     var reasonText: String? = nil
     let successSubject = PublishSubject<EmptyResponse>()
     let showToastSubject = PublishSubject<String>()
-    
-    private let disposeBag = DisposeBag()
     
     init() {
         for (index, observable) in sliderObservables.enumerated() {
@@ -57,6 +62,8 @@ final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewMo
         })
         .disposed(by: disposeBag)
     }
+    
+    deinit { }
 }
 
 extension GoodFeedbackViewModel {
@@ -88,5 +95,4 @@ extension GoodFeedbackViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
 }

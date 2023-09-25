@@ -6,8 +6,10 @@
 //
 
 import Foundation
-import RxSwift
+
 import RxCocoa
+import RxRelay
+import RxSwift
 
 protocol BadFeedbackViewModelInputs {
     var itemSelected: PublishSubject<IndexPath> { get }
@@ -38,6 +40,7 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
         "질문이 나를 알아가는 데 도움이 되지 않아요.",
         "기타"
     ])
+    private let disposeBag = DisposeBag()
 
     // input
     var inputs: BadFeedbackViewModelInputs { return self }
@@ -52,8 +55,6 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
     var alertSubject = PublishSubject<String>()
     var successSubject = PublishSubject<EmptyResponse>()
     var showToastSubject = PublishSubject<String>()
-
-    private let disposeBag = DisposeBag()
     
     init() {
         textObservable.bind(onNext: { [weak self] text in
@@ -63,6 +64,10 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
         .disposed(by: disposeBag)
     }
     
+    deinit { }
+}
+
+extension BadFeedbackViewModel {
     func selectItem(indexPath: IndexPath) {
         var array = selectedFeedback.value
         array.append(indexPath.row)

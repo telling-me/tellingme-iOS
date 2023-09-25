@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class StickView: UIView {
     private let stick = UIView()
     
@@ -19,11 +22,14 @@ final class StickView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit { }
 }
 
 extension StickView {
     private func setLayout() {
         addSubview(stick)
+        
         stick.snp.makeConstraints {
             $0.width.equalTo(0.5)
             $0.center.height.equalToSuperview()

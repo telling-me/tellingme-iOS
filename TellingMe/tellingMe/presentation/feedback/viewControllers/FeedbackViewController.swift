@@ -6,12 +6,16 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
-import SnapKit
 
-final class FeedbackViewController: UIViewController {
+import RxCocoa
+import RxRelay
+import RxSwift
+import SnapKit
+import Then
+
+final class FeedbackViewController: BaseViewController {
     private let viewModel = FeedbackViewModel()
+
     private let disposeBag = DisposeBag()
     
     private let headerView = InlineHeaderView()
@@ -21,7 +25,7 @@ final class FeedbackViewController: UIViewController {
     private let subTitleLabel = UILabel()
     private let goodButton = SecondaryTextButton()
     private let badButton = TeritaryModifiedTextButton()
-    public let bottomSheet = QuestionSheetView()
+    private let bottomSheet = QuestionSheetView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +34,7 @@ final class FeedbackViewController: UIViewController {
         setStyles()
     }
     
-    private func toggleBottomSheet() {
-        bottomSheet.isHidden.toggle()
-        if bottomSheet.isHidden {
-            bottomSheet.dismissAnimate()
-        } else {
-            bottomSheet.animate()
-        }
-        self.tabBarController?.tabBar.isHidden.toggle()
-
-        
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
+    deinit { }
 }
 
 extension FeedbackViewController {
@@ -161,6 +152,23 @@ extension FeedbackViewController {
         
         bottomSheet.do {
             $0.isHidden = true
+        }
+    }
+}
+
+extension FeedbackViewController {
+    private func toggleBottomSheet() {
+        bottomSheet.isHidden.toggle()
+        if bottomSheet.isHidden {
+            bottomSheet.dismissAnimate()
+        } else {
+            bottomSheet.animate()
+        }
+        self.tabBarController?.tabBar.isHidden.toggle()
+
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
 }

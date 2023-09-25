@@ -7,17 +7,19 @@
 
 import UIKit
 
+import RxCocoa
+import RxRelay
 import RxSwift
 import SnapKit
 import Then
 
-class CustomAlertView: UIView {
-    private let backgroundView: UIView = UIView()
-    private let alertView: UIView = UIView()
-    private let alertTextLabel: UILabel = UILabel()
-    private let okButton: SecondaryTextButton = SecondaryTextButton()
-    
+final class CustomAlertView: UIView {
     private let disposeBag = DisposeBag()
+    
+    private let backgroundView = UIView()
+    private let alertView = UIView()
+    private let alertTextLabel = UILabel()
+    private let okButton = SecondaryTextButton()
     
     let buttonTapObserver = PublishSubject<Void>()
     
@@ -33,21 +35,7 @@ class CustomAlertView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setAlertText(text: String) {
-        alertTextLabel.text = text
-    }
-    
-    func showAlert() {
-        self.alertView.snp.updateConstraints {
-            $0.centerY.equalToSuperview().offset(0)
-        }
-        UIView.animate(withDuration: 0.5, animations: {
-            self.alertView.layoutIfNeeded()
-        })
-    }
-    
-    func dismissAlert() {
-    }
+    deinit { }
 }
 
 extension CustomAlertView {
@@ -59,15 +47,18 @@ extension CustomAlertView {
     
     private func setLayout() {
         addSubviews(alertView)
+        alertView.addSubviews(alertTextLabel, okButton)
+        
         alertView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.centerY.equalToSuperview().offset(300)
         }
-        alertView.addSubviews(alertTextLabel, okButton)
+        
         alertTextLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().inset(30)
         }
+        
         okButton.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview().inset(20)
             $0.top.equalTo(alertTextLabel.snp.bottom).offset(28)
@@ -77,19 +68,41 @@ extension CustomAlertView {
     
     private func setStyles() {
         backgroundColor = .AlphaBlackColor
+        
         alertView.do {
             $0.backgroundColor = .Side100
             $0.layer.cornerRadius = 20
-            //            $0.isHidden = true
         }
+        
         alertTextLabel.do {
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Black
             $0.textAlignment = .center
             $0.numberOfLines = 2
         }
+        
         okButton.do {
             $0.setText(text: "확인")
         }
+    }
+}
+
+extension CustomAlertView {
+    private func setAlertText(text: String) {
+        alertTextLabel.text = text
+    }
+}
+
+extension CustomAlertView {
+    func showAlert() {
+        self.alertView.snp.updateConstraints {
+            $0.centerY.equalToSuperview().offset(0)
+        }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alertView.layoutIfNeeded()
+        })
+    }
+    
+    func dismissAlert() {
     }
 }

@@ -7,8 +7,9 @@
 
 import Foundation
 
-import RxSwift
 import RxCocoa
+import RxRelay
+import RxSwift
 
 protocol FeedbackViewModelOutputs {
     var successSubject: PublishSubject<QuestionResponse> { get }
@@ -21,22 +22,26 @@ protocol FeedbackViewModelType {
 
 
 final class FeedbackViewModel: FeedbackViewModelType, FeedbackViewModelOutputs {
+    private let disposeBag = DisposeBag()
+
+    // output
     var outputs: FeedbackViewModelOutputs { return self }
     var successSubject = PublishSubject<QuestionResponse>()
     var showToastSubject = PublishSubject<String>()
 
-    private let disposeBag = DisposeBag()
-
     init() {
         fetchQuestion()
     }
+    
+    deinit { }
 }
 
 extension FeedbackViewModel {
-    func fetchQuestion() {
+    private func fetchQuestion() {
         guard let date = Date().getQuestionDate() else {
             return
         }
+
         QuestionAPI.getTodayQuestion(query: date)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }

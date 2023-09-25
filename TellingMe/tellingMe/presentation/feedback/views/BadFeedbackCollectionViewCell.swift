@@ -6,17 +6,22 @@
 //
 
 import UIKit
+
+import RxCocoa
+import RxRelay
+import RxSwift
 import SnapKit
 import Then
 
-class BadFeedbackCollectionViewCell: UICollectionViewCell {
+final class BadFeedbackCollectionViewCell: UICollectionViewCell {
     static let id = "badFeedbackCollectionViewCell"
-    let containerView = UIView()
-    let label = UILabel()
+    
+    private let containerView = UIView()
+    private let label = UILabel()
     
     override var isSelected: Bool {
         didSet {
-            isSelected ? setSelected() :setDefault()
+            isSelected ? setSelected() : setDefault()
         }
     }
 
@@ -30,26 +35,27 @@ class BadFeedbackCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setCell(text: String) {
-        label.text = text
-    }
+    deinit { }
 }
 
 extension BadFeedbackCollectionViewCell {
-    func setLayout() {
+    private func setLayout() {
         addSubview(containerView)
+        containerView.addSubview(label)
+        
         containerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        containerView.addSubview(label)
+
         label.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.centerY.equalToSuperview()
         }
     }
     
-    func setStyles() {
+    private func setStyles() {
         backgroundColor = .Side100
+        
         containerView.do {
             $0.backgroundColor = .Side200
             $0.layer.cornerRadius = 16
@@ -60,12 +66,20 @@ extension BadFeedbackCollectionViewCell {
             $0.textColor = .Gray7
         }
     }
-    
-    func setDefault() {
+}
+
+extension BadFeedbackCollectionViewCell {
+    private func setDefault() {
         containerView.backgroundColor = .Side200
     }
     
-    func setSelected() {
+    private func setSelected() {
         containerView.backgroundColor = .Side300
+    }
+}
+
+extension BadFeedbackCollectionViewCell {
+    func setCell(text: String) {
+        label.text = text
     }
 }
