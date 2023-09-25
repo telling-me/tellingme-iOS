@@ -18,7 +18,7 @@ class CustomAlertView: UIView {
     private let okButton: SecondaryTextButton = SecondaryTextButton()
     
     private let disposeBag = DisposeBag()
-
+    
     let buttonTapObserver = PublishSubject<Void>()
     
     init(frame: CGRect, message: String) {
@@ -38,23 +38,15 @@ class CustomAlertView: UIView {
     }
     
     func showAlert() {
-        alertView.snp.updateConstraints {
-            $0.centerY.equalToSuperview()
+        self.alertView.snp.updateConstraints {
+            $0.centerY.equalToSuperview().offset(0)
         }
-        
         UIView.animate(withDuration: 0.5, animations: {
             self.alertView.layoutIfNeeded()
         })
     }
     
     func dismissAlert() {
-        alertView.snp.updateConstraints {
-            $0.centerY.equalToSuperview().offset(-300)
-        }
-
-        UIView.animate(withDuration: 0.5, animations: {
-            self.alertView.layoutIfNeeded()
-        })
     }
 }
 
@@ -69,7 +61,7 @@ extension CustomAlertView {
         addSubviews(alertView)
         alertView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.centerY.equalToSuperview().offset(-300)
+            $0.centerY.equalToSuperview().offset(300)
         }
         alertView.addSubviews(alertTextLabel, okButton)
         alertTextLabel.snp.makeConstraints {
@@ -88,7 +80,7 @@ extension CustomAlertView {
         alertView.do {
             $0.backgroundColor = .Side100
             $0.layer.cornerRadius = 20
-//            $0.isHidden = true
+            //            $0.isHidden = true
         }
         alertTextLabel.do {
             $0.font = .fontNanum(.B1_Regular)

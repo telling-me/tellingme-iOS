@@ -20,15 +20,6 @@ extension UIViewController: BackHeaderViewDelegate {
 }
 
 extension UIViewController {
-//    func subscribeToGlobalShowToastSubject() {
-//        showToastSubject
-//            .observe(on: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] message in
-//                self?.showToast(message: message)
-//            })
-//            .disposed(by: DisposeBag())
-//    }
-
     func showToast(message: String) {
         let view = ErrorToast()
         view.translatesAutoresizingMaskIntoConstraints = false

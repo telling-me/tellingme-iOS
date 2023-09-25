@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 final class FeedbackView: UIView {
-    public let slider: UISlider = UISlider()
+    let slider: UISlider = UISlider()
 
     private let numberLabel: UILabel = UILabel()
     private let questionLabel: UILabel = UILabel()
@@ -64,25 +64,21 @@ extension FeedbackView {
             $0.leading.equalToSuperview()
             $0.height.equalTo(38)
         }
-        
         slider.snp.makeConstraints {
             $0.top.equalTo(questionLabel.snp.bottom).offset(33)
             $0.horizontalEdges.equalToSuperview().inset(8)
             $0.height.equalTo(10)
         }
-        
         stepView.snp.makeConstraints {
             $0.top.equalTo(slider.snp.bottom).offset(10)
             $0.height.equalTo(8)
-            $0.horizontalEdges.equalToSuperview().inset(43)
+            $0.horizontalEdges.equalToSuperview().inset(8)
         }
-        
         badLabel.snp.makeConstraints {
             $0.top.equalTo(agreeLabel.snp.top)
             $0.trailing.equalToSuperview()
             $0.height.equalTo(28)
         }
-
         agreeLabel.snp.makeConstraints {
             $0.top.equalTo(stepView.snp.bottom).offset(4)
             $0.leading.bottom.equalToSuperview()
@@ -114,6 +110,17 @@ extension FeedbackView {
             $0.setMinimumTrackImage(UIImage(named: "Range"), for: .normal)
             $0.setMaximumTrackImage(UIImage(named: "Track"), for: .normal)
         }
+        stepView.do {
+            $0.distribution = .fillEqually
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            $0.spacing = (appDelegate.deviceWidth - 66) / 5 - 12
+            for _ in 0...4 {
+                let stick = StickView()
+                $0.addArrangedSubview(stick)
+            }
+        }
         badLabel.do {
             $0.text = "그렇지\n않다"
             $0.numberOfLines = 2
@@ -129,15 +136,5 @@ extension FeedbackView {
             $0.font = .fontNanum(.C1_Regular)
             $0.sizeToFit()
         }
-    }
-}
-
-extension UIImage {
-    func resizedImage(newSize: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        self.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage ?? self
     }
 }

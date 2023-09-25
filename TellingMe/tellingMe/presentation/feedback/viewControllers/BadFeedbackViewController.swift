@@ -186,6 +186,7 @@ extension BadFeedbackViewController {
             $0.register(BadFeedbackCollectionViewCell.self, forCellWithReuseIdentifier: BadFeedbackCollectionViewCell.id)
             $0.allowsMultipleSelection = true
             $0.isScrollEnabled = false
+            $0.backgroundColor = .Side100
         }
         submitButton.do {
             $0.setText(text: "제출하기")

@@ -38,6 +38,9 @@ final class OtherFeedbackView: UIView {
             numberLabel.text = "\(index)"
         } else {
             numberLabel.isHidden = true
+            numberLabel.snp.updateConstraints {
+                $0.height.equalTo(0)
+            }
         }
     }
 }
@@ -56,7 +59,7 @@ extension OtherFeedbackView {
             $0.top.leading.equalToSuperview()
         }
         questionLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalTo(numberLabel.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(38)
         }

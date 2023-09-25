@@ -40,19 +40,20 @@ extension BaseViewController {
         }
         
         alertView.showAlert()
-        
+
         alertView.buttonTapObserver
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.dismissAlertView()
             })
             .disposed(by: disposeBag)
+        
     }
     
     func dismissAlertView() {
-        alertView?.removeFromSuperview()
-        
         alertView?.dismissAlert()
+        
+        alertView?.removeFromSuperview()
     }
 }
 
