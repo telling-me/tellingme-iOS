@@ -22,27 +22,10 @@ final class InlineHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("")
     }
-    
-    func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
-        if isFirstView {
-            leftButton.isHidden = true
-        } else {
-            leftButton.isHidden = false
-        }
-        if let buttonImage = buttonImage {
-            self.title.text = title
-            rightButton.isHidden = false
-            rightButton.setImage(UIImage(named: buttonImage), for: .normal)
-        } else {
-            self.title.text = title
-            rightButton.isHidden = true
-
-        }
-    }
 }
 
 extension InlineHeaderView {
-    func setLayout() {
+    private func setLayout() {
        addSubviews(leftButton, title, rightButton)
         leftButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(21)
@@ -59,7 +42,7 @@ extension InlineHeaderView {
         }
     }
     
-    func setStyles() {
+    private func setStyles() {
         leftButton.do {
             $0.setImage(UIImage(named: "ArrowLeft"), for: .normal)
         }
@@ -67,6 +50,25 @@ extension InlineHeaderView {
         title.do {
             $0.font = .fontNanum(.H6_Bold)
             $0.textColor = .Gray6
+        }
+    }
+}
+
+extension {
+    func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
+        if isFirstView {
+            leftButton.isHidden = true
+        } else {
+            leftButton.isHidden = false
+        }
+        if let buttonImage = buttonImage {
+            self.title.text = title
+            rightButton.isHidden = false
+            rightButton.setImage(UIImage(named: buttonImage), for: .normal)
+        } else {
+            self.title.text = title
+            rightButton.isHidden = true
+
         }
     }
 }

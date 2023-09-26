@@ -8,7 +8,6 @@
 import Foundation
 
 import RxCocoa
-import RxRelay
 import RxSwift
 
 protocol FeedbackViewModelOutputs {
@@ -33,7 +32,9 @@ final class FeedbackViewModel: FeedbackViewModelType, FeedbackViewModelOutputs {
         fetchQuestion()
     }
     
-    deinit { }
+    deinit {
+        print("FeedbackViewModel Deinit")
+    }
 }
 
 extension FeedbackViewModel {

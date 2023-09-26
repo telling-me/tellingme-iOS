@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then
@@ -40,7 +39,9 @@ final class BadFeedbackViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
-    deinit { }
+    deinit {
+        print("BadFeedbackViewController Deinit")
+    }
 }
 
 extension BadFeedbackViewController {

@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then

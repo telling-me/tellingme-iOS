@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then
@@ -45,7 +44,9 @@ final class GoodFeedbackViewController: BaseViewController {
         }
     }
     
-    deinit { }
+    deinit {
+        print("GoodFeedbackViewController Deinit")
+    }
 }
 
 extension GoodFeedbackViewController {

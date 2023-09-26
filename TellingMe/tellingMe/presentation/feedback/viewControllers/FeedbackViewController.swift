@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then
@@ -34,7 +33,9 @@ final class FeedbackViewController: BaseViewController {
         setStyles()
     }
     
-    deinit { }
+    deinit {
+        print("FeedbackViewController Deinit")
+    }
 }
 
 extension FeedbackViewController {

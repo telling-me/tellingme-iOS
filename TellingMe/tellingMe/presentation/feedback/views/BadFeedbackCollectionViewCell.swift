@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then
@@ -35,7 +34,9 @@ final class BadFeedbackCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit { }
+    deinit {
+        print("BadFeedbackCollectionViewCell Deinit")
+    }
 }
 
 extension BadFeedbackCollectionViewCell {

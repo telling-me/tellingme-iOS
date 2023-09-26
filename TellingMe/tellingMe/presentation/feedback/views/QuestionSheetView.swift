@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxRelay
 import RxSwift
 import SnapKit
 import Then
@@ -32,7 +31,9 @@ final class QuestionSheetView: UIView {
         super.init(coder: coder)
     }
     
-    deinit { }
+    deinit {
+        print("QuestionSheetView Deinit")
+    }
 }
 
 extension QuestionSheetView {

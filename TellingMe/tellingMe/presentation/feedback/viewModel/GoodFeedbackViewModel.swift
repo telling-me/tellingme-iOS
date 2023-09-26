@@ -8,7 +8,6 @@
 import Foundation
 
 import RxCocoa
-import RxRelay
 import RxSwift
 
 protocol GoodFeedbackViewModelInputs {
@@ -63,7 +62,9 @@ final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewMo
         .disposed(by: disposeBag)
     }
     
-    deinit { }
+    deinit {
+        print("GoodFeedbackViewModel Deinit")
+    }
 }
 
 extension GoodFeedbackViewModel {

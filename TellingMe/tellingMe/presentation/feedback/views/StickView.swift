@@ -23,7 +23,9 @@ final class StickView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit { }
+    deinit {
+        print("StickView Deinit")
+    }
 }
 
 extension StickView {
