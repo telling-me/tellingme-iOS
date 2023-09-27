@@ -1,13 +1,13 @@
 //
-//  HomeQuestionBoxView.swift
+//  BlurredBackgroundView.swift
 //  tellingMe
 //
-//  Created by KYUBO A. SHIM on 2023/09/23.
+//  Created by KYUBO A. SHIM on 2023/09/25.
 //
 
 import UIKit
 
-class HomeQuestionBoxView: UIView {
+class BlurredBackgroundView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

@@ -1,13 +1,13 @@
 //
-//  HomeInteractionView.swift
+//  NetworkErrorPopUpView.swift
 //  tellingMe
 //
-//  Created by KYUBO A. SHIM on 2023/09/23.
+//  Created by KYUBO A. SHIM on 2023/09/28.
 //
 
 import UIKit
 
-class HomeInteractionView: UIView {
+class NetworkErrorPopUpView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

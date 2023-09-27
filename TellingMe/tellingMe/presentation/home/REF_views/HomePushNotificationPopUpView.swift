@@ -1,13 +1,13 @@
 //
-//  HomeSubDateView.swift
+//  HomePushNotificationPopUpView.swift
 //  tellingMe
 //
-//  Created by KYUBO A. SHIM on 2023/09/23.
+//  Created by KYUBO A. SHIM on 2023/09/28.
 //
 
 import UIKit
 
-class HomeSubDateView: UIView {
+class HomePushNotificationPopUpView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

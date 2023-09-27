@@ -5,7 +5,7 @@
 //  Created by KYUBO A. SHIM on 2023/09/01.
 //
 
-import Foundation
+import UIKit
 
 enum StringLiterals {
     /// UserDefaults
@@ -13,6 +13,15 @@ enum StringLiterals {
     static let isDeviceAbnormal: String = "DeviceAbnormal"
     static let isDeviceChecked: String = "DeviceEverChecked"
     static let savedUserName: String = "SavedUserName"
+}
+
+enum ImageLiterals {
+    static let HomeLogo: UIImage? = UIImage(named: "Logo")
+    static let HomeNoticeAlarm: UIImage? = UIImage(named: "NoticeAlarm")
+    static let HomeNoticeAlarmWithDot: UIImage? = UIImage(named: "NoticeAlarmWithDot")
+    static let HomeSetting: UIImage? = UIImage(named: "Setting")
+    static let HomeWriteWingPen: UIImage? = UIImage(named: "WingPen")
+    static let HomeSticker: UIImage? = UIImage(named: "Shape")
 }
 
 enum ArrayLiterals {}
