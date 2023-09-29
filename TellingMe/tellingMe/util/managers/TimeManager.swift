@@ -47,35 +47,35 @@ final class TimeManager {
     }
 }
 
-//// MARK: - 서버시간 활용해서 이 사람이 시간을 수동을 만지는지 확인하기
-//// 그래야 시간을 앞으로 돌려서 질문 확인 못하지.
-//
-//func fetchExternalTime(completion: @escaping (Date?) -> Void) {
-//    guard let url = URL(string: "https://your-time-server-url-here.com") else {
-//        completion(nil)
-//        return
-//    }
-//
-//    let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
-//        if let error = error {
-//            print("Error fetching external time: \(error.localizedDescription)")
-//            completion(nil)
-//            return
-//        }
-//
-//        if let data = data,
-//           let externalTime = parseTimeFromData(data) {
-//            completion(externalTime)
-//        } else {
-//            completion(nil)
-//        }
-//    }
-//
-//    task.resume()
-//}
-//
-//func parseTimeFromData(_ data: Data) -> Date? {
-//    // Parse the external time from the data (format depends on the time server)
-//    // Return nil if parsing fails
-//    return nil
-//}
+// MARK: - 서버시간 활용해서 이 사람이 시간을 수동을 만지는지 확인하기
+// 그래야 시간을 앞으로 돌려서 질문 확인 못하지.
+
+func fetchExternalTime(completion: @escaping (Date?) -> Void) {
+    guard let url = URL(string: "https://your-time-server-url-here.com") else {
+        completion(nil)
+        return
+    }
+
+    let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+        if let error = error {
+            print("Error fetching external time: \(error.localizedDescription)")
+            completion(nil)
+            return
+        }
+
+        if let data = data,
+           let externalTime = parseTimeFromData(data) {
+            completion(externalTime)
+        } else {
+            completion(nil)
+        }
+    }
+
+    task.resume()
+}
+
+func parseTimeFromData(_ data: Data) -> Date? {
+    // Parse the external time from the data (format depends on the time server)
+    // Return nil if parsing fails
+    return nil
+}
