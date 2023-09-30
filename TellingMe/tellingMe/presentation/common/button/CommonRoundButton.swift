@@ -7,14 +7,22 @@
 
 import UIKit
 
-class CommonRoundButton: UIButton {
+final class CommonRoundButton: BBaseButton {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func setStyles() {
+        self.backgroundColor = .Primary25
+        self.cornerRadius = 20
+        self.titleLabel?.font = .fontNanum(.H6_Bold)
     }
-    */
+}
 
+extension CommonRoundButton {
+    func setTitleWithColor(text: String, color: UIColor) {
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(color, for: .normal)
+    }
+    
+    func setBackgroundColor(with color: UIColor) {
+        self.backgroundColor = color
+    }
 }
