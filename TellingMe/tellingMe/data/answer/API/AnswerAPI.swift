@@ -88,6 +88,7 @@ extension AnswerAPITarget: TargetType {
 
 struct AnswerAPI: Networkable {
     typealias Target = AnswerAPITarget
+    typealias DateQuery = String
 
     static func getAnswerList(month: String, year: String, completion: @escaping(Result<[AnswerListResponse]?, APIError>) -> Void) {
         do {
@@ -119,6 +120,17 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    // MARK: Getting Answer Data with Date
+    static func getAnswerWithDate(query: DateQuery) -> Observable<GetAnswerRespose> {
+        do {
+            let provider =  try makeAuthorizedProvider()
+            return provider.request(target: .getAnswerWithDate(query: query))
+        } catch {
+            print("Getting Answer Data failed")
+            return Observable.error(error)
         }
     }
     
@@ -180,6 +192,17 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    // MARK: Getting Answer consecutive Day
+    static func getAnswerRecord(query: DateQuery) -> Observable<AnswerRecordResponse> {
+        do {
+            let provider = try makeAuthorizedProvider()
+            return provider.request(target: .getAnswerRecord(query: query))
+        } catch {
+            print("Getting Answer in row failed")
+            return Observable.error(APIError.tokenNotFound)
         }
     }
 
