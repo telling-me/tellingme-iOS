@@ -50,7 +50,7 @@ final class OnBoardingViewController: UIViewController {
             return
         }
 
-        window.rootViewController = vc
+        window.rootViewController = UINavigationController(rootViewController: vc)
         window.makeKeyAndVisible()
     }
     
