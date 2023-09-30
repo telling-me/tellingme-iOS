@@ -13,18 +13,34 @@ enum StringLiterals {
     static let isDeviceAbnormal: String = "DeviceAbnormal"
     static let isDeviceChecked: String = "DeviceEverChecked"
     static let savedUserName: String = "SavedUserName"
+    static let lastQuestionRefreshTime: String = "LastRefreshTime"
 }
 
 enum ImageLiterals {
+    /// Tab Images
+    static let TabHomeSelected: UIImage? = UIImage(named: "Home_selected")
+    static let TabHomeDeselected: UIImage? = UIImage(named: "Home")
+    static let TabMyAnswerListSelected: UIImage? = UIImage(named: "MyAnswers_selected")
+    static let TabMyAnswerListDeselected: UIImage? = UIImage(named: "MyAnswers")
+    static let TabMyLibrarySelected: UIImage? = UIImage(named: "Library_selected")
+    static let TabMyLibraryDeselected: UIImage? = UIImage(named: "Library")
+    static let TabCommunicationSelected: UIImage? = UIImage(named: "communication_selected")
+    static let TabCommunicationDeselected: UIImage? = UIImage(named: "communication")
+    
+    /// Home Images
     static let HomeLogo: UIImage? = UIImage(named: "Logo")
     static let HomeNoticeAlarm: UIImage? = UIImage(named: "NoticeAlarm")
     static let HomeNoticeAlarmWithDot: UIImage? = UIImage(named: "NoticeAlarmWithDot")
     static let HomeSetting: UIImage? = UIImage(named: "Setting")
     static let HomeWriteWingPen: UIImage? = UIImage(named: "WingPen")
     static let HomeSticker: UIImage? = UIImage(named: "Shape")
+    static let HomeRotatingImage: UIImage? = UIImage(named: "Shape5")
+    static let HomeFloatingImage: UIImage? = UIImage(named: "AnimatingGroup")
+    
+    /// Pop Up Images
+    static let WorkInProgress: UIImage? = UIImage(named: "WorkInProgress")
+    static let PushNotificationAlarm: UIImage? = UIImage(named: "BellRinging")
 }
-
-enum ArrayLiterals {}
 
 enum UrlLiterals {
     static let termsOfUseUrl: String = "https://doana.notion.site/f42ec05972a545ce95231f8144705eae?pvs=4"
