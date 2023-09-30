@@ -34,13 +34,6 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupTabBarViewControllers() {
-        // Use the Storyboard IDs to instantiate the Storyboard-based view controllers
-//        let firstViewController = storyboard?.instantiateViewController(withIdentifier: "FirstViewController")
-//        let thirdViewController = storyboard?.instantiateViewController(withIdentifier: "ThirdViewController")
-//
-//        let secondViewController = SecondViewController() // Code-based view controller
-//        let fourthViewController = FourthViewController() // Code-based view controller
-        
         let homeViewController = HHomeViewController()
         
         let storyboardForAnswerList = UIStoryboard(name: "AnswerList", bundle: nil)
