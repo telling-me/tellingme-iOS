@@ -73,7 +73,7 @@ final class CardListCollectionViewCell: UICollectionViewCell {
         let button = UIButton(type: .custom)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
         button.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .Gray3
+        button.tintColor = .Gray5
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
         // 밖에서 처리하기
