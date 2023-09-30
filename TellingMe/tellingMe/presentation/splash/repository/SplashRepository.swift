@@ -52,7 +52,6 @@ extension SplashViewController {
             .disposed(by: disposeBag)
     }
     
-    
     func showHome() {
         // 로그인 화면의 뷰 컨트롤러를 생성합니다.
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
@@ -66,7 +65,7 @@ extension SplashViewController {
             return
         }
         
-        window.rootViewController = tabBarController
+        window.rootViewController = UINavigationController(rootViewController: tabBarController)
         window.makeKeyAndVisible()
     }
     
@@ -80,7 +79,7 @@ extension SplashViewController {
             return
         }
         
-        window.rootViewController = vc
+        window.rootViewController = UINavigationController(rootViewController: vc)
         window.makeKeyAndVisible()
     }
     
