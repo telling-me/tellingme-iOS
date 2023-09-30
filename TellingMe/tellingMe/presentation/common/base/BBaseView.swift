@@ -7,7 +7,10 @@
 
 import UIKit
 
-class BaseView: UIView {
+import SnapKit
+import Then
+
+class BBaseView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,10 +27,11 @@ class BaseView: UIView {
         super.removeFromSuperview()
         print("View has been successfully Removed")
     }
-}
-
-extension BaseView {
-    private func bindViewModel() {}
-    private func setStyles() {}
-    private func setLayout() {}
+    
+    /// Data 와 UI 를 bind 합니다.
+    func bindViewModel() {}
+    /// View 의 Style 을 set 합니다.
+    func setStyles() {}
+    /// View 의 Layout 을 set 합니다.
+    func setLayout() {}
 }
