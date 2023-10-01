@@ -55,4 +55,18 @@ extension String {
         result.append(dayInt)
         return result
     }
+    
+    /**
+     "2023-08-01"  Date 형식으로 바꿉니다.
+     */
+    func stringToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
 }
