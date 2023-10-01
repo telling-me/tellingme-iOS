@@ -7,15 +7,13 @@
 
 import UIKit
 
-
-    // TODO: width.greaterThan 써야할듯
-final class HomeQuestionBoxView: BaseView {
+final class HomeQuestionBoxView: BBaseView {
 
     private let mainQuestionLabel = UILabel()
     private let questionPhraseLabel = UILabel()
     
     override func setStyles() {
-        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 28, shadowRadius: 20, shadowOpacity: 0.1, xShadowOffset: 0, yShadowOffset: 4)
+        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 28, shadowRadius: 10, shadowOpacity: 0.1, xShadowOffset: 0, yShadowOffset: 4)
         
         mainQuestionLabel.do {
             $0.numberOfLines = 2
@@ -47,12 +45,13 @@ final class HomeQuestionBoxView: BaseView {
             $0.top.equalTo(mainQuestionLabel.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(32)
         }
     }
 }
 
 extension HomeQuestionBoxView {
+    
     private func setTitleOfMainQuestion(with title: String) {
         mainQuestionLabel.text = title.replacingOccurrences(of: "\\n", with: "\n")
     }
@@ -63,8 +62,10 @@ extension HomeQuestionBoxView {
 }
 
 extension HomeQuestionBoxView {
+    
     func setTitles(question: String, phrase: String) {
-        setTitleOfQuestionPhrase(with: question)
+        print(question, phrase, "📜📜📜📜📜")
+        setTitleOfMainQuestion(with: question)
         setTitleOfQuestionPhrase(with: phrase)
     }
 }
