@@ -7,26 +7,28 @@
 
 import UIKit
 
+import SnapKit
+
 class JobTableViewCell: UITableViewCell {
     static let id = "jobTableViewCell"
-    @IBOutlet weak var cellView: TeritaryBothButton!
+    private let cellView = TeritaryBothButton()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
         self.selectionStyle = .none
+        
+        contentView.addSubview(cellView)
+        cellView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
-        self.selectionStyle = .none
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    func setData(with data: GetJobViewModel.Job) {
+    
+    func setData(with data: Job) {
         cellView.setImageandLabel(imgName: "\(data.imgName)", text: data.title)
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true

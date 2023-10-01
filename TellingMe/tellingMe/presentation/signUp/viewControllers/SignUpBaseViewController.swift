@@ -45,7 +45,7 @@ extension SignUpBaseViewController {
         infoButton.snp.makeConstraints {
             $0.size.equalTo(32)
             $0.centerY.equalTo(titleLabel)
-            $0.leading.equalTo(titleLabel).offset(4)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(4)
         }
     }
     
