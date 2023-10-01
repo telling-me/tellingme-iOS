@@ -11,17 +11,22 @@ import RxCocoa
 import RxMoya
 import RxSwift
 
-final class AlarmViewController: UIViewController {
+protocol DismissAndSwitchTabDelegate: AnyObject {
+    func dismissAndSwitchTab(to index: Int)
+}
 
+final class AlarmViewController: UIViewController {
+    
+    weak var delegate: DismissAndSwitchTabDelegate?
+    private var disposeBag = DisposeBag()
+    private let viewModel = AlarmNoticeViewModel()
+    private lazy var isNoticeAllRead: BehaviorRelay<Bool> = viewModel.outputs.isAlarmAllRead
+    
     private let navigationBarView = CustomModalBarView()
     private let alarmSectionView = AlarmReadAllSectionView()
     private let alarmNoticeTableView = UITableView(frame: .zero)
     private let indicatorView = UIActivityIndicatorView(style: .large)
     
-    private var disposeBag = DisposeBag()
-    private let viewModel = AlarmNoticeViewModel()
-    private lazy var isNoticeAllRead: BehaviorRelay<Bool> = viewModel.outputs.isAlarmAllRead
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -48,19 +53,21 @@ extension AlarmViewController {
     private func bindViewModel() {
         navigationBarView.dismissButton.rx.tap
             .bind { [weak self] in
-                self?.dismiss(animated: true)
+                guard let self else { return }
+                self.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
         
         alarmSectionView.readAllButton.rx.tap
             .bind { [weak self] in
-                self?.viewModel.inputs.readAllNotice()
-                self?.alarmSectionView.isAllNoticeRead(true)
-                self?.loadingStarts()
+                guard let self else { return }
+                self.viewModel.inputs.readAllNotice()
+                self.alarmSectionView.isAllNoticeRead(true)
+                self.loadingStarts()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                    self?.viewModel.fetchNoticeData()
-                    self?.loadingStops()
+                    self.viewModel.fetchNoticeData()
+                    self.loadingStops()
                 }
             }
             .disposed(by: disposeBag)
@@ -75,7 +82,8 @@ extension AlarmViewController {
         
         Observable.zip(alarmNoticeTableView.rx.itemSelected, alarmNoticeTableView.rx.modelSelected(AlarmNotificationResponse.self))
             .subscribe(onNext: { [weak self] indexPath, item in
-                guard let cell = self?.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
+                guard let self else { return }
+                guard let cell = self.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
                 cell.noticeIsRead()
                 let hasLinkToSafari = cell.hasOutboundLink()
                 let answerId = cell.getAnswerId()
@@ -83,22 +91,22 @@ extension AlarmViewController {
                 let noticeId = cell.getNoticeId()
                 let datePublished = cell.getDateString()
                 
-                self?.viewModel.inputs.readNotice(idOf: noticeId)
+                self.viewModel.inputs.readNotice(idOf: noticeId)
                                 
                 if hasLinkToSafari != false {
-                    self?.viewModel.inputs.openSafariWithUrl(url: link)
+                    self.viewModel.inputs.openSafariWithUrl(url: link)
                 }
 
                 if let answerId = answerId {
                     if answerId == -1 {
                         print("✅ The AnswerId is -1.")
-                        let vc = LibraryViewController()
-                        self?.navigationController?.pushViewController(vc, animated: true)
+                        self.dismiss(animated: true)
+                        self.delegate?.dismissAndSwitchTab(to: 2)
                     } else {
                         print("✅ The AnswerId is not -1.")
-                        let vc = DetailAnswerViewController()
-                        vc.setData(answerId: answerId, datePublished: datePublished)
-                        self?.navigationController?.pushViewController(vc, animated: true)
+                        let detailAnswerViewController = DetailAnswerViewController()
+                        detailAnswerViewController.setData(answerId: answerId, datePublished: datePublished)
+                        self.navigationController?.pushViewController(detailAnswerViewController, animated: true)
                     }
                 }
             })
@@ -106,15 +114,16 @@ extension AlarmViewController {
         
         alarmNoticeTableView.rx.itemDeleted
             .subscribe(onNext: { [weak self] indexPath in
+                guard let self else { return }
                 do {
-                    guard let cell = self?.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
+                    guard let cell = self.alarmNoticeTableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { return }
                     let noticeId = cell.getNoticeId()
                     var newData: [AlarmNotificationResponse] = []
-                    guard let dataChanged = try self?.viewModel.outputs.alarmNotices.value() else { return }
+                    let dataChanged = try self.viewModel.outputs.alarmNotices.value()
                     newData = dataChanged
                     newData.remove(at: indexPath.row)
-                    self?.viewModel.inputs.deleteNotice(idOf: noticeId)
-                    self?.viewModel.outputs.alarmNotices.onNext(newData)
+                    self.viewModel.inputs.deleteNotice(idOf: noticeId)
+                    self.viewModel.outputs.alarmNotices.onNext(newData)
                 } catch let error {
                     print(error)
                 }
@@ -124,7 +133,8 @@ extension AlarmViewController {
         isNoticeAllRead
             .asDriver()
             .drive { [weak self] bool in
-                self?.alarmSectionView.isAllNoticeRead(bool)
+                guard let self else { return }
+                self.alarmSectionView.isAllNoticeRead(bool)
             }
             .disposed(by: disposeBag)
         
