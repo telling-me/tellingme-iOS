@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class HomeSubDateView: BaseView {
+final class HomeSubDateView: BBaseView {
 
     private let dateLabel = UILabel()
     
     override func setStyles() {
         self.backgroundColor = .Side200
-        self.cornerRadius = 20
+        self.cornerRadius = 15
         
         dateLabel.do {
             $0.font = .fontNanum(.C1_Regular)

@@ -1,5 +1,5 @@
 //
-//  HomeInteractionView.swift
+//  HomeQuestionView.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/23.
@@ -9,13 +9,13 @@ import UIKit
 
 import SnapKit
 
-final class HomeQuestionView: BaseView {
+final class HomeQuestionView: BBaseView {
 
     private let shapeStickerView = UIImageView()
     private let completeLabel = UILabel()
     let todayDateView = HomeSubDateView()
     let questionBoxView = HomeQuestionBoxView()
-    let writeButton = HomeWritingButton()
+    let writeButton = HomeWritingButton(frame: .zero)
     
     override func setStyles() {
         self.backgroundColor = .clear
@@ -50,7 +50,6 @@ final class HomeQuestionView: BaseView {
             $0.size.equalTo(55)
         }
         
-        // TODO: Height 에러 나는지 체크해보기
         questionBoxView.snp.makeConstraints {
             $0.bottom.equalTo(writeButton.snp.top).offset(-36)
             $0.horizontalEdges.equalToSuperview().inset(25)
@@ -58,14 +57,14 @@ final class HomeQuestionView: BaseView {
         }
         
         shapeStickerView.snp.makeConstraints {
-            $0.width.equalTo(43)
-            $0.height.equalTo(36)
+            $0.width.equalTo(100)
+            $0.height.equalTo(90)
             $0.centerX.equalTo(questionBoxView.snp.centerX)
             $0.centerY.equalTo(questionBoxView.snp.top)
         }
         
         todayDateView.snp.makeConstraints {
-            $0.bottom.equalTo(shapeStickerView.snp.top).offset(-53)
+            $0.bottom.equalTo(questionBoxView.snp.top).offset(-53)
             $0.height.equalTo(30)
             $0.width.equalTo(125)
             $0.centerX.equalToSuperview()
