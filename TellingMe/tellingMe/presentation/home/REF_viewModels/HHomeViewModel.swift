@@ -60,11 +60,10 @@ final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewM
         getIsAnswered()
         getAnswerInRowInformation()
         checkAbnormalDevice()
+        // When PushToken KeyChain isn't saved.
         if isPushTokenSavedInKeyChain() == false {
-            print("🚩 1️⃣ 푸시토큰이 없음 - 비정상")
             loadPushNotificationPopUpIfNeeded()
         }
-        print("🚩 2️⃣ 푸시토큰이 있음 - 정상")
     }
     
     func alarmTapped() {
@@ -119,7 +118,6 @@ extension HHomeViewModel {
             }, onError: { [weak self] error in
                 guard let self else { return }
                 print("❗️ Network failed to fetch Home Question Data: \(error)")
-
                 let data: QuestionModelWithError = QuestionModelWithError(isErrorOccured: true, errorMessage: "\(error)")
                 self.todayQuestion.accept(data)
             })
@@ -127,25 +125,19 @@ extension HHomeViewModel {
     }
     
     private func loadPushNotificationPopUpIfNeeded() {
-        print("🚩 3️⃣ 푸시 토큰 유효성 검사 시작")
         UserAPI.getPushNotificationInfo()
             .retry(maxAttempts: 3, delay: 1)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 let notificationStatus = response.allowNotification
                 let pushToken = response.pushToken
-                
-                print(notificationStatus, pushToken, "🚩")
-                
+                                
                 if notificationStatus == nil || pushToken == nil {
-                    print("🚩 4️⃣ 푸시 토큰 또는 상태가 입력이 되지 않음, 또는 처음 회원가입함 (Null)")
                     let data = PushNotificationModelWithError(allowNotification: notificationStatus, pushToken: pushToken, errorMessage: "Push Notification Status Needs to be decided")
                     self.pushNotificationPermission.accept(data)
-                    print("🚩 5️⃣ 푸시 동의 팝업이 열리게 withError 를 보냄 - 0️⃣ 으로 다시 이동")
                 }
             }, onError: { [weak self] error in
                 guard let self else { return }
-                print("🚩 푸시 정보 네트워크 에러 발생 - 비정상")
                 switch error {
                 case APIError.errorData(let errorData):
                     let data: PushNotificationModelWithError = PushNotificationModelWithError(errorMessage: "\(errorData)")
