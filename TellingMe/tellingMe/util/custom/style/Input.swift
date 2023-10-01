@@ -75,3 +75,10 @@ class Input: UIView {
         inputTextField.keyboardType = .numberPad
     }
 }
+
+extension Input {
+    func setBirthInput() {
+        inputTextField.keyboardType = .numberPad
+        
+    }
+}

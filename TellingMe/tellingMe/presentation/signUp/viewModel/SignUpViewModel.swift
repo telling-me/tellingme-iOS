@@ -12,6 +12,6 @@ class SignUpViewModel {
     var currentIndex: Int = 0
     
     lazy var viewControllers: [UIViewController] = {
-        return [AgreementViewController(viewModel: self), NickNameViewController()]
+        return [AgreementViewController(viewModel: self), NickNameViewController(), OptionViewController()]
     }()
 }
