@@ -212,8 +212,4 @@ extension UIColor {
     static var EBookNavigationColor: UIColor {
         return UIColor(hex: "#FFEDA4")
     }
-    
-    static var AlphaBlackColor: UIColor {
-        return UIColor(hex: "#181818", alpha: 0.28)
-    }
 }

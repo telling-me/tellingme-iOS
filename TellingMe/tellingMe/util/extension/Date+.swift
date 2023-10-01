@@ -16,7 +16,6 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    // MARK: Date()를 yyyy년 MM월 dd일 포맷으로 리턴하는 메서드
     public func todayFormat() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
@@ -24,7 +23,6 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    // MARK: Date()를 yyyy/MM/dd일 포맷으로 리턴하는 메서드
     public func dateFormat(yesterday: Bool) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -47,8 +45,6 @@ extension Date {
         return str
     }
     
-    // MARK: 질문에 맞는 날짜 yyyy-MM-dd 형식으로 반환합니다.
-    // 질문이 6시마다 초기화되기 때문에 새벽 12시부터 6시까지는 이전 날짜를 반환해야합니다.
     func getQuestionDate() -> String? {
         let currentDate = Date()
         let calendar = Calendar.current

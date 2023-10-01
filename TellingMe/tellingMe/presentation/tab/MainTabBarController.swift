@@ -16,7 +16,6 @@ class MainTabBarController: UITabBarController {
         
         self.delegate = self
         setTabBarAppearance()
-        checkFeedbackDate()
     }
 
     func showPushNotification() {
@@ -38,41 +37,18 @@ class MainTabBarController: UITabBarController {
         tabBar.layer.cornerRadius = 32
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
-    func checkFeedbackDate() {
-        if let currentDateString = Date().getQuestionDate(),
-           let currentDate = currentDateString.stringToDate() {
-            let weekday = Calendar.current.component(.weekday, from: currentDate)
-            
-            if weekday == 2 {
-                if let lastDate =  UserDefaults.standard.string(forKey: "lastFeedbackDate") {
-                    guard currentDateString != lastDate else {
-                        return
-                    }
-                }
-                showFeedback()
-                UserDefaults.standard.setValue(currentDateString, forKey: "lastFeedbackDate")
-            } else {
-                return
-            }
-        } else {
-            return
-        }
-    }
-    
-    func showFeedback() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            let vc = UINavigationController(rootViewController: FeedbackViewController())
-            vc.isNavigationBarHidden = true
-
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true)
-        }
-    }
 }
 
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         tabBarController.selectedViewController = viewController
     }
+//    func removeShadowView() {
+//        shadowView.removeFromSuperview()
+//    }
+//
+//    func addShadowView() {
+//        self.view.addSubview(shadowView)
+//        self.view.bringSubviewToFront(self.tabBar)
+//    }
 }

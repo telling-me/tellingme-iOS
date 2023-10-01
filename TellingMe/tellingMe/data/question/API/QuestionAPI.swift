@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import Moya
-import RxSwift
 
 enum QuestionAPITarget {
     case getTodayQuestion(query: String)
@@ -63,16 +61,6 @@ struct QuestionAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
-        }
-    }
-    
-    static func getTodayQuestion(query: String) -> Observable<QuestionResponse> {
-        do {
-            let provider = try makeAuthorizedProvider()
-            return provider.request(target: .getTodayQuestion(query: query))
-        } catch {
-            print("Can't authroized")
-            return Observable.error(APIError.tokenNotFound)
         }
     }
 }

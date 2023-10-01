@@ -149,7 +149,7 @@ extension LibraryViewController {
          viewModel.outputs.answerLists
             .map { list -> [SectionModel] in
                 let groupedItems = list.chunked(into: 7)
-                let sections = groupedItems.map { itemsChunk in
+                var sections = groupedItems.map { itemsChunk in
                     SectionModel(model: "header", items: itemsChunk)
                 }
                 return sections
