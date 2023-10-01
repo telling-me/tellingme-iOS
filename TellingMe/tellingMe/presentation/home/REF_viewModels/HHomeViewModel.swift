@@ -7,14 +7,23 @@
 
 import UIKit
 
+import Firebase
 import Moya
 import RxCocoa
 import RxSwift
+
+// MARK: - Protocols
 
 protocol HomeViewModelInputs {
     func alarmTapped()
     func myPageTapped()
     func writingButtonTapped()
+    func refreshQuestion()
+    func refreshNewIncomingAlarms()
+    func refreshIsAnsweredToday()
+    func refreshAnswerInRow()
+    func permitPushNotification()
+    func declinePushNotification()
 }
 
 protocol HomeViewModelOutputs {
@@ -30,15 +39,16 @@ protocol HomeViewModelType {
     var outputs: HomeViewModelOutputs { get }
 }
 
+// MARK: - ViewModel
+
 final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
     
-    typealias DateQuery = String
     private var disposeBag = DisposeBag()
     
-    var pushNotificationPermission: BehaviorRelay<PushNotificationModelType?> = BehaviorRelay(value: nil)
+    var pushNotificationPermission: BehaviorRelay<PushNotificationModelType?> = BehaviorRelay(value: PushNotificationModel())
     var isAlarmUnread: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var isQuestionAnswered: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    var todayQuestion: BehaviorRelay<QuestionModelType> = BehaviorRelay(value: QuestionModel(date: [2023,00,00], title: "", phrase: "", isErrorOccured: false))
+    var todayQuestion: BehaviorRelay<QuestionModelType> = BehaviorRelay(value: (QuestionModel(date: [2023,00,00], title: "", phrase: "", isErrorOccured: false)))
     var answerInRow: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var inputs: HomeViewModelInputs { return self }
@@ -46,9 +56,15 @@ final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewM
     
     init() {
         getMainComponentData()
-        loadPushNotificationPopUpIfNeeded()
         getIsAnyAlarmUnread()
+        getIsAnswered()
+        getAnswerInRowInformation()
         checkAbnormalDevice()
+        if isPushTokenSavedInKeyChain() == false {
+            print("🚩 1️⃣ 푸시토큰이 없음 - 비정상")
+            loadPushNotificationPopUpIfNeeded()
+        }
+        print("🚩 2️⃣ 푸시토큰이 있음 - 정상")
     }
     
     func alarmTapped() {
@@ -62,14 +78,37 @@ final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewM
     func writingButtonTapped() {
         print("Writing Button Tapped")
     }
-}
     
+    func refreshQuestion() {
+        getMainComponentData()
+    }
+    
+    func refreshNewIncomingAlarms() {
+        getIsAnyAlarmUnread()
+    }
+    
+    func refreshIsAnsweredToday() {
+        getIsAnswered()
+    }
+    
+    func refreshAnswerInRow() {
+        getAnswerInRowInformation()
+    }
+    
+    func permitPushNotification() {
+        postPushNotificationWith(status: true)
+    }
+    
+    func declinePushNotification() {
+        postPushNotificationWith(status: false)
+    }
+}
 
 extension HHomeViewModel {
     
     // TODO: Custom Error 만들고 분기처리하기
     private func getMainComponentData() {
-        let query: DateQuery = self.getNewDateString()
+        let query: String = self.getNewDateString()
         
         QuestionAPI.getTodayQuestion(qeury: query)
             .retry(maxAttempts: 3, delay: 2)
@@ -81,26 +120,32 @@ extension HHomeViewModel {
                 guard let self else { return }
                 print("❗️ Network failed to fetch Home Question Data: \(error)")
 
-                let data: QuestionModelWithError = QuestionModelWithError(errorMessage: "\(error)")
+                let data: QuestionModelWithError = QuestionModelWithError(isErrorOccured: true, errorMessage: "\(error)")
                 self.todayQuestion.accept(data)
             })
             .disposed(by: disposeBag)
     }
     
     private func loadPushNotificationPopUpIfNeeded() {
+        print("🚩 3️⃣ 푸시 토큰 유효성 검사 시작")
         UserAPI.getPushNotificationInfo()
             .retry(maxAttempts: 3, delay: 1)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
-                if let status = response.allowNotification,
-                   let token = response.pushToken {
-                    print("\(status), \(token)")
-                } else {
-                    let data: PushNotificationModel = PushNotificationModel(allowNotification: response.allowNotification, pushToken: response.pushToken)
+                let notificationStatus = response.allowNotification
+                let pushToken = response.pushToken
+                
+                print(notificationStatus, pushToken, "🚩")
+                
+                if notificationStatus == nil || pushToken == nil {
+                    print("🚩 4️⃣ 푸시 토큰 또는 상태가 입력이 되지 않음, 또는 처음 회원가입함 (Null)")
+                    let data = PushNotificationModelWithError(allowNotification: notificationStatus, pushToken: pushToken, errorMessage: "Push Notification Status Needs to be decided")
                     self.pushNotificationPermission.accept(data)
+                    print("🚩 5️⃣ 푸시 동의 팝업이 열리게 withError 를 보냄 - 0️⃣ 으로 다시 이동")
                 }
             }, onError: { [weak self] error in
                 guard let self else { return }
+                print("🚩 푸시 정보 네트워크 에러 발생 - 비정상")
                 switch error {
                 case APIError.errorData(let errorData):
                     let data: PushNotificationModelWithError = PushNotificationModelWithError(errorMessage: "\(errorData)")
@@ -123,6 +168,32 @@ extension HHomeViewModel {
             .disposed(by: disposeBag)
     }
     
+    private func getIsAnswered() {
+        let query: String = getNewDateString()
+        
+        AnswerAPI.getAnswerWithDate(query: query)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                self.isQuestionAnswered.accept(true)
+            }, onError: { [weak self] response in
+                guard let self else { return }
+                self.isQuestionAnswered.accept(false)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func getAnswerInRowInformation() {
+        let query: String = getNewDateString()
+        
+        AnswerAPI.getAnswerRecord(query: query)
+            .retry(maxAttempts: 2, delay: 1)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                self.answerInRow.accept(response.count)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     /// 디바이스가 iPhone SE 모델과 같은 비정상적인 비율을 가진 모델인지 확인합니다.
     private func checkAbnormalDevice() {
         let userDefaults = UserDefaults.standard
@@ -141,10 +212,49 @@ extension HHomeViewModel {
         }
         userDefaults.set(true, forKey: StringLiterals.isDeviceChecked)
     }
+    
+    private func postPushNotificationWith(status: Bool) {
+        presentNotificationAuthorization()
+        guard let token = Messaging.messaging().fcmToken else {
+            print("Fetching Push Token Failed")
+            return
+        }
+            
+        UserAPI.postPushNotificationInfo(request: PushNotificationInfoRequest(allowNotification: status, pushToken: token))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                KeychainManager.shared.save(token, key: Keys.firebaseToken.rawValue)
+                self.pushNotificationPermission.accept(PushNotificationModel(allowNotification: response.allowNotification, pushToken: response.pushToken, errorMessage: nil))
+            }, onError: { error in
+                print("Posting Push Notification Failed with an error: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 extension HHomeViewModel {
-    private func getNewDateString() -> DateQuery {
+    
+    private func presentNotificationAuthorization() {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions) { (granted, error) in
+                if granted {}
+                if let error = error {
+                    print(error)
+                }
+            }
+    }
+    
+    private func isPushTokenSavedInKeyChain() -> Bool {
+        if KeychainManager.shared.load(key: Keys.firebaseToken.rawValue) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func getNewDateString() -> String {
         guard let newDateString = Date().getQuestionDate() else {
             return "2023-01-01"
         }
