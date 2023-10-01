@@ -67,14 +67,12 @@ final class HHomeViewController: BBaseViewController {
         headerView.myPageButton.rx.tap
             .bind { [weak self] in
                 guard let self else { return }
-                print("🔸🔸🔸🔸")
                 let myPageViewController = MyPageViewController()
                 let isDeviceAbnormal: Bool = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
                 
                 myPageViewController.hidesBottomBarWhenPushed = true
                 myPageViewController.setAbnormalDeviceForLayout(isDeviceAbnormal: isDeviceAbnormal)
                 self.navigationController?.pushViewController(myPageViewController, animated: true)
-                print("🔸🔸🔸🔸")
             }
             .disposed(by: disposeBag)
         
@@ -82,7 +80,6 @@ final class HHomeViewController: BBaseViewController {
             .bind { [weak self] in
                 guard let self else { return }
                 viewModel.inputs.declinePushNotification()
-                print("📅📅📅📅")
                 self.blurView.removeFromSuperview()
                 self.pushNotificationPermitView.removeFromSuperview()
                 self.tabBarController?.tabBar.isHidden = false
@@ -93,7 +90,6 @@ final class HHomeViewController: BBaseViewController {
             .bind { [weak self] in
                 guard let self else { return }
                 viewModel.inputs.permitPushNotification()
-                print("📅📅📅📅📅📅📅📅📅📅")
                 self.blurView.removeFromSuperview()
                 self.pushNotificationPermitView.removeFromSuperview()
                 self.tabBarController?.tabBar.isHidden = false
@@ -125,18 +121,10 @@ final class HHomeViewController: BBaseViewController {
             
         viewModel.outputs.pushNotificationPermission
             .bind { [weak self] permission in
-                print(
-                    """
-🚩 0️⃣-1 Default 값은 errorMessage == nil - 팝업이 뜨지 않음
-🚩 0️⃣-2 1️⃣ 로 넘어가며 푸시 토큰이 KeyChain 에 있다면 그대로, 없다면 유효성 검사 후에 토큰 보내고, errorMessage = nil 로 만들고 알람 끄기
-"""
-                )
                 guard let self, let permission else { return }
                 if permission.errorMessage == nil {
-                    print("🚩 6️⃣ Nothing to get permit. Working Fine")
                     return
                 } else {
-                    print("🚩 7️⃣ Push Token doesn't exist. Showing Up PopUp View for getting permit.")
                     self.showPushNotification()
                 }
             }
