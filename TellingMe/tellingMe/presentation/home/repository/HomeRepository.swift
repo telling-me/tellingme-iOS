@@ -19,7 +19,7 @@ extension HomeViewController {
             return
         }
 //
-        QuestionAPI.getTodayQuestion(qeury: date)
+        QuestionAPI.getTodayQuestion(query: date)
             .retry(maxAttempts: 3, delay: 2)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
@@ -83,10 +83,10 @@ extension HomeViewController {
             case .success(let response):
                 if response!.count == 0 {
                     self.dayStackLabel.text = "오늘도 진정한 나를 만나봐요!"
-                    self.dayStackLabel.setColorPart(text: "진정한 나")
+                    self.dayStackLabel.setColorPart(text: "진정한 나", color: .Logo)
                 } else {
                     self.dayStackLabel.text = "연속 \(response!.count)일째 기록 중!"
-                    self.dayStackLabel.setColorPart(text: String(response!.count))
+                    self.dayStackLabel.setColorPart(text: String(response!.count), color: .Logo)
                 }
             case .failure(let error):
                 switch error {

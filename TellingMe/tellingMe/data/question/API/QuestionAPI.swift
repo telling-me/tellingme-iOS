@@ -66,13 +66,13 @@ struct QuestionAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
-    static func getTodayQuestion(qeury: String) -> Observable<QuestionResponse> {
+
+    static func getTodayQuestion(query: String) -> Observable<QuestionResponse> {
         do {
             let provider = try makeAuthorizedProvider()
-            return provider.request(target: .getTodayQuestion(query: qeury))
+            return provider.request(target: .getTodayQuestion(query: query))
         } catch {
-            print("Question Error")
+            print("Can't authroized")
             return Observable.error(APIError.tokenNotFound)
         }
     }

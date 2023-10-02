@@ -109,7 +109,7 @@ extension HHomeViewModel {
     private func getMainComponentData() {
         let query: String = self.getNewDateString()
         
-        QuestionAPI.getTodayQuestion(qeury: query)
+        QuestionAPI.getTodayQuestion(query: query)
             .retry(maxAttempts: 3, delay: 2)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }

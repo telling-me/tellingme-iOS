@@ -24,6 +24,7 @@ class MainTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        checkFeedbackDate()
     }
 
     func showPushNotification() {
@@ -66,6 +67,37 @@ class MainTabBarController: UITabBarController {
             let tabBarItem = $0.setTabBarItem()
             viewControllersList[$0.pageIndex].tabBarItem = tabBarItem
             viewControllersList[$0.pageIndex].tabBarItem.tag = $0.pageIndex
+        }
+    }
+    
+    func checkFeedbackDate() {
+        if let currentDateString = Date().getQuestionDate(),
+           let currentDate = currentDateString.stringToDate() {
+            let weekday = Calendar.current.component(.weekday, from: currentDate)
+            
+            if weekday == 2 {
+                if let lastDate =  UserDefaults.standard.string(forKey: "lastFeedbackDate") {
+                    guard currentDateString != lastDate else {
+                        return
+                    }
+                }
+                showFeedback()
+                UserDefaults.standard.setValue(currentDateString, forKey: "lastFeedbackDate")
+            } else {
+                return
+            }
+        } else {
+            return
+        }
+    }
+    
+    func showFeedback() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            let vc = UINavigationController(rootViewController: FeedbackViewController())
+            vc.isNavigationBarHidden = true
+
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
         }
     }
 }
