@@ -17,7 +17,7 @@ class OptionViewController: SignUpBaseViewController {
         TeritaryBothData(imgName: "Male", title: "남성"),
         TeritaryBothData(imgName: "Female", title: "여성")
     ])
-    var selectedItem = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
+    let selectedItem = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
     
     private let disposeBag = DisposeBag()
     

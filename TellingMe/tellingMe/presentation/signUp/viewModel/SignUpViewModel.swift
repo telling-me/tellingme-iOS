@@ -16,7 +16,8 @@ class SignUpViewModel {
             AgreementViewController(viewModel: self),
             NickNameViewController(),
             OptionViewController(),
-            JobViewController()
+            JobViewController(),
+            PurposeViewController()
         ]
     }()
 }

@@ -89,6 +89,7 @@
 		3A68CC2A2AC9893700C97E59 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC292AC9893700C97E59 /* NickNameViewController.swift */; };
 		3A68CC2C2AC98F8C00C97E59 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */; };
 		3A68CC2E2AC9D12400C97E59 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */; };
+		3A68CC302AC9F17B00C97E59 /* PurposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */; };
 		3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6452A272B54009D8D76 /* UserInfoDTO.swift */; };
 		3A70A6482A272C58009D8D76 /* UpdateUserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */; };
 		3A70A64A2A272CD2009D8D76 /* NotificationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */; };
@@ -414,6 +415,7 @@
 		3A68CC292AC9893700C97E59 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
+		3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeViewController.swift; sourceTree = "<group>"; };
 		3A70A6452A272B54009D8D76 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoDTO.swift; sourceTree = "<group>"; };
 		3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDTO.swift; sourceTree = "<group>"; };
@@ -1079,6 +1081,7 @@
 				3A68CC292AC9893700C97E59 /* NickNameViewController.swift */,
 				3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */,
 				3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */,
+				3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -2472,6 +2475,7 @@
 				3ABB84852A80C7D300540269 /* CommunicationAnswerViewModel.swift in Sources */,
 				3A68CC2A2AC9893700C97E59 /* NickNameViewController.swift in Sources */,
 				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
+				3A68CC302AC9F17B00C97E59 /* PurposeViewController.swift in Sources */,
 				3A320F542A73E3470098E8C9 /* CommunicationDetailViewController.swift in Sources */,
 				58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */,
 				3ACEBAFA2AB07F85008F4600 /* FinishFeedbackViewController.swift in Sources */,
