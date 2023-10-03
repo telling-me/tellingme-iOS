@@ -7,11 +7,26 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 import Then
 
-class NickNameViewController: SignUpBaseViewController {
+final class NickNameViewController: SignUpBaseViewController {
+    private let viewModel: SignUpViewModel
+    private let disposeBag = DisposeBag()
+    
     private var inputBox = Input()
+    private var captionLabel = UILabel()
+    
+    init(viewModel: SignUpViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +38,39 @@ class NickNameViewController: SignUpBaseViewController {
 
 extension NickNameViewController {
     private func bindViewModel() {
+        inputBox.inputTextField.rx.controlEvent(.editingChanged)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self,
+                      let text = self.inputBox.inputTextField.text else {
+                    return
+                    
+                }
+                
+                if text.count > 8 {
+                    self.inputBox.inputTextField.text = String(text.prefix(8))
+                    self.inputBox.hiddenKeyboard()
+                }
+            })
+            .disposed(by: disposeBag)
         
+        inputBox.inputTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.nicknameTextRelay)
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
-        view.addSubview(inputBox)
+        view.addSubviews(inputBox, captionLabel)
         
         inputBox.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(110)
             $0.horizontalEdges.equalToSuperview().inset(25)
+        }
+        
+        captionLabel.snp.makeConstraints {
+            $0.top.equalTo(inputBox.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(35)
         }
     }
     
@@ -40,36 +79,26 @@ extension NickNameViewController {
             $0.text = "닉네임을 정해주세요"
         }
         
-        inputBox.do {
-            $0.inputTextField.delegate = self
+//        inputBox.do {
+//            $0.inputTextField.delegate = self
+//        }
+        
+        captionLabel.do {
+            $0.text = "영문, 숫자, 띄어쓰기, 특수문자 불가"
+            $0.textColor = .Gray7
+            $0.font = .fontNanum(.C1_Regular)
         }
     }
 }
 
-extension NickNameViewController {
-    private func checkNickname() {
-        if let text = inputBox.inputTextField.text {
-            var isWord = true
-//            for word in viewModel.badwords where text.contains(word) {
-//                showToast(message: "사용할 수 없는 닉네임입니다")
-//                isWord = false
-//                break
+//extension NickNameViewController: UITextFieldDelegate {
+//        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//            let utf8Char = string.cString(using: .utf8)
+//            let isBackSpace = strcmp(utf8Char, "\\b")
+//
+//            if isBackSpace == -92 || (string.checkOnlyKoreanCharacters()) {
+//                return true
 //            }
-            if isWord {
-                
-            }
-        }
-    }
-}
-
-extension NickNameViewController: UITextFieldDelegate {
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            let utf8Char = string.cString(using: .utf8)
-            let isBackSpace = strcmp(utf8Char, "\\b")
-
-            if isBackSpace == -92 || (string.hasCharacters()) {
-                return true
-            }
-            return false
-        }
-}
+//            return false
+//        }
+//}

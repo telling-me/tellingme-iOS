@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
+import RxSwift
+import SnapKit
+import Then
+
 class Input: UIView {
+    private let disposeBag = DisposeBag()
     var inputTextField: UITextField = {
        let input = UITextField()
         input.translatesAutoresizingMaskIntoConstraints = false
@@ -77,8 +82,16 @@ class Input: UIView {
 }
 
 extension Input {
+    func bindViewModel() {
+        inputTextField.rx.controlEvent(.editingDidEndOnExit)
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                inputTextField.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
+    }
+
     func setBirthInput() {
         inputTextField.keyboardType = .numberPad
-        
     }
 }

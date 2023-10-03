@@ -74,7 +74,7 @@ extension NickNameInputViewController: UITextFieldDelegate {
         let utf8Char = string.cString(using: .utf8)
         let isBackSpace = strcmp(utf8Char, "\\b")
         guard let text = textField.text else { return false }
-        if isBackSpace == -92 || (string.hasCharacters()) {
+        if isBackSpace == -92 || (string.checkOnlyKoreanCharacters()) {
             return true
         }
         return false

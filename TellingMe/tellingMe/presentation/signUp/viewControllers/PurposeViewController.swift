@@ -12,20 +12,21 @@ import RxSwift
 import SnapKit
 import Then
 
-class PurposeViewController: SignUpBaseViewController {
+final class PurposeViewController: SignUpBaseViewController {
+    private let viewModel: SignUpViewModel
     private let disposeBag = DisposeBag()
+    
     private let captionLabel = UILabel()
     private let purposeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    let purposeList: Observable<[TeritaryBothData]> = Observable.just([
-            TeritaryBothData(imgName: "Pen", title: "학업/진로"),
-            TeritaryBothData(imgName: "Handshake", title: "대인 관계"),
-            TeritaryBothData(imgName: "Values", title: "성격/가치관"),
-            TeritaryBothData(imgName: "Magnet", title: "행동/습관"),
-            TeritaryBothData(imgName: "Health", title: "건강"),
-            TeritaryBothData(imgName: "Etc", title: "기타")
-        ])
-    let selectedItem = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
+    init(viewModel: SignUpViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,13 @@ class PurposeViewController: SignUpBaseViewController {
 
 extension PurposeViewController {
     private func bindViewModel() {
-        purposeList
+        viewModel.purposeList
             .bind(to: purposeCollectionView.rx.items(cellIdentifier: TeritaryVerticalBothButtonCell.id, cellType: TeritaryVerticalBothButtonCell.self)) { index, data, cell in
                 cell.setData(with: data)
             }
             .disposed(by: disposeBag)
         purposeCollectionView.rx.itemSelected
-            .bind(to: selectedItem)
+            .bind(to: viewModel.selectedPurposeIndex)
             .disposed(by: disposeBag)
     }
     
@@ -64,6 +65,14 @@ extension PurposeViewController {
     }
     
     private func setStyles() {
+        titleLabel.do {
+            $0.text = "고민을 알려주세요"
+        }
+        
+        infoButton.do {
+            $0.isHidden = false
+        }
+        
         captionLabel.do {
             $0.font = .fontNanum(.B2_Regular)
             $0.textColor = .Gray6

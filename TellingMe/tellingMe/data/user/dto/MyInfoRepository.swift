@@ -44,7 +44,7 @@ extension MyInfoViewController {
 
     func checkJobInfo(job: String, completion: @escaping (Bool) -> Void) {
         let request = JobInfoRequest(job: 5, jobName: job)
-        LoginAPI.postJobInfo(request: request) { result in
+        LoginAPI.checkJobInfo(request: request) { result in
             switch result {
             case .success:
                 completion(true)

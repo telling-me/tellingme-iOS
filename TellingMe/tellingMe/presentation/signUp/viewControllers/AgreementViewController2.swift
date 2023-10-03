@@ -12,18 +12,7 @@ import RxSwift
 import SnapKit
 import Then
 
-class AgreementViewController: SignUpBaseViewController {
-    // viewModel에 넣기
-    private let agreementRelays: [BehaviorRelay<Bool>] = [
-        BehaviorRelay(value: false),
-        BehaviorRelay(value: false),
-        BehaviorRelay(value: false)
-    ]
-    private let agreements: [String] = [
-        "(필수) 서비스 이용약관 동의",
-        "(필수) 개인정보 수집 및 이용 동의"
-    ]
-    
+final class AgreementViewController: SignUpBaseViewController {
     private let viewModel: SignUpViewModel
     
     private let disposeBag = DisposeBag()
@@ -93,7 +82,7 @@ extension AgreementViewController {
 
 extension AgreementViewController {
     private func setStackView() {
-        for (index, agreement) in agreements.enumerated() {
+        for (index, agreement) in viewModel.agreements.enumerated() {
             let checkboxView = CheckboxView()
             checkboxView.setCheckbox(title: agreement, subButtonTitle: "자세히")
             agreementStackView.addArrangedSubview(checkboxView)
@@ -133,7 +122,7 @@ extension AgreementViewController {
             }
             
             checkboxView.checkButton.isSelected = isAgree
-            self.agreementRelays[index].accept(isAgree)
+            self.viewModel.agreementRelays[index].accept(isAgree)
         }
     }
     
@@ -142,7 +131,7 @@ extension AgreementViewController {
             return
         }
         checkboxView.checkButton.isSelected.toggle()
-        self.agreementRelays[index].accept(checkboxView.checkButton.isSelected)
+        self.viewModel.agreementRelays[index].accept(checkboxView.checkButton.isSelected)
         
         boxCheckButton.checkButton.isSelected = isAllAgreed()
     }

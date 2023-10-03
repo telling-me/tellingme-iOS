@@ -12,18 +12,22 @@ import RxSwift
 import SnapKit
 import Then
 
-class OptionViewController: SignUpBaseViewController {
-    let genderList: Observable<[TeritaryBothData]> = Observable.just([
-        TeritaryBothData(imgName: "Male", title: "남성"),
-        TeritaryBothData(imgName: "Female", title: "여성")
-    ])
-    let selectedItem = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
-    
+final class OptionViewController: SignUpBaseViewController {
+    private let viewModel: SignUpViewModel
     private let disposeBag = DisposeBag()
     
     private let inputBox = Input()
     private let genderTitleLabel = UILabel()
     private let genderCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    init(viewModel: SignUpViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +39,33 @@ class OptionViewController: SignUpBaseViewController {
 
 extension OptionViewController {
     private func bindViewModel() {
-        genderList
+        viewModel.genderList
             .bind(to: genderCollectionView.rx.items(cellIdentifier: TeritaryVerticalBothButtonCell.id, cellType: TeritaryVerticalBothButtonCell.self)) {
                 index, data, cell in
                 cell.setData(with: data)
             }
             .disposed(by: disposeBag)
         genderCollectionView.rx.itemSelected
-            .bind(to: selectedItem)
+            .bind(to: viewModel.selectedGenderIndex)
+            .disposed(by: disposeBag)
+        inputBox.inputTextField.rx.controlEvent(.editingChanged)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self,
+                      let text = self.inputBox.inputTextField.text else {
+                    return
+                }
+
+                if text.count > 4 {
+                    self.inputBox.inputTextField.text = String(text.prefix(4))
+                    self.inputBox.hiddenKeyboard()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        inputBox.inputTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.birthTextRelay)
             .disposed(by: disposeBag)
     }
     

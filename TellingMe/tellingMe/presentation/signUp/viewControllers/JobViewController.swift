@@ -12,26 +12,20 @@ import RxSwift
 import SnapKit
 import Then
 
-struct Job {
-    let title: String
-    let imgName: String
-}
-
-class JobViewController: SignUpBaseViewController {
-    let jobs: Observable<[Job]> = Observable.just([
-        Job(title: "중·고등학생", imgName: "HighSchool"),
-        Job(title: "대학(원)생", imgName: "University"),
-        Job(title: "취업준비생", imgName: "Jobseeker"),
-        Job(title: "직장인", imgName: "Worker"),
-        Job(title: "주부", imgName: "Housewife"),
-        Job(title: "기타", imgName: "Etc")
-    ])
-    let selectedItem = BehaviorRelay(value: IndexPath(row: 0, section: 0))
-    let etc = BehaviorRelay(value: "")
-
+final class JobViewController: SignUpBaseViewController {
+    private let viewModel: SignUpViewModel
     private let disposeBag = DisposeBag()
     
     private let jobTableView = UITableView()
+    
+    init(viewModel: SignUpViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +37,13 @@ class JobViewController: SignUpBaseViewController {
 
 extension JobViewController {
     private func bindViewModel() {
-        jobs
+        viewModel.jobs
             .bind(to: jobTableView.rx.items(cellIdentifier: JobTableViewCell.id, cellType: JobTableViewCell.self)) { row, data, cell in
                 cell.setData(with: data)
             }
             .disposed(by: disposeBag)
         jobTableView.rx.itemSelected
-            .bind(to: selectedItem)
+            .bind(to: viewModel.selectedJobIndex)
             .disposed(by: disposeBag)
     }
     
