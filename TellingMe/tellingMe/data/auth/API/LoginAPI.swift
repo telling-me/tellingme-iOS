@@ -154,18 +154,26 @@ struct LoginAPI: Networkable {
         makeUnauthorizedProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
     
-    static func checkNickname(request: CheckNicknameRequest) -> Observable<CheckNicknameResponse> {
-        let provider = makeUnauthorizedProvider()
-        return provider.request(target: .checkNickname(request))
+    static func checkNickname(request: CheckNicknameRequest) -> Observable<EmptyResponse> {
+        do {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .checkNickname(request))
+        } catch {
+            return Observable.error(error)
+        }
     }
 
     static func checkJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
     }
     
-    static func checkJobInfo(request: JobInfoRequest) -> Observable<JobInfoResponse> {
-        let provider = makeUnauthorizedProvider()
-        return provider.request(target: .jobInfo(request))
+    static func checkJobInfo(request: JobInfoRequest) -> Observable<EmptyResponse> {
+        do {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .jobInfo(request))
+        } catch {
+            return Observable.error(error)
+        }
     }
 
     static func withdrawalUser(request: WithdrawalRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {

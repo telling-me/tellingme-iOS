@@ -74,9 +74,15 @@ extension MoyaProvider {
                 switch result {
                 case .success(let response):
                     do {
-                        if response.data.isEmpty {
+                        if let errorData = try? response.map(ErrorData.self) {
+                            observer.onError(APIError.errorData(errorData))
+                        }
+                        
+                        if T.self == EmptyResponse.self {
+                            observer.onNext(EmptyResponse() as! T)
                             observer.onCompleted()
                         }
+                        
                         let filteredResponse = try response.filterSuccessfulStatusCodes()
                         let decodedData = try filteredResponse.map(T.self)
                         observer.onNext(decodedData)

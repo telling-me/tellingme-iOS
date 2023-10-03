@@ -123,6 +123,8 @@
 		3A89B3C62A78C312002DFBCD /* SortHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89B3C52A78C312002DFBCD /* SortHeaderView.swift */; };
 		3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89B3C82A78E6AE002DFBCD /* Emotion.swift */; };
 		3A8FAAC82ACC0B30008C8CA3 /* BottomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAC72ACC0B30008C8CA3 /* BottomInfoView.swift */; };
+		3A8FAACB2ACC297D008C8CA3 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAACA2ACC297D008C8CA3 /* SignUpModel.swift */; };
+		3A8FAACE2ACC4FA1008C8CA3 /* AgreementBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAACD2ACC4FA1008C8CA3 /* AgreementBottomSheetViewController.swift */; };
 		3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */; };
 		3A9B415929FFDAE600D61D42 /* Answer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9B415829FFDAE600D61D42 /* Answer.storyboard */; };
 		3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */; };
@@ -451,6 +453,8 @@
 		3A89B3C52A78C312002DFBCD /* SortHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortHeaderView.swift; sourceTree = "<group>"; };
 		3A89B3C82A78E6AE002DFBCD /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		3A8FAAC72ACC0B30008C8CA3 /* BottomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInfoView.swift; sourceTree = "<group>"; };
+		3A8FAACA2ACC297D008C8CA3 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		3A8FAACD2ACC4FA1008C8CA3 /* AgreementBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementBottomSheetViewController.swift; sourceTree = "<group>"; };
 		3A943A7929DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryVerticalBothButtonCell.swift; sourceTree = "<group>"; };
 		3A9B415829FFDAE600D61D42 /* Answer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Answer.storyboard; sourceTree = "<group>"; };
 		3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -945,6 +949,7 @@
 		3A409B3B29E050B100A05B22 /* signUp */ = {
 			isa = PBXGroup;
 			children = (
+				3A8FAAC92ACC2941008C8CA3 /* model */,
 				3A68CC1B2AC3576B00C97E59 /* viewModel */,
 				3A68CC1E2AC3618900C97E59 /* viewControllers */,
 				3A68CC232AC3BFF600C97E59 /* views */,
@@ -1077,13 +1082,10 @@
 		3A68CC1E2AC3618900C97E59 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A8FAACC2ACC4F82008C8CA3 /* pages */,
 				3A68CC192AC351D200C97E59 /* SignUpViewController.swift */,
 				3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */,
-				3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */,
-				3A68CC292AC9893700C97E59 /* NickNameViewController.swift */,
-				3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */,
-				3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */,
-				3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */,
+				3A8FAACD2ACC4FA1008C8CA3 /* AgreementBottomSheetViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1236,6 +1238,26 @@
 				3AB2131F2A8922DD0035EA56 /* ToastMessage.swift */,
 			);
 			path = globalData;
+			sourceTree = "<group>";
+		};
+		3A8FAAC92ACC2941008C8CA3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3A8FAACA2ACC297D008C8CA3 /* SignUpModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		3A8FAACC2ACC4F82008C8CA3 /* pages */ = {
+			isa = PBXGroup;
+			children = (
+				3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */,
+				3A68CC292AC9893700C97E59 /* NickNameViewController.swift */,
+				3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */,
+				3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */,
+				3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */,
+			);
+			path = pages;
 			sourceTree = "<group>";
 		};
 		3AA1677229E82D1F00B93850 /* document */ = {
@@ -2336,6 +2358,7 @@
 				3AA4B63B2A9F045300824313 /* LibraryInfoCollectionViewCell.swift in Sources */,
 				3A68CC282AC3C4AB00C97E59 /* BoxCheckboxView.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
+				3A8FAACB2ACC297D008C8CA3 /* SignUpModel.swift in Sources */,
 				3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
 				58C3AE2B2ABEBC5400CAA37C /* HomeQuestionView.swift in Sources */,
@@ -2540,6 +2563,7 @@
 				3AB213272A8939830035EA56 /* AlertViewController.swift in Sources */,
 				3ACEBAFC2AB08085008F4600 /* QuestionSheetView.swift in Sources */,
 				3A31C6C62AB3395400E8B674 /* CustomTextView.swift in Sources */,
+				3A8FAACE2ACC4FA1008C8CA3 /* AgreementBottomSheetViewController.swift in Sources */,
 				3ACBA4602A2508B800FCE72B /* KeyChain+.swift in Sources */,
 				3A70A6482A272C58009D8D76 /* UpdateUserInfoDTO.swift in Sources */,
 				3A51FC2429F990A70090BD1B /* LogoHeaderView.swift in Sources */,

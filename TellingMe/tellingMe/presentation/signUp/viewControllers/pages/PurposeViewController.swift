@@ -38,13 +38,37 @@ final class PurposeViewController: SignUpBaseViewController {
 
 extension PurposeViewController {
     private func bindViewModel() {
+        infoButton.rx.tap
+            .bind(to: viewModel.showInfoSubject)
+            .disposed(by: disposeBag)
+        
+        purposeCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         viewModel.purposeList
             .bind(to: purposeCollectionView.rx.items(cellIdentifier: TeritaryVerticalBothButtonCell.id, cellType: TeritaryVerticalBothButtonCell.self)) { index, data, cell in
                 cell.setData(with: data)
             }
             .disposed(by: disposeBag)
+        
         purposeCollectionView.rx.itemSelected
-            .bind(to: viewModel.selectedPurposeIndex)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] (indexPath: IndexPath) in
+                guard let self else { return }
+                var currentIndex: [Int] = viewModel.selectedPurposeIndex.value
+                currentIndex.append(indexPath.row)
+                viewModel.selectedPurposeIndex.accept(currentIndex)
+            })
+            .disposed(by: disposeBag)
+        
+        purposeCollectionView.rx.itemDeselected
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] (indexPath) in
+                guard let self else { return }
+                var currentIndex: [Int] = viewModel.selectedPurposeIndex.value
+                currentIndex.removeAll(where: { $0 == indexPath.row })
+                viewModel.selectedPurposeIndex.accept(currentIndex)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -58,7 +82,7 @@ extension PurposeViewController {
         }
         
         purposeCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
+            $0.top.equalTo(captionLabel.snp.bottom).offset(40)
             $0.horizontalEdges.equalToSuperview().inset(60)
             $0.bottom.equalToSuperview()
         }
@@ -77,10 +101,11 @@ extension PurposeViewController {
             $0.font = .fontNanum(.B2_Regular)
             $0.textColor = .Gray6
             $0.textAlignment = .center
+            $0.text = "최대 2가지 선택 가능"
         }
         
         purposeCollectionView.do {
-            $0.delegate = self
+            $0.backgroundColor = .Side100
             $0.allowsMultipleSelection = true
             $0.register(TeritaryVerticalBothButtonCell.self, forCellWithReuseIdentifier: TeritaryVerticalBothButtonCell.id)
         }

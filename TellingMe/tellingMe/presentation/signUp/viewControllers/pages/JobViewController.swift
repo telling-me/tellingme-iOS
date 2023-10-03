@@ -37,13 +37,30 @@ final class JobViewController: SignUpBaseViewController {
 
 extension JobViewController {
     private func bindViewModel() {
+        infoButton.rx.tap
+            .bind(to: viewModel.showInfoSubject)
+            .disposed(by: disposeBag)
+        
+        jobTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         viewModel.jobs
-            .bind(to: jobTableView.rx.items(cellIdentifier: JobTableViewCell.id, cellType: JobTableViewCell.self)) { row, data, cell in
+            .bind(to: jobTableView.rx.items(cellIdentifier: JobTableViewCell.id, cellType: JobTableViewCell.self)) { [self] row, data, cell in
                 cell.setData(with: data)
+                if row == self.viewModel.jobCount - 1 {
+                    cell.textObservable
+                        .bind(to: self.viewModel.jobetcTextRelay)
+                        .disposed(by: disposeBag)
+                }
             }
             .disposed(by: disposeBag)
+        
         jobTableView.rx.itemSelected
-            .bind(to: viewModel.selectedJobIndex)
+            .bind(onNext: { [weak self] indexPath in
+                guard let self else { return }
+                viewModel.selectedJobIndex.accept(indexPath)
+                checkisEtcSelected(indexPath: indexPath)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -67,9 +84,25 @@ extension JobViewController {
         }
         
         jobTableView.do {
-            $0.delegate = self
+            $0.backgroundColor = .Side100
             $0.separatorStyle = .none
             $0.register(JobTableViewCell.self, forCellReuseIdentifier: JobTableViewCell.id)
+        }
+    }
+}
+
+extension JobViewController {
+    private func checkisEtcSelected(indexPath: IndexPath) {
+        guard let cell = jobTableView.cellForRow(at: IndexPath(row: viewModel.jobCount - 1, section: 0)) as? JobTableViewCell else {
+            return
+        }
+
+        if indexPath.row == viewModel.jobCount - 1 {
+            cell.frame.size = CGSize(width: cell.frame.width, height: 104)
+            cell.showEtcInputBox()
+        } else {
+            cell.frame.size = CGSize(width: cell.frame.width, height: 67)
+            cell.hiddenEtcInputBox()
         }
     }
 }
@@ -80,8 +113,6 @@ extension JobViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let rowHeight = (tableView.frame.height - 65 - 12 * 5) / 6
-//        return rowHeight
         return 67
     }
 }

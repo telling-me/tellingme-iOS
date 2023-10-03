@@ -7,14 +7,20 @@
 
 import UIKit
 
+import RxSwift
 import SnapKit
 import Then
+import RxCocoa
 
 class BottomInfoView: UIView {
-
+    private let containerView = UIView()
     private let titleLabel = UILabel()
     private let captionLabel = UILabel()
-    private let button = TeritaryTextButton()
+    private let button = SecondaryTextButton()
+    
+    var buttonTapObservable: ControlEvent<Void> {
+        return button.rx.tap
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +40,14 @@ extension BottomInfoView {
     }
     
     private func setLayout() {
-        addSubviews(titleLabel, captionLabel, button)
+        addSubview(containerView)
+        containerView.addSubviews(titleLabel, captionLabel, button)
+        
+        containerView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(205)
+        }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(42)
@@ -56,7 +69,13 @@ extension BottomInfoView {
     }
     
     private func setStyles() {
-        backgroundColor = .Black
+        backgroundColor = .AlphaBlackColor
+        
+        containerView.do {
+            $0.backgroundColor = .Side100
+            $0.layer.cornerRadius = 28
+        }
+
         titleLabel.do {
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Black
@@ -71,6 +90,18 @@ extension BottomInfoView {
         
         button.do {
             $0.setText(text: "확인")
+        }
+    }
+}
+
+extension BottomInfoView {
+    func setTitle(currentIndex: Int) {
+        if currentIndex == 3 {
+            titleLabel.text = "직업이 비슷한 사람들과 먼저 소통해요."
+            captionLabel.text = "설정에서 직업을 변경할 수 있어요."
+        } else {
+            titleLabel.text = "고민이 비슷한 사람들과 먼저 소통해요."
+            captionLabel.text = "설정에서 고민을 변경할 수 있어요."
         }
     }
 }

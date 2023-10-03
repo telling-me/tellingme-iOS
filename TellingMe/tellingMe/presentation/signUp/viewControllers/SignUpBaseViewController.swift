@@ -17,6 +17,8 @@ class SignUpBaseViewController: UIViewController {
     let titleLabel = UILabel()
     let infoButton = UIButton()
     
+    weak var delegate: SubPageViewControllerDelegate?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }

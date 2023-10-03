@@ -11,11 +11,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-struct Job {
-    let title: String
-    let imgName: String
-}
-
 final class SignUpViewModel {
     private let disposeBag = DisposeBag()
     var currentIndex: Int = 0
@@ -34,6 +29,14 @@ final class SignUpViewModel {
         BehaviorRelay(value: false),
         BehaviorRelay(value: false),
     ]
+    var isAllAgree: Bool {
+        for agreementRelay in agreementRelays {
+            if !agreementRelay.value {
+                return false
+            }
+        }
+        return true
+    }
     let agreements: [String] = [
         "(필수) 서비스 이용약관 동의",
         "(필수) 개인정보 수집 및 이용 동의"
@@ -45,8 +48,9 @@ final class SignUpViewModel {
         TeritaryBothData(imgName: "Male", title: "남성"),
         TeritaryBothData(imgName: "Female", title: "여성")
     ])
-    let selectedGenderIndex = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
+
     let birthTextRelay = BehaviorRelay<String?>(value: nil)
+    let selectedGenderIndex = BehaviorRelay<String?>(value: nil)
     
     let jobs: Observable<[Job]> = Observable.just([
         Job(title: "중·고등학생", imgName: "HighSchool"),
@@ -56,9 +60,11 @@ final class SignUpViewModel {
         Job(title: "주부", imgName: "Housewife"),
         Job(title: "기타", imgName: "Etc")
     ])
+    var jobCount: Int {
+        return 6
+    }
     let selectedJobIndex = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
-    let jobetcTextRelay = BehaviorRelay<String>(value: "")
-    
+    let jobetcTextRelay = BehaviorRelay<String?>(value: nil)
     
     let purposeList: Observable<[TeritaryBothData]> = Observable.just([
             TeritaryBothData(imgName: "Pen", title: "학업/진로"),
@@ -68,7 +74,13 @@ final class SignUpViewModel {
             TeritaryBothData(imgName: "Health", title: "건강"),
             TeritaryBothData(imgName: "Etc", title: "기타")
         ])
-    let selectedPurposeIndex = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
+    let selectedPurposeIndex = BehaviorRelay<[Int]>(value: [])
+    
+    let checkNicknameSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
+    let checkJobInfoSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
+    
+    let showInfoSubject = BehaviorSubject<Void>(value: ())
+    let errorToastSubject = BehaviorSubject<String>(value: "")
 }
 
 extension SignUpViewModel {
@@ -76,16 +88,50 @@ extension SignUpViewModel {
         let request = CheckNicknameRequest(nickname: nicknameTextRelay.value)
         LoginAPI.checkNickname(request: request)
             .subscribe(onNext: { [weak self] response in
-                
+                guard let self else { return }
+                checkNicknameSuccessSubject.onNext(response)
             }, onError: { [weak self] error in
-                
+                guard let self else { return }
+                switch error {
+                case APIError.errorData(let errorData):
+                    errorToastSubject.onNext(errorData.message)
+                default:
+                    print("Error occured during check nickname : \(error)")
+                }
             })
             .disposed(by: disposeBag)
     }
     
     func checkJobInfo() {
-        let request = JobInfoRequest(job: selectedJobIndex.value.row, jobName: jobetcTextRelay.value)
+        guard let value = jobetcTextRelay.value else {
+            self.errorToastSubject.onNext("기타 직업을 직접 입력해주세요.")
+            return
+        }
+
+        let request = JobInfoRequest(job: selectedJobIndex.value.row, jobName: value)
         LoginAPI.checkJobInfo(request: request)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                checkJobInfoSuccessSubject.onNext(response)
+            }, onError: { [weak self] error in
+                guard let self else { return }
+                switch error {
+                case APIError.errorData(let errorData):
+                    errorToastSubject.onNext(errorData.message)
+                default:
+                    print("Error occured during check job info : \(error)")
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func postSignUp() {
+        guard let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue),
+              let socialLoginType = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue) else {
+            return
+        }
+        let request = SignUpRequest(nickname: nicknameTextRelay.value, purpose: selectedPurposeIndex.value.sorted().intArraytoString(), job: selectedJobIndex.value.row, jobInfo: jobetcTextRelay.value, gender: selectedGenderIndex.value, birthDate: birthTextRelay.value, socialId: socialId, socialLoginType: socialLoginType)
+        LoginAPI.postSignUp(request: request)
             .subscribe(onNext: { [weak self] response in
                 
             }, onError: { [weak self] error in
@@ -93,15 +139,4 @@ extension SignUpViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
-//    func postSignUp() {
-//        let request = SignUpRequest(nickname: nicknameTextRelay.value, purpose: selectedPurposeIndex.value.row, job: selectedJobIndex.value.row, socialId: <#T##String#>, socialLoginType: <#T##String#>)
-//        LoginAPI.postSignUp(request: request)
-//            .subscribe(onNext: { [weak self] response in
-//                
-//            }, onError: { [weak self] error in
-//                
-//            })
-//            .disposed(by: disposeBag)
-//    }
 }

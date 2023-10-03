@@ -39,15 +39,22 @@ final class OptionViewController: SignUpBaseViewController {
 
 extension OptionViewController {
     private func bindViewModel() {
-        viewModel.genderList
-            .bind(to: genderCollectionView.rx.items(cellIdentifier: TeritaryVerticalBothButtonCell.id, cellType: TeritaryVerticalBothButtonCell.self)) {
-                index, data, cell in
-                cell.setData(with: data)
-            }
+        genderCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
         genderCollectionView.rx.itemSelected
+            .map({ (indexPath) in
+                if indexPath.row == 0 {
+                    return "남성"
+                } else if indexPath.row == 1 {
+                    return "여성"
+                } else {
+                    return nil
+                }
+            })
             .bind(to: viewModel.selectedGenderIndex)
             .disposed(by: disposeBag)
+        
         inputBox.inputTextField.rx.controlEvent(.editingChanged)
             .asObservable()
             .subscribe(onNext: { [weak self] in
@@ -64,8 +71,14 @@ extension OptionViewController {
             .disposed(by: disposeBag)
         
         inputBox.inputTextField.rx.text
-            .orEmpty
             .bind(to: viewModel.birthTextRelay)
+            .disposed(by: disposeBag)
+        
+        viewModel.genderList
+            .bind(to: genderCollectionView.rx.items(cellIdentifier: TeritaryVerticalBothButtonCell.id, cellType: TeritaryVerticalBothButtonCell.self)) {
+                index, data, cell in
+                cell.setData(with: data)
+            }
             .disposed(by: disposeBag)
     }
     
@@ -107,7 +120,7 @@ extension OptionViewController {
         }
         
         genderCollectionView.do {
-            $0.delegate = self
+            $0.backgroundColor = .Side100
             $0.register(TeritaryVerticalBothButtonCell.self, forCellWithReuseIdentifier: TeritaryVerticalBothButtonCell.id)
         }
     }

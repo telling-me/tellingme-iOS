@@ -102,12 +102,12 @@ extension AgreementViewController {
     }
 
     private func showAgreementDetailSheet(_ index: Int) {
-        let bottomSheetViewController = UIViewController()
+        let bottomSheetViewController = AgreementBottomSheetViewController(index: index)
         bottomSheetViewController.modalPresentationStyle = .pageSheet
         
         if let sheet = bottomSheetViewController.sheetPresentationController {
             sheet.detents = [.custom { _ in
-                return 471
+                return 447
             }]
             sheet.preferredCornerRadius = 28
             sheet.prefersGrabberVisible = true
