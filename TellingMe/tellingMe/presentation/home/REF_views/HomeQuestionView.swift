@@ -37,7 +37,8 @@ final class HomeQuestionView: BBaseView {
     }
     
     override func setLayout() {
-        self.addSubviews(completeLabel, writeButton, questionBoxView, shapeStickerView, todayDateView)
+        self.addSubviews(completeLabel, writeButton, questionBoxView,
+                         shapeStickerView, todayDateView)
         
         completeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()

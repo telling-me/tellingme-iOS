@@ -13,7 +13,9 @@ final class HomeQuestionBoxView: BBaseView {
     private let questionPhraseLabel = UILabel()
     
     override func setStyles() {
-        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 28, shadowRadius: 10, shadowOpacity: 0.1, xShadowOffset: 0, yShadowOffset: 4)
+        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 28,
+                                shadowRadius: 10, shadowOpacity: 0.1, xShadowOffset: 0,
+                                yShadowOffset: 4)
         
         mainQuestionLabel.do {
             $0.numberOfLines = 2

@@ -25,7 +25,8 @@ final class HHomeViewController: BBaseViewController {
     private let questionView = HomeQuestionView()
     
     // MARK: - Pop Ups
-    private let blurView = BlurredBackgroundView(frame: .zero, backgroundColor: .Black, opacity: 0.2, blurEffect: .regular)
+    private let blurView = BlurredBackgroundView(frame: .zero, backgroundColor: .Black, opacity: 0.2,
+                                                 blurEffect: .regular)
     private let pushNotificationPermitView = HomePushNotificationPopUpView()
     private let networkErrorPopUpView = NetworkErrorPopUpView()
     
@@ -99,7 +100,6 @@ final class HHomeViewController: BBaseViewController {
         // MARK: ViewModels
         viewModel.outputs.todayQuestion
             .bind { [weak self] response in
-                print(response, "📕")
                 guard let self else { return }
                 switch response.isErrorOccured {
                 case false:

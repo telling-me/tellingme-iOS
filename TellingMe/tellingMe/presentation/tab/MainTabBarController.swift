@@ -8,7 +8,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    let shadowView = UIView()
+    private let shadowView = UIView()
     private var viewControllersList: [UIViewController] = []
 
     override func viewDidLoad() {
@@ -25,13 +25,6 @@ class MainTabBarController: UITabBarController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         checkFeedbackDate()
-    }
-
-    func showPushNotification() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "pushNotificationModal") as? PushNotificationModalViewController else { return }
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
     }
     
     private func setupTabBarViewControllers() {

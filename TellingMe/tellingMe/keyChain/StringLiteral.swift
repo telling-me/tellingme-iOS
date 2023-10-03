@@ -17,15 +17,16 @@ enum StringLiterals {
 }
 
 enum ImageLiterals {
+    
     /// Tab Images
-    static let TabHomeSelected: UIImage? = UIImage(named: "Home_selected")
-    static let TabHomeDeselected: UIImage? = UIImage(named: "Home")
-    static let TabMyAnswerListSelected: UIImage? = UIImage(named: "MyAnswers_selected")
-    static let TabMyAnswerListDeselected: UIImage? = UIImage(named: "MyAnswers")
-    static let TabMyLibrarySelected: UIImage? = UIImage(named: "Library_selected")
-    static let TabMyLibraryDeselected: UIImage? = UIImage(named: "Library")
-    static let TabCommunicationSelected: UIImage? = UIImage(named: "communication_selected")
-    static let TabCommunicationDeselected: UIImage? = UIImage(named: "communication")
+    static let TabHomeSelected: UIImage? = UIImage(named: "HomeSelected")
+    static let TabHomeDeselected: UIImage? = UIImage(named: "HomeDeselected")
+    static let TabMyAnswerListSelected: UIImage? = UIImage(named: "MyAnswersSelected")
+    static let TabMyAnswerListDeselected: UIImage? = UIImage(named: "MyAnswersDeselected")
+    static let TabMyLibrarySelected: UIImage? = UIImage(named: "LibrarySelected")
+    static let TabMyLibraryDeselected: UIImage? = UIImage(named: "LibraryDeselected")
+    static let TabCommunicationSelected: UIImage? = UIImage(named: "CommunicationSelected")
+    static let TabCommunicationDeselected: UIImage? = UIImage(named: "CommunicationDeselected")
     
     /// Home Images
     static let HomeLogo: UIImage? = UIImage(named: "Logo")

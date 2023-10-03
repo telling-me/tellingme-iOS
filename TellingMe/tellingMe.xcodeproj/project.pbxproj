@@ -59,7 +59,6 @@
 		3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739C82A13E4F900739543 /* SettingViewModel.swift */; };
 		3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */; };
 		3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */; };
-		3A3914902A3D93E7005A5417 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */; };
 		3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */; };
 		3A392E9F2AAF5A0F00D82221 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A392E9E2AAF5A0F00D82221 /* FeedbackViewController.swift */; };
 		3A392EA12AAF5AD700D82221 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A392EA02AAF5AD700D82221 /* FeedbackViewModel.swift */; };
@@ -235,6 +234,7 @@
 		5800B7022AC56A3A0028F75A /* HomePushNotificationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800B7012AC56A3A0028F75A /* HomePushNotificationPopUpView.swift */; };
 		5800B7052AC56BA30028F75A /* CommonRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800B7042AC56BA30028F75A /* CommonRoundButton.swift */; };
 		5817326E2AC95A76001276A2 /* UITabBarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817326D2AC95A76001276A2 /* UITabBarItem+.swift */; };
+		581F039D2ACC50D100C096F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */; };
 		5823300C2AC00F9200F8D23D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5823300B2AC00F9200F8D23D /* NSObject+.swift */; };
 		583814F62ABD338E008D808A /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583814F52ABD338E008D808A /* RxSwift+.swift */; };
 		583B80A62A9674E6009399D1 /* CustomModalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A52A9674E6009399D1 /* CustomModalBarView.swift */; };
@@ -381,7 +381,6 @@
 		3A3739C82A13E4F900739543 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		3A3739CB2A13F0FD00739543 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		3A38E3F029F55C7A00ABC201 /* JobInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDTO.swift; sourceTree = "<group>"; };
-		3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A3914912A3DA6D5005A5417 /* FirebaseTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTokenDTO.swift; sourceTree = "<group>"; };
 		3A392E9E2AAF5A0F00D82221 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		3A392EA02AAF5AD700D82221 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
@@ -559,6 +558,7 @@
 		5800B7012AC56A3A0028F75A /* HomePushNotificationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePushNotificationPopUpView.swift; sourceTree = "<group>"; };
 		5800B7042AC56BA30028F75A /* CommonRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoundButton.swift; sourceTree = "<group>"; };
 		5817326D2AC95A76001276A2 /* UITabBarItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+.swift"; sourceTree = "<group>"; };
+		581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5823300B2AC00F9200F8D23D /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		583814F52ABD338E008D808A /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		583B80A52A9674E6009399D1 /* CustomModalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalBarView.swift; sourceTree = "<group>"; };
@@ -1170,7 +1170,7 @@
 		3A775D0929C2E9AE00FCD3BC /* keyChain */ = {
 			isa = PBXGroup;
 			children = (
-				3A39148F2A3D93E7005A5417 /* GoogleService-Info.plist */,
+				581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */,
 				3A2CBF1E2A8F875A007509C9 /* Info.plist */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
@@ -2231,6 +2231,7 @@
 				3A50EEF529CCA63900A27504 /* SignUp.storyboard in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
+				581F039D2ACC50D100C096F2 /* GoogleService-Info.plist in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				58C3AE1B2ABEAADB00CAA37C /* HomeLoading.json in Resources */,
 				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,
@@ -2238,7 +2239,6 @@
 				3A238C992A9B64D600F27AB1 /* Library.storyboard in Resources */,
 				3AA289D429B8506F0030057E /* Assets.xcassets in Resources */,
 				3A1DB7702A0A472B00C5F68B /* Setting.storyboard in Resources */,
-				3A3914902A3D93E7005A5417 /* GoogleService-Info.plist in Resources */,
 				3ACBA4622A2508B800FCE72B /* KeyList.plist in Resources */,
 				3AA289E229B854210030057E /* Login.storyboard in Resources */,
 				3AC204782A6BC1EB0005709A /* Communication.storyboard in Resources */,

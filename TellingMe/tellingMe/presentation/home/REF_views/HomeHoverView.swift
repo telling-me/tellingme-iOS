@@ -12,7 +12,8 @@ final class HomeHoverView: BBaseView {
     private let titleLabel = UILabel()
     
     override func setStyles() {
-        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 8, shadowRadius: 12, shadowOpacity: 0.1, xShadowOffset: 0, yShadowOffset: 4)
+        self.setRoundShadowWith(backgroundColor: .Side100, shadowColor: .black, radius: 8,
+                                shadowRadius: 12, shadowOpacity: 0.1, xShadowOffset: 0, yShadowOffset: 4)
         
         titleLabel.do {
             $0.textColor = .Gray5
