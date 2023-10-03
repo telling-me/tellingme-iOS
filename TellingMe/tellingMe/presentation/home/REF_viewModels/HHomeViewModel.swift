@@ -126,7 +126,7 @@ extension HHomeViewModel {
     
     private func loadPushNotificationPopUpIfNeeded() {
         UserAPI.getPushNotificationInfo()
-            .retry(maxAttempts: 3, delay: 1)
+            .retry(maxAttempts: 3, delay: 2)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 let notificationStatus = response.allowNotification
