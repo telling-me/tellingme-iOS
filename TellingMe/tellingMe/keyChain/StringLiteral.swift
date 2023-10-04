@@ -100,3 +100,20 @@ enum DeviceLiterals: CaseIterable {
         }
     }
 }
+
+enum DeviceSecondaryAbnormal: CaseIterable {
+    case iPhoneX
+    case iPhoneXS
+    case iPhoneElevenPro
+    
+    var deviceName: String {
+        switch self {
+        case .iPhoneX:
+            return "iPhone X"
+        case .iPhoneXS:
+            return "iPhone Xs"
+        case .iPhoneElevenPro:
+            return "iPhone 11 Pro"
+        }
+    }
+}
