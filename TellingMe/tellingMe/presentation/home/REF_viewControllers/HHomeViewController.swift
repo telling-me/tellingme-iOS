@@ -43,6 +43,7 @@ final class HHomeViewController: BBaseViewController {
         animateBackground()
         checkIsTodayAnswered()
         checkTodayDate()
+        checkAnswerInRow()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -220,6 +221,10 @@ final class HHomeViewController: BBaseViewController {
 
     // MARK: - Helpers
 extension HHomeViewController {
+    
+    private func checkAnswerInRow() {
+        viewModel.refreshAnswerInRow()
+    }
     
     private func checkNewIncomingAlarms() {
         viewModel.refreshNewIncomingAlarms()
