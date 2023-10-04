@@ -40,7 +40,6 @@ protocol SignUpViewModelOutputs {
     var checkJobInfoSuccessSubject: BehaviorSubject<EmptyResponse> { get }
     var showInfoSubject: BehaviorSubject<Void> { get }
     var errorToastSubject: BehaviorSubject<String> { get }
-    
     var nextButtonEnabledRelay: BehaviorRelay<Bool> { get }
     var showJobEtcSubject: BehaviorRelay<Bool> { get }
     var checkBirthYearSuccessSubject: BehaviorSubject<Void> { get }
@@ -52,6 +51,9 @@ protocol SignUpViewModelType {
 }
 
 final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpViewModelOutputs {
+    // properties
+    // 추후에 input으로 이동
+    var currentIndex: Int = 0
     var jobCount: Int { return 6 }
     var badWordsArray: [String] {
         var tempArray: [String] = []
@@ -66,13 +68,20 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
         }
         return tempArray
     }
-
     private let disposeBag = DisposeBag()
-    
-    var currentIndex: Int = 0
     
     // inputs
     var inputs: SignUpViewModelInputs { return self }
+    let agreementRelays: [BehaviorRelay<Bool>] = [BehaviorRelay(value: false), BehaviorRelay(value: false)]
+    let nicknameTextRelay = BehaviorRelay<String>(value: "")
+    let birthTextRelay = BehaviorRelay<String?>(value: nil)
+    let selectedGenderIndex = BehaviorRelay<String?>(value: nil)
+    let selectedJobIndex = BehaviorRelay<IndexPath?>(value: nil)
+    let jobetcTextRelay = BehaviorRelay<String?>(value: nil)
+    let selectedPurposeIndex = BehaviorRelay<[Int]>(value: [])
+    
+    // outputs
+    var outputs: SignUpViewModelOutputs { return self }
     lazy var viewControllers: [UIViewController] = {
         return [
             AgreementViewController(viewModel: self),
@@ -82,15 +91,13 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
             PurposeViewController(viewModel: self)
         ]
     }()
-    let agreementRelays: [BehaviorRelay<Bool>] = [BehaviorRelay(value: false), BehaviorRelay(value: false)]
     let agreements: [String] = ["(필수) 서비스 이용약관 동의", "(필수) 개인정보 수집 및 이용 동의"]
-    let nicknameTextRelay = BehaviorRelay<String>(value: "")
+    let checkNicknameSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
+    let checkBirthYearSuccessSubject = BehaviorSubject<Void>(value: ())
     let genderList: Observable<[TeritaryBothData]> = Observable.just([
         TeritaryBothData(imgName: "Male", title: "남성"),
         TeritaryBothData(imgName: "Female", title: "여성")
     ])
-    let birthTextRelay = BehaviorRelay<String?>(value: nil)
-    let selectedGenderIndex = BehaviorRelay<String?>(value: nil)
     let jobs: Observable<[Job]> = Observable.just([
         Job(title: "중·고등학생", imgName: "HighSchool"),
         Job(title: "대학(원)생", imgName: "University"),
@@ -99,8 +106,8 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
         Job(title: "주부", imgName: "Housewife"),
         Job(title: "기타", imgName: "Etc")
     ])
-    let selectedJobIndex = BehaviorRelay<IndexPath?>(value: nil)
-    let jobetcTextRelay = BehaviorRelay<String?>(value: nil)
+    let checkJobInfoSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
+    let showJobEtcSubject = BehaviorRelay<Bool>(value: false)
     let purposeList: Observable<[TeritaryBothData]> = Observable.just([
         TeritaryBothData(imgName: "Pen", title: "학업/진로"),
         TeritaryBothData(imgName: "Handshake", title: "대인 관계"),
@@ -109,18 +116,13 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
         TeritaryBothData(imgName: "Health", title: "건강"),
         TeritaryBothData(imgName: "Etc", title: "기타")
     ])
-    let selectedPurposeIndex = BehaviorRelay<[Int]>(value: [])
-    
-    // outputs
-    var outputs: SignUpViewModelOutputs { return self }
-    let checkNicknameSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
-    let checkJobInfoSuccessSubject = BehaviorSubject<EmptyResponse>(value: .init())
     let showInfoSubject = BehaviorSubject<Void>(value: ())
     let errorToastSubject = BehaviorSubject<String>(value: "")
     let nextButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
-    let showJobEtcSubject = BehaviorRelay<Bool>(value: false)
-    let checkBirthYearSuccessSubject = BehaviorSubject<Void>(value: ())
+}
 
+extension SignUpViewModel {
+    // inputs methods
     func checkAllAgreed() {
         for agreementRelay in agreementRelays {
             if !agreementRelay.value {
@@ -128,7 +130,7 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
                 return
             }
         }
-        
+
         outputs.nextButtonEnabledRelay.accept(true)
     }
     
@@ -179,9 +181,7 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
             outputs.checkBirthYearSuccessSubject.onNext(())
         }
     }
-}
-
-extension SignUpViewModel {
+    
     func checkNickname() {
         for word in badWordsArray where nicknameTextRelay.value.contains(word) {
             outputs.errorToastSubject.onNext("사용할 수 없는 닉네임입니다")
