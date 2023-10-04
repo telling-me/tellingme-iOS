@@ -14,7 +14,6 @@ import Then
 
 final class AgreementViewController: SignUpBaseViewController {
     private let viewModel: SignUpViewModel
-    
     private let disposeBag = DisposeBag()
     
     private let boxCheckButton = BoxCheckboxView()
@@ -34,6 +33,15 @@ final class AgreementViewController: SignUpBaseViewController {
         bindViewModel()
         setLayout()
         setStyles()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.inputs.checkAllAgreed()
+    }
+
+    
+    deinit {
+        print("AgreementViewController Deinited")
     }
 }
 
@@ -123,6 +131,7 @@ extension AgreementViewController {
             
             checkboxView.checkButton.isSelected = isAgree
             self.viewModel.agreementRelays[index].accept(isAgree)
+            viewModel.inputs.checkAllAgreed()
         }
     }
     
@@ -132,21 +141,8 @@ extension AgreementViewController {
         }
         checkboxView.checkButton.isSelected.toggle()
         self.viewModel.agreementRelays[index].accept(checkboxView.checkButton.isSelected)
-        
-        boxCheckButton.checkButton.isSelected = isAllAgreed()
-    }
     
-    private func isAllAgreed() -> Bool {
-        for checkboxView in agreementStackView.arrangedSubviews {
-            guard let checkboxView = checkboxView as? CheckboxView else {
-                return false
-            }
-            
-            if !checkboxView.checkButton.isSelected {
-                return false
-            }
-        }
-        return true
+        viewModel.inputs.checkAllAgreed()
     }
 }
 

@@ -12,7 +12,7 @@ import SnapKit
 import Then
 import RxCocoa
 
-class BottomInfoView: UIView {
+final class BottomInfoView: UIView {
     private let containerView = UIView()
     private let titleLabel = UILabel()
     private let captionLabel = UILabel()
@@ -102,6 +102,13 @@ extension BottomInfoView {
         } else {
             titleLabel.text = "고민이 비슷한 사람들과 먼저 소통해요."
             captionLabel.text = "설정에서 고민을 변경할 수 있어요."
+        }
+    }
+    
+    func animateView() {
+        containerView.transform = CGAffineTransform(translationX: 0, y: self.frame.height)
+        UIView.animate(withDuration: 0.3) {
+            self.containerView.transform = .identity
         }
     }
 }

@@ -33,6 +33,14 @@ final class JobViewController: SignUpBaseViewController {
         setLayout()
         setStyles()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.checkJobSelected(nil)
+    }
+    
+    deinit {
+        print("JobViewController Deinited")
+    }
 }
 
 extension JobViewController {
@@ -58,8 +66,14 @@ extension JobViewController {
         jobTableView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
                 guard let self else { return }
-                viewModel.selectedJobIndex.accept(indexPath)
-                checkisEtcSelected(indexPath: indexPath)
+                viewModel.checkJobSelected(indexPath)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.showJobEtcSubject
+            .bind(onNext: {[weak self] isShow in
+                guard let self else { return }
+                toggleEtcInputBox(isShow: isShow)
             })
             .disposed(by: disposeBag)
     }
@@ -92,12 +106,12 @@ extension JobViewController {
 }
 
 extension JobViewController {
-    private func checkisEtcSelected(indexPath: IndexPath) {
+    private func toggleEtcInputBox(isShow: Bool) {
         guard let cell = jobTableView.cellForRow(at: IndexPath(row: viewModel.jobCount - 1, section: 0)) as? JobTableViewCell else {
             return
         }
 
-        if indexPath.row == viewModel.jobCount - 1 {
+        if isShow {
             cell.frame.size = CGSize(width: cell.frame.width, height: 104)
             cell.showEtcInputBox()
         } else {

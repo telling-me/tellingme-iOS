@@ -12,12 +12,9 @@ import RxSwift
 import SnapKit
 import Then
 
-// base viewcontroller 상속받기
 class SignUpBaseViewController: UIViewController {
     let titleLabel = UILabel()
     let infoButton = UIButton()
-    
-    weak var delegate: SubPageViewControllerDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,6 +28,10 @@ class SignUpBaseViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
         setStyles()
+    }
+    
+    deinit {
+        print("SingUpBaseViewController Deinited")
     }
 }
 

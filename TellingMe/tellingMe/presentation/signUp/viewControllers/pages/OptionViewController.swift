@@ -35,6 +35,10 @@ final class OptionViewController: SignUpBaseViewController {
         setLayout()
         setStyles()
     }
+    
+    deinit {
+        print("OptionViewController Deinited")
+    }
 }
 
 extension OptionViewController {

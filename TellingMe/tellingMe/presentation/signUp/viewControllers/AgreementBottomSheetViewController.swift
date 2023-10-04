@@ -31,6 +31,10 @@ final class AgreementBottomSheetViewController: BaseViewController {
         setLayout()
         setStyles()
     }
+    
+    deinit {
+        print("AgreementBottomSheetViewController Deinited")
+    }
 }
 
 extension AgreementBottomSheetViewController {

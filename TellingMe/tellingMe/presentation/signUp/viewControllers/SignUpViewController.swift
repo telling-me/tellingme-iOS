@@ -12,8 +12,7 @@ import RxSwift
 import SnapKit
 import Then
 
-// baseviewcontroller 적용하기
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseViewController {
     private let viewModel = SignUpViewModel()
 
     private let disposeBag = DisposeBag()
@@ -32,15 +31,18 @@ final class SignUpViewController: UIViewController {
         bindViewModel()
         setLayout()
         setStyles()
-        setDelegate()
         setPageViewController()
+    }
+    
+    deinit {
+        print("SignUpViewController Deinited")
     }
 }
 
 extension SignUpViewController {
     private func bindViewModel() {
         skipButton.rx.tap
-            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 self.scrollToNextViewController()
@@ -56,7 +58,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         rightButton.rx.tap
-            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 switch viewModel.currentIndex {
@@ -84,52 +86,11 @@ extension SignUpViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.zip(viewModel.agreementRelays[0], viewModel.agreementRelays[1])
-            .bind { [weak self] (agreement1, agreement2) in
-                guard let self else { return }
-                if agreement1 && agreement2 {
-                    rightButton.isEnabled = true
-                } else {
-                    rightButton.isEnabled = false
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.nicknameTextRelay
-            .distinctUntilChanged()
-            .bind(onNext: { [weak self] text in
-                guard let self else { return }
-                if text.count > 8 || text.count < 2 {
-                    rightButton.isEnabled = false
-                } else {
-                    rightButton.isEnabled = true
-                }
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.checkNicknameSuccessSubject
             .skip(1)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 scrollToNextViewController()
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.selectedJobIndex
-            .bind(onNext: { [weak self] _ in
-                guard let self else { return }
-                rightButton.isEnabled = true
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.selectedPurposeIndex
-            .bind(onNext: { [weak self] value in
-                guard let self else { return }
-                if value.isEmpty {
-                    rightButton.isEnabled = false
-                } else {
-                    rightButton.isEnabled = true
-                }
             })
             .disposed(by: disposeBag)
         
@@ -146,6 +107,7 @@ extension SignUpViewController {
                 guard let self else { return }
                 infoview.setTitle(currentIndex: viewModel.currentIndex)
                 infoview.isHidden = false
+                infoview.animateView()
             })
             .disposed(by: disposeBag)
         
@@ -154,6 +116,10 @@ extension SignUpViewController {
                 guard let self else { return }
                 showToast(message: message)
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.nextButtonEnabledRelay
+            .bind(to: rightButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
     
@@ -209,21 +175,21 @@ extension SignUpViewController {
     }
     
     private func setStyles() {
-        // 추후 지우기
-        view.backgroundColor = .Side100
-        
         skipButton.do {
             $0.isHidden = true
             $0.setTitle("건너뛰기", for: .normal)
             $0.setTitleColor(.Primary200, for: .normal)
+            $0.titleLabel?.font = .fontNanum(.B1_Regular)
         }
         
         progressView.do {
-            $0.setProgress(Float(0)/Float(5), animated: true)
+            $0.layer.cornerRadius = 2
+            $0.setProgress(Float(1)/Float(5), animated: true)
             $0.gradientColors = [
                 UIColor(red: 0.486, green: 0.937, blue: 0.655, alpha: 1).cgColor,
                 UIColor(red: 0.561, green: 0.827, blue: 0.957, alpha: 1).cgColor
             ]
+            $0.backgroundColor = .Gray1
         }
 
         leftButton.do {
@@ -250,15 +216,6 @@ extension SignUpViewController {
         pageViewController.setViewControllers([viewModel.viewControllers[0]], direction: .forward, animated: true)
     }
     
-    private func setDelegate() {
-        for subController in viewModel.viewControllers {
-            guard let subController = subController as? SignUpBaseViewController else {
-                return
-            }
-            subController.delegate = self
-        }
-    }
-    
     private func scrollToNextViewController() {
         guard viewModel.currentIndex < viewModel.viewControllers.count - 1 else {
             return
@@ -266,6 +223,7 @@ extension SignUpViewController {
         
         pageViewController.setViewControllers([viewModel.viewControllers[viewModel.currentIndex + 1]], direction: .forward, animated: true)
         viewModel.currentIndex += 1
+        progressView.setProgress(Float(viewModel.currentIndex + 1)/Float(5), animated: true)
         
         if viewModel.currentIndex != 2 {
             skipButton.isHidden = true
@@ -281,55 +239,32 @@ extension SignUpViewController {
         }
         pageViewController.setViewControllers([viewModel.viewControllers[viewModel.currentIndex - 1]], direction: .reverse, animated: true)
         viewModel.currentIndex -= 1
+        progressView.setProgress(Float(viewModel.currentIndex + 1)/Float(5), animated: true)
     }
 }
 
 extension SignUpViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
-            return nil
-        }
-        
-        if currentIndex > 0 {
-            return viewModel.viewControllers[currentIndex - 1]
-        }
+//        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
+//            return nil
+//        }
+//
+//        if currentIndex > 0 {
+//            return viewModel.viewControllers[currentIndex - 1]
+//        }
         
         return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
-            return nil
-        }
-        
-        if currentIndex < viewModel.viewControllers.count - 1 {
-            return viewModel.viewControllers[currentIndex + 1]
-        }
+//        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
+//            return nil
+//        }
+//
+//        if currentIndex < viewModel.viewControllers.count - 1 {
+//            return viewModel.viewControllers[currentIndex + 1]
+//        }
         return nil
     }
 }
-
-extension SignUpViewController: SubPageViewControllerDelegate {
-    func agreementStatusDidChange() {
-        if viewModel.isAllAgree {
-            rightButton.isEnabled = true
-        } else {
-            rightButton.isEnabled = false
-        }
-    }
-    
-    func nicknameDidChange() {
-        
-    }
-    
-    func selectedJobDidChange() {
-        
-    }
-    
-    func selectedPurposeDidChange() {
-        
-    }
-    
-}
-
 

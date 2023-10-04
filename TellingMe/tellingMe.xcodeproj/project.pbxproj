@@ -76,14 +76,14 @@
 		3A50EEFB29CCB28A00A27504 /* GetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */; };
 		3A50EEFD29CCB29300A27504 /* GetBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */; };
 		3A50EEFF29CCB2C400A27504 /* GetOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetOptionViewController.swift */; };
-		3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */; };
+		3A50EF0129CCB2D600A27504 /* AgreementViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController2.swift */; };
 		3A51FC2429F990A70090BD1B /* LogoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51FC2329F990A70090BD1B /* LogoHeaderView.swift */; };
 		3A559DEE2A1CE18000A49722 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559DED2A1CE18000A49722 /* UILabel+.swift */; };
-		3A59B8F42A41F5040091322E /* AgreementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59B8F32A41F5040091322E /* AgreementDetailViewController.swift */; };
+		3A59B8F42A41F5040091322E /* AgreementDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59B8F32A41F5040091322E /* AgreementDetailViewController2.swift */; };
 		3A68CC1A2AC351D200C97E59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC192AC351D200C97E59 /* SignUpViewController.swift */; };
 		3A68CC1D2AC3577800C97E59 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC1C2AC3577800C97E59 /* SignUpViewModel.swift */; };
 		3A68CC202AC361AB00C97E59 /* SignUpBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */; };
-		3A68CC222AC3BF1800C97E59 /* AgreementViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */; };
+		3A68CC222AC3BF1800C97E59 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC212AC3BF1800C97E59 /* AgreementViewController.swift */; };
 		3A68CC252AC3C01400C97E59 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC242AC3C01400C97E59 /* CheckboxView.swift */; };
 		3A68CC282AC3C4AB00C97E59 /* BoxCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC272AC3C4AB00C97E59 /* BoxCheckboxView.swift */; };
 		3A68CC2A2AC9893700C97E59 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC292AC9893700C97E59 /* NickNameViewController.swift */; };
@@ -405,14 +405,14 @@
 		3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNameViewController.swift; sourceTree = "<group>"; };
 		3A50EEFC29CCB29300A27504 /* GetBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBirthdayViewController.swift; sourceTree = "<group>"; };
 		3A50EEFE29CCB2C400A27504 /* GetOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOptionViewController.swift; sourceTree = "<group>"; };
-		3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		3A50EF0029CCB2D600A27504 /* AgreementViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController2.swift; sourceTree = "<group>"; };
 		3A51FC2329F990A70090BD1B /* LogoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoHeaderView.swift; sourceTree = "<group>"; };
 		3A559DED2A1CE18000A49722 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
-		3A59B8F32A41F5040091322E /* AgreementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementDetailViewController.swift; sourceTree = "<group>"; };
+		3A59B8F32A41F5040091322E /* AgreementDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementDetailViewController2.swift; sourceTree = "<group>"; };
 		3A68CC192AC351D200C97E59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A68CC1C2AC3577800C97E59 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseViewController.swift; sourceTree = "<group>"; };
-		3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController2.swift; sourceTree = "<group>"; };
+		3A68CC212AC3BF1800C97E59 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		3A68CC242AC3C01400C97E59 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		3A68CC272AC3C4AB00C97E59 /* BoxCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCheckboxView.swift; sourceTree = "<group>"; };
 		3A68CC292AC9893700C97E59 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 		586061D62AC16A1400FE2733 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		58690DA52AB2FBF4002BAB82 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageToggleTableViewCell.swift; sourceTree = "<group>"; };
-		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
+		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringLiteral.swift; path = ../util/nameSpace/StringLiteral.swift; sourceTree = "<group>"; };
 		588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingElementsModel.swift; sourceTree = "<group>"; };
 		589E78412AAF2D3200BB9213 /* PremiumInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationViewController.swift; sourceTree = "<group>"; };
 		589E78432AAF306C00BB9213 /* PremiumInformationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationHeaderView.swift; sourceTree = "<group>"; };
@@ -1049,8 +1049,8 @@
 			isa = PBXGroup;
 			children = (
 				3ACC45F429D1C79A000843F5 /* page+ */,
-				3A59B8F32A41F5040091322E /* AgreementDetailViewController.swift */,
-				3A50EF0029CCB2D600A27504 /* AgreementViewController.swift */,
+				3A59B8F32A41F5040091322E /* AgreementDetailViewController2.swift */,
+				3A50EF0029CCB2D600A27504 /* AgreementViewController2.swift */,
 				3A50EEFA29CCB28A00A27504 /* GetNameViewController.swift */,
 				3ACC45E829D198CA000843F5 /* GetPurposeController.swift */,
 				3ACC45EA29D198D9000843F5 /* GetJobViewController.swift */,
@@ -1223,6 +1223,7 @@
 			children = (
 				581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */,
 				3A2CBF1E2A8F875A007509C9 /* Info.plist */,
+				5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
 				3AF338232A38B24E00F9733B /* UserDefaults+.swift */,
@@ -1251,7 +1252,7 @@
 		3A8FAACC2ACC4F82008C8CA3 /* pages */ = {
 			isa = PBXGroup;
 			children = (
-				3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */,
+				3A68CC212AC3BF1800C97E59 /* AgreementViewController.swift */,
 				3A68CC292AC9893700C97E59 /* NickNameViewController.swift */,
 				3A68CC2B2AC98F8C00C97E59 /* OptionViewController.swift */,
 				3A68CC2D2AC9D12400C97E59 /* JobViewController.swift */,
@@ -2307,7 +2308,7 @@
 				58AF35542AB047A200B1AF2F /* SharingBottomViewController.swift in Sources */,
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
 				58AF355A2AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift in Sources */,
-				3A68CC222AC3BF1800C97E59 /* AgreementViewController2.swift in Sources */,
+				3A68CC222AC3BF1800C97E59 /* AgreementViewController.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3ACEBB062AB2EBCE008F4600 /* BadFeedbackViewModel.swift in Sources */,
 				3ABB84C92A83BFA100540269 /* ReportAPI.swift in Sources */,
@@ -2348,7 +2349,7 @@
 				3A3914922A3DA6D5005A5417 /* FirebaseTokenDTO.swift in Sources */,
 				58BFBB3F2AAD98EF004A84E8 /* EmailFeedbackViewController.swift in Sources */,
 				58AFC84C2AA1F0BF0045B876 /* DetailAnswerViewController.swift in Sources */,
-				3A50EF0129CCB2D600A27504 /* AgreementViewController.swift in Sources */,
+				3A50EF0129CCB2D600A27504 /* AgreementViewController2.swift in Sources */,
 				3AF338242A38B24E00F9733B /* UserDefaults+.swift in Sources */,
 				3ACC45F329D1C785000843F5 /* GetMBTIViewController.swift in Sources */,
 				3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */,
@@ -2444,7 +2445,7 @@
 				3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */,
 				58BFBB412AADA1CC004A84E8 /* VersionManager.swift in Sources */,
 				3A320F5E2A7583E40098E8C9 /* CommunicationListRepository.swift in Sources */,
-				3A59B8F42A41F5040091322E /* AgreementDetailViewController.swift in Sources */,
+				3A59B8F42A41F5040091322E /* AgreementDetailViewController2.swift in Sources */,
 				3AB33EE32A99DD5300470CD5 /* LibraryViewController.swift in Sources */,
 				58F2E75C2A95C63500F3667A /* AlarmDTO.swift in Sources */,
 				3ACEBB002AB0E135008F4600 /* TeritaryModifiedTextButton.swift in Sources */,

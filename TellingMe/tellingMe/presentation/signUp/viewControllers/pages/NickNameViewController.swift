@@ -34,6 +34,14 @@ final class NickNameViewController: SignUpBaseViewController {
         setLayout()
         setStyles()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.checkNicknameInputed()
+    }
+
+    deinit {
+        print("NicknameViewController Deinited")
+    }
 }
 
 extension NickNameViewController {
@@ -44,19 +52,19 @@ extension NickNameViewController {
                 guard let self = self,
                       let text = self.inputBox.inputTextField.text else {
                     return
-                    
                 }
                 
                 if text.count > 8 {
                     self.inputBox.inputTextField.text = String(text.prefix(8))
                     self.inputBox.hiddenKeyboard()
                 }
+                viewModel.checkNicknameInputed()
             })
             .disposed(by: disposeBag)
         
         inputBox.inputTextField.rx.text
             .orEmpty
-            .bind(to: viewModel.nicknameTextRelay)
+            .bind(to: viewModel.inputs.nicknameTextRelay)
             .disposed(by: disposeBag)
     }
     

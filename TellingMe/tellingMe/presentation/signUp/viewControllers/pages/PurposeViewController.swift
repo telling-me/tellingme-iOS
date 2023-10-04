@@ -34,6 +34,14 @@ final class PurposeViewController: SignUpBaseViewController {
         setLayout()
         setStyles()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.inputs.checkPurposeSelected()
+    }
+    
+    deinit {
+        print("PurposeViewController Deinited")
+    }
 }
 
 extension PurposeViewController {
@@ -58,6 +66,7 @@ extension PurposeViewController {
                 var currentIndex: [Int] = viewModel.selectedPurposeIndex.value
                 currentIndex.append(indexPath.row)
                 viewModel.selectedPurposeIndex.accept(currentIndex)
+                viewModel.inputs.checkPurposeSelected()
             })
             .disposed(by: disposeBag)
         
@@ -68,6 +77,7 @@ extension PurposeViewController {
                 var currentIndex: [Int] = viewModel.selectedPurposeIndex.value
                 currentIndex.removeAll(where: { $0 == indexPath.row })
                 viewModel.selectedPurposeIndex.accept(currentIndex)
+                viewModel.inputs.checkPurposeSelected()
             })
             .disposed(by: disposeBag)
     }

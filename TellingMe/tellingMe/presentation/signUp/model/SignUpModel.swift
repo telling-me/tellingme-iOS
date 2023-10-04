@@ -16,10 +16,3 @@ struct Job {
     let title: String
     let imgName: String
 }
-
-protocol SubPageViewControllerDelegate: AnyObject {
-    func agreementStatusDidChange()
-    func nicknameDidChange()
-    func selectedJobDidChange()
-    func selectedPurposeDidChange()
-}
