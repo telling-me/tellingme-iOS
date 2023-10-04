@@ -66,13 +66,13 @@ extension SignUpViewController {
                     scrollToNextViewController()
                     leftButton.isHidden = false
                 case 1:
-                    viewModel.checkNickname()
+                    viewModel.inputs.checkNickname()
                 case 2:
-                    scrollToNextViewController()
+                    viewModel.inputs.checkBirthYear()
                 case 3:
-                    viewModel.checkJobInfo()
+                    viewModel.inputs.checkJobInfo()
                 case 4:
-                    viewModel.postSignUp()
+                    viewModel.inputs.postSignUp()
                 default:
                     break
                 }
@@ -86,7 +86,7 @@ extension SignUpViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.checkNicknameSuccessSubject
+        viewModel.outputs.checkNicknameSuccessSubject
             .skip(1)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
@@ -94,7 +94,7 @@ extension SignUpViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.checkJobInfoSuccessSubject
+        viewModel.outputs.checkBirthYearSuccessSubject
             .skip(1)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
@@ -102,7 +102,15 @@ extension SignUpViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.showInfoSubject
+        viewModel.outputs.checkJobInfoSuccessSubject
+            .skip(1)
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                scrollToNextViewController()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.showInfoSubject
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 infoview.setTitle(currentIndex: viewModel.currentIndex)
@@ -111,7 +119,7 @@ extension SignUpViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.errorToastSubject
+        viewModel.outputs.errorToastSubject
             .bind(onNext: { [weak self] message in
                 guard let self else { return }
                 showToast(message: message)
@@ -239,31 +247,21 @@ extension SignUpViewController {
         }
         pageViewController.setViewControllers([viewModel.viewControllers[viewModel.currentIndex - 1]], direction: .reverse, animated: true)
         viewModel.currentIndex -= 1
+        
+        if viewModel.currentIndex == 0 {
+            leftButton.isHidden = true
+        }
+        
         progressView.setProgress(Float(viewModel.currentIndex + 1)/Float(5), animated: true)
     }
 }
 
 extension SignUpViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
-//            return nil
-//        }
-//
-//        if currentIndex > 0 {
-//            return viewModel.viewControllers[currentIndex - 1]
-//        }
-        
         return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//        guard let currentIndex = viewModel.viewControllers.firstIndex(of: viewController) else {
-//            return nil
-//        }
-//
-//        if currentIndex < viewModel.viewControllers.count - 1 {
-//            return viewModel.viewControllers[currentIndex + 1]
-//        }
         return nil
     }
 }

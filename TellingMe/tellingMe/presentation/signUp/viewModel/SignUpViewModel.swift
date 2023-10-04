@@ -22,6 +22,7 @@ protocol SignUpViewModelInputs {
     
     func checkNickname()
     func checkJobInfo()
+    func checkBirthYear()
     func postSignUp()
     func checkAllAgreed()
     func checkNicknameInputed()
@@ -42,6 +43,7 @@ protocol SignUpViewModelOutputs {
     
     var nextButtonEnabledRelay: BehaviorRelay<Bool> { get }
     var showJobEtcSubject: BehaviorRelay<Bool> { get }
+    var checkBirthYearSuccessSubject: BehaviorSubject<Void> { get }
 }
 
 protocol SignUpViewModelType {
@@ -116,7 +118,8 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
     let showInfoSubject = BehaviorSubject<Void>(value: ())
     let errorToastSubject = BehaviorSubject<String>(value: "")
     let nextButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
-    var showJobEtcSubject = BehaviorRelay<Bool>(value: false)
+    let showJobEtcSubject = BehaviorRelay<Bool>(value: false)
+    let checkBirthYearSuccessSubject = BehaviorSubject<Void>(value: ())
 
     func checkAllAgreed() {
         for agreementRelay in agreementRelays {
@@ -160,6 +163,20 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
             outputs.nextButtonEnabledRelay.accept(false)
         } else {
             outputs.nextButtonEnabledRelay.accept(true)
+        }
+    }
+    
+    func checkBirthYear() {
+        guard let value = birthTextRelay.value,
+              let year = Int(value) else {
+            outputs.errorToastSubject.onNext("입력된 출생년도가 알맞지 않은 형식입니다.")
+            return
+        }
+        
+        if year < 1923 {
+            outputs.errorToastSubject.onNext("출생년도는 1923년 이상부터 입력이 가능합니다.")
+        } else {
+            outputs.checkBirthYearSuccessSubject.onNext(())
         }
     }
 }

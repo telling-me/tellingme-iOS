@@ -34,6 +34,7 @@ final class OptionViewController: SignUpBaseViewController {
         bindViewModel()
         setLayout()
         setStyles()
+        hideKeyboardWhenTappedAround()
     }
     
     deinit {

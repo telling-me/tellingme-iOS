@@ -33,12 +33,13 @@ final class NickNameViewController: SignUpBaseViewController {
         bindViewModel()
         setLayout()
         setStyles()
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.checkNicknameInputed()
     }
-
+    
     deinit {
         print("NicknameViewController Deinited")
     }
@@ -58,6 +59,14 @@ extension NickNameViewController {
                     self.inputBox.inputTextField.text = String(text.prefix(8))
                     self.inputBox.hiddenKeyboard()
                 }
+                viewModel.checkNicknameInputed()
+            })
+            .disposed(by: disposeBag)
+        
+        inputBox.inputTextField.rx.controlEvent(.editingDidEnd)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self else { return }
                 viewModel.checkNicknameInputed()
             })
             .disposed(by: disposeBag)

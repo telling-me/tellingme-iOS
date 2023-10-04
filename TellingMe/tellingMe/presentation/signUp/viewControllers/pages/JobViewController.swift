@@ -32,6 +32,7 @@ final class JobViewController: SignUpBaseViewController {
         bindViewModel()
         setLayout()
         setStyles()
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

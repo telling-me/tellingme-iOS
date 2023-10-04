@@ -12,7 +12,7 @@ import RxSwift
 import SnapKit
 import Then
 
-class SignUpBaseViewController: UIViewController {
+class SignUpBaseViewController: BaseViewController {
     let titleLabel = UILabel()
     let infoButton = UIButton()
     
