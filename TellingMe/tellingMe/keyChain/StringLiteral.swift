@@ -41,6 +41,23 @@ enum ImageLiterals {
     /// Pop Up Images
     static let WorkInProgress: UIImage? = UIImage(named: "WorkInProgress")
     static let PushNotificationAlarm: UIImage? = UIImage(named: "BellRinging")
+    
+    /// Sign Images
+    static let SignMale: UIImage? = UIImage(named: "Male")
+    static let SignFemale: UIImage? = UIImage(named: "Female")
+    
+    static let SignJobHighSchhol: UIImage? = UIImage(named: "HighSchool")
+    static let SignJobUniversity: UIImage? = UIImage(named: "University")
+    static let SignJobJobSeeker: UIImage? = UIImage(named: "JobSeeker")
+    static let SignJobWorker: UIImage? = UIImage(named: "Worker")
+    static let SignJobHousewife: UIImage? = UIImage(named: "Housewife")
+    
+    static let SignPurposeCareer: UIImage? = UIImage(named: "Pen")
+    static let SignPurposeRelationship: UIImage? = UIImage(named: "Handshake")
+    static let SignPurposePersonality: UIImage? = UIImage(named: "Values")
+    static let SignPurposeHabit: UIImage? = UIImage(named: "Manget")
+    static let SignPurposeHealth: UIImage? = UIImage(named: "Health")
+    static let SignEtc: UIImage? = UIImage(named: "Etc")
 }
 
 enum UrlLiterals {
