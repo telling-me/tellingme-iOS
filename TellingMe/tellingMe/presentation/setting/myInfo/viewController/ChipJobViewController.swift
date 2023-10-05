@@ -13,7 +13,7 @@ class ChipJobViewController: ChipCollectionViewController {
     var selectedItem: Int = 0
     var keyboardSize: CGSize? = nil
 
-    let input = Input()
+    let input = CustomTextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()

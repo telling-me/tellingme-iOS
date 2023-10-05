@@ -7,10 +7,9 @@
 
 import UIKit
 
-import RxSwift
+import RxCocoa
 import SnapKit
 import Then
-import RxCocoa
 
 final class BottomInfoView: UIView {
     private let containerView = UIView()
@@ -24,7 +23,6 @@ final class BottomInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        bindViewModel()
         setLayout()
         setStyles()
     }
@@ -35,10 +33,6 @@ final class BottomInfoView: UIView {
 }
 
 extension BottomInfoView {
-    private func bindViewModel() {
-        
-    }
-    
     private func setLayout() {
         addSubview(containerView)
         containerView.addSubviews(titleLabel, captionLabel, button)

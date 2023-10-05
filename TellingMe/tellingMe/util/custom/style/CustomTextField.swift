@@ -12,7 +12,7 @@ import RxSwift
 import SnapKit
 import Then
 
-class Input: UIView {
+final class CustomTextField: UIView {
     private let disposeBag = DisposeBag()
     var inputTextField: UITextField = {
        let input = UITextField()
@@ -81,7 +81,7 @@ class Input: UIView {
     }
 }
 
-extension Input {
+extension CustomTextField {
     func bindViewModel() {
         inputTextField.rx.controlEvent(.editingDidEndOnExit)
             .bind(onNext: { [weak self] _ in

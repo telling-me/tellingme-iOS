@@ -16,7 +16,7 @@ final class OptionViewController: SignUpBaseViewController {
     private let viewModel: SignUpViewModel
     private let disposeBag = DisposeBag()
     
-    private let inputBox = Input()
+    private let inputBox = CustomTextField()
     private let genderTitleLabel = UILabel()
     private let genderCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     

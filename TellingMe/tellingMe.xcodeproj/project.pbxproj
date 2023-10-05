@@ -211,7 +211,7 @@
 		3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */; };
 		3AE006192A360FAC0016CACE /* NoneAnswerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */; };
 		3AEBB2B32A14A859006880E0 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */; };
-		3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2C02A14B4EB006880E0 /* Input.swift */; };
+		3AEBB2C12A14B4EB006880E0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEBB2C02A14B4EB006880E0 /* CustomTextField.swift */; };
 		3AEC414029FACA980042A548 /* TeritaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */; };
 		3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414129FACBF60042A548 /* EmotionViewController.swift */; };
 		3AEC414429FACC0F0042A548 /* EmotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */; };
@@ -542,7 +542,7 @@
 		3AD8153F2A29B067000049D7 /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
 		3AE006182A360FAC0016CACE /* NoneAnswerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoneAnswerListView.swift; sourceTree = "<group>"; };
 		3AEBB2B22A14A859006880E0 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
-		3AEBB2C02A14B4EB006880E0 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		3AEBB2C02A14B4EB006880E0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3AEC413F29FACA980042A548 /* TeritaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryTextButton.swift; sourceTree = "<group>"; };
 		3AEC414129FACBF60042A548 /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
 		3AEC414329FACC0F0042A548 /* EmotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewModel.swift; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 		586061D62AC16A1400FE2733 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		58690DA52AB2FBF4002BAB82 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageToggleTableViewCell.swift; sourceTree = "<group>"; };
-		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringLiteral.swift; path = ../util/nameSpace/StringLiteral.swift; sourceTree = "<group>"; };
+		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		588B45F42A9E507500B0ADF1 /* MyPageSettingElementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingElementsModel.swift; sourceTree = "<group>"; };
 		589E78412AAF2D3200BB9213 /* PremiumInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationViewController.swift; sourceTree = "<group>"; };
 		589E78432AAF306C00BB9213 /* PremiumInformationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationHeaderView.swift; sourceTree = "<group>"; };
@@ -783,7 +783,7 @@
 				3A7570C229F16F4900D24116 /* SecondayIconButton.swift */,
 				3AEC414729FAE0460042A548 /* SecondayTextButton.swift */,
 				3A713F9A29F2D1900024C2C9 /* ErrorToast.swift */,
-				3AEBB2C02A14B4EB006880E0 /* Input.swift */,
+				3AEBB2C02A14B4EB006880E0 /* CustomTextField.swift */,
 				3ACEBAFF2AB0E135008F4600 /* TeritaryModifiedTextButton.swift */,
 			);
 			path = style;
@@ -1223,7 +1223,6 @@
 			children = (
 				581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */,
 				3A2CBF1E2A8F875A007509C9 /* Info.plist */,
-				5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
 				3AF338232A38B24E00F9733B /* UserDefaults+.swift */,
@@ -2332,7 +2331,7 @@
 				3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				58A6AD442A9DCA1400BCC2AC /* MyPageTableViewCell.swift in Sources */,
-				3AEBB2C12A14B4EB006880E0 /* Input.swift in Sources */,
+				3AEBB2C12A14B4EB006880E0 /* CustomTextField.swift in Sources */,
 				3A157CF629CAEE2C00D61AD3 /* LoginButton.swift in Sources */,
 				3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
@@ -2440,7 +2439,6 @@
 				583D30612ABEE4F900E99FBA /* BBaseViewController.swift in Sources */,
 				3AB33EE92A9A4B1D00470CD5 /* HorizontalHeaderCollectionViewFlowLayout.swift in Sources */,
 				3A68CC2E2AC9D12400C97E59 /* JobViewController.swift in Sources */,
-				3A1F6B062A5DAD8F00E7B107 /* PushNotificationModalViewController.swift in Sources */,
 				3ACE33932A39A30E008FCC03 /* SplashViewController.swift in Sources */,
 				3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */,
 				58BFBB412AADA1CC004A84E8 /* VersionManager.swift in Sources */,

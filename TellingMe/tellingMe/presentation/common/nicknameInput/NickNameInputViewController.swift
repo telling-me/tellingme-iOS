@@ -12,8 +12,8 @@ protocol SendNicknameDelegate: AnyObject {
     func nicknameisNotEmpty()
 }
 
-class NickNameInputViewController: UIViewController {
-    let input = Input()
+final class NickNameInputViewController: UIViewController {
+    let input = CustomTextField()
     weak var delegate: SendNicknameDelegate?
     var badwords: [String] = []
 

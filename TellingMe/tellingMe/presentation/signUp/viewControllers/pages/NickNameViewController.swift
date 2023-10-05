@@ -16,7 +16,7 @@ final class NickNameViewController: SignUpBaseViewController {
     private let viewModel: SignUpViewModel
     private let disposeBag = DisposeBag()
     
-    private var inputBox = Input()
+    private var inputBox = CustomTextField()
     private var captionLabel = UILabel()
     
     init(viewModel: SignUpViewModel) {

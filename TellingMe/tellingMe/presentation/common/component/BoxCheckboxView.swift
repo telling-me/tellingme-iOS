@@ -7,21 +7,14 @@
 
 import UIKit
 
-import RxCocoa
-import RxSwift
 import SnapKit
 import Then
 
-final class BoxCheckboxView: UIView {
-    private let disposeBag = DisposeBag()
-    
+final class BoxCheckboxView: UIView {    
     let checkButton = UIButton()
-
-//    let checkButtonTapObserver = PublishRelay<Bool>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        bindViewModel()
         setLayout()
         setStyles()
     }
@@ -29,16 +22,9 @@ final class BoxCheckboxView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        print("BoxCheckboxButton deinit")
-    }
 }
 
 extension BoxCheckboxView {
-    private func bindViewModel() {
-    }
-    
     private func setLayout() {
         addSubview(checkButton)
         

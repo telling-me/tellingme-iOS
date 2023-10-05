@@ -14,7 +14,6 @@ import Then
 
 final class SignUpViewController: BaseViewController {
     private let viewModel = SignUpViewModel()
-
     private let disposeBag = DisposeBag()
     
     private let headerView = LogoHeaderView()
@@ -42,7 +41,7 @@ final class SignUpViewController: BaseViewController {
 extension SignUpViewController {
     private func bindViewModel() {
         skipButton.rx.tap
-            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 self.scrollToNextViewController()
@@ -50,7 +49,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         leftButton.rx.tap
-            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 self.scrollToPrevViewController()
@@ -58,7 +57,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         rightButton.rx.tap
-            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(2000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 switch viewModel.currentIndex {
