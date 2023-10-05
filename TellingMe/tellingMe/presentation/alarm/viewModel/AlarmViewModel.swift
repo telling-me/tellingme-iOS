@@ -17,6 +17,8 @@ protocol AlarmNoticeViewModelInputs {
     func deleteNotice(idOf id: Int)
     func openSafariWithUrl(url: String?)
     func initializeAnswerData(answerId: Int, publishedDate: String)
+    func editNoticeData(with data: [AlarmNotificationResponse])
+    func refetchNoticeData()
 }
 
 protocol AlarmNoticeViewModelOutpus {
@@ -31,7 +33,7 @@ protocol AlarmNoticeViewModelType {
 }
 
 final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewModelOutpus, AlarmNoticeViewModelType {
-    
+
     /// Needs to modified
     var answerData: BehaviorSubject<DetailAnswerForEachNotceModel> = BehaviorSubject(value: DetailAnswerForEachNotceModel.defaultValue)
     var isAlarmAllRead: BehaviorRelay<Bool> = BehaviorRelay(value: false)
@@ -110,11 +112,19 @@ final class AlarmNoticeViewModel: AlarmNoticeViewModelInputs, AlarmNoticeViewMod
             print("Wrong Url.")
         }
     }
+    
+    func editNoticeData(with data: [AlarmNotificationResponse]) {
+        alarmNotices.onNext(data)
+    }
+    
+    func refetchNoticeData() {
+        fetchNoticeData()
+    }
 }
 
 extension AlarmNoticeViewModel {
     
-    func fetchNoticeData() {
+    private func fetchNoticeData() {
         AlarmNotificationAPI.getAllAlarmNotice()
             .subscribe(onNext: { [weak self] response in
                 self?.alarmNotices.onNext(response)

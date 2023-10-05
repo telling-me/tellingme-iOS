@@ -257,7 +257,7 @@ extension LibraryViewController {
         sharingIconButton.do {
             let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18)
             $0.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate), for: .normal)
-            $0.tintColor = .Gray3
+            $0.tintColor = .Gray5
             $0.contentMode = .scaleAspectFit
             $0.addTarget(self, action: #selector(tapToShare), for: .touchUpInside)
         }

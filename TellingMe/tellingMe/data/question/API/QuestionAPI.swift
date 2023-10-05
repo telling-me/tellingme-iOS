@@ -65,7 +65,7 @@ struct QuestionAPI: Networkable {
             completion(.failure(APIError.other(error)))
         }
     }
-    
+
     static func getTodayQuestion(query: String) -> Observable<QuestionResponse> {
         do {
             let provider = try makeAuthorizedProvider()

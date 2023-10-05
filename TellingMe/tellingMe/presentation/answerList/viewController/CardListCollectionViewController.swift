@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 class CardListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     static let id = "cardListCollectionViewController"
     var answerList: [AnswerListResponse] = []

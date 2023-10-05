@@ -33,10 +33,8 @@ class GetPurposeViewController: UIViewController {
         guard let window = UIApplication.shared.windows.first else {
             return
         }
-        window.rootViewController = tabBarController
+        window.rootViewController = UINavigationController(rootViewController: tabBarController)
         window.makeKeyAndVisible()
-        
-        tabBarController.showPushNotification()
     }
     
     @IBAction func nextAction(_ sender: UIButton) {

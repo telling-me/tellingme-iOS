@@ -15,7 +15,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let animationView: LottieAnimationView = .init(name: "Splash")
+        let animationView: LottieAnimationView = LottieAnimationView(name: "Splash", configuration: LottieConfiguration(renderingEngine: .mainThread))
         splashView.addSubview(animationView)
 
         animationView.translatesAutoresizingMaskIntoConstraints = false

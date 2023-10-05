@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
             return
         }
 
-        window.rootViewController = tabBarController
+        window.rootViewController = UINavigationController(rootViewController: tabBarController)
         window.makeKeyAndVisible()
     }
 

@@ -94,6 +94,7 @@ extension SharingToInstagramViewModel {
     }
     
     private func setSharingImage() {
+        let currentDevice = UIDevice.current.name
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let height = appDelegate.deviceHeight
         let width = appDelegate.deviceWidth
@@ -107,6 +108,17 @@ extension SharingToInstagramViewModel {
             stickerYPointCalculated = addedViewHeight/1.48
         }
         
+        if currentDevice == "iPhone 12 mini" || currentDevice == "iPhone 13 mini" {
+            stickerYPointCalculated = addedViewHeight/1.46
+        }
+
+        DeviceSecondaryAbnormal.allCases.forEach { device in
+            if device.deviceName == currentDevice {
+                stickerYPointCalculated = addedViewHeight/1.46
+                return
+            }
+        }
+        
         let stickerXPoint: CGFloat = addedViewWidth/3
         let stickerYPoint: CGFloat = stickerYPointCalculated
         let stickerWidth = width/1.25
@@ -114,7 +126,7 @@ extension SharingToInstagramViewModel {
 
         let cardImage = metaManager.saveImage(from: self.sharingView)
         let signatureImage = UIImage(named: "SignatureSticker")
-        
+
         let backgroundView = SharingBackgroundView(frame: .zero, sharingImage: cardImage, signatureImage: signatureImage)
         backgroundView.frame = CGRect(x: 0, y: 0, width: addedViewWidth, height: addedViewHeight)
         let shadowView = backgroundView.subviews[0]

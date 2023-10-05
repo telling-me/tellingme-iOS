@@ -105,7 +105,7 @@ extension PremiumInformationViewController {
 
 extension PremiumInformationViewController {
     private func getHeightOfScrollView() -> CGFloat {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return 1128 }
-        return appDelegate.deviceWidth * 3.01
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return 1256 }
+        return appDelegate.deviceWidth * 3.25
     }
 }

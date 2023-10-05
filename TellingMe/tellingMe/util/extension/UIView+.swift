@@ -77,4 +77,21 @@ extension UIView {
         
         return imageData
     }
+    
+    /**
+     Round Shadow 를 추가합니다.
+     - Opacity 는 0.0 - 1.0 사이의 범위에 있습니다.
+     - x, y 는 CGRect 의 방향을 따릅니다.
+     - *단, 주의점은 SuperView 에 종속되어 있고 SuperView 의 masksToBounds 의 속성이 바뀌면 해당 메서드는 작동하지 않을 수 있습니다.
+     */
+    func setRoundShadowWith(backgroundColor: UIColor, shadowColor: UIColor, radius: CGFloat, shadowRadius: CGFloat, shadowOpacity: Float, xShadowOffset: CGFloat, yShadowOffset: CGFloat) {
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+        self.layer.shadowRadius = shadowRadius
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowOffset = CGSize(width: xShadowOffset, height: yShadowOffset)
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.masksToBounds = false
+    }
 }

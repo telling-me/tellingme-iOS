@@ -54,7 +54,7 @@ extension InlineHeaderView {
     }
 }
 
-extension {
+extension InlineHeaderView {
     func setHeader(isFirstView: Bool = true, title: String, buttonImage: String? = nil) {
         if isFirstView {
             leftButton.isHidden = true
