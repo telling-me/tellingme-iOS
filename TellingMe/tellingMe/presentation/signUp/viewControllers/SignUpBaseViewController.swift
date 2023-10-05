@@ -14,11 +14,15 @@ import Then
 
 // base viewcontroller 상속받기
 class SignUpBaseViewController: UIViewController {
-    private let titleLabel = UILabel()
-    private let infoButton = UIButton()
+    let titleLabel = UILabel()
+    let infoButton = UIButton()
     
-    var buttonTapObservable: ControlEvent<Void> {
-        return infoButton.rx.tap
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -31,6 +35,7 @@ class SignUpBaseViewController: UIViewController {
 extension SignUpBaseViewController {
     private func setLayout() {
         view.addSubviews(titleLabel, infoButton)
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(60)
             $0.centerX.equalToSuperview()
@@ -51,6 +56,7 @@ extension SignUpBaseViewController {
         }
         
         infoButton.do {
+            $0.isHidden = true
             $0.setImage(UIImage(named: "Info"), for: .normal)
         }
     }

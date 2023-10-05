@@ -83,6 +83,10 @@
 		3A68CC1A2AC351D200C97E59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC192AC351D200C97E59 /* SignUpViewController.swift */; };
 		3A68CC1D2AC3577800C97E59 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC1C2AC3577800C97E59 /* SignUpViewModel.swift */; };
 		3A68CC202AC361AB00C97E59 /* SignUpBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */; };
+		3A68CC222AC3BF1800C97E59 /* AgreementViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */; };
+		3A68CC252AC3C01400C97E59 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC242AC3C01400C97E59 /* CheckboxView.swift */; };
+		3A68CC282AC3C4AB00C97E59 /* BoxCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC272AC3C4AB00C97E59 /* BoxCheckboxView.swift */; };
+		3A68CC2A2AC9893700C97E59 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC292AC9893700C97E59 /* NickNameViewController.swift */; };
 		3A70A6462A272B54009D8D76 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6452A272B54009D8D76 /* UserInfoDTO.swift */; };
 		3A70A6482A272C58009D8D76 /* UpdateUserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */; };
 		3A70A64A2A272CD2009D8D76 /* NotificationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */; };
@@ -402,6 +406,10 @@
 		3A68CC192AC351D200C97E59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A68CC1C2AC3577800C97E59 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseViewController.swift; sourceTree = "<group>"; };
+		3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController2.swift; sourceTree = "<group>"; };
+		3A68CC242AC3C01400C97E59 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		3A68CC272AC3C4AB00C97E59 /* BoxCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCheckboxView.swift; sourceTree = "<group>"; };
+		3A68CC292AC9893700C97E59 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		3A70A6452A272B54009D8D76 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		3A70A6472A272C58009D8D76 /* UpdateUserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoDTO.swift; sourceTree = "<group>"; };
 		3A70A6492A272CD2009D8D76 /* NotificationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDTO.swift; sourceTree = "<group>"; };
@@ -931,6 +939,7 @@
 			children = (
 				3A68CC1B2AC3576B00C97E59 /* viewModel */,
 				3A68CC1E2AC3618900C97E59 /* viewControllers */,
+				3A68CC232AC3BFF600C97E59 /* views */,
 			);
 			path = signUp;
 			sourceTree = "<group>";
@@ -974,6 +983,7 @@
 				5800B6FC2AC55FAA0028F75A /* network */,
 				58FB359F2AC1D4DB00F9A7E5 /* background */,
 				583D305D2ABEE4CC00E99FBA /* base */,
+				3A68CC262AC3C32C00C97E59 /* component */,
 				58AF355B2AB0510F00B1AF2F /* sharing */,
 				58BFBB3D2AAD9850004A84E8 /* feedbackMail */,
 				3AB213232A89395A0035EA56 /* alert */,
@@ -1061,8 +1071,26 @@
 			children = (
 				3A68CC192AC351D200C97E59 /* SignUpViewController.swift */,
 				3A68CC1F2AC361AB00C97E59 /* SignUpBaseViewController.swift */,
+				3A68CC212AC3BF1800C97E59 /* AgreementViewController2.swift */,
+				3A68CC292AC9893700C97E59 /* NickNameViewController.swift */,
 			);
 			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		3A68CC232AC3BFF600C97E59 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		3A68CC262AC3C32C00C97E59 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				3A68CC242AC3C01400C97E59 /* CheckboxView.swift */,
+				3A68CC272AC3C4AB00C97E59 /* BoxCheckboxView.swift */,
+			);
+			path = component;
 			sourceTree = "<group>";
 		};
 		3A70A6422A272B15009D8D76 /* user */ = {
@@ -2245,6 +2273,7 @@
 				58AF35542AB047A200B1AF2F /* SharingBottomViewController.swift in Sources */,
 				3ABB84882A8151FD00540269 /* BottomSheet.swift in Sources */,
 				58AF355A2AB049D000B1AF2F /* SharingToInstagramTableViewCell.swift in Sources */,
+				3A68CC222AC3BF1800C97E59 /* AgreementViewController2.swift in Sources */,
 				3AEED26729C99F8800D02F3F /* CaptionLabel.swift in Sources */,
 				3ACEBB062AB2EBCE008F4600 /* BadFeedbackViewModel.swift in Sources */,
 				3ABB84C92A83BFA100540269 /* ReportAPI.swift in Sources */,
@@ -2292,6 +2321,7 @@
 				3A70A64A2A272CD2009D8D76 /* NotificationDTO.swift in Sources */,
 				58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */,
 				3AA4B63B2A9F045300824313 /* LibraryInfoCollectionViewCell.swift in Sources */,
+				3A68CC282AC3C4AB00C97E59 /* BoxCheckboxView.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3A320F582A73E57E0098E8C9 /* CommunicationList.swift in Sources */,
 				3AC9D53829D58D8E006A2566 /* DropDownTableViewCell.swift in Sources */,
@@ -2351,6 +2381,7 @@
 				58A6AD472A9DCA1400BCC2AC /* MyPageViewController.swift in Sources */,
 				3A76549829D9613F00B1C10E /* Structs.swift in Sources */,
 				3ACC45F629D1EFA4000843F5 /* String+.swift in Sources */,
+				3A68CC252AC3C01400C97E59 /* CheckboxView.swift in Sources */,
 				3AD815402A29B067000049D7 /* WithdrawalViewController.swift in Sources */,
 				3AEC414629FAD3D10042A548 /* EmotionCollectionViewCell.swift in Sources */,
 				3A68CC1A2AC351D200C97E59 /* SignUpViewController.swift in Sources */,
@@ -2430,6 +2461,7 @@
 				583D306E2ABEF39700E99FBA /* BBaseButton.swift in Sources */,
 				3AC2047B2A6BC5990005709A /* CommunityCardView.swift in Sources */,
 				3ABB84852A80C7D300540269 /* CommunicationAnswerViewModel.swift in Sources */,
+				3A68CC2A2AC9893700C97E59 /* NickNameViewController.swift in Sources */,
 				3A38E3F129F55C7A00ABC201 /* JobInfoDTO.swift in Sources */,
 				3A320F542A73E3470098E8C9 /* CommunicationDetailViewController.swift in Sources */,
 				58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */,

@@ -8,6 +8,10 @@
 import UIKit
 
 extension String {
+    /**
+     한글만 입력한 경우 true, 그렇지 않은 경우 false를 반환합니다.
+     닉네임 검사에 사용됩니다.  (회원가입 / 내 정보 수정)
+     */
     func hasCharacters() -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: "^[가-힣ㄱ-ㅎㅏ-ㅣ]$", options: .caseInsensitive)

@@ -25,7 +25,7 @@ class ChipJobViewController: ChipCollectionViewController {
         input.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         input.heightAnchor.constraint(equalToConstant: 57).isActive = true
         input.setDisalbe()
-        input.inputBox.delegate = self
+        input.inputTextField.delegate = self
     }
 }
 

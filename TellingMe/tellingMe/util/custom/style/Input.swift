@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Input: UIView {
-    var inputBox: UITextField = {
+    var inputTextField: UITextField = {
        let input = UITextField()
         input.translatesAutoresizingMaskIntoConstraints = false
         input.borderStyle = .none
@@ -17,6 +17,7 @@ class Input: UIView {
         input.font = UIFont(name: "NanumSquareRoundOTFR", size: 15)
         input.backgroundColor = .clear
         input.clearButtonMode = .whileEditing
+        input.returnKeyType = .done
         return input
     }()
 
@@ -34,43 +35,43 @@ class Input: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "Side200")
         self.cornerRadius = 18
-        addSubview(inputBox)
-        inputBox.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
-        inputBox.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
-        inputBox.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        inputBox.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+        addSubview(inputTextField)
+        inputTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
+        inputTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
+        inputTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        inputTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
     }
 
     func setDisalbe() {
         self.backgroundColor = UIColor(named: "Gray1")
-        self.inputBox.text = nil
-        inputBox.isUserInteractionEnabled = false
-        inputBox.placeholder = "기타 선택 후 입력"
+        self.inputTextField.text = nil
+        inputTextField.isUserInteractionEnabled = false
+        inputTextField.placeholder = "기타 선택 후 입력"
     }
 
     func setAble() {
         self.backgroundColor = UIColor(named: "Side200")
-        self.inputBox.placeholder = "직접 입력"
-        inputBox.isUserInteractionEnabled = true
+        self.inputTextField.placeholder = "직접 입력"
+        inputTextField.isUserInteractionEnabled = true
     }
     
     func setPlaceholder(text: String) {
-        self.inputBox.placeholder = text
+        self.inputTextField.placeholder = text
     }
 
     func setText(text: String) {
-        self.inputBox.text = text
+        self.inputTextField.text = text
     }
 
     func getText() -> String? {
-        return self.inputBox.text
+        return self.inputTextField.text
     }
 
     func hiddenKeyboard() {
-        self.inputBox.resignFirstResponder()
+        self.inputTextField.resignFirstResponder()
     }
 
     func setInputKeyobardStyle() {
-        inputBox.keyboardType = .numberPad
+        inputTextField.keyboardType = .numberPad
     }
 }

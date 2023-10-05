@@ -31,10 +31,9 @@ class LoginViewController: UIViewController {
     }
 
     func pushSignUp() {
-        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "signUp")as? SignUpViewController else {return}
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        let signUpViewController = SignUpViewController()
+        signUpViewController.modalPresentationStyle = .fullScreen
+        self.present(signUpViewController, animated: true, completion: nil)
     }
 
     func pushHome() {

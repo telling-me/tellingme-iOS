@@ -10,5 +10,8 @@ import UIKit
 
 class SignUpViewModel {
     var currentIndex: Int = 0
-    let viewControllers: [UIViewController] = [AgreementViewController(), NickNameInputViewController(), GetOptionViewController(), GetJobViewController(), GetPurposeViewController()]
+    
+    lazy var viewControllers: [UIViewController] = {
+        return [AgreementViewController(viewModel: self), NickNameViewController()]
+    }()
 }

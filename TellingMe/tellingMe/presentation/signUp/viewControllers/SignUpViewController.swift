@@ -14,7 +14,6 @@ import Then
 
 // baseviewcontroller 적용하기
 final class SignUpViewController: UIViewController {
-    
     private let viewModel = SignUpViewModel()
 
     private let disposeBag = DisposeBag()
@@ -23,14 +22,15 @@ final class SignUpViewController: UIViewController {
     private let progressView = GradientProgressBar(progressViewStyle: .bar)
     private let containerView = UIView()
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private let leftButton = UIButton()
-    private let rightButton = UIButton()
+    private let leftButton = SecondaryIconButton()
+    private let rightButton = SecondaryIconButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         setLayout()
         setStyles()
+        setPageViewController()
     }
 }
 
@@ -94,12 +94,23 @@ extension SignUpViewController {
     }
     
     private func setStyles() {
+        // 추후 지우기
+        view.backgroundColor = .Side100
+        
         progressView.do {
             $0.setProgress(Float(0)/Float(5), animated: true)
             $0.gradientColors = [
                 UIColor(red: 0.486, green: 0.937, blue: 0.655, alpha: 1).cgColor,
                 UIColor(red: 0.561, green: 0.827, blue: 0.957, alpha: 1).cgColor
             ]
+        }
+
+        leftButton.do {
+            $0.setSystemImage("arrow.backward")
+        }
+        
+        rightButton.do {
+            $0.setSystemImage("arrow.forward")
         }
     }
 }
