@@ -55,12 +55,10 @@ final class OnBoardingViewController: UIViewController {
     }
     
     private func pushSignUp() {
-        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "signUp") as? SignUpViewController else {
-            return
-        }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        let signUpViewController = SignUpViewController()
+        signUpViewController.modalPresentationStyle = .fullScreen
+        
+        self.present(signUpViewController, animated: true)
     }
 }
 
