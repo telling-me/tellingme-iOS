@@ -101,6 +101,7 @@ enum DeviceLiterals: CaseIterable {
     }
 }
 
+/// 정형화된 해상도 및 비율이 아니어서 따로 관리가 필요한 모델입니다.
 enum DeviceSecondaryAbnormal: CaseIterable {
     case iPhoneX
     case iPhoneXS
