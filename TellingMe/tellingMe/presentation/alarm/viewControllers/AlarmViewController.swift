@@ -20,7 +20,6 @@ final class AlarmViewController: UIViewController {
     weak var delegate: DismissAndSwitchTabDelegate?
     private var disposeBag = DisposeBag()
     private let viewModel = AlarmNoticeViewModel()
-    private lazy var isNoticeAllRead: BehaviorRelay<Bool> = viewModel.outputs.isAlarmAllRead
     
     private let navigationBarView = CustomModalBarView()
     private let alarmSectionView = AlarmReadAllSectionView()
@@ -65,8 +64,8 @@ extension AlarmViewController {
                 self.alarmSectionView.isAllNoticeRead(true)
                 self.loadingStarts()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                    self.viewModel.fetchNoticeData()
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.8) {
+                    self.viewModel.inputs.refetchNoticeData()
                     self.loadingStops()
                 }
             }
@@ -123,14 +122,14 @@ extension AlarmViewController {
                     newData = dataChanged
                     newData.remove(at: indexPath.row)
                     self.viewModel.inputs.deleteNotice(idOf: noticeId)
-                    self.viewModel.outputs.alarmNotices.onNext(newData)
+                    self.viewModel.inputs.editNoticeData(with: newData)
                 } catch let error {
                     print(error)
                 }
             })
             .disposed(by: disposeBag)
         
-        isNoticeAllRead
+        viewModel.outputs.isAlarmAllRead
             .asDriver()
             .drive { [weak self] bool in
                 guard let self else { return }

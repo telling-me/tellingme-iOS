@@ -39,7 +39,8 @@ final class NetworkErrorPopUpView: BBaseView {
     }
     
     override func setLayout() {
-        self.addSubviews(titleLabel, subTitleLabel, terminateAppButton, mainImageView)
+        self.addSubviews(titleLabel, subTitleLabel, terminateAppButton, 
+                         mainImageView)
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()

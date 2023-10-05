@@ -49,7 +49,6 @@ final class HHomeViewController: BBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkNewIncomingAlarms()
-        animateBackground()
     }
     
     // MARK: - Bindings
