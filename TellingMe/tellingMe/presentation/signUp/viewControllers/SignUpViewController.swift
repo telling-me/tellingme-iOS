@@ -57,7 +57,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         rightButton.rx.tap
-            .throttle(.milliseconds(2000), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 switch viewModel.currentIndex {
@@ -86,7 +86,6 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.checkNicknameSuccessSubject
-            .skip(1)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 scrollToNextViewController()
@@ -102,7 +101,6 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.checkJobInfoSuccessSubject
-            .skip(1)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 scrollToNextViewController()
@@ -127,6 +125,13 @@ extension SignUpViewController {
         
         viewModel.outputs.nextButtonEnabledRelay
             .bind(to: rightButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.signInSuccessSubject
+            .bind(onNext: { [weak self] response in
+                guard let self else { return }
+                pushHome()
+            })
             .disposed(by: disposeBag)
     }
     
@@ -252,6 +257,19 @@ extension SignUpViewController {
         }
         
         progressView.setProgress(Float(viewModel.currentIndex + 1)/Float(5), animated: true)
+    }
+    
+    private func pushHome() {
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as? MainTabBarController else { return }
+
+        tabBarController.selectedIndex = 0
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+
+        window.rootViewController = UINavigationController(rootViewController: tabBarController)
+        window.makeKeyAndVisible()
     }
 }
 

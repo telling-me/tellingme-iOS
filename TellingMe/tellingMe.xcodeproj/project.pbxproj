@@ -78,6 +78,7 @@
 		3A50EEFF29CCB2C400A27504 /* GetOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EEFE29CCB2C400A27504 /* GetOptionViewController.swift */; };
 		3A50EF0129CCB2D600A27504 /* AgreementViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50EF0029CCB2D600A27504 /* AgreementViewController2.swift */; };
 		3A51FC2429F990A70090BD1B /* LogoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A51FC2329F990A70090BD1B /* LogoHeaderView.swift */; };
+		3A543B842ACE857300E85E82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A543B832ACE857300E85E82 /* GoogleService-Info.plist */; };
 		3A559DEE2A1CE18000A49722 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A559DED2A1CE18000A49722 /* UILabel+.swift */; };
 		3A59B8F42A41F5040091322E /* AgreementDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59B8F32A41F5040091322E /* AgreementDetailViewController2.swift */; };
 		3A68CC1A2AC351D200C97E59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68CC192AC351D200C97E59 /* SignUpViewController.swift */; };
@@ -241,7 +242,6 @@
 		5800B7022AC56A3A0028F75A /* HomePushNotificationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800B7012AC56A3A0028F75A /* HomePushNotificationPopUpView.swift */; };
 		5800B7052AC56BA30028F75A /* CommonRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800B7042AC56BA30028F75A /* CommonRoundButton.swift */; };
 		5817326E2AC95A76001276A2 /* UITabBarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817326D2AC95A76001276A2 /* UITabBarItem+.swift */; };
-		581F039D2ACC50D100C096F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */; };
 		5823300C2AC00F9200F8D23D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5823300B2AC00F9200F8D23D /* NSObject+.swift */; };
 		583814F62ABD338E008D808A /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583814F52ABD338E008D808A /* RxSwift+.swift */; };
 		583B80A62A9674E6009399D1 /* CustomModalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583B80A52A9674E6009399D1 /* CustomModalBarView.swift */; };
@@ -407,6 +407,7 @@
 		3A50EEFE29CCB2C400A27504 /* GetOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOptionViewController.swift; sourceTree = "<group>"; };
 		3A50EF0029CCB2D600A27504 /* AgreementViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController2.swift; sourceTree = "<group>"; };
 		3A51FC2329F990A70090BD1B /* LogoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoHeaderView.swift; sourceTree = "<group>"; };
+		3A543B832ACE857300E85E82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A559DED2A1CE18000A49722 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		3A59B8F32A41F5040091322E /* AgreementDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementDetailViewController2.swift; sourceTree = "<group>"; };
 		3A68CC192AC351D200C97E59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -572,7 +573,6 @@
 		5800B7012AC56A3A0028F75A /* HomePushNotificationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePushNotificationPopUpView.swift; sourceTree = "<group>"; };
 		5800B7042AC56BA30028F75A /* CommonRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoundButton.swift; sourceTree = "<group>"; };
 		5817326D2AC95A76001276A2 /* UITabBarItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+.swift"; sourceTree = "<group>"; };
-		581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5823300B2AC00F9200F8D23D /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		583814F52ABD338E008D808A /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		583B80A52A9674E6009399D1 /* CustomModalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalBarView.swift; sourceTree = "<group>"; };
@@ -1221,7 +1221,7 @@
 		3A775D0929C2E9AE00FCD3BC /* keyChain */ = {
 			isa = PBXGroup;
 			children = (
-				581F039C2ACC50D100C096F2 /* GoogleService-Info.plist */,
+				3A543B832ACE857300E85E82 /* GoogleService-Info.plist */,
 				3A2CBF1E2A8F875A007509C9 /* Info.plist */,
 				3ACBA45E2A2508B800FCE72B /* KeyList.plist */,
 				3ACBA45C2A2508B800FCE72B /* KeyChain+.swift */,
@@ -2265,6 +2265,7 @@
 			files = (
 				3A1A35A52A866AC900F9FA92 /* TermofUse.txt in Resources */,
 				3A1A35A62A866AC900F9FA92 /* PrivacyPolicy.txt in Resources */,
+				3A543B842ACE857300E85E82 /* GoogleService-Info.plist in Resources */,
 				3ACCBAB529E956050082C32C /* badWords.txt in Resources */,
 				3A1A35AA2A868C1300F9FA92 /* Splash.json in Resources */,
 				3AFA37202A1A5AB0008A5657 /* Modal.storyboard in Resources */,
@@ -2275,7 +2276,6 @@
 				3A775CFF29C1AE8100FCD3BC /* NanumSquareRoundOTFB.otf in Resources */,
 				3A775CFC29C1AE8100FCD3BC /* NanumSquareRoundOTFR.otf in Resources */,
 				3A7121352A02C45500A02054 /* AnswerList.storyboard in Resources */,
-				581F039D2ACC50D100C096F2 /* GoogleService-Info.plist in Resources */,
 				3ACACB4929F7FDBB004A6004 /* MainTabBar.storyboard in Resources */,
 				58C3AE1B2ABEAADB00CAA37C /* HomeLoading.json in Resources */,
 				3AD53A5B2A2DC7A100AFE17D /* AnswerCompleted.storyboard in Resources */,

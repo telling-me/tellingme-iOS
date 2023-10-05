@@ -389,24 +389,6 @@
             <point key="canvasLocation" x="801" y="53"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="Q80-zb-uES">
-            <size key="intrinsicContentSize" width="295" height="20.5"/>
-        </designable>
-        <designable name="QYq-Da-bcO"/>
-        <designable name="Tpz-oD-GK7">
-            <size key="intrinsicContentSize" width="68.5" height="20.5"/>
-        </designable>
-        <designable name="VL1-uj-9yg">
-            <size key="intrinsicContentSize" width="228.5" height="20.5"/>
-        </designable>
-        <designable name="lC6-eY-pot">
-            <size key="intrinsicContentSize" width="75" height="31"/>
-        </designable>
-        <designable name="lH9-tL-FdQ"/>
-        <designable name="pc3-K4-8G1"/>
-        <designable name="yEO-Xf-N27"/>
-    </designables>
     <resources>
         <image name="BellRinging" width="151" height="163"/>
         <image name="Home" width="64" height="64"/>
