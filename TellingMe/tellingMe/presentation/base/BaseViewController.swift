@@ -40,7 +40,6 @@ extension BaseViewController {
         }
         
         alertView.showAlert()
-
         alertView.buttonTapObserver
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -54,6 +53,16 @@ extension BaseViewController {
         alertView?.dismissAlert()
         
         alertView?.removeFromSuperview()
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

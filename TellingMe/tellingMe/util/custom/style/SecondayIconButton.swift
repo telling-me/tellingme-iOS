@@ -81,18 +81,25 @@ class SecondaryIconButton: UIButton {
         layer0.position = shadows.center
         shadows.layer.addSublayer(layer0)
 
-        self.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+//        self.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
+//
+//    @objc func buttonTapped(_ sender: UIButton) {
+//        sender.isHighlighted = true
+//    }
+//
+//    @objc func buttonReleased(_ sender: UIButton) {
+//        sender.isHighlighted = false
+//    }
 
-    @objc func buttonTapped(_ sender: UIButton) {
-        sender.isHighlighted = true
+    func setImage(_ name: String, disabledName: String? = nil) {
+        setImage(UIImage(named: name), for: .normal)
+        if let disabledName = disabledName {
+            setImage(UIImage(named: name), for: .disabled)
+        }
     }
-
-    @objc func buttonReleased(_ sender: UIButton) {
-        sender.isHighlighted = false
-    }
-
-    func setImage(image: String) {
-        setImage(UIImage(named: image), for: .normal)
+    
+    func setSystemImage(_ name: String) {
+        setImage(UIImage(systemName: name), for: .normal)
     }
 }

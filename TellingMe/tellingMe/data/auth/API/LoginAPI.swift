@@ -141,16 +141,43 @@ struct LoginAPI: Networkable {
         }
     }
 
-    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
-        makeUnauthorizedProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
+//    static func postSignUp(request: SignUpRequest, completion: @escaping (Result<SignUpResponse?, APIError>) -> Void) {
+//        makeUnauthorizedProvider().request(.signUp(request), dtoType: SignUpResponse.self, completion: completion)
+//    }
+    
+    static func postSignUp(request: SignUpRequest) -> Observable<Void> {
+        do {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .signUp(request))
+        } catch {
+            return Observable.error(error)
+        }
     }
 
     static func checkNickname(request: CheckNicknameRequest, completion: @escaping (Result<CheckNicknameResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.checkNickname(request), dtoType: CheckNicknameResponse.self, completion: completion)
     }
+    
+    static func checkNickname(request: CheckNicknameRequest) -> Observable<Void> {
+        do {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .checkNickname(request))
+        } catch {
+            return Observable.error(error)
+        }
+    }
 
-    static func postJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
+    static func checkJobInfo(request: JobInfoRequest, completion: @escaping (Result<JobInfoResponse?, APIError>) -> Void) {
         makeUnauthorizedProvider().request(.jobInfo(request), dtoType: JobInfoResponse.self, completion: completion)
+    }
+    
+    static func checkJobInfo(request: JobInfoRequest) -> Observable<Void> {
+        do {
+            let provider = makeUnauthorizedProvider()
+            return provider.request(target: .jobInfo(request))
+        } catch {
+            return Observable.error(error)
+        }
     }
 
     static func withdrawalUser(request: WithdrawalRequest, completion: @escaping(Result<EmptyResponse?, APIError>) -> Void) {

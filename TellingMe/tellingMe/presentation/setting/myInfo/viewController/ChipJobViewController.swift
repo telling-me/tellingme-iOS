@@ -13,7 +13,7 @@ class ChipJobViewController: ChipCollectionViewController {
     var selectedItem: Int = 0
     var keyboardSize: CGSize? = nil
 
-    let input = Input()
+    let input = CustomTextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ChipJobViewController: ChipCollectionViewController {
         input.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         input.heightAnchor.constraint(equalToConstant: 57).isActive = true
         input.setDisalbe()
-        input.inputBox.delegate = self
+        input.inputTextField.delegate = self
     }
 }
 

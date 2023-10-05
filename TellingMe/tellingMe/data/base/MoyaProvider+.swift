@@ -67,6 +67,33 @@ extension MoyaProvider {
             }
         }
     }
+    
+    func request(target: Target) -> Observable<Void> {
+        return Observable.create { observer in
+            let request = self.request(target) { result in
+                switch result {
+                case .success(let response):
+                    do {
+                        if let errorData = try? response.map(ErrorData.self) {
+                            observer.onError(APIError.errorData(errorData))
+                        }
+
+                        let filteredResponse = try response.filterSuccessfulStatusCodes()
+                        observer.onNext(())
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(APIError.other(error))
+                    }
+                case .failure(let error):
+                    observer.onError(APIError.other(error))
+                }
+            }
+
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
 
     func request<T: Decodable>(target: Target) -> Observable<T> {
         return Observable.create { observer in
@@ -74,9 +101,10 @@ extension MoyaProvider {
                 switch result {
                 case .success(let response):
                     do {
-                        if response.data.isEmpty {
-                            observer.onCompleted()
+                        if let errorData = try? response.map(ErrorData.self) {
+                            observer.onError(APIError.errorData(errorData))
                         }
+                        
                         let filteredResponse = try response.filterSuccessfulStatusCodes()
                         let decodedData = try filteredResponse.map(T.self)
                         observer.onNext(decodedData)

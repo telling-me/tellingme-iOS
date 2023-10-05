@@ -12,8 +12,8 @@ protocol SendNicknameDelegate: AnyObject {
     func nicknameisNotEmpty()
 }
 
-class NickNameInputViewController: UIViewController {
-    let input = Input()
+final class NickNameInputViewController: UIViewController {
+    let input = CustomTextField()
     weak var delegate: SendNicknameDelegate?
     var badwords: [String] = []
 
@@ -36,14 +36,14 @@ class NickNameInputViewController: UIViewController {
         input.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         input.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         input.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        input.inputBox.delegate = self
+        input.inputTextField.delegate = self
         // Do any additional setup after loading the view.
         madeBadWordsArray()
     }
 
     func checkBadWords() -> Bool {
         var isWord = true
-        if let text = input.inputBox.text {
+        if let text = input.inputTextField.text {
             for word in badwords where text.contains(word) {
                 isWord = false
                 break
@@ -57,11 +57,11 @@ class NickNameInputViewController: UIViewController {
     }
 
     func setText(text: String?) {
-        input.inputBox.text = text
+        input.inputTextField.text = text
     }
 //
     func getText() -> String? {
-        return input.inputBox.text
+        return input.inputTextField.text
     }
 }
 
@@ -74,7 +74,7 @@ extension NickNameInputViewController: UITextFieldDelegate {
         let utf8Char = string.cString(using: .utf8)
         let isBackSpace = strcmp(utf8Char, "\\b")
         guard let text = textField.text else { return false }
-        if isBackSpace == -92 || (string.hasCharacters()) {
+        if isBackSpace == -92 || (string.checkOnlyKoreanCharacters()) {
             return true
         }
         return false
