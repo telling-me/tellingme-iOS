@@ -11,11 +11,11 @@ import RxCocoa
 import RxSwift
 
 protocol HeaderViewDelegate: AnyObject {
-    func pushSetting(_ headerView: MainHeaderView)
-    func pushAlarmNotice(_ headerView: MainHeaderView)
+    func pushSetting(_ headerView: LogoHeaderView)
+    func pushAlarmNotice(_ headerView: LogoHeaderView)
 }
 
-class MainHeaderView: UIView {
+class LogoHeaderView: UIView {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Logo")
@@ -44,7 +44,7 @@ class MainHeaderView: UIView {
     }
 }
 
-class MainSettingHeaderView: MainHeaderView {
+class MainSettingHeaderView: LogoHeaderView {
     weak var delegate: HeaderViewDelegate?
     
     let button: UIButton = {

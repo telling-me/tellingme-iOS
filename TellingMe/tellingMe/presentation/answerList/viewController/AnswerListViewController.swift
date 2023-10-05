@@ -12,7 +12,7 @@ import RxCocoa
 class AnswerListViewController: DropDownViewController {
     let viewModel = AnswerListViewModel()
     let noneView = NoneAnswerListView()
-    @IBOutlet weak var headerView: MainHeaderView!
+    @IBOutlet weak var headerView: LogoHeaderView!
     @IBOutlet weak var yearButton: DropDownButton!
     @IBOutlet weak var monthButton: DropDownButton!
     @IBOutlet weak var containerView: UIView!

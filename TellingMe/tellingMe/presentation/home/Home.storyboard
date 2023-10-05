@@ -411,10 +411,10 @@
         <image name="BellRinging" width="151" height="163"/>
         <image name="Home" width="64" height="64"/>
         <image name="Home_selected" width="81" height="81"/>
-        <image name="Shape" width="202" height="157"/>
-        <image name="Shape1" width="66" height="73"/>
-        <image name="Shape2" width="63" height="62"/>
-        <image name="Shape3" width="76" height="74"/>
+        <image name="Shape" width="332" height="300"/>
+        <image name="Shape1" width="33" height="36.5"/>
+        <image name="Shape2" width="31.5" height="31"/>
+        <image name="Shape3" width="38" height="37"/>
         <image name="Shape4" width="27.5" height="27.5"/>
         <image name="Shape5" width="325" height="325"/>
         <image name="WingPen" width="37" height="37"/>
