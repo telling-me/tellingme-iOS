@@ -105,7 +105,6 @@ extension SharingToInstagramViewModel {
         let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
         
         if isDeviceAbnormal != false {
-            print("just abnormal 🥲")
             stickerYPointCalculated = addedViewHeight/1.48
         }
         
@@ -213,8 +212,6 @@ extension SharingToInstagramViewModel {
         addedView.backgroundColor = .Side100
         addedView.cornerRadius = 28
         addedView.layer.masksToBounds = true
-        
-        
         
         let savedImage = metaManager.saveImage(from: backgroundView)
         
