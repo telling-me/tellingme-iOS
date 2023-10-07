@@ -44,7 +44,7 @@ extension MyInfoViewController {
 
     func checkJobInfo(job: String, completion: @escaping (Bool) -> Void) {
         let request = JobInfoRequest(job: 5, jobName: job)
-        LoginAPI.checkJobInfo(request: request) { result in
+        SignAPI.checkJobInfo(request: request) { result in
             switch result {
             case .success:
                 completion(true)
@@ -64,7 +64,7 @@ extension MyInfoViewController {
 
     func checkNickname(nickname: String, completion: @escaping (Bool) -> Void) {
         let request = CheckNicknameRequest(nickname: nickname)
-        LoginAPI.checkNickname(request: request) { result in
+        SignAPI.checkNickname(request: request) { result in
             switch result {
             case .success:
                 completion(true)

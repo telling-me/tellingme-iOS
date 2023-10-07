@@ -12,13 +12,13 @@ import AuthenticationServices
 extension WithdrawalViewController {
     func withDrawalUser(authCode: String = "") {
         let request = WithdrawalRequest(authorizationCode: authCode)
-        LoginAPI.withdrawalUser(request: request) { result in
+        SignAPI.withdrawalUser(request: request) { result in
             switch result {
             case .success:
                 KeychainManager.shared.deleteAll()
-                let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                let signInViewController = SignInViewController()
+                self.navigationController?.pushViewController(signInViewController, animated: true)
+
                 if let bundleId = Bundle.main.bundleIdentifier {
                     print("All UserDefaults are removed.")
                     UserDefaults.standard.removePersistentDomain(forName: bundleId)
@@ -67,13 +67,12 @@ extension WithdrawalViewController {
 
 extension SettingTableViewController {
     func signout() {
-        LoginAPI.logout { result in
+        SignAPI.logout { result in
             switch result {
             case .success:
                 KeychainManager.shared.logout()
-                let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                let signInViewController = SignInViewController()
+                self.navigationController?.pushViewController(signInViewController, animated: true)
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):

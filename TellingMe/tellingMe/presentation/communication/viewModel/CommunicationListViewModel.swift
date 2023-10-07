@@ -23,6 +23,7 @@ class CommunicationListViewModel {
     var currentSort: String = CommunicationData.shared.currentSortValue
 //    var communicationList: [Content] = []
     let answerSuccessSubject = PublishSubject<IndexPath>()
+    let communicationInitialListSubject = PublishSubject<CommunicationListResponse>()
     let communciationListSubject = PublishSubject<CommunicationListResponse>()
 //    // 좋아요 누른 cell의 indexpath를 저장하기 위한 subject
 //    var selectedLikeCellIndex = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
@@ -87,7 +88,8 @@ class CommunicationListViewModel {
                     self?.isLast = true
                 }
                 CommunicationData.shared.setCommunicatonList(index: self?.index ?? 0, contentList: response.content)
-                self?.communciationListSubject.onNext(response)
+//                self?.communciationListSubject.onNext(response)
+                self?.communicationInitialListSubject.onNext(response)
             }, onError: { [weak self] error in
                 if case APIError.errorData(let errorData) = error {
                     self?.showToastSubject.onNext(errorData.message)
@@ -96,6 +98,7 @@ class CommunicationListViewModel {
                 } else {
                     self?.showToastSubject.onNext("An error occurred")
                 }
+                CommunicationData.shared.setCommunicatonList(index: self?.index ?? 0, contentList: [])
             }).disposed(by: disposeBag)
     }
 

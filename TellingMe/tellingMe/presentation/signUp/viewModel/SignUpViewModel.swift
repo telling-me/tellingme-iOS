@@ -203,7 +203,7 @@ extension SignUpViewModel {
         
         let request = CheckNicknameRequest(nickname: nicknameTextRelay.value)
 
-        LoginAPI.checkNickname(request: request)
+        SignAPI.checkNickname(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 checkNicknameSuccessSubject.onNext((response))
@@ -231,7 +231,7 @@ extension SignUpViewModel {
         }
         
         let request = JobInfoRequest(job: jobIndexValue.row, jobName: jobInfovalue)
-        LoginAPI.checkJobInfo(request: request)
+        SignAPI.checkJobInfo(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 checkJobInfoSuccessSubject.onNext(response)
@@ -255,7 +255,7 @@ extension SignUpViewModel {
         }
         
         let request = SignUpRequest(nickname: nicknameTextRelay.value, purpose: selectedPurposeIndex.value.sorted().intArraytoString(), job: jobIndex.row, jobInfo: jobetcTextRelay.value, gender: selectedGenderIndex.value, birthDate: birthTextRelay.value, socialId: socialId, socialLoginType: socialLoginType)
-        LoginAPI.postSignUp(request: request)
+        SignAPI.postSignUp(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 postSignIn()
@@ -274,7 +274,7 @@ extension SignUpViewModel {
             return
         }
         
-        LoginAPI.signIn(type: type, token: token)
+        SignAPI.signIn(type: type, token: token)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 KeychainManager.shared.save(response.accessToken, key: Keys.accessToken.rawValue)

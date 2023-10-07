@@ -38,6 +38,7 @@ final class CardListCollectionViewCell: UICollectionViewCell {
         let label = Body2Regular()
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.textColor = .Gray7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,6 +46,7 @@ final class CardListCollectionViewCell: UICollectionViewCell {
     let subQuestionLabel: UILabel = {
         let label = CaptionLabelRegular()
         label.textAlignment = .center
+        label.textColor = .Gray5
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -134,11 +136,12 @@ final class CardListCollectionViewCell: UICollectionViewCell {
         subQuestionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 12).isActive = true
         subQuestionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
-        answerTextView.topAnchor.constraint(equalTo: subQuestionLabel.bottomAnchor, constant: 38).isActive = true
+        answerTextView.topAnchor.constraint(equalTo: subQuestionLabel.bottomAnchor, constant: 20).isActive = true
         answerTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         answerTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        answerTextView.heightAnchor.constraint(equalToConstant: 154).isActive = true
+        
 
+        dateLabel.topAnchor.constraint(equalTo: answerTextView.bottomAnchor, constant: 14).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true

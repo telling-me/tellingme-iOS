@@ -8,6 +8,7 @@
 import UIKit
 
 class CommunityViewController: UIViewController {
+
     let viewModel = CommunicationViewModel()
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     @IBOutlet weak var cardStackView: UIStackView!
@@ -25,22 +26,27 @@ class CommunityViewController: UIViewController {
         view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()
         getQuestionList() {
-            self.setCardView()
+            self.setStackView()
             self.cardStackView.isHidden = false
             self.view.isUserInteractionEnabled = true
             self.activityIndicator.stopAnimating()
         }
     }
-
-    func setCardView() {
+    
+    func setStackView() {
         var index = 0
-        for cardView in cardStackView.arrangedSubviews {
-            guard let communityCardView = cardView as? CommunityCardView else {
-                return
-            }
+        // 이것도 시간체크해서 매번 api 호출말고 오전 6시에 바뀌도록 해야할듯
+        for subview in cardStackView.arrangedSubviews {
+            subview.removeFromSuperview()
+        }
+        
+        for data in viewModel.data {
+            let communityCardView = CommunityCardView()
+            cardStackView.frame.size.height = 142
             communityCardView.tag = index
             communityCardView.delegate = self
-            communityCardView.setData(data: viewModel.data[index])
+            communityCardView.setData(data: data)
+            cardStackView.addArrangedSubview(communityCardView)
             index += 1
         }
     }

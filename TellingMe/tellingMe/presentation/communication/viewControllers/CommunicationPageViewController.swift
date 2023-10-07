@@ -13,6 +13,8 @@ class CommunicationPageViewController: UIPageViewController {
          let vc1 = CommunicationListViewController()
          let vc2 = CommunicationListViewController()
          let vc3 = CommunicationListViewController()
+        let vc4 = CommunicationListViewController()
+        let vc5 = CommunicationListViewController()
 
         vc1.viewModel.index = 0
         vc1.viewModel.question = CommunicationData.shared.threeDays[0]
@@ -22,13 +24,19 @@ class CommunicationPageViewController: UIPageViewController {
 
         vc3.viewModel.index = 2
         vc3.viewModel.question = CommunicationData.shared.threeDays[2]
+        
+        vc4.viewModel.index = 3
+        vc4.viewModel.question = CommunicationData.shared.threeDays[3]
+        
+        vc5.viewModel.index = 4
+        vc5.viewModel.question = CommunicationData.shared.threeDays[4]
 
-         return [vc1, vc2, vc3]
+         return [vc1, vc2, vc3, vc4, vc5]
      }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CommunicationData.shared.communicationList = [[], [], []]
+        CommunicationData.shared.communicationList = [[], [], [], [], []]
         CommunicationData.shared.currentSort = 0
 
         self.dataSource = self
@@ -65,7 +73,7 @@ extension CommunicationPageViewController: UIPageViewControllerDelegate, UIPageV
             return nil
         }
 
-        if index + 1 >= 3 {
+        if index + 1 >= 5 {
             return nil
         } else {
             let nextIndex = (index + 1) % viewControllersArray.count
@@ -81,6 +89,7 @@ extension CommunicationPageViewController: UIPageViewControllerDelegate, UIPageV
 
 extension CommunicationPageViewController {
     func prevPage() {
+        // 숫자대신 페이지뷰컨트롤러 개수나 데이터개수로 바꾸기
         if CommunicationData.shared.currentIndex - 1 <= -1 {
             self.showGreenToast(message: "첫번째 페이지입니다.")
             return
@@ -90,7 +99,7 @@ extension CommunicationPageViewController {
         }
     }
     func nextPage() {
-        if CommunicationData.shared.currentIndex + 1 >= 3 {
+        if CommunicationData.shared.currentIndex + 1 >= 5 {
             self.showGreenToast(message: "마지막 페이지입니다.")
             return
         } else {

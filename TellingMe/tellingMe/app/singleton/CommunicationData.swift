@@ -20,7 +20,7 @@ class CommunicationData {
 
     // api page를 위한
     var currentPage: Int = 0
-    var communicationList: [[Content]] = [[], [], []]
+    var communicationList: [[Content]] = [[], [], [], [], []]
     // 3일치 질문 중에 index
     var currentIndex: Int = 0
     var currentSort: Int = 0
