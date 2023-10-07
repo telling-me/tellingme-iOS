@@ -18,8 +18,9 @@
 
 
 ### 💻 개발환경
-macOS: Monterey 12.0.1
-iOS: iphone 11 pro simulator
+macOS: Sonoma 14.0
+xcode: 15.0
+iOS: iphone 15 pro simulator
 
 
 <hr>
