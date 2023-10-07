@@ -72,7 +72,7 @@ extension HomeHoverView {
             let coloredText: String = "진정한 나"
             titleLabel.attributedText = setPartialTextGreen(text: text, targetText: coloredText, attributes: colorAttributes)
         } else {
-            let text: String = "연속 \(day)일째 답변 중!"
+            let text: String = "연속 \(day)일째 기록 중!"
             titleLabel.attributedText = setNumberTextGreen(text: text, attributes: colorAttributes)
         }
     }

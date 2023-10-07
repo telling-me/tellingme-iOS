@@ -7,6 +7,7 @@
 
 import UIKit
 
+import FirebaseAnalytics
 import RxCocoa
 import RxSwift
 
@@ -35,6 +36,7 @@ final class HHomeViewController: BBaseViewController {
         super.viewDidLoad()
         passDeviceDimension()
         setNotificationCenterForBecomeActive()
+        analyze()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -348,6 +350,13 @@ extension HHomeViewController {
         animateBackground()
     }
 }
+
+extension HHomeViewController {
+    private func analyze() {
+        GAManager.shared.logEvent(eventType: .screen(screenName: "Home 화면"))
+    }
+}
+
     // MARK: - Delegates
 extension HHomeViewController: DismissAndSwitchTabDelegate {
     func dismissAndSwitchTab(to index: Int) {

@@ -102,7 +102,7 @@ extension MyPageProfileView {
             let coloredText: String = "진정한 나"
             consecutiveLabel.attributedText = setPartialTextGreen(text: text, targetText: coloredText, attributes: colorAttributes)
         } else {
-            let text: String = "연속 \(self.consecutiveDays)일째 답변 중!"
+            let text: String = "연속 \(self.consecutiveDays)일째 기록 중!"
             consecutiveLabel.attributedText = setNumberTextGreen(text: text, attributes: colorAttributes)
         }
     }
