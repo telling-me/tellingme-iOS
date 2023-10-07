@@ -30,7 +30,7 @@ final class HomeQuestionView: BBaseView {
             $0.backgroundColor = .clear
             $0.textAlignment = .center
             $0.textColor = .Logo
-            $0.text = "답변 완료!"
+            $0.text = "기록 완료!"
             $0.font = .fontNanum(.C1_Bold)
             $0.isHidden = true
         }

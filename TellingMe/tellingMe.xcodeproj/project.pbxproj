@@ -253,6 +253,7 @@
 		585A93942AB6AA9900C9B705 /* ShareDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585A93932AB6AA9900C9B705 /* ShareDTO.swift */; };
 		585A93962AB6AAA300C9B705 /* ShareAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585A93952AB6AAA300C9B705 /* ShareAPI.swift */; };
 		586061D72AC16A1400FE2733 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586061D62AC16A1400FE2733 /* TimeManager.swift */; };
+		586805DB2AD03CFC009EEA61 /* AnalyzeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */; };
 		58690DA62AB2FBF4002BAB82 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58690DA52AB2FBF4002BAB82 /* UIImage+.swift */; };
 		586EC5AB2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */; };
 		5876D10B2AA17CD0009BF9DA /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */; };
@@ -582,6 +583,7 @@
 		585A93932AB6AA9900C9B705 /* ShareDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDTO.swift; sourceTree = "<group>"; };
 		585A93952AB6AAA300C9B705 /* ShareAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAPI.swift; sourceTree = "<group>"; };
 		586061D62AC16A1400FE2733 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeManager.swift; sourceTree = "<group>"; };
 		58690DA52AB2FBF4002BAB82 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageToggleTableViewCell.swift; sourceTree = "<group>"; };
 		5876D10A2AA17CD0009BF9DA /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
@@ -1864,6 +1866,7 @@
 				58BFBB402AADA1CC004A84E8 /* VersionManager.swift */,
 				58B735182AA4A8C5007485F7 /* MetaManager.swift */,
 				586061D62AC16A1400FE2733 /* TimeManager.swift */,
+				586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -2392,6 +2395,7 @@
 				583D305C2ABED3B900E99FBA /* HomeModel.swift in Sources */,
 				3AB213202A8922DD0035EA56 /* ToastMessage.swift in Sources */,
 				58690DA62AB2FBF4002BAB82 /* UIImage+.swift in Sources */,
+				586805DB2AD03CFC009EEA61 /* AnalyzeManager.swift in Sources */,
 				3A89B3C62A78C312002DFBCD /* SortHeaderView.swift in Sources */,
 				3AB795782A6E960F009961CF /* CommunityViewController.swift in Sources */,
 				3AA1677729E830BA00B93850 /* PageRepository.swift in Sources */,
@@ -2701,7 +2705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.32;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2733,7 +2737,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.32;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
