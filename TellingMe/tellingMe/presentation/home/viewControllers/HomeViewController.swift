@@ -11,7 +11,7 @@ import FirebaseAnalytics
 import RxCocoa
 import RxSwift
 
-final class HHomeViewController: BBaseViewController {
+final class HomeViewController: BBaseViewController {
 
     // MARK: - Properties
     private let viewModel = HHomeViewModel()
@@ -221,7 +221,7 @@ final class HHomeViewController: BBaseViewController {
 }
 
     // MARK: - Helpers
-extension HHomeViewController {
+extension HomeViewController {
     
     private func checkAnswerInRow() {
         viewModel.refreshAnswerInRow()
@@ -275,7 +275,7 @@ extension HHomeViewController {
     }
 }
     // MARK: - Presentations
-extension HHomeViewController {
+extension HomeViewController {
     
     private func showPushNotification() {
         self.view.addSubviews(blurView, pushNotificationPermitView)
@@ -337,7 +337,7 @@ extension HHomeViewController {
 }
     
     // MARK: - @Objcs for NotificationCenter
-extension HHomeViewController {
+extension HomeViewController {
     @objc
     private func refreshNetwork() {
         print("Back From Background, refreshed the question.")
@@ -351,14 +351,14 @@ extension HHomeViewController {
     }
 }
 
-extension HHomeViewController {
+extension HomeViewController {
     private func analyze() {
         GAManager.shared.logEvent(eventType: .screen(screenName: "Home 화면"))
     }
 }
 
     // MARK: - Delegates
-extension HHomeViewController: DismissAndSwitchTabDelegate {
+extension HomeViewController: DismissAndSwitchTabDelegate {
     func dismissAndSwitchTab(to index: Int) {
         self.tabBarController?.selectedIndex = index
     }
