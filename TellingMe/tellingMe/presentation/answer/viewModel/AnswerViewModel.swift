@@ -12,12 +12,21 @@ class AnswerViewModel {
     let content: String = ""
     var date: String = Date().todayFormat()
     var emotion: Int? = nil
-    let emotions = [Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요")]
+    var emotions = [Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요")]
+    let plusEmotions = [
+        Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요"),
+        Emotion(image: "Excited", text: "설레요"), Emotion(image: "Thrilled", text: "신나요"), Emotion(image: "Relaxed", text: "편안해요"), Emotion(image: "Lethargic", text: "무기력해요"), Emotion(image: "Lonely", text: "외로워요"), Emotion(image: "Complicated", text: "복잡해요")
+    ]
     var questionDate: String? = Date().getQuestionDate()
     var isFull: Bool = false
 
     init() {
-
+        switch IAPManager.getHasUserPurchased() {
+        case true:
+            emotions = plusEmotions
+        case false:
+            break
+        }        
     }
 
     func setDate(date: [Int]) {
