@@ -1,5 +1,5 @@
 //
-//  HHomeViewController.swift
+//  HomeViewController.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/23.
@@ -14,7 +14,7 @@ import RxSwift
 final class HomeViewController: BBaseViewController {
 
     // MARK: - Properties
-    private let viewModel = HHomeViewModel()
+    private let viewModel = HomeViewModel()
     private let disposeBag = DisposeBag()
     private let timeManager = TimeManager.shared
     
@@ -37,6 +37,7 @@ final class HomeViewController: BBaseViewController {
         passDeviceDimension()
         setNotificationCenterForBecomeActive()
         analyze()
+        checkSubscription()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -264,6 +265,10 @@ extension HomeViewController {
     
     private func checkTodayDate() {
         viewModel.refreshIsAnsweredToday()
+    }
+    
+    private func checkSubscription() {
+        viewModel.checkPlusUser()
     }
     
     private func passDeviceDimension() {
