@@ -10,9 +10,9 @@ import RxSwift
 import RxCocoa
 import AuthenticationServices
 
-final class OnBoardingViewController: UIViewController {
+final class SignInViewController: UIViewController {
     
-    private let viewModel: OnBoardingViewModel = OnBoardingViewModel()
+    private let viewModel: SignInViewModel = SignInViewModel()
     private let disposeBag = DisposeBag()
     private let pagingIndicatorView = UIView()
     private let pagingStackView = UIStackView()
@@ -57,12 +57,11 @@ final class OnBoardingViewController: UIViewController {
     private func pushSignUp() {
         let signUpViewController = SignUpViewController()
         signUpViewController.modalPresentationStyle = .fullScreen
-        
         self.present(signUpViewController, animated: true)
     }
 }
 
-extension OnBoardingViewController {
+extension SignInViewController {
     private func bindViewModel() {
         viewModel.items
             .bind(to: collectionView.rx.items(cellIdentifier: OnBoardingCollectionViewCell.id, cellType: OnBoardingCollectionViewCell.self)) { (row, element, cell) in
@@ -199,7 +198,7 @@ extension OnBoardingViewController {
     }
 }
 
-extension OnBoardingViewController: UICollectionViewDelegateFlowLayout {
+extension SignInViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
@@ -233,7 +232,7 @@ extension OnBoardingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension OnBoardingViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func callAppleAPI() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
@@ -250,6 +249,7 @@ extension OnBoardingViewController: ASAuthorizationControllerDelegate, ASAuthori
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if let identityToken = appleIDCredential.identityToken,
                let tokenString = String(data: identityToken, encoding: .utf8) {
+                KeychainManager.shared.save("apple", key: Keys.socialLoginType.rawValue)
                 KeychainManager.shared.save(tokenString, key: Keys.idToken.rawValue)
                 self.viewModel.signIn(type: "apple", oauthToken: tokenString)
             }

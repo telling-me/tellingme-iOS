@@ -12,7 +12,7 @@ import RxSwift
 extension SplashViewController {
     func performAutoLogin(type: String, socialId: String) -> Observable<Bool> {
         return Observable.create { observer in
-            LoginAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in
+            SignAPI.autologin(type: type, request: AutologinRequest(socialId: socialId)) { result in
                 switch result {
                 case .success(let response):
                     KeychainManager.shared.save(response!.accessToken, key: Keys.accessToken.rawValue)
@@ -30,14 +30,14 @@ extension SplashViewController {
     
     func performAutoLoginAndNavigate() {
         if UserDefaults.isFirstLaunch() {
-            self.showOnboarding()
+            self.showSignIn()
             KeychainManager.shared.deleteAll()
             return
         }
 
         guard let type = KeychainManager.shared.load(key: Keys.socialLoginType.rawValue),
               let socialId = KeychainManager.shared.load(key: Keys.socialId.rawValue) else {
-            self.showLogin()
+            self.showSignIn()
             return
         }
         performAutoLogin(type: type, socialId: socialId)
@@ -46,7 +46,7 @@ extension SplashViewController {
                 if isLogined {
                     self?.showHome()
                 } else {
-                    self?.showLogin()
+                    self?.showSignIn()
                 }
             })
             .disposed(by: disposeBag)
@@ -69,27 +69,13 @@ extension SplashViewController {
         window.makeKeyAndVisible()
     }
     
-    func showLogin() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "login") as? LoginViewController else {
-            return
-        }
-        
+    func showSignIn() {
+        let signInViewController = SignInViewController()
         guard let window = UIApplication.shared.windows.first else {
             return
         }
         
-        window.rootViewController = UINavigationController(rootViewController: vc)
-        window.makeKeyAndVisible()
-    }
-    
-    func showOnboarding() {
-        guard let window = UIApplication.shared.windows.first else {
-            return
-        }
-        
-        let vc = OnBoardingViewController()
-        window.rootViewController = vc
+        window.rootViewController = UINavigationController(rootViewController: signInViewController)
         window.makeKeyAndVisible()
     }
 }

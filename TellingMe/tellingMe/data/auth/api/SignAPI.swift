@@ -82,7 +82,7 @@ extension LoginAPITarget: TargetType {
     }
 }
 
-struct LoginAPI: Networkable {
+struct SignAPI: Networkable {
     typealias Target = LoginAPITarget
 
     static func signIn(type: String, token: String, completion: @escaping (Result<SignInResponse?, APIError>) -> Void) {

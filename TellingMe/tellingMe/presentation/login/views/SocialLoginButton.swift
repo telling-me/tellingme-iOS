@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginButton: UIButton {
+class SocialLoginButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

@@ -21,17 +21,17 @@ struct OnBoarding {
     let image: String
 }
 
-protocol OnBoardingViewModelOutputs {
+protocol SignInViewModelOutputs {
     var signInSubject: BehaviorSubject<SignInResponse> { get }
     var signUpSubject: BehaviorSubject<SignInErrorResponse> { get }
     var toastSubject: BehaviorSubject<String> { get }
 }
 
-protocol OnBoardingViewModelType {
-    var outputs: OnBoardingViewModelOutputs { get }
+protocol SignInViewModelType {
+    var outputs: SignInViewModelOutputs { get }
 }
 
-final class OnBoardingViewModel: OnBoardingViewModelType, OnBoardingViewModelOutputs {
+final class SignInViewModel: SignInViewModelType, SignInViewModelOutputs {
     public var currentPage: Int = 0
     public let items: Observable<[OnBoarding]> = Observable.just([
         OnBoarding(title: "하루 한 번,\n질문에 답변하며 나를 깨닫는 시간", highLightTitle: "나를 깨닫는 시간", subTitle: "매일 오전 6시에 배달되는 질문에\n펜 아이콘을 눌러 답변해 보아요.", image: "OnBoarding1"),
@@ -49,10 +49,10 @@ final class OnBoardingViewModel: OnBoardingViewModelType, OnBoardingViewModelOut
     var toastSubject: BehaviorSubject<String> = BehaviorSubject(value: "")
     
     private let disposeBag = DisposeBag()
-    var outputs: OnBoardingViewModelOutputs { return self }
+    var outputs: SignInViewModelOutputs { return self }
     
     func signIn(type: String, oauthToken: String) {
-        LoginAPI.signIn(type: type, token: oauthToken)
+        SignAPI.signIn(type: type, token: oauthToken)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 KeychainManager.shared.save(response.accessToken, key: Keys.accessToken.rawValue)
@@ -83,7 +83,7 @@ final class OnBoardingViewModel: OnBoardingViewModelType, OnBoardingViewModelOut
     }
 }
 
-extension OnBoardingViewModel {
+extension SignInViewModel {
     func callKakaoAPI() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -93,6 +93,7 @@ extension OnBoardingViewModel {
                     guard let oauthToken = oauthToken else {
                         return
                     }
+                    KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
                     KeychainManager.shared.save(oauthToken.accessToken, key: Keys.idToken.rawValue)
                     self.signIn(type: "kakao", oauthToken: oauthToken.accessToken)
                 }
@@ -105,6 +106,7 @@ extension OnBoardingViewModel {
                     guard let oauthToken = oauthToken else {
                         return
                     }
+                    KeychainManager.shared.save("kakao", key: Keys.socialLoginType.rawValue)
                     KeychainManager.shared.save(oauthToken.accessToken, key: Keys.idToken.rawValue)
                     self.signIn(type: "kakao", oauthToken: oauthToken.accessToken)
                 }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "온보딩1_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 310.svg",
+      "filename" : "온보딩1_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "온보딩1_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

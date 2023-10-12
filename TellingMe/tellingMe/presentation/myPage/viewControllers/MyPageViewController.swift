@@ -234,13 +234,12 @@ extension MyPageViewController {
 
 extension MyPageViewController {
     private func signout() {
-        LoginAPI.logout { result in
+        SignAPI.logout { result in
             switch result {
             case .success:
                 KeychainManager.shared.logout()
-                let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                let signInViewController = SignInViewController()
+                self.navigationController?.pushViewController(signInViewController, animated: true)
                 
                 if let bundleId = Bundle.main.bundleIdentifier {
                     print("All UserDefaults are removed.")

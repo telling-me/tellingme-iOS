@@ -51,8 +51,6 @@ class CommunicationListViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // 정렬 기준이 바뀌었으면 다시 0부터 불러오기
-        print(self.viewModel.currentSort, CommunicationData.shared.currentSortValue)
         if CommunicationData.shared.currentSortValue != viewModel.currentSort {
             viewModel.getIntialCommunicationList()
         }
@@ -87,14 +85,20 @@ class CommunicationListViewController: UIViewController {
 
     func bindViewModel() {
         // communicationList 받기
-        viewModel.communciationListSubject
+        viewModel.communicationInitialListSubject
             .subscribe(onNext: { [weak self] response in
-                guard let self = self else { return }
-                if response.content.isEmpty {
+                guard let self else { return }
+                if CommunicationData.shared.communicationList[viewModel.index].isEmpty {
                     self.noneView.isHidden = false
                 } else {
                     self.noneView.isHidden = true
+                    self.collectionView.contentOffset = CGPoint(x: 0, y: 0)
                 }
+                reloadCollectionView()
+            }).disposed(by: disposeBag)
+        viewModel.communciationListSubject
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
                 reloadCollectionView()
             }).disposed(by: disposeBag)
         viewModel.answerSuccessSubject

@@ -37,17 +37,6 @@ class CommunicationDetailViewController: UIViewController {
         }
     }
 
-//    func pushCommunicationAnswer(_ indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Communication", bundle: nil)
-//        guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
-//            return
-//        }
-//        viewController.viewModel.index = viewModel.index
-//        let data = CommunicationData.shared.communicationList[viewModel.index][indexPath.row]
-//        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(indexPath: indexPath, question: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase), answer: data))
-//        self.navigationController?.pushViewController(viewController, animated: true)
-//    }
-
     @objc func clickPageControlButton(_ sender: UITapGestureRecognizer) {
         // prev
         if sender.view?.tag == 0 {
