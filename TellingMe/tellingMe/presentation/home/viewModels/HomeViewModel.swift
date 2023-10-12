@@ -1,5 +1,5 @@
 //
-//  HHomeViewModel.swift
+//  HomeViewModel.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/23.
@@ -108,7 +108,6 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
         let userDefaults = UserDefaults.standard
         var paidUserNumber: String? = userDefaults.string(forKey: StringLiterals.paidProductId)
         // 구매를 확인하는 기능이 들어갈 곳
-        userDefaults.set("plusPaid", forKey: StringLiterals.paidProductId)
     }
 }
 
