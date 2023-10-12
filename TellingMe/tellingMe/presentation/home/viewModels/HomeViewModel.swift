@@ -42,7 +42,7 @@ protocol HomeViewModelType {
 
 // MARK: - ViewModel
 
-final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
+final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
     
     private var disposeBag = DisposeBag()
     
@@ -108,10 +108,11 @@ final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewM
         let userDefaults = UserDefaults.standard
         var paidUserNumber: String? = userDefaults.string(forKey: StringLiterals.paidProductId)
         // 구매를 확인하는 기능이 들어갈 곳
+        userDefaults.set("plusPaid", forKey: StringLiterals.paidProductId)
     }
 }
 
-extension HHomeViewModel {
+extension HomeViewModel {
     
     // TODO: Custom Error 만들고 분기처리하기
     private func getMainComponentData() {
@@ -233,7 +234,7 @@ extension HHomeViewModel {
     }
 }
 
-extension HHomeViewModel {
+extension HomeViewModel {
     
     private func presentNotificationAuthorization() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
