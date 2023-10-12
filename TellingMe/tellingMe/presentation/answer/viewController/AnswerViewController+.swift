@@ -36,7 +36,7 @@ extension AnswerViewController: UITextViewDelegate {
         attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, attributedText.length))
 
         answerTextView.attributedText = attributedText
-        if answerTextView.text.count > 300 {
+        if answerTextView.text.count > self.typeLimit {
             self.viewModel.isFull = true
         } else {
             self.viewModel.isFull = false
@@ -57,10 +57,10 @@ extension AnswerViewController: UITextViewDelegate {
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.count > 300 {
+        if textView.text.count > self.typeLimit {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             textView.text.removeLast()
-            countTextLabel.text = "\(300)"
+            countTextLabel.text = "\(self.typeLimit)"
         }
     }
 }
