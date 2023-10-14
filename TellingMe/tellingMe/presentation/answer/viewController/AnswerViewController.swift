@@ -19,26 +19,35 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
 
     @IBOutlet weak var countTextLabel: UILabel!
+    @IBOutlet weak var textLimitLabel: UILabel!
     @IBOutlet weak var foldView: UIView!
     @IBOutlet weak var foldViewHeight: NSLayoutConstraint!
 
     @IBOutlet weak var publicSwitch: UISwitch!
 
     let viewModel = AnswerViewModel()
-
+    var typeLimit: Int = 300
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getQuestion()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.dayLabel.text = viewModel.date
+        switch IAPManager.getHasUserPurchased() {
+        case true:
+            self.typeLimit = 500
+            self.textLimitLabel.text = "/ \(typeLimit)"
+        case false:
+            self.textLimitLabel.text = "/ \(typeLimit)"
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if answerTextView.text.count > 300 {
+        if answerTextView.text.count > self.typeLimit {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             answerTextView.text.removeLast()
-            countTextLabel.text = "\(300)"
+            countTextLabel.text = "\(typeLimit)"
         }
          answerTextView.resignFirstResponder()
      }
@@ -90,10 +99,10 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
 
     @IBAction func clickComplete(_ sender: UIButton) {
         viewModel.modalChanged = 1
-        if answerTextView.text.count > 300 {
+        if answerTextView.text.count > self.typeLimit {
         // 글자수 제한에 걸리면 마지막 글자를 삭제함.
             answerTextView.text.removeLast()
-            countTextLabel.text = "\(300)"
+            countTextLabel.text = "\(self.typeLimit)"
         } else if answerTextView.text.count <= 3 {
             self.showToast(message: "4글자 이상 작성해주세요")
             answerTextView.resignFirstResponder()

@@ -1,5 +1,5 @@
 //
-//  HHomeViewModel.swift
+//  HomeViewModel.swift
 //  tellingMe
 //
 //  Created by KYUBO A. SHIM on 2023/09/23.
@@ -24,6 +24,7 @@ protocol HomeViewModelInputs {
     func refreshAnswerInRow()
     func permitPushNotification()
     func declinePushNotification()
+    func checkPlusUser()
 }
 
 protocol HomeViewModelOutputs {
@@ -41,7 +42,7 @@ protocol HomeViewModelType {
 
 // MARK: - ViewModel
 
-final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
+final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
     
     private var disposeBag = DisposeBag()
     
@@ -101,9 +102,16 @@ final class HHomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewM
     func declinePushNotification() {
         postPushNotificationWith(status: false)
     }
+    
+    // TODO: 인앱 결제 정보 받기
+    func checkPlusUser() {
+        let userDefaults = UserDefaults.standard
+        var paidUserNumber: String? = userDefaults.string(forKey: StringLiterals.paidProductId)
+        // 구매를 확인하는 기능이 들어갈 곳
+    }
 }
 
-extension HHomeViewModel {
+extension HomeViewModel {
     
     // TODO: Custom Error 만들고 분기처리하기
     private func getMainComponentData() {
@@ -225,7 +233,7 @@ extension HHomeViewModel {
     }
 }
 
-extension HHomeViewModel {
+extension HomeViewModel {
     
     private func presentNotificationAuthorization() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

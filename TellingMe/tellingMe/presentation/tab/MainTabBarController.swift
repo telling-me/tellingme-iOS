@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupTabBarViewControllers() {
-        let homeViewController = HHomeViewController()
+        let homeViewController = HomeViewController()
         
         let storyboardForAnswerList = UIStoryboard(name: "AnswerList", bundle: nil)
         let stortboardForMyLibrary = UIStoryboard(name: "Library", bundle: nil)
