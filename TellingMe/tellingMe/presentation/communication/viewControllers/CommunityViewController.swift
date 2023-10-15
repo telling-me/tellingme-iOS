@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class CommunityViewController: UIViewController {
 
@@ -49,6 +50,31 @@ class CommunityViewController: UIViewController {
             cardStackView.addArrangedSubview(communityCardView)
             index += 1
         }
+    }
+    
+    @IBAction func refundTest(_ sender: UIButton) {
+        guard let scene = view.window?.windowScene else { return }
+         
+         async {
+             guard case .verified(let transaction) = await Transaction.latest(for: "premium_1") else { return }
+             
+             do {
+                 let status = try await transaction.beginRefundRequest(in: view.window!.windowScene!)
+                 
+                 switch status {
+                 case .userCancelled:
+                     break
+                 case .success:
+                     // Maybe show something in the UI indicating that the refund is processing
+                     break
+                 @unknown default:
+                     assertionFailure("Unexpected status")
+                     break
+                 }
+             } catch {
+                 print("Refund request failed to start: \(error)")
+             }
+         }
     }
 }
 
