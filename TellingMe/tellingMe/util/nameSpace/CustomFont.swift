@@ -25,6 +25,8 @@ enum FontLevel {
 
     // MARK: - Korean
 
+    case H2_Bold // 32
+    case H2_Regular
     case H3_Bold //26
     case H3_Regular
     case H4_Bold // 24
@@ -47,42 +49,30 @@ extension FontLevel {
 
     public var fontWeight: String {
         switch self {
-        case .H3_Bold, .H4_Bold, .H5_Bold, .H6_Bold, .B1_Bold, .B2_Bold, .C1_Bold:
+        case .H2_Bold, .H3_Bold, .H4_Bold, .H5_Bold, .H6_Bold, .B1_Bold, .B2_Bold, .C1_Bold:
             return NanumSquareRoundType.bold.weight
-        case .H3_Regular, .H4_Regular, .H5_Regular, .H6_Regular, .B1_Regular, .B2_Regular ,.C1_Regular:
+        case .H2_Regular, .H3_Regular, .H4_Regular, .H5_Regular, .H6_Regular, .B1_Regular, .B2_Regular ,.C1_Regular:
             return NanumSquareRoundType.regular.weight
         }
     }
 
     public var fontSize: CGFloat {
         switch self {
-        case .H3_Bold:
+        case .H2_Bold, .H2_Regular:
+            return 32
+        case .H3_Bold, .H3_Regular:
             return 26
-        case .H3_Regular:
-            return 26
-        case .H4_Bold:
+        case .H4_Bold, .H4_Regular:
             return 24
-        case .H4_Regular:
-            return 24
-        case .H5_Bold:
+        case .H5_Bold, .H5_Regular:
             return 19
-        case .H5_Regular:
-            return 19
-        case .H6_Bold:
+        case .H6_Bold, .H6_Regular:
             return 17
-        case .H6_Regular:
-            return 17
-        case .B1_Bold:
+        case .B1_Bold, .B1_Regular:
             return 15
-        case .B1_Regular:
-            return 15
-        case .B2_Bold:
+        case .B2_Bold, .B2_Regular:
             return 14
-        case .B2_Regular:
-            return 14
-        case .C1_Bold:
-            return 12
-        case .C1_Regular:
+        case .C1_Bold, .C1_Regular:
             return 12
         }
     }
