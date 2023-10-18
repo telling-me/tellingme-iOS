@@ -59,16 +59,21 @@ final class MyPageViewController: EmailFeedbackViewController {
         bindViewModel()
         setLayout()
         setStyles()
+        /// delete UserDefaults!!
+        /// and Keychain Too.
+        UserDefaults.standard.set("subscribed", forKey: StringLiterals.paidProductId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadUserName()
+//        checkPlusUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         enableWhenNeeded()
+        checkPlusUser()
     }
     
     deinit {
@@ -143,20 +148,24 @@ extension MyPageViewController {
         
         settingTableView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                self?.settingTableView.deselectRow(at: indexPath, animated: true)
+                guard let self else { return }
+                self.settingTableView.deselectRow(at: indexPath, animated: true)
                 let index = indexPath.row
                 switch index {
                 case 1:
-                    self?.viewModel.inputs.termsOfUseTapped()
+                    let myPageSecurityViewController = MyPageSecurityViewController()
+                    self.navigationController?.pushViewController(myPageSecurityViewController, animated: true)
                 case 2:
-                    self?.viewModel.inputs.privatePolicyTapped()
+                    self.viewModel.inputs.termsOfUseTapped()
                 case 3:
-                    self?.viewModel.inputs.feedBackWithMailTapped()
-                    self?.sendFeedbackMail(userOf: self?.userName)
+                    self.viewModel.inputs.privatePolicyTapped()
                 case 4:
-                    self?.viewModel.inputs.questionPlantTapped()
+                    self.viewModel.inputs.feedBackWithMailTapped()
+                    self.sendFeedbackMail(userOf: self.userName)
                 case 5:
-                    self?.viewModel.inputs.withdrawalTapped()
+                    self.viewModel.inputs.questionPlantTapped()
+                case 6:
+                    self.viewModel.inputs.withdrawalTapped()
                     let settingViewModel = SettingViewModel()
                     let id = settingViewModel.items[3].id
                     let viewController = settingViewModel.items[3].view
@@ -164,10 +173,10 @@ extension MyPageViewController {
                     guard let vc = storyboard.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
                         return
                     }
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                case 6:
-                    self?.viewModel.inputs.logoutTapped()
-                    self?.signout()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case 7:
+                    self.viewModel.inputs.logoutTapped()
+                    self.signout()
                 default:
                     break
                 }
@@ -266,6 +275,16 @@ extension MyPageViewController {
             } else {
                 profileView.setUserName(newName: userNameSaved, oldName: self.userName)
             }
+        }
+    }
+    
+    private func checkPlusUser() {
+        let userDefaults = UserDefaults.standard
+        let isPlusUser = userDefaults.string(forKey: StringLiterals.paidProductId)
+        if isPlusUser != nil {
+            profileView.isUserPremiumUser(isPremium: true)
+        } else {
+            profileView.isUserPremiumUser(isPremium: false)
         }
     }
     
