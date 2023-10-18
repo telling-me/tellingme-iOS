@@ -20,4 +20,13 @@ enum Premium {
             return ImageLiterals.YearPlusButton
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .oneMonth:
+            return 0
+        case .year:
+            return 1
+        }
+    }
 }

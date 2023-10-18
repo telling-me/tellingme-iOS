@@ -6,20 +6,19 @@
 //
 
 import UIKit
+import StoreKit
 
 import RxCocoa
 import RxSwift
 import SnapKit
 import Then
 
-import StoreKit
-
-final class PremiumInformationViewController: UIViewController {
-
-    private let inAppProducts = InAppProducts()
+final class PremiumInformationViewController: BaseViewController {
+    
     private let viewModel = PremiumViewModel()
     private var disposeBag = DisposeBag()
     
+//    private let indicatorView = UIActivityIndicatorView(style: .large)
     private let navigationBarView = CustomNavigationBarView()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -51,21 +50,20 @@ extension PremiumInformationViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
-//        readyButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                if SKPaymentQueue.canMakePayments() {
-//                    if let product = self?.inAppProducts.subscriptionManager.product {
-//                        let payment = SKPayment(product: product)
-//                        SKPaymentQueue.default().add(payment)
-//                    } else {
-//                        // 상품 정보를 가져오지 못한 경우 처리
-//                    }
-//                } else {
-//                    // 사용자의 기기에서 결제를 사용할 수 없음
-//                    // 사용자에게 메시지를 표시하거나 다른 조치를 취할 수 있습니다.
-//                }
-//            })
-//            .disposed(by: disposeBag)
+        
+        viewModel.productSubject
+            .subscribe(onNext: { [weak self] products in
+                guard let self else { return }
+                setStackView(products: products)
+            })
+            .disposed(by: disposeBag)
+        
+        SubscriptionManager.shared.purchasedSubject
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.loadingStops()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setStyles() {
@@ -114,13 +112,8 @@ extension PremiumInformationViewController {
         
         plusStackView.do {
             $0.axis = .vertical
+            $0.distribution = .fillEqually
             $0.spacing = 8
-            
-            for membership in viewModel.plusMemberships {
-                let button = UIButton()
-                button.setImage(membership.buttonImage, for: .normal)
-                plusStackView.addArrangedSubview(button)
-            }
         }
     }
     
@@ -130,18 +123,13 @@ extension PremiumInformationViewController {
         contentView.addSubviews(informationImageView, infoContentView)
         infoContentView.addSubviews(infoStringImageView, termOfUseButton, privacyButton)
         bottomFixView.addSubview(plusStackView)
-
+        view.addSubview(indicatorView)
+        
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
             $0.horizontalEdges.equalToSuperview()
         }
-        
-//        readyButton.snp.makeConstraints {
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.horizontalEdges.equalToSuperview().inset(25)
-//            $0.height.equalTo(55)
-//        }
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
@@ -186,11 +174,15 @@ extension PremiumInformationViewController {
         
         bottomFixView.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview()
-            $0.height.equalTo(228)
         }
         
         plusStackView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(56)
+        }
+        
+        indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }
@@ -199,5 +191,26 @@ extension PremiumInformationViewController {
     private func getWidthOfDevice() -> CGFloat {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return 1256 }
         return appDelegate.deviceWidth
+    }
+
+    private func setStackView(products: [SKProduct]) {
+        plusStackView.snp.makeConstraints {
+            $0.height.equalTo(55 * products.count + 8 * (products.count - 1))
+        }
+        for membership in products {
+            let button = PlusPurchaseButton()
+            button.setPlus(name: membership.localizedTitle, price: membership.price)
+            plusStackView.addArrangedSubview(button)
+            
+            button.tapObservable
+                .throttle(.milliseconds(3000), latest: false, scheduler: MainScheduler.instance)
+                .observe(on: MainScheduler.instance) 
+                .bind(onNext: { [weak self] _ in
+                    guard let self else { return }
+                    self.loadingStarts()
+                    self.viewModel.purchasePlus(product: membership)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }

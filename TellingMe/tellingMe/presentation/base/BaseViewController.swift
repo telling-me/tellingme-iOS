@@ -11,6 +11,7 @@ import RxSwift
 
 class BaseViewController: UIViewController {
     private var alertView: CustomAlertView?
+    let indicatorView = UIActivityIndicatorView(style: .large)
     // bottomsheet 등 정의해두는게 어떨까?
     private var disposeBag = DisposeBag()
 
@@ -23,6 +24,12 @@ class BaseViewController: UIViewController {
 extension BaseViewController {
     private func setBaseViewController() {
         view.backgroundColor = .Side100
+        
+        indicatorView.do {
+            $0.color = .gray // 인디케이터 색상 설정
+//            activityIndicator.center = view.center // 화면 중앙에 위치
+            $0.hidesWhenStopped = true
+        }
     }
 }
 
@@ -63,6 +70,14 @@ extension BaseViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func loadingStarts() {
+        indicatorView.startAnimating()
+    }
+    
+    func loadingStops() {
+        indicatorView.stopAnimating()
     }
 }
 

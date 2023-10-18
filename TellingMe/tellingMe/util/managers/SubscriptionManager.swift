@@ -8,30 +8,63 @@
 import Foundation
 import StoreKit
 
-public struct InAppProducts {
-    static let productIdentifier = Bundle.main.subscriptionId
-    let productRequest = SKProductsRequest(productIdentifiers: Set([InAppProducts.productIdentifier]))
-    let subscriptionManager = SubscriptionManager(productId: InAppProducts.productIdentifier)
-}
+import RxSwift
+//
+//// 앱 초반에 request 시키기
+//class InAppProducts {
+//    static let shared = InAppProducts() // 공유 인스턴스 추가
+//    
+//    private let productIds: [String]
+//    private let productRequest: SKProductsRequest
+//    let subscriptionManager: SubscriptionManager
+//    
+//    
+//    private init() {
+//        self.productIds = Bundle.main.subscriptionIds
+//        self.productRequest = SKProductsRequest(productIdentifiers: Set(self.productIds))
+//        self.subscriptionManager = SubscriptionManager()
+//        SKPaymentQueue.default().add(subscriptionManager)
+//        
+//        self.productRequest.delegate = self.subscriptionManager
+//        self.productRequest.start()
+//    }
+//}
 
 class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    var product: SKProduct?
+    private let productIds: [String]
+    private let productRequest: SKProductsRequest
 
-    init(productId: String) {
+    var products: [SKProduct] = []
+    var purchasedSubject = PublishSubject<Void>()
+    var purchasingSubject = PublishSubject<Void>()
+    var canceldSubject = PublishSubject<Void>()
+    var failedSubject = PublishSubject<Void>()
+    var deferredSubject = PublishSubject<Void>()
+    var restoredSubject = PublishSubject<Void>()
+    var errorSubject = PublishSubject<String>()
+    
+    var isAuthorizedForPayments: Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
+    
+    static let shared = SubscriptionManager()
+    
+    private override init() {
+        self.productIds = Bundle.main.subscriptionIds
+        self.productRequest = SKProductsRequest(productIdentifiers: Set(self.productIds))
         super.init()
-        let productRequest = SKProductsRequest(productIdentifiers: Set([productId]))
-        productRequest.delegate = self
-
-        productRequest.start()
+        
+        self.productRequest.delegate = self
+        self.productRequest.start()
     }
     
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products)
-        if let product = response.products.first {
-            self.product = product
-        } else {
-            // 상품을 찾지 못한 경우 처리
+        // 상품이 없는 경우 종료
+        if response.products.isEmpty {
+            return
         }
+
+        self.products = response.products
     }
 
     public func request(_ request: SKRequest, didFailWithError error: Error) {
@@ -41,21 +74,58 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
+            case .purchasing:
+                purchasingSubject.onNext(())
             case .purchased:
-                // 구매 성공
-                // 여기에서 구매가 성공했을 때 실행할 코드를 작성합니다.
+                purchasedSubject.onNext(())
                 SKPaymentQueue.default().finishTransaction(transaction)
             case .failed:
-                // 구매 실패
-                // 여기에서 구매가 실패했을 때 실행할 코드를 작성합니다.
+                failedSubject.onNext(())
                 SKPaymentQueue.default().finishTransaction(transaction)
             case .restored:
-                // 복원 (restore) 처리
-                // 여기에서 구매 복원이 필요한 경우 실행할 코드를 작성합니다.
+                restoredSubject.onNext(())
                 SKPaymentQueue.default().finishTransaction(transaction)
+            case .deferred:
+                deferredSubject.onNext(())
             default:
                 break
             }
         }
+    }
+    
+    func addPaymentQueue() {
+        SKPaymentQueue.default().add(self)
+    }
+    
+    func removePaymentQueue() {
+        SKPaymentQueue.default().remove(self)
+    }
+    
+    func fetchReceipt() {
+        if let receiptURL = Bundle.main.appStoreReceiptURL {
+            do {
+                let receiptData = try Data(contentsOf: receiptURL)
+                let receiptString = receiptData.base64EncodedString(options: [])
+                // receiptString을 서버로 전송하거나 클라이언트 측에서 처리
+                print(receiptString)
+            } catch {
+                print("영수증 데이터를 읽는 데 실패했습니다: \(error.localizedDescription)")
+            }
+        } else {
+            print("앱 스토어 영수증을 찾을 수 없습니다.")
+        }
+    }
+    
+    func purchaseProduct(product: SKProduct) {
+        if isAuthorizedForPayments {
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(payment)
+        } else {
+            errorSubject.onNext("결제를 진행할 수 없습니다.")
+        }
+    }
+    
+    func restorePurchase() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }

@@ -29,10 +29,10 @@ extension Bundle {
         return key
     }
     
-    var subscriptionId: String {
-        guard let file = self.path(forResource: "KeyList", ofType: "plist") else {return ""}
-        guard let resource = NSDictionary(contentsOfFile: file) else { return "" }
-        guard let key = resource["SubscriptionId"] as? String else { fatalError("SubscriptionId 를 확인해주세요.") }
+    var subscriptionIds: [String] {
+        guard let file = self.path(forResource: "KeyList", ofType: "plist") else {return []}
+        guard let resource = NSDictionary(contentsOfFile: file) else { return [] }
+        guard let key = resource["subscriptionIds"] as? [String] else { fatalError("SubscriptionId 를 확인해주세요.") }
         return key
     }
 }
