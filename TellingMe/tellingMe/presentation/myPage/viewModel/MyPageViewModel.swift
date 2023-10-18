@@ -51,7 +51,7 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
 
     private let settingElementsData: [MyPageSettingElementsModel] = [
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "푸시 알림 받기"),
-//        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "잠금 설정"),
+        MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "잠금 설정"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "이용 약관"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "개인정보 처리방침"),
         MyPageSettingElementsModel( isElementWithLogout: false, elementTitle: "고객 센터"),
@@ -108,12 +108,11 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
     }
     
     func togglePushAlarmPermission(to permission: Bool) {
-        print("🧩 Posting Push Permission Sent to the server. : toggled to - \(permission)")
         settingViewModel.postNotification(permission)
     }
     
     func lockSettingTapped() {
-        
+        print("LockSetting Tapped")
     }
     
     func termsOfUseTapped() {
