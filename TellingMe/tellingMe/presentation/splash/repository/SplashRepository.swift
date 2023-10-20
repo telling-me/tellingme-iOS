@@ -44,12 +44,33 @@ extension SplashViewController {
             .observe(on: MainScheduler.instance) // UI 스레드에서 실행
             .subscribe(onNext: { [weak self] isLogined in
                 if isLogined {
-                    self?.showHome()
+                    self?.checkSecurity()
                 } else {
                     self?.showSignIn()
                 }
             })
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Presentation Helpers
+extension SplashViewController {
+    
+    func checkSecurity() {
+        switch SecurityManager.checkSecurityPermission() {
+        case .unlocked:
+            showHome()
+        case .withPassword, .withBiometry:
+            showSecurityView()
+        }
+    }
+    
+    func showSecurityView() {
+        let securityViewController = SecurityViewController()
+        
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        sceneDelegate.window?.rootViewController = securityViewController
+        sceneDelegate.window?.makeKeyAndVisible()
     }
     
     func showHome() {
@@ -60,22 +81,17 @@ extension SplashViewController {
         // MainTabBar의 두 번째 탭으로 이동합니다.
         tabBarController.selectedIndex = 0
         
-        // 로그인 화면을 윈도우의 rootViewController로 설정합니다.
-        guard let window = UIApplication.shared.windows.first else {
-            return
-        }
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
         
-        window.rootViewController = UINavigationController(rootViewController: tabBarController)
-        window.makeKeyAndVisible()
+        sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: tabBarController)
+        sceneDelegate.window?.makeKeyAndVisible()
     }
     
     func showSignIn() {
         let signInViewController = SignInViewController()
-        guard let window = UIApplication.shared.windows.first else {
-            return
-        }
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
         
-        window.rootViewController = UINavigationController(rootViewController: signInViewController)
-        window.makeKeyAndVisible()
+        sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: signInViewController)
+        sceneDelegate.window?.makeKeyAndVisible()
     }
 }
