@@ -15,6 +15,9 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        callKeychain()
+        
         let animationView: LottieAnimationView = LottieAnimationView(name: "Splash", configuration: LottieConfiguration(renderingEngine: .mainThread))
         splashView.addSubview(animationView)
 
@@ -27,5 +30,13 @@ class SplashViewController: UIViewController {
         animationView.play { _ in
              self.performAutoLoginAndNavigate()
          }
+    }
+}
+
+extension SplashViewController {
+    func callKeychain() {
+        print("With Password?: 🚩", KeychainManager.shared.load(of: Keys.isLockedWithPassword.keyString))
+        print("With FaceId?: 🚩", KeychainManager.shared.load(of: Keys.isLockedWithBiometry.keyString))
+        print("Password? 🚩", KeychainManager.shared.load(key: Keys.passwordKey.keyString))
     }
 }
