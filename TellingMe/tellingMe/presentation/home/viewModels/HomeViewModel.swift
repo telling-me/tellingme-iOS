@@ -106,7 +106,7 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
     // TODO: 인앱 결제 정보 받기
     func checkPlusUser() {
         let userDefaults = UserDefaults.standard
-        var paidUserNumber: String? = userDefaults.string(forKey: StringLiterals.paidProductId)
+        let paidUserNumber: String? = userDefaults.string(forKey: StringLiterals.paidProductId)
         // 구매를 확인하는 기능이 들어갈 곳
     }
 }
