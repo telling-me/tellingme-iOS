@@ -26,8 +26,7 @@ final class HomeViewController: BBaseViewController {
     private let questionView = HomeQuestionView()
     
     // MARK: - Pop Ups
-    private let blurView = BlurredBackgroundView(frame: .zero, backgroundColor: .Black, opacity: 0.2,
-                                                 blurEffect: .regular)
+    private let blurView = BlurredBackgroundView(frame: .zero, backgroundColor: .Black, opacity: 0.2,blurEffect: .regular)
     private let pushNotificationPermitView = HomePushNotificationPopUpView()
     private let networkErrorPopUpView = NetworkErrorPopUpView()
     
@@ -321,11 +320,12 @@ extension HomeViewController {
     }
     
     private func showNetworkErrorPopUp() {
+        self.tabBarController?.tabBar.isHidden = true
         view.addSubviews(blurView, networkErrorPopUpView)
         
         blurView.snp.makeConstraints {
             $0.horizontalEdges.top.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalToSuperview()
         }
         
         networkErrorPopUpView.snp.makeConstraints {
@@ -335,7 +335,7 @@ extension HomeViewController {
         }
         
         networkErrorPopUpView.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.4) {
             self.networkErrorPopUpView.transform = .identity
         }
     }
