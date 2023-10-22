@@ -56,5 +56,5 @@ enum BiometricSettingStatus {
 /// - isAdded: 1 일 때는 비밀번호가 입력이 된 상황
 /// - isAdded: 0 일 때는 비밀번호가 비어있는 상황
 struct PasswordCircleModel {
-var isAdded: Int
+    var isAdded: Int
 }
