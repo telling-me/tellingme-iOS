@@ -38,5 +38,8 @@ extension SplashViewController {
         print("With Password?: 🚩", KeychainManager.shared.load(of: Keys.isLockedWithPassword.keyString))
         print("With FaceId?: 🚩", KeychainManager.shared.load(of: Keys.isLockedWithBiometry.keyString))
         print("Password? 🚩", KeychainManager.shared.load(key: Keys.passwordKey.keyString))
+//        KeychainManager.shared.delete(key: Keys.isLockedWithPassword.keyString)
+//        KeychainManager.shared.delete(key: Keys.isLockedWithBiometry.keyString)
+//        KeychainManager.shared.delete(key: Keys.passwordKey.keyString)
     }
 }
