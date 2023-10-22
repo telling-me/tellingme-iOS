@@ -40,6 +40,8 @@ enum PasswordSettingStatus {
     case none
     case passwordNotSet
     case passwordSet
+    case passwordSetToggleOff
+    case passwordCanBeChanged
 }
 
 enum BiometricSettingStatus {

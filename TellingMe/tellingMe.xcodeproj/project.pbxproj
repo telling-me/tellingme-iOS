@@ -314,6 +314,8 @@
 		58C3AE302ABEBCA800CAA37C /* HomeQuestionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3AE2F2ABEBCA800CAA37C /* HomeQuestionBoxView.swift */; };
 		58C3AE342ABEBCF400CAA37C /* HomeWritingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3AE332ABEBCF400CAA37C /* HomeWritingButton.swift */; };
 		58C3AE362ABEBCFE00CAA37C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3AE352ABEBCFE00CAA37C /* HomeViewModel.swift */; };
+		58DA68E12AE56D2E000E9E40 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DA68E02AE56D2E000E9E40 /* LocalAuthentication.framework */; };
+		58DA68E32AE58D1F000E9E40 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA68E22AE58D1F000E9E40 /* UINavigationController+.swift */; };
 		58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7512A95C1D500F3667A /* SnapKit */; };
 		58F2E7552A95C1E900F3667A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 58F2E7542A95C1E900F3667A /* Then */; };
 		58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7592A95C62200F3667A /* AlarmAPI.swift */; };
@@ -666,6 +668,8 @@
 		58C3AE2F2ABEBCA800CAA37C /* HomeQuestionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeQuestionBoxView.swift; sourceTree = "<group>"; };
 		58C3AE332ABEBCF400CAA37C /* HomeWritingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWritingButton.swift; sourceTree = "<group>"; };
 		58C3AE352ABEBCFE00CAA37C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		58DA68E02AE56D2E000E9E40 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		58DA68E22AE58D1F000E9E40 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		58F2E7592A95C62200F3667A /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		58F2E75B2A95C63500F3667A /* AlarmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDTO.swift; sourceTree = "<group>"; };
 		58F2E7602A95E35B00F3667A /* MyPageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
@@ -687,6 +691,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DA68E12AE56D2E000E9E40 /* LocalAuthentication.framework in Frameworks */,
 				3A238C922A9B444900F27AB1 /* Differentiator in Frameworks */,
 				58F2E7872A95FF9A00F3667A /* FirebaseMessaging in Frameworks */,
 				58F2E77D2A95FF9A00F3667A /* FirebaseDatabase in Frameworks */,
@@ -1238,6 +1243,7 @@
 				5823300B2AC00F9200F8D23D /* NSObject+.swift */,
 				5817326D2AC95A76001276A2 /* UITabBarItem+.swift */,
 				586061A92ADD0A4400F22D5C /* UIButton+.swift */,
+				58DA68E22AE58D1F000E9E40 /* UINavigationController+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1320,6 +1326,7 @@
 			children = (
 				3AA289C929B8506F0030057E /* tellingMe */,
 				3AA289C829B8506F0030057E /* Products */,
+				58DA68DF2AE56D2E000E9E40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2102,8 +2109,8 @@
 		58B7C3702ADA5B6100FFFADE /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				583C747B2ADFA21F00C3E154 /* SecuritySettingInitialPasswordViewController.swift */,
 				5876AF8B2AE41E3B00EBB5D7 /* SecurityViewController.swift */,
+				583C747B2ADFA21F00C3E154 /* SecuritySettingInitialPasswordViewController.swift */,
 				5876AF8D2AE41E7E00EBB5D7 /* MyPageSecurityViewController.swift */,
 			);
 			path = controllers;
@@ -2112,9 +2119,9 @@
 		58B7C3712ADA5B6800FFFADE /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5876AF912AE41EB500EBB5D7 /* SecurityViewModel.swift */,
 				583C74642ADE924F00C3E154 /* SecuritySettingViewModel.swift */,
 				5876AF8F2AE41E9700EBB5D7 /* MyPageSecurityViewModel.swift */,
-				5876AF912AE41EB500EBB5D7 /* SecurityViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -2174,6 +2181,14 @@
 				58C3AE332ABEBCF400CAA37C /* HomeWritingButton.swift */,
 			);
 			path = question;
+			sourceTree = "<group>";
+		};
+		58DA68DF2AE56D2E000E9E40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58DA68E02AE56D2E000E9E40 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		58F2E7562A95C5FE00F3667A /* alarm */ = {
@@ -2442,6 +2457,7 @@
 				3A89B3C02A77824F002DFBCD /* BackHeaderView.swift in Sources */,
 				3A943A7A29DC0D8600DAF010 /* TeritaryVerticalBothButtonCell.swift in Sources */,
 				3A3739CC2A13F0FD00739543 /* SettingHeaderView.swift in Sources */,
+				58DA68E32AE58D1F000E9E40 /* UINavigationController+.swift in Sources */,
 				3AAFF13A2AAD896F0068C939 /* OnBoardingCollectionViewCell.swift in Sources */,
 				3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */,
 				5876AF8E2AE41E7E00EBB5D7 /* MyPageSecurityViewController.swift in Sources */,
