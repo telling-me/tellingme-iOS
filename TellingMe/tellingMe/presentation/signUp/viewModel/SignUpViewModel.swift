@@ -254,7 +254,16 @@ extension SignUpViewModel {
             return
         }
         
-        let request = SignUpRequest(nickname: nicknameTextRelay.value, purpose: selectedPurposeIndex.value.sorted().intArraytoString(), job: jobIndex.row, jobInfo: jobetcTextRelay.value, gender: selectedGenderIndex.value, birthDate: birthTextRelay.value, socialId: socialId, socialLoginType: socialLoginType)
+        var selectedGenderValue: String? = nil
+        if let temp = selectedGenderIndex.value {
+            if temp == "남성" {
+                selectedGenderValue = "male"
+            } else {
+                selectedGenderValue = "female"
+            }
+        }
+        
+        let request = SignUpRequest(nickname: nicknameTextRelay.value, purpose: selectedPurposeIndex.value.sorted().intArraytoString(), job: jobIndex.row, jobInfo: jobetcTextRelay.value, gender: selectedGenderValue, birthDate: birthTextRelay.value, socialId: socialId, socialLoginType: socialLoginType)
         SignAPI.postSignUp(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
