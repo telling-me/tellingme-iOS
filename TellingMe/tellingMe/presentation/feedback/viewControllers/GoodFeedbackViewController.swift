@@ -70,6 +70,7 @@ extension GoodFeedbackViewController {
             .disposed(by: disposeBag)
 
         submitButton.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.postFeedback()
