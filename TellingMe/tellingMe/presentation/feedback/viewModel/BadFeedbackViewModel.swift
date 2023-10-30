@@ -21,7 +21,7 @@ protocol BadFeedbackViewModelOutputs {
     var reasonText: String? { get }
     
     var alertSubject: PublishSubject<String> { get }
-    var successSubject: PublishSubject<EmptyResponse> { get }
+    var successSubject: PublishSubject<Void> { get }
     var showToastSubject: PublishSubject<String> { get }
 }
 
@@ -52,7 +52,7 @@ final class BadFeedbackViewModel: BadFeedbackViewModelInputs, BadFeedbackViewMod
     var selectedFeedback = BehaviorRelay<[Int]>(value: [])
     var reasonText: String? = nil
     var alertSubject = PublishSubject<String>()
-    var successSubject = PublishSubject<EmptyResponse>()
+    var successSubject = PublishSubject<Void>()
     var showToastSubject = PublishSubject<String>()
     
     init() {
