@@ -26,7 +26,7 @@ class AnswerViewModel {
             emotions = plusEmotions
         case false:
             break
-        }        
+        }
     }
 
     func setDate(date: [Int]) {
