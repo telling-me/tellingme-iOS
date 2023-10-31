@@ -55,7 +55,7 @@ extension QuestionFeedbackAPITarget: TargetType {
 struct QuestionFeedbackAPI: Networkable {
     typealias Target = QuestionFeedbackAPITarget
 
-    static func postQuestionFeedback(request: QuestionFeedbackRequest) -> Observable<EmptyResponse> {
+    static func postQuestionFeedback(request: QuestionFeedbackRequest) -> Observable<Void> {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postQuestionFeedback(request))

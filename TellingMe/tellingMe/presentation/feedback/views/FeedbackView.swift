@@ -72,14 +72,14 @@ extension FeedbackView {
         }
         
         badLabel.snp.makeConstraints {
-            $0.top.equalTo(agreeLabel.snp.top)
-            $0.trailing.equalToSuperview()
+            $0.top.equalTo(stepView.snp.bottom).offset(4)
+            $0.leading.bottom.equalToSuperview()
             $0.height.equalTo(28)
         }
         
         agreeLabel.snp.makeConstraints {
-            $0.top.equalTo(stepView.snp.bottom).offset(4)
-            $0.leading.bottom.equalToSuperview()
+            $0.top.equalTo(badLabel.snp.top)
+            $0.trailing.equalToSuperview()
             $0.height.equalTo(28)
         }
     }

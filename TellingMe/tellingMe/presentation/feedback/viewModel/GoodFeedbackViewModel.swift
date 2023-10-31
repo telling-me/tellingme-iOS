@@ -18,7 +18,7 @@ protocol GoodFeedbackViewModelInputs {
 protocol GoodFeedbackViewModelOutputs {
     var sliderValues: [Int] { get set }
     var reasonText: String? { get }
-    var successSubject: PublishSubject<EmptyResponse> { get }
+    var successSubject: PublishSubject<Void> { get }
     var showToastSubject: PublishSubject<String> { get }
 }
 
@@ -44,7 +44,7 @@ final class GoodFeedbackViewModel: GoodFeedbackViewModelType, GoodFeedbackViewMo
     var outputs: GoodFeedbackViewModelOutputs { return self }
     var sliderValues: [Int] = [3, 3, 3]
     var reasonText: String? = nil
-    let successSubject = PublishSubject<EmptyResponse>()
+    let successSubject = PublishSubject<Void>()
     let showToastSubject = PublishSubject<String>()
     
     init() {

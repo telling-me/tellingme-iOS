@@ -41,7 +41,7 @@ final class SignUpViewController: BaseViewController {
 extension SignUpViewController {
     private func bindViewModel() {
         skipButton.rx.tap
-            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(3000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 self.scrollToNextViewController()
@@ -49,7 +49,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         leftButton.rx.tap
-            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(3000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 self.scrollToPrevViewController()
@@ -57,7 +57,7 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
         
         rightButton.rx.tap
-            .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(3000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
                 switch viewModel.currentIndex {
