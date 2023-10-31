@@ -25,6 +25,7 @@ protocol HomeViewModelInputs {
     func permitPushNotification()
     func declinePushNotification()
     func checkPlusUser()
+    func recheckPushNotificationPermission()
 }
 
 protocol HomeViewModelOutputs {
@@ -103,6 +104,12 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
         postPushNotificationWith(status: false)
     }
     
+    func recheckPushNotificationPermission() {
+        if isPushTokenSavedInKeyChain() == false {
+            loadPushNotificationPopUpIfNeeded()
+        }
+    }
+    
     // TODO: 인앱 결제 정보 받기
     func checkPlusUser() {
         let userDefaults = UserDefaults.standard
@@ -118,7 +125,6 @@ extension HomeViewModel {
         let query: String = self.getNewDateString()
         
         QuestionAPI.getTodayQuestion(query: query)
-            .retry(maxAttempts: 3, delay: 2)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 let data: QuestionModel = QuestionModel(date: response.date, title: response.title, phrase: response.phrase, isErrorOccured: false)
@@ -134,7 +140,6 @@ extension HomeViewModel {
     
     private func loadPushNotificationPopUpIfNeeded() {
         UserAPI.getPushNotificationInfo()
-            .retry(maxAttempts: 3, delay: 2)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 let notificationStatus = response.allowNotification
