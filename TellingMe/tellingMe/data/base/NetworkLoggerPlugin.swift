@@ -37,7 +37,7 @@ struct NetworkLoggerPlugin: PluginType {
         if let body = httpRequest.httpBody, let bodyString = String(bytes: body, encoding: String.Encoding.utf8) {
             httpLog.append("BODY: \n\(bodyString)\n")
         }
-        httpLog.append("[HTTP Request End]")
+        httpLog.append("[HTTP Request End]\n")
 
         print(httpLog)
     }
@@ -76,7 +76,7 @@ struct NetworkLoggerPlugin: PluginType {
         if let responseString = String(bytes: response.data, encoding: String.Encoding.utf8) {
             httpLog.append("\(responseString)\n")
         }
-        httpLog.append("[HTTP Response End]")
+        httpLog.append("[HTTP Response End]\n")
 
         print(httpLog)
     }
@@ -94,7 +94,7 @@ struct NetworkLoggerPlugin: PluginType {
                 ERRORCODE: \(error.errorCode)\n
                 """
         httpLog.append("MESSAGE: \(error.failureReason ?? error.errorDescription ?? "unknown error")\n")
-        httpLog.append("[HTTP Error End]")
+        httpLog.append("[HTTP Error End]\n")
 
         print(httpLog)
     }
