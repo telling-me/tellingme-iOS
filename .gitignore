@@ -200,6 +200,7 @@ Info.plist
 KeyList.plist
 
 TellingMe/tellingMe/presentation/secure/
+TellingMe/tellingMe/data/secure/api/
 TellingMe/tellingMe/document/
 TellingMe/document/
 badWords.txt
