@@ -31,6 +31,7 @@ final class HomeViewController: BBaseViewController {
     private let networkErrorPopUpView = NetworkErrorPopUpView()
     
     // MARK: - Life Cycle
+    // TODO: 회원 가입 후, 푸시알림이 안 뜨는 문제 고치기
     override func viewDidLoad() {
         super.viewDidLoad()
         passDeviceDimension()
@@ -46,6 +47,7 @@ final class HomeViewController: BBaseViewController {
         checkIsTodayAnswered()
         checkTodayDate()
         checkAnswerInRow()
+        checkNotificationKeychain()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -338,6 +340,10 @@ extension HomeViewController {
         UIView.animate(withDuration: 0.4) {
             self.networkErrorPopUpView.transform = .identity
         }
+    }
+    
+    private func checkNotificationKeychain() {
+        viewModel.inputs.recheckPushNotificationPermission()
     }
 }
     
