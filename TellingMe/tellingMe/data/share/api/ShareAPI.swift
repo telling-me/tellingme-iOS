@@ -55,7 +55,7 @@ extension ShareAPITarget: TargetType {
 struct ShareAPI: Networkable {
     typealias Target = ShareAPITarget
     
-    static func postShareType(request: ShareTypeRequest) -> Observable<EmptyResponse> {
+    static func postShareType(request: ShareTypeRequest) -> Observable<Void> {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postSharedType(request))
