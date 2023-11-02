@@ -31,7 +31,7 @@ extension SplashViewController {
     func performAutoLoginAndNavigate() {
         if UserDefaults.isFirstLaunch() {
             self.showSignIn()
-            KeychainManager.shared.deleteAll()
+            KeychainManager.shared.deleteAllExceptSecureKeys()
             return
         }
 

@@ -270,6 +270,7 @@
 		586061D72AC16A1400FE2733 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586061D62AC16A1400FE2733 /* TimeManager.swift */; };
 		586805DB2AD03CFC009EEA61 /* AnalyzeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */; };
 		58690DA62AB2FBF4002BAB82 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58690DA52AB2FBF4002BAB82 /* UIImage+.swift */; };
+		586B70FD2AF3953B00EDF135 /* LoadingIndicatorWithBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586B70FC2AF3953B00EDF135 /* LoadingIndicatorWithBackgroundView.swift */; };
 		586EC5AB2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */; };
 		5876AF8A2AE41E0C00EBB5D7 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876AF892AE41E0C00EBB5D7 /* StringLiterals.swift */; };
 		5876AF8C2AE41E3B00EBB5D7 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876AF8B2AE41E3B00EBB5D7 /* SecurityViewController.swift */; };
@@ -282,6 +283,11 @@
 		589E78462AAF38B500BB9213 /* PremiumInformationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78452AAF38B500BB9213 /* PremiumInformationFooterView.swift */; };
 		589E78482AAF450600BB9213 /* PremiumDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78472AAF450600BB9213 /* PremiumDataSource.swift */; };
 		589E784A2AAF4BCA00BB9213 /* UpcomingInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E78492AAF4BCA00BB9213 /* UpcomingInformationButton.swift */; };
+		58A344662AF1224900D12049 /* EmailRegisterForLostPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A344652AF1224900D12049 /* EmailRegisterForLostPasswordView.swift */; };
+		58A3446B2AF14DC100D12049 /* RespondingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A3446A2AF14DC100D12049 /* RespondingTextField.swift */; };
+		58A3446E2AF16A7D00D12049 /* InquireLostPasswordPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A3446D2AF16A7D00D12049 /* InquireLostPasswordPopView.swift */; };
+		58A344732AF2157C00D12049 /* SecureDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A344722AF2157C00D12049 /* SecureDTO.swift */; };
+		58A344752AF2158200D12049 /* SecureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A344742AF2158200D12049 /* SecureAPI.swift */; };
 		58A6AD412A9DCA1400BCC2AC /* MyPageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */; };
 		58A6AD422A9DCA1400BCC2AC /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD382A9DCA1400BCC2AC /* CustomNavigationBarView.swift */; };
 		58A6AD432A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */; };
@@ -624,6 +630,7 @@
 		586061D62AC16A1400FE2733 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeManager.swift; sourceTree = "<group>"; };
 		58690DA52AB2FBF4002BAB82 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		586B70FC2AF3953B00EDF135 /* LoadingIndicatorWithBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorWithBackgroundView.swift; sourceTree = "<group>"; };
 		586EC5AA2AA85CAB003981A6 /* MyPageToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageToggleTableViewCell.swift; sourceTree = "<group>"; };
 		5876AF892AE41E0C00EBB5D7 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		5876AF8B2AE41E3B00EBB5D7 /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
@@ -636,6 +643,11 @@
 		589E78452AAF38B500BB9213 /* PremiumInformationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationFooterView.swift; sourceTree = "<group>"; };
 		589E78472AAF450600BB9213 /* PremiumDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumDataSource.swift; sourceTree = "<group>"; };
 		589E78492AAF4BCA00BB9213 /* UpcomingInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingInformationButton.swift; sourceTree = "<group>"; };
+		58A344652AF1224900D12049 /* EmailRegisterForLostPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterForLostPasswordView.swift; sourceTree = "<group>"; };
+		58A3446A2AF14DC100D12049 /* RespondingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondingTextField.swift; sourceTree = "<group>"; };
+		58A3446D2AF16A7D00D12049 /* InquireLostPasswordPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireLostPasswordPopView.swift; sourceTree = "<group>"; };
+		58A344722AF2157C00D12049 /* SecureDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDTO.swift; sourceTree = "<group>"; };
+		58A344742AF2158200D12049 /* SecureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAPI.swift; sourceTree = "<group>"; };
 		58A6AD372A9DCA1400BCC2AC /* MyPageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageBoxView.swift; sourceTree = "<group>"; };
 		58A6AD382A9DCA1400BCC2AC /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		58A6AD3A2A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMainIconCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1039,6 +1051,7 @@
 		3A4C38522A0CCC9300FEFAAE /* common */ = {
 			isa = PBXGroup;
 			children = (
+				58A344692AF14D9A00D12049 /* textfield */,
 				5800B7032AC56B7D0028F75A /* button */,
 				5800B6FC2AC55FAA0028F75A /* network */,
 				58FB359F2AC1D4DB00F9A7E5 /* background */,
@@ -1979,6 +1992,8 @@
 		586061B12ADD4B2E00F22D5C /* secure */ = {
 			isa = PBXGroup;
 			children = (
+				58A3446F2AF2153300D12049 /* api */,
+				58A344712AF2154700D12049 /* dto */,
 				586061B22ADD4B3A00F22D5C /* model */,
 			);
 			path = secure;
@@ -1990,6 +2005,47 @@
 				586061B32ADD4B4500F22D5C /* SecureModel.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		58A344642AF1220700D12049 /* emailRegister */ = {
+			isa = PBXGroup;
+			children = (
+				58A344652AF1224900D12049 /* EmailRegisterForLostPasswordView.swift */,
+			);
+			path = emailRegister;
+			sourceTree = "<group>";
+		};
+		58A344692AF14D9A00D12049 /* textfield */ = {
+			isa = PBXGroup;
+			children = (
+				58A3446A2AF14DC100D12049 /* RespondingTextField.swift */,
+			);
+			path = textfield;
+			sourceTree = "<group>";
+		};
+		58A3446C2AF169F100D12049 /* inquireLostPassword */ = {
+			isa = PBXGroup;
+			children = (
+				58A3446D2AF16A7D00D12049 /* InquireLostPasswordPopView.swift */,
+				586B70FC2AF3953B00EDF135 /* LoadingIndicatorWithBackgroundView.swift */,
+			);
+			path = inquireLostPassword;
+			sourceTree = "<group>";
+		};
+		58A3446F2AF2153300D12049 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				58A344742AF2158200D12049 /* SecureAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		58A344712AF2154700D12049 /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				58A344722AF2157C00D12049 /* SecureDTO.swift */,
+			);
+			path = dto;
 			sourceTree = "<group>";
 		};
 		58A6AD352A9DC9C700BCC2AC /* myPage */ = {
@@ -2101,6 +2157,8 @@
 				586061A12ADCFD1900F22D5C /* PasswordPresentationHeaderView.swift */,
 				586061A52ADD046A00F22D5C /* SecureNumberPadView.swift */,
 				586061A72ADD083700F22D5C /* InquirePasswordView.swift */,
+				58A3446C2AF169F100D12049 /* inquireLostPassword */,
+				58A344642AF1220700D12049 /* emailRegister */,
 				586061A02ADCFCDB00F22D5C /* components */,
 			);
 			path = views;
@@ -2430,6 +2488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A3446E2AF16A7D00D12049 /* InquireLostPasswordPopView.swift in Sources */,
 				583814F62ABD338E008D808A /* RxSwift+.swift in Sources */,
 				589E78482AAF450600BB9213 /* PremiumDataSource.swift in Sources */,
 				58A6AD422A9DCA1400BCC2AC /* CustomNavigationBarView.swift in Sources */,
@@ -2465,6 +2524,7 @@
 				58B735192AA4A8C5007485F7 /* MetaManager.swift in Sources */,
 				583C74652ADE924F00C3E154 /* SecuritySettingViewModel.swift in Sources */,
 				3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */,
+				58A344662AF1224900D12049 /* EmailRegisterForLostPasswordView.swift in Sources */,
 				3A409B4529E1A5FD00A05B22 /* SignUpData.swift in Sources */,
 				58A6AD442A9DCA1400BCC2AC /* MyPageTableViewCell.swift in Sources */,
 				3AEBB2C12A14B4EB006880E0 /* CustomTextField.swift in Sources */,
@@ -2506,6 +2566,7 @@
 				3ABB84802A80BCF300540269 /* CommunicationAnswerViewController.swift in Sources */,
 				3A7121422A03A86B00A02054 /* AnswerListDTO.swift in Sources */,
 				3AB0E3CB2A1B3A0700B13755 /* ModifyAnswerRepository.swift in Sources */,
+				58A344732AF2157C00D12049 /* SecureDTO.swift in Sources */,
 				3ABB84572A7ACD8100540269 /* LikeDTO.swift in Sources */,
 				3A4C384D2A0CC88900FEFAAE /* MyInfoViewController.swift in Sources */,
 				3A409B4229E148C700A05B22 /* SignUpDTO.swift in Sources */,
@@ -2608,11 +2669,13 @@
 				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
 				583B80A62A9674E6009399D1 /* CustomModalBarView.swift in Sources */,
 				58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */,
+				586B70FD2AF3953B00EDF135 /* LoadingIndicatorWithBackgroundView.swift in Sources */,
 				3ABB848C2A833F3500540269 /* ReportCollectionViewCell.swift in Sources */,
 				586061AA2ADD0A4400F22D5C /* UIButton+.swift in Sources */,
 				3AAFF1362AAAEBEE0068C939 /* SignInViewController.swift in Sources */,
 				3A5076EB29C82E2F00C7A5E9 /* Encodable+.swift in Sources */,
 				3AAFF1382AAB88E20068C939 /* SignInViewModel.swift in Sources */,
+				58A344752AF2158200D12049 /* SecureAPI.swift in Sources */,
 				3ACC45E929D198CA000843F5 /* GetPurposeController.swift in Sources */,
 				3A1C068A2A0C10BA00534BAE /* SettingTableViewCell.swift in Sources */,
 				58A6AD462A9DCA1400BCC2AC /* MyPageViewModel.swift in Sources */,
@@ -2727,6 +2790,7 @@
 				58F2E79D2A9601B200F3667A /* ProgressBar.swift in Sources */,
 				3A320F5A2A73E6240098E8C9 /* CommunicationDetailCell.swift in Sources */,
 				3A3739B92A1243E300739543 /* ChipCollectionViewController.swift in Sources */,
+				58A3446B2AF14DC100D12049 /* RespondingTextField.swift in Sources */,
 				5876AF902AE41E9700EBB5D7 /* MyPageSecurityViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
