@@ -176,7 +176,7 @@ extension MyPageViewController {
                     self.navigationController?.pushViewController(vc, animated: true)
                 case 7:
                     self.viewModel.inputs.logoutTapped()
-                    self.signout()
+                    self.showWarningAlertOfSecurityAllGoneWhenLogOut()
                 default:
                     break
                 }
@@ -242,10 +242,29 @@ extension MyPageViewController {
 }
 
 extension MyPageViewController {
+    private func showWarningAlertOfSecurityAllGoneWhenLogOut() {
+        if SecurityManager.checkIfAnySecurityIsSet() != false {
+            let alert = UIAlertController(title: "로그아웃을 하면 잠금이 풀립니다.", message: "로그아웃을 하면 백업 이메일을 제외한 디바이스의 모든 잠금이 풀립니다. 진행하시겠습니까?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "취소", style: .default)
+            let confirmAction = UIAlertAction(title: "확인", style: .destructive) { [weak self] _ in
+                guard let self else { return }
+                self.signout()
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(confirmAction)
+            present(alert, animated: false)
+        } else {
+            signout()
+        }
+    }
+    
     private func signout() {
-        SignAPI.logout { result in
+        SignAPI.logout { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success:
+                KeychainManager.shared.deleteOnlySecureKeys()
                 KeychainManager.shared.logout()
                 let signInViewController = SignInViewController()
                 self.navigationController?.pushViewController(signInViewController, animated: true)
