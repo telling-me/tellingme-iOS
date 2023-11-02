@@ -165,7 +165,6 @@ extension HomeViewModel {
     
     private func getIsAnyAlarmUnread() {
         AlarmNotificationAPI.getAlarmSummary()
-            .retry(maxAttempts: 2, delay: 1)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 self.isAlarmUnread.accept(response.status)
@@ -191,7 +190,6 @@ extension HomeViewModel {
         let query: String = getNewDateString()
         
         AnswerAPI.getAnswerRecord(query: query)
-            .retry(maxAttempts: 2, delay: 1)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
                 self.answerInRow.accept(response.count)
