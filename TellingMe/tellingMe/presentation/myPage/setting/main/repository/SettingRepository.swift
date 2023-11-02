@@ -17,7 +17,10 @@ extension WithdrawalViewController {
             case .success:
                 KeychainManager.shared.deleteAll()
                 let signInViewController = SignInViewController()
-                self.navigationController?.pushViewController(signInViewController, animated: true)
+                guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+                
+                sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: signInViewController)
+                sceneDelegate.window?.makeKeyAndVisible()
 
                 if let bundleId = Bundle.main.bundleIdentifier {
                     print("All UserDefaults are removed.")
