@@ -267,13 +267,17 @@ extension MyPageViewController {
                 KeychainManager.shared.deleteOnlySecureKeys()
                 KeychainManager.shared.logout()
                 let signInViewController = SignInViewController()
-                self.navigationController?.pushViewController(signInViewController, animated: true)
+                guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+                
+                sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: signInViewController)
+                sceneDelegate.window?.makeKeyAndVisible()
                 
                 if let bundleId = Bundle.main.bundleIdentifier {
                     print("All UserDefaults are removed.")
                     UserDefaults.standard.removePersistentDomain(forName: bundleId)
                     UserDefaults.setLaunchedBeforeFlag()
                 }
+
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
