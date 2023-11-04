@@ -10,6 +10,7 @@ import Moya
 import RxSwift
 
 extension MoyaProvider {
+    /// Not Observable, only Moya and completion
     func request<Data: Codable>(
         _ target: Target,
         dtoType: Data.Type,
@@ -39,6 +40,7 @@ extension MoyaProvider {
         }
     }
 
+    /// Not Observable, only Moya and completion
     func request(
         _ target: Target,
         dtoType: Data.Type,
@@ -68,6 +70,7 @@ extension MoyaProvider {
         }
     }
     
+    /// Empty(Void) Response일 때 사용하세요.
     func request(target: Target) -> Observable<Void> {
         return Observable.create { observer in
             let request = self.request(target) { result in
@@ -95,6 +98,7 @@ extension MoyaProvider {
         }
     }
 
+    /// Empty(Void) Response가 아니고 응답값이 있을 때 사용하세요.
     func request<T: Decodable>(target: Target) -> Observable<T> {
         return Observable.create { observer in
             let request = self.request(target) { result in

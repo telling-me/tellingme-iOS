@@ -148,4 +148,3 @@ extension AlarmNoticeViewModel {
             .disposed(by: disposeBag)
     }
 }
-
