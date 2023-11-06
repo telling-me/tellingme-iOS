@@ -14,31 +14,31 @@ extension UIView {
         }
     }
     
-    func setGradient(color1: UIColor, color2: UIColor) {
-        let shapes = UIView()
-        shapes.frame = self.frame
-        shapes.clipsToBounds = true
-        self.addSubview(shapes)
+//    func setGradient(color1: UIColor, color2: UIColor) {
+//        let shapes = UIView()
+//        shapes.frame = self.frame
+//        shapes.clipsToBounds = true
+//        self.addSubview(shapes)
+//
+//        let gradient: CAGradientLayer = CAGradientLayer()
+//        gradient.colors = [color1.cgColor, color2.cgColor]
+//        gradient.locations = [0.0, 1.0]
+//        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
+//        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
+//        gradient.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1.03, b: -0.76, c: 0.53, d: 1.03, tx: -0.26, ty: 0.4))
+//        gradient.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
+//        gradient.position = self.center
+//        shapes.layer.addSublayer(gradient)
+//    }
 
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [color1.cgColor, color2.cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
-        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
-        gradient.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1.03, b: -0.76, c: 0.53, d: 1.03, tx: -0.26, ty: 0.4))
-        gradient.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
-        gradient.position = self.center
-        shapes.layer.addSublayer(gradient)
-    }
-
-    func setShadow2() {
-        self.layer.shadowColor = UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9).cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = 20
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.masksToBounds = false
-    }
-
+//    func setShadow2() {
+//        self.layer.shadowColor = UIColor(red: 0.68, green: 0.892, blue: 0.823, alpha: 0.9).cgColor
+//        self.layer.shadowOpacity = 1
+//        self.layer.shadowRadius = 20
+//        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        layer.masksToBounds = false
+//    }
+//
     func setShadow(shadowRadius: CGFloat) {
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
         layer.shadowOpacity = 1
@@ -49,6 +49,23 @@ extension UIView {
 
     func setTopCornerRadius() {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    func setBorder(borderWidth: CGFloat, borderColor: UIColor) {
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = borderWidth
+    }
+    
+    func setGradientBorder(borderWidth: CGFloat, cornerRadius: CGFloat) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        
+        gradientLayer.colors = [UIColor(hex: "#7CEFA7").cgColor, UIColor(hex: "#8FD3F4").cgColor]
+        gradientLayer.borderWidth = borderWidth
+        
+        gradientLayer.cornerRadius = cornerRadius
+        
+        layer.addSublayer(gradientLayer)
     }
 }
 

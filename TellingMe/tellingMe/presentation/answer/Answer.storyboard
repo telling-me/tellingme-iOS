@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -102,10 +102,24 @@
                                             <constraint firstItem="kj3-8I-5bY" firstAttribute="top" secondItem="Qhj-U0-bW3" secondAttribute="top" id="ps0-Pj-Ieg"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-q4-Vhf">
+                                        <rect key="frame" x="300" y="21" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="F8U-Kh-N0d"/>
+                                            <constraint firstAttribute="height" constant="32" id="UuU-Yv-xgM"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Switch"/>
+                                        <connections>
+                                            <action selector="changeQuestion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TRI-Ru-55o"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ziq-q4-Vhf" firstAttribute="centerY" secondItem="5k7-OZ-W5u" secondAttribute="centerY" id="1jz-xG-IUM"/>
                                     <constraint firstItem="Qhj-U0-bW3" firstAttribute="top" secondItem="PDg-xm-jfN" secondAttribute="top" constant="21" id="Bf0-UD-p75"/>
+                                    <constraint firstItem="5k7-OZ-W5u" firstAttribute="leading" secondItem="ziq-q4-Vhf" secondAttribute="trailing" constant="8" id="Dp4-eU-5ZX"/>
                                     <constraint firstItem="Qhj-U0-bW3" firstAttribute="centerX" secondItem="PDg-xm-jfN" secondAttribute="centerX" id="JbJ-QT-dDN"/>
                                     <constraint firstItem="5k7-OZ-W5u" firstAttribute="top" secondItem="PDg-xm-jfN" secondAttribute="top" constant="21" id="Jca-eP-eqK"/>
                                     <constraint firstAttribute="trailing" secondItem="5k7-OZ-W5u" secondAttribute="trailing" constant="21" id="Xhp-9O-xZ2"/>
@@ -693,7 +707,7 @@
             <size key="intrinsicContentSize" width="217.33333333333334" height="20.333333333333332"/>
         </designable>
         <designable name="Evb-sA-cV5">
-            <size key="intrinsicContentSize" width="31" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="GSv-NP-tba"/>
         <designable name="HSz-l7-619">
@@ -720,7 +734,7 @@
             <size key="intrinsicContentSize" width="173" height="20.333333333333332"/>
         </designable>
         <designable name="dVw-Jc-ghz">
-            <size key="intrinsicContentSize" width="31" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="ewL-Nc-7nL"/>
         <designable name="fda-mo-Yu9"/>
@@ -730,8 +744,9 @@
         </designable>
     </designables>
     <resources>
+        <image name="Switch" width="24" height="24"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="chevron.up" catalog="system" width="128" height="70"/>
+        <image name="chevron.up" catalog="system" width="32" height="32"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

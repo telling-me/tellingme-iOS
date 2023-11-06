@@ -26,6 +26,7 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var publicSwitch: UISwitch!
 
     let viewModel = AnswerViewModel()
+    let changeQuestionView = ChangeQuestionView()
     var typeLimit: Int = 300
     
     override func viewDidLoad() {
@@ -95,6 +96,10 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBAction func clickBack(_ sender: UIButton) {
         viewModel.modalChanged = 0
         showModal(id: "cancelAnswerModal")
+    }
+
+    @IBAction func changeQuestion(_ sender: UIButton) {
+        
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {

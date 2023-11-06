@@ -117,6 +117,11 @@
 		3A9B415B29FFE24600D61D42 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */; };
 		3A9F31942AEEB9B4004B3416 /* MyInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F31932AEEB9B4004B3416 /* MyInfoRepository.swift */; };
 		3A9F31962AEEBAED004B3416 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F31952AEEBAED004B3416 /* JobTableViewCell.swift */; };
+		3A9F31982AF13294004B3416 /* ChangeQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F31972AF13294004B3416 /* ChangeQuestionView.swift */; };
+		3A9F319A2AF135A5004B3416 /* TodayQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F31992AF135A5004B3416 /* TodayQuestionView.swift */; };
+		3A9F319D2AF13A22004B3416 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F319C2AF13A22004B3416 /* QuestionModel.swift */; };
+		3A9F319F2AF13BCA004B3416 /* SpecialQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F319E2AF13BCA004B3416 /* SpecialQuestionView.swift */; };
+		3A9F31A12AF16562004B3416 /* AAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F31A02AF16562004B3416 /* AAnswerViewController.swift */; };
 		3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */; };
 		3AA289CB29B8506F0030057E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CA29B8506F0030057E /* AppDelegate.swift */; };
 		3AA289CD29B8506F0030057E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA289CC29B8506F0030057E /* SceneDelegate.swift */; };
@@ -455,6 +460,11 @@
 		3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		3A9F31932AEEB9B4004B3416 /* MyInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoRepository.swift; sourceTree = "<group>"; };
 		3A9F31952AEEBAED004B3416 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		3A9F31972AF13294004B3416 /* ChangeQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeQuestionView.swift; sourceTree = "<group>"; };
+		3A9F31992AF135A5004B3416 /* TodayQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayQuestionView.swift; sourceTree = "<group>"; };
+		3A9F319C2AF13A22004B3416 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		3A9F319E2AF13BCA004B3416 /* SpecialQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialQuestionView.swift; sourceTree = "<group>"; };
+		3A9F31A02AF16562004B3416 /* AAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAnswerViewController.swift; sourceTree = "<group>"; };
 		3AA1677029E8295C00B93850 /* CheckNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNicknameDTO.swift; sourceTree = "<group>"; };
 		3AA1677329E82D8500B93850 /* badWords.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = badWords.txt; sourceTree = "<group>"; };
 		3AA289C729B8506F0030057E /* tellingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tellingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1046,6 +1056,7 @@
 		3A68972929FA797700797D9A /* answer */ = {
 			isa = PBXGroup;
 			children = (
+				3A9F319B2AF13A12004B3416 /* model */,
 				3ABC335A2A1F85F00076206C /* view */,
 				3AFA371B2A1A1A2D008A5657 /* viewModel */,
 				3AFA371A2A1A1A07008A5657 /* repository */,
@@ -1247,6 +1258,14 @@
 				3A68CC2F2AC9F17B00C97E59 /* PurposeViewController.swift */,
 			);
 			path = pages;
+			sourceTree = "<group>";
+		};
+		3A9F319B2AF13A12004B3416 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F319C2AF13A22004B3416 /* QuestionModel.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		3AA1677229E82D1F00B93850 /* document */ = {
@@ -1504,6 +1523,9 @@
 			isa = PBXGroup;
 			children = (
 				3AEC414529FAD3D10042A548 /* EmotionCollectionViewCell.swift */,
+				3A9F31972AF13294004B3416 /* ChangeQuestionView.swift */,
+				3A9F31992AF135A5004B3416 /* TodayQuestionView.swift */,
+				3A9F319E2AF13BCA004B3416 /* SpecialQuestionView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1742,6 +1764,7 @@
 				3A9B415A29FFE24600D61D42 /* AnswerViewController.swift */,
 				3A1E403C2A1A650600F1F109 /* AnswerViewController+.swift */,
 				3AB0E3C62A1B394D00B13755 /* ModifyAnswerViewController.swift */,
+				3A9F31A02AF16562004B3416 /* AAnswerViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -2461,6 +2484,8 @@
 				58AFC8512AA21DEF0045B876 /* ContentWithTextView.swift in Sources */,
 				3AA4B63B2A9F045300824313 /* LibraryInfoCollectionViewCell.swift in Sources */,
 				3A68CC282AC3C4AB00C97E59 /* BoxCheckboxView.swift in Sources */,
+				3A9F319D2AF13A22004B3416 /* QuestionModel.swift in Sources */,
+				3A9F319F2AF13BCA004B3416 /* SpecialQuestionView.swift in Sources */,
 				3A3739C92A13E4F900739543 /* SettingViewModel.swift in Sources */,
 				3A8FAACB2ACC297D008C8CA3 /* SignUpModel.swift in Sources */,
 				58BB76EB2AD80AFA004AF4BE /* Products.swift in Sources */,
@@ -2554,6 +2579,7 @@
 				3AEC414229FACBF60042A548 /* EmotionViewController.swift in Sources */,
 				3A775D0829C1DBBA00FCD3BC /* designable.swift in Sources */,
 				3A8667D32A531B9800C6BE96 /* CardListCollectionViewCell.swift in Sources */,
+				3A9F31A12AF16562004B3416 /* AAnswerViewController.swift in Sources */,
 				583D30612ABEE4F900E99FBA /* BBaseViewController.swift in Sources */,
 				3AB33EE92A9A4B1D00470CD5 /* HorizontalHeaderCollectionViewFlowLayout.swift in Sources */,
 				3A68CC2E2AC9D12400C97E59 /* JobViewController.swift in Sources */,
@@ -2569,6 +2595,7 @@
 				3AB33EE32A99DD5300470CD5 /* LibraryViewController.swift in Sources */,
 				58F2E75C2A95C63500F3667A /* AlarmDTO.swift in Sources */,
 				3ACEBB002AB0E135008F4600 /* TeritaryModifiedTextButton.swift in Sources */,
+				3A9F319A2AF135A5004B3416 /* TodayQuestionView.swift in Sources */,
 				3A7121372A02D01A00A02054 /* AnswerListTableViewCell.swift in Sources */,
 				584445812A9E00B8004433D1 /* UIImageView+.swift in Sources */,
 				5800B7022AC56A3A0028F75A /* HomePushNotificationPopUpView.swift in Sources */,
@@ -2616,6 +2643,7 @@
 				3A5076F529C8352200C7A5E9 /* SignAPI.swift in Sources */,
 				3A7570C329F16F4900D24116 /* SecondayIconButton.swift in Sources */,
 				3AA4B6392A9EFE5900824313 /* LibraryInfoView.swift in Sources */,
+				3A9F31982AF13294004B3416 /* ChangeQuestionView.swift in Sources */,
 				3ABB84C12A8382EA00540269 /* ReportViewModel.swift in Sources */,
 				3AF324C02AC063D700995DBE /* BaseViewController.swift in Sources */,
 				3A1C06882A0C0C5D00534BAE /* SettingTableViewController.swift in Sources */,
