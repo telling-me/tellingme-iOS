@@ -86,7 +86,13 @@ extension SignInViewController {
         viewModel.outputs.signInSubject
             .skip(1)
             .bind(onNext: { [weak self] _ in
-                self?.pushHome()
+                guard let self else { return }
+                switch SecurityManager.checkSecurityPermission() {
+                case .unlocked:
+                    self.pushHome()
+                case .withPassword, .withBiometry:
+                    self.showSecurityView()
+                }
             })
             .disposed(by: disposeBag)
         viewModel.outputs.signUpSubject
@@ -196,6 +202,14 @@ extension SignInViewController {
             $0.tintColor = .black
         }
     }
+    
+    func showSecurityView() {
+        let securityViewController = SecurityViewController()
+        
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        sceneDelegate.window?.rootViewController = securityViewController
+        sceneDelegate.window?.makeKeyAndVisible()
+    }
 }
 
 extension SignInViewController: UICollectionViewDelegateFlowLayout {
@@ -257,8 +271,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizati
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
             let password = passwordCredential.password
-
-
         default:
             break
         }

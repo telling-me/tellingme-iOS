@@ -59,7 +59,6 @@ extension AlarmReadAllSectionView {
         readAllButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(25)
             $0.verticalEdges.equalToSuperview().inset(4)
-//            $0.width.equalTo(70)
         }
     }
 }

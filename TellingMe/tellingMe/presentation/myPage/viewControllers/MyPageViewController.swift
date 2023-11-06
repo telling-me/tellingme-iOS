@@ -59,16 +59,21 @@ final class MyPageViewController: EmailFeedbackViewController {
         bindViewModel()
         setLayout()
         setStyles()
+        /// delete UserDefaults!!
+        /// and Keychain Too.
+        UserDefaults.standard.set("subscribed", forKey: StringLiterals.paidProductId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadUserName()
+//        checkPlusUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         enableWhenNeeded()
+        checkPlusUser()
     }
     
     deinit {
@@ -143,20 +148,24 @@ extension MyPageViewController {
         
         settingTableView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                self?.settingTableView.deselectRow(at: indexPath, animated: true)
+                guard let self else { return }
+                self.settingTableView.deselectRow(at: indexPath, animated: true)
                 let index = indexPath.row
                 switch index {
                 case 1:
-                    self?.viewModel.inputs.termsOfUseTapped()
+                    let myPageSecurityViewController = MyPageSecurityViewController()
+                    self.navigationController?.pushViewController(myPageSecurityViewController, animated: true)
                 case 2:
-                    self?.viewModel.inputs.privatePolicyTapped()
+                    self.viewModel.inputs.termsOfUseTapped()
                 case 3:
-                    self?.viewModel.inputs.feedBackWithMailTapped()
-                    self?.sendFeedbackMail(userOf: self?.userName)
+                    self.viewModel.inputs.privatePolicyTapped()
                 case 4:
-                    self?.viewModel.inputs.questionPlantTapped()
+                    self.viewModel.inputs.feedBackWithMailTapped()
+                    self.sendFeedbackMail(userOf: self.userName)
                 case 5:
-                    self?.viewModel.inputs.withdrawalTapped()
+                    self.viewModel.inputs.questionPlantTapped()
+                case 6:
+                    self.viewModel.inputs.withdrawalTapped()
                     let settingViewModel = SettingViewModel()
                     let id = settingViewModel.items[3].id
                     let viewController = settingViewModel.items[3].view
@@ -164,10 +173,10 @@ extension MyPageViewController {
                     guard let vc = storyboard.instantiateViewController(withIdentifier: id) ?? viewController as? UIViewController else {
                         return
                     }
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                case 6:
-                    self?.viewModel.inputs.logoutTapped()
-                    self?.signout()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case 7:
+                    self.viewModel.inputs.logoutTapped()
+                    self.showWarningAlertOfSecurityAllGoneWhenLogOut()
                 default:
                     break
                 }
@@ -233,19 +242,42 @@ extension MyPageViewController {
 }
 
 extension MyPageViewController {
+    private func showWarningAlertOfSecurityAllGoneWhenLogOut() {
+        if SecurityManager.checkIfAnySecurityIsSet() != false {
+            let alert = UIAlertController(title: "로그아웃을 하면 잠금이 풀립니다.", message: "로그아웃을 하면 백업 이메일을 제외한 디바이스의 모든 잠금이 풀립니다. 진행하시겠습니까?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "취소", style: .default)
+            let confirmAction = UIAlertAction(title: "확인", style: .destructive) { [weak self] _ in
+                guard let self else { return }
+                self.signout()
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(confirmAction)
+            present(alert, animated: false)
+        } else {
+            signout()
+        }
+    }
+    
     private func signout() {
-        SignAPI.logout { result in
+        SignAPI.logout { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success:
+                KeychainManager.shared.deleteOnlySecureKeys()
                 KeychainManager.shared.logout()
                 let signInViewController = SignInViewController()
-                self.navigationController?.pushViewController(signInViewController, animated: true)
+                guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+                
+                sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: signInViewController)
+                sceneDelegate.window?.makeKeyAndVisible()
                 
                 if let bundleId = Bundle.main.bundleIdentifier {
                     print("All UserDefaults are removed.")
                     UserDefaults.standard.removePersistentDomain(forName: bundleId)
                     UserDefaults.setLaunchedBeforeFlag()
                 }
+
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
@@ -266,6 +298,16 @@ extension MyPageViewController {
             } else {
                 profileView.setUserName(newName: userNameSaved, oldName: self.userName)
             }
+        }
+    }
+    
+    private func checkPlusUser() {
+        let userDefaults = UserDefaults.standard
+        let isPlusUser = userDefaults.string(forKey: StringLiterals.paidProductId)
+        if isPlusUser != nil {
+            profileView.isUserPremiumUser(isPremium: true)
+        } else {
+            profileView.isUserPremiumUser(isPremium: false)
         }
     }
     

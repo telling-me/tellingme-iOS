@@ -131,7 +131,7 @@ struct AlarmNotificationAPI: Networkable {
         }
     }
     
-    static func postAllAlarmAsRead() -> Observable<EmptyResponse> {
+    static func postAllAlarmAsRead() -> Observable<Void> {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postAllAlarmAsRead)
@@ -141,7 +141,7 @@ struct AlarmNotificationAPI: Networkable {
         }
     }
     
-    static func postSingleAlarmAsRead(selectedId: Int) -> Observable<EmptyResponse> {
+    static func postSingleAlarmAsRead(selectedId: Int) -> Observable<Void> {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .postSingleAlarmAsRead(.init(noticeId: selectedId)))
@@ -151,7 +151,7 @@ struct AlarmNotificationAPI: Networkable {
         }
     }
     
-    static func deleteSingleAlarm(selectedId: Int) -> Observable<EmptyResponse> {
+    static func deleteSingleAlarm(selectedId: Int) -> Observable<Void> {
         do {
             let provider = try makeAuthorizedProvider()
             return provider.request(target: .deleteSingleAlarm(.init(noticeId: selectedId)))
