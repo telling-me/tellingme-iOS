@@ -14,11 +14,7 @@ class CommunicationAnswerViewModel {
         // 3일치 질문 중 index
         let index: Int
         let indexPath: IndexPath
-        let question: QuestionResponse
-
-        static var defaultData: ReceiveData {
-            return ReceiveData(index: 0, indexPath: IndexPath(row: 0, section: 0), question: QuestionResponse.standardQuestion)
-        }
+        let question: Question
     }
     var index: Int = 0
     var answerId: Int {
@@ -28,7 +24,7 @@ class CommunicationAnswerViewModel {
     // answerviewcontroller와 좋아요 데이터를 공유하기 위한 subject
     var shareLikeSubject = PublishSubject<LikeResponse>()
     // 전 뷰컨트롤러로부터 받는 데이터 개체
-    let dataSubject = BehaviorSubject<ReceiveData>(value: ReceiveData.defaultData)
+    let dataSubject = PublishSubject<ReceiveData>()
     // Answr 데이터 개체
     let answerSubject = PublishSubject<GetAnswerRespose>()
     var answerData = GetAnswerRespose.emptyAnswer

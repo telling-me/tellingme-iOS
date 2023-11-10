@@ -16,6 +16,10 @@ extension AnswerViewController {
         QuestionAPI.getTodayQuestion(query: date) { result in
             switch result {
             case .success(let response):
+                self.question = {
+                    return Question(date: response?.date, question: response!.title, phrase: response!.phrase)
+                }()
+                self.spareQuestion = SpareQuestion(date: response?.date, spareQuestion: response!.spareTitle ?? "", sparePhrase: response!.sparePhrase ?? "")
                 self.questionLabel.text = response?.title.replacingOccurrences(of: "\\n", with: "\n")
                 self.subQuestionLabel.text = response?.phrase.replacingOccurrences(of: "\\n", with: "\n")
                 if let year = response?.date[0],

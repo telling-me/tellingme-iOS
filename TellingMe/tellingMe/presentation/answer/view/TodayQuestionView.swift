@@ -14,11 +14,22 @@ import Then
 final class TodayQuestionView: UIView {
     let questionLabel = UILabel()
     let phraseLabel = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setStyles()
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension TodayQuestionView {
     private func setStyles() {
         backgroundColor = .Side200
+        layer.cornerRadius = 20
         
         questionLabel.do {
             $0.textColor = .Black

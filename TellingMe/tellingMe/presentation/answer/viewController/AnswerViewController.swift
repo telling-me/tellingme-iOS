@@ -29,6 +29,9 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     let changeQuestionView = ChangeQuestionView()
     var typeLimit: Int = 300
     
+    var question: Question = .init(date: nil, question: "", phrase: "")
+    var spareQuestion: SpareQuestion = .init(date: nil, spareQuestion: "", sparePhrase: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getQuestion()
@@ -99,7 +102,12 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func changeQuestion(_ sender: UIButton) {
-        
+        view.addSubview(changeQuestionView)
+        changeQuestionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        changeQuestionView.setQuestion(todayQuestion: question, specialQuestion: spareQuestion)
+        changeQuestionView.animate()
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {

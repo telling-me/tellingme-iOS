@@ -65,7 +65,7 @@ class CommunicationListViewController: UIViewController {
         questionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         questionViewOriginalHeightConstraint = questionView.heightAnchor.constraint(equalToConstant: 120)
         questionViewOriginalHeightConstraint.isActive = true
-        questionView.setQuestion(data: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase))
+        questionView.setQuestion(data: Question(date: viewModel.question.date, question: viewModel.question.title, phrase: viewModel.question.phrase))
 
         view.addSubview(collectionView)
         collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -130,7 +130,7 @@ class CommunicationListViewController: UIViewController {
         guard let viewController = storyboard.instantiateViewController(identifier: "communicationAnswerViewController") as? CommunicationAnswerViewController else {
             return
         }
-        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(index: viewModel.index, indexPath: indexPath, question: QuestionResponse(date: viewModel.question.date, title: viewModel.question.title, phrase: viewModel.question.phrase)))
+        viewController.viewModel.dataSubject.onNext(CommunicationAnswerViewModel.ReceiveData(index: viewModel.index, indexPath: indexPath, question: Question(date: viewModel.question.date, question: viewModel.question.title, phrase: viewModel.question.phrase)))
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }

@@ -8,6 +8,13 @@
 import Foundation
 
 struct Question {
+    let date: [Int]?
     let question: String
     let phrase: String
+}
+
+struct SpareQuestion {
+    let date: [Int]?
+    let spareQuestion: String
+    let sparePhrase: String
 }
