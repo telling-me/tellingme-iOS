@@ -17,6 +17,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         callKeychain()
+        resetBackgroundStayedTime()
         
         let animationView: LottieAnimationView = LottieAnimationView(name: "Splash", configuration: LottieConfiguration(renderingEngine: .mainThread))
         splashView.addSubview(animationView)
@@ -34,12 +35,13 @@ class SplashViewController: UIViewController {
 }
 
 extension SplashViewController {
-    func callKeychain() {
-//        print(KeychainManager.shared.load(of: Keys.isLockedWithPassword.keyString), "🔗")
-//        print(KeychainManager.shared.load(of: Keys.isLockedWithBiometry.keyString), "🔗")
-//        print(KeychainManager.shared.load(key: Keys.passwordKey.keyString), "🔗")
-//        KeychainManager.shared.delete(key: Keys.isLockedWithPassword.keyString)
-//        KeychainManager.shared.delete(key: Keys.isLockedWithBiometry.keyString)
-//        KeychainManager.shared.delete(key: Keys.passwordKey.keyString)
+    private func resetBackgroundStayedTime() {
+        UserDefaults.standard.set(0, forKey: StringLiterals.backgroundStayingTime)
+    }
+    
+    private func callKeychain() {
+        KeychainManager.shared.delete(key: Keys.isLockedWithPassword.keyString)
+        KeychainManager.shared.delete(key: Keys.isLockedWithBiometry.keyString)
+        KeychainManager.shared.delete(key: Keys.passwordKey.keyString)
     }
 }
