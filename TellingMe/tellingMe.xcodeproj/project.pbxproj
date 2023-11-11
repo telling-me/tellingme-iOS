@@ -341,6 +341,7 @@
 		58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7AF2A961A7500F3667A /* CustomFont.swift */; };
 		58F2E7B22A961BFF00F3667A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2E7B12A961BFF00F3667A /* Color+.swift */; };
 		58F31AD52AB20F0000949AFD /* TellingEBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F31AD42AB20F0000949AFD /* TellingEBookViewController.swift */; };
+		58F9A3632AFF9A5A007FEE5D /* AppBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F9A3622AFF9A5A007FEE5D /* AppBackgroundView.swift */; };
 		58FB35A12AC1D4F000F9A7E5 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB35A02AC1D4F000F9A7E5 /* BlurredBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
@@ -653,6 +654,7 @@
 		58F2E7AF2A961A7500F3667A /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		58F2E7B12A961BFF00F3667A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		58F31AD42AB20F0000949AFD /* TellingEBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellingEBookViewController.swift; sourceTree = "<group>"; };
+		58F9A3622AFF9A5A007FEE5D /* AppBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackgroundView.swift; sourceTree = "<group>"; };
 		58FB35A02AC1D4F000F9A7E5 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2240,6 +2242,7 @@
 			isa = PBXGroup;
 			children = (
 				58FB35A02AC1D4F000F9A7E5 /* BlurredBackgroundView.swift */,
+				58F9A3622AFF9A5A007FEE5D /* AppBackgroundView.swift */,
 			);
 			path = background;
 			sourceTree = "<group>";
@@ -2590,6 +2593,7 @@
 				58A6AD432A9DCA1400BCC2AC /* MyPageMainIconCollectionViewCell.swift in Sources */,
 				3A5076E729C82DB400C7A5E9 /* ResponseData.swift in Sources */,
 				58C3AE272ABEBC1800CAA37C /* HomeHeaderView.swift in Sources */,
+				58F9A3632AFF9A5A007FEE5D /* AppBackgroundView.swift in Sources */,
 				3AF97FBC2A191646008FB590 /* RegisterAnswerDTO.swift in Sources */,
 				583B80A62A9674E6009399D1 /* CustomModalBarView.swift in Sources */,
 				58F2E7B02A961A7500F3667A /* CustomFont.swift in Sources */,
