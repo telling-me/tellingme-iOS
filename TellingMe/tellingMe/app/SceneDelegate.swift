@@ -104,29 +104,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-//extension SceneDelegate {
-//    
-//    private func presentSecureViewController() {
-//        let secureViewController = SecurityViewController()
-//        secureViewController.modalPresentationStyle = .overFullScreen
-//        window?.rootViewController?.present(secureViewController, animated: false)
-//    }
-//    
-//    private func showSecureImageForBackgroundStatus(isBackground: Bool) {
-//        let imageTagNumber: Int = -20
-//        let backgroundView = window?.viewWithTag(imageTagNumber)
-//        
-//        if isBackground != false {
-//            if backgroundView == nil {
-//                let backgroundImageView = AppBackgroundView()
-//                backgroundImageView.frame = window!.frame
-//                backgroundImageView.tag = imageTagNumber
-//                window?.addSubview(backgroundImageView)
-//            }
-//        } else {
-//            if let backgroundView {
-//                backgroundView.removeFromSuperview()
-//            }
-//        }
-//    }
-//}
+extension SceneDelegate {
+    
+    private func presentSecureViewController() {
+        let secureViewController = SecurityViewController()
+        secureViewController.modalPresentationStyle = .overFullScreen
+        window?.rootViewController?.present(secureViewController, animated: false)
+    }
+    
+    private func showSecureImageForBackgroundStatus(isBackground: Bool) {
+        let imageTagNumber: Int = -20
+        let backgroundView = window?.viewWithTag(imageTagNumber)
+        
+        if isBackground != false {
+            if backgroundView == nil {
+                let backgroundImageView = AppBackgroundView()
+                backgroundImageView.frame = window!.frame
+                backgroundImageView.tag = imageTagNumber
+                window?.addSubview(backgroundImageView)
+            }
+        } else {
+            if let backgroundView {
+                backgroundView.removeFromSuperview()
+            }
+        }
+    }
+}
