@@ -61,7 +61,8 @@ final class MyPageViewController: EmailFeedbackViewController {
         setStyles()
         /// delete UserDefaults!!
         /// and Keychain Too.
-        UserDefaults.standard.set("subscribed", forKey: StringLiterals.paidProductId)
+        /// 우선 10 부터 시작
+        UserDefaults.standard.set(10, forKey: StringLiterals.paidProductId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
