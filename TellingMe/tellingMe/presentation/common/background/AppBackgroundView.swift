@@ -7,14 +7,25 @@
 
 import UIKit
 
-class AppBackgroundView: UIView {
+final class AppBackgroundView: BBaseView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private let logoImage = UIImageView()
+    
+    override func setStyles() {
+        self.backgroundColor = .Side100
+        
+        logoImage.do {
+            $0.image = ImageLiterals.HomeLogo
+            $0.contentMode = .scaleAspectFit
+        }
     }
-    */
-
+    
+    override func setLayout() {
+        self.addSubview(logoImage)
+        
+        logoImage.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(100)
+        }
+    }
 }
