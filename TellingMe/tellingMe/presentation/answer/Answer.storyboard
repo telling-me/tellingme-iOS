@@ -746,7 +746,7 @@
     <resources>
         <image name="Switch" width="24" height="24"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="chevron.up" catalog="system" width="32" height="32"/>
+        <image name="chevron.up" catalog="system" width="128" height="70"/>
         <namedColor name="Gray5">
             <color red="0.50199997425079346" green="0.53700000047683716" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

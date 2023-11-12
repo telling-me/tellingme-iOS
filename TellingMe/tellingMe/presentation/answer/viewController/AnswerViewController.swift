@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
@@ -26,10 +29,15 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     @IBOutlet weak var publicSwitch: UISwitch!
 
     let viewModel = AnswerViewModel()
-    let changeQuestionView = ChangeQuestionView()
+    let changeToSpareQuestionView = ChangeToSpareQuestionView()
+    let changeToOriginQuestionView = ChangeToOriginQuestionView()
+
     var typeLimit: Int = 300
     
-    var question: Question = .init(date: nil, question: "", phrase: "")
+    private let disposeBag = DisposeBag()
+    
+    var isSpare: Bool = false
+    var todayQuestion: Question = .init(date: nil, question: "", phrase: "")
     var spareQuestion: SpareQuestion = .init(date: nil, spareQuestion: "", sparePhrase: "")
     
     override func viewDidLoad() {
@@ -45,6 +53,10 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
         case false:
             self.textLimitLabel.text = "/ \(typeLimit)"
         }
+
+        bindViewModel()
+        setStyles()
+        setLayout()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -102,12 +114,11 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
     }
 
     @IBAction func changeQuestion(_ sender: UIButton) {
-        view.addSubview(changeQuestionView)
-        changeQuestionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        if isSpare {
+            showChangeToOriginQuestionView()
+        } else {
+            showChangeToSpareQuestionView()
         }
-        changeQuestionView.setQuestion(todayQuestion: question, specialQuestion: spareQuestion)
-        changeQuestionView.animate()
     }
 
     @IBAction func clickComplete(_ sender: UIButton) {
@@ -153,5 +164,72 @@ class AnswerViewController: UIViewController, ModalActionDelegate {
             self.postAnswer()
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func showChangeToSpareQuestionView() {
+        changeToSpareQuestionView.setQuestion(todayQuestion: todayQuestion, specialQuestion: spareQuestion)
+        changeToSpareQuestionView.isHidden = false
+        changeToSpareQuestionView.animate()
+    }
+    
+    func showChangeToOriginQuestionView() {
+        changeToOriginQuestionView.setQuestion(todayQuestion: todayQuestion)
+        changeToOriginQuestionView.isHidden = false
+        changeToOriginQuestionView.animate()
+    }
+}
+
+extension AnswerViewController {
+    private func bindViewModel() {
+        changeToSpareQuestionView.okButtonTapObserver
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.isSpare = true
+                self.changeToSpareQuestionView.isHidden = true
+                self.setSpareQuestion()
+            })
+            .disposed(by: disposeBag)
+        changeToOriginQuestionView.okButtonTapObserver
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.isSpare = true
+                self.changeToOriginQuestionView.isHidden = true
+                self.setOriginQuestion()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setStyles() {
+        changeToSpareQuestionView.do {
+            $0.isHidden = true
+        }
+        
+        changeToOriginQuestionView.do {
+            $0.isHidden = true
+        }
+    }
+    
+    private func setLayout() {
+        view.addSubviews(changeToSpareQuestionView, changeToOriginQuestionView)
+        
+        changeToSpareQuestionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        changeToOriginQuestionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+}
+
+extension AnswerViewController {
+    private func setSpareQuestion() {
+        questionLabel.text = spareQuestion.spareQuestion
+        subQuestionLabel.text = spareQuestion.sparePhrase
+    }
+    
+    private func setOriginQuestion() {
+        questionLabel.text = todayQuestion.question
+        subQuestionLabel.text = todayQuestion.phrase
     }
 }
