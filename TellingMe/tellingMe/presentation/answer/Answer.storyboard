@@ -108,8 +108,11 @@
                                             <constraint firstAttribute="width" constant="32" id="F8U-Kh-N0d"/>
                                             <constraint firstAttribute="height" constant="32" id="UuU-Yv-xgM"/>
                                         </constraints>
+                                        <color key="tintColor" name="Gray6"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="Switch"/>
+                                        <state key="normal" image="Switch">
+                                            <color key="titleColor" name="Gray6"/>
+                                        </state>
                                         <connections>
                                             <action selector="changeQuestion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TRI-Ru-55o"/>
                                         </connections>

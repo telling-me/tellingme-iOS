@@ -192,7 +192,7 @@ extension AnswerViewController {
         changeToOriginQuestionView.okButtonTapObserver
             .bind(onNext: { [weak self] _ in
                 guard let self else { return }
-                self.isSpare = true
+                self.isSpare = false
                 self.changeToOriginQuestionView.isHidden = true
                 self.setOriginQuestion()
             })

@@ -65,6 +65,10 @@ extension ChangeToSpareQuestionView {
             $0.setTopCornerRadius()
         }
         
+        changeImage.do {
+            $0.image = ImageLiterals.ArrowsDownUp
+        }
+        
         titleLabel.do {
             $0.text = "오늘의 질문을 바꿀 수 있어요!"
             $0.font = .fontNanum(.H6_Bold)
@@ -75,7 +79,8 @@ extension ChangeToSpareQuestionView {
             let text = "  스페셜 질문은 모두의 공간에 공개할 수 없어요."
 
             let attachment = NSTextAttachment()
-            attachment.image = UIImage(systemName: "info.circle")
+            let image = UIImage(systemName: "info.circle")?.withTintColor(.Gray6)
+            attachment.image = image
             attachment.bounds = CGRect(x: 0, y: -3, width: 16, height: 16)
 
             let attributedString = NSMutableAttributedString(string: "")
