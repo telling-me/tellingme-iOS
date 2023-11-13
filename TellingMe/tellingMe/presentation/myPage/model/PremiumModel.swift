@@ -12,14 +12,14 @@ enum Premium {
     case oneMonth
     case year
     
-    var buttonImage: UIImage? {
-        switch self {
-        case .oneMonth:
-            return ImageLiterals.OneMonthPlusButton
-        case .year:
-            return ImageLiterals.YearPlusButton
-        }
-    }
+//    var buttonImage: UIImage? {
+//        switch self {
+//        case .oneMonth:
+//            return ImageLiterals.OneMonthPlusButton
+//        case .year:
+//            return ImageLiterals.YearPlusButton
+//        }
+//    }
     
     var index: Int {
         switch self {
