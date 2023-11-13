@@ -84,6 +84,12 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
         self.boxElements = Observable<[MyPageBoxElementsModel]>.just(boxElementsData)
         self.premiumInformation = Observable.just(premiumInfoImageNames)
         fetchUserData()
+        SubscriptionManager.shared.successedVerifyReceiptSubject
+            .bind(onNext: { [weak self] receipt in
+                guard let self else { return }
+                self.postVerifyReceipt(receipt: receipt)
+            })
+            .disposed(by: disposeBag)
     }
     
     /// 1. 추적용 2. Coordinator 용
@@ -159,6 +165,20 @@ extension MyPageViewModel {
                 let isPushNotificationPermittedKey = StringLiterals.isPushNotificationPermittedKey
                 self?.userInformation.accept(response)
                 self?.userDefaults.bool(forKey: isPushNotificationPermittedKey)
+            }, onError: { error in
+                if case APIError.errorData(_) = error {
+                } else if case APIError.tokenNotFound = error {
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func postVerifyReceipt(receipt: String) {
+        let request = VerifyReceiptRequest(receiptData: receipt)
+        TellingMePlusAPI.postVerifyReceipt(request: request)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                print(response)
             }, onError: { error in
                 if case APIError.errorData(_) = error {
                 } else if case APIError.tokenNotFound = error {

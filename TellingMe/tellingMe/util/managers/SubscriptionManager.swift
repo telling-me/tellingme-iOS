@@ -30,18 +30,19 @@ import RxSwift
 //    }
 //}
 
-class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+final class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     private let productIds: [String]
     private let productRequest: SKProductsRequest
 
     var products: [SKProduct] = []
-    var purchasedSubject = PublishSubject<Void>()
-    var purchasingSubject = PublishSubject<Void>()
-    var canceldSubject = PublishSubject<Void>()
-    var failedSubject = PublishSubject<Void>()
-    var deferredSubject = PublishSubject<Void>()
-    var restoredSubject = PublishSubject<Void>()
-    var errorSubject = PublishSubject<String>()
+    let purchasedSubject = PublishSubject<Void>()
+    let purchasingSubject = PublishSubject<Void>()
+    let canceldSubject = PublishSubject<Void>()
+    let failedSubject = PublishSubject<Void>()
+    let deferredSubject = PublishSubject<Void>()
+    let restoredSubject = PublishSubject<Void>()
+    let errorSubject = PublishSubject<String>()
+    let successedVerifyReceiptSubject = PublishSubject<String>()
     
     var isAuthorizedForPayments: Bool {
         return SKPaymentQueue.canMakePayments()
@@ -77,14 +78,15 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             case .purchasing:
                 purchasingSubject.onNext(())
             case .purchased:
+                SKPaymentQueue.default().finishTransaction(transaction)
                 purchasedSubject.onNext(())
-                SKPaymentQueue.default().finishTransaction(transaction)
+                fetchReceipt()
             case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
                 failedSubject.onNext(())
-                SKPaymentQueue.default().finishTransaction(transaction)
             case .restored:
-                restoredSubject.onNext(())
                 SKPaymentQueue.default().finishTransaction(transaction)
+                restoredSubject.onNext(())
             case .deferred:
                 deferredSubject.onNext(())
             default:
@@ -106,8 +108,8 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             do {
                 let receiptData = try Data(contentsOf: receiptURL)
                 let receiptString = receiptData.base64EncodedString(options: [])
-                // receiptString을 서버로 전송하거나 클라이언트 측에서 처리
-                print(receiptString)
+
+                self.successedVerifyReceiptSubject.onNext(receiptString)
             } catch {
                 print("영수증 데이터를 읽는 데 실패했습니다: \(error.localizedDescription)")
             }

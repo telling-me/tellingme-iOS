@@ -58,12 +58,12 @@ extension PremiumInformationViewController {
             })
             .disposed(by: disposeBag)
         
-        SubscriptionManager.shared.purchasedSubject
-            .bind(onNext: { [weak self] _ in
-                guard let self else { return }
-                self.loadingStops()
-            })
-            .disposed(by: disposeBag)
+//        SubscriptionManager.shared.successedVerifyReceiptSubject
+//            .bind(onNext: { [weak self] _ in
+//                guard let self else { return }
+//                self.
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func setStyles() {
