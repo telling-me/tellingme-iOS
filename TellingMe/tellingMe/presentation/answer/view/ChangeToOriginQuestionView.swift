@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-final class ChangeToOriginQuestionView: UIView {
+final class ChangeToOriginQuestionView: BBaseView {
     private let disposeBag = DisposeBag()
     private let containerView = UIView()
     private let titleLabel = UILabel()
@@ -24,20 +24,7 @@ final class ChangeToOriginQuestionView: UIView {
         return self.okButton.rx.tap.asObservable()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        bind()
-        setStyles()
-        setLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension ChangeToOriginQuestionView {
-    private func bind() {
+    override func bindViewModel() {
         okButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -52,7 +39,7 @@ extension ChangeToOriginQuestionView {
             .disposed(by: disposeBag)
     }
     
-    private func setStyles() {
+    override func setStyles() {
         self.backgroundColor = .AlphaBlackColor
 
         containerView.do {
@@ -82,7 +69,7 @@ extension ChangeToOriginQuestionView {
         }
     }
     
-    private func setLayout() {
+    override func setLayout() {
         addSubviews(containerView)
         containerView.addSubviews(titleLabel, todayQuestionView, buttonStackView)
         buttonStackView.addArrangedSubviews(cancelButton, okButton)
