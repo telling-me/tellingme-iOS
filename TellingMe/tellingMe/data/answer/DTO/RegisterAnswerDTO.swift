@@ -12,4 +12,5 @@ struct RegisterAnswerRequest: Codable {
     let date: String
     let emotion: Int
     let isPublic: Bool
+    let isSpare: Bool
 }

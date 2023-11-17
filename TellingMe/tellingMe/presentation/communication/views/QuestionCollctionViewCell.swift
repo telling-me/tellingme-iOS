@@ -32,7 +32,7 @@ class QuestionCollectionViewCell: UICollectionViewCell {
         questionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 
-    func setData(data: QuestionResponse) {
+    func setData(data: Question) {
         questionView.setQuestion(data: data)
     }
 }

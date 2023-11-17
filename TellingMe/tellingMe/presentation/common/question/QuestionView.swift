@@ -84,10 +84,10 @@ class QuestionView: UIView {
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
-    func setQuestion(data: QuestionResponse) {
-        questionLabel.text = data.title
+    func setQuestion(data: Question) {
+        questionLabel.text = data.question
         subQuestionLabel.text = data.phrase
-        dateLabel.text = data.date.intArraytoDate3()
+        dateLabel.text = data.date?.intArraytoDate3()
     }
 }
 
