@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum QuestionType {
+    case original
+    case special
+}
+
 struct Question {
     let date: [Int]?
     let question: String

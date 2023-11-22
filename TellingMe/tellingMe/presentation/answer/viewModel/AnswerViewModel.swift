@@ -7,7 +7,35 @@
 
 import Foundation
 
-class AnswerViewModel {
+import RxCocoa
+import RxSwift
+
+protocol AnswerViewModelInputs {
+    var clickedChangeQuestion
+    var clickedFoldView
+    var clickedBackNavigation
+    var inputTextField
+    var toggleSwitch
+    var clickedRegisterButton
+}
+
+protocol AnswerViewModelOutputs {
+    var changeQuestionSubject: PublishSubject<QuestionType> { get }
+    var foldViewSubject: PublishSubject<Bool> { get }
+    var inputTextRelay: BehaviorRelay<String> { get }
+    var tolggleSwitchSubject: BehaviorRelay<Void> { get }
+    var countTextRelay: BehaviorRelay<String> { get }
+    var toastSubject: PublishSubject<String> { get }
+}
+
+protocol AnswerViewModelType {
+    var inputs: AnswerViewModelInputs { get }
+    var outputs: AnswerViewModelOutputs { get }
+}
+
+final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerViewModelOutputs {
+
+    // 옛날꺼
     var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()
@@ -19,6 +47,19 @@ class AnswerViewModel {
     ]
     var questionDate: String? = Date().getQuestionDate()
     var isFull: Bool = false
+    
+    
+    // inputs
+    var inputs: AnswerViewModelInputs
+    
+    // outputs
+    var outputs: AnswerViewModelOutputs
+    var changeQuestionSubject: PublishSubject<QuestionType>
+    var foldViewSubject: PublishSubject<Bool>
+    var inputTextRelay: BehaviorRelay<String>
+    var tolggleSwitchSubject: BehaviorRelay<Void>
+    var countTextRelay: BehaviorRelay<String>
+    var toastSubject: PublishSubject<String>
 
     init() {
         switch IAPManager.getHasUserPurchased() {

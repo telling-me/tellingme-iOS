@@ -18,6 +18,10 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         setBaseViewController()
     }
+    
+    func bindViewModel() {}
+    func setStyles() { }
+    func setLayout() { }
 }
 
 extension BaseViewController {
