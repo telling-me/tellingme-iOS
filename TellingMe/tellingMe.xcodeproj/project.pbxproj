@@ -10,6 +10,7 @@
 		3A00B75229FBF1FD00285CA8 /* QuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */; };
 		3A00B75429FBF34200285CA8 /* QuestionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A00B75329FBF34200285CA8 /* QuestionAPI.swift */; };
 		3A026D522A29E1980075E6C4 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D512A29E1980075E6C4 /* SettingRepository.swift */; };
+		3A0CA6002B11B2EF001733AC /* SelectEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0CA5FF2B11B2EF001733AC /* SelectEmotionView.swift */; };
 		3A157CF929CAFFA300D61AD3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A157CF829CAFFA300D61AD3 /* Home.storyboard */; };
 		3A1A35A52A866AC900F9FA92 /* TermofUse.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A35A32A8668B900F9FA92 /* TermofUse.txt */; };
 		3A1A35A62A866AC900F9FA92 /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A35A42A866A3700F9FA92 /* PrivacyPolicy.txt */; };
@@ -357,6 +358,7 @@
 		3A00B75129FBF1FD00285CA8 /* QuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDTO.swift; sourceTree = "<group>"; };
 		3A00B75329FBF34200285CA8 /* QuestionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAPI.swift; sourceTree = "<group>"; };
 		3A026D512A29E1980075E6C4 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		3A0CA5FF2B11B2EF001733AC /* SelectEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmotionView.swift; sourceTree = "<group>"; };
 		3A157CF829CAFFA300D61AD3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3A1A35A32A8668B900F9FA92 /* TermofUse.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TermofUse.txt; sourceTree = "<group>"; };
 		3A1A35A42A866A3700F9FA92 /* PrivacyPolicy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PrivacyPolicy.txt; sourceTree = "<group>"; };
@@ -1546,6 +1548,7 @@
 				3A9F319E2AF13BCA004B3416 /* SpecialQuestionView.swift */,
 				3AC2EFF12B00BC9A003FF603 /* ChangeToOriginQuestionView.swift */,
 				3A22209F2B0DA38F000C1194 /* AnswerBottomView.swift */,
+				3A0CA5FF2B11B2EF001733AC /* SelectEmotionView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2490,6 +2493,7 @@
 				3A238C8F2A9B2D5F00F27AB1 /* WeekHeaderView.swift in Sources */,
 				58F2E75A2A95C62200F3667A /* AlarmAPI.swift in Sources */,
 				3A71213B2A039A0200A02054 /* AnswerListViewController.swift in Sources */,
+				3A0CA6002B11B2EF001733AC /* SelectEmotionView.swift in Sources */,
 				586061A22ADCFD1900F22D5C /* PasswordPresentationHeaderView.swift in Sources */,
 				58AF35582AB0483F00B1AF2F /* SharingToInstagramViewModel.swift in Sources */,
 				3A33C45729D96CA1002BBA85 /* DropDownButton.swift in Sources */,
