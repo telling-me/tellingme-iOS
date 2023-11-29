@@ -29,23 +29,14 @@ final class BadFeedbackViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         self.view.endEditing(true)
     }
-    
-    deinit {
-        print("BadFeedbackViewController Deinit")
-    }
-}
 
-extension BadFeedbackViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         headerView.rightButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 self?.dismiss(animated: true)
@@ -123,7 +114,46 @@ extension BadFeedbackViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
+    override func setStyles() {
+        headerView.do {
+            $0.setHeader(isFirstView: false, title: "소중한 피드백", buttonImage: "Xmark")
+        }
+        
+        scrollView.do {
+            $0.keyboardDismissMode = .onDrag
+        }
+        
+        titleLabel.do {
+            $0.font = .fontNanum(.H5_Bold)
+            $0.textColor = .Gray6
+            $0.numberOfLines = 2
+            let text = "더 나은 텔링미가 될 수 있도록\n그 이유를 알려주세요! *"
+            $0.text = text
+            let attributedString = NSMutableAttributedString(string: text)
+            let range = (attributedString.string as NSString).range(of: "*")
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Error400, range: range)
+            $0.attributedText = attributedString
+        }
+        
+        captionLabel.do {
+            $0.text = "다중 선택 가능"
+            $0.font = .fontNanum(.C1_Regular)
+            $0.textColor = .Gray6
+        }
+        
+        collectionView.do {
+            $0.register(BadFeedbackCollectionViewCell.self, forCellWithReuseIdentifier: BadFeedbackCollectionViewCell.id)
+            $0.allowsMultipleSelection = true
+            $0.isScrollEnabled = false
+            $0.backgroundColor = .Side100
+        }
+        
+        submitButton.do {
+            $0.setText(text: "제출하기")
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(headerView, scrollView, bottomContainerView)
         scrollView.addSubview(scrollContainerView)
         scrollContainerView.addSubviews(titleLabel, captionLabel, collectionView, otherFeedbackView)
@@ -181,43 +211,8 @@ extension BadFeedbackViewController {
         }
     }
     
-    private func setStyles() {
-        headerView.do {
-            $0.setHeader(isFirstView: false, title: "소중한 피드백", buttonImage: "Xmark")
-        }
-        
-        scrollView.do {
-            $0.keyboardDismissMode = .onDrag
-        }
-        
-        titleLabel.do {
-            $0.font = .fontNanum(.H5_Bold)
-            $0.textColor = .Gray6
-            $0.numberOfLines = 2
-            let text = "더 나은 텔링미가 될 수 있도록\n그 이유를 알려주세요! *"
-            $0.text = text
-            let attributedString = NSMutableAttributedString(string: text)
-            let range = (attributedString.string as NSString).range(of: "*")
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.Error400, range: range)
-            $0.attributedText = attributedString
-        }
-        
-        captionLabel.do {
-            $0.text = "다중 선택 가능"
-            $0.font = .fontNanum(.C1_Regular)
-            $0.textColor = .Gray6
-        }
-        
-        collectionView.do {
-            $0.register(BadFeedbackCollectionViewCell.self, forCellWithReuseIdentifier: BadFeedbackCollectionViewCell.id)
-            $0.allowsMultipleSelection = true
-            $0.isScrollEnabled = false
-            $0.backgroundColor = .Side100
-        }
-        
-        submitButton.do {
-            $0.setText(text: "제출하기")
-        }
+    deinit {
+        print("BadFeedbackViewController Deinit")
     }
 }
 

@@ -19,8 +19,8 @@ class AAnswerViewController: BaseViewController {
     private let answerBottomView: AnswerBottomView
     private let viewModel: AnswerViewModel
     
-    init(viewModel: AnswerViewModel) {
-        self.viewModel = viewModel
+    init() {
+        self.viewModel = AnswerViewModel()
         self.answerBottomView = AnswerBottomView(viewModel: viewModel, frame: CGRect.zero)
         super.init(nibName: nil, bundle: nil)
     }

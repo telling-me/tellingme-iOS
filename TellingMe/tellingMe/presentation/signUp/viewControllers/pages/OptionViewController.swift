@@ -31,19 +31,10 @@ final class OptionViewController: SignUpBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
         hideKeyboardWhenTappedAround()
     }
-    
-    deinit {
-        print("OptionViewController Deinited")
-    }
-}
 
-extension OptionViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         genderCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
@@ -87,7 +78,29 @@ extension OptionViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
+    override func setStyles() {
+        titleLabel.do {
+            $0.text = "출생 연도를 알려주세요"
+        }
+        
+        inputBox.do {
+            $0.setBirthInput()
+        }
+
+        genderTitleLabel.do {
+            $0.font = .fontNanum(.H4_Regular)
+            $0.textColor = .Black
+            $0.textAlignment = .center
+            $0.text = "성별을 알려주세요"
+        }
+        
+        genderCollectionView.do {
+            $0.backgroundColor = .Side100
+            $0.register(TeritaryVerticalBothButtonCell.self, forCellWithReuseIdentifier: TeritaryVerticalBothButtonCell.id)
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(inputBox, genderTitleLabel, genderCollectionView)
         
         inputBox.snp.makeConstraints {
@@ -108,26 +121,8 @@ extension OptionViewController {
         }
     }
     
-    private func setStyles() {
-        titleLabel.do {
-            $0.text = "출생 연도를 알려주세요"
-        }
-        
-        inputBox.do {
-            $0.setBirthInput()
-        }
-
-        genderTitleLabel.do {
-            $0.font = .fontNanum(.H4_Regular)
-            $0.textColor = .Black
-            $0.textAlignment = .center
-            $0.text = "성별을 알려주세요"
-        }
-        
-        genderCollectionView.do {
-            $0.backgroundColor = .Side100
-            $0.register(TeritaryVerticalBothButtonCell.self, forCellWithReuseIdentifier: TeritaryVerticalBothButtonCell.id)
-        }
+    deinit {
+        print("OptionViewController Deinited")
     }
 }
 

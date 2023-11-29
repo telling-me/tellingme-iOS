@@ -23,18 +23,9 @@ final class FinishFeedbackViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
-    
-    deinit {
-        print("FinishedFeedbackViewController Deinit")
-    }
-}
 
-extension FinishFeedbackViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         headerView.rightButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -42,8 +33,39 @@ extension FinishFeedbackViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    override func setStyles() {
+        headerView.do {
+            $0.setHeader(title: "소중한 피드백", buttonImage: "Xmark")
+        }
+        
+        imageView.do {
+            $0.image = UIImage(named: "Flag")
+        }
+        
+        titleLabel.do {
+            $0.text = "감사합니다!"
+            $0.font = .fontNanum(.H5_Bold)
+            $0.textColor = .Gray6
+        }
+        
+        subTitleLabel.do {
+            $0.text = "보내주신 피드백을 바탕으로\n더욱 발전하는 텔링미가 될게요!"
+            $0.numberOfLines = 2
+            $0.font = .fontNanum(.B2_Regular)
+            $0.textColor = .Gray7
+        }
+        
+        captionLabel.do {
+            $0.text = "직접 질문을 제안하고 싶다\n마이페이지 -듀이의 질문 제작소를 찾아주세요!"
+            $0.numberOfLines = 2
+            $0.font = .fontNanum(.C1_Regular)
+            $0.textColor = .Gray6
+            $0.setBoldPart(text: "듀이의 질문 제작소", font: .fontNanum(.C1_Bold))
+        }
+    }
 
-    private func setLayout() {
+    override func setLayout() {
         view.addSubviews(headerView, imageView, titleLabel, subTitleLabel, captionLabel)
         
         headerView.snp.makeConstraints {
@@ -74,34 +96,7 @@ extension FinishFeedbackViewController {
         }
     }
     
-    private func setStyles() {
-        headerView.do {
-            $0.setHeader(title: "소중한 피드백", buttonImage: "Xmark")
-        }
-        
-        imageView.do {
-            $0.image = UIImage(named: "Flag")
-        }
-        
-        titleLabel.do {
-            $0.text = "감사합니다!"
-            $0.font = .fontNanum(.H5_Bold)
-            $0.textColor = .Gray6
-        }
-        
-        subTitleLabel.do {
-            $0.text = "보내주신 피드백을 바탕으로\n더욱 발전하는 텔링미가 될게요!"
-            $0.numberOfLines = 2
-            $0.font = .fontNanum(.B2_Regular)
-            $0.textColor = .Gray7
-        }
-        
-        captionLabel.do {
-            $0.text = "직접 질문을 제안하고 싶다\n마이페이지 -듀이의 질문 제작소를 찾아주세요!"
-            $0.numberOfLines = 2
-            $0.font = .fontNanum(.C1_Regular)
-            $0.textColor = .Gray6
-            $0.setBoldPart(text: "듀이의 질문 제작소", font: .fontNanum(.C1_Bold))
-        }
+    deinit {
+        print("FinishedFeedbackViewController Deinit")
     }
 }

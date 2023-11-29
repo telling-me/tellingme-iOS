@@ -26,28 +26,17 @@ final class AgreementViewController: SignUpBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.inputs.checkAllAgreed()
     }
 
-    
-    deinit {
-        print("AgreementViewController Deinited")
-    }
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension AgreementViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         boxCheckButton.checkButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -57,7 +46,23 @@ extension AgreementViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
+    override func setStyles() {
+        titleLabel.do {
+            $0.text = "약관에 동의해주세요"
+        }
+        
+        boxCheckButton.do {
+            $0.setCheckbox(title: "모두 동의할게요")
+        }
+        
+        agreementStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 12
+            setStackView()
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(boxCheckButton, agreementStackView)
         boxCheckButton.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(110)
@@ -72,20 +77,8 @@ extension AgreementViewController {
         }
     }
     
-    private func setStyles() {
-        titleLabel.do {
-            $0.text = "약관에 동의해주세요"
-        }
-        
-        boxCheckButton.do {
-            $0.setCheckbox(title: "모두 동의할게요")
-        }
-        
-        agreementStackView.do {
-            $0.axis = .vertical
-            $0.spacing = 12
-            setStackView()
-        }
+    deinit {
+        print("AgreementViewController Deinited")
     }
 }
 

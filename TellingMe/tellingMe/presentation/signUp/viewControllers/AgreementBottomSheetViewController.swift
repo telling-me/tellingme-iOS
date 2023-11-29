@@ -32,13 +32,7 @@ final class AgreementBottomSheetViewController: BaseViewController {
         setStyles()
     }
     
-    deinit {
-        print("AgreementBottomSheetViewController Deinited")
-    }
-}
-
-extension AgreementBottomSheetViewController {
-    private func setLayout() {
+    override func setLayout() {
         view.addSubviews(titleLabel, containerView)
         containerView.addSubview(textView)
         
@@ -59,7 +53,7 @@ extension AgreementBottomSheetViewController {
         }
     }
     
-    private func setStyles() {
+    override func setStyles() {
         titleLabel.do {
             $0.font = .fontNanum(.B1_Bold)
             $0.textColor = .Gray7
@@ -93,6 +87,10 @@ extension AgreementBottomSheetViewController {
                 break
             }
         }
+    }
+    
+    deinit {
+        print("AgreementBottomSheetViewController Deinited")
     }
 }
 

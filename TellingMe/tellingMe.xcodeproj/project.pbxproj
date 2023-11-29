@@ -35,6 +35,7 @@
 		3A2742D329D6B37E005E4C5F /* TeritaryBothButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */; };
 		3A29B5742A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		3A29B5772A169B41006F1E8D /* NickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */; };
+		3A2A038D2B1649BB009A8978 /* BlurLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A038C2B1649BB009A8978 /* BlurLockView.swift */; };
 		3A2A503229B8806E002FE5E4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A503129B8806E002FE5E4 /* UIView+.swift */; };
 		3A31C6C62AB3395400E8B674 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A31C6C52AB3395400E8B674 /* CustomTextView.swift */; };
 		3A320F262A6F6EE90098E8C9 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320F252A6F6EE90098E8C9 /* QuestionView.swift */; };
@@ -381,6 +382,7 @@
 		3A2742D229D6B37E005E4C5F /* TeritaryBothButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeritaryBothButton.swift; sourceTree = "<group>"; };
 		3A29B5732A16974B006F1E8D /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		3A29B5762A169B41006F1E8D /* NickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameInputViewController.swift; sourceTree = "<group>"; };
+		3A2A038C2B1649BB009A8978 /* BlurLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLockView.swift; sourceTree = "<group>"; };
 		3A2A503129B8806E002FE5E4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3A2CBF1E2A8F875A007509C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A31C6C52AB3395400E8B674 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
@@ -1549,6 +1551,7 @@
 				3AC2EFF12B00BC9A003FF603 /* ChangeToOriginQuestionView.swift */,
 				3A22209F2B0DA38F000C1194 /* AnswerBottomView.swift */,
 				3A0CA5FF2B11B2EF001733AC /* SelectEmotionView.swift */,
+				3A2A038C2B1649BB009A8978 /* BlurLockView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2487,6 +2490,7 @@
 				3ABB84C32A838B6A00540269 /* EmotionView.swift in Sources */,
 				3AF324B02ABDE9A600995DBE /* OtherFeedbackView.swift in Sources */,
 				3ABB09F22A1A756600C6596B /* AnswerCompletedViewModel.swift in Sources */,
+				3A2A038D2B1649BB009A8978 /* BlurLockView.swift in Sources */,
 				3AA1677129E8295C00B93850 /* CheckNicknameDTO.swift in Sources */,
 				3A70A64E2A272F05009D8D76 /* UserAPI.swift in Sources */,
 				3ABB84C32A838B6A00540269 /* EmotionView.swift in Sources */,

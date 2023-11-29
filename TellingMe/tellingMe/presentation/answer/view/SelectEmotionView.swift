@@ -33,11 +33,11 @@ final class SelectEmotionView: BBaseView {
     }
     
     override func bindViewModel() {
-        viewModel.emotionList
-            .bind(to: emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, element, cell) in
-            cell.setCell(data: element)
-        }
-            .disposed(by: disposeBag)
+//        viewModel.emotionList
+//            .bind(to: emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, element, cell) in
+//            cell.setCell(data: element)
+//        }
+//            .disposed(by: disposeBag)
             
     }
     

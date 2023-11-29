@@ -11,17 +11,17 @@ import RxCocoa
 import RxSwift
 
 protocol AnswerViewModelInputs {
-    var clickedChangeQuestion
-    var clickedFoldView
-    var clickedBackNavigation
-    var inputTextField
-    var toggleSwitch
-    var clickedRegisterButton
+//    var clickedChangeQuestion
+//    var clickedFoldView
+//    var clickedBackNavigation
+//    var inputTextField
+//    var toggleSwitch
+//    var clickedRegisterButton
 }
 
 protocol AnswerViewModelOutputs {
     var changeQuestionSubject: PublishSubject<QuestionType> { get }
-    var foldViewSubject: PublishSubject<Bool> { get }
+    var foldViewSubject: BehaviorRelay<Bool> { get }
     var inputTextRelay: BehaviorRelay<String> { get }
     var tolggleSwitchSubject: BehaviorRelay<Void> { get }
     var countTextRelay: BehaviorRelay<String> { get }
@@ -50,40 +50,20 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
     
     
     // inputs
-    var inputs: AnswerViewModelInputs
+    var inputs: AnswerViewModelInputs { return self }
     
     // outputs
-    var outputs: AnswerViewModelOutputs
-    var changeQuestionSubject: PublishSubject<QuestionType>
-    var foldViewSubject: PublishSubject<Bool>
-    var inputTextRelay: BehaviorRelay<String>
-    var tolggleSwitchSubject: BehaviorRelay<Void>
-    var countTextRelay: BehaviorRelay<String>
-    var toastSubject: PublishSubject<String>
+    var outputs: AnswerViewModelOutputs { return self }
+    var changeQuestionSubject: PublishSubject<QuestionType> = PublishSubject<QuestionType>()
+    var foldViewSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var inputTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var tolggleSwitchSubject: BehaviorRelay<Void> = BehaviorRelay(value: ())
+    var countTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var toastSubject: PublishSubject<String> = PublishSubject<String>()
+}
 
-    init() {
-        switch IAPManager.getHasUserPurchased() {
-        case true:
-            emotions = plusEmotions
-        case false:
-            break
-        }
-    }
+extension AnswerViewModel {
+    private func registerAnswer() {
 
-    func setDate(date: [Int]) {
-        // 월 계산
-        if date[1] < 10 {
-            if date[2] < 10 {
-                self.questionDate = "\(date[0])-0\(date[1])-0\(date[2])"
-            } else {
-                self.questionDate = "\(date[0])-0\(date[1])-\(date[2])"
-            }
-        } else {
-            if date[2] < 10 {
-                self.questionDate = "\(date[0])-\(date[1])-0\(date[2])"
-            } else {
-                self.questionDate = "\(date[0])-\(date[1])-\(date[2])"
-            }
-        }
     }
 }
