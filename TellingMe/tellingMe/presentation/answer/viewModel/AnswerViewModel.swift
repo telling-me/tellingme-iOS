@@ -26,6 +26,7 @@ protocol AnswerViewModelOutputs {
     var tolggleSwitchSubject: BehaviorRelay<Void> { get }
     var countTextRelay: BehaviorRelay<String> { get }
     var toastSubject: PublishSubject<String> { get }
+    var questionSubject: PublishSubject<Question> { get }
 }
 
 protocol AnswerViewModelType {
@@ -45,9 +46,10 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
         Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요"),
         Emotion(image: "Excited", text: "설레요"), Emotion(image: "Thrilled", text: "신나요"), Emotion(image: "Relaxed", text: "편안해요"), Emotion(image: "Lethargic", text: "무기력해요"), Emotion(image: "Lonely", text: "외로워요"), Emotion(image: "Complicated", text: "복잡해요")
     ]
-    var questionDate: String? = Date().getQuestionDate()
+//    var questionDate: String? = "2023-11-29"
     var isFull: Bool = false
     
+    var disposeBag = DisposeBag()
     
     // inputs
     var inputs: AnswerViewModelInputs { return self }
@@ -60,9 +62,26 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
     var tolggleSwitchSubject: BehaviorRelay<Void> = BehaviorRelay(value: ())
     var countTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
     var toastSubject: PublishSubject<String> = PublishSubject<String>()
+    var questionSubject: PublishSubject<Question> = PublishSubject<Question>()
+    
+    init() {
+        getQuestion()
+    }
 }
 
 extension AnswerViewModel {
+    private func getQuestion() {
+        QuestionAPI.getTodayQuestion(query: "2023-11-29")
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                questionSubject.onNext(Question(date: response.date, question: response.title, phrase: response.phrase))
+            }, onError: { [weak self] error in
+                guard let self else { return }
+                toastSubject.onNext("질문을 불러오지 못 했습니다.")
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func registerAnswer() {
 
     }

@@ -40,7 +40,7 @@ class AAnswerViewController: BaseViewController {
     
     override func setStyles() {
         questionView.do {
-            $0.setQuestion(data: Question(date: [], question: "", phrase: ""))
+            $0.setQuestion(data: Question(date: [2023, 11, 29], question: "", phrase: ""))
         }
     }
     
@@ -49,7 +49,7 @@ class AAnswerViewController: BaseViewController {
             answerBottomView)
         
         backHeaderView.snp.makeConstraints {
-            $0.horizontalEdges.top.equalToSuperview()
+            $0.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(77)
         }
         
@@ -57,16 +57,18 @@ class AAnswerViewController: BaseViewController {
             $0.top.equalTo(backHeaderView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.width.equalTo(120)
+            $0.height.equalTo(120)
         }
         
         answerTextView.snp.makeConstraints {
-            $0.top.equalTo(questionView.snp.bottom).offset(36)
-            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.top.equalTo(questionView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         answerBottomView.snp.makeConstraints {
             $0.top.equalTo(answerTextView.snp.bottom)
-            $0.bottom.equalTo(view.keyboardLayoutGuide)
+            $0.bottom.equalTo(view.keyboardLayoutGuide).inset(34)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(72)
         }
     }

@@ -57,6 +57,8 @@ extension AnswerBottomView {
         }
         
         registerButton.do {
+            $0.titleLabel?.font = .fontNanum(.B1_Bold)
+            $0.setTitleColor(.Logo, for: .normal)
             $0.setTitle(AnswerStrings.registerButton.stringValue, for: .normal)
         }
     }
