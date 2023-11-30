@@ -11,7 +11,6 @@ import RxSwift
 
 class BaseViewController: UIViewController {
     private var alertView: CustomAlertView?
-    // bottomsheet 등 정의해두는게 어떨까?
     private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
