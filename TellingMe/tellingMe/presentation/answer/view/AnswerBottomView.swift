@@ -12,48 +12,46 @@ import RxSwift
 import SnapKit
 import Then
 
-final class AnswerBottomView: UIView {
+final class AnswerBottomView: BBaseView {
     private let countTextLabel = UILabel()
     private let limitTextLabel = UILabel()
     private let publicSwitchLabel = UILabel()
     private let publicSwitch = UISwitch()
     private let registerButton = UIButton()
     
-    var registerButtonTapped: Observable<Void> {
+    var registerButtonTapObservable: Observable<Void> {
         return registerButton.rx.tap.asObservable()
     }
     
-    let viewModel: AnswerViewModel
-    
-    init(viewModel: AnswerViewModel, frame: CGRect) {
-        self.viewModel = viewModel
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        setStyles()
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension AnswerBottomView {
-    private func setStyles() {
+    override func setStyles() {
         countTextLabel.do {
             $0.font = .fontNanum(.C1_Bold)
+            $0.textColor = .Gray6
+            $0.text = "0"
         }
         
         limitTextLabel.do {
             $0.font = .fontNanum(.C1_Bold)
+            $0.textColor = .Gray6
+            $0.text = "/ 300"
         }
         
         publicSwitchLabel.do {
             $0.font = .fontNanum(.C1_Regular)
+            $0.textColor = .Gray8
             $0.text = AnswerStrings.publicLabel.stringValue
         }
         
         publicSwitch.do {
-            $0.tintColor = .Logo
+            $0.onTintColor = .Logo
         }
         
         registerButton.do {
@@ -63,7 +61,7 @@ extension AnswerBottomView {
         }
     }
     
-    private func setLayout() {
+    override func setLayout() {
         addSubviews(countTextLabel, limitTextLabel, publicSwitchLabel,
                     publicSwitch, registerButton)
         
@@ -78,7 +76,7 @@ extension AnswerBottomView {
         }
         
         publicSwitchLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(25)
         }
         

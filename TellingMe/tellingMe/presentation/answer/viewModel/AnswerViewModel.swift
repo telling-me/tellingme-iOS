@@ -37,6 +37,7 @@ protocol AnswerViewModelType {
 final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerViewModelOutputs {
 
     // 옛날꺼
+    var questionDate: String? = Date().getQuestionDate()
     var modalChanged: Int = 0
     let content: String = ""
     var date: String = Date().todayFormat()
@@ -72,9 +73,12 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
 extension AnswerViewModel {
     private func getQuestion() {
         QuestionAPI.getTodayQuestion(query: "2023-11-29")
-            .subscribe(onNext: { [weak self] response in
+            .map { response in
+                return Question(date: response.date, question: response.title, phrase: response.phrase)
+            }
+            .subscribe(onNext: { [weak self] question in
                 guard let self else { return }
-                questionSubject.onNext(Question(date: response.date, question: response.title, phrase: response.phrase))
+                questionSubject.onNext(question)
             }, onError: { [weak self] error in
                 guard let self else { return }
                 toastSubject.onNext("질문을 불러오지 못 했습니다.")

@@ -13,55 +13,88 @@ import SnapKit
 import Then
 
 class AAnswerViewController: BaseViewController {
+    private let viewModel = AnswerViewModel()
+    private let disposeBag = DisposeBag()
+    
     private let backHeaderView = BackHeaderView()
     private let questionView = QuestionView()
+    private let seperateLine = UIView()
     private let answerTextView = AnswerTextView()
-    private let answerBottomView: AnswerBottomView
-    private let viewModel: AnswerViewModel
-    
-    init() {
-        self.viewModel = AnswerViewModel()
-        self.answerBottomView = AnswerBottomView(viewModel: viewModel, frame: CGRect.zero)
-        super.init(nibName: nil, bundle: nil)
-    }
+    private let answerBottomView = AnswerBottomView()
+    private let emotionView = EmotionView()
+    private let emotionSheetView = SelectEmotionView()
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
     override func bindViewModel() {
+        backHeaderView.backButtonTapObservable
+            .bind(onNext: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        backHeaderView.rightButtonTapObservable
+            .bind(onNext: {
+                self.toggleQuestion()
+            })
+            .disposed(by: disposeBag)
         
+        answerBottomView.registerButtonTapObservable
+            .bind(onNext: {
+                self.showEmotionSheetView()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.questionSubject
+            .bind(onNext: { question in
+                self.questionView.setQuestion(data: question)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func setStyles() {
-        questionView.do {
-            $0.setQuestion(data: Question(date: [2023, 11, 29], question: "", phrase: ""))
+        backHeaderView.do {
+            $0.setRightButton(image: UIImage(systemName: "chevron.down")!)
+        }
+        
+        seperateLine.do {
+            $0.backgroundColor = .Side300
         }
     }
     
     override func setLayout() {
-        view.addSubviews(backHeaderView, questionView, answerTextView,
-            answerBottomView)
+        view.addSubviews(backHeaderView, questionView, seperateLine,
+                         answerTextView, answerBottomView)
+        backHeaderView.addSubview(emotionView)
         
         backHeaderView.snp.makeConstraints {
             $0.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(77)
         }
         
+        emotionView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(44)
+            $0.bottom.equalToSuperview().inset(12)
+        }
+        
         questionView.snp.makeConstraints {
             $0.top.equalTo(backHeaderView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
-            $0.width.equalTo(120)
             $0.height.equalTo(120)
         }
         
-        answerTextView.snp.makeConstraints {
+        seperateLine.snp.makeConstraints {
             $0.top.equalTo(questionView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.height.equalTo(1)
+        }
+        
+        answerTextView.snp.makeConstraints {
+            $0.top.equalTo(seperateLine.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
         }
         
@@ -70,6 +103,51 @@ class AAnswerViewController: BaseViewController {
             $0.bottom.equalTo(view.keyboardLayoutGuide).inset(34)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(72)
+        }
+    }
+}
+
+extension AAnswerViewController {
+    private func toggleQuestion() {
+        questionView.isHidden.toggle()
+        questionView.isHidden ? closeQuestion() : openQuestion()
+    }
+    
+    private func openQuestion() {
+        self.backHeaderView.setRightButton(image: UIImage(systemName: "chevron.down")!)
+        
+        self.questionView.snp.updateConstraints({
+            $0.top.equalTo(self.backHeaderView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(120)
+        })
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func closeQuestion() {
+        self.backHeaderView.setRightButton(image: UIImage(systemName: "chevron.up")!)
+        
+        self.questionView.snp.updateConstraints({
+            $0.top.equalTo(self.backHeaderView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(0)
+        })
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func showEmotionSheetView() {
+        
+    }
+    
+    private func setPremium() {
+        backHeaderView.do {
+            $0.setRightSecondButton(image: UIImage(named: "Switch"))
         }
     }
 }
