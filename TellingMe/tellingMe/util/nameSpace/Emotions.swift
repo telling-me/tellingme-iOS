@@ -142,12 +142,12 @@ enum Emotions: String {
         }
     }
     
-    static var emotionArray: [Emotions] {
+    static func standardEmotionArray() -> [Emotions] {
         return [.happy, .proud, .meh, .tired, .sad, .angry]
     }
     
-    static var emotionsArray: [Emotions] {
-        return [.happy, .proud, .meh, .tired, 
+    static var premeiumEmotionArray: [Emotions] {
+        return [.happy, .proud, .meh, .tired,
             .sad, .angry, .excited, .thrilled, .relaxed,
             .lethargic, .lonely, .complicated]
     }

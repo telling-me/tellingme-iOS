@@ -15,17 +15,19 @@ import Then
 final class SelectEmotionView: BBaseView {
     private let disposeBag = DisposeBag()
     
+    private let viewModel: AnswerViewModel
+    
     private let contentView = UIView()
     private let titleLabel = UILabel()
     private let emotionLabel = UILabel()
-    private let emotionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    let emotionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let buttonStackView = UIStackView()
     private let cancelButton = TeritaryTextButton()
     private let confirmButton = SecondaryTextButton()
     
-    override init(frame: CGRect) {
+    init(viewModel: AnswerViewModel, frame: CGRect) {
+        self.viewModel = viewModel
         super.init(frame: frame)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -33,15 +35,28 @@ final class SelectEmotionView: BBaseView {
     }
     
     override func bindViewModel() {
-//        viewModel.emotionList
-//            .bind(to: emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, element, cell) in
-//            cell.setCell(data: element)
-//        }
-//            .disposed(by: disposeBag)
-            
+        cancelButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.selectedEmotionIndexSubject
+            .bind(onNext: { [weak self] indexPath in
+                guard let self else { return }
+                self.selectEmotion(indexPath: indexPath)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func setStyles() {
+        backgroundColor = .AlphaBlackColor
+        
+        contentView.do {
+            $0.backgroundColor = .Side100
+        }
+        
         titleLabel.do {
             $0.font = .fontNanum(.B1_Regular)
             $0.textColor = .Black
@@ -54,12 +69,22 @@ final class SelectEmotionView: BBaseView {
             $0.text = AnswerStrings.emotionPlaceHolder.stringValue
         }
         
+        emotionCollectionView.do {
+            $0.backgroundColor = .Side100
+            $0.register(EmotionCollectionViewCell.self, forCellWithReuseIdentifier: EmotionCollectionViewCell.id)
+        }
+        
         cancelButton.do {
             $0.setText(text: AnswerStrings.cancelTitle.stringValue)
         }
         
         confirmButton.do {
             $0.setText(text: AnswerStrings.confirmTitle.stringValue)
+        }
+        
+        buttonStackView.do {
+            $0.distribution = .fillEqually
+            $0.spacing = 15
         }
     }
     
@@ -68,6 +93,10 @@ final class SelectEmotionView: BBaseView {
         contentView.addSubviews(titleLabel, emotionLabel, emotionCollectionView,
             buttonStackView)
         buttonStackView.addArrangedSubviews(cancelButton, confirmButton)
+        
+        contentView.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(42)
@@ -81,6 +110,7 @@ final class SelectEmotionView: BBaseView {
         
         emotionCollectionView.snp.makeConstraints {
             $0.top.equalTo(emotionLabel.snp.bottom).offset(32)
+            $0.height.equalTo(132)
             $0.horizontalEdges.equalToSuperview().inset(55)
         }
         
@@ -89,6 +119,30 @@ final class SelectEmotionView: BBaseView {
             $0.top.equalTo(emotionCollectionView.snp.bottom).offset(32)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(8)
+        }
+    }
+}
+
+extension SelectEmotionView {
+    private func selectEmotion(indexPath: IndexPath) {
+        if let cells = emotionCollectionView.visibleCells as? [EmotionCollectionViewCell] {
+            cells.forEach {
+                $0.setAlpha()
+            }
+        }
+        
+        if let cell = emotionCollectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
+            cell.setOrigin()
+        }
+        self.emotionLabel.text = viewModel.emotionList[indexPath.row].stringValue
+    }
+}
+
+extension SelectEmotionView {
+    func showOpenAnimation() {
+        contentView.transform = CGAffineTransform(translationX: 0, y: contentView.frame.height)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.contentView.transform = .identity
         }
     }
 }

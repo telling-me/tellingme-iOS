@@ -22,8 +22,17 @@ class AAnswerViewController: BaseViewController {
     private let answerTextView = AnswerTextView()
     private let answerBottomView = AnswerBottomView()
     private let emotionView = EmotionView()
-    private let emotionSheetView = SelectEmotionView()
+    private let emotionSheetView: SelectEmotionView
 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        emotionSheetView = SelectEmotionView(viewModel: viewModel, frame: .zero)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,10 +57,27 @@ class AAnswerViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        emotionSheetView.emotionCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        emotionSheetView.emotionCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                self.viewModel.inputs.selectEmotion(indexPath: indexPath)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.questionSubject
             .bind(onNext: { question in
                 self.questionView.setQuestion(data: question)
             })
+            .disposed(by: disposeBag)
+        
+        Observable.just(viewModel.emotionList)
+            .bind(to: emotionSheetView.emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, emotion, cell) in
+                cell.setAlpha()
+                cell.setCell(with: emotion.rawValue)
+            }
             .disposed(by: disposeBag)
     }
     
@@ -63,11 +89,15 @@ class AAnswerViewController: BaseViewController {
         seperateLine.do {
             $0.backgroundColor = .Side300
         }
+        
+        emotionSheetView.do {
+            $0.isHidden = true
+        }
     }
     
     override func setLayout() {
         view.addSubviews(backHeaderView, questionView, seperateLine,
-                         answerTextView, answerBottomView)
+                         answerTextView, answerBottomView, emotionSheetView)
         backHeaderView.addSubview(emotionView)
         
         backHeaderView.snp.makeConstraints {
@@ -103,6 +133,10 @@ class AAnswerViewController: BaseViewController {
             $0.bottom.equalTo(view.keyboardLayoutGuide).inset(34)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(72)
+        }
+        
+        emotionSheetView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
@@ -142,12 +176,23 @@ extension AAnswerViewController {
     }
     
     private func showEmotionSheetView() {
-        
+        emotionSheetView.isHidden = false
+        emotionSheetView.showOpenAnimation()
     }
     
     private func setPremium() {
         backHeaderView.do {
             $0.setRightSecondButton(image: UIImage(named: "Switch"))
         }
+    }
+}
+
+extension AAnswerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 56, height: 56)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return (collectionView.frame.width - 3 * 56) / 3
     }
 }

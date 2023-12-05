@@ -122,16 +122,6 @@ final class SignUpViewModel: SignUpViewModelType, SignUpViewModelInputs, SignUpV
     let errorToastSubject = BehaviorSubject<String>(value: "")
     let nextButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
     let signInSuccessSubject = PublishSubject<SignInResponse>()
-    
-//    init() {
-//        signUpSuccessSubject
-//            .skip(1)
-//            .bind(onNext: { [weak self] _ in
-//                guard let self else { return }
-//                postSignIn()
-//            })
-//            .disposed(by: disposeBag)
-//    }
 }
 
 extension SignUpViewModel {

@@ -19,7 +19,7 @@ class LibraryInfoView: UIView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let okButton = SecondaryTextButton()
     
-    let items = Observable.just(Emotions.emotionArray)
+    let items = Observable.just(Emotions.standardEmotionArray() )
     let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {

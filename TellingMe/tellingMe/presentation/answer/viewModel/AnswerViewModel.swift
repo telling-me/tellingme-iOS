@@ -17,6 +17,7 @@ protocol AnswerViewModelInputs {
 //    var inputTextField
 //    var toggleSwitch
 //    var clickedRegisterButton
+    func selectEmotion(indexPath: IndexPath)
 }
 
 protocol AnswerViewModelOutputs {
@@ -27,6 +28,7 @@ protocol AnswerViewModelOutputs {
     var countTextRelay: BehaviorRelay<String> { get }
     var toastSubject: PublishSubject<String> { get }
     var questionSubject: PublishSubject<Question> { get }
+    var selectedEmotionIndexSubject: PublishSubject<IndexPath> { get }
 }
 
 protocol AnswerViewModelType {
@@ -35,7 +37,7 @@ protocol AnswerViewModelType {
 }
 
 final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerViewModelOutputs {
-
+    
     // 옛날꺼
     var questionDate: String? = Date().getQuestionDate()
     var modalChanged: Int = 0
@@ -43,27 +45,28 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
     var date: String = Date().todayFormat()
     var emotion: Int? = nil
     var emotions = [Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요")]
-    let plusEmotions = [
-        Emotion(image: "Happy", text: "행복해요"), Emotion(image: "Proud", text: "뿌듯해요"), Emotion(image: "Meh", text: "그저 그래요"), Emotion(image: "Tired", text: "피곤해요"), Emotion(image: "Sad", text: "슬퍼요"), Emotion(image: "Angry", text: "화나요"),
-        Emotion(image: "Excited", text: "설레요"), Emotion(image: "Thrilled", text: "신나요"), Emotion(image: "Relaxed", text: "편안해요"), Emotion(image: "Lethargic", text: "무기력해요"), Emotion(image: "Lonely", text: "외로워요"), Emotion(image: "Complicated", text: "복잡해요")
-    ]
-//    var questionDate: String? = "2023-11-29"
+
     var isFull: Bool = false
+    var emotionList: [Emotions] = Emotions.standardEmotionArray()
     
     var disposeBag = DisposeBag()
     
     // inputs
     var inputs: AnswerViewModelInputs { return self }
+    func selectEmotion(indexPath: IndexPath) {
+        selectedEmotionIndexSubject.onNext(indexPath)
+    }
     
     // outputs
     var outputs: AnswerViewModelOutputs { return self }
     var changeQuestionSubject: PublishSubject<QuestionType> = PublishSubject<QuestionType>()
-    var foldViewSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    var inputTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var tolggleSwitchSubject: BehaviorRelay<Void> = BehaviorRelay(value: ())
-    var countTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var toastSubject: PublishSubject<String> = PublishSubject<String>()
-    var questionSubject: PublishSubject<Question> = PublishSubject<Question>()
+    var foldViewSubject = BehaviorRelay(value: false)
+    var inputTextRelay = BehaviorRelay(value: "")
+    var tolggleSwitchSubject = BehaviorRelay(value: ())
+    var countTextRelay = BehaviorRelay(value: "")
+    var toastSubject = PublishSubject<String>()
+    var questionSubject = PublishSubject<Question>()
+    var selectedEmotionIndexSubject = PublishSubject<IndexPath>()
     
     init() {
         getQuestion()
