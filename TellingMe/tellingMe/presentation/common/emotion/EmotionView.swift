@@ -65,4 +65,9 @@ class EmotionView: UIView {
         emotionLabel.text = emotions[index - 1].text
         emotionImageView.image = UIImage(named: emotions[index - 1].image)
     }
+    
+    func setEmotion(emotion: Emotions) {
+        emotionLabel.text = emotion.stringValue
+        emotionImageView.image = UIImage(named: emotion.rawValue)
+    }
 }

@@ -123,22 +123,22 @@ enum Emotions: String {
         }
     }
 
-    init?(intValue: Int) {
+    init(intValue: Int) {
         switch intValue {
-        case 0:
-            self = .happy
         case 1:
-            self = .proud
+            self = .happy
         case 2:
-            self = .meh
+            self = .proud
         case 3:
-            self = .tired
+            self = .meh
         case 4:
-            self = .sad
+            self = .tired
         case 5:
+            self = .sad
+        case 6:
             self = .angry
         default:
-            return nil
+            self = .happy
         }
     }
     

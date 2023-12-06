@@ -23,6 +23,7 @@ class AAnswerViewController: BaseViewController {
     private let answerBottomView = AnswerBottomView()
     private let emotionView = EmotionView()
     private let emotionSheetView: SelectEmotionView
+    private let backModal = MModalView()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         emotionSheetView = SelectEmotionView(viewModel: viewModel, frame: .zero)
@@ -38,52 +39,120 @@ class AAnswerViewController: BaseViewController {
 
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
     override func bindViewModel() {
         backHeaderView.backButtonTapObservable
-            .bind(onNext: {
-                self.navigationController?.popViewController(animated: true)
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                showBackModal()
             })
             .disposed(by: disposeBag)
 
         backHeaderView.rightButtonTapObservable
-            .bind(onNext: {
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
                 self.toggleQuestion()
             })
             .disposed(by: disposeBag)
         
+        backModal.leftButtonTapObservable
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                backModal.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        backModal.rightButtonTapObservable
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         answerBottomView.registerButtonTapObservable
-            .bind(onNext: {
-                self.showEmotionSheetView()
-            })
+            .bind(to: viewModel.inputs.completeButtonTapped)
             .disposed(by: disposeBag)
         
-        emotionSheetView.emotionCollectionView.rx.setDelegate(self)
+        answerBottomView.togglePublicSwitch
+            .bind(to: viewModel.inputs.toggleSwitch)
             .disposed(by: disposeBag)
         
-        emotionSheetView.emotionCollectionView.rx.itemSelected
-            .bind(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                self.viewModel.inputs.selectEmotion(indexPath: indexPath)
-            })
+        emotionSheetView.collectionViewRx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        emotionSheetView.confirmTapObservable
+            .bind(to: viewModel.inputs.registerButtonTapped)
+            .disposed(by: disposeBag)
+        
+        answerTextView.textViewRxText
+            .orEmpty
+            .bind(to: viewModel.inputs.inputText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.questionSubject
-            .bind(onNext: { question in
+            .bind(onNext: { [weak self] question in
+                guard let self else { return }
                 self.questionView.setQuestion(data: question)
             })
             .disposed(by: disposeBag)
         
-        Observable.just(viewModel.emotionList)
-            .bind(to: emotionSheetView.emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, emotion, cell) in
-                cell.setAlpha()
-                cell.setCell(with: emotion.rawValue)
-            }
+        viewModel.outputs.showEmotionSubject
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.view.endEditing(true)
+                self.showEmotionSheetView()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.toastSubject
+            .bind(onNext: { [weak self] message in
+                guard let self else { return }
+                self.view.endEditing(true)
+                self.showToast(message: message)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.countTextRelay
+            .bind(to: answerBottomView.countTextObservable)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.inputTextRelay
+            .bind(to: answerTextView.textViewRxText)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.selectedEmotionIndexSubject
+            .bind(onNext: { [weak self] indexPath in
+                guard let self else { return }
+                self.emotionView.isHidden = false
+                self.emotionView.setEmotion(emotion: Emotions(intValue: indexPath.row + 1))
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.successRegisterSubject
+            .bind(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.navigationController?.popViewController(animated: true)
+            })
             .disposed(by: disposeBag)
     }
     
     override func setStyles() {
         backHeaderView.do {
             $0.setRightButton(image: UIImage(systemName: "chevron.down")!)
+        }
+        
+        backModal.do {
+            $0.isHidden = true
+            $0.setModalTitle(title: "작성을 취소하고 나가시겠어요?", subTitle: "작성한 답변은 초기화돼요")
+            $0.setModalButton(leftButtonTitle: "아니요", rightButtonTitle: "나갈래요")
+        }
+        
+        emotionView.do {
+            $0.isHidden = true
         }
         
         seperateLine.do {
@@ -97,12 +166,17 @@ class AAnswerViewController: BaseViewController {
     
     override func setLayout() {
         view.addSubviews(backHeaderView, questionView, seperateLine,
-                         answerTextView, answerBottomView, emotionSheetView)
+                         answerTextView, answerBottomView, emotionSheetView,
+                         backModal)
         backHeaderView.addSubview(emotionView)
         
         backHeaderView.snp.makeConstraints {
             $0.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(77)
+        }
+        
+        backModal.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         emotionView.snp.makeConstraints {
@@ -130,7 +204,7 @@ class AAnswerViewController: BaseViewController {
         
         answerBottomView.snp.makeConstraints {
             $0.top.equalTo(answerTextView.snp.bottom)
-            $0.bottom.equalTo(view.keyboardLayoutGuide).inset(34)
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(72)
         }
@@ -178,6 +252,11 @@ extension AAnswerViewController {
     private func showEmotionSheetView() {
         emotionSheetView.isHidden = false
         emotionSheetView.showOpenAnimation()
+    }
+    
+    private func showBackModal() {
+        backModal.isHidden = false
+        backModal.showOpenAnimation()
     }
     
     private func setPremium() {

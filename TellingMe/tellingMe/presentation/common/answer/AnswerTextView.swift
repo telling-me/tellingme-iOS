@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+import RxCocoa
+
 class AnswerTextView: UIView {
     let textView: UITextView = {
         let textView = UITextView()
@@ -15,6 +17,10 @@ class AnswerTextView: UIView {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    
+    var textViewRxText: ControlProperty<String?> {
+        return textView.rx.text
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

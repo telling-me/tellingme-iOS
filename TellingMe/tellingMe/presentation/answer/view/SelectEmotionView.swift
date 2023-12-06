@@ -20,10 +20,18 @@ final class SelectEmotionView: BBaseView {
     private let contentView = UIView()
     private let titleLabel = UILabel()
     private let emotionLabel = UILabel()
-    let emotionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let emotionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let buttonStackView = UIStackView()
     private let cancelButton = TeritaryTextButton()
     private let confirmButton = SecondaryTextButton()
+    
+    var collectionViewRx: Reactive<UICollectionView> {
+        return emotionCollectionView.rx
+    }
+    
+    var confirmTapObservable: Observable<Void> {
+        return confirmButton.rx.tap.asObservable()
+    }
     
     init(viewModel: AnswerViewModel, frame: CGRect) {
         self.viewModel = viewModel
@@ -48,6 +56,13 @@ final class SelectEmotionView: BBaseView {
                 self.selectEmotion(indexPath: indexPath)
             })
             .disposed(by: disposeBag)
+
+        Observable.just(viewModel.emotionList)
+            .bind(to: emotionCollectionView.rx.items(cellIdentifier: EmotionCollectionViewCell.id, cellType: EmotionCollectionViewCell.self)) { (row, emotion, cell) in
+                cell.setAlpha()
+                cell.setCell(with: emotion.rawValue)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setStyles() {
@@ -55,6 +70,8 @@ final class SelectEmotionView: BBaseView {
         
         contentView.do {
             $0.backgroundColor = .Side100
+            $0.layer.cornerRadius = 28
+            $0.setTopCornerRadius()
         }
         
         titleLabel.do {
@@ -68,6 +85,13 @@ final class SelectEmotionView: BBaseView {
             $0.textColor = .Gray5
             $0.text = AnswerStrings.emotionPlaceHolder.stringValue
         }
+        
+        emotionCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                guard let self else { return }
+                self.viewModel.inputs.selectEmotion(indexPath: indexPath)
+            })
+            .disposed(by: disposeBag)
         
         emotionCollectionView.do {
             $0.backgroundColor = .Side100
@@ -134,7 +158,7 @@ extension SelectEmotionView {
         if let cell = emotionCollectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
             cell.setOrigin()
         }
-        self.emotionLabel.text = viewModel.emotionList[indexPath.row].stringValue
+        self.emotionLabel.text = viewModel.emotionList[indexPath.row - 1].stringValue
     }
 }
 

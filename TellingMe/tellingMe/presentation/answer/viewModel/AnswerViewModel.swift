@@ -9,26 +9,25 @@ import Foundation
 
 import RxCocoa
 import RxSwift
+import Moya
 
 protocol AnswerViewModelInputs {
-//    var clickedChangeQuestion
-//    var clickedFoldView
-//    var clickedBackNavigation
-//    var inputTextField
-//    var toggleSwitch
-//    var clickedRegisterButton
+    var toggleSwitch: BehaviorRelay<Bool> { get }
+    var completeButtonTapped: PublishSubject<Void> { get }
+    var registerButtonTapped: PublishSubject<Void> { get }
+    var inputText: BehaviorRelay<String> { get }
     func selectEmotion(indexPath: IndexPath)
 }
 
 protocol AnswerViewModelOutputs {
     var changeQuestionSubject: PublishSubject<QuestionType> { get }
-    var foldViewSubject: BehaviorRelay<Bool> { get }
     var inputTextRelay: BehaviorRelay<String> { get }
-    var tolggleSwitchSubject: BehaviorRelay<Void> { get }
     var countTextRelay: BehaviorRelay<String> { get }
     var toastSubject: PublishSubject<String> { get }
     var questionSubject: PublishSubject<Question> { get }
-    var selectedEmotionIndexSubject: PublishSubject<IndexPath> { get }
+    var selectedEmotionIndexSubject: BehaviorRelay<IndexPath> { get }
+    var showEmotionSubject: PublishSubject<Void> { get }
+    var successRegisterSubject: PublishSubject<Void> { get }
 }
 
 protocol AnswerViewModelType {
@@ -37,7 +36,6 @@ protocol AnswerViewModelType {
 }
 
 final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerViewModelOutputs {
-    
     // 옛날꺼
     var questionDate: String? = Date().getQuestionDate()
     var modalChanged: Int = 0
@@ -53,29 +51,74 @@ final class AnswerViewModel: AnswerViewModelType, AnswerViewModelInputs, AnswerV
     
     // inputs
     var inputs: AnswerViewModelInputs { return self }
+    var toggleSwitch = BehaviorRelay<Bool>(value: true)
+    var completeButtonTapped = PublishSubject<Void>()
+    var registerButtonTapped = PublishSubject<Void>()
+    var inputText = BehaviorRelay<String>(value: "")
+    
     func selectEmotion(indexPath: IndexPath) {
-        selectedEmotionIndexSubject.onNext(indexPath)
+        selectedEmotionIndexSubject.accept(indexPath)
     }
     
     // outputs
     var outputs: AnswerViewModelOutputs { return self }
     var changeQuestionSubject: PublishSubject<QuestionType> = PublishSubject<QuestionType>()
-    var foldViewSubject = BehaviorRelay(value: false)
     var inputTextRelay = BehaviorRelay(value: "")
-    var tolggleSwitchSubject = BehaviorRelay(value: ())
-    var countTextRelay = BehaviorRelay(value: "")
+    var countTextRelay = BehaviorRelay(value: "0")
     var toastSubject = PublishSubject<String>()
     var questionSubject = PublishSubject<Question>()
-    var selectedEmotionIndexSubject = PublishSubject<IndexPath>()
+    var selectedEmotionIndexSubject = BehaviorRelay<IndexPath>(value: IndexPath(row: 1, section: 0))
+    var showEmotionSubject = PublishSubject<Void>()
+    var successRegisterSubject = PublishSubject<Void>()
     
     init() {
         getQuestion()
+        completeButtonTapped
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.tapRegisterButton()
+            })
+            .disposed(by: disposeBag)
+        registerButtonTapped
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.registerAnswer()
+            })
+            .disposed(by: disposeBag)
+        inputText
+            .map { text -> String in
+                if text.count >= 300 {
+                    self.toastSubject.onNext("300자까지만 작성 가능합니다.")
+                    let truncatedText = String(text.prefix(300))
+                    return truncatedText
+                }
+                return text
+            }
+            .subscribe(onNext: { [weak self] text in
+                guard let self else { return }
+                self.outputs.countTextRelay.accept(String(text.count))
+                self.outputs.inputTextRelay.accept(text)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 extension AnswerViewModel {
+    private func tapRegisterButton() {
+        if inputText.value.count < 4 {
+            toastSubject.onNext("4글자 이상 입력하여 주세요.")
+        } else {
+            showEmotionSubject.onNext(())
+        }
+    }
+    
     private func getQuestion() {
-        QuestionAPI.getTodayQuestion(query: "2023-11-29")
+        guard let date = questionDate else {
+            self.toastSubject.onNext("날짜에 맞는 질문을 찾을 수 없습니다.")
+            return
+        }
+        
+        QuestionAPI.getTodayQuestion(query: date)
             .map { response in
                 return Question(date: response.date, question: response.title, phrase: response.phrase)
             }
@@ -90,6 +133,25 @@ extension AnswerViewModel {
     }
     
     private func registerAnswer() {
-
+        guard let date = questionDate else {
+            self.toastSubject.onNext("날짜에 맞는 질문을 찾을 수 없습니다.")
+            return
+        }
+        
+        let request = RegisterAnswerRequest(content: inputText.value, date: date, emotion: selectedEmotionIndexSubject.value.row + 1, isPublic: toggleSwitch.value, isSpare: false)
+        AnswerAPI.registerAnswer(request: request)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.successRegisterSubject.onNext(())
+            }, onError: { [weak self] error in
+                guard let self else { return }
+                switch error {
+                case APIError.errorData(let errorData):
+                    self.toastSubject.onNext(errorData.message)
+                default:
+                    self.toastSubject.onNext("알 수 없는 오류가 발생했습니다.")
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

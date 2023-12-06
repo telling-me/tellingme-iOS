@@ -19,8 +19,16 @@ final class AnswerBottomView: BBaseView {
     private let publicSwitch = UISwitch()
     private let registerButton = UIButton()
     
+    var countTextObservable: Binder<String?> {
+        return countTextLabel.rx.text
+    }
+    
     var registerButtonTapObservable: Observable<Void> {
         return registerButton.rx.tap.asObservable()
+    }
+    
+    var togglePublicSwitch: ControlProperty<Bool> {
+        return publicSwitch.rx.isOn
     }
     
     override init(frame: CGRect) {
