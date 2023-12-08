@@ -50,15 +50,10 @@ class CommunicationAnswerViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.viewModel.fetchAnswerData()
+        self.questionView.setQuestion(data: viewModel.receivedData.question)
     }
 
     func bindViewModel() {
-        viewModel.dataSubject
-            .subscribe(onNext: { [weak self] data in
-                self?.viewModel.index = data.index
-                self?.viewModel.indexPath = data.indexPath
-                self?.questionView.setQuestion(data: data.question)
-            }).disposed(by: disposeBag)
         viewModel.answerSubject
             .subscribe(onNext: { [weak self] data in
                 self?.answerView.setTextWithNoChange(text: data.content)
@@ -72,7 +67,7 @@ class CommunicationAnswerViewController: UIViewController {
         headerView.backButtonTapObservable
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                let (isLike, likeCount) = CommunicationData.shared.getLikeStatus(index: self.viewModel.index, indexPath: self.viewModel.indexPath)
+                let (isLike, likeCount) = CommunicationData.shared.getLikeStatus(index: self.viewModel.receivedData.index, indexPath: self.viewModel.receivedData.indexPath)
                 self.delegate?.sendLike(isLike: isLike, likeCount: likeCount)
                 self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
@@ -92,7 +87,7 @@ class CommunicationAnswerViewController: UIViewController {
     }
 
     func toggleLikeButton() {
-        let (isLiked, likeCount) = CommunicationData.shared.toggleLike(index: self.viewModel.index, indexPath: self.viewModel.indexPath)
+        let (isLiked, likeCount) = CommunicationData.shared.toggleLike(index: self.viewModel.receivedData.index, indexPath: self.viewModel.receivedData.indexPath)
         // 좋아요 취소
         likeButton.isSelected = isLiked
         if likeCount == 0 {
