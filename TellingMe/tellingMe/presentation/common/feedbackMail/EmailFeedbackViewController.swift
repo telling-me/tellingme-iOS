@@ -17,8 +17,7 @@ class EmailFeedbackViewController: UIViewController {
 extension EmailFeedbackViewController: MFMailComposeViewControllerDelegate {
     func sendFeedbackMail(userOf user: String?) {
         if MFMailComposeViewController.canSendMail() {
-            let versionManager = VersionManager()
-            guard let appVersion: String = versionManager.getCurrentVersion(), let userName = user else { return }
+            guard let appVersion: String = VersionManager.getCurrentVersion(), let userName = user else { return }
 
             let mailViewController = MFMailComposeViewController()
             let toMail = "tellingmetime@gmail.com"
