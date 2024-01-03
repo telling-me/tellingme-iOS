@@ -158,7 +158,7 @@ extension SelectEmotionView {
         if let cell = emotionCollectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
             cell.setOrigin()
         }
-        self.emotionLabel.text = viewModel.emotionList[indexPath.row - 1].stringValue
+        self.emotionLabel.text = viewModel.emotionList[indexPath.row].stringValue
     }
 }
 
