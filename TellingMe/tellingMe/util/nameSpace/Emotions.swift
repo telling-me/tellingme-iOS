@@ -16,7 +16,7 @@ enum Emotions: String {
     case sad = "Sad"
     case angry = "Angry"
     case excited = "Excited"
-    case thrilled = "ㅆhrilled"
+    case thrilled = "Thrilled"
     case relaxed = "Relaxed"
     case lethargic = "Lethargic"
     case lonely = "Lonely"
