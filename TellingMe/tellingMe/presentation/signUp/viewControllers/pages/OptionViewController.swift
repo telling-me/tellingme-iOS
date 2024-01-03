@@ -79,6 +79,8 @@ final class OptionViewController: SignUpBaseViewController {
     }
     
     override func setStyles() {
+        super.setStyles()
+        
         titleLabel.do {
             $0.text = "출생 연도를 알려주세요"
         }
@@ -101,6 +103,8 @@ final class OptionViewController: SignUpBaseViewController {
     }
     
     override func setLayout() {
+        super.setLayout()
+        
         view.addSubviews(inputBox, genderTitleLabel, genderCollectionView)
         
         inputBox.snp.makeConstraints {

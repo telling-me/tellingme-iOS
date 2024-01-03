@@ -71,6 +71,8 @@ final class JobViewController: SignUpBaseViewController {
     }
     
     override func setStyles() {
+        super.setStyles()
+        
         titleLabel.do {
             $0.text = "직업을 알려주세요"
         }
@@ -87,6 +89,8 @@ final class JobViewController: SignUpBaseViewController {
     }
     
     override func setLayout() {
+        super.setLayout()
+        
         view.addSubview(jobTableView)
         
         jobTableView.snp.makeConstraints {

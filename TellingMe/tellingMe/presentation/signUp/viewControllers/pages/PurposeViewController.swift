@@ -74,6 +74,8 @@ final class PurposeViewController: SignUpBaseViewController {
     }
     
     override func setStyles() {
+        super.setStyles()
+        
         titleLabel.do {
             $0.text = "고민을 알려주세요"
         }
@@ -97,6 +99,8 @@ final class PurposeViewController: SignUpBaseViewController {
     }
     
     override func setLayout() {
+        super.setLayout()
+        
         view.addSubviews(captionLabel, purposeCollectionView)
         
         captionLabel.snp.makeConstraints {

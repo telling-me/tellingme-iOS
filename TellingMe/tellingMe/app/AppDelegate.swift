@@ -53,25 +53,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 extension AppDelegate: MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-      print("Firebase registration token: \(String(describing: fcmToken))")
-
-      let dataDict: [String: String] = ["token": fcmToken ?? ""]
-      NotificationCenter.default.post(
-        name: Notification.Name("FCMToken"),
-        object: nil,
-        userInfo: dataDict
-      )
+        print("Firebase registration token: \(String(describing: fcmToken))")
         
-        // 키체인에 저장되어있는데, 이 값이 fcmToken하고 다르면 token값 변경으로 서버에 전송
-        if let token = KeychainManager.shared.load(key: Keys.firebaseToken.rawValue) {
+        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: dataDict
+        )
+        
+        if let receivedToken = fcmToken, let token = KeychainManager.shared.load(key: Keys.firebaseToken.keyString) {
+            // 키체인에 저장되어있는데, 이 값이 fcmToken하고 다르면 token값 변경으로 서버에 전송
             if token != fcmToken {
-                sendFirebaseToken(token)
+                KeychainManager.shared.save(receivedToken, key: Keys.firebaseToken.keyString)
+                sendFirebaseToken(receivedToken)
             }
-        } else {
-            
         }
     }
-    
     
     func sendFirebaseToken(_ token: String) {
         let request = FirebaseTokenRequest(pushToken: token)
@@ -84,5 +82,5 @@ extension AppDelegate: MessagingDelegate {
                     print(error)
                 }
             }).disposed(by: DisposeBag())
-       }
+    }
 }

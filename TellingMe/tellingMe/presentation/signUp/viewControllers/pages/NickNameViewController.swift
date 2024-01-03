@@ -69,6 +69,8 @@ final class NickNameViewController: SignUpBaseViewController {
     }
     
     override func setStyles() {
+        super.setStyles()
+        
         titleLabel.do {
             $0.text = "닉네임을 정해주세요"
         }
@@ -81,6 +83,8 @@ final class NickNameViewController: SignUpBaseViewController {
     }
     
     override func setLayout() {
+        super.setLayout()
+        
         view.addSubviews(inputBox, captionLabel)
         
         inputBox.snp.makeConstraints {

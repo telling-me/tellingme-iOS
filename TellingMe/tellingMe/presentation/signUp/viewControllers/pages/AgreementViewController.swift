@@ -47,6 +47,8 @@ final class AgreementViewController: SignUpBaseViewController {
     }
     
     override func setStyles() {
+        super.setStyles()
+        
         titleLabel.do {
             $0.text = "약관에 동의해주세요"
         }
@@ -63,7 +65,10 @@ final class AgreementViewController: SignUpBaseViewController {
     }
     
     override func setLayout() {
+        super.setLayout()
+        
         view.addSubviews(boxCheckButton, agreementStackView)
+        
         boxCheckButton.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(110)
             $0.horizontalEdges.equalToSuperview().inset(25)
