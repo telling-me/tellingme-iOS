@@ -60,6 +60,7 @@ final class AnswerBottomView: BBaseView {
         
         publicSwitch.do {
             $0.onTintColor = .Logo
+            $0.isOn = true
         }
         
         registerButton.do {
