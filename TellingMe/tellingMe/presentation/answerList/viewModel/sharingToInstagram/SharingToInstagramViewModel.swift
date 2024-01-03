@@ -100,7 +100,7 @@ extension SharingToInstagramViewModel {
         let width = appDelegate.deviceWidth
         let addedViewHeight = height/1.68
         let addedViewWidth = width/1.24
-        var stickerYPointCalculated = addedViewHeight/1.42
+        var stickerYPointCalculated = addedViewHeight/1.43
         
         let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
         
@@ -109,7 +109,7 @@ extension SharingToInstagramViewModel {
         }
         
         if currentDevice == "iPhone 12 mini" || currentDevice == "iPhone 13 mini" {
-            stickerYPointCalculated = addedViewHeight/1.46
+            stickerYPointCalculated = addedViewHeight/1.49
         }
 
         DeviceSecondaryAbnormal.allCases.forEach { device in
