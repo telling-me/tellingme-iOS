@@ -39,7 +39,7 @@ enum SecurityModeAuthorizedStatus {
 enum PasswordSettingStatus {
     case none
     case passwordNotSet
-    case passwordSet
+    case passwordSetButToBeRemoved
     case passwordSetToggleOff
     case passwordCanBeChanged
 }
