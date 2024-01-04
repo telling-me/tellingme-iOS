@@ -30,23 +30,14 @@ final class NickNameViewController: SignUpBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
         hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.checkNicknameInputed()
     }
-    
-    deinit {
-        print("NicknameViewController Deinited")
-    }
-}
 
-extension NickNameViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         inputBox.inputTextField.rx.controlEvent(.editingChanged)
             .asObservable()
             .subscribe(onNext: { [weak self] in
@@ -77,7 +68,23 @@ extension NickNameViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
+    override func setStyles() {
+        super.setStyles()
+        
+        titleLabel.do {
+            $0.text = "닉네임을 정해주세요"
+        }
+        
+        captionLabel.do {
+            $0.text = "영문, 숫자, 띄어쓰기, 특수문자 불가"
+            $0.textColor = .Gray7
+            $0.font = .fontNanum(.C1_Regular)
+        }
+    }
+    
+    override func setLayout() {
+        super.setLayout()
+        
         view.addSubviews(inputBox, captionLabel)
         
         inputBox.snp.makeConstraints {
@@ -91,31 +98,7 @@ extension NickNameViewController {
         }
     }
     
-    private func setStyles() {
-        titleLabel.do {
-            $0.text = "닉네임을 정해주세요"
-        }
-        
-//        inputBox.do {
-//            $0.inputTextField.delegate = self
-//        }
-        
-        captionLabel.do {
-            $0.text = "영문, 숫자, 띄어쓰기, 특수문자 불가"
-            $0.textColor = .Gray7
-            $0.font = .fontNanum(.C1_Regular)
-        }
+    deinit {
+        print("NicknameViewController Deinited")
     }
 }
-
-//extension NickNameViewController: UITextFieldDelegate {
-//        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//            let utf8Char = string.cString(using: .utf8)
-//            let isBackSpace = strcmp(utf8Char, "\\b")
-//
-//            if isBackSpace == -92 || (string.checkOnlyKoreanCharacters()) {
-//                return true
-//            }
-//            return false
-//        }
-//}

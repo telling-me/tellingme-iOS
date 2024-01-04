@@ -28,18 +28,9 @@ final class FeedbackViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
-    
-    deinit {
-        print("FeedbackViewController Deinit")
-    }
-}
 
-extension FeedbackViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         infoButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 self?.toggleBottomSheet()
@@ -74,8 +65,49 @@ extension FeedbackViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    override func setStyles() {
+        view.backgroundColor = .Side100
+        headerView.do {
+            $0.setHeader(title: "소중한 피드백", buttonImage: "Xmark")
+        }
 
-    private func setLayout() {
+        imageView.do {
+            $0.image = UIImage(named: "Feedback")
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        titleLabel.do {
+            $0.text = "오늘 질문은 어땠나요?"
+            $0.font = .fontNanum(.H5_Regular)
+            $0.textColor = .Black
+        }
+        
+        infoButton.do {
+            $0.setImage(UIImage(systemName: "info.circle"), for: .normal)
+            $0.tintColor = .Gray6
+        }
+        
+        subTitleLabel.do {
+            $0.text = "의견을 반영해서 더 좋은 질문을 드리고 싶어요!"
+            $0.font = .fontNanum(.B2_Regular)
+            $0.textColor = .Gray7
+        }
+        
+        goodButton.do {
+            $0.setText(text: "좋았어요!")
+        }
+        
+        badButton.do {
+            $0.setText(text: "아쉬워요..")
+        }
+        
+        bottomSheet.do {
+            $0.isHidden = true
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(headerView, imageView, titleLabel, infoButton, subTitleLabel, goodButton, badButton, bottomSheet)
         headerView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -115,45 +147,8 @@ extension FeedbackViewController {
         }
     }
     
-    private func setStyles() {
-        view.backgroundColor = .Side100
-        headerView.do {
-            $0.setHeader(title: "소중한 피드백", buttonImage: "Xmark")
-        }
-
-        imageView.do {
-            $0.image = UIImage(named: "Feedback")
-            $0.contentMode = .scaleAspectFit
-        }
-        
-        titleLabel.do {
-            $0.text = "오늘 질문은 어땠나요?"
-            $0.font = .fontNanum(.H5_Regular)
-            $0.textColor = .Black
-        }
-        
-        infoButton.do {
-            $0.setImage(UIImage(systemName: "info.circle"), for: .normal)
-            $0.tintColor = .Gray6
-        }
-        
-        subTitleLabel.do {
-            $0.text = "의견을 반영해서 더 좋은 질문을 드리고 싶어요!"
-            $0.font = .fontNanum(.B2_Regular)
-            $0.textColor = .Gray7
-        }
-        
-        goodButton.do {
-            $0.setText(text: "좋았어요!")
-        }
-        
-        badButton.do {
-            $0.setText(text: "아쉬워요..")
-        }
-        
-        bottomSheet.do {
-            $0.isHidden = true
-        }
+    deinit {
+        print("FeedbackViewController Deinit")
     }
 }
 

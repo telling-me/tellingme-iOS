@@ -30,22 +30,13 @@ final class PurposeViewController: SignUpBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.inputs.checkPurposeSelected()
     }
-    
-    deinit {
-        print("PurposeViewController Deinited")
-    }
-}
 
-extension PurposeViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         infoButton.rx.tap
             .bind(to: viewModel.showInfoSubject)
             .disposed(by: disposeBag)
@@ -82,23 +73,9 @@ extension PurposeViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
-        view.addSubviews(captionLabel, purposeCollectionView)
+    override func setStyles() {
+        super.setStyles()
         
-        captionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(16)
-        }
-        
-        purposeCollectionView.snp.makeConstraints {
-            $0.top.equalTo(captionLabel.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(60)
-            $0.bottom.equalToSuperview()
-        }
-    }
-    
-    private func setStyles() {
         titleLabel.do {
             $0.text = "고민을 알려주세요"
         }
@@ -119,6 +96,28 @@ extension PurposeViewController {
             $0.allowsMultipleSelection = true
             $0.register(TeritaryVerticalBothButtonCell.self, forCellWithReuseIdentifier: TeritaryVerticalBothButtonCell.id)
         }
+    }
+    
+    override func setLayout() {
+        super.setLayout()
+        
+        view.addSubviews(captionLabel, purposeCollectionView)
+        
+        captionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(16)
+        }
+        
+        purposeCollectionView.snp.makeConstraints {
+            $0.top.equalTo(captionLabel.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(60)
+            $0.bottom.equalToSuperview()
+        }
+    }
+    
+    deinit {
+        print("PurposeViewController Deinited")
     }
 }
 

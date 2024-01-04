@@ -102,8 +102,8 @@ class CommunicationListViewController: UIViewController {
                 reloadCollectionView()
             }).disposed(by: disposeBag)
         viewModel.answerSuccessSubject
-            .subscribe(onNext: { [weak self] response in
-                self?.pushCommunicationAnswer(response)
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.pushCommunicationAnswer(indexPath)
                 //                self?.collectionView.isUserInteractionEnabled = true
             }).disposed(by: disposeBag)
         viewModel.showToastSubject

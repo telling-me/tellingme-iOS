@@ -9,6 +9,7 @@ import UIKit
 
 class EmotionCollectionViewCell: UICollectionViewCell {
     static let id = "imageCell"
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +26,7 @@ class EmotionCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
     }
 
-    func setData(with text: String) {
+    func setCell(with text: String) {
         imageView.widthAnchor.constraint(equalToConstant: 56).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 56).isActive = true
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -33,4 +34,11 @@ class EmotionCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: text)
     }
 
+    func setAlpha() {
+        imageView.alpha = 0.5
+    }
+    
+    func setOrigin() {
+        imageView.alpha = 1
+    }
 }

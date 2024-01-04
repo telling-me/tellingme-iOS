@@ -24,10 +24,34 @@ class BackHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    let rightButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = UIColor(named: "Gray6")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
+        return button
+    }()
+    
+    let rightSecondButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = UIColor(named: "Gray6")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
+        return button
+    }()
 
     var backButtonTapObservable: Observable<Void> {
          return backButton.rx.tap.asObservable()
-     }
+    }
+    
+    var rightButtonTapObservable: Observable<Void> {
+        return rightButton.rx.tap.asObservable()
+    }
+    
+    var rightSecondButtonTapObservable: Observable<Void> {
+        return rightSecondButton.rx.tap.asObservable()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,18 +65,38 @@ class BackHeaderView: UIView {
 
     func setView() {
         backgroundColor = UIColor(named: "Side100")
-        addSubview(backButton)
+        addSubviews(backButton, rightButton, rightSecondButton)
 
         backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 21).isActive = true
-        backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 21).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
 
         backButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        
+        rightButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
+        rightButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 21).isActive = true
+        rightButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        rightButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        rightSecondButton.rightAnchor.constraint(equalTo: self.rightButton.rightAnchor, constant: -8).isActive = true
+        rightSecondButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 21).isActive = true
+        rightSecondButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        rightSecondButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
     }
 
     @objc func didTapButton(_ sender: UIButton) {
         delegate?.popViewController()
+    }
+    
+    func setRightButton(image: UIImage?) {
+        rightButton.isHidden = false
+        rightButton.setImage(image, for: .normal)
+    }
+    
+    func setRightSecondButton(image: UIImage?) {
+        rightSecondButton.isHidden = false
+        rightSecondButton.setImage(image, for: .normal)
     }
 }
 

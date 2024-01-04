@@ -29,23 +29,14 @@ final class JobViewController: SignUpBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
         hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.checkJobSelected(nil)
     }
-    
-    deinit {
-        print("JobViewController Deinited")
-    }
-}
 
-extension JobViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         infoButton.rx.tap
             .bind(to: viewModel.showInfoSubject)
             .disposed(by: disposeBag)
@@ -79,17 +70,9 @@ extension JobViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
-        view.addSubview(jobTableView)
+    override func setStyles() {
+        super.setStyles()
         
-        jobTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
-            $0.horizontalEdges.equalToSuperview().inset(60)
-            $0.bottom.equalTo(view.keyboardLayoutGuide)
-        }
-    }
-    
-    private func setStyles() {
         titleLabel.do {
             $0.text = "직업을 알려주세요"
         }
@@ -103,6 +86,22 @@ extension JobViewController {
             $0.separatorStyle = .none
             $0.register(JobTableViewCell.self, forCellReuseIdentifier: JobTableViewCell.id)
         }
+    }
+    
+    override func setLayout() {
+        super.setLayout()
+        
+        view.addSubview(jobTableView)
+        
+        jobTableView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview().inset(60)
+            $0.bottom.equalTo(view.keyboardLayoutGuide)
+        }
+    }
+    
+    deinit {
+        print("JobViewController Deinited")
     }
 }
 

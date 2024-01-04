@@ -102,7 +102,7 @@
                                             <constraint firstItem="kj3-8I-5bY" firstAttribute="top" secondItem="Qhj-U0-bW3" secondAttribute="top" id="ps0-Pj-Ieg"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-q4-Vhf">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-q4-Vhf">
                                         <rect key="frame" x="300" y="21" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="F8U-Kh-N0d"/>

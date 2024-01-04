@@ -305,8 +305,9 @@ extension HomeViewController {
     }
     
     private func pushToAnswerViewController() {
-        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
-        guard let answerViewController = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
+//        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
+//        guard let answerViewController = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
+        let answerViewController = AAnswerViewController()
         self.navigationController?.pushViewController(answerViewController, animated: true)
     }
     

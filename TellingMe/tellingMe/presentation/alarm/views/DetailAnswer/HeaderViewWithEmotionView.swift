@@ -127,7 +127,7 @@ extension HeaderViewWithEmotionView {
 
 extension HeaderViewWithEmotionView {
     func configure(data: AnswerForAlarmModel) {
-        guard let emotion = Emotions(intValue: data.emotion) else { return }
+        let emotion = Emotions(intValue: data.emotion)
         emotionImageView.image = UIImage(named: emotion.rawValue)
         emotionTitleLabel.text = emotion.stringValue
         questionTitleLabel.text = data.question

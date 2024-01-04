@@ -61,7 +61,10 @@ final class MyPageViewController: EmailFeedbackViewController {
         setStyles()
         /// delete UserDefaults!!
         /// and Keychain Too.
-        UserDefaults.standard.set("subscribed", forKey: StringLiterals.paidProductId)
+        /// 우선 10 부터 시작
+        if UserDefaults.standard.integer(forKey: StringLiterals.paidProductId) != -1 {
+            UserDefaults.standard.removeObject(forKey: StringLiterals.paidProductId)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +75,7 @@ final class MyPageViewController: EmailFeedbackViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        enableWhenNeeded()
+        scrollEnableWhenNeeded()
         checkPlusUser()
     }
     
@@ -152,19 +155,19 @@ extension MyPageViewController {
                 self.settingTableView.deselectRow(at: indexPath, animated: true)
                 let index = indexPath.row
                 switch index {
+//                case 1:
+//                    let myPageSecurityViewController = MyPageSecurityViewController()
+//                    self.navigationController?.pushViewController(myPageSecurityViewController, animated: true)
                 case 1:
-                    let myPageSecurityViewController = MyPageSecurityViewController()
-                    self.navigationController?.pushViewController(myPageSecurityViewController, animated: true)
-                case 2:
                     self.viewModel.inputs.termsOfUseTapped()
-                case 3:
+                case 2:
                     self.viewModel.inputs.privatePolicyTapped()
-                case 4:
+                case 3:
                     self.viewModel.inputs.feedBackWithMailTapped()
                     self.sendFeedbackMail(userOf: self.userName)
-                case 5:
+                case 4:
                     self.viewModel.inputs.questionPlantTapped()
-                case 6:
+                case 5:
                     self.viewModel.inputs.withdrawalTapped()
                     let settingViewModel = SettingViewModel()
                     let id = settingViewModel.items[3].id
@@ -174,7 +177,7 @@ extension MyPageViewController {
                         return
                     }
                     self.navigationController?.pushViewController(vc, animated: true)
-                case 7:
+                case 6:
                     self.viewModel.inputs.logoutTapped()
                     self.showWarningAlertOfSecurityAllGoneWhenLogOut()
                 default:
@@ -311,7 +314,7 @@ extension MyPageViewController {
         }
     }
     
-    private func enableWhenNeeded() {
+    private func scrollEnableWhenNeeded() {
         if settingTableView.contentSize.height > settingTableView.frame.size.height {
             settingTableView.isScrollEnabled = true
         } else {

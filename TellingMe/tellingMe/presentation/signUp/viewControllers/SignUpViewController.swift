@@ -27,19 +27,10 @@ final class SignUpViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
         setPageViewController()
     }
-    
-    deinit {
-        print("SignUpViewController Deinited")
-    }
-}
 
-extension SignUpViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         skipButton.rx.tap
             .throttle(.milliseconds(3000), latest: false, scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] _ in
@@ -135,7 +126,40 @@ extension SignUpViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
+    override func setStyles() {
+        skipButton.do {
+            $0.isHidden = true
+            $0.setTitle("건너뛰기", for: .normal)
+            $0.setTitleColor(.Primary200, for: .normal)
+            $0.titleLabel?.font = .fontNanum(.B1_Regular)
+        }
+        
+        progressView.do {
+            $0.layer.cornerRadius = 2
+            $0.setProgress(Float(1)/Float(5), animated: true)
+            $0.gradientColors = [
+                UIColor(red: 0.486, green: 0.937, blue: 0.655, alpha: 1).cgColor,
+                UIColor(red: 0.561, green: 0.827, blue: 0.957, alpha: 1).cgColor
+            ]
+            $0.backgroundColor = .Gray1
+        }
+
+        leftButton.do {
+            $0.isHidden = true
+            $0.setSystemImage("arrow.backward")
+        }
+        
+        rightButton.do {
+            $0.isEnabled = false
+            $0.setSystemImage("arrow.forward")
+        }
+        
+        infoview.do {
+            $0.isHidden = true
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(headerView, progressView, containerView,
                          leftButton, rightButton, infoview)
         headerView.addSubview(skipButton)
@@ -186,37 +210,8 @@ extension SignUpViewController {
         }
     }
     
-    private func setStyles() {
-        skipButton.do {
-            $0.isHidden = true
-            $0.setTitle("건너뛰기", for: .normal)
-            $0.setTitleColor(.Primary200, for: .normal)
-            $0.titleLabel?.font = .fontNanum(.B1_Regular)
-        }
-        
-        progressView.do {
-            $0.layer.cornerRadius = 2
-            $0.setProgress(Float(1)/Float(5), animated: true)
-            $0.gradientColors = [
-                UIColor(red: 0.486, green: 0.937, blue: 0.655, alpha: 1).cgColor,
-                UIColor(red: 0.561, green: 0.827, blue: 0.957, alpha: 1).cgColor
-            ]
-            $0.backgroundColor = .Gray1
-        }
-
-        leftButton.do {
-            $0.isHidden = true
-            $0.setSystemImage("arrow.backward")
-        }
-        
-        rightButton.do {
-            $0.isEnabled = false
-            $0.setSystemImage("arrow.forward")
-        }
-        
-        infoview.do {
-            $0.isHidden = true
-        }
+    deinit {
+        print("SignUpViewController Deinited")
     }
 }
 

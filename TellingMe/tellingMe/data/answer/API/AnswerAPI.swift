@@ -134,22 +134,6 @@ struct AnswerAPI: Networkable {
         }
     }
     
-//    static func getAnswerWithId(query: Int) -> Observable<GetAnswerRespose> {
-//         return Observable.create { observer in
-//             try makeAuthorizedProvider().requestO(.getAnswerWithId(query: query), dtoType: GetAnswerRespose.self) { result in
-//                 switch result {
-//                 case .success(let response):
-//                    observer.onNext(response)
-//                    observer.onCompleted()
-//                 case .failure(let error):
-//                     observer.onError(APIError.other(error))
-//                 }
-//             }
-//
-//             return Disposables.create()
-//         }
-//     }
-    
     static func getAnswerWithId(query: Int) -> Observable<GetAnswerRespose> {
         do {
             let provider =  try makeAuthorizedProvider()
@@ -180,6 +164,15 @@ struct AnswerAPI: Networkable {
             completion(.failure(APIError.errorData(error)))
         } catch {
             completion(.failure(APIError.other(error)))
+        }
+    }
+    
+    static func registerAnswer(request: RegisterAnswerRequest) -> Observable<Void> {
+        do {
+            let provider =  try makeAuthorizedProvider()
+            return provider.request(target: .registerAnswer(request: request))
+        } catch {
+            return Observable.error(error)
         }
     }
 

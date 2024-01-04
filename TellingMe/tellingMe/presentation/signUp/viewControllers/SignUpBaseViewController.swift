@@ -26,17 +26,25 @@ class SignUpBaseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
-        setStyles()
     }
     
     deinit {
         print("SingUpBaseViewController Deinited")
     }
-}
-
-extension SignUpBaseViewController {
-    private func setLayout() {
+    
+    override func setStyles() {
+        titleLabel.do {
+            $0.font = .fontNanum(.H4_Regular)
+            $0.textColor = .Black
+        }
+        
+        infoButton.do {
+            $0.isHidden = true
+            $0.setImage(UIImage(named: "Info"), for: .normal)
+        }
+    }
+    
+    override func setLayout() {
         view.addSubviews(titleLabel, infoButton)
         
         titleLabel.snp.makeConstraints {
@@ -49,18 +57,6 @@ extension SignUpBaseViewController {
             $0.size.equalTo(32)
             $0.centerY.equalTo(titleLabel)
             $0.leading.equalTo(titleLabel.snp.trailing).offset(4)
-        }
-    }
-    
-    private func setStyles() {
-        titleLabel.do {
-            $0.font = .fontNanum(.H4_Regular)
-            $0.textColor = .Black
-        }
-        
-        infoButton.do {
-            $0.isHidden = true
-            $0.setImage(UIImage(named: "Info"), for: .normal)
         }
     }
 }

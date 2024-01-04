@@ -14,13 +14,6 @@ import KakaoSDKUser
 import AuthenticationServices
 import Moya
 
-struct OnBoarding {
-    let title: String
-    let highLightTitle: String
-    let subTitle: String
-    let image: String
-}
-
 protocol SignInViewModelOutputs {
     var signInSubject: BehaviorSubject<SignInResponse> { get }
     var signUpSubject: BehaviorSubject<SignInErrorResponse> { get }

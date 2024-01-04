@@ -26,28 +26,17 @@ final class AgreementViewController: SignUpBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.inputs.checkAllAgreed()
     }
 
-    
-    deinit {
-        print("AgreementViewController Deinited")
-    }
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension AgreementViewController {
-    private func bindViewModel() {
+    override func bindViewModel() {
         boxCheckButton.checkButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -57,22 +46,9 @@ extension AgreementViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setLayout() {
-        view.addSubviews(boxCheckButton, agreementStackView)
-        boxCheckButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(110)
-            $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.height.equalTo(56)
-        }
+    override func setStyles() {
+        super.setStyles()
         
-        agreementStackView.snp.makeConstraints {
-            $0.top.equalTo(boxCheckButton.snp.bottom).offset(16)
-            $0.horizontalEdges.equalToSuperview().inset(41)
-            $0.height.equalTo(60)
-        }
-    }
-    
-    private func setStyles() {
         titleLabel.do {
             $0.text = "약관에 동의해주세요"
         }
@@ -86,6 +62,28 @@ extension AgreementViewController {
             $0.spacing = 12
             setStackView()
         }
+    }
+    
+    override func setLayout() {
+        super.setLayout()
+        
+        view.addSubviews(boxCheckButton, agreementStackView)
+        
+        boxCheckButton.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(110)
+            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.height.equalTo(56)
+        }
+        
+        agreementStackView.snp.makeConstraints {
+            $0.top.equalTo(boxCheckButton.snp.bottom).offset(16)
+            $0.horizontalEdges.equalToSuperview().inset(41)
+            $0.height.equalTo(60)
+        }
+    }
+    
+    deinit {
+        print("AgreementViewController Deinited")
     }
 }
 
