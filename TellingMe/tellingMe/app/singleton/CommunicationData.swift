@@ -15,6 +15,12 @@ enum Sorting: String {
 
 class CommunicationData {
     static var shared: CommunicationData = CommunicationData()
+    private let realmManager = RealmManager()
+    private var blockedIds: [Int] {
+        get {
+            realmManager.fetchBlockedStories()
+        }
+    }
     var sortingList: [Sorting] = [.recent, .related, .popular]
     var threeDays: [QuestionListResponse] = []
 
@@ -31,7 +37,19 @@ class CommunicationData {
     }
 
     func setCommunicatonList(index: Int, contentList: [Content]) {
+        if blockedIds.isEmpty == false {
+            let blockData = Set(blockedIds)
+            print(blockData, ":blockedFirst ⚠️")
+            communicationList[index] += contentList.filter { !blockData.contains($0.answerId) }
+            return
+        }
         communicationList[index] += contentList
+    }
+    
+    func removeBlockedStory(index: Int) {
+        let newBlockedIds = realmManager.fetchBlockedStories()
+        let blockData = Set(newBlockedIds)
+        communicationList[index] = communicationList[index].filter { !blockData.contains($0.answerId) }
     }
 
     func toggleLike(index: Int, indexPath: IndexPath) -> (Bool, Int) {
