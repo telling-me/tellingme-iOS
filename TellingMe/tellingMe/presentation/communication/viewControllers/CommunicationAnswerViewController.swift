@@ -11,9 +11,11 @@ import RxCocoa
 
 protocol SendCurrentLikeDelegate: AnyObject {
     func sendLike(isLike: Bool, likeCount: Int)
+    func reloadToRemoveBlockStory()
 }
 
 class CommunicationAnswerViewController: UIViewController {
+    
     let viewModel = CommunicationAnswerViewModel()
     var delegate: SendCurrentLikeDelegate?
     let disposeBag = DisposeBag()
@@ -104,6 +106,7 @@ class CommunicationAnswerViewController: UIViewController {
             return
         }
         viewController.modalPresentationStyle = .overCurrentContext
+        viewController.delegate = self
         self.present(viewController, animated: true)
         viewController.setLabel(text: "신고가 접수되었어요!")
     }
@@ -114,12 +117,18 @@ class CommunicationAnswerViewController: UIViewController {
         }
         viewController.delegate = self
         viewController.viewModel.answerId = viewModel.answerId
+        viewController.viewModel.userId = viewModel.userId
         viewController.modalPresentationStyle = .overFullScreen
         self.present(viewController, animated: true, completion: nil)
     }
 }
 
-extension CommunicationAnswerViewController: SendShowReportAlert {
+extension CommunicationAnswerViewController: SendShowReportAlert, AlertActionDelegate {
+    func clickOk() {
+        navigationController?.popViewController(animated: true)
+        delegate?.reloadToRemoveBlockStory()
+    }
+    
     func reportCompleted() {
         self.showAlert()
     }

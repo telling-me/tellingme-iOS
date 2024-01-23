@@ -129,4 +129,8 @@ class CommunicationListViewModel {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    func reloadForBlockedStory() {
+        CommunicationData.shared.removeBlockedStory(index: self.index)
+    }
 }

@@ -20,6 +20,10 @@ class CommunicationAnswerViewModel {
     var answerId: Int {
         return CommunicationData.shared.communicationList[receivedData.index][receivedData.indexPath.row].answerId
     }
+    var userId: String {
+        return CommunicationData.shared.communicationList[receivedData.index][receivedData.indexPath.row].userId
+    }
+    
     var receivedData: ReceiveData = ReceiveData(index: 0, indexPath: IndexPath(row: 0, section: 0), question: Question(date: nil, question: "", phrase: ""))
     // answerviewcontroller와 좋아요 데이터를 공유하기 위한 subject
     var shareLikeSubject = PublishSubject<LikeResponse>()
