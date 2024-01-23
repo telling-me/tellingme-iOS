@@ -11,10 +11,12 @@ import RxCocoa
 
 class ReportViewModel {
     var answerId: Int = 0
+    var userId: String = ""
     let reports = ["욕설", "음란물", "광고", "개인정보 침해", "낚시성 콘텐츠", "기타"]
     let selectedReport = BehaviorRelay<Int?>(value: nil)
     let successSubject = PublishSubject<String>()
     let showToastSubject = PublishSubject<String>()
+    private let realmManager = RealmManager()
 
     // 항목 선택 시 호출되는 메서드입니다.
     func selectValue(_ value: Int) {
@@ -26,10 +28,12 @@ class ReportViewModel {
             return
         }
         let request = ReportRequest(answerId: self.answerId, reason: selectedReport)
-        ReportAPI.postReport(request: request) { result in
+        ReportAPI.postReport(request: request) { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success:
                 self.successSubject.onNext("성공")
+                self.realmManager.blockStoryId(of: self.answerId, userIdOf: self.userId)
             case .failure(let error):
                 switch error {
                 case .errorData(let errorData):
