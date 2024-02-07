@@ -54,7 +54,10 @@ class CommunicationListViewController: UIViewController {
         if CommunicationData.shared.currentSortValue != viewModel.currentSort {
             viewModel.getIntialCommunicationList()
         }
-        reloadCollectionView()
+        viewModel.reloadForBlockedStory()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+            self.reloadCollectionView()
+        }
     }
 
     func setView() {
@@ -138,6 +141,8 @@ class CommunicationListViewController: UIViewController {
     func reloadCollectionView() {
         collectionView.reloadData()
     }
+    
+    deinit { print("⚠️!!!!") }
 }
 
 extension CommunicationListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -220,6 +225,7 @@ extension CommunicationListViewController: UICollectionViewDelegate, UICollectio
 }
 
 extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate, SendCurrentLikeDelegate {
+    
     func likeButtonClicked(answerId: Int) {
         self.viewModel.postLike(answerId: answerId)
     }
@@ -234,5 +240,10 @@ extension CommunicationListViewController: SendLikeDelegate, SendSortDelegate, S
     func sendLike(isLike: Bool, likeCount: Int) {
         self.reloadCollectionView()
     }
-
+    
+    func reloadToRemoveBlockStory() {
+//        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+//            self.navigationController?.popViewController(animated: true)
+//        }
+    }
 }

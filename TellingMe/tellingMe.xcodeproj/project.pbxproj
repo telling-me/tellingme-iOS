@@ -298,6 +298,10 @@
 		58B7C37B2ADA856E00FFFADE /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B7C37A2ADA856E00FFFADE /* SecurityManager.swift */; };
 		58BB76E92AD7E863004AF4BE /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB76E82AD7E863004AF4BE /* IAPManager.swift */; };
 		58BB76EB2AD80AFA004AF4BE /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB76EA2AD80AFA004AF4BE /* Products.swift */; };
+		58BB89112B5EC8D3002B358C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 58BB89102B5EC8D3002B358C /* Realm */; };
+		58BB89132B5EC8D3002B358C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58BB89122B5EC8D3002B358C /* RealmSwift */; };
+		58BB89152B5EC8F5002B358C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB89142B5EC8F5002B358C /* RealmManager.swift */; };
+		58BB89182B5ECB58002B358C /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB89172B5ECB58002B358C /* BlockModel.swift */; };
 		58BFBB3F2AAD98EF004A84E8 /* EmailFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFBB3E2AAD98EF004A84E8 /* EmailFeedbackViewController.swift */; };
 		58BFBB412AADA1CC004A84E8 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFBB402AADA1CC004A84E8 /* VersionManager.swift */; };
 		58BFBB472AADCC66004A84E8 /* PremiumInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFBB462AADCC66004A84E8 /* PremiumInformationCollectionViewCell.swift */; };
@@ -649,6 +653,8 @@
 		58B7C37A2ADA856E00FFFADE /* SecurityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
 		58BB76E82AD7E863004AF4BE /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		58BB76EA2AD80AFA004AF4BE /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		58BB89142B5EC8F5002B358C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		58BB89172B5ECB58002B358C /* BlockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModel.swift; sourceTree = "<group>"; };
 		58BFBB3E2AAD98EF004A84E8 /* EmailFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFeedbackViewController.swift; sourceTree = "<group>"; };
 		58BFBB402AADA1CC004A84E8 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
 		58BFBB462AADCC66004A84E8 /* PremiumInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInformationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -690,8 +696,10 @@
 				58F2E7872A95FF9A00F3667A /* FirebaseMessaging in Frameworks */,
 				58F2E77D2A95FF9A00F3667A /* FirebaseDatabase in Frameworks */,
 				58F2E76E2A95FF0200F3667A /* RxCocoa in Frameworks */,
+				58BB89112B5EC8D3002B358C /* Realm in Frameworks */,
 				58F2E7552A95C1E900F3667A /* Then in Frameworks */,
 				58F2E7702A95FF0200F3667A /* RxRelay in Frameworks */,
+				58BB89132B5EC8D3002B358C /* RealmSwift in Frameworks */,
 				58F2E7932A96008600F3667A /* KakaoSDK in Frameworks */,
 				58F2E7522A95C1D500F3667A /* SnapKit in Frameworks */,
 				58F2E7992A96008700F3667A /* KakaoSDKTalk in Frameworks */,
@@ -874,6 +882,7 @@
 		3A2A502F29B87C46002FE5E4 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				58BB89162B5ECB2E002B358C /* block */,
 				586061B12ADD4B2E00F22D5C /* secure */,
 				583D30592ABED39A00E99FBA /* home */,
 				3AF324B12ABF5B7A00995DBE /* feedback */,
@@ -1889,6 +1898,7 @@
 				586061D62AC16A1400FE2733 /* TimeManager.swift */,
 				586805DA2AD03CFC009EEA61 /* AnalyzeManager.swift */,
 				58BB76E82AD7E863004AF4BE /* IAPManager.swift */,
+				58BB89142B5EC8F5002B358C /* RealmManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -2125,6 +2135,14 @@
 			path = viewModels;
 			sourceTree = "<group>";
 		};
+		58BB89162B5ECB2E002B358C /* block */ = {
+			isa = PBXGroup;
+			children = (
+				58BB89172B5ECB58002B358C /* BlockModel.swift */,
+			);
+			path = block;
+			sourceTree = "<group>";
+		};
 		58BFBB3D2AAD9850004A84E8 /* feedbackMail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2342,6 +2360,8 @@
 				58F2E79A2A96008700F3667A /* KakaoSDKUser */,
 				3A238C912A9B444900F27AB1 /* Differentiator */,
 				3A238C932A9B444900F27AB1 /* RxDataSources */,
+				58BB89102B5EC8D3002B358C /* Realm */,
+				58BB89122B5EC8D3002B358C /* RealmSwift */,
 			);
 			productName = tellingMe;
 			productReference = 3AA289C729B8506F0030057E /* tellingMe.app */;
@@ -2381,6 +2401,7 @@
 				58F2E78E2A95FFB800F3667A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				58F2E7912A96008600F3667A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				3A238C902A9B444900F27AB1 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				58BB890F2B5EC8D3002B358C /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 3AA289C829B8506F0030057E /* Products */;
 			projectDirPath = "";
@@ -2478,6 +2499,7 @@
 				3AB0E3C52A1B338B00B13755 /* AnswerCompletedRepository.swift in Sources */,
 				5876AF8E2AE41E7E00EBB5D7 /* MyPageSecurityViewController.swift in Sources */,
 				585A93962AB6AAA300C9B705 /* ShareAPI.swift in Sources */,
+				58BB89152B5EC8F5002B358C /* RealmManager.swift in Sources */,
 				58B735192AA4A8C5007485F7 /* MetaManager.swift in Sources */,
 				583C74652ADE924F00C3E154 /* SecuritySettingViewModel.swift in Sources */,
 				3A89B3C92A78E6AE002DFBCD /* Emotion.swift in Sources */,
@@ -2701,6 +2723,7 @@
 				3A5076E329C82D7B00C7A5E9 /* Networkable+.swift in Sources */,
 				3A2220A02B0DA38F000C1194 /* AnswerBottomView.swift in Sources */,
 				583C747C2ADFA21F00C3E154 /* SecuritySettingInitialPasswordViewController.swift in Sources */,
+				58BB89182B5ECB58002B358C /* BlockModel.swift in Sources */,
 				583D306E2ABEF39700E99FBA /* BBaseButton.swift in Sources */,
 				3AC2047B2A6BC5990005709A /* CommunityCardView.swift in Sources */,
 				3ABB84852A80C7D300540269 /* CommunicationAnswerViewModel.swift in Sources */,
@@ -2951,9 +2974,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.12;
+				MARKETING_VERSION = 1.4.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2984,9 +3011,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.12;
+				MARKETING_VERSION = 1.4.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tellingUs.tellingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3023,6 +3054,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		58BB890F2B5EC8D3002B358C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 		58F2E7502A95C1D500F3667A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -3101,6 +3140,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A238C902A9B444900F27AB1 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		58BB89102B5EC8D3002B358C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58BB890F2B5EC8D3002B358C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		58BB89122B5EC8D3002B358C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58BB890F2B5EC8D3002B358C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		58F2E7512A95C1D500F3667A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

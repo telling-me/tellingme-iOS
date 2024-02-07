@@ -34,5 +34,6 @@ class AlertViewController: UIViewController {
     
     @IBAction func clickOkButton(_ sender: SecondaryTextButton) {
         self.dismiss(animated: true)
+        delegate?.clickOk()
     }
 }
