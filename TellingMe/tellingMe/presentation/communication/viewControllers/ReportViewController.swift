@@ -17,6 +17,8 @@ class ReportViewController: UIViewController {
     let viewModel = ReportViewModel()
     let disposeBag = DisposeBag()
     weak var delegate: SendShowReportAlert?
+    
+    private let boxCheckButton = BoxCheckboxView()
 
     @IBOutlet weak var bottomSheetView: BottomSheet!
 
@@ -25,6 +27,13 @@ class ReportViewController: UIViewController {
         bottomSheetView.setTitle(title: "답변 신고 사유를 선택해주세요", subTitle: "허위 신고 시 서비스 이용이 제한 될 수 있어요.")
         bottomSheetView.layer.masksToBounds = true
         bottomSheetView.layer.cornerRadius = 28
+        
+        bindViewModel()
+        setLayout()
+        setStyles()
+    }
+    
+    private func bindViewModel() {
         viewModel.showToastSubject
             .observe(on: MainScheduler.instance)
              .subscribe(onNext: { [weak self] message in
@@ -51,6 +60,30 @@ class ReportViewController: UIViewController {
                 self?.viewModel.postReport()
             })
             .disposed(by: disposeBag)
+        
+        boxCheckButton.checkButton.rx.tap
+            .bind(onNext: { [weak self] in
+                guard let self else { return }
+                self.boxCheckButton.checkButton.isSelected.toggle()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setLayout() {
+        bottomSheetView.addSubviews(boxCheckButton)
+        
+        boxCheckButton.snp.makeConstraints {
+            $0.height.equalTo(24)
+            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.bottom.equalTo(bottomSheetView.stackView.snp.top).offset(-20)
+        }
+    }
+    
+    private func setStyles() {
+        boxCheckButton.do {
+            $0.setCheckbox(title: "이 유저의 글을 더이상 보지 않을래요.")
+            $0.backgroundColor = .clear
+        }
     }
 }
 
