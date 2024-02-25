@@ -58,7 +58,7 @@ extension MetaManager {
         return instagramURL
     }
     
-    private func renderImage(from view: UIView, scaleOf scale: CGFloat = 4.0) -> UIImage {
+    private func renderImage(from view: UIView, scaleOf scale: CGFloat? = 4.0) -> UIImage {
         guard let imageData = view.saveUIViewWithScale(with: scale) else { return UIImage() }
         guard let renderedImage = UIImage(data: imageData) else { return UIImage() }
         return renderedImage
