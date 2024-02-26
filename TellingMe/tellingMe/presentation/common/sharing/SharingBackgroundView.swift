@@ -36,6 +36,7 @@ extension SharingBackgroundView {
     private func setStyles() {
         addedView.contentMode = .scaleAspectFit
         stickerView.contentMode = .scaleAspectFit
+//        stickerView.backgroundColor = .red.withAlphaComponent(0.4)
     }
     
     private func setLayout() {
