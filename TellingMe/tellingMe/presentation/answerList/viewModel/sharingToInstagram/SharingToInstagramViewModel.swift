@@ -92,7 +92,7 @@ extension SharingToInstagramViewModel {
             postSharingAction(type: .toAlbum)
         }
     }
-    
+
     private func setSharingImage() {
         let currentDevice = UIDevice.current.name
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -121,8 +121,8 @@ extension SharingToInstagramViewModel {
         
         let stickerXPoint: CGFloat = addedViewWidth/3
         let stickerYPoint: CGFloat = stickerYPointCalculated
-        let stickerWidth = width/1.25
-        let stickerheight = height/4.06
+        let stickerWidth = width/5
+        let stickerheight = height/17.8
 
         let cardImage = metaManager.saveImage(from: self.sharingView)
         let signatureImage = UIImage(named: "SignatureSticker")
@@ -134,11 +134,18 @@ extension SharingToInstagramViewModel {
         let stickerView = backgroundView.subviews[2]
         shadowView.frame = CGRect(x: 0, y: 0, width: addedViewWidth-24, height: addedViewHeight-24)
         addedView.frame = CGRect(x: 0, y: 0, width: addedViewWidth-20, height: addedViewHeight-20)
+        print(addedViewWidth, addedViewHeight, addedViewHeight/70, addedViewWidth/addedViewHeight, "📌📌")
         
         if sharingType == .myLibrary {
             backgroundView.setInsetForImage()
         } else {
-            stickerView.frame = CGRect(x: -stickerXPoint, y: stickerYPoint, width: stickerWidth, height: stickerheight)
+            let isDeviceAbnormal = UserDefaults.standard.bool(forKey: StringLiterals.isDeviceAbnormal)
+            
+            if isDeviceAbnormal != false {
+                stickerView.frame = CGRect(x: 24, y: addedViewHeight-53*addedViewHeight/addedViewWidth, width: stickerWidth, height: stickerheight)
+            } else {
+                stickerView.frame = CGRect(x: 24, y: addedViewHeight-48*addedViewHeight/addedViewWidth, width: stickerWidth, height: stickerheight)
+            }
         }
         addedView.center = backgroundView.center
         shadowView.center = backgroundView.center
@@ -180,7 +187,7 @@ extension SharingToInstagramViewModel {
         let stickerheight = height/4.06
 
         let cardImage = metaManager.saveImage(from: self.sharingView)
-        let signatureImage = UIImage(named: "SignatureSticker")
+        let signatureImage = UIImage(named: "SignatureSticker3")
 
         let backgroundView = SharingBackgroundView(frame: .zero, sharingImage: cardImage, signatureImage: signatureImage)
         backgroundView.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -217,6 +224,12 @@ extension SharingToInstagramViewModel {
         
         return savedImage
     }
+    
+    
+    
+    
+    
+    
     
     private func postSharingAction(type: SharingPlatform) {
         ShareAPI.postShareType(request: .init(type: type.platform))
