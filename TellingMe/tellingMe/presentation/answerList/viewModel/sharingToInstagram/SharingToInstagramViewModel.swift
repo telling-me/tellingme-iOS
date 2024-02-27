@@ -134,7 +134,6 @@ extension SharingToInstagramViewModel {
         let stickerView = backgroundView.subviews[2]
         shadowView.frame = CGRect(x: 0, y: 0, width: addedViewWidth-24, height: addedViewHeight-24)
         addedView.frame = CGRect(x: 0, y: 0, width: addedViewWidth-20, height: addedViewHeight-20)
-        print(addedViewWidth, addedViewHeight, addedViewHeight/70, addedViewWidth/addedViewHeight, "📌📌")
         
         if sharingType == .myLibrary {
             backgroundView.setInsetForImage()
@@ -224,12 +223,6 @@ extension SharingToInstagramViewModel {
         
         return savedImage
     }
-    
-    
-    
-    
-    
-    
     
     private func postSharingAction(type: SharingPlatform) {
         ShareAPI.postShareType(request: .init(type: type.platform))

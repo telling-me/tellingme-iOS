@@ -168,6 +168,8 @@ extension MyPageViewController {
                 case 4:
                     self.viewModel.inputs.questionPlantTapped()
                 case 5:
+                    self.viewModel.inputs.tellingMeInstagramTapped()
+                case 6:
                     self.viewModel.inputs.withdrawalTapped()
                     let settingViewModel = SettingViewModel()
                     let id = settingViewModel.items[3].id
@@ -177,7 +179,7 @@ extension MyPageViewController {
                         return
                     }
                     self.navigationController?.pushViewController(vc, animated: true)
-                case 6:
+                case 7:
                     self.viewModel.inputs.logoutTapped()
                     self.showWarningAlertOfSecurityAllGoneWhenLogOut()
                 default:
