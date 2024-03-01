@@ -35,6 +35,7 @@ class SplashViewController: UIViewController {
 
 extension SplashViewController {
     func callKeychain() {
+<<<<<<< Updated upstream
 //        print(KeychainManager.shared.load(of: Keys.isLockedWithPassword.keyString), "🔗")
 //        print(KeychainManager.shared.load(of: Keys.isLockedWithBiometry.keyString), "🔗")
 //        print(KeychainManager.shared.load(key: Keys.passwordKey.keyString), "🔗")
@@ -44,5 +45,10 @@ extension SplashViewController {
         if UserDefaults.standard.integer(forKey: StringLiterals.paidProductId) != -1 {
             UserDefaults.standard.removeObject(forKey: StringLiterals.paidProductId)
         }
+=======
+        KeychainManager.shared.delete(key: Keys.isLockedWithPassword.keyString)
+        KeychainManager.shared.delete(key: Keys.isLockedWithBiometry.keyString)
+        KeychainManager.shared.delete(key: Keys.passwordKey.keyString)
+>>>>>>> Stashed changes
     }
 }

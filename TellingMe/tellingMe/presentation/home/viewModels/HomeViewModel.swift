@@ -122,6 +122,8 @@ extension HomeViewModel {
     
     // TODO: Custom Error 만들고 분기처리하기
     private func getMainComponentData() {
+        print("📌 Function: ", #function, "called in: ", #fileID)
+
         let query: String = self.getNewDateString()
         
         QuestionAPI.getTodayQuestion(query: query)

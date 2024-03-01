@@ -28,14 +28,13 @@ final class GoodFeedbackViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
-        setLayout()
-        setStyles()
     }
     
     override func viewDidLayoutSubviews() {
         for (index, view) in stackView.arrangedSubviews.enumerated() {
-            guard let view = view as? FeedbackView else {
+            
+            guard let view = view as? FeedbackView,
+                  index < viewModel.inputs.sliderObservables.count else {
                 return
             }
             view.sliderObservable
