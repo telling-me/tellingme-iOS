@@ -305,13 +305,13 @@ extension MyPageViewController {
     }
     
     private func checkPlusUser() {
-        let userDefaults = UserDefaults.standard
-        let isPlusUser = userDefaults.string(forKey: StringLiterals.paidProductId)
-        if isPlusUser != nil {
-            profileView.isUserPremiumUser(isPremium: true)
-        } else {
-            profileView.isUserPremiumUser(isPremium: false)
-        }
+//        let userDefaults = UserDefaults.standard
+//        let isPlusUser = userDefaults.string(forKey: StringLiterals.paidProductId)
+//        if isPlusUser != nil {
+//            profileView.isUserPremiumUser(isPremium: true)
+//        } else {
+//            profileView.isUserPremiumUser(isPremium: false)
+//        }
     }
     
     private func scrollEnableWhenNeeded() {

@@ -83,7 +83,6 @@ extension GoodFeedbackViewModel {
         QuestionFeedbackAPI.postQuestionFeedback(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                //여기여? 여기실행안되엇으.
                 self.outputs.successSubject.onNext(response)
             }, onError: { [weak self] error in
                 guard let self = self else { return }

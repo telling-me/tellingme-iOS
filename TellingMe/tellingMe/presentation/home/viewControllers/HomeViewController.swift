@@ -240,7 +240,6 @@ extension HomeViewController {
     }
     
     private func setNotificationCenterForBecomeActive() {
-        print("NotificationCenter Added for background check.")
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNetwork), name: Notification.Name("RefreshHomeView"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshAnimation), name: Notification.Name("RefreshAnimation"), object: nil)
     }
@@ -282,7 +281,6 @@ extension HomeViewController {
 }
     // MARK: - Presentations
 extension HomeViewController {
-    
     private func showPushNotification() {
         self.view.addSubviews(blurView, pushNotificationPermitView)
         self.tabBarController?.tabBar.isHidden = true
@@ -305,8 +303,6 @@ extension HomeViewController {
     }
     
     private func pushToAnswerViewController() {
-//        let storyboard = UIStoryboard(name: "Answer", bundle: nil)
-//        guard let answerViewController = storyboard.instantiateViewController(identifier: "answer") as? AnswerViewController else { return }
         let answerViewController = AAnswerViewController()
         self.navigationController?.pushViewController(answerViewController, animated: true)
     }
