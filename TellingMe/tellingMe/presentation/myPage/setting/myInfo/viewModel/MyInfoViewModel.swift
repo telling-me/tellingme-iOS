@@ -18,7 +18,7 @@ class MyInfoViewModel {
     var year: String? = nil
     var mbti: String? = nil
 
-    let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ESTJ", "ESTP"]
+    let mbtis: [String] = ["ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP", "INTJ", "INTP", "ISFJ", "ISFP", "ISTJ", "ISTP"]
     var yearArray: [String]?
     let monthArray = Array(1...12).map { String($0) }
     let dayArray = Array(1...31).map { String($0) }

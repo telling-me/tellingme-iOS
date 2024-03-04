@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,14 +34,14 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="CommunityViewController" customModule="tellingMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-JI-OUx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-JI-OUx">
                                 <rect key="frame" x="0.0" y="59" width="393" height="1058"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-yP-sdm">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-yP-sdm">
                                         <rect key="frame" x="0.0" y="0.0" width="383" height="1530"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모두의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-3P-eCQ" customClass="Headline4Regular" customModule="tellingMe" customModuleProvider="target">
@@ -350,10 +350,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5m-Gi-GsO" customClass="BottomSheet" customModule="tellingMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="435" width="393" height="417"/>
+                                <rect key="frame" x="0.0" y="395" width="393" height="457"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8lv-hZ-18h">
-                                        <rect key="frame" x="20" y="107" width="353" height="223"/>
+                                        <rect key="frame" x="20" y="107" width="353" height="263"/>
                                         <color key="backgroundColor" name="Side100"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h7U-p8-eIH">
                                             <size key="itemSize" width="128" height="128"/>
@@ -381,7 +381,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="8lv-hZ-18h" secondAttribute="bottom" constant="87" id="0pf-ce-crt"/>
                                     <constraint firstAttribute="trailing" secondItem="8lv-hZ-18h" secondAttribute="trailing" constant="20" id="2go-Ku-9Im"/>
-                                    <constraint firstAttribute="height" constant="417" id="C13-z7-Ldk"/>
+                                    <constraint firstAttribute="height" constant="457" id="C13-z7-Ldk"/>
                                     <constraint firstItem="8lv-hZ-18h" firstAttribute="leading" secondItem="I5m-Gi-GsO" secondAttribute="leading" constant="20" id="nRX-I9-nrI"/>
                                     <constraint firstItem="8lv-hZ-18h" firstAttribute="top" secondItem="I5m-Gi-GsO" secondAttribute="top" constant="107" id="pog-kY-P3q"/>
                                 </constraints>
@@ -427,8 +427,8 @@
         </designable>
     </designables>
     <resources>
-        <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.right" catalog="system" width="32" height="32"/>
         <image name="communication" width="41" height="41"/>
         <image name="communication_selected" width="81" height="81"/>
         <namedColor name="Gray6">
