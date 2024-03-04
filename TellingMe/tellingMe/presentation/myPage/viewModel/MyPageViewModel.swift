@@ -25,6 +25,7 @@ protocol MyPageInputs {
     func termsOfUseTapped()
     func privatePolicyTapped()
     func feedBackWithMailTapped()
+    func tellingMeInstagramTapped()
     func withdrawalTapped()
     func questionPlantTapped()
     func logoutTapped()
@@ -56,6 +57,7 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
         MyPageSettingElementsModel(isElementWithLogout: false, elementTitle: "개인정보 처리방침"),
         MyPageSettingElementsModel(isElementWithLogout: false, elementTitle: "고객 센터"),
         MyPageSettingElementsModel(isElementWithLogout: false, elementTitle: "듀이의 질문 제작소"),
+        MyPageSettingElementsModel(isElementWithLogout: false, elementTitle: "텔링미 인스타그램"),
         MyPageSettingElementsModel(isElementWithLogout: false, elementTitle: "회원 탈퇴"),
         MyPageSettingElementsModel(isElementWithLogout: true, elementTitle: "로그아웃")
     ]
@@ -135,6 +137,22 @@ final class MyPageViewModel: MyPageInputs, MyPageOutputs, MyPageViewModelType {
     func questionPlantTapped() {
         if let url = URL(string: UrlLiterals.questionPlant) {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    func tellingMeInstagramTapped() {
+        guard let instagramAppUrl = URL(string: "instagram-stories://share") else {
+            return
+        }
+        let canOpenInstagramApp = UIApplication.shared.canOpenURL(instagramAppUrl)
+        if canOpenInstagramApp {
+            if let url = URL(string: "https://www.instagram.com/tellingme.io/") {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            if let instagramURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252") {
+                UIApplication.shared.open(instagramURL)
+            }
         }
     }
     
